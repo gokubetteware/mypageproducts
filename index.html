@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gokubetteware — Automatización con IA para tu negocio</title>
+<meta name="description" content="Recepcionista de voz IA, WhatsApp inteligente y automatización para inmobiliarias. IA que atiende a tus clientes 24/7.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --color-citrine-signal: #e5ff5d;
+    --color-carbon-black: #111111;
+    --color-bone-white: #f9f9f9;
+    --color-graphite: #2b2b2b;
+    --color-ash: #6e6e6e;
+    --color-stone: #9c9c9c;
+    --color-smoke: #565656;
+    --color-chalk: #d6d6d6;
+    --color-cream-paper: #eeeeee;
+    --color-pure-black: #000000;
+    --color-sand: #b7b3a2;
+
+    --font-main: 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+    --text-utility-label: 10px;
+    --text-caption: 12px;
+    --text-body-sm: 14px;
+    --text-body: 16px;
+    --text-subhead: 20px;
+    --text-heading-sm: 24px;
+    --text-heading: 48px;
+    --text-display: 80px;
+
+    --spacing-8: 8px;
+    --spacing-16: 16px;
+    --spacing-24: 24px;
+    --spacing-32: 32px;
+    --spacing-40: 40px;
+    --spacing-48: 48px;
+    --spacing-64: 64px;
+    --spacing-80: 80px;
+    --spacing-96: 96px;
+    --spacing-128: 128px;
+    --spacing-144: 144px;
+    --spacing-192: 192px;
+
+    --radius-buttons: 4px;
+    --radius-cards: 12px;
+    --radius-nav: 8px;
+    --radius-pills: 9999px;
+    --radius-decorative: 20px;
+
+    --page-max-width: 1280px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-main);
+    background: var(--color-carbon-black);
+    color: var(--color-bone-white);
+    font-size: var(--text-body);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  img, svg { display: block; max-width: 100%; }
+
+  a { color: inherit; text-decoration: none; }
+
+  :focus-visible {
+    outline: 2px solid var(--color-citrine-signal);
+    outline-offset: 3px;
+  }
+
+  .wrap {
+    max-width: var(--page-max-width);
+    margin: 0 auto;
+    padding: 0 var(--spacing-24);
+  }
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 500;
+    font-size: var(--text-utility-label);
+    letter-spacing: 0.032em;
+    text-transform: uppercase;
+    color: var(--color-citrine-signal);
+    margin-bottom: var(--spacing-16);
+  }
+  .eyebrow::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    background: var(--color-citrine-signal);
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+
+  .eyebrow.muted { color: var(--color-stone); }
+  .eyebrow.muted::before { background: var(--color-stone); }
+
+  h1, h2, h3 { font-weight: 400; }
+
+  .display {
+    font-size: clamp(40px, 8vw, var(--text-display));
+    line-height: 0.9;
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+  }
+
+  .heading {
+    font-size: clamp(28px, 5vw, var(--text-heading));
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+  }
+
+  .heading-sm {
+    font-weight: 500;
+    font-size: var(--text-heading-sm);
+    line-height: 1.2;
+    letter-spacing: -0.24px;
+  }
+
+  .body-lg {
+    font-size: var(--text-subhead);
+    line-height: 1.5;
+    color: var(--color-stone);
+  }
+
+  .body-muted { color: var(--color-stone); }
+
+  /* ---------- Buttons ---------- */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-main);
+    font-weight: 500;
+    font-size: var(--text-body);
+    padding: 12px 24px;
+    border-radius: var(--radius-buttons);
+    border: none;
+    cursor: pointer;
+    transition: transform 0.15s ease, opacity 0.15s ease;
+  }
+  .btn:hover { transform: translateY(-1px); opacity: 0.92; }
+  .btn::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    flex-shrink: 0;
+  }
+
+  .btn-citrine {
+    background: var(--color-citrine-signal);
+    color: var(--color-carbon-black);
+  }
+  .btn-citrine::before { background: var(--color-carbon-black); }
+
+  .btn-dark {
+    background: var(--color-carbon-black);
+    color: var(--color-bone-white);
+  }
+  .btn-dark::before { background: var(--color-citrine-signal); }
+
+  .btn-ghost {
+    background: transparent;
+    border: 1px solid var(--color-bone-white);
+    text-transform: uppercase;
+    font-size: var(--text-caption);
+    letter-spacing: 0.032em;
+    padding: 10px 20px;
+  }
+  .btn-ghost::before { display: none; }
+  .btn-ghost:hover { background: rgba(249,249,249,0.06); }
+
+  .btn-ghost.on-light {
+    border-color: var(--color-carbon-black);
+    color: var(--color-carbon-black);
+  }
+  .btn-ghost.on-light:hover { background: rgba(17,17,17,0.06); }
+
+  .cta-row { display: flex; gap: var(--spacing-16); flex-wrap: wrap; align-items: center; }
+
+  /* ---------- Nav ---------- */
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(17,17,17,0.85);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--color-graphite);
+  }
+  nav.wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 80px;
+  }
+  .wordmark {
+    font-weight: 500;
+    font-size: var(--text-subhead);
+    letter-spacing: 0.027em;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .wordmark .dot { width: 10px; height: 10px; background: var(--color-citrine-signal); border-radius: 2px; }
+
+  .nav-links {
+    display: flex;
+    gap: var(--spacing-32);
+    list-style: none;
+  }
+  .nav-links a {
+    font-weight: 500;
+    font-size: var(--text-caption);
+    letter-spacing: 0.027em;
+    text-transform: uppercase;
+    color: var(--color-bone-white);
+    opacity: 0.85;
+  }
+  .nav-links a:hover { opacity: 1; color: var(--color-citrine-signal); }
+
+  .nav-cta { display: flex; align-items: center; gap: var(--spacing-24); }
+  .nav-toggle { display: none; }
+  .burger { display: none; cursor: pointer; }
+
+  @media (max-width: 860px) {
+    .nav-links { 
+      position: absolute;
+      top: 80px; left: 0; right: 0;
+      flex-direction: column;
+      background: var(--color-carbon-black);
+      border-bottom: 1px solid var(--color-graphite);
+      padding: var(--spacing-24);
+      gap: var(--spacing-24);
+      display: none;
+    }
+    .nav-toggle:checked ~ .nav-links { display: flex; }
+    .burger { display: block; }
+    .nav-cta .btn-citrine span.long { display: none; }
+  }
+
+  /* ---------- Sections ---------- */
+  section { padding: var(--spacing-96) 0; }
+  .section-tight { padding: var(--spacing-64) 0; }
+
+  .section-cream {
+    background: var(--color-cream-paper);
+    color: var(--color-carbon-black);
+    position: relative;
+    overflow: hidden;
+  }
+  .section-cream .body-lg { color: var(--color-ash); }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    padding: var(--spacing-128) 0 var(--spacing-96);
+    text-align: center;
+    position: relative;
+  }
+  .hero .cube-wrap { display: flex; justify-content: center; margin-bottom: var(--spacing-32); }
+  .hero .display { margin-bottom: var(--spacing-24); }
+  .hero .body-lg { max-width: 560px; margin: 0 auto var(--spacing-40); }
+  .hero .cta-row { justify-content: center; }
+
+  .pill-strip {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px 28px;
+    margin-top: var(--spacing-64);
+    padding-top: var(--spacing-32);
+    border-top: 1px solid var(--color-graphite);
+  }
+  .pill {
+    font-weight: 500;
+    font-size: var(--text-utility-label);
+    letter-spacing: 0.032em;
+    text-transform: uppercase;
+    color: var(--color-citrine-signal);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .pill::before { content: ""; width: 5px; height: 5px; background: var(--color-citrine-signal); border-radius: 50%; }
+
+  /* ---------- Cube (SVG signature element) ---------- */
+  .cube-glow { filter: drop-shadow(0 0 40px rgba(229,255,93,0.25)); }
+
+  /* ---------- Split feature block ---------- */
+  .split {
+    display: grid;
+    grid-template-columns: 0.75fr 1fr;
+    gap: var(--spacing-80);
+    align-items: center;
+  }
+  .split.reverse { grid-template-columns: 1fr 0.75fr; }
+  .split.reverse .split-text { order: 2; }
+  .split.reverse .split-visual { order: 1; }
+  @media (max-width: 860px) {
+    .split, .split.reverse { grid-template-columns: 1fr; gap: var(--spacing-40); }
+    .split.reverse .split-text, .split.reverse .split-visual { order: unset; }
+  }
+
+  .split-text h2 { margin-bottom: var(--spacing-16); }
+  .split-text .body-lg { margin-bottom: var(--spacing-24); max-width: 480px; }
+
+  .feature-list { list-style: none; display: flex; flex-direction: column; gap: 14px; margin-bottom: var(--spacing-32); }
+  .feature-list li { display: flex; gap: 12px; align-items: flex-start; font-size: var(--text-body); }
+  .feature-list li::before {
+    content: "";
+    width: 6px; height: 6px;
+    background: var(--color-citrine-signal);
+    border-radius: 1px;
+    margin-top: 8px;
+    flex-shrink: 0;
+  }
+
+  .split-visual {
+    background: var(--color-graphite);
+    border: 1px solid var(--color-smoke);
+    border-radius: var(--radius-cards);
+    padding: var(--spacing-48);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 320px;
+  }
+
+  /* ---------- Status tag ---------- */
+  .status-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 500;
+    font-size: var(--text-utility-label);
+    letter-spacing: 0.032em;
+    text-transform: uppercase;
+    padding: 6px 12px;
+    border-radius: var(--radius-buttons);
+    margin-bottom: var(--spacing-16);
+  }
+  .status-tag.live { background: rgba(229,255,93,0.12); color: var(--color-citrine-signal); border: 1px solid rgba(229,255,93,0.3); }
+  .status-tag.building { background: transparent; color: var(--color-stone); border: 1px solid var(--color-smoke); }
+
+  /* ---------- Pricing cards ---------- */
+  .price-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: var(--spacing-16);
+    margin-top: var(--spacing-16);
+  }
+  .price-card {
+    background: var(--color-carbon-black);
+    border: 1px solid var(--color-smoke);
+    border-radius: var(--radius-cards);
+    padding: var(--spacing-24);
+  }
+  .price-card.featured { border-color: var(--color-citrine-signal); }
+  .price-card .plan-name {
+    font-weight: 500;
+    font-size: var(--text-caption);
+    letter-spacing: 0.024em;
+    text-transform: uppercase;
+    color: var(--color-stone);
+    margin-bottom: 8px;
+  }
+  .price-card .plan-price {
+    font-weight: 400;
+    font-size: 32px;
+    margin-bottom: 4px;
+  }
+  .price-card .plan-price span { font-size: var(--text-body-sm); color: var(--color-stone); font-weight: 400; }
+  .price-note { font-size: var(--text-caption); color: var(--color-stone); margin-top: var(--spacing-16); }
+
+  /* ---------- Two-product grid (inmobiliaria) ---------- */
+  .product-pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-24);
+    margin-top: var(--spacing-48);
+  }
+  @media (max-width: 860px) { .product-pair { grid-template-columns: 1fr; } }
+
+  .product-card {
+    background: var(--color-graphite);
+    border: 1px solid var(--color-smoke);
+    border-radius: var(--radius-cards);
+    padding: var(--spacing-32);
+    display: flex;
+    flex-direction: column;
+  }
+  .product-card h3 { margin-bottom: var(--spacing-16); }
+  .product-card .body-muted { margin-bottom: var(--spacing-24); }
+  .product-card .feature-list { margin-bottom: 0; flex-grow: 1; }
+
+  .section-header { text-align: center; max-width: 640px; margin: 0 auto var(--spacing-64); }
+  .section-header .body-lg { margin-top: var(--spacing-16); }
+
+  /* ---------- Integrations row ---------- */
+  .integrations {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--spacing-40);
+    flex-wrap: wrap;
+    margin-top: var(--spacing-48);
+  }
+  .node {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  .node-circle {
+    width: 56px; height: 56px;
+    border-radius: 50%;
+    border: 1px solid var(--color-graphite);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+    font-size: 12px;
+    letter-spacing: 0.02em;
+    color: var(--color-citrine-signal);
+  }
+  .node-label {
+    font-size: var(--text-utility-label);
+    letter-spacing: 0.024em;
+    text-transform: uppercase;
+    color: var(--color-stone);
+  }
+  .node-line {
+    width: 40px;
+    border-top: 1px dashed var(--color-smoke);
+    margin-top: -28px;
+  }
+  @media (max-width: 640px) { .node-line { display: none; } }
+
+  /* ---------- Reversal band ---------- */
+  .reversal {
+    text-align: center;
+    padding: var(--spacing-96) 0;
+    position: relative;
+    z-index: 1;
+  }
+  .reversal .display { color: var(--color-carbon-black); margin-bottom: var(--spacing-16); }
+  .reversal .body-lg { max-width: 520px; margin: 0 auto var(--spacing-40); }
+  .reversal .cta-row { justify-content: center; }
+
+  .float-cube { position: absolute; opacity: 0.9; z-index: 0; }
+
+  /* ---------- Footer ---------- */
+  footer {
+    border-top: 1px solid var(--color-graphite);
+    padding: var(--spacing-64) 0 var(--spacing-40);
+  }
+  .footer-top {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: var(--spacing-32);
+    margin-bottom: var(--spacing-48);
+  }
+  .footer-tagline { max-width: 360px; color: var(--color-stone); margin-top: var(--spacing-16); }
+  .footer-links { display: flex; gap: var(--spacing-64); flex-wrap: wrap; }
+  .footer-col h4 {
+    font-weight: 500;
+    font-size: var(--text-caption);
+    letter-spacing: 0.024em;
+    text-transform: uppercase;
+    color: var(--color-stone);
+    margin-bottom: var(--spacing-16);
+  }
+  .footer-col a, .footer-col p { display: block; margin-bottom: 10px; color: var(--color-bone-white); font-size: var(--text-body-sm); }
+  .footer-col a:hover { color: var(--color-citrine-signal); }
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+    padding-top: var(--spacing-32);
+    border-top: 1px solid var(--color-graphite);
+    font-size: var(--text-caption);
+    color: var(--color-smoke);
+  }
+
+  /* ---------- Scroll reveal ---------- */
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .reveal.in { opacity: 1; transform: translateY(0); }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .reveal { opacity: 1; transform: none; transition: none; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <a href="#inicio" class="wordmark"><span class="dot"></span>GOKUBETTERWARE</a>
+    <input type="checkbox" id="nav-toggle" class="nav-toggle">
+    <ul class="nav-links">
+      <li><a href="#voz">Recepcionista Voz</a></li>
+      <li><a href="#whatsapp">WhatsApp</a></li>
+      <li><a href="#inmobiliaria">Inmobiliaria</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="#contacto" class="btn btn-citrine"><span class="long">Agendar demo</span><span class="short" style="display:none">Demo</span></a>
+      <label for="nav-toggle" class="burger" aria-label="Abrir menú">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M3 6H21M3 12H21M3 18H21" stroke="#f9f9f9" stroke-width="1.5"/></svg>
+      </label>
+    </div>
+  </nav>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section id="inicio" class="hero wrap">
+    <div class="cube-wrap">
+      <svg class="cube-glow" width="120" height="120" viewBox="0 0 120 120" fill="none">
+        <defs>
+          <linearGradient id="cubeTop" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#f4ffb0"/>
+            <stop offset="100%" stop-color="#e5ff5d"/>
+          </linearGradient>
+          <linearGradient id="cubeLeft" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#e5ff5d"/>
+            <stop offset="100%" stop-color="#b8d13f"/>
+          </linearGradient>
+          <linearGradient id="cubeRight" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#c7e04f"/>
+            <stop offset="100%" stop-color="#8fa332"/>
+          </linearGradient>
+        </defs>
+        <polygon points="60,6 108,32 60,58 12,32" fill="url(#cubeTop)"/>
+        <polygon points="12,32 60,58 60,114 12,88" fill="url(#cubeLeft)"/>
+        <polygon points="108,32 60,58 60,114 108,88" fill="url(#cubeRight)"/>
+      </svg>
+    </div>
+    <h1 class="display">TU NEGOCIO<br>ATENDIDO<br>24/7</h1>
+    <p class="body-lg">Recepcionista de voz, WhatsApp inteligente y automatización para inmobiliarias — IA que contesta, agenda y vende mientras tú trabajas en lo importante.</p>
+    <div class="cta-row">
+      <a href="#voz" class="btn btn-citrine">Ver productos</a>
+      <a href="#contacto" class="btn-ghost btn">Hablar por WhatsApp</a>
+    </div>
+    <div class="pill-strip">
+      <span class="pill">Respuesta en segundos</span>
+      <span class="pill">Disponible 24/7</span>
+      <span class="pill">Cero llamadas perdidas</span>
+    </div>
+  </section>
+
+  <!-- RECEPCIONISTA DE VOZ -->
+  <section id="voz" class="wrap reveal">
+    <div class="split">
+      <div class="split-text">
+        <span class="status-tag live">En producción</span>
+        <span class="eyebrow">Asistente de voz IA</span>
+        <h2 class="heading">Sofía contesta<br>por ti</h2>
+        <p class="body-lg">Sofía atiende cada llamada, agenda citas directo en tu calendario y resuelve dudas de tus clientes en español mexicano natural — como si fuera parte de tu equipo.</p>
+        <ul class="feature-list">
+          <li>Agenda, cancela y reprograma citas automáticamente</li>
+          <li>Conectada a tu Google Calendar en tiempo real</li>
+          <li>Panel con historial de llamadas y transcripciones</li>
+          <li>Disponible 24/7, incluso fuera de horario de oficina</li>
+        </ul>
+        <div class="price-grid">
+          <div class="price-card">
+            <div class="plan-name">Esencial</div>
+            <div class="plan-price">$1,600 <span>MXN/mes</span></div>
+          </div>
+          <div class="price-card featured">
+            <div class="plan-name">Negocio</div>
+            <div class="plan-price">$2,500 <span>MXN/mes</span></div>
+          </div>
+          <div class="price-card">
+            <div class="plan-name">Premium</div>
+            <div class="plan-price">$3,500 <span>MXN/mes</span></div>
+          </div>
+        </div>
+        <p class="price-note">+ instalación única de $2,500–$4,500 MXN. Ajusta estos montos antes de publicar si han cambiado.</p>
+      </div>
+      <div class="split-visual">
+        <svg width="220" height="220" viewBox="0 0 220 220" fill="none">
+          <circle cx="110" cy="110" r="90" stroke="#565656" stroke-width="1" stroke-dasharray="4 6"/>
+          <circle cx="110" cy="110" r="56" fill="#111111" stroke="#e5ff5d" stroke-width="1.5"/>
+          <path d="M110 84c-11 0-20 9-20 20v10c0 11 9 20 20 20s20-9 20-20v-10c0-11-9-20-20-20z" stroke="#e5ff5d" stroke-width="2" fill="none"/>
+          <path d="M92 118v4a18 18 0 0036 0v-4" stroke="#e5ff5d" stroke-width="2" fill="none"/>
+          <line x1="110" y1="142" x2="110" y2="150" stroke="#e5ff5d" stroke-width="2"/>
+          <circle cx="110" cy="30" r="4" fill="#e5ff5d"/>
+          <circle cx="190" cy="70" r="4" fill="#9c9c9c"/>
+          <circle cx="30" cy="70" r="4" fill="#9c9c9c"/>
+          <circle cx="190" cy="150" r="4" fill="#9c9c9c"/>
+          <circle cx="30" cy="150" r="4" fill="#9c9c9c"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHATSAPP -->
+  <section id="whatsapp" class="wrap reveal">
+    <div class="split reverse">
+      <div class="split-text">
+        <span class="status-tag live">En producción</span>
+        <span class="eyebrow">Automatización WhatsApp</span>
+        <h2 class="heading">Tu WhatsApp,<br>trabajando solo</h2>
+        <p class="body-lg">Un bot que agenda citas, contesta preguntas frecuentes y hasta toma pedidos — todo dentro de WhatsApp, sin que tu cliente descargue nada nuevo.</p>
+        <ul class="feature-list">
+          <li>Agenda y cancela citas automáticamente por chat</li>
+          <li>Panel de administración con historial por negocio</li>
+          <li>Módulo comida corrida: pedidos diarios directo por WhatsApp</li>
+          <li>Integración con Google Calendar</li>
+        </ul>
+        <p class="price-note">Planes desde $200 USD/mes. Combo con Recepcionista de Voz: $600–900 USD/mes.</p>
+      </div>
+      <div class="split-visual">
+        <svg width="220" height="220" viewBox="0 0 220 220" fill="none">
+          <rect x="70" y="30" width="80" height="160" rx="14" stroke="#e5ff5d" stroke-width="1.5"/>
+          <line x1="70" y1="46" x2="150" y2="46" stroke="#565656" stroke-width="1"/>
+          <line x1="70" y1="174" x2="150" y2="174" stroke="#565656" stroke-width="1"/>
+          <rect x="82" y="64" width="44" height="14" rx="7" fill="#2b2b2b"/>
+          <rect x="94" y="86" width="44" height="14" rx="7" fill="#e5ff5d" fill-opacity="0.15" stroke="#e5ff5d" stroke-width="1"/>
+          <rect x="82" y="108" width="36" height="14" rx="7" fill="#2b2b2b"/>
+          <circle cx="30" cy="60" r="4" fill="#9c9c9c"/>
+          <circle cx="190" cy="90" r="4" fill="#9c9c9c"/>
+          <circle cx="30" cy="150" r="4" fill="#e5ff5d"/>
+        </svg>
+      </div>
+    </div>
+
+    <div class="integrations reveal">
+      <div class="node"><div class="node-circle">GC</div><div class="node-label">Calendar</div></div>
+      <div class="node"><div class="node-circle">WA</div><div class="node-label">WhatsApp</div></div>
+      <div class="node"><div class="node-circle">IA</div><div class="node-label">Groq / LLM</div></div>
+      <div class="node"><div class="node-circle">EL</div><div class="node-label">Voz</div></div>
+    </div>
+  </section>
+
+  <!-- REVERSAL BAND -->
+  <section class="section-cream">
+    <svg class="float-cube" style="left:-40px; top:20px;" width="140" height="140" viewBox="0 0 120 120" fill="none">
+      <polygon points="60,6 108,32 60,58 12,32" fill="#e5ff5d" fill-opacity="0.9"/>
+      <polygon points="12,32 60,58 60,114 12,88" fill="#c7e04f" fill-opacity="0.8"/>
+      <polygon points="108,32 60,58 60,114 108,88" fill="#a9bd45" fill-opacity="0.8"/>
+    </svg>
+    <svg class="float-cube" style="right:-30px; bottom:10px;" width="100" height="100" viewBox="0 0 120 120" fill="none">
+      <polygon points="60,6 108,32 60,58 12,32" fill="#e5ff5d" fill-opacity="0.85"/>
+      <polygon points="12,32 60,58 60,114 12,88" fill="#c7e04f" fill-opacity="0.75"/>
+      <polygon points="108,32 60,58 60,114 108,88" fill="#a9bd45" fill-opacity="0.75"/>
+    </svg>
+    <div class="wrap reversal reveal">
+      <h2 class="display">Cero llamadas<br>perdidas</h2>
+      <p class="body-lg">Mientras tu negocio duerme, tu recepcionista y tu WhatsApp siguen contestando. Agenda una demo y platícame qué necesitas automatizar primero.</p>
+      <div class="cta-row">
+        <a href="#contacto" class="btn btn-dark">Agendar demo</a>
+        <a href="#contacto" class="btn-ghost on-light btn">Ver planes</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- INMOBILIARIA -->
+  <section id="inmobiliaria" class="wrap">
+    <div class="section-header reveal">
+      <span class="eyebrow" style="justify-content:center">Vertical inmobiliario</span>
+      <h2 class="heading">Dos productos<br>para vender más rápido</h2>
+      <p class="body-lg">Leads calificados en automático y video para mostrar la propiedad — cada uno funciona por separado.</p>
+    </div>
+    <div class="product-pair reveal">
+      <div class="product-card">
+        <span class="status-tag live">En producción</span>
+        <h3 class="heading-sm">Leads + Agente de Voz</h3>
+        <p class="body-muted">Alejandro contesta la llamada, platica con el prospecto, agenda la visita y te notifica al instante con el score del lead y el audio listo para escuchar.</p>
+        <ul class="feature-list">
+          <li>Extrae y califica el lead de cada llamada</li>
+          <li>Notifica por llamada, SMS o email según la urgencia</li>
+          <li>Agenda visitas en tu calendario de disponibilidad</li>
+          <li>Resumen diario de actividad</li>
+        </ul>
+      </div>
+      <div class="product-card">
+        <span class="status-tag building">En desarrollo</span>
+        <h3 class="heading-sm">Videos con IA</h3>
+        <p class="body-muted">Convertimos las fotos de una propiedad en un recorrido en video realista, pensado para redes y portales — sin rentar cámara ni editor.</p>
+        <ul class="feature-list">
+          <li>Video generado a partir de fotos existentes de la casa</li>
+          <li>Pensado para verse natural, no "hecho con IA"</li>
+          <li>Ideal para redes sociales y portales inmobiliarios</li>
+          <li>Portafolio de muestra próximamente</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section id="contacto" class="wrap section-tight reveal">
+    <div class="section-header" style="margin-bottom: var(--spacing-40)">
+      <span class="eyebrow" style="justify-content:center">Contacto</span>
+      <h2 class="heading">Hablemos de<br>tu negocio</h2>
+      <p class="body-lg">Cuéntame qué proceso te está quitando más tiempo y armamos la automatización que le conviene a tu negocio.</p>
+    </div>
+    <div class="cta-row" style="justify-content:center">
+      <a href="https://wa.me/52TUNUMERO" class="btn btn-citrine" target="_blank" rel="noopener">Escríbeme por WhatsApp</a>
+      <a href="mailto:hola@gokubetteware.com" class="btn-ghost btn">hola@gokubetteware.com</a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <div>
+        <a href="#inicio" class="wordmark"><span class="dot"></span>GOKUBETTERWARE</a>
+        <p class="footer-tagline">Automatización con IA para negocios en México: voz, WhatsApp e inmobiliarias.</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h4>Productos</h4>
+          <a href="#voz">Recepcionista de Voz</a>
+          <a href="#whatsapp">WhatsApp Inteligente</a>
+          <a href="#inmobiliaria">Inmobiliaria</a>
+        </div>
+        <div class="footer-col">
+          <h4>Contacto</h4>
+          <a href="https://wa.me/52TUNUMERO" target="_blank" rel="noopener">WhatsApp</a>
+          <a href="mailto:hola@gokubetteware.com">Email</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Gokubetteware. Todos los derechos reservados.</span>
+      <span>Poza Rica de Hidalgo, Veracruz, México</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el => io.observe(el));
+
+  // Close mobile nav on link click
+  document.querySelectorAll('.nav-links a').forEach(a => {
+    a.addEventListener('click', () => { document.getElementById('nav-toggle').checked = false; });
+  });
+</script>
+
+</body>
+</html>
