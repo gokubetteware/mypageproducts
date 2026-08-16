@@ -298,6 +298,110 @@
   /* ---------- Cube (SVG signature element) ---------- */
   .cube-glow { filter: drop-shadow(0 0 40px rgba(229,255,93,0.25)); }
 
+  /* ---------- Floating badges (hero) ---------- */
+  .badge-float {
+    position: absolute;
+    width: 48px; height: 48px;
+    border-radius: 50%;
+    border: 1px solid var(--color-graphite);
+    background: rgba(43,43,43,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: floaty 5s ease-in-out infinite;
+  }
+  .badge-float svg { width: 20px; height: 20px; }
+  @keyframes floaty {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-14px); }
+  }
+  @media (max-width: 720px) { .badge-float { display: none; } }
+
+  .scroll-indicator {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: var(--text-utility-label);
+    letter-spacing: 0.032em;
+    text-transform: uppercase;
+    color: var(--color-stone);
+    margin-top: var(--spacing-24);
+  }
+  .scroll-indicator svg { animation: bob 1.8s ease-in-out infinite; }
+  @keyframes bob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(5px); } }
+
+  /* ---------- Marquee ---------- */
+  .marquee-section { padding: var(--spacing-48) 0; border-top: 1px solid var(--color-graphite); border-bottom: 1px solid var(--color-graphite); }
+  .marquee-wrap {
+    overflow: hidden;
+    margin-top: var(--spacing-24);
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+    mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  }
+  .marquee-track { display: flex; gap: var(--spacing-64); width: max-content; animation: marquee 28s linear infinite; }
+  .marquee-item {
+    font-weight: 500;
+    font-size: var(--text-subhead);
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    color: var(--color-smoke);
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .marquee-item::before { content: ""; width: 6px; height: 6px; background: var(--color-citrine-signal); border-radius: 50%; }
+  @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+  /* ---------- 3-card feature grid ---------- */
+  .feature-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--spacing-16); margin-top: var(--spacing-16); }
+  @media (max-width: 860px) { .feature-grid-3 { grid-template-columns: 1fr; } }
+  .feature-card-alt {
+    border-radius: var(--radius-cards);
+    padding: var(--spacing-32);
+    color: var(--color-carbon-black);
+    min-height: 220px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .feature-card-alt.sand { background: var(--color-sand); }
+  .feature-card-alt.citrine { background: var(--color-citrine-signal); }
+  .feature-card-alt.chalk { background: var(--color-chalk); }
+  .feature-card-alt h3 { font-weight: 500; font-size: var(--text-heading-sm); text-transform: uppercase; line-height: 1.15; margin: var(--spacing-24) 0 8px; }
+  .feature-card-alt p { font-size: var(--text-body-sm); color: rgba(17,17,17,0.65); }
+
+  /* ---------- Constellation ---------- */
+  .constellation-wrap { display: flex; justify-content: center; margin-top: var(--spacing-32); }
+  .dash-line { stroke-dasharray: 4 5; animation: dashflow 2.5s linear infinite; }
+  @keyframes dashflow { to { stroke-dashoffset: -18; } }
+  .node-pulse { animation: nodepulse 3s ease-in-out infinite; }
+  @keyframes nodepulse { 0%,100% { opacity: 1; } 50% { opacity: 0.55; } }
+
+  /* ---------- Panel mockup ---------- */
+  .panel-mock { width: 100%; background: var(--color-carbon-black); border: 1px solid var(--color-smoke); border-radius: var(--radius-cards); overflow: hidden; }
+  .panel-mock-bar { display: flex; align-items: center; gap: 6px; padding: 12px 16px; border-bottom: 1px solid var(--color-graphite); }
+  .panel-mock-bar span { width: 8px; height: 8px; border-radius: 50%; background: var(--color-smoke); }
+  .panel-mock-bar .label { margin-left: 8px; font-size: var(--text-caption); color: var(--color-stone); letter-spacing: 0.02em; }
+  .panel-tabs { display: flex; gap: var(--spacing-24); padding: 14px 16px 0; }
+  .panel-tabs span { font-size: var(--text-caption); font-weight: 500; letter-spacing: 0.024em; text-transform: uppercase; color: var(--color-smoke); padding-bottom: 10px; display: inline-block; }
+  .panel-tabs span.active { color: var(--color-citrine-signal); border-bottom: 2px solid var(--color-citrine-signal); }
+  .panel-chart { padding: 8px 16px 0; }
+  .chart-line { stroke-dasharray: 500; stroke-dashoffset: 500; transition: stroke-dashoffset 1.6s cubic-bezier(0.16,1,0.3,1) 0.2s; }
+  .reveal.in .chart-line { stroke-dashoffset: 0; }
+  .panel-legend { display: flex; align-items: center; gap: 8px; padding: 8px 16px 16px; font-size: var(--text-caption); color: var(--color-stone); }
+  .panel-legend .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--color-citrine-signal); flex-shrink: 0; }
+
+  /* ---------- Diagonal lines accent ---------- */
+  .diagonal-lines {
+    position: absolute; inset: 0; z-index: 0; pointer-events: none;
+    background-image: repeating-linear-gradient(115deg, rgba(17,17,17,0.05) 0px, rgba(17,17,17,0.05) 1px, transparent 1px, transparent 56px);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .badge-float, .scroll-indicator svg, .marquee-track, .dash-line, .node-pulse { animation: none; }
+  }
+
   /* ---------- Split feature block ---------- */
   .split {
     display: grid;
@@ -497,7 +601,7 @@
   }
 
   /* ---------- Scroll reveal ---------- */
-  .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
   .reveal.in { opacity: 1; transform: translateY(0); }
 
   @media (prefers-reduced-motion: reduce) {
@@ -531,6 +635,18 @@
 
   <!-- HERO -->
   <section id="inicio" class="hero wrap">
+    <div class="badge-float" style="top: 14%; left: 4%; animation-delay: 0s;">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#e5ff5d" stroke-width="1.6"><path d="M21 11.5a8.5 8.5 0 01-8.5 8.5c-1.4 0-2.7-.34-3.86-.94L3 21l1.98-5.35A8.46 8.46 0 013 11.5 8.5 8.5 0 0111.5 3 8.5 8.5 0 0121 11.5z"/></svg>
+    </div>
+    <div class="badge-float" style="top: 28%; right: 6%; animation-delay: 1s;">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#f9f9f9" stroke-width="1.6"><path d="M3 5a2 2 0 012-2h2.28a1 1 0 011 .76l1.1 4.2a1 1 0 01-.27.96L7.4 10.6a12 12 0 006 6l1.68-1.7a1 1 0 01.96-.27l4.2 1.1a1 1 0 01.76 1V19a2 2 0 01-2 2h-1C9.16 21 3 14.84 3 7V5z"/></svg>
+    </div>
+    <div class="badge-float" style="bottom: 24%; left: 8%; animation-delay: 2s;">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#9c9c9c" stroke-width="1.6"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>
+    </div>
+    <div class="badge-float" style="bottom: 32%; right: 4%; animation-delay: 0.6s;">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#e5ff5d" stroke-width="1.6"><path d="M3 11l9-7 9 7M5 10v10h5v-6h4v6h5V10"/></svg>
+    </div>
     <div class="cube-wrap">
       <svg class="cube-glow" width="120" height="120" viewBox="0 0 120 120" fill="none">
         <defs>
@@ -558,10 +674,72 @@
       <a href="#voz" class="btn btn-citrine">Ver productos</a>
       <a href="#contacto" class="btn-ghost btn">Hablar por WhatsApp</a>
     </div>
+    <div class="scroll-indicator">
+      <span>Desliza para descubrir</span>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#9c9c9c" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+    </div>
     <div class="pill-strip">
       <span class="pill">Respuesta en segundos</span>
       <span class="pill">Disponible 24/7</span>
       <span class="pill">Cero llamadas perdidas</span>
+    </div>
+  </section>
+
+  <!-- IDEAL PARA -->
+  <section class="marquee-section reveal">
+    <div class="wrap" style="text-align:center;">
+      <span class="eyebrow muted">Ideal para negocios como</span>
+    </div>
+    <div class="marquee-wrap">
+      <div class="marquee-track">
+        <span class="marquee-item">Consultorios</span>
+        <span class="marquee-item">Fondas y restaurantes</span>
+        <span class="marquee-item">Inmobiliarias</span>
+        <span class="marquee-item">Salones de belleza</span>
+        <span class="marquee-item">Talleres mecánicos</span>
+        <span class="marquee-item">Despachos legales</span>
+        <span class="marquee-item">Gimnasios</span>
+        <span class="marquee-item">Veterinarias</span>
+        <span class="marquee-item">Consultorios</span>
+        <span class="marquee-item">Fondas y restaurantes</span>
+        <span class="marquee-item">Inmobiliarias</span>
+        <span class="marquee-item">Salones de belleza</span>
+        <span class="marquee-item">Talleres mecánicos</span>
+        <span class="marquee-item">Despachos legales</span>
+        <span class="marquee-item">Gimnasios</span>
+        <span class="marquee-item">Veterinarias</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3 VALUE PROPS -->
+  <section class="wrap section-tight reveal">
+    <div class="section-header" style="margin-bottom: var(--spacing-32)">
+      <span class="eyebrow" style="justify-content:center">Por qué automatizar</span>
+      <h2 class="heading">Menos fricción,<br>más clientes atendidos</h2>
+    </div>
+    <div class="feature-grid-3">
+      <div class="feature-card-alt sand">
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><circle cx="12" cy="12" r="9" fill="#111111" fill-opacity="0.85"/><circle cx="28" cy="12" r="9" fill="#111111" fill-opacity="0.5"/><circle cx="12" cy="28" r="9" fill="#111111" fill-opacity="0.5"/><circle cx="28" cy="28" r="9" fill="#111111" fill-opacity="0.85"/></svg>
+        <div>
+          <h3>Respuesta inmediata</h3>
+          <p>Cada llamada y mensaje se contesta en segundos, sin importar la hora.</p>
+        </div>
+      </div>
+      <div class="feature-card-alt citrine">
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><rect x="14" y="2" width="12" height="12" fill="#111111"/><rect x="2" y="14" width="12" height="12" fill="#111111" fill-opacity="0.5"/><rect x="26" y="14" width="12" height="12" fill="#111111" fill-opacity="0.5"/><rect x="14" y="26" width="12" height="12" fill="#111111"/></svg>
+        <div>
+          <h3>Todo en automático</h3>
+          <p>Agenda, cancela y confirma citas sin que nadie de tu equipo lo toque.</p>
+        </div>
+      </div>
+      <div class="feature-card-alt chalk">
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><rect x="3" y="8" width="20" height="20" rx="3" fill="#111111" fill-opacity="0.15" stroke="#111111" stroke-width="1.4"/><rect x="17" y="17" width="20" height="20" rx="3" fill="#111111"/></svg>
+        <div>
+          <h3>Un solo panel</h3>
+          <p>Historial de llamadas, chats y leads en un solo lugar, siempre a la mano.</p>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -595,19 +773,31 @@
         </div>
         <p class="price-note">+ instalación única de $2,500–$4,500 MXN. Ajusta estos montos antes de publicar si han cambiado.</p>
       </div>
-      <div class="split-visual">
-        <svg width="220" height="220" viewBox="0 0 220 220" fill="none">
-          <circle cx="110" cy="110" r="90" stroke="#565656" stroke-width="1" stroke-dasharray="4 6"/>
-          <circle cx="110" cy="110" r="56" fill="#111111" stroke="#e5ff5d" stroke-width="1.5"/>
-          <path d="M110 84c-11 0-20 9-20 20v10c0 11 9 20 20 20s20-9 20-20v-10c0-11-9-20-20-20z" stroke="#e5ff5d" stroke-width="2" fill="none"/>
-          <path d="M92 118v4a18 18 0 0036 0v-4" stroke="#e5ff5d" stroke-width="2" fill="none"/>
-          <line x1="110" y1="142" x2="110" y2="150" stroke="#e5ff5d" stroke-width="2"/>
-          <circle cx="110" cy="30" r="4" fill="#e5ff5d"/>
-          <circle cx="190" cy="70" r="4" fill="#9c9c9c"/>
-          <circle cx="30" cy="70" r="4" fill="#9c9c9c"/>
-          <circle cx="190" cy="150" r="4" fill="#9c9c9c"/>
-          <circle cx="30" cy="150" r="4" fill="#9c9c9c"/>
-        </svg>
+      <div class="split-visual" style="align-items: stretch; padding: var(--spacing-24);">
+        <div class="panel-mock">
+          <div class="panel-mock-bar">
+            <span></span><span></span><span></span>
+            <span class="label">Panel Sofía</span>
+          </div>
+          <div class="panel-tabs">
+            <span class="active">Hoy</span>
+            <span>Semana</span>
+            <span>Historial</span>
+          </div>
+          <div class="panel-chart">
+            <svg width="100%" height="140" viewBox="0 0 260 140" fill="none" preserveAspectRatio="none">
+              <defs>
+                <linearGradient id="chartFill" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#e5ff5d" stop-opacity="0.35"/>
+                  <stop offset="100%" stop-color="#e5ff5d" stop-opacity="0"/>
+                </linearGradient>
+              </defs>
+              <path d="M0 100 L40 90 L80 95 L120 60 L160 68 L200 35 L240 42 L260 30 L260 140 L0 140 Z" fill="url(#chartFill)"/>
+              <path class="chart-line" d="M0 100 L40 90 L80 95 L120 60 L160 68 L200 35 L240 42 L260 30" stroke="#e5ff5d" stroke-width="2" fill="none"/>
+            </svg>
+          </div>
+          <div class="panel-legend"><span class="dot"></span>Llamadas atendidas — vista previa del panel</div>
+        </div>
       </div>
     </div>
   </section>
@@ -643,16 +833,53 @@
       </div>
     </div>
 
-    <div class="integrations reveal">
-      <div class="node"><div class="node-circle">GC</div><div class="node-label">Calendar</div></div>
-      <div class="node"><div class="node-circle">WA</div><div class="node-label">WhatsApp</div></div>
-      <div class="node"><div class="node-circle">IA</div><div class="node-label">Groq / LLM</div></div>
-      <div class="node"><div class="node-circle">EL</div><div class="node-label">Voz</div></div>
+    <div class="reveal" style="margin-top: var(--spacing-64); text-align: center;">
+      <span class="eyebrow muted" style="justify-content:center">Un solo ecosistema</span>
+      <h3 class="heading-sm" style="margin-bottom: var(--spacing-8)">Todo conectado, nada manual</h3>
+      <div class="constellation-wrap">
+        <svg viewBox="0 0 340 340" width="320" height="320">
+          <line class="dash-line" x1="170" y1="170" x2="170" y2="40" stroke="#565656" stroke-width="1.2"/>
+          <line class="dash-line" x1="170" y1="170" x2="282.6" y2="105" stroke="#565656" stroke-width="1.2"/>
+          <line class="dash-line" x1="170" y1="170" x2="282.6" y2="235" stroke="#565656" stroke-width="1.2"/>
+          <line class="dash-line" x1="170" y1="170" x2="170" y2="300" stroke="#565656" stroke-width="1.2"/>
+          <line class="dash-line" x1="170" y1="170" x2="57.4" y2="235" stroke="#565656" stroke-width="1.2"/>
+          <line class="dash-line" x1="170" y1="170" x2="57.4" y2="105" stroke="#565656" stroke-width="1.2"/>
+
+          <circle cx="170" cy="170" r="34" fill="#e5ff5d"/>
+          <text x="170" y="175" text-anchor="middle" font-size="13" font-weight="600" fill="#111111" font-family="Inter, sans-serif">IA</text>
+
+          <g class="node-pulse">
+            <circle cx="170" cy="40" r="28" fill="#2b2b2b" stroke="#e5ff5d" stroke-width="1.4"/>
+            <text x="170" y="45" text-anchor="middle" font-size="11" font-weight="500" fill="#f9f9f9" font-family="Inter, sans-serif">WA</text>
+          </g>
+          <g class="node-pulse" style="animation-delay:0.4s">
+            <circle cx="282.6" cy="105" r="28" fill="#2b2b2b" stroke="#9c9c9c" stroke-width="1.2"/>
+            <text x="282.6" y="110" text-anchor="middle" font-size="11" font-weight="500" fill="#f9f9f9" font-family="Inter, sans-serif">CAL</text>
+          </g>
+          <g class="node-pulse" style="animation-delay:0.8s">
+            <circle cx="282.6" cy="235" r="28" fill="#2b2b2b" stroke="#9c9c9c" stroke-width="1.2"/>
+            <text x="282.6" y="240" text-anchor="middle" font-size="11" font-weight="500" fill="#f9f9f9" font-family="Inter, sans-serif">VOZ</text>
+          </g>
+          <g class="node-pulse" style="animation-delay:1.2s">
+            <circle cx="170" cy="300" r="28" fill="#2b2b2b" stroke="#9c9c9c" stroke-width="1.2"/>
+            <text x="170" y="305" text-anchor="middle" font-size="11" font-weight="500" fill="#f9f9f9" font-family="Inter, sans-serif">SMS</text>
+          </g>
+          <g class="node-pulse" style="animation-delay:1.6s">
+            <circle cx="57.4" cy="235" r="28" fill="#2b2b2b" stroke="#9c9c9c" stroke-width="1.2"/>
+            <text x="57.4" y="240" text-anchor="middle" font-size="11" font-weight="500" fill="#f9f9f9" font-family="Inter, sans-serif">MAIL</text>
+          </g>
+          <g class="node-pulse" style="animation-delay:2s">
+            <circle cx="57.4" cy="105" r="28" fill="#2b2b2b" stroke="#e5ff5d" stroke-width="1.4"/>
+            <text x="57.4" y="110" text-anchor="middle" font-size="10" font-weight="500" fill="#f9f9f9" font-family="Inter, sans-serif">LLM</text>
+          </g>
+        </svg>
+      </div>
     </div>
   </section>
 
   <!-- REVERSAL BAND -->
   <section class="section-cream">
+    <div class="diagonal-lines"></div>
     <svg class="float-cube" style="left:-40px; top:20px;" width="140" height="140" viewBox="0 0 120 120" fill="none">
       <polygon points="60,6 108,32 60,58 12,32" fill="#e5ff5d" fill-opacity="0.9"/>
       <polygon points="12,32 60,58 60,114 12,88" fill="#c7e04f" fill-opacity="0.8"/>
@@ -750,16 +977,34 @@
 </footer>
 
 <script>
-  // Scroll reveal
-  const revealEls = document.querySelectorAll('.reveal');
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
-  }, { threshold: 0.15 });
-  revealEls.forEach(el => io.observe(el));
+  (function () {
+    var els = document.querySelectorAll('.reveal');
+
+    function isInView(el) {
+      var r = el.getBoundingClientRect();
+      return r.top < (window.innerHeight - 80) && r.bottom > 0;
+    }
+
+    function check() {
+      for (var i = 0; i < els.length; i++) {
+        if (!els[i].classList.contains('in') && isInView(els[i])) {
+          els[i].classList.add('in');
+        }
+      }
+    }
+
+    window.addEventListener('scroll', check, { passive: true });
+    window.addEventListener('resize', check);
+    window.addEventListener('load', check);
+    document.addEventListener('DOMContentLoaded', check);
+    check();
+  })();
 
   // Close mobile nav on link click
-  document.querySelectorAll('.nav-links a').forEach(a => {
-    a.addEventListener('click', () => { document.getElementById('nav-toggle').checked = false; });
+  document.querySelectorAll('.nav-links a').forEach(function (a) {
+    a.addEventListener('click', function () {
+      document.getElementById('nav-toggle').checked = false;
+    });
   });
 </script>
 
