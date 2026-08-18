@@ -3,946 +3,933 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Gokubetteware — Automatización con IA para tu negocio</title>
-<meta name="description" content="Recepcionista de voz IA, WhatsApp inteligente y automatización para inmobiliarias. IA que atiende a tus clientes 24/7.">
+<title>Gokubetterware — Automatización con IA para tu negocio</title>
+<meta name="description" content="Recepcionista de voz, WhatsApp inteligente y automatización para inmobiliarias. IA que contesta, agenda y vende 24/7.">
+<meta name="theme-color" content="#0e100f">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Gokubetterware — Automatización con IA">
+<meta property="og:description" content="Recepcionista de voz, WhatsApp inteligente y automatización para inmobiliarias. Cero llamadas perdidas.">
+<meta property="og:locale" content="es_MX">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<script>
+  /* Marca JS activo (habilita el intro) y red de seguridad: si algún
+     plugin del CDN no baja, el loader se quita solo a los 4s y la
+     página queda legible aunque no anime nada. */
+  document.documentElement.classList.add('js');
+  setTimeout(function () {
+    var l = document.getElementById('loader');
+    if (l && !l.dataset.done) { l.style.display = 'none'; document.body.classList.remove('is-loading'); }
+  }, 4000);
+</script>
+
 <style>
-  :root {
-    --color-citrine-signal: #e5ff5d;
-    --color-carbon-black: #111111;
-    --color-bone-white: #f9f9f9;
-    --color-graphite: #2b2b2b;
-    --color-ash: #6e6e6e;
-    --color-stone: #9c9c9c;
-    --color-smoke: #565656;
-    --color-chalk: #d6d6d6;
-    --color-cream-paper: #eeeeee;
-    --color-pure-black: #000000;
-    --color-sand: #b7b3a2;
+/* ============================================================
+   1. TOKENS
+   Dos capas de variables:
+   · Las de MARCA (--green, --orangey…) son fijas. Nunca invierten.
+   · Las SEMÁNTICAS (--bg, --ink, --line…) las reescribe el motor de
+     tema en cada frame. Toda la hoja usa estas últimas, así la
+     inversión a crema de Casos y Precios ocurre sin duplicar una
+     sola regla ni pelearse con clases .is-light.
+   ============================================================ */
+:root {
+  /* marca — invariantes */
+  --green: #0ae448;
+  --light-green: #abff84;
+  --orangey: #ff8709;
+  --pink: #fec5fb;
+  --lilac: #9d95ff;
+  --blue: #00bae2;
+  --lipstick: #f100cb;
+  --grad-green: linear-gradient(114.41deg, #0ae448 20.74%, #abff84 65.5%);
 
-    --font-main: 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  /* semánticas — el motor de tema las sobreescribe */
+  --bg: #0e100f;
+  --ink: #fffce1;
+  --ink-50: #8b8b7d;
+  --ink-25: #42433d;
+  --line: #262723;
+  --panel: #161816;
+  --header-bg: rgba(14, 16, 15, 0.55);
+  --grain-op: 0.038;
 
-    --text-utility-label: 10px;
-    --text-caption: 12px;
-    --text-body-sm: 14px;
-    --text-body: 16px;
-    --text-subhead: 20px;
-    --text-heading-sm: 24px;
-    --text-heading: 48px;
-    --text-display: 80px;
+  --font: 'Inter Tight', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-ui: ui-monospace, 'SF Mono', SFMono-Regular, 'Roboto Mono', Menlo, monospace;
 
-    --spacing-8: 8px;
-    --spacing-16: 16px;
-    --spacing-24: 24px;
-    --spacing-32: 32px;
-    --spacing-40: 40px;
-    --spacing-48: 48px;
-    --spacing-64: 64px;
-    --spacing-80: 80px;
-    --spacing-96: 96px;
-    --spacing-128: 128px;
-    --spacing-144: 144px;
-    --spacing-192: 192px;
+  --sp-8: 8px;  --sp-12: 12px; --sp-16: 16px; --sp-20: 20px;
+  --sp-24: 24px; --sp-32: 32px; --sp-48: 48px;
+  --sp-76: 76px; --sp-96: 96px;
 
-    --radius-buttons: 4px;
-    --radius-cards: 12px;
-    --radius-nav: 8px;
-    --radius-pills: 9999px;
-    --radius-decorative: 20px;
+  --r-lg: 10px; --r-btn: 100px;
+  --max-w: 1280px;
+  --gutter: clamp(20px, 4vw, 44px);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-io: cubic-bezier(0.76, 0, 0.24, 1);
+}
 
-    --page-max-width: 1280px;
-  }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; background: #0e100f; }
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+/* Lenis — hoja oficial. Sin esto el bloqueo de scroll durante el
+   intro no funciona y scroll-behavior pelea con el suavizado. */
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+.lenis.lenis-stopped { overflow: hidden; }
+.lenis.lenis-smooth iframe { pointer-events: none; }
 
-  html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font);
+  font-weight: 400;
+  background-color: var(--bg);
+  color: var(--ink);
+  font-size: 19px;
+  line-height: 1.15;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+/* `overflow-x: hidden` convierte a body en contenedor de scroll y
+   ahí `position: sticky` deja de anclar. `clip` recorta igual pero
+   NO crea contenedor de scroll: el manifiesto y el apilado de
+   productos dependen de sticky, así que esto no es cosmético. */
+@supports (overflow: clip) { body { overflow-x: clip; } }
+body.is-loading { overflow: hidden; height: 100vh; }
+img, svg { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--green); outline-offset: 4px; border-radius: 4px; }
+::selection { background: var(--green); color: #0e100f; }
 
-  body {
-    font-family: var(--font-main);
-    background: var(--color-carbon-black);
-    color: var(--color-bone-white);
-    font-size: var(--text-body);
-    line-height: 1.5;
-    -webkit-font-smoothing: antialiased;
-  }
+.wrap { max-width: calc(var(--max-w) + var(--gutter) * 2); margin: 0 auto; padding: 0 var(--gutter); }
 
-  img, svg { display: block; max-width: 100%; }
+/* ============================================================
+   2. TIPOGRAFÍA — escala binaria: display editorial o UI compacta
+   ============================================================ */
+.t-caption { font-size: 14px; line-height: 1.45; }
+.t-body-lg { font-size: clamp(19px, 2vw, 23px); line-height: 1.4; letter-spacing: -0.23px; }
+.t-subhead { font-size: clamp(25px, 3.4vw, 35px); line-height: 1.15; letter-spacing: -0.5px; }
+.t-heading { font-size: clamp(38px, 6.6vw, 68px); line-height: 1.06; letter-spacing: -0.028em; font-weight: 600; }
+.t-heading-lg { font-size: clamp(54px, 10vw, 104px); line-height: 0.98; letter-spacing: -0.04em; font-weight: 600; }
+.t-display { font-size: clamp(60px, 15.2vw, 228px); line-height: 0.86; letter-spacing: -0.045em; font-weight: 600; }
+.muted { color: var(--ink-50); }
+h1, h2, h3, h4 { font-weight: 600; }
 
-  a { color: inherit; text-decoration: none; }
+.bracket {
+  display: inline-block; font-family: var(--font-ui); font-size: 12px;
+  letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink);
+  margin-bottom: var(--sp-20);
+}
+.bracket .brace { color: var(--green); display: inline-block; }
 
-  :focus-visible {
-    outline: 2px solid var(--color-citrine-signal);
-    outline-offset: 3px;
-  }
+.cat {
+  font-family: var(--font-ui); font-size: 12px; letter-spacing: 0.16em;
+  text-transform: uppercase; line-height: 1; margin-bottom: var(--sp-16); display: block;
+}
+.cat-voz { color: var(--orangey); }
+.cat-wa { color: var(--light-green); }
+.cat-inmo { color: var(--blue); }
+.cat-video { color: var(--lilac); }
 
-  .wrap {
-    max-width: var(--page-max-width);
-    margin: 0 auto;
-    padding: 0 var(--spacing-24);
-  }
+/* SplitText crea .line/.word/.char. Las máscaras las genera el
+   plugin (mask:"lines"), aquí solo se garantiza que las unidades
+   sean transformables. */
+.word, .char { display: inline-block; will-change: transform; }
+.split-line { display: block; }
 
-  .eyebrow {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    font-weight: 500;
-    font-size: var(--text-utility-label);
-    letter-spacing: 0.032em;
-    text-transform: uppercase;
-    color: var(--color-citrine-signal);
-    margin-bottom: var(--spacing-16);
-  }
-  .eyebrow::before {
-    content: "";
-    width: 6px;
-    height: 6px;
-    background: var(--color-citrine-signal);
-    border-radius: 2px;
-    flex-shrink: 0;
-  }
+/* ============================================================
+   3. ATMÓSFERA — grano. Su opacidad la modula la velocidad de scroll.
+   ============================================================ */
+.grain {
+  position: fixed; inset: -120px; z-index: 9998; pointer-events: none;
+  opacity: var(--grain-op); mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 260px 260px;
+  animation: grainShift 6s steps(6) infinite;
+}
+@keyframes grainShift {
+  0%,100% { transform: translate(0,0); }  16% { transform: translate(-14px,8px); }
+  33% { transform: translate(10px,-12px); } 50% { transform: translate(-8px,-6px); }
+  66% { transform: translate(12px,10px); }  83% { transform: translate(-10px,4px); }
+}
 
-  .eyebrow.muted { color: var(--color-stone); }
-  .eyebrow.muted::before { background: var(--color-stone); }
+/* ============================================================
+   4. INTRO — 6 columnas que suben en stagger desde la derecha
+   Una cortina sola es un gesto; seis columnas desfasadas leen como
+   un mecanismo abriéndose, que es el registro del sitio.
+   ============================================================ */
+#loader { display: none; }
+html.js #loader { display: block; position: fixed; inset: 0; z-index: 10001; pointer-events: none; }
+.lo-cols { position: absolute; inset: 0; display: flex; }
+.lo-col { flex: 1 1 0; background: #0e100f; will-change: transform; }
+.lo-inner {
+  position: absolute; inset: 0; display: flex; flex-direction: column;
+  justify-content: space-between; align-items: center;
+  padding: var(--sp-32) var(--gutter) var(--sp-48);
+}
+.lo-mark { font-family: var(--font-ui); font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: #8b8b7d; }
+.lo-num { display: flex; align-items: flex-end; font-size: clamp(72px, 17vw, 220px); font-weight: 600; line-height: 0.8; letter-spacing: -0.05em; color: #fffce1; margin: auto 0; }
+.lo-num i { font-style: normal; font-size: 0.22em; color: #8b8b7d; margin-bottom: 0.2em; margin-left: 0.08em; }
+.lo-bar { width: 100%; max-width: 380px; height: 2px; background: #262723; }
+.lo-bar span { display: block; height: 100%; background: var(--grad-green); transform: scaleX(0); transform-origin: left; }
 
-  h1, h2, h3 { font-weight: 400; }
+/* ============================================================
+   5. BOTONES — el degradado del hover nace en el cursor
+   ============================================================ */
+.pill {
+  position: relative; z-index: 0; display: inline-flex; align-items: center; gap: 10px;
+  font-size: 17px; font-weight: 500; line-height: 1.05; padding: 15px 26px;
+  border-radius: var(--r-btn); border: 1px solid var(--ink-25);
+  background: transparent; color: var(--ink); cursor: pointer; overflow: hidden;
+  transition: color 0.4s var(--ease-out), border-color 0.4s var(--ease-out);
+  white-space: nowrap;
+}
+/* Radial anclado a --mx/--my: el relleno brota exactamente de donde
+   entró el cursor, no siempre desde abajo. */
+.pill::after {
+  content: ""; position: absolute; inset: 0; z-index: -1; border-radius: inherit;
+  background: radial-gradient(circle at var(--mx, 50%) var(--my, 50%), #abff84 0%, #0ae448 60%, #0ae448 100%);
+  transform: scale(0); transform-origin: var(--mx, 50%) var(--my, 50%);
+  transition: transform 0.55s var(--ease-out);
+}
+.pill:hover { color: #0e100f; border-color: transparent; }
+.pill:hover::after { transform: scale(2.6); }
+.pill-arrow { transition: transform 0.45s var(--ease-out); }
+.pill:hover .pill-arrow { transform: translateX(6px); }
+.pill-grad { border-color: transparent; }
+.pill-grad::before {
+  content: ""; position: absolute; inset: 0; z-index: -2; border-radius: var(--r-btn);
+  padding: 1.5px; background: var(--grad-green);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor; mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask-composite: exclude; pointer-events: none;
+}
+.pill-sm { font-size: 15px; padding: 11px 20px; }
 
-  .display {
-    font-size: clamp(40px, 8vw, var(--text-display));
-    line-height: 0.9;
-    letter-spacing: -0.01em;
-    text-transform: uppercase;
-  }
+/* Roll: cada carácter sube con su propio retraso (P3) */
+.roll { display: inline-grid; overflow: hidden; height: 1.35em; vertical-align: top; }
+.roll > span { grid-area: 1 / 1; line-height: 1.35; white-space: nowrap; }
+.roll .rc { display: inline-block; transition: transform 0.5s var(--ease-out); }
+.roll > span:nth-child(2) .rc { transform: translateY(100%); }
+a:hover .roll > span:nth-child(1) .rc, .pill:hover .roll > span:nth-child(1) .rc,
+button:hover .roll > span:nth-child(1) .rc { transform: translateY(-100%); }
+a:hover .roll > span:nth-child(2) .rc, .pill:hover .roll > span:nth-child(2) .rc,
+button:hover .roll > span:nth-child(2) .rc { transform: translateY(0); }
 
-  .heading {
-    font-size: clamp(28px, 5vw, var(--text-heading));
-    line-height: 1.1;
-    letter-spacing: -0.01em;
-    text-transform: uppercase;
-  }
+/* ============================================================
+   6. NAV
+   ============================================================ */
+.banner {
+  text-align: center; padding: 11px var(--gutter); font-family: var(--font-ui);
+  font-size: 11.5px; letter-spacing: 0.09em; text-transform: uppercase;
+  color: var(--ink-50); border-bottom: 1px solid var(--line);
+}
+.banner a { color: var(--green); }
+header {
+  position: sticky; top: 0; z-index: 200; background: var(--header-bg);
+  backdrop-filter: blur(20px) saturate(170%); -webkit-backdrop-filter: blur(20px) saturate(170%);
+  border-bottom: 1px solid transparent; transition: border-color 0.4s ease; will-change: transform;
+}
+header.stuck { border-bottom-color: var(--line); }
+nav.wrap { display: flex; align-items: center; justify-content: space-between; height: 72px; gap: var(--sp-16); }
+.wordmark { font-size: 17px; font-weight: 600; letter-spacing: -0.01em; display: flex; align-items: center; gap: 9px; }
+.wordmark .mark { width: 12px; height: 12px; border-radius: 3px; background: var(--grad-green); transition: transform 0.5s var(--ease-out); }
+.wordmark:hover .mark { transform: rotate(90deg) scale(1.15); }
+.nav-links { display: flex; gap: 2px; list-style: none; }
+.nav-links a { position: relative; display: inline-block; padding: 9px 13px; font-size: 15.5px; color: var(--ink-50); transition: color 0.3s ease; }
+.nav-links a::before {
+  content: ""; position: absolute; left: 13px; right: 13px; bottom: 4px; height: 1px;
+  background: currentColor; transform: scaleX(0); transform-origin: right;
+  transition: transform 0.5s var(--ease-out);
+}
+.nav-links a:hover, .nav-links a.active { color: var(--ink); }
+.nav-links a:hover::before, .nav-links a.active::before { transform: scaleX(1); transform-origin: left; }
+.nav-right { display: flex; align-items: center; gap: var(--sp-12); }
+.burger { display: none; background: none; border: none; padding: 6px; cursor: pointer; position: relative; z-index: 320; }
+.burger span { display: block; width: 22px; height: 1.5px; background: var(--ink); transition: transform 0.4s var(--ease-out); }
+.burger span + span { margin-top: 6px; }
+.burger.open span:nth-child(1) { transform: translateY(3.75px) rotate(45deg); }
+.burger.open span:nth-child(2) { transform: translateY(-3.75px) rotate(-45deg); }
 
-  .heading-sm {
-    font-weight: 500;
-    font-size: var(--text-heading-sm);
-    line-height: 1.2;
-    letter-spacing: -0.24px;
-  }
+/* M7 — overlay de pantalla completa con recorte circular */
+.nav-overlay {
+  position: fixed; inset: 0; z-index: 300; background: #0e100f;
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 0 var(--gutter); clip-path: circle(0px at calc(100% - 40px) 46px);
+  visibility: hidden; overflow: hidden;
+}
+.nav-overlay.open { visibility: visible; }
+.nav-overlay ul { list-style: none; position: relative; z-index: 2; }
+.nav-overlay a { display: block; font-size: clamp(34px, 9vw, 60px); font-weight: 600; letter-spacing: -0.03em; padding: 8px 0; color: #fffce1; }
+.nav-overlay .ov-blob { position: absolute; opacity: 0.55; z-index: 1; pointer-events: none; }
+.ovb1 { width: 190px; top: 8%; right: -40px; }
+.ovb2 { width: 130px; bottom: 12%; left: -30px; }
+@media (max-width: 900px) { .nav-links { display: none; } .burger { display: block; } }
+@media (min-width: 901px) { .nav-overlay { display: none; } }
 
-  .body-lg {
-    font-size: var(--text-subhead);
-    line-height: 1.5;
-    color: var(--color-stone);
-  }
+/* ============================================================
+   7. BLOBS — SVG reales que morfean con MorphSVG
+   El halo caro (feDropShadow) va SOLO en los del hero: un filtro
+   SVG se rasteriza de nuevo en cada frame y con seis blobs
+   morfeando tumba el frame rate. Los demás llevan un resplandor
+   estático detrás — se rasteriza una vez y solo se compone.
+   ============================================================ */
+.blob { position: absolute; pointer-events: none; overflow: visible; will-change: transform; }
+.blob path { will-change: d; }
+.glow { position: absolute; border-radius: 50%; filter: blur(46px); opacity: 0.42; pointer-events: none; z-index: -1; }
+.glow-green { background: radial-gradient(circle, #0ae448, transparent 70%); }
+.glow-lilac { background: radial-gradient(circle, #9d95ff, transparent 70%); }
+.glow-pink { background: radial-gradient(circle, #f100cb, transparent 70%); }
+.glow-blue { background: radial-gradient(circle, #00bae2, transparent 70%); }
+.glow-orange { background: radial-gradient(circle, #ff8709, transparent 70%); }
+#blobDefs { position: absolute; width: 0; height: 0; overflow: hidden; }
 
-  .body-muted { color: var(--color-stone); }
+/* ============================================================
+   8. HERO
+   ============================================================ */
+.hero { position: relative; padding: clamp(40px, 7vw, 88px) 0 var(--sp-76); }
+.hero::before {
+  content: ""; position: absolute; z-index: 0; top: -20%; left: 50%; transform: translateX(-50%);
+  width: min(1100px, 130vw); aspect-ratio: 1.6;
+  background: radial-gradient(ellipse at center, rgba(10,228,72,0.14), transparent 62%);
+  pointer-events: none;
+}
+.hero-inner { position: relative; z-index: 2; }
+.hero-inner > * { position: relative; z-index: 2; }
+.hero-inner > .hero-blobs { position: absolute; inset: 0; pointer-events: none; }
+.hero-inner > .hero-blobs--back { z-index: 1; }
+.hero-inner > .hero-blobs--front { z-index: 3; }
+.hb-b1 { width: clamp(120px,18vw,265px); aspect-ratio: 1; top: 5%; left: 13%; }
+.hb-b2 { width: clamp(90px,12.5vw,185px); aspect-ratio: 1; top: 0; right: 3%; }
+.hb-f1 { width: clamp(70px,10vw,150px); aspect-ratio: 1; top: 22%; left: 57%; }
+.hb-f2 { width: clamp(52px,6.5vw,96px); aspect-ratio: 1; top: 40%; left: 4%; }
+.hero-sub { max-width: 600px; margin-top: var(--sp-32); color: var(--ink-50); }
+.hero-cta { display: flex; gap: var(--sp-12); flex-wrap: wrap; margin-top: var(--sp-32); }
+.hero-meta { display: flex; flex-wrap: wrap; gap: var(--sp-32) var(--sp-48); margin-top: var(--sp-76); padding-top: var(--sp-24); border-top: 1px solid var(--line); }
+.hero-meta div { min-width: 108px; }
+.hero-meta .n { font-size: clamp(32px,4vw,46px); font-weight: 600; line-height: 1; letter-spacing: -0.03em; font-variant-numeric: tabular-nums; }
+.hero-meta .l { font-family: var(--font-ui); font-size: 11px; letter-spacing: 0.11em; text-transform: uppercase; color: var(--ink-50); margin-top: 9px; }
+.scroll-cue { display: inline-flex; align-items: center; gap: 10px; margin-top: var(--sp-32); font-family: var(--font-ui); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-50); }
+.scroll-cue .rail { display: block; width: 46px; height: 1px; background: var(--ink-25); position: relative; overflow: hidden; }
+.scroll-cue .rail::after { content: ""; position: absolute; inset: 0; background: var(--green); transform: translateX(-100%); animation: railRun 2.2s var(--ease-io) infinite; }
+@keyframes railRun { 0% { transform: translateX(-100%); } 55% { transform: translateX(0); } 100% { transform: translateX(100%); } }
+@media (max-width: 760px) {
+  .hb-f2 { display: none; }
+  .hb-f1 { top: 12%; left: auto; right: -7%; width: 88px; opacity: 0.85; }
+  .hb-b1 { top: 3%; left: 32%; width: 132px; }
+  .hb-b2 { top: 0; right: -9%; width: 112px; }
+}
 
-  /* ---------- Buttons ---------- */
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    font-family: var(--font-main);
-    font-weight: 500;
-    font-size: var(--text-body);
-    padding: 12px 24px;
-    border-radius: var(--radius-buttons);
-    border: none;
-    cursor: pointer;
-    transition: transform 0.15s ease, opacity 0.15s ease;
-  }
-  .btn:hover { transform: translateY(-1px); opacity: 0.92; }
-  .btn::before {
-    content: "";
-    width: 8px;
-    height: 8px;
-    flex-shrink: 0;
-  }
+/* ============================================================
+   9. SECCIONES GENERALES
+   ============================================================ */
+section { padding: clamp(64px, 9vw, 112px) 0; }
+.section-head { max-width: 780px; margin-bottom: var(--sp-76); }
+.hairline-svg { display: block; width: 100%; height: 1px; overflow: visible; }
+.hairline-svg line { stroke: var(--ink-25); stroke-width: 1; }
 
-  .btn-citrine {
-    background: var(--color-citrine-signal);
-    color: var(--color-carbon-black);
-  }
-  .btn-citrine::before { background: var(--color-carbon-black); }
+.marquee-band { padding: var(--sp-32) 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); overflow: hidden; }
+.marquee-track { display: flex; gap: clamp(40px,6vw,76px); width: max-content; will-change: transform; }
+.marquee-track span { font-size: clamp(28px,5vw,62px); font-weight: 600; line-height: 1; letter-spacing: -0.03em; white-space: nowrap; display: flex; align-items: center; gap: clamp(20px,3vw,32px); }
+.marquee-track span::after { content: ""; width: 10px; height: 10px; border-radius: 50%; background: var(--ink-25); flex-shrink: 0; }
+.marquee-track span:nth-child(5n+1)::after { background: var(--green); }
+.marquee-track span:nth-child(5n+2)::after { background: var(--orangey); }
+.marquee-track span:nth-child(5n+3)::after { background: var(--pink); }
+.marquee-track span:nth-child(5n+4)::after { background: var(--lilac); }
+.marquee-track span:nth-child(5n+5)::after { background: var(--blue); }
 
-  .btn-dark {
-    background: var(--color-carbon-black);
-    color: var(--color-bone-white);
-  }
-  .btn-dark::before { background: var(--color-citrine-signal); }
+/* ============================================================
+   10. MANIFIESTO (G2) — texto que se ilumina ligado al scroll
+   El anclaje es `position: sticky`, no un pin de ScrollTrigger:
+   sticky no genera pin-spacers, no necesita recalcular en resize
+   y convive con Lenis sin tocar nada. El scrub solo maneja color.
+   ============================================================ */
+.manifesto { position: relative; padding: 0; height: 250vh; }  /* 250vh - 100vh del sticky = 150vh de recorrido anclado */
+.manifesto-pin { position: sticky; top: 0; height: 100vh; display: flex; align-items: center; overflow: hidden; }
+.manifesto-text { max-width: 15ch; }
+.manifesto-text .word { color: var(--ink-25); }
+.manifesto-meter { position: absolute; right: var(--gutter); top: 50%; transform: translateY(-50%); display: flex; align-items: center; gap: var(--sp-16); }
+.manifesto-meter .rail { width: 1px; height: 180px; background: var(--ink-25); position: relative; }
+.manifesto-meter .rail i { position: absolute; inset: 0; background: var(--grad-green); transform: scaleY(0); transform-origin: top; display: block; }
+.manifesto-meter .pct { font-family: var(--font-ui); font-size: 12px; letter-spacing: 0.1em; color: var(--ink-50); font-variant-numeric: tabular-nums; }
+@media (max-width: 900px) {
+  .manifesto { height: auto; }
+  .manifesto-pin { position: static; height: auto; padding: clamp(64px,9vw,112px) 0; }
+  .manifesto-text { max-width: none; }
+  .manifesto-meter { display: none; }
+}
 
-  .btn-ghost {
-    background: transparent;
-    border: 1px solid var(--color-bone-white);
-    text-transform: uppercase;
-    font-size: var(--text-caption);
-    letter-spacing: 0.032em;
-    padding: 10px 20px;
-  }
-  .btn-ghost::before { display: none; }
-  .btn-ghost:hover { background: rgba(249,249,249,0.06); }
+/* ============================================================
+   11. PRODUCTOS APILADOS (G5)
+   Cada tarjeta lleva SU PROPIO fondo del color del producto. Así
+   ocluye a la anterior y "invade" el fondo con un solo dato — sin
+   un segundo sistema escribiendo sobre document.body, que es
+   justo donde nacían las carreras.
+   ============================================================ */
+.stack-slot { position: relative; }
+.stack-item { background-color: var(--tint, #0e100f); }
+.tool-block { display: grid; grid-template-columns: 0.85fr 1fr; gap: clamp(28px,5vw,88px); align-items: center; }
+.tool-block.flip .tool-visual { order: 2; }
+.tool-block.flip .tool-content { order: 1; }
+.tool-visual { position: relative; aspect-ratio: 1/0.8; display: flex; align-items: center; justify-content: center; }
+.tool-visual .blob { position: relative; width: min(76%, 340px); aspect-ratio: 1; }
+.tool-content h3 { margin-bottom: var(--sp-16); }
+.tool-content .t-body-lg { color: var(--ink-50); margin-bottom: var(--sp-24); max-width: 46ch; }
+.tool-list { list-style: none; margin-bottom: var(--sp-32); display: flex; flex-direction: column; gap: var(--sp-12); }
+.tool-list li { display: flex; gap: var(--sp-12); font-size: 16.5px; line-height: 1.45; }
+.tool-list li::before { content: ""; width: 6px; height: 6px; border-radius: 2px; margin-top: 9px; flex-shrink: 0; background: var(--dot, var(--green)); transform: rotate(var(--bulletRot, 0deg)); transition: transform 0.6s var(--ease-out); }
+.tool-list li.in::before { --bulletRot: 90deg; }
+.tag-status { position: relative; display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-ui); font-size: 11px; letter-spacing: 0.11em; text-transform: uppercase; padding: 6px 13px; border: 1px solid var(--ink-25); border-radius: var(--r-btn); color: var(--ink-50); margin-bottom: var(--sp-20); }
+.tag-status .dot { position: relative; width: 6px; height: 6px; border-radius: 50%; background: var(--green); }
+/* P10 — anillo expansivo con blur alrededor del punto */
+.tag-status:not(.soon) .dot::after {
+  content: ""; position: absolute; inset: -3px; border-radius: 50%;
+  border: 1px solid var(--green); filter: blur(1.5px);
+  animation: ringOut 2.4s var(--ease-out) infinite;
+}
+@keyframes ringOut { 0% { transform: scale(0.6); opacity: 0.9; } 100% { transform: scale(3.4); opacity: 0; } }
+.tag-status.soon .dot { background: var(--ink-50); }
 
-  .btn-ghost.on-light {
-    border-color: var(--color-carbon-black);
-    color: var(--color-carbon-black);
-  }
-  .btn-ghost.on-light:hover { background: rgba(17,17,17,0.06); }
+@media (min-width: 901px) {
+  .stack-slot { height: 145vh; }
+  .stack-item { position: sticky; top: 0; min-height: 100vh; display: flex; align-items: center; will-change: transform, clip-path; }
+  .stack-item > .wrap { width: 100%; }
+}
+@media (max-width: 900px) {
+  .stack-slot { height: auto; }
+  .stack-item { padding: clamp(56px,10vw,88px) 0; }
+  .tool-block, .tool-block.flip { grid-template-columns: 1fr; gap: var(--sp-32); }
+  .tool-block.flip .tool-visual, .tool-block.flip .tool-content { order: unset; }
+}
 
-  .cta-row { display: flex; gap: var(--spacing-16); flex-wrap: wrap; align-items: center; }
+/* ============================================================
+   12. CASOS
+   ============================================================ */
+.spot { position: relative; overflow: hidden; isolation: isolate; }
+.spot::before {
+  content: ""; position: absolute; inset: 0; z-index: 0;
+  background: radial-gradient(340px circle at var(--mx,50%) var(--my,50%), rgba(255,252,225,0.07), transparent 62%);
+  opacity: 0; transition: opacity 0.45s ease; pointer-events: none;
+}
+.spot:hover::before { opacity: 1; }
+.spot > * { position: relative; z-index: 1; }
+.cases-shell { position: relative; }
+.cases-viewport { overflow: hidden; }
+.cases-track { display: flex; gap: var(--sp-20); width: max-content; padding-left: max(var(--gutter), calc((100vw - var(--max-w))/2)); padding-right: var(--gutter); will-change: transform; }
+.case-card { width: clamp(268px,32vw,384px); background: var(--panel); border-radius: var(--r-lg); padding: var(--sp-32); display: flex; flex-direction: column; gap: var(--sp-16); border-top: 3px solid var(--ink-25); transition: background-color 0.45s ease; }
+.case-card:nth-child(5n+1) { border-top-color: var(--green); }
+.case-card:nth-child(5n+2) { border-top-color: var(--orangey); }
+.case-card:nth-child(5n+3) { border-top-color: var(--pink); }
+.case-card:nth-child(5n+4) { border-top-color: var(--lilac); }
+.case-card:nth-child(5n+5) { border-top-color: var(--blue); }
+.case-card .num { font-family: var(--font-ui); font-size: 11px; letter-spacing: 0.14em; color: var(--ink-50); }
+.case-card h3 { font-size: clamp(22px,2.5vw,31px); line-height: 1.08; letter-spacing: -0.028em; }
+.case-card p { font-size: 16.5px; line-height: 1.45; color: var(--ink-50); }
+.cases-progress { margin-top: var(--sp-32); height: 1px; background: var(--line); position: relative; }
+.cases-progress span { position: absolute; inset: 0; background: var(--grad-green); transform: scaleX(0); transform-origin: left; }
 
-  /* ---------- Nav ---------- */
-  header {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    background: rgba(17,17,17,0.85);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid var(--color-graphite);
-  }
-  nav.wrap {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 80px;
-  }
-  .wordmark {
-    font-weight: 500;
-    font-size: var(--text-subhead);
-    letter-spacing: 0.027em;
-    text-transform: uppercase;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  .wordmark .dot { width: 10px; height: 10px; background: var(--color-citrine-signal); border-radius: 2px; }
+/* G6 — panel de preview que persigue al cursor */
+#preview {
+  position: fixed; top: 0; left: 0; z-index: 9990; width: 300px; height: 200px;
+  border-radius: var(--r-lg); pointer-events: none; overflow: hidden;
+  clip-path: inset(50% 0% 50% 0%); opacity: 0; will-change: transform, clip-path;
+}
+#preview .pv-art { position: absolute; inset: 0; background-size: 300% 300%; animation: pvDrift 7s ease-in-out infinite; }
+#preview .pv-label { position: absolute; left: 14px; bottom: 12px; font-family: var(--font-ui); font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: #0e100f; background: #fffce1; padding: 4px 9px; border-radius: 100px; }
+@keyframes pvDrift { 0%,100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
+@media (hover: none) { #preview { display: none; } }
 
-  .nav-links {
-    display: flex;
-    gap: var(--spacing-32);
-    list-style: none;
-  }
-  .nav-links a {
-    font-weight: 500;
-    font-size: var(--text-caption);
-    letter-spacing: 0.027em;
-    text-transform: uppercase;
-    color: var(--color-bone-white);
-    opacity: 0.85;
-  }
-  .nav-links a:hover { opacity: 1; color: var(--color-citrine-signal); }
+@media (max-width: 760px) {
+  .cases-viewport { overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+  .cases-viewport::-webkit-scrollbar { display: none; }
+  .case-card { scroll-snap-align: start; width: 78vw; }
+  .cases-progress { display: none; }
+}
 
-  .nav-cta { display: flex; align-items: center; gap: var(--spacing-24); }
-  .nav-toggle { display: none; }
-  .burger { display: none; cursor: pointer; }
+/* ============================================================
+   13. PRECIOS — Flip al click
+   ============================================================ */
+.price-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--sp-16); align-items: start; }
+.price-card { border: 1px solid var(--ink-25); border-radius: var(--r-lg); padding: var(--sp-32); cursor: pointer; }
+.price-card .plan { font-family: var(--font-ui); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-50); margin-bottom: var(--sp-20); }
+.price-card .amt { font-size: clamp(34px,4vw,46px); font-weight: 600; line-height: 1; letter-spacing: -0.03em; font-variant-numeric: tabular-nums; }
+.price-card .per { font-family: var(--font-ui); font-size: 11px; letter-spacing: 0.1em; color: var(--ink-50); margin-top: 10px; }
+.price-card.feat { border-color: var(--green); }
+.price-detail { display: none; margin-top: var(--sp-24); padding-top: var(--sp-24); border-top: 1px solid var(--ink-25); }
+.price-card.open .price-detail { display: block; }
+.price-card.open { grid-column: span 2; }
+.price-detail ul { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: var(--sp-24); }
+.price-detail li { display: flex; gap: 10px; font-size: 16px; line-height: 1.4; }
+.price-detail li::before { content: ""; width: 6px; height: 6px; border-radius: 2px; margin-top: 8px; flex-shrink: 0; background: var(--green); }
+.price-hint { font-family: var(--font-ui); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-50); margin-top: var(--sp-16); }
+@media (max-width: 760px) { .price-grid { grid-template-columns: 1fr; } .price-card.open { grid-column: span 1; } }
 
-  @media (max-width: 860px) {
-    .nav-links { 
-      position: absolute;
-      top: 80px; left: 0; right: 0;
-      flex-direction: column;
-      background: var(--color-carbon-black);
-      border-bottom: 1px solid var(--color-graphite);
-      padding: var(--spacing-24);
-      gap: var(--spacing-24);
-      display: none;
-    }
-    .nav-toggle:checked ~ .nav-links { display: flex; }
-    .burger { display: block; }
-    .nav-cta .btn-citrine span.long { display: none; }
-  }
+/* ============================================================
+   14. CIERRE Y FOOTER
+   ============================================================ */
+.closing {
+  text-align: center; position: relative; overflow: hidden;
+  /* El tinte del cierre no pasa por el motor de tema: se resuelve
+     con un degradado que nace del fondo actual. Un sistema menos
+     escribiendo sobre body es una carrera menos. */
+  background: linear-gradient(to bottom, var(--bg) 0%, #1a0b1e 24%, #1a0b1e 100%);
+}
+.closing-cta { display: flex; gap: var(--sp-12); justify-content: center; flex-wrap: wrap; margin-top: var(--sp-32); }
+.cb1 { width: clamp(84px,12vw,180px); aspect-ratio: 1; top: 8%; left: 5%; }
+.cb2 { width: clamp(66px,9.5vw,142px); aspect-ratio: 1; bottom: 9%; right: 7%; }
+footer { background: var(--panel); border-top: 1px solid var(--line); padding: var(--sp-76) 0 0; overflow: hidden; }
+.footer-grid { display: flex; justify-content: space-between; flex-wrap: wrap; gap: var(--sp-32); margin-bottom: var(--sp-76); }
+.footer-cols { display: flex; gap: clamp(32px,6vw,76px); flex-wrap: wrap; }
+.footer-col h4 { font-family: var(--font-ui); font-size: 11px; font-weight: 400; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-50); margin-bottom: var(--sp-16); }
+.footer-col a { display: block; font-size: 16px; margin-bottom: var(--sp-12); width: fit-content; }
+.footer-bottom { display: flex; justify-content: space-between; flex-wrap: wrap; gap: var(--sp-16); padding: var(--sp-24) 0; border-top: 1px solid var(--line); font-family: var(--font-ui); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-50); }
+/* P7 — wordmark gigante recortado por el borde inferior */
+.footer-giant { overflow: hidden; line-height: 0.78; }
+.footer-giant span { display: block; font-size: clamp(48px, 13.2vw, 200px); font-weight: 700; letter-spacing: -0.05em; color: var(--ink); opacity: 0.1; white-space: nowrap; text-align: center; }
 
-  /* ---------- Sections ---------- */
-  section { padding: var(--spacing-96) 0; }
-  .section-tight { padding: var(--spacing-64) 0; }
+/* ============================================================
+   15. CURSOR, PROGRESO, ÍNDICE
+   ============================================================ */
+.cursor-dot, .cursor-ring { display: none; }
+body.has-cursor { cursor: none; }
+body.has-cursor a, body.has-cursor button, body.has-cursor .price-card { cursor: none; }
+body.has-cursor .cursor-dot, body.has-cursor .cursor-ring { display: flex; position: fixed; top: 0; left: 0; border-radius: 50%; pointer-events: none; z-index: 9999; align-items: center; justify-content: center; }
+/* difference invierte solo cuando el fondo se vuelve crema — sin JS */
+body.has-cursor .cursor-dot { width: 7px; height: 7px; background: #fffce1; mix-blend-mode: difference; }
+body.has-cursor .cursor-ring { width: 36px; height: 36px; border: 1px solid #fffce1; mix-blend-mode: difference; }
+.cursor-ring .cur-label { font-family: var(--font-ui); font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: #fffce1; opacity: 0; white-space: nowrap; }
+.progress { position: fixed; top: 0; left: 0; height: 2px; width: 100%; background: var(--grad-green); z-index: 10000; transform: scaleX(0); transform-origin: left; }
 
-  .section-cream {
-    background: var(--color-cream-paper);
-    color: var(--color-carbon-black);
-    position: relative;
-    overflow: hidden;
-  }
-  .section-cream .body-lg { color: var(--color-ash); }
+/* P4 — índice de sección fijo */
+.sec-index { position: fixed; left: 18px; top: 50%; transform: translateY(-50%); z-index: 150; display: none; flex-direction: column; gap: 14px; pointer-events: none; }
+@media (min-width: 1180px) { .sec-index { display: flex; } }
+.sec-index i { display: flex; align-items: center; gap: 9px; font-family: var(--font-ui); font-size: 10px; letter-spacing: 0.12em; font-style: normal; color: var(--ink-25); transition: color 0.4s ease; }
+.sec-index i b { display: block; width: 14px; height: 1px; background: currentColor; transform: scaleX(0.5); transform-origin: left; transition: transform 0.5s var(--ease-out); }
+.sec-index i.on { color: var(--ink); }
+.sec-index i.on b { transform: scaleX(2.4); }
 
-  /* ---------- Hero ---------- */
-  .hero {
-    padding: var(--spacing-128) 0 var(--spacing-96);
-    text-align: center;
-    position: relative;
-  }
-  .hero .cube-wrap { display: flex; justify-content: center; margin-bottom: var(--spacing-32); }
-  .hero .display { margin-bottom: var(--spacing-24); }
-  .hero .body-lg { max-width: 560px; margin: 0 auto var(--spacing-40); }
-  .hero .cta-row { justify-content: center; }
+html.js .js-fade { opacity: 0; }
+html.js .js-mask .split-line { overflow: hidden; }
 
-  .pill-strip {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 8px 28px;
-    margin-top: var(--spacing-64);
-    padding-top: var(--spacing-32);
-    border-top: 1px solid var(--color-graphite);
-  }
-  .pill {
-    font-weight: 500;
-    font-size: var(--text-utility-label);
-    letter-spacing: 0.032em;
-    text-transform: uppercase;
-    color: var(--color-citrine-signal);
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .pill::before { content: ""; width: 5px; height: 5px; background: var(--color-citrine-signal); border-radius: 50%; }
-
-  /* ---------- Cube (SVG signature element) ---------- */
-  .cube-glow { filter: drop-shadow(0 0 40px rgba(229,255,93,0.25)); }
-
-  /* ---------- Floating badges (hero) ---------- */
-  .badge-float {
-    position: absolute;
-    width: 48px; height: 48px;
-    border-radius: 50%;
-    border: 1px solid var(--color-graphite);
-    background: rgba(43,43,43,0.5);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    animation: floaty 5s ease-in-out infinite;
-  }
-  .badge-float svg { width: 20px; height: 20px; }
-  @keyframes floaty {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-14px); }
-  }
-  @media (max-width: 720px) { .badge-float { display: none; } }
-
-  .scroll-indicator {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    font-size: var(--text-utility-label);
-    letter-spacing: 0.032em;
-    text-transform: uppercase;
-    color: var(--color-stone);
-    margin-top: var(--spacing-24);
-  }
-  .scroll-indicator svg { animation: bob 1.8s ease-in-out infinite; }
-  @keyframes bob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(5px); } }
-
-  /* ---------- Marquee ---------- */
-  .marquee-section { padding: var(--spacing-48) 0; border-top: 1px solid var(--color-graphite); border-bottom: 1px solid var(--color-graphite); }
-  .marquee-wrap {
-    overflow: hidden;
-    margin-top: var(--spacing-24);
-    -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
-    mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
-  }
-  .marquee-track { display: flex; gap: var(--spacing-64); width: max-content; animation: marquee 28s linear infinite; }
-  .marquee-item {
-    font-weight: 500;
-    font-size: var(--text-subhead);
-    letter-spacing: 0.01em;
-    text-transform: uppercase;
-    color: var(--color-smoke);
-    white-space: nowrap;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  .marquee-item::before { content: ""; width: 6px; height: 6px; background: var(--color-citrine-signal); border-radius: 50%; }
-  @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-
-  /* ---------- 3-card feature grid ---------- */
-  .feature-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--spacing-16); margin-top: var(--spacing-16); }
-  @media (max-width: 860px) { .feature-grid-3 { grid-template-columns: 1fr; } }
-  .feature-card-alt {
-    border-radius: var(--radius-cards);
-    padding: var(--spacing-32);
-    color: var(--color-carbon-black);
-    min-height: 220px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-  .feature-card-alt.sand { background: var(--color-sand); }
-  .feature-card-alt.citrine { background: var(--color-citrine-signal); }
-  .feature-card-alt.chalk { background: var(--color-chalk); }
-  .feature-card-alt h3 { font-weight: 500; font-size: var(--text-heading-sm); text-transform: uppercase; line-height: 1.15; margin: var(--spacing-24) 0 8px; }
-  .feature-card-alt p { font-size: var(--text-body-sm); color: rgba(17,17,17,0.65); }
-
-  /* ---------- Constellation ---------- */
-  .constellation-wrap { display: flex; justify-content: center; margin-top: var(--spacing-32); }
-  .dash-line { stroke-dasharray: 4 5; animation: dashflow 2.5s linear infinite; }
-  @keyframes dashflow { to { stroke-dashoffset: -18; } }
-  .node-pulse { animation: nodepulse 3s ease-in-out infinite; }
-  @keyframes nodepulse { 0%,100% { opacity: 1; } 50% { opacity: 0.55; } }
-
-  /* ---------- Panel mockup ---------- */
-  .panel-mock { width: 100%; background: var(--color-carbon-black); border: 1px solid var(--color-smoke); border-radius: var(--radius-cards); overflow: hidden; }
-  .panel-mock-bar { display: flex; align-items: center; gap: 6px; padding: 12px 16px; border-bottom: 1px solid var(--color-graphite); }
-  .panel-mock-bar span { width: 8px; height: 8px; border-radius: 50%; background: var(--color-smoke); }
-  .panel-mock-bar .label { margin-left: 8px; font-size: var(--text-caption); color: var(--color-stone); letter-spacing: 0.02em; }
-  .panel-tabs { display: flex; gap: var(--spacing-24); padding: 14px 16px 0; }
-  .panel-tabs span { font-size: var(--text-caption); font-weight: 500; letter-spacing: 0.024em; text-transform: uppercase; color: var(--color-smoke); padding-bottom: 10px; display: inline-block; }
-  .panel-tabs span.active { color: var(--color-citrine-signal); border-bottom: 2px solid var(--color-citrine-signal); }
-  .panel-chart { padding: 8px 16px 0; }
-  .chart-line { stroke-dasharray: 500; stroke-dashoffset: 500; transition: stroke-dashoffset 1.6s cubic-bezier(0.16,1,0.3,1) 0.2s; }
-  .reveal.in .chart-line { stroke-dashoffset: 0; }
-  .panel-legend { display: flex; align-items: center; gap: 8px; padding: 8px 16px 16px; font-size: var(--text-caption); color: var(--color-stone); }
-  .panel-legend .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--color-citrine-signal); flex-shrink: 0; }
-
-  /* ---------- Diagonal lines accent ---------- */
-  .diagonal-lines {
-    position: absolute; inset: 0; z-index: 0; pointer-events: none;
-    background-image: repeating-linear-gradient(115deg, rgba(17,17,17,0.05) 0px, rgba(17,17,17,0.05) 1px, transparent 1px, transparent 56px);
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .badge-float, .scroll-indicator svg, .marquee-track, .dash-line, .node-pulse { animation: none; }
-  }
-
-  /* ---------- Split feature block ---------- */
-  .split {
-    display: grid;
-    grid-template-columns: 0.75fr 1fr;
-    gap: var(--spacing-80);
-    align-items: center;
-  }
-  .split.reverse { grid-template-columns: 1fr 0.75fr; }
-  .split.reverse .split-text { order: 2; }
-  .split.reverse .split-visual { order: 1; }
-  @media (max-width: 860px) {
-    .split, .split.reverse { grid-template-columns: 1fr; gap: var(--spacing-40); }
-    .split.reverse .split-text, .split.reverse .split-visual { order: unset; }
-  }
-
-  .split-text h2 { margin-bottom: var(--spacing-16); }
-  .split-text .body-lg { margin-bottom: var(--spacing-24); max-width: 480px; }
-
-  .feature-list { list-style: none; display: flex; flex-direction: column; gap: 14px; margin-bottom: var(--spacing-32); }
-  .feature-list li { display: flex; gap: 12px; align-items: flex-start; font-size: var(--text-body); }
-  .feature-list li::before {
-    content: "";
-    width: 6px; height: 6px;
-    background: var(--color-citrine-signal);
-    border-radius: 1px;
-    margin-top: 8px;
-    flex-shrink: 0;
-  }
-
-  .split-visual {
-    background: var(--color-graphite);
-    border: 1px solid var(--color-smoke);
-    border-radius: var(--radius-cards);
-    padding: var(--spacing-48);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 320px;
-  }
-
-  /* ---------- Status tag ---------- */
-  .status-tag {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    font-weight: 500;
-    font-size: var(--text-utility-label);
-    letter-spacing: 0.032em;
-    text-transform: uppercase;
-    padding: 6px 12px;
-    border-radius: var(--radius-buttons);
-    margin-bottom: var(--spacing-16);
-  }
-  .status-tag.live { background: rgba(229,255,93,0.12); color: var(--color-citrine-signal); border: 1px solid rgba(229,255,93,0.3); }
-  .status-tag.building { background: transparent; color: var(--color-stone); border: 1px solid var(--color-smoke); }
-
-  /* ---------- Pricing cards ---------- */
-  .price-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: var(--spacing-16);
-    margin-top: var(--spacing-16);
-  }
-  .price-card {
-    background: var(--color-carbon-black);
-    border: 1px solid var(--color-smoke);
-    border-radius: var(--radius-cards);
-    padding: var(--spacing-24);
-  }
-  .price-card.featured { border-color: var(--color-citrine-signal); }
-  .price-card .plan-name {
-    font-weight: 500;
-    font-size: var(--text-caption);
-    letter-spacing: 0.024em;
-    text-transform: uppercase;
-    color: var(--color-stone);
-    margin-bottom: 8px;
-  }
-  .price-card .plan-price {
-    font-weight: 400;
-    font-size: 32px;
-    margin-bottom: 4px;
-  }
-  .price-card .plan-price span { font-size: var(--text-body-sm); color: var(--color-stone); font-weight: 400; }
-  .price-note { font-size: var(--text-caption); color: var(--color-stone); margin-top: var(--spacing-16); }
-
-  /* ---------- Two-product grid (inmobiliaria) ---------- */
-  .product-pair {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: var(--spacing-24);
-    margin-top: var(--spacing-48);
-  }
-  @media (max-width: 860px) { .product-pair { grid-template-columns: 1fr; } }
-
-  .product-card {
-    background: var(--color-graphite);
-    border: 1px solid var(--color-smoke);
-    border-radius: var(--radius-cards);
-    padding: var(--spacing-32);
-    display: flex;
-    flex-direction: column;
-  }
-  .product-card h3 { margin-bottom: var(--spacing-16); }
-  .product-card .body-muted { margin-bottom: var(--spacing-24); }
-  .product-card .feature-list { margin-bottom: 0; flex-grow: 1; }
-
-  .section-header { text-align: center; max-width: 640px; margin: 0 auto var(--spacing-64); }
-  .section-header .body-lg { margin-top: var(--spacing-16); }
-
-  /* ---------- Integrations row ---------- */
-  .integrations {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: var(--spacing-40);
-    flex-wrap: wrap;
-    margin-top: var(--spacing-48);
-  }
-  .node {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-  }
-  .node-circle {
-    width: 56px; height: 56px;
-    border-radius: 50%;
-    border: 1px solid var(--color-graphite);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 500;
-    font-size: 12px;
-    letter-spacing: 0.02em;
-    color: var(--color-citrine-signal);
-  }
-  .node-label {
-    font-size: var(--text-utility-label);
-    letter-spacing: 0.024em;
-    text-transform: uppercase;
-    color: var(--color-stone);
-  }
-  .node-line {
-    width: 40px;
-    border-top: 1px dashed var(--color-smoke);
-    margin-top: -28px;
-  }
-  @media (max-width: 640px) { .node-line { display: none; } }
-
-  /* ---------- Reversal band ---------- */
-  .reversal {
-    text-align: center;
-    padding: var(--spacing-96) 0;
-    position: relative;
-    z-index: 1;
-  }
-  .reversal .display { color: var(--color-carbon-black); margin-bottom: var(--spacing-16); }
-  .reversal .body-lg { max-width: 520px; margin: 0 auto var(--spacing-40); }
-  .reversal .cta-row { justify-content: center; }
-
-  .float-cube { position: absolute; opacity: 0.9; z-index: 0; }
-
-  /* ---------- Footer ---------- */
-  footer {
-    border-top: 1px solid var(--color-graphite);
-    padding: var(--spacing-64) 0 var(--spacing-40);
-  }
-  .footer-top {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: var(--spacing-32);
-    margin-bottom: var(--spacing-48);
-  }
-  .footer-tagline { max-width: 360px; color: var(--color-stone); margin-top: var(--spacing-16); }
-  .footer-links { display: flex; gap: var(--spacing-64); flex-wrap: wrap; }
-  .footer-col h4 {
-    font-weight: 500;
-    font-size: var(--text-caption);
-    letter-spacing: 0.024em;
-    text-transform: uppercase;
-    color: var(--color-stone);
-    margin-bottom: var(--spacing-16);
-  }
-  .footer-col a, .footer-col p { display: block; margin-bottom: 10px; color: var(--color-bone-white); font-size: var(--text-body-sm); }
-  .footer-col a:hover { color: var(--color-citrine-signal); }
-  .footer-bottom {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 16px;
-    padding-top: var(--spacing-32);
-    border-top: 1px solid var(--color-graphite);
-    font-size: var(--text-caption);
-    color: var(--color-smoke);
-  }
-
-  /* ---------- Scroll reveal ---------- */
-  .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
-  .reveal.in { opacity: 1; transform: translateY(0); }
-
-  @media (prefers-reduced-motion: reduce) {
-    html { scroll-behavior: auto; }
-    .reveal { opacity: 1; transform: none; transition: none; }
-  }
+/* ============================================================
+   16. MOVIMIENTO REDUCIDO — apaga todo, deja el sitio legible
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  .grain, .scroll-cue .rail::after, .tag-status .dot::after, #preview .pv-art { animation: none !important; }
+  html.js .js-fade { opacity: 1 !important; }
+  #loader { display: none !important; }
+  .manifesto-pin, .stack-item { position: static !important; height: auto !important; min-height: 0 !important; }
+  .stack-slot { height: auto !important; }
+  .manifesto-text .word { color: var(--ink) !important; }
+  * { transition-duration: 0.01ms !important; }
+}
 </style>
 </head>
-<body>
+<body class="is-loading">
 
-<header>
+<!-- ══════════ INTRO: 6 columnas ══════════ -->
+<div id="loader">
+  <div class="lo-cols">
+    <div class="lo-col"></div><div class="lo-col"></div><div class="lo-col"></div>
+    <div class="lo-col"></div><div class="lo-col"></div><div class="lo-col"></div>
+  </div>
+  <div class="lo-inner">
+    <span class="lo-mark">Gokubetterware</span>
+    <div class="lo-num"><span id="loNum">0</span><i>%</i></div>
+    <div class="lo-bar"><span id="loBar"></span></div>
+  </div>
+</div>
+
+<!-- ══════════ DEFS: gradientes, halos y las 4 formas del morph ══════════ -->
+<svg id="blobDefs" aria-hidden="true" focusable="false">
+  <defs>
+    <radialGradient id="gGreen" cx="32%" cy="28%" r="80%">
+      <stop offset="0%" stop-color="#d5ffb8"/><stop offset="52%" stop-color="#0ae448"/><stop offset="100%" stop-color="#05913a"/>
+    </radialGradient>
+    <radialGradient id="gOrange" cx="32%" cy="28%" r="80%">
+      <stop offset="0%" stop-color="#ffd9a8"/><stop offset="52%" stop-color="#ff8709"/><stop offset="100%" stop-color="#b35700"/>
+    </radialGradient>
+    <radialGradient id="gLilac" cx="32%" cy="28%" r="80%">
+      <stop offset="0%" stop-color="#e3e0ff"/><stop offset="52%" stop-color="#9d95ff"/><stop offset="100%" stop-color="#4d43c9"/>
+    </radialGradient>
+    <radialGradient id="gBlue" cx="32%" cy="28%" r="80%">
+      <stop offset="0%" stop-color="#b8f2ff"/><stop offset="52%" stop-color="#00bae2"/><stop offset="100%" stop-color="#00637a"/>
+    </radialGradient>
+    <radialGradient id="gPink" cx="32%" cy="28%" r="80%">
+      <stop offset="0%" stop-color="#ffffff"/><stop offset="48%" stop-color="#fec5fb"/><stop offset="100%" stop-color="#f100cb"/>
+    </radialGradient>
+    <radialGradient id="gMix" cx="30%" cy="25%" r="82%">
+      <stop offset="0%" stop-color="#fec5fb"/><stop offset="45%" stop-color="#9d95ff"/><stop offset="100%" stop-color="#00bae2"/>
+    </radialGradient>
+
+    <!-- Halos: SOLO para los blobs del hero. flood-opacity la modula
+         la velocidad de scroll (P5). -->
+    <filter id="haloMix" x="-70%" y="-70%" width="240%" height="240%">
+      <feDropShadow dx="0" dy="0" stdDeviation="16" flood-color="#9d95ff" flood-opacity="0.5"/>
+    </filter>
+    <filter id="haloOrange" x="-70%" y="-70%" width="240%" height="240%">
+      <feDropShadow dx="0" dy="0" stdDeviation="16" flood-color="#ff8709" flood-opacity="0.5"/>
+    </filter>
+    <filter id="haloLilac" x="-70%" y="-70%" width="240%" height="240%">
+      <feDropShadow dx="0" dy="0" stdDeviation="16" flood-color="#9d95ff" flood-opacity="0.5"/>
+    </filter>
+    <filter id="haloGreen" x="-70%" y="-70%" width="240%" height="240%">
+      <feDropShadow dx="0" dy="0" stdDeviation="16" flood-color="#0ae448" flood-opacity="0.5"/>
+    </filter>
+
+    <!-- Las 4 formas destino. Mismo número de segmentos para que el
+         morph sea limpio; MorphSVG igual resuelve si difieren. -->
+    <path id="bs1" d="M100,8 C143,8 180,34 192,74 C204,114 188,157 154,180 C120,203 74,199 45,176 C16,153 4,112 14,73 C24,34 57,8 100,8 Z"/>
+    <path id="bs2" d="M104,12 C150,6 186,42 194,86 C202,130 176,168 138,186 C100,204 58,192 33,160 C8,128 8,84 32,52 C56,20 58,18 104,12 Z"/>
+    <path id="bs3" d="M96,6 C138,14 178,30 190,70 C202,110 196,152 162,178 C128,204 80,206 50,182 C20,158 10,116 18,76 C26,36 54,-2 96,6 Z"/>
+    <path id="bs4" d="M100,14 C146,10 170,48 186,82 C202,116 198,156 166,180 C134,204 86,202 54,184 C22,166 2,124 12,84 C22,44 54,18 100,14 Z"/>
+  </defs>
+</svg>
+
+<div class="grain" aria-hidden="true"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
+<div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
+<div class="cursor-ring" id="cursorRing" aria-hidden="true"><span class="cur-label" id="curLabel"></span></div>
+
+<div id="preview" aria-hidden="true">
+  <span class="pv-art" id="pvArt"></span>
+  <span class="pv-label" id="pvLabel">Caso</span>
+</div>
+
+<!-- P4 — índice de sección -->
+<div class="sec-index" id="secIndex" aria-hidden="true">
+  <i data-sec="top"><b></b>01</i>
+  <i data-sec="manifiesto"><b></b>02</i>
+  <i data-sec="voz"><b></b>03</i>
+  <i data-sec="casos"><b></b>04</i>
+  <i data-sec="precios"><b></b>05</i>
+  <i data-sec="contacto"><b></b>06</i>
+</div>
+
+<div class="banner">
+  Recepcionista de voz + WhatsApp en automático — <a href="#contacto">agenda una demo &rarr;</a>
+</div>
+
+<header id="siteHeader">
   <nav class="wrap">
-    <a href="#inicio" class="wordmark"><span class="dot"></span>GOKUBETTERWARE</a>
-    <input type="checkbox" id="nav-toggle" class="nav-toggle">
-    <ul class="nav-links">
-      <li><a href="#voz">Recepcionista Voz</a></li>
-      <li><a href="#whatsapp">WhatsApp</a></li>
-      <li><a href="#inmobiliaria">Inmobiliaria</a></li>
-      <li><a href="#contacto">Contacto</a></li>
+    <a href="#top" class="wordmark"><span class="mark"></span>GOKUBETTERWARE</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#voz" data-roll="Voz">Voz</a></li>
+      <li><a href="#whatsapp" data-roll="WhatsApp">WhatsApp</a></li>
+      <li><a href="#inmobiliaria" data-roll="Inmobiliaria">Inmobiliaria</a></li>
+      <li><a href="#casos" data-roll="Casos">Casos</a></li>
+      <li><a href="#precios" data-roll="Precios">Precios</a></li>
     </ul>
-    <div class="nav-cta">
-      <a href="#contacto" class="btn btn-citrine"><span class="long">Agendar demo</span><span class="short" style="display:none">Demo</span></a>
-      <label for="nav-toggle" class="burger" aria-label="Abrir menú">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M3 6H21M3 12H21M3 18H21" stroke="#f9f9f9" stroke-width="1.5"/></svg>
-      </label>
+    <div class="nav-right">
+      <a href="#contacto" class="pill pill-grad pill-sm magnetic" data-roll="Agendar demo">Agendar demo</a>
+      <button class="burger" id="burger" aria-label="Abrir menú" aria-expanded="false"><span></span><span></span></button>
     </div>
   </nav>
 </header>
 
-<main>
+<!-- M7 — overlay móvil -->
+<div class="nav-overlay" id="navOverlay">
+  <svg class="blob ov-blob ovb1" viewBox="0 0 200 200" aria-hidden="true"><path d="M100,8 C143,8 180,34 192,74 C204,114 188,157 154,180 C120,203 74,199 45,176 C16,153 4,112 14,73 C24,34 57,8 100,8 Z" fill="url(#gMix)"/></svg>
+  <svg class="blob ov-blob ovb2" viewBox="0 0 200 200" aria-hidden="true"><path d="M100,8 C143,8 180,34 192,74 C204,114 188,157 154,180 C120,203 74,199 45,176 C16,153 4,112 14,73 C24,34 57,8 100,8 Z" fill="url(#gGreen)"/></svg>
+  <ul>
+    <li><a href="#voz">Voz</a></li>
+    <li><a href="#whatsapp">WhatsApp</a></li>
+    <li><a href="#inmobiliaria">Inmobiliaria</a></li>
+    <li><a href="#casos">Casos</a></li>
+    <li><a href="#precios">Precios</a></li>
+    <li><a href="#contacto">Agendar demo</a></li>
+  </ul>
+</div>
 
-  <!-- HERO -->
-  <section id="inicio" class="hero wrap">
-    <div class="badge-float" style="top: 14%; left: 4%; animation-delay: 0s;">
-      <svg viewBox="0 0 24 24" fill="none" stroke="#e5ff5d" stroke-width="1.6"><path d="M21 11.5a8.5 8.5 0 01-8.5 8.5c-1.4 0-2.7-.34-3.86-.94L3 21l1.98-5.35A8.46 8.46 0 013 11.5 8.5 8.5 0 0111.5 3 8.5 8.5 0 0121 11.5z"/></svg>
-    </div>
-    <div class="badge-float" style="top: 28%; right: 6%; animation-delay: 1s;">
-      <svg viewBox="0 0 24 24" fill="none" stroke="#f9f9f9" stroke-width="1.6"><path d="M3 5a2 2 0 012-2h2.28a1 1 0 011 .76l1.1 4.2a1 1 0 01-.27.96L7.4 10.6a12 12 0 006 6l1.68-1.7a1 1 0 01.96-.27l4.2 1.1a1 1 0 01.76 1V19a2 2 0 01-2 2h-1C9.16 21 3 14.84 3 7V5z"/></svg>
-    </div>
-    <div class="badge-float" style="bottom: 24%; left: 8%; animation-delay: 2s;">
-      <svg viewBox="0 0 24 24" fill="none" stroke="#9c9c9c" stroke-width="1.6"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>
-    </div>
-    <div class="badge-float" style="bottom: 32%; right: 4%; animation-delay: 0.6s;">
-      <svg viewBox="0 0 24 24" fill="none" stroke="#e5ff5d" stroke-width="1.6"><path d="M3 11l9-7 9 7M5 10v10h5v-6h4v6h5V10"/></svg>
-    </div>
-    <div class="cube-wrap">
-      <svg class="cube-glow" width="120" height="120" viewBox="0 0 120 120" fill="none">
-        <defs>
-          <linearGradient id="cubeTop" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stop-color="#f4ffb0"/>
-            <stop offset="100%" stop-color="#e5ff5d"/>
-          </linearGradient>
-          <linearGradient id="cubeLeft" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stop-color="#e5ff5d"/>
-            <stop offset="100%" stop-color="#b8d13f"/>
-          </linearGradient>
-          <linearGradient id="cubeRight" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stop-color="#c7e04f"/>
-            <stop offset="100%" stop-color="#8fa332"/>
-          </linearGradient>
-        </defs>
-        <polygon points="60,6 108,32 60,58 12,32" fill="url(#cubeTop)"/>
-        <polygon points="12,32 60,58 60,114 12,88" fill="url(#cubeLeft)"/>
-        <polygon points="108,32 60,58 60,114 108,88" fill="url(#cubeRight)"/>
-      </svg>
-    </div>
-    <h1 class="display">TU NEGOCIO<br>ATENDIDO<br>24/7</h1>
-    <p class="body-lg">Recepcionista de voz, WhatsApp inteligente y automatización para inmobiliarias — IA que contesta, agenda y vende mientras tú trabajas en lo importante.</p>
-    <div class="cta-row">
-      <a href="#voz" class="btn btn-citrine">Ver productos</a>
-      <a href="#contacto" class="btn-ghost btn">Hablar por WhatsApp</a>
-    </div>
-    <div class="scroll-indicator">
-      <span>Desliza para descubrir</span>
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#9c9c9c" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
-    </div>
-    <div class="pill-strip">
-      <span class="pill">Respuesta en segundos</span>
-      <span class="pill">Disponible 24/7</span>
-      <span class="pill">Cero llamadas perdidas</span>
+<main id="top">
+
+  <!-- ══════════ HERO ══════════ -->
+  <section class="hero" id="hero">
+    <div class="wrap hero-inner">
+
+      <div class="hero-blobs hero-blobs--back" aria-hidden="true">
+        <svg class="blob hb-b1" viewBox="0 0 200 200" data-morph><path d="M100,8 C143,8 180,34 192,74 C204,114 188,157 154,180 C120,203 74,199 45,176 C16,153 4,112 14,73 C24,34 57,8 100,8 Z" fill="url(#gMix)" filter="url(#haloMix)"/></svg>
+        <svg class="blob hb-b2" viewBox="0 0 200 200" data-morph><path d="M104,12 C150,6 186,42 194,86 C202,130 176,168 138,186 C100,204 58,192 33,160 C8,128 8,84 32,52 C56,20 58,18 104,12 Z" fill="url(#gOrange)" filter="url(#haloOrange)"/></svg>
+      </div>
+
+      <span class="bracket js-hero" data-scramble><span class="brace">{</span> <span class="sc">Automatización con IA</span> <span class="brace">}</span></span>
+
+      <h1 class="t-display" id="heroDisplay">Atiende a todos. <span class="grad-chars">Siempre.</span></h1>
+
+      <div class="hero-blobs hero-blobs--front" aria-hidden="true">
+        <svg class="blob hb-f1" viewBox="0 0 200 200" data-morph><path d="M96,6 C138,14 178,30 190,70 C202,110 196,152 162,178 C128,204 80,206 50,182 C20,158 10,116 18,76 C26,36 54,-2 96,6 Z" fill="url(#gLilac)" filter="url(#haloLilac)"/></svg>
+        <svg class="blob hb-f2" viewBox="0 0 200 200" data-morph><path d="M100,14 C146,10 170,48 186,82 C202,116 198,156 166,180 C134,204 86,202 54,184 C22,166 2,124 12,84 C22,44 54,18 100,14 Z" fill="url(#gGreen)" filter="url(#haloGreen)"/></svg>
+      </div>
+
+      <p class="t-body-lg hero-sub js-hero">
+        Recepcionista de voz, WhatsApp inteligente y automatización para inmobiliarias.
+        Tus clientes reciben respuesta en segundos — a cualquier hora, sin que nadie conteste.
+      </p>
+
+      <div class="hero-cta js-hero">
+        <a href="#voz" class="pill magnetic" data-roll="Ver productos">Ver productos <span class="pill-arrow">&rarr;</span></a>
+        <a href="#contacto" class="pill pill-grad magnetic" data-roll="Agendar demo">Agendar demo</a>
+      </div>
+
+      <div class="hero-meta">
+        <div class="js-hero"><div class="n" data-count="24">0</div><div class="l">Horas al día activo</div></div>
+        <div class="js-hero"><div class="n" data-count="3">0</div><div class="l">Canales conectados</div></div>
+        <div class="js-hero"><div class="n" data-count="100" data-suffix="%">0</div><div class="l">En automático</div></div>
+        <div class="js-hero"><div class="n">0</div><div class="l">Llamadas perdidas</div></div>
+      </div>
+
+      <span class="scroll-cue js-hero"><span class="rail"></span> Scroll</span>
     </div>
   </section>
 
-  <!-- IDEAL PARA -->
-  <section class="marquee-section reveal">
-    <div class="wrap" style="text-align:center;">
-      <span class="eyebrow muted">Ideal para negocios como</span>
+  <!-- ══════════ MARQUEE ══════════ -->
+  <div class="marquee-band">
+    <div class="marquee-track" id="marquee" aria-hidden="true">
+      <span>Consultorios</span><span>Fondas</span><span>Inmobiliarias</span><span>Salones</span><span>Talleres</span>
+      <span>Despachos</span><span>Gimnasios</span><span>Veterinarias</span>
+      <span>Consultorios</span><span>Fondas</span><span>Inmobiliarias</span><span>Salones</span><span>Talleres</span>
+      <span>Despachos</span><span>Gimnasios</span><span>Veterinarias</span>
     </div>
-    <div class="marquee-wrap">
-      <div class="marquee-track">
-        <span class="marquee-item">Consultorios</span>
-        <span class="marquee-item">Fondas y restaurantes</span>
-        <span class="marquee-item">Inmobiliarias</span>
-        <span class="marquee-item">Salones de belleza</span>
-        <span class="marquee-item">Talleres mecánicos</span>
-        <span class="marquee-item">Despachos legales</span>
-        <span class="marquee-item">Gimnasios</span>
-        <span class="marquee-item">Veterinarias</span>
-        <span class="marquee-item">Consultorios</span>
-        <span class="marquee-item">Fondas y restaurantes</span>
-        <span class="marquee-item">Inmobiliarias</span>
-        <span class="marquee-item">Salones de belleza</span>
-        <span class="marquee-item">Talleres mecánicos</span>
-        <span class="marquee-item">Despachos legales</span>
-        <span class="marquee-item">Gimnasios</span>
-        <span class="marquee-item">Veterinarias</span>
-      </div>
-    </div>
-  </section>
+  </div>
 
-  <!-- 3 VALUE PROPS -->
-  <section class="wrap section-tight reveal">
-    <div class="section-header" style="margin-bottom: var(--spacing-32)">
-      <span class="eyebrow" style="justify-content:center">Por qué automatizar</span>
-      <h2 class="heading">Menos fricción,<br>más clientes atendidos</h2>
-    </div>
-    <div class="feature-grid-3">
-      <div class="feature-card-alt sand">
-        <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><circle cx="12" cy="12" r="9" fill="#111111" fill-opacity="0.85"/><circle cx="28" cy="12" r="9" fill="#111111" fill-opacity="0.5"/><circle cx="12" cy="28" r="9" fill="#111111" fill-opacity="0.5"/><circle cx="28" cy="28" r="9" fill="#111111" fill-opacity="0.85"/></svg>
-        <div>
-          <h3>Respuesta inmediata</h3>
-          <p>Cada llamada y mensaje se contesta en segundos, sin importar la hora.</p>
-        </div>
+  <!-- ══════════ POR QUÉ ══════════ -->
+  <section>
+    <div class="wrap">
+      <div class="section-head">
+        <span class="bracket js-fade" data-scramble><span class="brace">{</span> <span class="sc">Por qué automatizar</span> <span class="brace">}</span></span>
+        <h2 class="t-heading js-mask" data-split="chars">Cada llamada sin contestar es un cliente que se va.</h2>
       </div>
-      <div class="feature-card-alt citrine">
-        <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><rect x="14" y="2" width="12" height="12" fill="#111111"/><rect x="2" y="14" width="12" height="12" fill="#111111" fill-opacity="0.5"/><rect x="26" y="14" width="12" height="12" fill="#111111" fill-opacity="0.5"/><rect x="14" y="26" width="12" height="12" fill="#111111"/></svg>
-        <div>
-          <h3>Todo en automático</h3>
-          <p>Agenda, cancela y confirma citas sin que nadie de tu equipo lo toque.</p>
+      <svg class="hairline-svg js-draw" preserveAspectRatio="none" aria-hidden="true"><line x1="0" y1="0.5" x2="100%" y2="0.5"/></svg>
+      <div class="tool-block" style="padding:var(--sp-76) 0">
+        <div class="tool-visual" aria-hidden="true">
+          <span class="glow glow-green" style="width:62%;aspect-ratio:1;left:19%;top:19%"></span>
+          <svg class="blob js-parallax" viewBox="0 0 200 200" data-morph><path d="M100,8 C143,8 180,34 192,74 C204,114 188,157 154,180 C120,203 74,199 45,176 C16,153 4,112 14,73 C24,34 57,8 100,8 Z" fill="url(#gGreen)"/></svg>
         </div>
-      </div>
-      <div class="feature-card-alt chalk">
-        <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><rect x="3" y="8" width="20" height="20" rx="3" fill="#111111" fill-opacity="0.15" stroke="#111111" stroke-width="1.4"/><rect x="17" y="17" width="20" height="20" rx="3" fill="#111111"/></svg>
-        <div>
-          <h3>Un solo panel</h3>
-          <p>Historial de llamadas, chats y leads en un solo lugar, siempre a la mano.</p>
+        <div class="tool-content">
+          <p class="t-body-lg js-words" style="color:var(--ink);max-width:46ch">
+            Un negocio chico no puede tener a alguien pegado al teléfono todo el día.
+            Pero tampoco puede darse el lujo de que suene y nadie conteste.
+          </p>
+          <p class="t-body-lg js-words" style="margin-top:var(--sp-24)">
+            Aquí es donde entra la automatización: la IA contesta, entiende, agenda y confirma —
+            en español mexicano natural, sin sonar a robot y sin que nadie de tu equipo lo toque.
+          </p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- RECEPCIONISTA DE VOZ -->
-  <section id="voz" class="wrap reveal">
-    <div class="split">
-      <div class="split-text">
-        <span class="status-tag live">En producción</span>
-        <span class="eyebrow">Asistente de voz IA</span>
-        <h2 class="heading">Sofía contesta<br>por ti</h2>
-        <p class="body-lg">Sofía atiende cada llamada, agenda citas directo en tu calendario y resuelve dudas de tus clientes en español mexicano natural — como si fuera parte de tu equipo.</p>
-        <ul class="feature-list">
-          <li>Agenda, cancela y reprograma citas automáticamente</li>
-          <li>Conectada a tu Google Calendar en tiempo real</li>
-          <li>Panel con historial de llamadas y transcripciones</li>
-          <li>Disponible 24/7, incluso fuera de horario de oficina</li>
-        </ul>
-        <div class="price-grid">
-          <div class="price-card">
-            <div class="plan-name">Esencial</div>
-            <div class="plan-price">$1,600 <span>MXN/mes</span></div>
-          </div>
-          <div class="price-card featured">
-            <div class="plan-name">Negocio</div>
-            <div class="plan-price">$2,500 <span>MXN/mes</span></div>
-          </div>
-          <div class="price-card">
-            <div class="plan-name">Premium</div>
-            <div class="plan-price">$3,500 <span>MXN/mes</span></div>
-          </div>
-        </div>
-        <p class="price-note">+ instalación única de $2,500–$4,500 MXN. Ajusta estos montos antes de publicar si han cambiado.</p>
-      </div>
-      <div class="split-visual" style="align-items: stretch; padding: var(--spacing-24);">
-        <div class="panel-mock">
-          <div class="panel-mock-bar">
-            <span></span><span></span><span></span>
-            <span class="label">Panel Sofía</span>
-          </div>
-          <div class="panel-tabs">
-            <span class="active">Hoy</span>
-            <span>Semana</span>
-            <span>Historial</span>
-          </div>
-          <div class="panel-chart">
-            <svg width="100%" height="140" viewBox="0 0 260 140" fill="none" preserveAspectRatio="none">
-              <defs>
-                <linearGradient id="chartFill" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stop-color="#e5ff5d" stop-opacity="0.35"/>
-                  <stop offset="100%" stop-color="#e5ff5d" stop-opacity="0"/>
-                </linearGradient>
-              </defs>
-              <path d="M0 100 L40 90 L80 95 L120 60 L160 68 L200 35 L240 42 L260 30 L260 140 L0 140 Z" fill="url(#chartFill)"/>
-              <path class="chart-line" d="M0 100 L40 90 L80 95 L120 60 L160 68 L200 35 L240 42 L260 30" stroke="#e5ff5d" stroke-width="2" fill="none"/>
-            </svg>
-          </div>
-          <div class="panel-legend"><span class="dot"></span>Llamadas atendidas — vista previa del panel</div>
+  <!-- ══════════ MANIFIESTO (G2) ══════════ -->
+  <section class="manifesto" id="manifiesto">
+    <div class="manifesto-pin">
+      <div class="wrap" style="width:100%;position:relative">
+        <p class="t-heading manifesto-text" id="manifestoText">Cada llamada que no contestas es un cliente que ya llamó a otro. La IA no se cansa, no come, no se va de vacaciones <span id="mfEnd">y no deja sonar el teléfono.</span></p>
+        <div class="manifesto-meter" aria-hidden="true">
+          <span class="pct"><span id="mfPct">0</span>%</span>
+          <span class="rail"><i id="mfRail"></i></span>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- WHATSAPP -->
-  <section id="whatsapp" class="wrap reveal">
-    <div class="split reverse">
-      <div class="split-text">
-        <span class="status-tag live">En producción</span>
-        <span class="eyebrow">Automatización WhatsApp</span>
-        <h2 class="heading">Tu WhatsApp,<br>trabajando solo</h2>
-        <p class="body-lg">Un bot que agenda citas, contesta preguntas frecuentes y hasta toma pedidos — todo dentro de WhatsApp, sin que tu cliente descargue nada nuevo.</p>
-        <ul class="feature-list">
-          <li>Agenda y cancela citas automáticamente por chat</li>
-          <li>Panel de administración con historial por negocio</li>
-          <li>Módulo comida corrida: pedidos diarios directo por WhatsApp</li>
-          <li>Integración con Google Calendar</li>
-        </ul>
-        <p class="price-note">Planes desde $200 USD/mes. Combo con Recepcionista de Voz: $600–900 USD/mes.</p>
-      </div>
-      <div class="split-visual">
-        <svg width="220" height="220" viewBox="0 0 220 220" fill="none">
-          <rect x="70" y="30" width="80" height="160" rx="14" stroke="#e5ff5d" stroke-width="1.5"/>
-          <line x1="70" y1="46" x2="150" y2="46" stroke="#565656" stroke-width="1"/>
-          <line x1="70" y1="174" x2="150" y2="174" stroke="#565656" stroke-width="1"/>
-          <rect x="82" y="64" width="44" height="14" rx="7" fill="#2b2b2b"/>
-          <rect x="94" y="86" width="44" height="14" rx="7" fill="#e5ff5d" fill-opacity="0.15" stroke="#e5ff5d" stroke-width="1"/>
-          <rect x="82" y="108" width="36" height="14" rx="7" fill="#2b2b2b"/>
-          <circle cx="30" cy="60" r="4" fill="#9c9c9c"/>
-          <circle cx="190" cy="90" r="4" fill="#9c9c9c"/>
-          <circle cx="30" cy="150" r="4" fill="#e5ff5d"/>
-        </svg>
+  <!-- ══════════ PRODUCTOS APILADOS (G5) ══════════ -->
+  <div id="stack">
+
+    <div class="stack-slot">
+      <div class="stack-item" id="voz" style="--tint:#2e1c08">
+        <div class="wrap">
+          <div class="tool-block">
+            <div class="tool-visual" aria-hidden="true">
+              <span class="glow glow-orange" style="width:62%;aspect-ratio:1;left:19%;top:19%"></span>
+              <svg class="blob js-parallax" viewBox="0 0 200 200" data-morph><path d="M104,12 C150,6 186,42 194,86 C202,130 176,168 138,186 C100,204 58,192 33,160 C8,128 8,84 32,52 C56,20 58,18 104,12 Z" fill="url(#gOrange)"/></svg>
+            </div>
+            <div class="tool-content">
+              <span class="tag-status js-fade"><span class="dot"></span>En producción</span>
+              <span class="cat cat-voz js-fade" data-scramble><span class="sc">Voz</span></span>
+              <h3 class="t-subhead js-mask" data-split="chars">Sofía contesta por ti</h3>
+              <p class="t-body-lg js-fade">Atiende cada llamada, agenda citas directo en tu calendario y resuelve dudas — como si fuera parte de tu equipo.</p>
+              <ul class="tool-list js-list" style="--dot:var(--orangey)">
+                <li>Agenda, cancela y reprograma citas automáticamente</li>
+                <li>Conectada a Google Calendar en tiempo real</li>
+                <li>Panel con historial de llamadas y transcripciones</li>
+                <li>Disponible 24/7, incluso fuera de horario</li>
+              </ul>
+              <a href="#contacto" class="pill magnetic js-fade" data-roll="Ver demo de voz">Ver demo de voz <span class="pill-arrow">&rarr;</span></a>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
-    <div class="reveal" style="margin-top: var(--spacing-64); text-align: center;">
-      <span class="eyebrow muted" style="justify-content:center">Un solo ecosistema</span>
-      <h3 class="heading-sm" style="margin-bottom: var(--spacing-8)">Todo conectado, nada manual</h3>
-      <div class="constellation-wrap">
-        <svg viewBox="0 0 340 340" width="320" height="320">
-          <line class="dash-line" x1="170" y1="170" x2="170" y2="40" stroke="#565656" stroke-width="1.2"/>
-          <line class="dash-line" x1="170" y1="170" x2="282.6" y2="105" stroke="#565656" stroke-width="1.2"/>
-          <line class="dash-line" x1="170" y1="170" x2="282.6" y2="235" stroke="#565656" stroke-width="1.2"/>
-          <line class="dash-line" x1="170" y1="170" x2="170" y2="300" stroke="#565656" stroke-width="1.2"/>
-          <line class="dash-line" x1="170" y1="170" x2="57.4" y2="235" stroke="#565656" stroke-width="1.2"/>
-          <line class="dash-line" x1="170" y1="170" x2="57.4" y2="105" stroke="#565656" stroke-width="1.2"/>
-
-          <circle cx="170" cy="170" r="34" fill="#e5ff5d"/>
-          <text x="170" y="175" text-anchor="middle" font-size="13" font-weight="600" fill="#111111" font-family="Inter, sans-serif">IA</text>
-
-          <g class="node-pulse">
-            <circle cx="170" cy="40" r="28" fill="#2b2b2b" stroke="#e5ff5d" stroke-width="1.4"/>
-            <text x="170" y="45" text-anchor="middle" font-size="11" font-weight="500" fill="#f9f9f9" font-family="Inter, sans-serif">WA</text>
-          </g>
-          <g class="node-pulse" style="animation-delay:0.4s">
-            <circle cx="282.6" cy="105" r="28" fill="#2b2b2b" stroke="#9c9c9c" stroke-width="1.2"/>
-            <text x="282.6" y="110" text-anchor="middle" font-size="11" font-weight="500" fill="#f9f9f9" font-family="Inter, sans-serif">CAL</text>
-          </g>
-          <g class="node-pulse" style="animation-delay:0.8s">
-            <circle cx="282.6" cy="235" r="28" fill="#2b2b2b" stroke="#9c9c9c" stroke-width="1.2"/>
-            <text x="282.6" y="240" text-anchor="middle" font-size="11" font-weight="500" fill="#f9f9f9" font-family="Inter, sans-serif">VOZ</text>
-          </g>
-          <g class="node-pulse" style="animation-delay:1.2s">
-            <circle cx="170" cy="300" r="28" fill="#2b2b2b" stroke="#9c9c9c" stroke-width="1.2"/>
-            <text x="170" y="305" text-anchor="middle" font-size="11" font-weight="500" fill="#f9f9f9" font-family="Inter, sans-serif">SMS</text>
-          </g>
-          <g class="node-pulse" style="animation-delay:1.6s">
-            <circle cx="57.4" cy="235" r="28" fill="#2b2b2b" stroke="#9c9c9c" stroke-width="1.2"/>
-            <text x="57.4" y="240" text-anchor="middle" font-size="11" font-weight="500" fill="#f9f9f9" font-family="Inter, sans-serif">MAIL</text>
-          </g>
-          <g class="node-pulse" style="animation-delay:2s">
-            <circle cx="57.4" cy="105" r="28" fill="#2b2b2b" stroke="#e5ff5d" stroke-width="1.4"/>
-            <text x="57.4" y="110" text-anchor="middle" font-size="10" font-weight="500" fill="#f9f9f9" font-family="Inter, sans-serif">LLM</text>
-          </g>
-        </svg>
+    <div class="stack-slot">
+      <div class="stack-item" id="whatsapp" style="--tint:#0b2a1a">
+        <div class="wrap">
+          <div class="tool-block flip">
+            <div class="tool-visual" aria-hidden="true">
+              <span class="glow glow-green" style="width:62%;aspect-ratio:1;left:19%;top:19%"></span>
+              <svg class="blob js-parallax" viewBox="0 0 200 200" data-morph><path d="M96,6 C138,14 178,30 190,70 C202,110 196,152 162,178 C128,204 80,206 50,182 C20,158 10,116 18,76 C26,36 54,-2 96,6 Z" fill="url(#gGreen)"/></svg>
+            </div>
+            <div class="tool-content">
+              <span class="tag-status js-fade"><span class="dot"></span>En producción</span>
+              <span class="cat cat-wa js-fade" data-scramble><span class="sc">WhatsApp</span></span>
+              <h3 class="t-subhead js-mask" data-split="chars">Tu WhatsApp, trabajando solo</h3>
+              <p class="t-body-lg js-fade">Agenda citas, contesta preguntas frecuentes y toma pedidos — todo dentro de WhatsApp, sin que tu cliente descargue nada.</p>
+              <ul class="tool-list js-list" style="--dot:var(--light-green)">
+                <li>Agenda y cancela citas automáticamente por chat</li>
+                <li>Módulo comida corrida: pedidos diarios por WhatsApp</li>
+                <li>Panel de administración con historial por negocio</li>
+                <li>Integración con Google Calendar</li>
+              </ul>
+              <a href="#contacto" class="pill magnetic js-fade" data-roll="Ver demo de WhatsApp">Ver demo de WhatsApp <span class="pill-arrow">&rarr;</span></a>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  </section>
 
-  <!-- REVERSAL BAND -->
-  <section class="section-cream">
-    <div class="diagonal-lines"></div>
-    <svg class="float-cube" style="left:-40px; top:20px;" width="140" height="140" viewBox="0 0 120 120" fill="none">
-      <polygon points="60,6 108,32 60,58 12,32" fill="#e5ff5d" fill-opacity="0.9"/>
-      <polygon points="12,32 60,58 60,114 12,88" fill="#c7e04f" fill-opacity="0.8"/>
-      <polygon points="108,32 60,58 60,114 108,88" fill="#a9bd45" fill-opacity="0.8"/>
-    </svg>
-    <svg class="float-cube" style="right:-30px; bottom:10px;" width="100" height="100" viewBox="0 0 120 120" fill="none">
-      <polygon points="60,6 108,32 60,58 12,32" fill="#e5ff5d" fill-opacity="0.85"/>
-      <polygon points="12,32 60,58 60,114 12,88" fill="#c7e04f" fill-opacity="0.75"/>
-      <polygon points="108,32 60,58 60,114 108,88" fill="#a9bd45" fill-opacity="0.75"/>
-    </svg>
-    <div class="wrap reversal reveal">
-      <h2 class="display">Cero llamadas<br>perdidas</h2>
-      <p class="body-lg">Mientras tu negocio duerme, tu recepcionista y tu WhatsApp siguen contestando. Agenda una demo y platícame qué necesitas automatizar primero.</p>
-      <div class="cta-row">
-        <a href="#contacto" class="btn btn-dark">Agendar demo</a>
-        <a href="#contacto" class="btn-ghost on-light btn">Ver planes</a>
+    <div class="stack-slot">
+      <div class="stack-item" id="inmobiliaria" style="--tint:#08222e">
+        <div class="wrap">
+          <div class="tool-block">
+            <div class="tool-visual" aria-hidden="true">
+              <span class="glow glow-blue" style="width:62%;aspect-ratio:1;left:19%;top:19%"></span>
+              <svg class="blob js-parallax" viewBox="0 0 200 200" data-morph><path d="M100,14 C146,10 170,48 186,82 C202,116 198,156 166,180 C134,204 86,202 54,184 C22,166 2,124 12,84 C22,44 54,18 100,14 Z" fill="url(#gBlue)"/></svg>
+            </div>
+            <div class="tool-content">
+              <span class="tag-status js-fade"><span class="dot"></span>En producción</span>
+              <span class="cat cat-inmo js-fade" data-scramble><span class="sc">Inmobiliaria</span></span>
+              <h3 class="t-subhead js-mask" data-split="chars">Leads calificados, en automático</h3>
+              <p class="t-body-lg js-fade">Alejandro contesta la llamada, platica con el prospecto, agenda la visita y te notifica al instante con el score del lead.</p>
+              <ul class="tool-list js-list" style="--dot:var(--blue)">
+                <li>Extrae y califica el lead de cada llamada</li>
+                <li>Notifica por llamada, SMS o email según la urgencia</li>
+                <li>Agenda visitas en tu calendario de disponibilidad</li>
+                <li>Resumen diario de actividad</li>
+              </ul>
+              <a href="#contacto" class="pill magnetic js-fade" data-roll="Ver cómo funciona">Ver cómo funciona <span class="pill-arrow">&rarr;</span></a>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  </section>
 
-  <!-- INMOBILIARIA -->
-  <section id="inmobiliaria" class="wrap">
-    <div class="section-header reveal">
-      <span class="eyebrow" style="justify-content:center">Vertical inmobiliario</span>
-      <h2 class="heading">Dos productos<br>para vender más rápido</h2>
-      <p class="body-lg">Leads calificados en automático y video para mostrar la propiedad — cada uno funciona por separado.</p>
-    </div>
-    <div class="product-pair reveal">
-      <div class="product-card">
-        <span class="status-tag live">En producción</span>
-        <h3 class="heading-sm">Leads + Agente de Voz</h3>
-        <p class="body-muted">Alejandro contesta la llamada, platica con el prospecto, agenda la visita y te notifica al instante con el score del lead y el audio listo para escuchar.</p>
-        <ul class="feature-list">
-          <li>Extrae y califica el lead de cada llamada</li>
-          <li>Notifica por llamada, SMS o email según la urgencia</li>
-          <li>Agenda visitas en tu calendario de disponibilidad</li>
-          <li>Resumen diario de actividad</li>
-        </ul>
-      </div>
-      <div class="product-card">
-        <span class="status-tag building">En desarrollo</span>
-        <h3 class="heading-sm">Videos con IA</h3>
-        <p class="body-muted">Convertimos las fotos de una propiedad en un recorrido en video realista, pensado para redes y portales — sin rentar cámara ni editor.</p>
-        <ul class="feature-list">
-          <li>Video generado a partir de fotos existentes de la casa</li>
-          <li>Pensado para verse natural, no "hecho con IA"</li>
-          <li>Ideal para redes sociales y portales inmobiliarios</li>
-          <li>Portafolio de muestra próximamente</li>
-        </ul>
+    <div class="stack-slot">
+      <div class="stack-item" id="videos" style="--tint:#1e1849">
+        <div class="wrap">
+          <div class="tool-block flip">
+            <div class="tool-visual" aria-hidden="true">
+              <span class="glow glow-lilac" style="width:62%;aspect-ratio:1;left:19%;top:19%"></span>
+              <svg class="blob js-parallax" viewBox="0 0 200 200" data-morph><path d="M100,8 C143,8 180,34 192,74 C204,114 188,157 154,180 C120,203 74,199 45,176 C16,153 4,112 14,73 C24,34 57,8 100,8 Z" fill="url(#gLilac)"/></svg>
+            </div>
+            <div class="tool-content">
+              <span class="tag-status soon js-fade"><span class="dot"></span>En desarrollo</span>
+              <span class="cat cat-video js-fade" data-scramble><span class="sc">Video</span></span>
+              <h3 class="t-subhead js-mask" data-split="chars">Fotos que se vuelven recorridos</h3>
+              <p class="t-body-lg js-fade">Convertimos las fotos de una propiedad en un recorrido en video realista, pensado para redes y portales inmobiliarios.</p>
+              <ul class="tool-list js-list" style="--dot:var(--lilac)">
+                <li>Video generado a partir de fotos existentes</li>
+                <li>Pensado para verse natural, no "hecho con IA"</li>
+                <li>Ideal para redes sociales y portales</li>
+                <li>Portafolio de muestra próximamente</li>
+              </ul>
+              <a href="#contacto" class="pill magnetic js-fade" data-roll="Preguntar por disponibilidad">Preguntar por disponibilidad <span class="pill-arrow">&rarr;</span></a>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  </section>
 
-  <!-- CONTACTO -->
-  <section id="contacto" class="wrap section-tight reveal">
-    <div class="section-header" style="margin-bottom: var(--spacing-40)">
-      <span class="eyebrow" style="justify-content:center">Contacto</span>
-      <h2 class="heading">Hablemos de<br>tu negocio</h2>
-      <p class="body-lg">Cuéntame qué proceso te está quitando más tiempo y armamos la automatización que le conviene a tu negocio.</p>
-    </div>
-    <div class="cta-row" style="justify-content:center">
-      <a href="https://wa.me/52TUNUMERO" class="btn btn-citrine" target="_blank" rel="noopener">Escríbeme por WhatsApp</a>
-      <a href="mailto:hola@gokubetteware.com" class="btn-ghost btn">hola@gokubetteware.com</a>
+  </div>
+
+  <!-- ══════════ ZONA CLARA: Casos + Precios (G3) ══════════ -->
+  <div id="lightZone">
+
+    <section id="casos">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="bracket js-fade" data-scramble><span class="brace">{</span> <span class="sc">Casos reales</span> <span class="brace">}</span></span>
+          <h2 class="t-heading js-mask" data-split="chars">Lo que resuelve cada automatización.</h2>
+        </div>
+      </div>
+      <div class="cases-shell" id="casesShell">
+        <div class="cases-viewport" id="casesViewport" data-lenis-prevent>
+          <div class="cases-track" id="casesTrack">
+            <article class="case-card spot" data-pv="#0ae448,#abff84" data-pvlabel="Consultorio">
+              <div class="num">01</div><h3>Consultorio sin recepcionista</h3>
+              <p>Sofía agenda, confirma y recuerda citas sin que nadie conteste el teléfono.</p>
+            </article>
+            <article class="case-card spot" data-pv="#ff8709,#ffd9a8" data-pvlabel="Fonda">
+              <div class="num">02</div><h3>Fonda con pedidos por WhatsApp</h3>
+              <p>El menú del día se contesta solo, incluso en hora pico.</p>
+            </article>
+            <article class="case-card spot" data-pv="#fec5fb,#f100cb" data-pvlabel="Inmobiliaria">
+              <div class="num">03</div><h3>Inmobiliaria con leads fríos</h3>
+              <p>Cada llamada se califica y el agente recibe aviso antes de que el lead se enfríe.</p>
+            </article>
+            <article class="case-card spot" data-pv="#9d95ff,#e3e0ff" data-pvlabel="Fuera de horario">
+              <div class="num">04</div><h3>Negocio fuera de horario</h3>
+              <p>Un cliente llama a las 11pm y aun así queda agendado para mañana.</p>
+            </article>
+            <article class="case-card spot" data-pv="#00bae2,#b8f2ff" data-pvlabel="Equipo chico">
+              <div class="num">05</div><h3>Equipo chico, muchas llamadas</h3>
+              <p>Nadie tiene que soltar lo que está haciendo para contestar el teléfono.</p>
+            </article>
+          </div>
+        </div>
+        <div class="wrap"><div class="cases-progress"><span id="casesBar"></span></div></div>
+      </div>
+    </section>
+
+    <section id="precios">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="bracket js-fade" data-scramble><span class="brace">{</span> <span class="sc">Precios</span> <span class="brace">}</span></span>
+          <h2 class="t-heading js-mask" data-split="chars">Plan fijo al mes. Sin sorpresas por llamada.</h2>
+        </div>
+        <div class="price-grid" id="priceGrid">
+          <div class="price-card spot js-fade" data-plan="esencial">
+            <div class="plan">Esencial</div><div class="amt">$1,600</div><div class="per">MXN / mes</div>
+            <div class="price-detail"><ul></ul><a href="#contacto" class="pill pill-sm" data-roll="Agendar demo">Agendar demo</a></div>
+            <div class="price-hint">Click para ver detalle</div>
+          </div>
+          <div class="price-card spot js-fade feat" data-plan="negocio">
+            <div class="plan">Negocio</div><div class="amt">$2,500</div><div class="per">MXN / mes</div>
+            <div class="price-detail"><ul></ul><a href="#contacto" class="pill pill-sm" data-roll="Agendar demo">Agendar demo</a></div>
+            <div class="price-hint">Click para ver detalle</div>
+          </div>
+          <div class="price-card spot js-fade" data-plan="premium">
+            <div class="plan">Premium</div><div class="amt">$3,500</div><div class="per">MXN / mes</div>
+            <div class="price-detail"><ul></ul><a href="#contacto" class="pill pill-sm" data-roll="Agendar demo">Agendar demo</a></div>
+            <div class="price-hint">Click para ver detalle</div>
+          </div>
+        </div>
+        <p class="t-caption muted js-fade" style="margin-top:var(--sp-24)">
+          Instalación única de $2,500–$4,500 MXN. Combo voz + WhatsApp disponible — pregunta por el precio.
+        </p>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- ══════════ CIERRE ══════════ -->
+  <section class="closing" id="contacto">
+    <span class="glow glow-pink" style="width:clamp(84px,12vw,180px);aspect-ratio:1;top:8%;left:5%"></span>
+    <svg class="blob cb1 js-parallax" viewBox="0 0 200 200" aria-hidden="true" data-morph><path d="M100,8 C143,8 180,34 192,74 C204,114 188,157 154,180 C120,203 74,199 45,176 C16,153 4,112 14,73 C24,34 57,8 100,8 Z" fill="url(#gPink)"/></svg>
+    <span class="glow glow-lilac" style="width:clamp(66px,9.5vw,142px);aspect-ratio:1;bottom:9%;right:7%"></span>
+    <svg class="blob cb2 js-parallax" viewBox="0 0 200 200" aria-hidden="true" data-morph><path d="M96,6 C138,14 178,30 190,70 C202,110 196,152 162,178 C128,204 80,206 50,182 C20,158 10,116 18,76 C26,36 54,-2 96,6 Z" fill="url(#gLilac)"/></svg>
+    <div class="wrap" style="position:relative;z-index:2">
+      <span class="bracket js-fade" data-scramble><span class="brace">{</span> <span class="sc">Hablemos</span> <span class="brace">}</span></span>
+      <h2 class="t-heading-lg js-mask" data-split="chars">Cero llamadas perdidas.</h2>
+      <p class="t-body-lg muted js-fade" style="max-width:540px;margin:var(--sp-24) auto 0">
+        Cuéntame qué proceso te está quitando más tiempo y armamos la automatización que le conviene a tu negocio.
+      </p>
+      <div class="closing-cta js-fade">
+        <a href="https://wa.me/52TUNUMERO" target="_blank" rel="noopener" class="pill pill-grad magnetic" data-roll="Escríbeme por WhatsApp">Escríbeme por WhatsApp</a>
+        <a href="mailto:hola@gokubetteware.com" class="pill magnetic" data-roll="hola@gokubetteware.com">hola@gokubetteware.com</a>
+      </div>
     </div>
   </section>
 
@@ -950,62 +937,893 @@
 
 <footer>
   <div class="wrap">
-    <div class="footer-top">
+    <div class="footer-grid">
       <div>
-        <a href="#inicio" class="wordmark"><span class="dot"></span>GOKUBETTERWARE</a>
-        <p class="footer-tagline">Automatización con IA para negocios en México: voz, WhatsApp e inmobiliarias.</p>
+        <a href="#top" class="wordmark"><span class="mark"></span>GOKUBETTERWARE</a>
+        <p class="t-caption muted" style="max-width:280px;margin-top:var(--sp-16)">Automatización con IA para negocios en México.</p>
       </div>
-      <div class="footer-links">
+      <div class="footer-cols">
         <div class="footer-col">
           <h4>Productos</h4>
-          <a href="#voz">Recepcionista de Voz</a>
-          <a href="#whatsapp">WhatsApp Inteligente</a>
-          <a href="#inmobiliaria">Inmobiliaria</a>
+          <a href="#voz" data-roll="Voz">Voz</a>
+          <a href="#whatsapp" data-roll="WhatsApp">WhatsApp</a>
+          <a href="#inmobiliaria" data-roll="Inmobiliaria">Inmobiliaria</a>
+          <a href="#videos" data-roll="Video">Video</a>
         </div>
         <div class="footer-col">
           <h4>Contacto</h4>
-          <a href="https://wa.me/52TUNUMERO" target="_blank" rel="noopener">WhatsApp</a>
-          <a href="mailto:hola@gokubetteware.com">Email</a>
+          <a href="https://wa.me/52TUNUMERO" target="_blank" rel="noopener" data-roll="WhatsApp">WhatsApp</a>
+          <a href="mailto:hola@gokubetteware.com" data-roll="Email">Email</a>
         </div>
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2026 Gokubetteware. Todos los derechos reservados.</span>
-      <span>Poza Rica de Hidalgo, Veracruz, México</span>
+      <span>© 2026 Gokubetterware</span>
+      <span>Poza Rica de Hidalgo, Veracruz</span>
     </div>
   </div>
+  <div class="footer-giant" aria-hidden="true"><span id="footGiant">GOKUBETTERWARE</span></div>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/SplitText.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/MorphSVGPlugin.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/DrawSVGPlugin.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/Flip.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/Draggable.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/InertiaPlugin.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/ScrambleTextPlugin.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/CustomEase.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+
 <script>
-  (function () {
-    var els = document.querySelectorAll('.reveal');
+(function () {
+'use strict';
 
-    function isInView(el) {
-      var r = el.getBoundingClientRect();
-      return r.top < (window.innerHeight - 80) && r.bottom > 0;
-    }
+/* ═══════════════════════════════════════════════════════════
+   EDITA AQUÍ — qué incluye cada plan (M4)
+   Son marcadores hasta que me pases tu lista real. Cambia los
+   strings y ya; el Flip no depende del contenido.
+   ═══════════════════════════════════════════════════════════ */
+var PLANES = {
+  esencial: ['Un número de teléfono', 'Agenda y cancelación de citas', 'Google Calendar en tiempo real', 'Panel con historial de llamadas'],
+  negocio:  ['Todo lo de Esencial', 'Transcripciones completas', 'Reprogramación automática', 'Resumen diario por correo'],
+  premium:  ['Todo lo de Negocio', 'Combo voz + WhatsApp', 'Notificación por llamada, SMS o email', 'Ajustes de guion a la medida']
+};
 
-    function check() {
-      for (var i = 0; i < els.length; i++) {
-        if (!els[i].classList.contains('in') && isInView(els[i])) {
-          els[i].classList.add('in');
-        }
+/* ── Detección de capacidades ────────────────────────────────
+   gsap y ScrollTrigger son obligatorios. Los demás plugins son
+   opcionales: si uno no baja del CDN se apaga SOLO ese efecto y
+   el resto del sitio sigue vivo. Un único `if` gigante haría que
+   un 404 en ScrambleText dejara la página estática. */
+var H = {};
+['gsap','ScrollTrigger','SplitText','MorphSVGPlugin','DrawSVGPlugin','Flip','Draggable','InertiaPlugin','ScrambleTextPlugin','CustomEase','Lenis']
+  .forEach(function (n) { H[n] = typeof window[n] !== 'undefined'; });
+
+var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+var core = H.gsap && H.ScrollTrigger;
+var loader = document.getElementById('loader');
+
+function killLoader() {
+  if (!loader) return;
+  loader.dataset.done = '1';
+  loader.style.display = 'none';
+  document.body.classList.remove('is-loading');
+}
+
+/* Rellena el detalle de precios desde PLANES (sirva o no GSAP) */
+document.querySelectorAll('.price-card').forEach(function (card) {
+  var list = PLANES[card.getAttribute('data-plan')] || [];
+  var ul = card.querySelector('.price-detail ul');
+  if (ul) ul.innerHTML = list.map(function (t) { return '<li>' + t + '</li>'; }).join('');
+});
+
+/* ── PLAN B: sin GSAP o con movimiento reducido ──────────── */
+if (!core || reduce) {
+  killLoader();
+  document.querySelectorAll('.js-fade, .js-words, .js-hero').forEach(function (el) { el.style.opacity = 1; });
+  document.querySelectorAll('.hairline-svg line').forEach(function (el) { el.style.stroke = 'var(--ink-25)'; });
+  document.querySelectorAll('[data-count]').forEach(function (el) {
+    el.textContent = el.getAttribute('data-count') + (el.getAttribute('data-suffix') || '');
+  });
+  return;
+}
+
+gsap.registerPlugin(ScrollTrigger);
+if (H.SplitText) gsap.registerPlugin(SplitText);
+if (H.MorphSVGPlugin) gsap.registerPlugin(MorphSVGPlugin);
+if (H.DrawSVGPlugin) gsap.registerPlugin(DrawSVGPlugin);
+if (H.Flip) gsap.registerPlugin(Flip);
+if (H.Draggable) gsap.registerPlugin(Draggable);
+if (H.InertiaPlugin) gsap.registerPlugin(InertiaPlugin);
+if (H.ScrambleTextPlugin) gsap.registerPlugin(ScrambleTextPlugin);
+if (H.CustomEase) gsap.registerPlugin(CustomEase);
+
+/* ── M1: una sola curva de marca ─────────────────────────────
+   Salida muy rápida con un pelo de overshoot al final. Todo el
+   sitio se mueve con esta curva; los power3/expo genéricos se
+   quedan solo donde hace falta un frenado más largo. */
+if (H.CustomEase) {
+  CustomEase.create('gk', 'M0,0 C0.12,0 0.14,0.62 0.31,0.86 0.44,1.04 0.6,1.02 0.74,1.005 0.86,0.995 0.92,1 1,1');
+  gsap.defaults({ ease: 'gk', duration: 0.8 });
+} else {
+  gsap.defaults({ ease: 'power3.out', duration: 0.8 });
+}
+
+/* ═══ LENIS ═══════════════════════════════════════════════
+   Integración canónica: ScrollTrigger se entera en cada frame de
+   Lenis, y el rAF de Lenis lo maneja el ticker de GSAP para que
+   ambos corran en el mismo frame. Sin normalizeScroll: pelea con
+   Lenis porque los dos quieren dueño del evento de rueda. */
+var lenis = null;
+if (H.Lenis) {
+  lenis = new Lenis({
+    duration: 1.15,
+    easing: function (t) { return Math.min(1, 1.001 - Math.pow(2, -10 * t)); },
+    smoothWheel: true,
+    syncTouch: false,
+    touchMultiplier: 1.6
+  });
+  lenis.on('scroll', ScrollTrigger.update);
+  gsap.ticker.add(function (time) { lenis.raf(time * 1000); });
+  gsap.ticker.lagSmoothing(0);
+}
+function setScroll(v, immediate) {
+  if (lenis) lenis.scrollTo(v, { immediate: !!immediate, force: true });
+  else window.scrollTo(0, v);
+}
+
+/* ── P8: latigazo al usar un ancla ───────────────────────── */
+var whipEl = document.getElementById('top');
+document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+  a.addEventListener('click', function (e) {
+    var hash = a.getAttribute('href');
+    if (hash.length < 2) return;
+    var el = document.querySelector(hash);
+    if (!el) return;
+    e.preventDefault();
+    closeMenu();
+    gsap.timeline()
+      .to(whipEl, { skewY: 2.2, duration: 0.22, ease: 'power2.out' })
+      .to(whipEl, { skewY: 0, duration: 1.1, ease: 'gk' }, 0.3);
+    if (lenis) lenis.scrollTo(el, { offset: -72, duration: 1.4 });
+    else window.scrollTo({ top: el.getBoundingClientRect().top + window.pageYOffset - 72, behavior: 'smooth' });
+  });
+});
+
+/* ═══ P3: roll carácter por carácter ══════════════════════
+   El texto queda en el HTML; esto solo lo duplica y le pone un
+   retraso escalonado a cada letra. Si el JS muere, el enlace
+   sigue leyéndose igual. */
+function buildRoll(el) {
+  var txt = el.getAttribute('data-roll');
+  if (!txt) return;
+  Array.prototype.slice.call(el.childNodes).forEach(function (n) { if (n.nodeType === 3) el.removeChild(n); });
+  var wrap = document.createElement('span');
+  wrap.className = 'roll';
+  [0, 1].forEach(function (i) {
+    var s = document.createElement('span');
+    if (i === 1) s.setAttribute('aria-hidden', 'true');
+    txt.split('').forEach(function (ch, j) {
+      var c = document.createElement('span');
+      c.className = 'rc';
+      c.textContent = ch === ' ' ? '\u00a0' : ch;
+      c.style.transitionDelay = (j * 0.016) + 's';
+      s.appendChild(c);
+    });
+    wrap.appendChild(s);
+  });
+  el.insertBefore(wrap, el.firstChild);
+}
+document.querySelectorAll('[data-roll]').forEach(buildRoll);
+
+/* ═══ MOTOR DE TEMA ═══════════════════════════════════════
+   Toda la hoja usa variables semánticas (--bg, --ink, --line…).
+   Aquí se interpolan entre el set oscuro y el crema con UN solo
+   escalar L, calculado de la geometría de #lightZone en cada
+   tick. No hay onEnter/onLeave por sección, así que no puede
+   haber carreras entre bloques contiguos: gana la geometría.
+   Los tintes de producto y del cierre NO pasan por aquí — cada
+   bloque lleva su propio background-color, que además es lo que
+   lo hace ocluir a la tarjeta anterior en el apilado. */
+var DARK  = { bg:'#0e100f', ink:'#fffce1', ink50:'#8b8b7d', ink25:'#42433d', line:'#262723', panel:'#161816', header:'rgba(14,16,15,0.55)' };
+var LIGHT = { bg:'#fffce1', ink:'#0e100f', ink50:'#6b6b5e', ink25:'#b9b8a4', line:'#dedcc2', panel:'#f2efd6', header:'rgba(255,252,225,0.6)' };
+var VAR = { bg:'--bg', ink:'--ink', ink50:'--ink-50', ink25:'--ink-25', line:'--line', panel:'--panel', header:'--header-bg' };
+var mixers = {};
+Object.keys(VAR).forEach(function (k) { mixers[k] = gsap.utils.interpolate(DARK[k], LIGHT[k]); });
+
+var rootStyle = document.documentElement.style;
+var lightZone = document.getElementById('lightZone');
+var clamp01 = gsap.utils.clamp(0, 1);
+var lastL = -1, lastGrain = '', lastV = -1;
+
+function applyTheme(L, grainBoost) {
+  if (Math.abs(L - lastL) > 0.002) {
+    lastL = L;
+    Object.keys(VAR).forEach(function (k) { rootStyle.setProperty(VAR[k], mixers[k](L)); });
+  }
+  /* P6 — el grano baja en zona clara y sube con la velocidad */
+  var g = (0.038 + (0.02 - 0.038) * L + grainBoost * 0.032).toFixed(4);
+  if (g !== lastGrain) { lastGrain = g; rootStyle.setProperty('--grain-op', g); }
+}
+
+function lightProgress() {
+  if (!lightZone) return 0;
+  var r = lightZone.getBoundingClientRect(), vh = window.innerHeight;
+  var enter = clamp01((vh * 0.88 - r.top) / (vh * 0.5));
+  var exit  = clamp01((vh * 0.62 - r.bottom) / (vh * 0.5));
+  return clamp01(enter - exit);
+}
+
+/* ═══ OBSERVADOR GLOBAL ═══════════════════════════════════
+   Un solo ScrollTrigger resuelve tema, grano, barra de progreso,
+   link activo, índice lateral y la velocidad que alimenta skew y
+   halos. En móvil esto es prácticamente el único trigger que
+   existe — así se cumple el tope de ~10 sin renunciar a nada. */
+var progressEl = document.getElementById('progress');
+var secIndex = Array.prototype.slice.call(document.querySelectorAll('.sec-index i'));
+var navAnchors = Array.prototype.slice.call(document.querySelectorAll('.nav-links a'));
+var velo = { v: 0 };
+var haloNodes = Array.prototype.slice.call(document.querySelectorAll('#blobDefs feDropShadow'));
+var heroBlobs = Array.prototype.slice.call(document.querySelectorAll('.hero-blobs .blob'));
+
+ScrollTrigger.create({
+  start: 0, end: 'max',
+  onUpdate: function (self) {
+    var vmag = Math.min(1, Math.abs(self.getVelocity()) / 2600);
+    velo.v = vmag;
+    applyTheme(lightProgress(), vmag);
+    gsap.set(progressEl, { scaleX: self.progress });
+
+    /* Halo (P5) y estiramiento (G4) solo cuando la velocidad cambió
+       de verdad: tocar un atributo de filtro SVG obliga a rasterizar
+       de nuevo, así que escribirlo con el scroll quieto es caro y
+       además invisible. */
+    if (Math.abs(vmag - lastV) > 0.02) {
+      lastV = vmag;
+      for (var h = 0; h < haloNodes.length; h++) {
+        haloNodes[h].setAttribute('flood-opacity', (0.4 + vmag * 0.45).toFixed(3));
+      }
+      for (var b = 0; b < heroBlobs.length; b++) {
+        gsap.set(heroBlobs[b], { scaleY: 1 + vmag * 0.28, scaleX: 1 - vmag * 0.12 });
       }
     }
 
-    window.addEventListener('scroll', check, { passive: true });
-    window.addEventListener('resize', check);
-    window.addEventListener('load', check);
-    document.addEventListener('DOMContentLoaded', check);
-    check();
-  })();
+    /* Link activo + índice lateral, en el mismo barrido */
+    var mid = window.innerHeight * 0.45, activeId = null;
+    for (var i = 0; i < secIndex.length; i++) {
+      var sec = document.getElementById(secIndex[i].getAttribute('data-sec'));
+      if (!sec) continue;
+      var r = sec.getBoundingClientRect();
+      if (r.top <= mid && r.bottom >= mid) { activeId = secIndex[i].getAttribute('data-sec'); break; }
+    }
+    secIndex.forEach(function (n) { n.classList.toggle('on', n.getAttribute('data-sec') === activeId); });
+    navAnchors.forEach(function (a) { a.classList.toggle('active', a.getAttribute('href') === '#' + activeId); });
+  }
+});
 
-  // Close mobile nav on link click
-  document.querySelectorAll('.nav-links a').forEach(function (a) {
-    a.addEventListener('click', function () {
-      document.getElementById('nav-toggle').checked = false;
+/* ── Header: borde al despegar + se esconde al bajar ─────── */
+var header = document.getElementById('siteHeader');
+var navHidden = false;
+ScrollTrigger.create({
+  start: 0, end: 'max',
+  onUpdate: function (self) {
+    header.classList.toggle('stuck', self.scroll() > 40);
+    if (document.getElementById('navOverlay').classList.contains('open')) return;
+    var hide = self.direction === 1 && self.scroll() > 320;
+    if (hide === navHidden) return;
+    navHidden = hide;
+    gsap.to(header, { yPercent: hide ? -130 : 0, duration: 0.45, overwrite: true });
+  }
+});
+
+/* ═══ M8: INTRO de 6 columnas ═════════════════════════════ */
+var heroTl = gsap.timeline({ paused: true });
+
+function buildHero() {
+  var display = document.getElementById('heroDisplay');
+  if (!display) return;
+
+  var chars;
+  if (H.SplitText) {
+    /* Sin mask: los caracteres llegan desde ±60vw y una máscara de
+       línea los mantendría invisibles hasta el último instante,
+       que es justo lo contrario del ensamblaje. */
+    var sp = SplitText.create(display, { type: 'words,chars', wordsClass: 'word', charsClass: 'char', aria: 'auto' });
+    chars = sp.chars;
+  } else {
+    heroTl.from(display, { opacity: 0, y: 40, duration: 1 });
+    chars = [];
+  }
+  if (!chars.length) { addHeroRest(); return; }
+
+  /* Degradado de marca repartido letra por letra. background-clip
+     no sirve: un .char con transform crea su propio contexto de
+     pintado y deja de recortar el fondo del padre. */
+  var gradEnd = display.querySelector('.grad-chars');
+  if (gradEnd) {
+    var gc = gradEnd.querySelectorAll('.char');
+    var ramp = gsap.utils.interpolate(['#0ae448', '#abff84']);
+    gc.forEach(function (c, i) { c.style.color = ramp(gc.length > 1 ? i / (gc.length - 1) : 0); });
+  }
+
+  var last = [], rest = [];
+  chars.forEach(function (c) { (c.closest('.grad-chars') ? last : rest).push(c); });
+
+  var vw = window.innerWidth, vh = window.innerHeight;
+  var scatter = {
+    x: function () { return gsap.utils.random(-0.6 * vw, 0.6 * vw); },
+    y: function () { return gsap.utils.random(-0.6 * vh, 0.6 * vh); },
+    rotate: function () { return gsap.utils.random(-180, 180); },
+    scale: function () { return gsap.utils.random(0.3, 2); },
+    opacity: 0
+  };
+  gsap.set(chars, scatter);
+  gsap.set(chars, { filter: 'blur(12px)' });
+
+  var land = { x: 0, y: 0, rotate: 0, scale: 1, opacity: 1, duration: 1.5, ease: 'expo.out' };
+
+  heroTl
+    /* El blur se despeja pronto y aparte: son ~20 filtros vivos a
+       la vez y cada uno se rasteriza por frame. Que duren 0.9s en
+       vez de 2.6s es la diferencia entre fluido y a tirones. */
+    .to(chars, { filter: 'blur(0px)', duration: 0.9, ease: 'power2.out' }, 0.15)
+    .to(rest, Object.assign({ stagger: { from: 'random', amount: 1.1 } }, land), 0)
+    /* "Siempre." aterriza sola, medio segundo después del resto */
+    .to(last, Object.assign({ stagger: { from: 'start', amount: 0.25 } }, land), 1.6)
+    /* micro-settle: rotación residual que se acomoda */
+    .to(chars, { rotate: function () { return gsap.utils.random(-2, 2); }, duration: 0.35, stagger: { amount: 0.3, from: 'random' } }, 3.05)
+    .to(chars, { rotate: 0, duration: 0.7 }, 3.5);
+
+  addHeroRest();
+}
+
+function addHeroRest() {
+  gsap.set('.js-hero', { opacity: 0, y: 26 });
+  gsap.set('.hero-blobs .blob', { scale: 0, opacity: 0 });
+  heroTl
+    .to('.hero-blobs .blob', { scale: 1, opacity: 0.95, duration: 1.5, ease: 'power3.out', stagger: 0.12 }, 0.2)
+    .to('.hero .bracket', { opacity: 1, y: 0, duration: 0.7 }, 1.5)
+    .to('.hero-sub', { opacity: 1, y: 0, duration: 0.9 }, 1.9)
+    .to('.hero-cta', { opacity: 1, y: 0, duration: 0.9 }, 2.05)
+    .to('.hero-meta .js-hero', { opacity: 1, y: 0, duration: 0.8, stagger: 0.07 }, 2.15)
+    .to('.scroll-cue', { opacity: 1, y: 0, duration: 0.7 }, 2.5);
+}
+
+buildHero();
+
+function revealSite() {
+  var c = { v: 0 }, num = document.getElementById('loNum');
+  gsap.timeline()
+    .to(c, { v: 100, duration: 1.2, ease: 'power2.inOut', onUpdate: function () { num.textContent = Math.round(c.v); } }, 0)
+    .to('#loBar', { scaleX: 1, duration: 1.2, ease: 'power2.inOut' }, 0)
+    .to('.lo-inner', { opacity: 0, y: -18, duration: 0.45, ease: 'power2.in' }, 1.15)
+    /* Seis columnas desfasadas desde la derecha: una cortina sola
+       es un gesto, seis columnas leen como un mecanismo. */
+    .to('.lo-col', {
+      yPercent: -102, duration: 1.05, ease: 'expo.inOut',
+      stagger: { each: 0.07, from: 'end' },
+      onStart: function () { document.body.classList.remove('is-loading'); }
+    }, 1.3)
+    .add(function () { killLoader(); ScrollTrigger.refresh(); })
+    .call(function () { heroTl.play(0); }, null, 1.75);
+}
+
+if (lenis) lenis.stop();
+function boot() { if (lenis) lenis.start(); revealSite(); }
+if (document.readyState === 'complete') boot();
+else window.addEventListener('load', boot);
+
+/* ═══ HELPERS DE REVELADO ═════════════════════════════════ */
+function splitHeading(el) {
+  if (!H.SplitText) return null;
+  return SplitText.create(el, {
+    type: 'lines,words,chars', linesClass: 'split-line', wordsClass: 'word', charsClass: 'char',
+    mask: 'lines', autoSplit: true, aria: 'auto',
+    onSplit: function (self) {
+      return gsap.from(self.chars, {
+        yPercent: 118, opacity: 0, duration: 1.05, ease: 'expo.out',
+        stagger: { each: 0.014 },
+        scrollTrigger: { trigger: el, start: 'top 86%', once: true }
+      });
+    }
+  });
+}
+
+/* Marcadores para el fallback de IntersectionObserver en móvil */
+function ioReveal(nodes, build) {
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (en) {
+      if (!en.isIntersecting) return;
+      build(en.target);
+      io.unobserve(en.target);
+    });
+  }, { rootMargin: '0px 0px -12% 0px' });
+  nodes.forEach(function (n) { io.observe(n); });
+  return io;
+}
+
+function scrambleIn(el) {
+  var t = el.querySelector('.sc');
+  if (!t || !H.ScrambleTextPlugin) return;
+  /* Solo el nodo .sc: si ScrambleText tocara todo el .bracket se
+     comería los <span class="brace"> y se perderían las llaves. */
+  var original = t.textContent;
+  gsap.fromTo(t, { text: '' }, { duration: 1.1, scrambleText: { text: original, chars: '01_', speed: 0.45, revealDelay: 0.15 } });
+}
+
+/* ═══ M5: MARQUEE ═════════════════════════════════════════ */
+var track = document.getElementById('marquee'), mq = null;
+function buildMarquee() {
+  if (!track) return;
+  if (mq) mq.kill();
+  gsap.set(track, { x: 0 });
+  mq = gsap.to(track, { x: -track.scrollWidth / 2, duration: 26, ease: 'none', repeat: -1 });
+}
+buildMarquee();
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(buildMarquee);
+
+/* Dirección Y velocidad: el timeScale sigue a la rueda y regresa
+   a 1 con un tween corto en vez de quedarse acelerado. */
+var mqTS = { t: 1 };
+ScrollTrigger.create({
+  start: 0, end: 'max',
+  onUpdate: function (self) {
+    if (!mq) return;
+    var v = self.getVelocity();
+    var target = gsap.utils.clamp(-6, 6, v / 260 || (self.direction === 1 ? 1 : -1));
+    if (Math.abs(target) < 1) target = self.direction;
+    gsap.to(mqTS, {
+      t: target, duration: 0.25, overwrite: true,
+      onUpdate: function () { mq.timeScale(mqTS.t); },
+      onComplete: function () {
+        gsap.to(mqTS, { t: self.direction, duration: 1.2, onUpdate: function () { mq.timeScale(mqTS.t); } });
+      }
+    });
+  }
+});
+
+/* ═══ M4: FLIP en precios ═════════════════════════════════ */
+var grid = document.getElementById('priceGrid');
+if (grid && H.Flip) {
+  grid.addEventListener('click', function (e) {
+    var card = e.target.closest('.price-card');
+    if (!card || e.target.closest('a')) return;
+    var state = Flip.getState(grid.querySelectorAll('.price-card, .price-detail'), { props: 'opacity' });
+    var wasOpen = card.classList.contains('open');
+    grid.querySelectorAll('.price-card').forEach(function (c) { c.classList.remove('open'); });
+    if (!wasOpen) card.classList.add('open');
+    Flip.from(state, { duration: 0.7, ease: 'gk', absolute: false, nested: true, stagger: 0.03 });
+  });
+}
+
+/* ═══ MENÚ MÓVIL (M7) ═════════════════════════════════════ */
+var burger = document.getElementById('burger');
+var overlay = document.getElementById('navOverlay');
+var menuOpen = false;
+function openMenu() {
+  menuOpen = true;
+  overlay.classList.add('open');
+  burger.classList.add('open');
+  burger.setAttribute('aria-expanded', 'true');
+  if (lenis) lenis.stop();
+  gsap.timeline()
+    .fromTo(overlay, { clipPath: 'circle(0px at calc(100% - 40px) 46px)' },
+                     { clipPath: 'circle(160vmax at calc(100% - 40px) 46px)', duration: 0.85, ease: 'expo.inOut' })
+    .fromTo(overlay.querySelectorAll('a'),
+      { opacity: 0, y: 34, filter: 'blur(8px)' },
+      { opacity: 1, y: 0, filter: 'blur(0px)', duration: 0.7, stagger: 0.06 }, 0.25)
+    .fromTo(overlay.querySelectorAll('.ov-blob'), { scale: 0 }, { scale: 1, duration: 1, stagger: 0.1 }, 0.2);
+}
+function closeMenu() {
+  if (!menuOpen) return;
+  menuOpen = false;
+  burger.classList.remove('open');
+  burger.setAttribute('aria-expanded', 'false');
+  if (lenis) lenis.start();
+  gsap.to(overlay, {
+    clipPath: 'circle(0px at calc(100% - 40px) 46px)', duration: 0.6, ease: 'expo.inOut',
+    onComplete: function () { overlay.classList.remove('open'); }
+  });
+}
+if (burger) burger.addEventListener('click', function () { menuOpen ? closeMenu() : openMenu(); });
+
+/* ═══════════════════════════════════════════════════════════
+   matchMedia: tres contextos. GSAP revierte solo lo que se creó
+   dentro de cada uno al cambiar de breakpoint, así que un giro de
+   tablet no deja pins huérfanos ni triggers zombis.
+   ═══════════════════════════════════════════════════════════ */
+var mm = gsap.matchMedia();
+
+/* ─────────── DESKTOP ─────────── */
+mm.add('(min-width: 901px) and (prefers-reduced-motion: no-preference)', function () {
+
+  document.querySelectorAll('.js-mask').forEach(splitHeading);
+
+  document.querySelectorAll('.js-words').forEach(function (p) {
+    if (!H.SplitText) { gsap.to(p, { opacity: 1, scrollTrigger: { trigger: p, start: 'top 88%', once: true } }); return; }
+    SplitText.create(p, {
+      type: 'lines,words', wordsClass: 'word', autoSplit: true, aria: 'auto',
+      onSplit: function (self) {
+        gsap.set(p, { opacity: 1 });
+        return gsap.from(self.words, {
+          opacity: 0, y: 18, duration: 0.8, stagger: 0.022,
+          scrollTrigger: { trigger: p, start: 'top 88%', once: true }
+        });
+      }
     });
   });
+
+  gsap.set('.js-fade', { y: 32 });
+  ScrollTrigger.batch('.js-fade', {
+    start: 'top 90%', once: true,
+    onEnter: function (b) { gsap.to(b, { opacity: 1, y: 0, duration: 0.95, stagger: 0.06, overwrite: 'auto' }); }
+  });
+
+  /* M3 — ScrambleText en etiquetas y contadores */
+  document.querySelectorAll('[data-scramble]').forEach(function (el) {
+    ScrollTrigger.create({ trigger: el, start: 'top 92%', once: true, onEnter: function () { scrambleIn(el); } });
+  });
+
+  /* P9 — los items entran recortados desde la izquierda y su
+     cuadrito gira 90° al aterrizar */
+  document.querySelectorAll('.js-list').forEach(function (ul) {
+    var items = ul.querySelectorAll('li');
+    gsap.fromTo(items,
+      { clipPath: 'inset(0% 100% 0% 0%)', x: -14 },
+      {
+        clipPath: 'inset(0% 0% 0% 0%)', x: 0, duration: 0.75, stagger: 0.07,
+        scrollTrigger: { trigger: ul, start: 'top 88%', once: true }
+      });
+    ScrollTrigger.create({
+      trigger: ul, start: 'top 88%', once: true,
+      onEnter: function () {
+        items.forEach(function (li, k) { setTimeout(function () { li.classList.add('in'); }, k * 70); });
+      }
+    });
+  });
+
+  /* M6 — hairlines dibujadas con DrawSVG y scrub */
+  document.querySelectorAll('.js-draw line').forEach(function (ln) {
+    if (H.DrawSVGPlugin) {
+      gsap.fromTo(ln, { drawSVG: '0%' }, {
+        drawSVG: '100%', ease: 'none',
+        scrollTrigger: { trigger: ln.parentNode, start: 'top 95%', end: 'top 55%', scrub: true }
+      });
+    } else {
+      gsap.fromTo(ln.parentNode, { scaleX: 0 }, { scaleX: 1, transformOrigin: 'left', ease: 'none',
+        scrollTrigger: { trigger: ln.parentNode, start: 'top 95%', end: 'top 55%', scrub: true } });
+    }
+  });
+
+  /* G4 — morph infinito con tiempos desfasados por blob */
+  if (H.MorphSVGPlugin) {
+    var shapes = ['#bs1', '#bs2', '#bs3', '#bs4'];
+    document.querySelectorAll('[data-morph] path').forEach(function (p, i) {
+      var tl = gsap.timeline({ repeat: -1, defaults: { duration: 3.4, ease: 'sine.inOut' } });
+      for (var s = 0; s < 4; s++) tl.to(p, { morphSVG: shapes[(i + s + 1) % 4] });
+      tl.progress(gsap.utils.random(0, 1));   /* desfase para que no latan al unísono */
+    });
+  }
+
+  /* Parallax de los blobs que no son del hero */
+  gsap.utils.toArray('.js-parallax').forEach(function (b, i) {
+    var d = i % 2 === 0 ? 1 : -1;
+    gsap.fromTo(b, { yPercent: -14 * d, rotate: -12 * d }, {
+      yPercent: 14 * d, rotate: 12 * d, ease: 'none',
+      scrollTrigger: { trigger: b, start: 'top bottom', end: 'bottom top', scrub: 1 }
+    });
+  });
+
+  /* Flote de los blobs del hero (el scaleX/Y por velocidad lo
+     escribe el observador global; aquí solo x/y para no chocar) */
+  heroBlobs.forEach(function (b, i) {
+    gsap.to(b, { y: i % 2 === 0 ? 26 : -22, x: i % 2 === 0 ? -15 : 17,
+      duration: 6 + i * 1.4, ease: 'sine.inOut', yoyo: true, repeat: -1, delay: 3 });
+  });
+
+  /* ═══ G2 — MANIFIESTO ═══
+     El anclaje lo hace `position: sticky` desde CSS. Aquí solo va
+     el barrido de color, siempre con scrub: es el scroll el que
+     conduce la iluminación, no un disparo. */
+  var mfText = document.getElementById('manifestoText');
+  if (mfText && H.SplitText) {
+    var mfSplit = SplitText.create(mfText, { type: 'lines,words', wordsClass: 'word', autoSplit: true, aria: 'auto' });
+    var endEl = document.getElementById('mfEnd');
+    var plain = [], grad = [];
+    mfSplit.words.forEach(function (w) { (endEl && endEl.contains(w) ? grad : plain).push(w); });
+    var gRamp = gsap.utils.interpolate(['#0ae448', '#abff84']);
+
+    var mfTl = gsap.timeline({
+      scrollTrigger: {
+        trigger: '.manifesto', start: 'top top', end: 'bottom bottom', scrub: true,
+        onUpdate: function (self) {
+          document.getElementById('mfPct').textContent = Math.round(self.progress * 100);
+          gsap.set('#mfRail', { scaleY: self.progress });
+        }
+      }
+    });
+    mfTl.to(plain, { color: '#fffce1', duration: 1, ease: 'none', stagger: { each: 1 } }, 0);
+    grad.forEach(function (w, i) {
+      mfTl.to(w, { color: gRamp(grad.length > 1 ? i / (grad.length - 1) : 0), duration: 1, ease: 'none' }, plain.length + i);
+    });
+  } else if (mfText) {
+    gsap.to(mfText, { color: '#fffce1', scrollTrigger: { trigger: '.manifesto', start: 'top center', once: true } });
+  }
+
+  /* ═══ G5 — PRODUCTOS APILADOS ═══
+     El pin es `position: sticky` (CSS): no genera pin-spacers, no
+     hay que recalcular en resize y no pelea con Lenis. ScrollTrigger
+     solo maneja el clip-path de entrada y el hundimiento de la
+     tarjeta anterior. */
+  var slots = gsap.utils.toArray('.stack-slot');
+  slots.forEach(function (slot, i) {
+    var item = slot.querySelector('.stack-item');
+    if (i > 0) {
+      gsap.fromTo(item, { clipPath: 'inset(100% 0% 0% 0%)' }, {
+        clipPath: 'inset(0% 0% 0% 0%)', ease: 'none',
+        scrollTrigger: { trigger: slot, start: 'top bottom', end: 'top top', scrub: true }
+      });
+      var prev = slots[i - 1].querySelector('.stack-item');
+      gsap.to(prev, {
+        scale: 0.92, opacity: 0.4, ease: 'none',
+        scrollTrigger: { trigger: slot, start: 'top bottom', end: 'top top', scrub: true }
+      });
+    }
+  });
+
+  /* ═══ CASOS: pin horizontal + M2 arrastre ═══ */
+  var casesTrack = document.getElementById('casesTrack');
+  var casesShell = document.getElementById('casesShell');
+  var casesBar = document.getElementById('casesBar');
+  var casesST = null;
+  if (casesTrack && casesShell) {
+    var dist = function () { return Math.max(0, casesTrack.scrollWidth - window.innerWidth); };
+    var tween = gsap.to(casesTrack, {
+      x: function () { return -dist(); }, ease: 'none',
+      scrollTrigger: {
+        trigger: casesShell, start: 'center center',
+        end: function () { return '+=' + (dist() * 1.15); },
+        pin: true, scrub: 1, invalidateOnRefresh: true, anticipatePin: 1,
+        onUpdate: function (self) { gsap.set(casesBar, { scaleX: self.progress }); }
+      }
+    });
+    casesST = tween.scrollTrigger;
+
+    /* M2 — Draggable NO toca la x del track: el pin ya es su dueño
+       y los dos escribiendo el mismo transform se pelean (al soltar,
+       el scroll lo regresaba de un tirón). En vez de eso el arrastre
+       mueve la POSICIÓN DE SCROLL, y el scrub del pin traduce eso a
+       desplazamiento horizontal. Un solo dueño, cero conflicto. */
+    if (H.Draggable) {
+      var proxy = document.createElement('div');
+      var startScroll = 0, startX = 0;
+      var RATIO = 1.15;   /* misma relación que el `end` del pin */
+
+      Draggable.create(proxy, {
+        type: 'x',
+        trigger: document.getElementById('casesViewport'),
+        inertia: H.InertiaPlugin,
+        cursor: 'grab', activeCursor: 'grabbing',
+        onPress: function () {
+          startX = this.x;
+          startScroll = lenis ? lenis.scroll : window.scrollY;
+        },
+        onDrag: function () { applyDrag(this); },
+        onThrowUpdate: function () { applyDrag(this); }
+      });
+
+      function applyDrag(d) {
+        if (!casesST) return;
+        var target = gsap.utils.clamp(casesST.start, casesST.end, startScroll - (d.x - startX) * RATIO);
+        setScroll(target, true);
+      }
+    }
+  }
+
+  /* ═══ G6 — PREVIEW que persigue al cursor ═══ */
+  var preview = document.getElementById('preview');
+  var pvArt = document.getElementById('pvArt');
+  var pvLabel = document.getElementById('pvLabel');
+  if (preview) {
+    var px = gsap.quickTo(preview, 'x', { duration: 0.6, ease: 'power3' });
+    var py = gsap.quickTo(preview, 'y', { duration: 0.6, ease: 'power3' });
+    window.addEventListener('mousemove', function (e) { px(e.clientX + 26); py(e.clientY - 100); }, { passive: true });
+
+    document.querySelectorAll('.case-card').forEach(function (card) {
+      card.addEventListener('mouseenter', function () {
+        var cols = (card.getAttribute('data-pv') || '#0ae448,#abff84').split(',');
+        /* Sin assets: un degradado animado con la paleta del caso.
+           Se prefirió CSS sobre canvas para no meter un segundo rAF
+           compitiendo con el ticker de GSAP. */
+        pvArt.style.background = 'linear-gradient(120deg,' + cols[0] + ',' + cols[1] + ',' + cols[0] + ')';
+        pvArt.style.backgroundSize = '300% 300%';
+        pvLabel.textContent = card.getAttribute('data-pvlabel') || '';
+        gsap.fromTo(preview,
+          { clipPath: 'inset(50% 0% 50% 0%)', scale: 0.8, opacity: 0 },
+          { clipPath: 'inset(0% 0% 0% 0%)', scale: 1, opacity: 1, duration: 0.6, ease: 'gk', overwrite: 'auto' });
+      });
+      card.addEventListener('mouseleave', function () {
+        gsap.to(preview, { clipPath: 'inset(50% 0% 50% 0%)', scale: 0.8, opacity: 0, duration: 0.4, overwrite: 'auto' });
+      });
+    });
+  }
+
+  /* ═══ SKEW por velocidad ═══ */
+  var skewT = gsap.utils.toArray('.case-card, .price-card, .tool-visual');
+  if (skewT.length) {
+    gsap.set(skewT, { transformOrigin: 'right center', force3D: true });
+    var pxy = { s: 0 }, cl = gsap.utils.clamp(-7, 7);
+    var setSkew = gsap.quickSetter(skewT, 'skewY', 'deg');
+    ScrollTrigger.create({
+      start: 0, end: 'max',
+      onUpdate: function (self) {
+        var s = cl(self.getVelocity() / -420);
+        if (Math.abs(s) > Math.abs(pxy.s)) {
+          pxy.s = s;
+          gsap.to(pxy, { s: 0, duration: 0.85, ease: 'power3', overwrite: true, onUpdate: function () { setSkew(pxy.s); } });
+        }
+      }
+    });
+  }
+
+  /* ═══ P1 + spotlight + elevación de tarjetas ═══ */
+  document.querySelectorAll('.spot, .pill').forEach(function (el) {
+    el.addEventListener('pointermove', function (e) {
+      var r = el.getBoundingClientRect();
+      el.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+      el.style.setProperty('--my', (e.clientY - r.top) + 'px');
+    });
+  });
+  document.querySelectorAll('.case-card, .price-card').forEach(function (card) {
+    card.addEventListener('mouseenter', function () { gsap.to(card, { y: -8, duration: 0.5, overwrite: 'auto' }); });
+    card.addEventListener('mouseleave', function () { gsap.to(card, { y: 0, duration: 0.5, overwrite: 'auto' }); });
+  });
+
+  /* ═══ P2 — CURSOR QUE MORFEA ═══ */
+  if (window.matchMedia('(pointer: fine)').matches) {
+    document.body.classList.add('has-cursor');
+    var dot = document.getElementById('cursorDot');
+    var ring = document.getElementById('cursorRing');
+    var label = document.getElementById('curLabel');
+    gsap.set([dot, ring], { xPercent: -50, yPercent: -50 });
+
+    var dx = gsap.quickTo(dot, 'x', { duration: 0.05, ease: 'none' });
+    var dy = gsap.quickTo(dot, 'y', { duration: 0.05, ease: 'none' });
+    var rx = gsap.quickTo(ring, 'x', { duration: 0.42, ease: 'power3' });
+    var ry = gsap.quickTo(ring, 'y', { duration: 0.42, ease: 'power3' });
+
+    var magnets = [];
+    function buildMagnets() {
+      magnets = [];
+      document.querySelectorAll('.magnetic').forEach(function (el) {
+        magnets.push({ el: el, rect: el.getBoundingClientRect(),
+          x: gsap.quickTo(el, 'x', { duration: 0.45, ease: 'power3' }),
+          y: gsap.quickTo(el, 'y', { duration: 0.45, ease: 'power3' }) });
+      });
+    }
+    buildMagnets();
+    window.addEventListener('resize', buildMagnets);
+    window.addEventListener('scroll', function () {
+      magnets.forEach(function (m) { m.rect = m.el.getBoundingClientRect(); });
+    }, { passive: true });
+
+    window.addEventListener('mousemove', function (e) {
+      dx(e.clientX); dy(e.clientY); rx(e.clientX); ry(e.clientY);
+      for (var i = 0; i < magnets.length; i++) {
+        var m = magnets[i], r = m.rect;
+        var ddx = e.clientX - (r.left + r.width / 2), ddy = e.clientY - (r.top + r.height / 2);
+        var d = Math.sqrt(ddx * ddx + ddy * ddy);
+        if (d < 120) { var p = (1 - d / 120) * 0.42; m.x(ddx * p); m.y(ddy * p); }
+        else { m.x(0); m.y(0); }
+      }
+    }, { passive: true });
+
+    var STATES = {
+      card: { width: 84, height: 84, borderRadius: '50%', text: H.Draggable ? 'Arrastra' : 'Ver' },
+      pill: { width: 46, height: 46, borderRadius: '50%', text: '→' },
+      text: { width: 2, height: 28, borderRadius: '2px', text: '' },
+      base: { width: 36, height: 36, borderRadius: '50%', text: '' }
+    };
+    var curState = 'base';
+    function setCursor(name) {
+      if (name === curState) return;
+      curState = name;
+      var s = STATES[name];
+      label.textContent = s.text;
+      gsap.to(ring, { width: s.width, height: s.height, borderRadius: s.borderRadius, duration: 0.4, overwrite: 'auto' });
+      gsap.to(label, { opacity: s.text ? 1 : 0, duration: 0.3, overwrite: 'auto' });
+      gsap.to(dot, { opacity: name === 'text' ? 0 : 1, duration: 0.25, overwrite: 'auto' });
+    }
+    document.addEventListener('mouseover', function (e) {
+      var t = e.target;
+      if (t.closest('.case-card')) setCursor('card');
+      else if (t.closest('.pill, a, button, .price-card')) setCursor('pill');
+      else if (t.closest('p, h1, h2, h3, h4, li, .t-body-lg, .manifesto-text')) setCursor('text');
+      else setCursor('base');
+    });
+  }
+
+  /* ═══ P7 — wordmark gigante del footer ═══ */
+  gsap.from('#footGiant', {
+    yPercent: 100, ease: 'none',
+    scrollTrigger: { trigger: '.footer-giant', start: 'top bottom', end: 'bottom bottom', scrub: true }
+  });
+
+  return function () { /* GSAP revierte lo de este contexto solo */ };
+});
+
+/* ─────────── MÓVIL ───────────
+   Aquí NO se usa ScrollTrigger.batch: crea un trigger por elemento
+   y con ~50 nodos revelables el conteo se dispararía muy por encima
+   del tope de 10. IntersectionObserver hace lo mismo con cero
+   triggers y lo descarga el propio navegador. Cero pins. */
+mm.add('(max-width: 900px) and (prefers-reduced-motion: no-preference)', function () {
+
+  var fades = Array.prototype.slice.call(document.querySelectorAll('.js-fade'));
+  gsap.set(fades, { y: 26 });
+  ioReveal(fades, function (el) { gsap.to(el, { opacity: 1, y: 0, duration: 0.8 }); });
+
+  var heads = Array.prototype.slice.call(document.querySelectorAll('.js-mask'));
+  ioReveal(heads, function (el) {
+    if (!H.SplitText) { gsap.from(el, { opacity: 0, y: 24, duration: 0.8 }); return; }
+    var s = SplitText.create(el, { type: 'lines', linesClass: 'split-line', mask: 'lines', aria: 'auto' });
+    gsap.from(s.lines, { yPercent: 115, opacity: 0, duration: 0.9, stagger: 0.08, ease: 'expo.out' });
+  });
+
+  var paras = Array.prototype.slice.call(document.querySelectorAll('.js-words'));
+  ioReveal(paras, function (el) { gsap.to(el, { opacity: 1, y: 0, duration: 0.8 }); });
+  gsap.set(paras, { y: 20 });
+
+  var counters = Array.prototype.slice.call(document.querySelectorAll('[data-count]'));
+  ioReveal(counters, function (el) {
+    var o = { v: 0 }, target = parseInt(el.getAttribute('data-count'), 10), sfx = el.getAttribute('data-suffix') || '';
+    gsap.to(o, { v: target, duration: 1.5, ease: 'power3.out', onUpdate: function () { el.textContent = Math.round(o.v) + sfx; } });
+  });
+
+  ioReveal(Array.prototype.slice.call(document.querySelectorAll('.js-draw')), function (el) {
+    var ln = el.querySelector('line');
+    if (H.DrawSVGPlugin && ln) gsap.fromTo(ln, { drawSVG: '0%' }, { drawSVG: '100%', duration: 1.1 });
+  });
+
+  ioReveal(Array.prototype.slice.call(document.querySelectorAll('[data-scramble]')), scrambleIn);
+
+  /* Un morph mucho más lento y solo en los blobs del hero: en
+     móvil el resto no se ve lo suficiente para pagar el costo. */
+  if (H.MorphSVGPlugin) {
+    var sh = ['#bs1', '#bs2', '#bs3', '#bs4'];
+    document.querySelectorAll('.hero-blobs [data-morph] path').forEach(function (p, i) {
+      var tl = gsap.timeline({ repeat: -1, defaults: { duration: 5, ease: 'sine.inOut' } });
+      for (var s = 0; s < 4; s++) tl.to(p, { morphSVG: sh[(i + s + 1) % 4] });
+      tl.progress(gsap.utils.random(0, 1));
+    });
+  }
+
+  /* El barrido palabra por palabra es de desktop: en móvil la frase
+     ocupa casi toda la pantalla y el efecto se pierde. Entra completa. */
+  var mfText2 = document.getElementById('manifestoText');
+  if (mfText2) {
+    gsap.set(mfText2, { opacity: 0, y: 22 });
+    ioReveal([mfText2], function (el) { gsap.to(el, { opacity: 1, y: 0, duration: 0.9 }); });
+  }
+
+  return function () {};
+});
+
+/* ─────────── MOVIMIENTO REDUCIDO ───────────
+   No se crea nada. La CSS ya dejó todo visible y estático. */
+mm.add('(prefers-reduced-motion: reduce)', function () {
+  document.querySelectorAll('.js-fade, .js-words, .js-hero').forEach(function (el) { el.style.opacity = 1; });
+  killLoader();
+  return function () {};
+});
+
+/* ── Refresh tras fuentes e imágenes ── */
+window.addEventListener('load', function () { ScrollTrigger.refresh(); });
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { ScrollTrigger.refresh(); });
+
+})();
 </script>
 
 </body>
