@@ -3,17 +3,24 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Gokubetterware — Automatización con IA para tu negocio</title>
-<meta name="description" content="Recepcionista de voz, WhatsApp inteligente y automatización para inmobiliarias. IA que contesta, agenda y vende 24/7.">
+<title>Sayisless — Automatización con IA para tu negocio</title>
+<meta name="description" content="Asistentes de voz y WhatsApp que contestan, agendan y dan seguimiento las 24 horas. También páginas web y video para tu negocio.">
 <meta name="theme-color" content="#0e100f">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Gokubetterware — Automatización con IA">
-<meta property="og:description" content="Recepcionista de voz, WhatsApp inteligente y automatización para inmobiliarias. Cero llamadas perdidas.">
+<meta property="og:title" content="Sayisless — Automatización con IA">
+<meta property="og:description" content="Asistentes de voz y WhatsApp que contestan las 24 horas. Cero llamadas perdidas.">
+<meta property="og:image" content="og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta property="og:locale" content="es_MX">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@100..900&display=swap" rel="stylesheet">
 
 <script>
   /* Marca JS activo (habilita el intro) y red de seguridad: si algún
@@ -118,21 +125,20 @@ button { font: inherit; color: inherit; }
 .muted { color: var(--ink-50); }
 h1, h2, h3, h4 { font-weight: 600; }
 
-.bracket {
-  display: inline-block; font-family: var(--font-ui); font-size: 12px;
-  letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink);
-  margin-bottom: var(--sp-20);
-}
-.bracket .brace { color: var(--green); display: inline-block; }
-
+/* Etiquetas de categoría: fuera del monoespaciado — el mono queda
+   reservado para DATOS (ejes, horas, cifras), donde se lo gana. Las
+   etiquetas decorativas en mono + MAYÚSCULAS + llaves ya son sello
+   de plantilla de IA, y este sitio no puede parecer eso. */
 .cat {
-  font-family: var(--font-ui); font-size: 12px; letter-spacing: 0.16em;
-  text-transform: uppercase; line-height: 1; margin-bottom: var(--sp-16); display: block;
+  font-family: var(--font); font-size: 13px; font-weight: 600;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  line-height: 1; margin-bottom: var(--sp-16); display: block;
 }
 .cat-voz { color: var(--orangey); }
 .cat-wa { color: var(--light-green); }
 .cat-inmo { color: var(--blue); }
 .cat-video { color: var(--lilac); }
+.cat-web { color: var(--pink); }
 
 /* SplitText crea .line/.word/.char. Las máscaras las genera el
    plugin (mask:"lines"), aquí solo se garantiza que las unidades
@@ -382,19 +388,25 @@ section { padding: clamp(64px, 9vw, 112px) 0; }
 .tool-list li { display: flex; gap: var(--sp-12); font-size: 16.5px; line-height: 1.45; }
 .tool-list li::before { content: ""; width: 6px; height: 6px; border-radius: 2px; margin-top: 9px; flex-shrink: 0; background: var(--dot, var(--green)); transform: rotate(var(--bulletRot, 0deg)); transition: transform 0.6s var(--ease-out); }
 .tool-list li.in::before { --bulletRot: 90deg; }
-.tag-status { position: relative; display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-ui); font-size: 11px; letter-spacing: 0.11em; text-transform: uppercase; padding: 6px 13px; border: 1px solid var(--ink-25); border-radius: var(--r-btn); color: var(--ink-50); margin-bottom: var(--sp-20); }
-.tag-status .dot { position: relative; width: 6px; height: 6px; border-radius: 50%; background: var(--green); }
-/* P10 — anillo expansivo con blur alrededor del punto */
-.tag-status:not(.soon) .dot::after {
-  content: ""; position: absolute; inset: -3px; border-radius: 50%;
-  border: 1px solid var(--green); filter: blur(1.5px);
-  animation: ringOut 2.4s var(--ease-out) infinite;
+/* Estado del producto: un ecualizador diminuto SONANDO en el color
+   del producto. Sin borde, sin pill, sin mayúsculas — el movimiento
+   es la información: producción suena, desarrollo aún no. */
+.tag-status { display: inline-flex; align-items: center; gap: 9px; font-size: 13.5px; font-weight: 500; color: var(--ink-50); margin-bottom: var(--sp-16); }
+.eq { display: inline-flex; align-items: flex-end; gap: 2.5px; height: 13px; }
+.eq i { width: 3px; height: 100%; border-radius: 2px; background: var(--dot, var(--green)); transform: scaleY(0.3); transform-origin: bottom; animation: eqPlay 1.15s ease-in-out infinite; }
+.eq i:nth-child(2) { animation-delay: 0.18s; }
+.eq i:nth-child(3) { animation-delay: 0.36s; }
+.eq i:nth-child(4) { animation-delay: 0.54s; }
+@keyframes eqPlay {
+  0%, 100% { transform: scaleY(0.25); }
+  35%      { transform: scaleY(1); }
+  65%      { transform: scaleY(0.45); }
 }
+.tag-status.soon .eq i { animation: none; transform: scaleY(0.28); background: var(--ink-50); }
 @keyframes ringOut { 0% { transform: scale(0.6); opacity: 0.9; } 100% { transform: scale(3.4); opacity: 0; } }
-.tag-status.soon .dot { background: var(--ink-50); }
 
 @media (min-width: 901px) {
-  .stack-slot { height: 145vh; }
+  .stack-slot { height: 128vh; }  /* 5 tarjetas: menos recorrido c/u para no alargar de más */
   .stack-item { position: sticky; top: 0; min-height: 100vh; display: flex; align-items: center; will-change: transform, clip-path; }
   .stack-item > .wrap { width: 100%; }
 }
@@ -450,22 +462,47 @@ section { padding: clamp(64px, 9vw, 112px) 0; }
 }
 
 /* ============================================================
-   13. PRECIOS — Flip al click
+   13. CÓMO TRABAJO + FORMULARIO
+   Reemplaza a la tabla de precios: no hay planes, hay proceso.
    ============================================================ */
-.price-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--sp-16); align-items: start; }
-.price-card { border: 1px solid var(--ink-25); border-radius: var(--r-lg); padding: var(--sp-32); cursor: pointer; }
-.price-card .plan { font-family: var(--font-ui); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-50); margin-bottom: var(--sp-20); }
-.price-card .amt { font-size: clamp(34px,4vw,46px); font-weight: 600; line-height: 1; letter-spacing: -0.03em; font-variant-numeric: tabular-nums; }
-.price-card .per { font-family: var(--font-ui); font-size: 11px; letter-spacing: 0.1em; color: var(--ink-50); margin-top: 10px; }
-.price-card.feat { border-color: var(--green); }
-.price-detail { display: none; margin-top: var(--sp-24); padding-top: var(--sp-24); border-top: 1px solid var(--ink-25); }
-.price-card.open .price-detail { display: block; }
-.price-card.open { grid-column: span 2; }
-.price-detail ul { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: var(--sp-24); }
-.price-detail li { display: flex; gap: 10px; font-size: 16px; line-height: 1.4; }
-.price-detail li::before { content: ""; width: 6px; height: 6px; border-radius: 2px; margin-top: 8px; flex-shrink: 0; background: var(--green); }
-.price-hint { font-family: var(--font-ui); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-50); margin-top: var(--sp-16); }
-@media (max-width: 760px) { .price-grid { grid-template-columns: 1fr; } .price-card.open { grid-column: span 1; } }
+.steps { list-style: none; counter-reset: none; display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--sp-16); }
+.step { border-top: 1px solid var(--ink-25); padding-top: var(--sp-20); display: flex; flex-direction: column; gap: 10px; }
+.st-n { font-family: var(--font-ui); font-size: 11px; letter-spacing: 0.14em; color: var(--green); }
+.step h3 { font-size: 19px; line-height: 1.2; letter-spacing: -0.01em; }
+.step p { font-size: 15px; line-height: 1.5; color: var(--ink-50); }
+.model { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--sp-16); margin-top: var(--sp-48); }
+.model-col { border: 1px solid var(--ink-25); border-radius: var(--r-lg); padding: var(--sp-24); }
+.model-col h4 { font-size: 17px; margin-bottom: 8px; letter-spacing: -0.01em; }
+.model-col p { font-size: 15px; line-height: 1.5; color: var(--ink-50); }
+
+.cform { max-width: 620px; margin: var(--sp-32) auto 0; text-align: left; display: flex; flex-direction: column; gap: var(--sp-16); }
+.cf-row { display: grid; grid-template-columns: 1fr 1fr; gap: var(--sp-16); }
+.cf-field { display: flex; flex-direction: column; gap: 7px; }
+.cf-field > span { font-family: var(--font-ui); font-size: 10.5px; letter-spacing: 0.13em; text-transform: uppercase; color: var(--ink-50); }
+.cf-field input, .cf-field textarea {
+  font-family: var(--font); font-size: 16px; color: var(--ink);
+  background: transparent; border: none; border-bottom: 1px solid var(--ink-25);
+  padding: 9px 2px; border-radius: 0; resize: vertical;
+  transition: border-color 0.35s var(--ease-out);
+}
+.cf-field input::placeholder, .cf-field textarea::placeholder { color: var(--ink-25); }
+.cf-field input:focus, .cf-field textarea:focus { outline: none; border-bottom-color: var(--green); }
+.cf-field.bad input, .cf-field.bad textarea { border-bottom-color: var(--orangey); }
+.cf-consent { display: flex; align-items: flex-start; gap: 10px; font-size: 13.5px; line-height: 1.45; color: var(--ink-50); }
+.cf-consent input { margin-top: 3px; accent-color: var(--green); width: 15px; height: 15px; flex-shrink: 0; }
+.cf-consent a { text-decoration: underline; text-underline-offset: 3px; }
+.cf-send { align-self: flex-start; }
+.cf-msg { font-size: 14.5px; line-height: 1.5; min-height: 1.2em; color: var(--green); }
+.cf-msg.bad { color: var(--orangey); }
+@media (max-width: 900px) { .steps, .model, .cf-row { grid-template-columns: 1fr; } }
+
+/* Remate animado al cierre de cada lista de producto */
+.punch {
+  font-size: clamp(19px, 2.1vw, 25px); font-weight: 600; letter-spacing: -0.02em;
+  line-height: 1.2; margin: calc(var(--sp-16) * -1) 0 var(--sp-32);
+}
+.punch .char { background-image: linear-gradient(100deg, var(--pc) 20%, var(--ink) 50%, var(--pc) 80%); background-size: 260% 100%; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; animation: punchSheen 4.5s linear infinite; }
+@keyframes punchSheen { from { background-position: 260% 0; } to { background-position: -260% 0; } }
 
 /* ============================================================
    14. CIERRE Y FOOTER
@@ -495,7 +532,7 @@ footer { background: var(--panel); border-top: 1px solid var(--line); padding: v
    ============================================================ */
 .cursor-dot, .cursor-ring { display: none; }
 body.has-cursor { cursor: none; }
-body.has-cursor a, body.has-cursor button, body.has-cursor .price-card { cursor: none; }
+body.has-cursor a, body.has-cursor button, body.has-cursor input, body.has-cursor textarea { cursor: none; }
 body.has-cursor .cursor-dot, body.has-cursor .cursor-ring { display: flex; position: fixed; top: 0; left: 0; border-radius: 50%; pointer-events: none; z-index: 9999; align-items: center; justify-content: center; }
 /* difference invierte solo cuando el fondo se vuelve crema — sin JS */
 body.has-cursor .cursor-dot { width: 7px; height: 7px; background: #fffce1; mix-blend-mode: difference; }
@@ -514,16 +551,170 @@ body.has-cursor .cursor-ring { width: 36px; height: 36px; border: 1px solid #fff
 html.js .js-fade { opacity: 0; }
 html.js .js-mask .split-line { overflow: hidden; }
 
+
+/* ============================================================
+   17. LÍNEA DE VOZ — la firma del sitio
+   Un solo trazo de onda que nace en la llamada de Sofía y baja
+   por toda la página dibujándose con el scroll. Ritmo distinto
+   por sección, mismo lenguaje. Corre por la orilla derecha,
+   detrás del contenido, y absorbe al medidor del manifiesto.
+   ============================================================ */
+.voice-line {
+  position: absolute; top: 0; right: 24px; width: 100px; height: 100%;
+  z-index: 0; pointer-events: none; overflow: visible;
+}
+.voice-line path {
+  fill: none; stroke: url(#gLine); stroke-width: 2;
+  stroke-linecap: round; stroke-linejoin: round;
+  vector-effect: non-scaling-stroke; opacity: 0.55;
+}
+.voice-line .vl-glow { stroke-width: 7; opacity: 0.12; }
+.has-vline { position: relative; }
+@media (max-width: 1180px) { .voice-line { display: none; } }
+
+/* Mini-onda de cada producto: su "huella de voz", en su color */
+.mini-line { width: 220px; height: 44px; overflow: visible; margin-bottom: var(--sp-12); }
+.mini-line path {
+  fill: none; stroke: var(--dot, var(--green)); stroke-width: 2;
+  stroke-linecap: round; vector-effect: non-scaling-stroke; opacity: 0.9;
+}
+
+/* % del manifiesto, ahora pegado a la línea */
+.mf-pct-tag {
+  position: absolute; right: 132px; top: 50%; transform: translateY(-50%);
+  font-family: var(--font-ui); font-size: 12px; letter-spacing: 0.1em;
+  color: var(--ink-50); font-variant-numeric: tabular-nums;
+}
+@media (max-width: 1180px) { .mf-pct-tag { display: none; } }
+
+/* ============================================================
+   18. DEMO DE LLAMADA — Sofía contestando, simulada y dicha
+   Sin JS o con movimiento reducido, el HTML ya trae la llamada
+   terminada (transcripción completa + cita creada): el motor
+   solo la rebobina y la actúa.
+   ============================================================ */
+.call-card {
+  width: 330px; background: rgba(22, 24, 22, 0.92);
+  border: 1px solid var(--ink-25); border-radius: 14px;
+  padding: var(--sp-16); backdrop-filter: blur(8px);
+  display: flex; flex-direction: column; gap: var(--sp-12);
+}
+.hero-inner > .call-card { position: absolute; top: 24%; right: 0; z-index: 4; }
+.cc-top { display: flex; align-items: center; gap: 10px; }
+.cc-ava { position: relative; width: 34px; height: 34px; border-radius: 50%; background: var(--grad-green); flex-shrink: 0; display: grid; place-items: center; font-weight: 600; font-size: 14px; color: #0e100f; }
+.cc-ava::after { content: ""; position: absolute; inset: -3px; border-radius: 50%; border: 1px solid var(--green); opacity: 0; }
+.call-card.ringing .cc-ava::after { animation: ringOut 1.6s var(--ease-out) infinite; opacity: 1; }
+.cc-who { min-width: 0; }
+.cc-name { font-size: 15px; font-weight: 600; line-height: 1.2; color: #fffce1; }
+.cc-status { font-family: var(--font-ui); font-size: 10.5px; letter-spacing: 0.08em; color: var(--ink-50); }
+.cc-timer { margin-left: auto; font-family: var(--font-ui); font-size: 11px; color: var(--green); font-variant-numeric: tabular-nums; }
+.cc-wave { display: flex; align-items: center; gap: 3px; height: 26px; }
+.cc-wave span { flex: 1; height: 100%; background: var(--green); border-radius: 2px; transform: scaleY(0.14); transform-origin: center; opacity: 0.9; }
+.cc-lines { display: flex; flex-direction: column; gap: 8px; max-height: 148px; overflow: hidden; }
+.cl { font-size: 13.5px; line-height: 1.4; padding: 7px 11px; border-radius: 10px; max-width: 92%; }
+.cl.me { align-self: flex-end; background: #24261f; color: #fffce1; border-bottom-right-radius: 3px; }
+.cl.ai { align-self: flex-start; background: rgba(10, 228, 72, 0.1); color: #dfffd1; border-bottom-left-radius: 3px; }
+.cc-chip { display: inline-flex; align-items: center; gap: 7px; align-self: flex-start; font-family: var(--font-ui); font-size: 10.5px; letter-spacing: 0.06em; color: var(--green); border: 1px solid rgba(10, 228, 72, 0.4); border-radius: 100px; padding: 5px 11px; }
+.cc-replay { display: none; align-self: center; background: none; border: none; cursor: pointer; font-family: var(--font-ui); font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-50); padding: 4px; }
+.cc-replay:hover { color: #fffce1; }
+.cc-sim { position: absolute; top: -9px; right: 14px; font-family: var(--font-ui); font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-50); background: var(--bg); padding: 1px 7px; border: 1px solid var(--ink-25); border-radius: 100px; }
+.call-card { position: relative; }
+@media (max-width: 900px) {
+  .hero-inner > .call-card { position: relative; top: auto; right: auto; width: 100%; max-width: 420px; margin-top: var(--sp-32); }
+}
+
+/* Wordmark con distorsión líquida al hover (solo mientras dura) */
+.liquid-on { filter: url(#liquid); }
+
+
+/* ============================================================
+   19. LA DIFERENCIA, EN DATOS
+   Gráficas como instrumento: retícula fina, línea manual gris
+   punteada, línea de Sofía verde con glow. Todo en variables
+   semánticas para que sobreviva a la inversión a crema.
+   ============================================================ */
+.chart-card {
+  border: 1px solid var(--ink-25); border-radius: var(--r-lg);
+  padding: var(--sp-32); margin-bottom: var(--sp-24);
+  background:
+    linear-gradient(var(--line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 40px 40px;
+  background-position: center;
+}
+.chart-head { display: flex; align-items: baseline; justify-content: space-between; gap: var(--sp-16); flex-wrap: wrap; margin-bottom: var(--sp-24); }
+.chart-legend { display: flex; gap: var(--sp-16); }
+.lg { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-ui); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-50); }
+.lg::before { content: ""; width: 22px; height: 2px; border-radius: 2px; }
+.lg-man::before { background: var(--ink-50); }
+.lg-sof::before { background: var(--grad-green); }
+#chartA { width: 100%; height: auto; overflow: visible; }
+.cA-night { fill: currentColor; color: var(--ink); opacity: 0.045; }
+.cA-grid { stroke: var(--line); stroke-width: 1; }
+.cA-ax, .cA-tag { font-family: var(--font-ui); font-size: 11px; fill: var(--ink-50); letter-spacing: 0.06em; }
+.cA-manual { fill: none; stroke: var(--ink-50); stroke-width: 2; stroke-dasharray: 6 7; stroke-linecap: round; }
+.cA-sofia { fill: none; stroke: url(#gLineH); stroke-width: 2.5; stroke-linecap: round; }
+.cA-glow { stroke-width: 8; opacity: 0.16; }
+.cA-area { fill: #0ae448; opacity: 0.07; }
+.cA-dot { fill: var(--green); }
+.cA-lead { stroke: var(--ink-25); stroke-width: 1; }
+.cA-tag { fill: var(--ink); }
+.line-pulse { fill: none; stroke: #eaffdc; stroke-width: 3; stroke-linecap: round; vector-effect: non-scaling-stroke; opacity: 0; pointer-events: none; }
+.chart-foot { font-family: var(--font-ui); font-size: 11px; letter-spacing: 0.04em; color: var(--ink-50); margin-top: var(--sp-16); line-height: 1.5; }
+
+.data-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--sp-16); }
+.data-card { border: 1px solid var(--ink-25); border-radius: var(--r-lg); padding: var(--sp-24); display: flex; flex-direction: column; gap: var(--sp-16); }
+.dc-label { font-family: var(--font-ui); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-50); }
+.dc-bar { display: grid; grid-template-columns: 58px 1fr 64px; align-items: center; gap: 10px; }
+.dc-name { font-family: var(--font-ui); font-size: 11px; color: var(--ink-50); }
+.bar { display: block; height: 10px; border-radius: 6px; background: var(--line); overflow: hidden; }
+.bar-fill { display: block; height: 100%; border-radius: 6px; transform: scaleX(0); transform-origin: left; }
+.bf-man { background: var(--ink-50); }
+.bf-sof {
+  background: linear-gradient(90deg, #0ae448, #abff84, #0ae448);
+  background-size: 220% 100%;
+  animation: sheen 3.2s linear infinite;
+}
+@keyframes sheen { from { background-position: 0% 0; } to { background-position: -220% 0; } }
+.dc-val { font-variant-numeric: tabular-nums; font-weight: 600; font-size: 17px; text-align: right; }
+.dc-big { font-size: clamp(30px, 3.2vw, 42px); font-weight: 600; letter-spacing: -0.03em; line-height: 1; display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+.dc-big small { font-size: 0.5em; }
+.dc-old { color: var(--ink-50); text-decoration-color: var(--orangey); text-decoration-thickness: 3px; }
+.dc-arrow { color: var(--ink-50); font-size: 0.6em; }
+.dc-new { background: var(--grad-green); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+.dc-sub { font-size: 15px; line-height: 1.5; color: var(--ink-50); }
+.data-src { margin-top: var(--sp-16); }
+
+.flow-head { margin-top: var(--sp-76); }
+.flow { position: relative; display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--sp-16); padding-top: var(--sp-24); }
+.flow-line { position: absolute; top: 0; left: 0; width: 100%; height: 40px; overflow: visible; }
+.flow-line path { fill: none; stroke: url(#gLineH); stroke-width: 2; stroke-linecap: round; vector-effect: non-scaling-stroke; opacity: 0.6; }
+.flow-step { border: 1px solid var(--ink-25); border-radius: var(--r-lg); padding: var(--sp-20); display: flex; flex-direction: column; gap: 8px; margin-top: var(--sp-24); }
+.fs-time { font-family: var(--font-ui); font-size: 11px; letter-spacing: 0.1em; color: var(--green); }
+.flow-step h4 { font-size: 17.5px; letter-spacing: -0.01em; line-height: 1.2; }
+.flow-step p { font-size: 14.5px; line-height: 1.5; color: var(--ink-50); }
+@media (max-width: 900px) {
+  .data-grid, .flow { grid-template-columns: 1fr; }
+  .flow-line { display: none; }
+  .chart-card { padding: var(--sp-20); background-size: 28px 28px; }
+}
+
 /* ============================================================
    16. MOVIMIENTO REDUCIDO — apaga todo, deja el sitio legible
    ============================================================ */
 @media (prefers-reduced-motion: reduce) {
-  .grain, .scroll-cue .rail::after, .tag-status .dot::after, #preview .pv-art { animation: none !important; }
+  .grain, .scroll-cue .rail::after, .eq i, .bf-sof, #preview .pv-art { animation: none !important; }
+  .eq i { transform: scaleY(0.4); }
+  .line-pulse { display: none; }
   html.js .js-fade { opacity: 1 !important; }
   #loader { display: none !important; }
   .manifesto-pin, .stack-item { position: static !important; height: auto !important; min-height: 0 !important; }
   .stack-slot { height: auto !important; }
   .manifesto-text .word { color: var(--ink) !important; }
+  .voice-line path { stroke-dasharray: none !important; }
+  .call-card .cc-wave span { transform: scaleY(0.4); }
+  .bar-fill { transform: scaleX(1) !important; }
+  .punch .char { animation: none !important; -webkit-text-fill-color: var(--pc) !important; }
   * { transition-duration: 0.01ms !important; }
 }
 </style>
@@ -537,7 +728,7 @@ html.js .js-mask .split-line { overflow: hidden; }
     <div class="lo-col"></div><div class="lo-col"></div><div class="lo-col"></div>
   </div>
   <div class="lo-inner">
-    <span class="lo-mark">Gokubetterware</span>
+    <span class="lo-mark">Sayisless</span>
     <div class="lo-num"><span id="loNum">0</span><i>%</i></div>
     <div class="lo-bar"><span id="loBar"></span></div>
   </div>
@@ -582,7 +773,20 @@ html.js .js-mask .split-line { overflow: hidden; }
 
     <!-- Las 4 formas destino. Mismo número de segmentos para que el
          morph sea limpio; MorphSVG igual resuelve si difieren. -->
-    <path id="bs1" d="M100,8 C143,8 180,34 192,74 C204,114 188,157 154,180 C120,203 74,199 45,176 C16,153 4,112 14,73 C24,34 57,8 100,8 Z"/>
+    <linearGradient id="gLine" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0ae448"/><stop offset="100%" stop-color="#abff84"/>
+    </linearGradient>
+    <linearGradient id="gLineH" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#0ae448"/><stop offset="100%" stop-color="#abff84"/>
+    </linearGradient>
+    <!-- Distorsión líquida: se anima el scale del displacement en
+         ráfagas cortas; tenerlo a 0 en reposo no cuesta nada. -->
+    <filter id="liquid" x="-20%" y="-20%" width="140%" height="140%">
+      <feTurbulence id="liqTurb" type="fractalNoise" baseFrequency="0.015 0.045" numOctaves="2" result="n"/>
+      <feDisplacementMap id="liqDisp" in="SourceGraphic" in2="n" scale="0"/>
+    </filter>
+
+    <path id="bs1 d="M100,8 C143,8 180,34 192,74 C204,114 188,157 154,180 C120,203 74,199 45,176 C16,153 4,112 14,73 C24,34 57,8 100,8 Z"/>
     <path id="bs2" d="M104,12 C150,6 186,42 194,86 C202,130 176,168 138,186 C100,204 58,192 33,160 C8,128 8,84 32,52 C56,20 58,18 104,12 Z"/>
     <path id="bs3" d="M96,6 C138,14 178,30 190,70 C202,110 196,152 162,178 C128,204 80,206 50,182 C20,158 10,116 18,76 C26,36 54,-2 96,6 Z"/>
     <path id="bs4" d="M100,14 C146,10 170,48 186,82 C202,116 198,156 166,180 C134,204 86,202 54,184 C22,166 2,124 12,84 C22,44 54,18 100,14 Z"/>
@@ -605,23 +809,24 @@ html.js .js-mask .split-line { overflow: hidden; }
   <i data-sec="manifiesto"><b></b>02</i>
   <i data-sec="voz"><b></b>03</i>
   <i data-sec="casos"><b></b>04</i>
-  <i data-sec="precios"><b></b>05</i>
+  <i data-sec="proceso"><b></b>05</i>
   <i data-sec="contacto"><b></b>06</i>
 </div>
 
 <div class="banner">
-  Recepcionista de voz + WhatsApp en automático — <a href="#contacto">agenda una demo &rarr;</a>
+  Asistentes que contestan por ti las 24 horas — <a href="#contacto">agenda una demo &rarr;</a>
 </div>
 
 <header id="siteHeader">
   <nav class="wrap">
-    <a href="#top" class="wordmark"><span class="mark"></span>GOKUBETTERWARE</a>
+    <a href="#top" class="wordmark"><span class="mark"></span>SAYISLESS</a>
     <ul class="nav-links" id="navLinks">
       <li><a href="#voz" data-roll="Voz">Voz</a></li>
       <li><a href="#whatsapp" data-roll="WhatsApp">WhatsApp</a></li>
       <li><a href="#inmobiliaria" data-roll="Inmobiliaria">Inmobiliaria</a></li>
+      <li><a href="#web" data-roll="Web">Web</a></li>
       <li><a href="#casos" data-roll="Casos">Casos</a></li>
-      <li><a href="#precios" data-roll="Precios">Precios</a></li>
+      <li><a href="#proceso" data-roll="Cómo trabajo">Cómo trabajo</a></li>
     </ul>
     <div class="nav-right">
       <a href="#contacto" class="pill pill-grad pill-sm magnetic" data-roll="Agendar demo">Agendar demo</a>
@@ -638,8 +843,9 @@ html.js .js-mask .split-line { overflow: hidden; }
     <li><a href="#voz">Voz</a></li>
     <li><a href="#whatsapp">WhatsApp</a></li>
     <li><a href="#inmobiliaria">Inmobiliaria</a></li>
+    <li><a href="#web">Web</a></li>
     <li><a href="#casos">Casos</a></li>
-    <li><a href="#precios">Precios</a></li>
+    <li><a href="#proceso">Cómo trabajo</a></li>
     <li><a href="#contacto">Agendar demo</a></li>
   </ul>
 </div>
@@ -647,15 +853,13 @@ html.js .js-mask .split-line { overflow: hidden; }
 <main id="top">
 
   <!-- ══════════ HERO ══════════ -->
-  <section class="hero" id="hero">
+  <section class="hero has-vline" id="hero">
     <div class="wrap hero-inner">
 
       <div class="hero-blobs hero-blobs--back" aria-hidden="true">
         <svg class="blob hb-b1" viewBox="0 0 200 200" data-morph><path d="M100,8 C143,8 180,34 192,74 C204,114 188,157 154,180 C120,203 74,199 45,176 C16,153 4,112 14,73 C24,34 57,8 100,8 Z" fill="url(#gMix)" filter="url(#haloMix)"/></svg>
         <svg class="blob hb-b2" viewBox="0 0 200 200" data-morph><path d="M104,12 C150,6 186,42 194,86 C202,130 176,168 138,186 C100,204 58,192 33,160 C8,128 8,84 32,52 C56,20 58,18 104,12 Z" fill="url(#gOrange)" filter="url(#haloOrange)"/></svg>
       </div>
-
-      <span class="bracket js-hero" data-scramble><span class="brace">{</span> <span class="sc">Automatización con IA</span> <span class="brace">}</span></span>
 
       <h1 class="t-display" id="heroDisplay">Atiende a todos. <span class="grad-chars">Siempre.</span></h1>
 
@@ -681,56 +885,127 @@ html.js .js-mask .split-line { overflow: hidden; }
         <div class="js-hero"><div class="n">0</div><div class="l">Llamadas perdidas</div></div>
       </div>
 
+      <div class="call-card js-hero" id="callCard">
+        <span class="cc-sim">Demo simulada</span>
+        <div class="cc-top">
+          <span class="cc-ava">S</span>
+          <div class="cc-who">
+            <div class="cc-name">Sofía</div>
+            <div class="cc-status" id="ccStatus">Cita agendada</div>
+          </div>
+          <span class="cc-timer" id="ccTimer">00:26</span>
+        </div>
+        <div class="cc-wave" id="ccWave" aria-hidden="true">
+          <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+        </div>
+        <div class="cc-lines" id="ccLines">
+          <div class="cl me"><span class="tx">Bueno, ¿tienen espacio para mañana como a las 10?</span></div>
+          <div class="cl ai"><span class="tx">¡Claro que sí! Tengo 10:00 o 10:30. ¿Cuál te queda mejor?</span></div>
+          <div class="cl me"><span class="tx">A las 10. A nombre de Ana Torres.</span></div>
+          <div class="cl ai"><span class="tx">Listo, Ana: mañana 10:00. Te llega la confirmación por WhatsApp.</span></div>
+        </div>
+        <span class="cc-chip" id="ccChip">✓ Cita creada en Google Calendar</span>
+        <button class="cc-replay" id="ccReplay" type="button">↺ Ver de nuevo</button>
+      </div>
+
       <span class="scroll-cue js-hero"><span class="rail"></span> Scroll</span>
     </div>
+    <svg class="voice-line" viewBox="0 0 120 1000" preserveAspectRatio="none" aria-hidden="true"><path class="vl-glow vl-path" d="M60.0,0.0 L62.3,5.9 L64.7,11.8 L66.6,17.6 L67.4,23.5 L66.5,29.4 L63.7,35.3 L59.0,41.2 L53.1,47.1 L47.3,52.9 L42.9,58.8 L41.7,64.7 L44.6,70.6 L51.7,76.5 L62.0,82.4 L73.5,88.2 L83.7,94.1 L90.1,100.0 L91.0,105.9 L86.0,111.8 L75.9,117.6 L63.0,123.5 L49.8,129.4 L39.0,135.3 L32.5,141.2 L31.1,147.1 L34.5,152.9 L41.3,158.8 L50.0,164.7 L58.6,170.6 L65.8,176.5 L70.7,182.4 L73.0,188.2 L72.9,194.1 L71.1,200.0 L68.3,205.9 L65.1,211.8 L62.0,217.6 L59.3,223.5 L57.3,229.4 L55.8,235.3 L54.8,241.2 L54.3,247.1 L54.3,252.9 L54.8,258.8 L56.0,264.7 L58.1,270.6 L61.1,276.5 L65.0,282.4 L69.3,288.2 L73.4,294.1 L76.4,300.0 L77.4,305.9 L75.7,311.8 L71.1,317.6 L63.9,323.5 L55.3,329.4 L46.7,335.3 L39.8,341.2 L36.0,347.1 L36.1,352.9 L39.9,358.8 L46.5,364.7 L54.3,370.6 L61.8,376.5 L67.8,382.4 L71.4,388.2 L72.5,394.1 L71.5,400.0 L69.0,405.9 L65.5,411.8 L61.6,417.6 L57.7,423.5 L54.1,429.4 L51.2,435.3 L49.5,441.2 L49.6,447.1 L51.8,452.9 L56.3,458.8 L62.8,464.7 L70.2,470.6 L76.9,476.5 L81.0,482.4 L81.0,488.2 L75.8,494.1 L66.0,500.0 L53.2,505.9 L40.2,511.8 L30.3,517.6 L26.2,523.5 L29.5,529.4 L40.0,535.3 L55.3,541.2 L72.1,547.1 L86.3,552.9 L94.8,558.8 L95.6,564.7 L89.1,570.6 L76.9,576.5 L62.4,582.4 L48.7,588.2 L38.8,594.1 L34.2,600.0 L35.2,605.9 L40.6,611.8 L48.6,617.6 L57.3,623.5 L64.8,629.4 L70.0,635.3 L72.5,641.2 L72.4,647.1 L70.4,652.9 L67.1,658.8 L63.5,664.7 L59.9,670.6 L56.9,676.5 L54.6,682.4 L53.0,688.2 L52.3,694.1 L52.5,700.0 L53.7,705.9 L55.9,711.8 L59.1,717.6 L63.2,723.5 L67.8,729.4 L72.3,735.3 L75.9,741.2 L77.8,747.1 L77.3,752.9 L74.1,758.8 L68.2,764.7 L60.2,770.6 L51.1,776.5 L42.4,782.4 L35.5,788.2 L31.6,794.1 L31.4,800.0 L35.1,805.9 L41.9,811.8 L50.9,817.6 L60.4,823.5 L69.1,829.4 L75.5,835.3 L79.1,841.2 L79.6,847.1 L77.3,852.9 L73.0,858.8 L67.8,864.7 L62.5,870.6 L58.1,876.5 L54.9,882.4 L53.1,888.2 L52.8,894.1 L53.6,900.0 L55.1,905.9 L57.0,911.8 L59.0,917.6 L60.8,923.5 L62.3,929.4 L63.1,935.3 L63.5,941.2 L63.2,947.1 L62.4,952.9 L61.2,958.8 L59.9,964.7 L58.6,970.6 L57.6,976.5 L57.0,982.4 L57.1,988.2 L57.7,994.1 L58.7,1000.0"/><path class="vl-path" d="M60.0,0.0 L62.3,5.9 L64.7,11.8 L66.6,17.6 L67.4,23.5 L66.5,29.4 L63.7,35.3 L59.0,41.2 L53.1,47.1 L47.3,52.9 L42.9,58.8 L41.7,64.7 L44.6,70.6 L51.7,76.5 L62.0,82.4 L73.5,88.2 L83.7,94.1 L90.1,100.0 L91.0,105.9 L86.0,111.8 L75.9,117.6 L63.0,123.5 L49.8,129.4 L39.0,135.3 L32.5,141.2 L31.1,147.1 L34.5,152.9 L41.3,158.8 L50.0,164.7 L58.6,170.6 L65.8,176.5 L70.7,182.4 L73.0,188.2 L72.9,194.1 L71.1,200.0 L68.3,205.9 L65.1,211.8 L62.0,217.6 L59.3,223.5 L57.3,229.4 L55.8,235.3 L54.8,241.2 L54.3,247.1 L54.3,252.9 L54.8,258.8 L56.0,264.7 L58.1,270.6 L61.1,276.5 L65.0,282.4 L69.3,288.2 L73.4,294.1 L76.4,300.0 L77.4,305.9 L75.7,311.8 L71.1,317.6 L63.9,323.5 L55.3,329.4 L46.7,335.3 L39.8,341.2 L36.0,347.1 L36.1,352.9 L39.9,358.8 L46.5,364.7 L54.3,370.6 L61.8,376.5 L67.8,382.4 L71.4,388.2 L72.5,394.1 L71.5,400.0 L69.0,405.9 L65.5,411.8 L61.6,417.6 L57.7,423.5 L54.1,429.4 L51.2,435.3 L49.5,441.2 L49.6,447.1 L51.8,452.9 L56.3,458.8 L62.8,464.7 L70.2,470.6 L76.9,476.5 L81.0,482.4 L81.0,488.2 L75.8,494.1 L66.0,500.0 L53.2,505.9 L40.2,511.8 L30.3,517.6 L26.2,523.5 L29.5,529.4 L40.0,535.3 L55.3,541.2 L72.1,547.1 L86.3,552.9 L94.8,558.8 L95.6,564.7 L89.1,570.6 L76.9,576.5 L62.4,582.4 L48.7,588.2 L38.8,594.1 L34.2,600.0 L35.2,605.9 L40.6,611.8 L48.6,617.6 L57.3,623.5 L64.8,629.4 L70.0,635.3 L72.5,641.2 L72.4,647.1 L70.4,652.9 L67.1,658.8 L63.5,664.7 L59.9,670.6 L56.9,676.5 L54.6,682.4 L53.0,688.2 L52.3,694.1 L52.5,700.0 L53.7,705.9 L55.9,711.8 L59.1,717.6 L63.2,723.5 L67.8,729.4 L72.3,735.3 L75.9,741.2 L77.8,747.1 L77.3,752.9 L74.1,758.8 L68.2,764.7 L60.2,770.6 L51.1,776.5 L42.4,782.4 L35.5,788.2 L31.6,794.1 L31.4,800.0 L35.1,805.9 L41.9,811.8 L50.9,817.6 L60.4,823.5 L69.1,829.4 L75.5,835.3 L79.1,841.2 L79.6,847.1 L77.3,852.9 L73.0,858.8 L67.8,864.7 L62.5,870.6 L58.1,876.5 L54.9,882.4 L53.1,888.2 L52.8,894.1 L53.6,900.0 L55.1,905.9 L57.0,911.8 L59.0,917.6 L60.8,923.5 L62.3,929.4 L63.1,935.3 L63.5,941.2 L63.2,947.1 L62.4,952.9 L61.2,958.8 L59.9,964.7 L58.6,970.6 L57.6,976.5 L57.0,982.4 L57.1,988.2 L57.7,994.1 L58.7,1000.0"/></svg>
   </section>
 
   <!-- ══════════ MARQUEE ══════════ -->
   <div class="marquee-band">
     <div class="marquee-track" id="marquee" aria-hidden="true">
-      <span>Consultorios</span><span>Fondas</span><span>Inmobiliarias</span><span>Salones</span><span>Talleres</span>
-      <span>Despachos</span><span>Gimnasios</span><span>Veterinarias</span>
-      <span>Consultorios</span><span>Fondas</span><span>Inmobiliarias</span><span>Salones</span><span>Talleres</span>
-      <span>Despachos</span><span>Gimnasios</span><span>Veterinarias</span>
+      <span>Consultorios</span><span>Restaurantes</span><span>Inmobiliarias</span><span>Salones</span><span>Talleres</span><span>Despachos</span><span>Gimnasios</span><span>Veterinarias</span><span>Dentistas</span><span>Agencias</span>
+      <span>Consultorios</span><span>Restaurantes</span><span>Inmobiliarias</span><span>Salones</span><span>Talleres</span><span>Despachos</span><span>Gimnasios</span><span>Veterinarias</span><span>Dentistas</span><span>Agencias</span>
     </div>
   </div>
 
-  <!-- ══════════ POR QUÉ ══════════ -->
-  <section>
+  <!-- ══════════ LA DIFERENCIA, EN DATOS ══════════ -->
+  <section class="has-vline" id="datos">
+    <svg class="voice-line" viewBox="0 0 120 1000" preserveAspectRatio="none" aria-hidden="true"><path class="vl-glow vl-path" d="M60.0,0.0 L61.1,5.9 L62.1,11.8 L62.8,17.6 L63.0,23.5 L62.8,29.4 L62.2,35.3 L61.3,41.2 L60.2,47.1 L59.0,52.9 L58.0,58.8 L57.2,64.7 L56.7,70.6 L56.7,76.5 L57.1,82.4 L57.9,88.2 L59.1,94.1 L60.5,100.0 L62.0,105.9 L63.5,111.8 L64.8,117.6 L65.8,123.5 L66.2,129.4 L65.9,135.3 L64.8,141.2 L62.9,147.1 L60.0,152.9 L56.6,158.8 L52.7,164.7 L48.9,170.6 L45.6,176.5 L43.2,182.4 L42.3,188.2 L43.2,194.1 L46.0,200.0 L50.5,205.9 L56.6,211.8 L63.7,217.6 L71.0,223.5 L77.9,229.4 L83.6,235.3 L87.4,241.2 L89.0,247.1 L88.1,252.9 L84.8,258.8 L79.6,264.7 L73.0,270.6 L65.6,276.5 L58.4,282.4 L51.9,288.2 L46.7,294.1 L43.2,300.0 L41.6,305.9 L41.8,311.8 L43.5,317.6 L46.4,323.5 L50.1,329.4 L53.9,335.3 L57.7,341.2 L60.9,347.1 L63.5,352.9 L65.2,358.8 L66.1,364.7 L66.3,370.6 L65.9,376.5 L64.9,382.4 L63.7,388.2 L62.2,394.1 L60.7,400.0 L59.3,405.9 L58.0,411.8 L57.0,417.6 L56.3,423.5 L56.0,429.4 L56.1,435.3 L56.8,441.2 L57.9,447.1 L59.4,452.9 L61.3,458.8 L63.3,464.7 L65.1,470.6 L66.6,476.5 L67.2,482.4 L66.8,488.2 L65.1,494.1 L62.2,500.0 L58.2,505.9 L53.7,511.8 L49.3,517.6 L45.8,523.5 L44.2,529.4 L45.0,535.3 L48.6,541.2 L54.8,547.1 L62.8,552.9 L71.5,558.8 L79.5,564.7 L85.3,570.6 L87.6,576.5 L85.9,582.4 L80.1,588.2 L71.0,594.1 L59.8,600.0 L48.2,605.9 L38.0,611.8 L30.7,617.6 L27.3,623.5 L28.1,629.4 L32.9,635.3 L40.8,641.2 L50.5,647.1 L60.7,652.9 L70.0,658.8 L77.3,664.7 L82.1,670.6 L83.9,676.5 L83.1,682.4 L80.1,688.2 L75.5,694.1 L70.1,700.0 L64.6,705.9 L59.6,711.8 L55.5,717.6 L52.5,723.5 L50.7,729.4 L50.0,735.3 L50.3,741.2 L51.4,747.1 L52.9,752.9 L54.7,758.8 L56.6,764.7 L58.4,770.6 L60.1,776.5 L61.4,782.4 L62.5,788.2 L63.2,794.1 L63.7,800.0 L63.8,805.9 L63.7,811.8 L63.3,817.6 L62.7,823.5 L62.0,829.4 L61.1,835.3 L60.2,841.2 L59.3,847.1 L58.4,852.9 L57.7,858.8 L57.2,864.7 L57.0,870.6 L57.0,876.5 L57.3,882.4 L57.9,888.2 L58.6,894.1 L59.5,900.0 L60.5,905.9 L61.4,911.8 L62.2,917.6 L62.8,923.5 L63.0,929.4 L62.9,935.3 L62.4,941.2 L61.7,947.1 L60.7,952.9 L59.7,958.8 L58.6,964.7 L57.8,970.6 L57.2,976.5 L57.0,982.4 L57.2,988.2 L57.8,994.1 L58.8,1000.0"/><path class="vl-path" d="M60.0,0.0 L61.1,5.9 L62.1,11.8 L62.8,17.6 L63.0,23.5 L62.8,29.4 L62.2,35.3 L61.3,41.2 L60.2,47.1 L59.0,52.9 L58.0,58.8 L57.2,64.7 L56.7,70.6 L56.7,76.5 L57.1,82.4 L57.9,88.2 L59.1,94.1 L60.5,100.0 L62.0,105.9 L63.5,111.8 L64.8,117.6 L65.8,123.5 L66.2,129.4 L65.9,135.3 L64.8,141.2 L62.9,147.1 L60.0,152.9 L56.6,158.8 L52.7,164.7 L48.9,170.6 L45.6,176.5 L43.2,182.4 L42.3,188.2 L43.2,194.1 L46.0,200.0 L50.5,205.9 L56.6,211.8 L63.7,217.6 L71.0,223.5 L77.9,229.4 L83.6,235.3 L87.4,241.2 L89.0,247.1 L88.1,252.9 L84.8,258.8 L79.6,264.7 L73.0,270.6 L65.6,276.5 L58.4,282.4 L51.9,288.2 L46.7,294.1 L43.2,300.0 L41.6,305.9 L41.8,311.8 L43.5,317.6 L46.4,323.5 L50.1,329.4 L53.9,335.3 L57.7,341.2 L60.9,347.1 L63.5,352.9 L65.2,358.8 L66.1,364.7 L66.3,370.6 L65.9,376.5 L64.9,382.4 L63.7,388.2 L62.2,394.1 L60.7,400.0 L59.3,405.9 L58.0,411.8 L57.0,417.6 L56.3,423.5 L56.0,429.4 L56.1,435.3 L56.8,441.2 L57.9,447.1 L59.4,452.9 L61.3,458.8 L63.3,464.7 L65.1,470.6 L66.6,476.5 L67.2,482.4 L66.8,488.2 L65.1,494.1 L62.2,500.0 L58.2,505.9 L53.7,511.8 L49.3,517.6 L45.8,523.5 L44.2,529.4 L45.0,535.3 L48.6,541.2 L54.8,547.1 L62.8,552.9 L71.5,558.8 L79.5,564.7 L85.3,570.6 L87.6,576.5 L85.9,582.4 L80.1,588.2 L71.0,594.1 L59.8,600.0 L48.2,605.9 L38.0,611.8 L30.7,617.6 L27.3,623.5 L28.1,629.4 L32.9,635.3 L40.8,641.2 L50.5,647.1 L60.7,652.9 L70.0,658.8 L77.3,664.7 L82.1,670.6 L83.9,676.5 L83.1,682.4 L80.1,688.2 L75.5,694.1 L70.1,700.0 L64.6,705.9 L59.6,711.8 L55.5,717.6 L52.5,723.5 L50.7,729.4 L50.0,735.3 L50.3,741.2 L51.4,747.1 L52.9,752.9 L54.7,758.8 L56.6,764.7 L58.4,770.6 L60.1,776.5 L61.4,782.4 L62.5,788.2 L63.2,794.1 L63.7,800.0 L63.8,805.9 L63.7,811.8 L63.3,817.6 L62.7,823.5 L62.0,829.4 L61.1,835.3 L60.2,841.2 L59.3,847.1 L58.4,852.9 L57.7,858.8 L57.2,864.7 L57.0,870.6 L57.0,876.5 L57.3,882.4 L57.9,888.2 L58.6,894.1 L59.5,900.0 L60.5,905.9 L61.4,911.8 L62.2,917.6 L62.8,923.5 L63.0,929.4 L62.9,935.3 L62.4,941.2 L61.7,947.1 L60.7,952.9 L59.7,958.8 L58.6,964.7 L57.8,970.6 L57.2,976.5 L57.0,982.4 L57.2,988.2 L57.8,994.1 L58.8,1000.0"/></svg>
     <div class="wrap">
       <div class="section-head">
-        <span class="bracket js-fade" data-scramble><span class="brace">{</span> <span class="sc">Por qué automatizar</span> <span class="brace">}</span></span>
         <h2 class="t-heading js-mask" data-split="chars">Cada llamada sin contestar es un cliente que se va.</h2>
       </div>
       <svg class="hairline-svg js-draw" preserveAspectRatio="none" aria-hidden="true"><line x1="0" y1="0.5" x2="100%" y2="0.5"/></svg>
-      <div class="tool-block" style="padding:var(--sp-76) 0">
-        <div class="tool-visual" aria-hidden="true">
-          <span class="glow glow-green" style="width:62%;aspect-ratio:1;left:19%;top:19%"></span>
-          <svg class="blob js-parallax" viewBox="0 0 200 200" data-morph><path d="M100,8 C143,8 180,34 192,74 C204,114 188,157 154,180 C120,203 74,199 45,176 C16,153 4,112 14,73 C24,34 57,8 100,8 Z" fill="url(#gGreen)"/></svg>
+      <p class="t-body-lg js-words" style="color:var(--ink);max-width:52ch;margin-bottom:var(--sp-48)">
+        Un negocio chico no puede tener a alguien pegado al teléfono todo el día.
+        Esto es lo que cambia cuando alguien — Sofía — siempre contesta.
+      </p>
+
+        <!-- ═══ GRÁFICA A: un día de llamadas ═══ -->
+        <div class="chart-card js-fade">
+          <div class="chart-head">
+            <h3 class="t-subhead">Un día de llamadas</h3>
+            <div class="chart-legend"><span class="lg lg-man">Manual</span><span class="lg lg-sof">Con Sofía</span></div>
+          </div>
+          <svg id="chartA" viewBox="0 0 800 300" aria-label="Capacidad de respuesta a lo largo del día: manual contra automatizada">
+            <rect class="cA-night" x="60" y="40" width="240" height="220"/>
+            <rect class="cA-night" x="660" y="40" width="120" height="220"/>
+            <line class="cA-grid" x1="60" y1="260" x2="780" y2="260"/>
+            <line class="cA-grid" x1="60" y1="154" x2="780" y2="154"/>
+            <line class="cA-grid" x1="60" y1="48" x2="780" y2="48"/>
+            <text class="cA-ax" x="54" y="264" text-anchor="end">0%</text>
+            <text class="cA-ax" x="54" y="158" text-anchor="end">50%</text>
+            <text class="cA-ax" x="54" y="52" text-anchor="end">100%</text>
+            <text class="cA-ax" x="60" y="282">12 am</text>
+            <text class="cA-ax" x="240" y="282" text-anchor="middle">6 am</text>
+            <text class="cA-ax" x="420" y="282" text-anchor="middle">12 pm</text>
+            <text class="cA-ax" x="600" y="282" text-anchor="middle">6 pm</text>
+            <text class="cA-ax" x="780" y="282" text-anchor="end">12 am</text>
+            <path id="cAArea" class="cA-area" d="M60.0,56.5 L780.0,56.5 L780.0,260 L60.0,260 Z"/>
+            <path id="cAManual" class="cA-manual" d="M60.0,260.0 L63.6,260.0 L67.2,260.0 L70.8,260.0 L74.4,260.0 L78.0,260.0 L81.6,260.0 L85.2,260.0 L88.8,260.0 L92.4,260.0 L96.0,260.0 L99.6,260.0 L103.2,260.0 L106.8,260.0 L110.4,260.0 L114.0,260.0 L117.6,260.0 L121.2,260.0 L124.8,260.0 L128.4,260.0 L132.0,260.0 L135.6,260.0 L139.2,260.0 L142.8,260.0 L146.4,260.0 L150.0,260.0 L153.6,260.0 L157.2,260.0 L160.8,260.0 L164.4,260.0 L168.0,260.0 L171.6,260.0 L175.2,260.0 L178.8,260.0 L182.4,260.0 L186.0,260.0 L189.6,260.0 L193.2,260.0 L196.8,260.0 L200.4,260.0 L204.0,260.0 L207.6,260.0 L211.2,260.0 L214.8,260.0 L218.4,260.0 L222.0,260.0 L225.6,260.0 L229.2,260.0 L232.8,260.0 L236.4,260.0 L240.0,260.0 L243.6,260.0 L247.2,260.0 L250.8,260.0 L254.4,260.0 L258.0,260.0 L261.6,260.0 L265.2,260.0 L268.8,260.0 L272.4,260.0 L276.0,260.0 L279.6,260.0 L283.2,260.0 L286.8,260.0 L290.4,260.0 L294.0,260.0 L297.6,260.0 L301.2,260.0 L304.8,260.0 L308.4,260.0 L312.0,260.0 L315.6,260.0 L319.2,260.0 L322.8,257.9 L326.4,243.0 L330.0,218.4 L333.6,189.4 L337.2,161.2 L340.8,139.2 L344.4,128.8 L348.0,128.6 L351.6,128.8 L355.2,129.0 L358.8,129.3 L362.4,129.7 L366.0,130.1 L369.6,130.6 L373.2,131.0 L376.8,131.4 L380.4,131.9 L384.0,132.2 L387.6,132.5 L391.2,132.7 L394.8,132.8 L398.4,137.2 L402.0,155.2 L405.6,177.6 L409.2,193.9 L412.8,194.0 L416.4,178.9 L420.0,157.9 L423.6,141.1 L427.2,137.0 L430.8,137.1 L434.4,137.3 L438.0,137.6 L441.6,138.0 L445.2,138.4 L448.8,138.8 L452.4,139.3 L456.0,139.7 L459.6,140.1 L463.2,140.5 L466.8,140.8 L470.4,141.1 L474.0,141.2 L477.6,141.9 L481.2,164.7 L484.8,203.9 L488.4,236.4 L492.0,243.0 L495.6,243.0 L499.2,243.0 L502.8,243.0 L506.4,243.0 L510.0,243.0 L513.6,243.0 L517.2,243.0 L520.8,243.0 L524.4,239.4 L528.0,223.3 L531.6,199.6 L535.2,174.4 L538.8,153.8 L542.4,143.6 L546.0,143.5 L549.6,144.0 L553.2,144.8 L556.8,145.8 L560.4,146.9 L564.0,148.2 L567.6,149.4 L571.2,150.7 L574.8,151.8 L578.4,152.8 L582.0,153.5 L585.6,153.9 L589.2,154.9 L592.8,166.4 L596.4,187.3 L600.0,212.3 L603.6,236.2 L607.2,253.8 L610.8,260.0 L614.4,260.0 L618.0,260.0 L621.6,260.0 L625.2,260.0 L628.8,260.0 L632.4,260.0 L636.0,260.0 L639.6,260.0 L643.2,260.0 L646.8,260.0 L650.4,260.0 L654.0,260.0 L657.6,260.0 L661.2,260.0 L664.8,260.0 L668.4,260.0 L672.0,260.0 L675.6,260.0 L679.2,260.0 L682.8,260.0 L686.4,260.0 L690.0,260.0 L693.6,260.0 L697.2,260.0 L700.8,260.0 L704.4,260.0 L708.0,260.0 L711.6,260.0 L715.2,260.0 L718.8,260.0 L722.4,260.0 L726.0,260.0 L729.6,260.0 L733.2,260.0 L736.8,260.0 L740.4,260.0 L744.0,260.0 L747.6,260.0 L751.2,260.0 L754.8,260.0 L758.4,260.0 L762.0,260.0 L765.6,260.0 L769.2,260.0 L772.8,260.0 L776.4,260.0 L780.0,260.0"/>
+            <path id="cASofiaGlow" class="cA-sofia cA-glow" d="M60.0,56.5 L780.0,56.5"/>
+            <path id="cASofia" class="cA-sofia" d="M60.0,56.5 L780.0,56.5"/>
+            <g id="cAMark">
+              <line class="cA-lead" x1="754" y1="56" x2="740" y2="82"/>
+              <circle class="cA-dot" cx="754" cy="56" r="5"/>
+              <text class="cA-tag" x="736" y="96" text-anchor="end">23:07 · cita agendada</text>
+            </g>
+          </svg>
+          <p class="chart-foot">Capacidad de respuesta a lo largo del día. Cobertura horaria: escenario ilustrativo (L–V, 9–18 con comida) frente a 24/7.</p>
         </div>
-        <div class="tool-content">
-          <p class="t-body-lg js-words" style="color:var(--ink);max-width:46ch">
-            Un negocio chico no puede tener a alguien pegado al teléfono todo el día.
-            Pero tampoco puede darse el lujo de que suene y nadie conteste.
-          </p>
-          <p class="t-body-lg js-words" style="margin-top:var(--sp-24)">
-            Aquí es donde entra la automatización: la IA contesta, entiende, agenda y confirma —
-            en español mexicano natural, sin sonar a robot y sin que nadie de tu equipo lo toque.
-          </p>
+
+        <!-- ═══ MÉTRICAS ═══ -->
+        <div class="data-grid">
+          <div class="data-card js-fade">
+            <div class="dc-label">Horas por semana con alguien que contesta</div>
+            <div class="dc-bar"><span class="dc-name">Manual</span><span class="bar"><i class="bar-fill bf-man" style="width:27%"></i></span><span class="dc-val"><span data-count="45" data-suffix=" h">0</span></span></div>
+            <div class="dc-bar"><span class="dc-name">Sofía</span><span class="bar"><i class="bar-fill bf-sof" style="width:100%"></i></span><span class="dc-val"><span data-count="168" data-suffix=" h">0</span></span></div>
+          </div>
+          <div class="data-card js-fade">
+            <div class="dc-label">Primera respuesta al cliente</div>
+            <div class="dc-big"><s class="dc-old">42 h</s> <span class="dc-arrow">&rarr;</span> <span class="dc-new">1<small>er</small> timbre</span></div>
+            <p class="dc-sub">42 horas fue el promedio real de respuesta en una auditoría a 2,241 empresas. Sofía contesta antes del segundo timbre.</p>
+          </div>
+          <div class="data-card js-fade">
+            <div class="dc-label">Clientes recuperados por responder ya</div>
+            <div class="dc-big"><span class="dc-new">&times;<span data-count="7">0</span></span></div>
+            <p class="dc-sub">Más probabilidad de convertir un contacto si respondes en la primera hora — y &times;60 frente a responder al día siguiente.</p>
+          </div>
         </div>
-      </div>
+        <p class="t-caption muted data-src js-fade">Fuente: Oldroyd, McElheran y Elkington, "The Short Life of Online Sales Leads", Harvard Business Review (2011).</p>
+
+        <!-- ═══ FLUJO: cómo se recupera un cliente ═══ -->
+        <h3 class="t-subhead flow-head js-mask" data-split="chars">Cómo se recupera un cliente</h3>
+        <div class="flow" id="flowRec">
+          <svg class="flow-line" viewBox="0 0 1000 40" preserveAspectRatio="none" aria-hidden="true"><path id="flowPath" d="M0.0,20.0 L6.2,21.9 L12.5,23.0 L18.8,22.6 L25.0,20.9 L31.2,18.9 L37.5,17.3 L43.8,17.1 L50.0,18.2 L56.2,20.2 L62.5,22.1 L68.8,23.0 L75.0,22.4 L81.2,20.7 L87.5,18.6 L93.8,17.2 L100.0,17.1 L106.2,18.4 L112.5,20.5 L118.8,22.3 L125.0,23.0 L131.2,22.3 L137.5,20.5 L143.8,18.4 L150.0,17.1 L156.2,17.1 L162.5,18.5 L168.8,20.8 L175.0,22.7 L181.2,23.5 L187.5,22.6 L193.8,20.3 L200.0,17.5 L206.2,15.6 L212.5,15.6 L218.8,17.9 L225.0,21.8 L231.2,25.5 L237.5,27.0 L243.8,25.1 L250.0,20.0 L256.2,14.1 L262.5,10.3 L268.8,11.1 L275.0,16.6 L281.2,24.4 L287.5,30.4 L293.8,31.6 L300.0,27.1 L306.2,19.1 L312.5,11.7 L318.8,8.6 L325.0,11.1 L331.2,17.6 L337.5,24.4 L343.8,28.4 L350.0,28.0 L356.2,24.1 L362.5,18.9 L368.8,15.1 L375.0,14.1 L381.2,15.9 L387.5,19.2 L393.8,22.4 L400.0,24.0 L406.2,23.6 L412.5,21.7 L418.8,19.2 L425.0,17.2 L431.2,16.7 L437.5,17.7 L443.8,19.8 L450.0,21.8 L456.2,23.0 L462.5,22.8 L468.8,21.2 L475.0,19.0 L481.2,17.3 L487.5,16.8 L493.8,17.8 L500.0,20.0 L506.2,22.4 L512.5,23.8 L518.8,23.5 L525.0,21.4 L531.2,18.1 L537.5,15.3 L543.8,14.3 L550.0,16.3 L556.2,20.5 L562.5,25.4 L568.8,28.3 L575.0,27.3 L581.2,22.3 L587.5,15.3 L593.8,10.0 L600.0,9.2 L606.2,13.9 L612.5,21.9 L618.8,29.1 L625.0,32.0 L631.2,29.0 L637.5,21.8 L643.8,14.2 L650.0,10.0 L656.2,10.8 L662.5,15.8 L668.8,22.0 L675.0,26.4 L681.2,27.2 L687.5,24.7 L693.8,20.5 L700.0,16.8 L706.2,15.1 L712.5,15.9 L718.8,18.4 L725.0,21.2 L731.2,23.2 L737.5,23.5 L743.8,22.2 L750.0,20.0 L756.2,17.9 L762.5,16.9 L768.8,17.4 L775.0,19.1 L781.2,21.2 L787.5,22.7 L793.8,22.9 L800.0,21.8 L806.2,19.8 L812.5,17.9 L818.8,17.0 L825.0,17.6 L831.2,19.3 L837.5,21.4 L843.8,22.8 L850.0,22.9 L856.2,21.6 L862.5,19.5 L868.8,17.7 L875.0,17.0 L881.2,17.7 L887.5,19.5 L893.8,21.6 L900.0,22.9 L906.2,22.8 L912.5,21.4 L918.8,19.3 L925.0,17.6 L931.2,17.0 L937.5,17.9 L943.8,19.8 L950.0,21.8 L956.2,22.9 L962.5,22.7 L968.8,21.1 L975.0,19.1 L981.2,17.4 L987.5,17.0 L993.8,18.1 L1000.0,20.0"/></svg>
+          <div class="flow-step js-fade"><span class="fs-time">23:07</span><h4>Un cliente llama</h4><p>Fuera de horario. Antes, esta llamada se iba al buzón.</p></div>
+          <div class="flow-step js-fade"><span class="fs-time">23:07</span><h4>Sofía contesta al primer timbre</h4><p>Escucha, resuelve la duda y propone horarios reales.</p></div>
+          <div class="flow-step js-fade"><span class="fs-time">23:09</span><h4>Cita agendada y confirmada</h4><p>Directo a tu Google Calendar, con confirmación por WhatsApp.</p></div>
+          <div class="flow-step js-fade"><span class="fs-time">8:00 am</span><h4>Cliente recuperado</h4><p>Tú llegas y el día ya trae una cita más.</p></div>
+        </div>
     </div>
   </section>
 
   <!-- ══════════ MANIFIESTO (G2) ══════════ -->
-  <section class="manifesto" id="manifiesto">
+  <section class="manifesto has-vline" id="manifiesto">
+    <svg class="voice-line" viewBox="0 0 120 1000" preserveAspectRatio="none" aria-hidden="true"><path class="vl-glow vl-path" d="M60.0,0.0 L61.2,5.9 L62.3,11.8 L62.9,17.6 L63.0,23.5 L62.6,29.4 L61.7,35.3 L60.5,41.2 L59.2,47.1 L58.0,52.9 L57.0,58.8 L56.4,64.7 L56.4,70.6 L57.0,76.5 L58.1,82.4 L59.8,88.2 L61.8,94.1 L64.1,100.0 L66.1,105.9 L67.6,111.8 L68.2,117.6 L67.5,123.5 L65.3,129.4 L61.6,135.3 L56.7,141.2 L51.2,147.1 L46.0,152.9 L42.0,158.8 L39.9,164.7 L40.5,170.6 L43.8,176.5 L49.6,182.4 L57.1,188.2 L65.2,194.1 L72.9,200.0 L78.9,205.9 L82.7,211.8 L83.6,217.6 L81.9,223.5 L78.0,229.4 L72.6,235.3 L66.6,241.2 L60.8,247.1 L55.9,252.9 L52.3,258.8 L50.2,264.7 L49.6,270.6 L50.1,276.5 L51.5,282.4 L53.5,288.2 L55.7,294.1 L57.8,300.0 L59.8,305.9 L61.5,311.8 L63.0,317.6 L64.2,323.5 L65.1,329.4 L65.6,335.3 L65.6,341.2 L65.1,347.1 L63.7,352.9 L61.5,358.8 L58.4,364.7 L54.5,370.6 L50.3,376.5 L46.5,382.4 L43.9,388.2 L43.4,394.1 L45.7,400.0 L51.0,405.9 L59.0,411.8 L68.7,417.6 L78.3,423.5 L85.9,429.4 L89.8,435.3 L88.7,441.2 L82.6,447.1 L72.5,452.9 L60.2,458.8 L48.3,464.7 L39.0,470.6 L34.2,476.5 L34.4,482.4 L39.0,488.2 L46.8,494.1 L55.6,500.0 L63.6,505.9 L69.4,511.8 L72.4,517.6 L72.5,523.5 L70.4,529.4 L67.0,535.3 L63.2,541.2 L59.7,547.1 L57.0,552.9 L55.3,558.8 L54.6,564.7 L54.7,570.6 L55.5,576.5 L57.0,582.4 L59.0,588.2 L61.4,594.1 L63.9,600.0 L66.3,605.9 L68.1,611.8 L69.0,617.6 L68.4,623.5 L66.0,629.4 L61.9,635.3 L56.5,641.2 L50.4,647.1 L44.7,652.9 L40.4,658.8 L38.5,664.7 L39.7,670.6 L44.1,676.5 L51.2,682.4 L59.9,688.2 L69.0,694.1 L77.1,700.0 L82.9,705.9 L85.7,711.8 L85.4,717.6 L82.1,723.5 L76.6,729.4 L69.9,735.3 L63.0,741.2 L56.9,747.1 L52.2,752.9 L49.2,758.8 L47.9,764.7 L48.2,770.6 L49.6,776.5 L51.7,782.4 L54.2,788.2 L56.7,794.1 L59.0,800.0 L61.2,805.9 L63.1,811.8 L64.8,817.6 L66.3,823.5 L67.6,829.4 L68.3,835.3 L68.3,841.2 L67.2,847.1 L64.7,852.9 L60.9,858.8 L55.9,864.7 L50.4,870.6 L45.2,876.5 L41.4,882.4 L39.8,888.2 L41.1,894.1 L45.2,900.0 L51.4,905.9 L58.8,911.8 L65.9,917.6 L71.4,923.5 L74.6,929.4 L75.1,935.3 L73.2,941.2 L69.6,947.1 L65.4,952.9 L61.3,958.8 L58.0,964.7 L55.8,970.6 L54.8,976.5 L54.9,982.4 L55.6,988.2 L56.9,994.1 L58.4,1000.0"/><path class="vl-path" d="M60.0,0.0 L61.2,5.9 L62.3,11.8 L62.9,17.6 L63.0,23.5 L62.6,29.4 L61.7,35.3 L60.5,41.2 L59.2,47.1 L58.0,52.9 L57.0,58.8 L56.4,64.7 L56.4,70.6 L57.0,76.5 L58.1,82.4 L59.8,88.2 L61.8,94.1 L64.1,100.0 L66.1,105.9 L67.6,111.8 L68.2,117.6 L67.5,123.5 L65.3,129.4 L61.6,135.3 L56.7,141.2 L51.2,147.1 L46.0,152.9 L42.0,158.8 L39.9,164.7 L40.5,170.6 L43.8,176.5 L49.6,182.4 L57.1,188.2 L65.2,194.1 L72.9,200.0 L78.9,205.9 L82.7,211.8 L83.6,217.6 L81.9,223.5 L78.0,229.4 L72.6,235.3 L66.6,241.2 L60.8,247.1 L55.9,252.9 L52.3,258.8 L50.2,264.7 L49.6,270.6 L50.1,276.5 L51.5,282.4 L53.5,288.2 L55.7,294.1 L57.8,300.0 L59.8,305.9 L61.5,311.8 L63.0,317.6 L64.2,323.5 L65.1,329.4 L65.6,335.3 L65.6,341.2 L65.1,347.1 L63.7,352.9 L61.5,358.8 L58.4,364.7 L54.5,370.6 L50.3,376.5 L46.5,382.4 L43.9,388.2 L43.4,394.1 L45.7,400.0 L51.0,405.9 L59.0,411.8 L68.7,417.6 L78.3,423.5 L85.9,429.4 L89.8,435.3 L88.7,441.2 L82.6,447.1 L72.5,452.9 L60.2,458.8 L48.3,464.7 L39.0,470.6 L34.2,476.5 L34.4,482.4 L39.0,488.2 L46.8,494.1 L55.6,500.0 L63.6,505.9 L69.4,511.8 L72.4,517.6 L72.5,523.5 L70.4,529.4 L67.0,535.3 L63.2,541.2 L59.7,547.1 L57.0,552.9 L55.3,558.8 L54.6,564.7 L54.7,570.6 L55.5,576.5 L57.0,582.4 L59.0,588.2 L61.4,594.1 L63.9,600.0 L66.3,605.9 L68.1,611.8 L69.0,617.6 L68.4,623.5 L66.0,629.4 L61.9,635.3 L56.5,641.2 L50.4,647.1 L44.7,652.9 L40.4,658.8 L38.5,664.7 L39.7,670.6 L44.1,676.5 L51.2,682.4 L59.9,688.2 L69.0,694.1 L77.1,700.0 L82.9,705.9 L85.7,711.8 L85.4,717.6 L82.1,723.5 L76.6,729.4 L69.9,735.3 L63.0,741.2 L56.9,747.1 L52.2,752.9 L49.2,758.8 L47.9,764.7 L48.2,770.6 L49.6,776.5 L51.7,782.4 L54.2,788.2 L56.7,794.1 L59.0,800.0 L61.2,805.9 L63.1,811.8 L64.8,817.6 L66.3,823.5 L67.6,829.4 L68.3,835.3 L68.3,841.2 L67.2,847.1 L64.7,852.9 L60.9,858.8 L55.9,864.7 L50.4,870.6 L45.2,876.5 L41.4,882.4 L39.8,888.2 L41.1,894.1 L45.2,900.0 L51.4,905.9 L58.8,911.8 L65.9,917.6 L71.4,923.5 L74.6,929.4 L75.1,935.3 L73.2,941.2 L69.6,947.1 L65.4,952.9 L61.3,958.8 L58.0,964.7 L55.8,970.6 L54.8,976.5 L54.9,982.4 L55.6,988.2 L56.9,994.1 L58.4,1000.0"/></svg>
     <div class="manifesto-pin">
       <div class="wrap" style="width:100%;position:relative">
-        <p class="t-heading manifesto-text" id="manifestoText">Cada llamada que no contestas es un cliente que ya llamó a otro. La IA no se cansa, no come, no se va de vacaciones <span id="mfEnd">y no deja sonar el teléfono.</span></p>
-        <div class="manifesto-meter" aria-hidden="true">
-          <span class="pct"><span id="mfPct">0</span>%</span>
-          <span class="rail"><i id="mfRail"></i></span>
-        </div>
+        <p class="t-heading manifesto-text" id="manifestoText">Cada llamada que no contestas es un cliente que ya llamó a otro. Nuestra asistente no se cansa, no come, no se va de vacaciones <span id="mfEnd">y no deja sonar el teléfono.</span></p>
+        <span class="mf-pct-tag" aria-hidden="true"><span id="mfPct">0</span>%</span>
       </div>
     </div>
   </section>
@@ -747,16 +1022,17 @@ html.js .js-mask .split-line { overflow: hidden; }
               <svg class="blob js-parallax" viewBox="0 0 200 200" data-morph><path d="M104,12 C150,6 186,42 194,86 C202,130 176,168 138,186 C100,204 58,192 33,160 C8,128 8,84 32,52 C56,20 58,18 104,12 Z" fill="url(#gOrange)"/></svg>
             </div>
             <div class="tool-content">
-              <span class="tag-status js-fade"><span class="dot"></span>En producción</span>
-              <span class="cat cat-voz js-fade" data-scramble><span class="sc">Voz</span></span>
+              <svg class="mini-line" viewBox="0 0 220 44" aria-hidden="true"><path d="M0.0,22.0 L1.6,29.0 L3.1,33.1 L4.7,31.9 L6.3,25.3 L7.9,16.3 L9.4,9.5 L11.0,8.6 L12.6,14.5 L14.1,24.7 L15.7,34.1 L17.3,37.8 L18.9,33.7 L20.4,23.5 L22.0,12.2 L23.6,5.6 L25.1,7.1 L26.7,16.0 L28.3,28.0 L29.9,36.9 L31.4,38.4 L33.0,31.8 L34.6,20.5 L36.1,10.3 L37.7,6.2 L39.3,9.9 L40.9,19.3 L42.4,29.5 L44.0,35.4 L45.6,34.5 L47.1,27.7 L48.7,18.7 L50.3,12.1 L51.9,10.8 L53.4,15.0 L55.0,22.0 L56.6,28.2 L58.1,30.7 L59.7,28.8 L61.3,24.0 L62.9,19.0 L64.4,16.1 L66.0,16.4 L67.6,19.2 L69.1,22.9 L70.7,25.5 L72.3,26.2 L73.9,24.8 L75.4,22.3 L77.0,20.0 L78.6,18.9 L80.1,19.3 L81.7,20.9 L83.3,23.1 L84.9,24.7 L86.4,25.1 L88.0,24.0 L89.6,21.7 L91.1,19.2 L92.7,17.9 L94.3,18.5 L95.9,21.1 L97.4,24.8 L99.0,27.6 L100.6,27.9 L102.1,25.0 L103.7,20.0 L105.3,15.2 L106.9,13.4 L108.4,15.8 L110.0,22.0 L111.6,29.0 L113.1,33.1 L114.7,31.9 L116.3,25.3 L117.9,16.4 L119.4,9.5 L121.0,8.6 L122.6,14.5 L124.1,24.7 L125.7,34.1 L127.3,37.8 L128.9,33.7 L130.4,23.5 L132.0,12.2 L133.6,5.6 L135.1,7.1 L136.7,16.0 L138.3,28.0 L139.9,36.9 L141.4,38.4 L143.0,31.8 L144.6,20.5 L146.1,10.3 L147.7,6.2 L149.3,9.9 L150.9,19.3 L152.4,29.5 L154.0,35.4 L155.6,34.5 L157.1,27.7 L158.7,18.7 L160.3,12.1 L161.9,10.8 L163.4,15.0 L165.0,22.0 L166.6,28.2 L168.1,30.7 L169.7,28.8 L171.3,24.0 L172.9,19.0 L174.4,16.1 L176.0,16.4 L177.6,19.2 L179.1,22.9 L180.7,25.6 L182.3,26.2 L183.9,24.8 L185.4,22.3 L187.0,20.0 L188.6,18.9 L190.1,19.3 L191.7,20.9 L193.3,23.1 L194.9,24.7 L196.4,25.1 L198.0,24.0 L199.6,21.7 L201.1,19.2 L202.7,17.9 L204.3,18.5 L205.9,21.1 L207.4,24.8 L209.0,27.6 L210.6,27.9 L212.1,25.0 L213.7,20.0 L215.3,15.2 L216.9,13.4 L218.4,15.9 L220.0,22.0"/></svg>
+              <span class="tag-status js-fade" style="--dot:var(--orangey)"><span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span>En producción</span>
+              <span class="cat cat-voz js-fade">Voz</span>
               <h3 class="t-subhead js-mask" data-split="chars">Sofía contesta por ti</h3>
               <p class="t-body-lg js-fade">Atiende cada llamada, agenda citas directo en tu calendario y resuelve dudas — como si fuera parte de tu equipo.</p>
               <ul class="tool-list js-list" style="--dot:var(--orangey)">
                 <li>Agenda, cancela y reprograma citas automáticamente</li>
                 <li>Conectada a Google Calendar en tiempo real</li>
                 <li>Panel con historial de llamadas y transcripciones</li>
-                <li>Disponible 24/7, incluso fuera de horario</li>
               </ul>
+              <p class="punch js-punch" style="--pc:var(--orangey)">Disponible 24/7, incluso fuera de horario.</p>
               <a href="#contacto" class="pill magnetic js-fade" data-roll="Ver demo de voz">Ver demo de voz <span class="pill-arrow">&rarr;</span></a>
             </div>
           </div>
@@ -773,8 +1049,9 @@ html.js .js-mask .split-line { overflow: hidden; }
               <svg class="blob js-parallax" viewBox="0 0 200 200" data-morph><path d="M96,6 C138,14 178,30 190,70 C202,110 196,152 162,178 C128,204 80,206 50,182 C20,158 10,116 18,76 C26,36 54,-2 96,6 Z" fill="url(#gGreen)"/></svg>
             </div>
             <div class="tool-content">
-              <span class="tag-status js-fade"><span class="dot"></span>En producción</span>
-              <span class="cat cat-wa js-fade" data-scramble><span class="sc">WhatsApp</span></span>
+              <svg class="mini-line" viewBox="0 0 220 44" aria-hidden="true"><path d="M0.0,22.0 L1.6,35.4 L3.1,36.7 L4.7,24.9 L6.3,10.4 L7.9,6.4 L9.4,21.1 L11.0,23.5 L12.6,24.5 L14.1,23.3 L15.7,20.9 L17.3,19.5 L18.9,20.4 L20.4,22.7 L22.0,24.4 L23.6,24.0 L25.1,21.8 L26.7,19.8 L28.3,7.9 L29.9,20.6 L31.4,34.5 L33.0,37.2 L34.6,26.3 L36.1,11.5 L37.7,19.5 L39.3,20.9 L40.9,23.3 L42.4,24.5 L44.0,23.5 L45.6,21.1 L47.1,19.6 L48.7,20.2 L50.3,22.4 L51.9,24.3 L53.4,24.1 L55.0,22.0 L56.6,8.6 L58.1,7.3 L59.7,19.1 L61.3,33.6 L62.9,37.6 L64.4,22.9 L66.0,20.5 L67.6,19.5 L69.1,20.7 L70.7,23.1 L72.3,24.5 L73.9,23.6 L75.4,21.3 L77.0,19.6 L78.6,20.0 L80.1,22.2 L81.7,24.2 L83.3,36.1 L84.9,23.4 L86.4,9.5 L88.0,6.8 L89.6,17.7 L91.1,32.5 L92.7,24.5 L94.3,23.1 L95.9,20.7 L97.4,19.5 L99.0,20.5 L100.6,22.9 L102.1,24.4 L103.7,23.8 L105.3,21.6 L106.9,19.7 L108.4,19.9 L110.0,22.0 L111.6,35.4 L113.1,36.7 L114.7,24.9 L116.3,10.4 L117.9,6.4 L119.4,21.1 L121.0,23.5 L122.6,24.5 L124.1,23.3 L125.7,20.9 L127.3,19.5 L128.9,20.4 L130.4,22.7 L132.0,24.4 L133.6,24.0 L135.1,21.8 L136.7,19.8 L138.3,7.9 L139.9,20.6 L141.4,34.5 L143.0,37.2 L144.6,26.3 L146.1,11.5 L147.7,19.5 L149.3,20.9 L150.9,23.3 L152.4,24.5 L154.0,23.5 L155.6,21.1 L157.1,19.6 L158.7,20.2 L160.3,22.4 L161.9,24.3 L163.4,24.1 L165.0,22.0 L166.6,8.6 L168.1,7.3 L169.7,19.1 L171.3,33.6 L172.9,37.6 L174.4,22.9 L176.0,20.5 L177.6,19.5 L179.1,20.7 L180.7,23.1 L182.3,24.5 L183.9,23.6 L185.4,21.3 L187.0,19.6 L188.6,20.0 L190.1,22.2 L191.7,24.2 L193.3,36.1 L194.9,23.4 L196.4,9.5 L198.0,6.8 L199.6,17.7 L201.1,32.5 L202.7,24.5 L204.3,23.1 L205.9,20.7 L207.4,19.5 L209.0,20.5 L210.6,22.9 L212.1,24.4 L213.7,23.8 L215.3,21.6 L216.9,19.7 L218.4,19.9 L220.0,22.0"/></svg>
+              <span class="tag-status js-fade" style="--dot:var(--light-green)"><span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span>En producción</span>
+              <span class="cat cat-wa js-fade">WhatsApp</span>
               <h3 class="t-subhead js-mask" data-split="chars">Tu WhatsApp, trabajando solo</h3>
               <p class="t-body-lg js-fade">Agenda citas, contesta preguntas frecuentes y toma pedidos — todo dentro de WhatsApp, sin que tu cliente descargue nada.</p>
               <ul class="tool-list js-list" style="--dot:var(--light-green)">
@@ -783,6 +1060,7 @@ html.js .js-mask .split-line { overflow: hidden; }
                 <li>Panel de administración con historial por negocio</li>
                 <li>Integración con Google Calendar</li>
               </ul>
+              <p class="punch js-punch" style="--pc:var(--light-green)">Las posibilidades son infinitas.</p>
               <a href="#contacto" class="pill magnetic js-fade" data-roll="Ver demo de WhatsApp">Ver demo de WhatsApp <span class="pill-arrow">&rarr;</span></a>
             </div>
           </div>
@@ -799,8 +1077,9 @@ html.js .js-mask .split-line { overflow: hidden; }
               <svg class="blob js-parallax" viewBox="0 0 200 200" data-morph><path d="M100,14 C146,10 170,48 186,82 C202,116 198,156 166,180 C134,204 86,202 54,184 C22,166 2,124 12,84 C22,44 54,18 100,14 Z" fill="url(#gBlue)"/></svg>
             </div>
             <div class="tool-content">
-              <span class="tag-status js-fade"><span class="dot"></span>En producción</span>
-              <span class="cat cat-inmo js-fade" data-scramble><span class="sc">Inmobiliaria</span></span>
+              <svg class="mini-line" viewBox="0 0 220 44" aria-hidden="true"><path d="M0.0,22.0 L1.6,23.5 L3.1,24.4 L4.7,24.4 L6.3,23.5 L7.9,22.0 L9.4,20.5 L11.0,19.6 L12.6,19.6 L14.1,20.5 L15.7,22.0 L17.3,23.5 L18.9,24.4 L20.4,24.4 L22.0,23.5 L23.6,22.0 L25.1,20.5 L26.7,19.6 L28.3,19.6 L29.9,20.5 L31.4,22.0 L33.0,23.5 L34.6,24.4 L36.1,24.4 L37.7,23.5 L39.3,22.0 L40.9,20.5 L42.4,19.6 L44.0,19.6 L45.6,20.5 L47.1,22.0 L48.7,23.6 L50.3,24.5 L51.9,24.6 L53.4,23.6 L55.0,22.0 L56.6,20.3 L58.1,19.1 L59.7,19.0 L61.3,20.0 L62.9,22.0 L64.4,24.2 L66.0,25.7 L67.6,26.0 L69.1,24.7 L70.7,22.0 L72.3,18.9 L73.9,16.6 L75.4,16.1 L77.0,18.0 L78.6,22.0 L80.1,26.7 L81.7,30.2 L83.3,30.9 L84.9,27.9 L86.4,22.0 L88.0,15.1 L89.6,10.1 L91.1,9.3 L92.7,13.7 L94.3,22.0 L95.9,31.2 L97.4,37.6 L99.0,38.2 L100.6,32.4 L102.1,22.0 L103.7,11.0 L105.3,3.9 L106.9,3.7 L108.4,10.6 L110.0,22.0 L111.6,33.4 L113.1,40.3 L114.7,40.1 L116.3,33.0 L117.9,22.0 L119.4,11.6 L121.0,5.8 L122.6,6.4 L124.1,12.8 L125.7,22.0 L127.3,30.3 L128.9,34.7 L130.4,33.9 L132.0,28.9 L133.6,22.0 L135.1,16.1 L136.7,13.1 L138.3,13.8 L139.9,17.3 L141.4,22.0 L143.0,26.0 L144.6,27.9 L146.1,27.4 L147.7,25.1 L149.3,22.0 L150.9,19.3 L152.4,18.0 L154.0,18.3 L155.6,19.8 L157.1,22.0 L158.7,24.0 L160.3,25.0 L161.9,24.9 L163.4,23.7 L165.0,22.0 L166.6,20.4 L168.1,19.4 L169.7,19.5 L171.3,20.4 L172.9,22.0 L174.4,23.5 L176.0,24.4 L177.6,24.4 L179.1,23.5 L180.7,22.0 L182.3,20.5 L183.9,19.6 L185.4,19.6 L187.0,20.5 L188.6,22.0 L190.1,23.5 L191.7,24.4 L193.3,24.4 L194.9,23.5 L196.4,22.0 L198.0,20.5 L199.6,19.6 L201.1,19.6 L202.7,20.5 L204.3,22.0 L205.9,23.5 L207.4,24.4 L209.0,24.4 L210.6,23.5 L212.1,22.0 L213.7,20.5 L215.3,19.6 L216.9,19.6 L218.4,20.5 L220.0,22.0"/></svg>
+              <span class="tag-status js-fade" style="--dot:var(--blue)"><span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span>En producción</span>
+              <span class="cat cat-inmo js-fade">Inmobiliaria</span>
               <h3 class="t-subhead js-mask" data-split="chars">Leads calificados, en automático</h3>
               <p class="t-body-lg js-fade">Alejandro contesta la llamada, platica con el prospecto, agenda la visita y te notifica al instante con el score del lead.</p>
               <ul class="tool-list js-list" style="--dot:var(--blue)">
@@ -809,7 +1088,35 @@ html.js .js-mask .split-line { overflow: hidden; }
                 <li>Agenda visitas en tu calendario de disponibilidad</li>
                 <li>Resumen diario de actividad</li>
               </ul>
+              <p class="punch js-punch" style="--pc:var(--blue)">Personalizada a ti, para ti.</p>
               <a href="#contacto" class="pill magnetic js-fade" data-roll="Ver cómo funciona">Ver cómo funciona <span class="pill-arrow">&rarr;</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="stack-slot">
+      <div class="stack-item" id="web" style="--tint:#2c0b24">
+        <div class="wrap">
+          <div class="tool-block flip">
+            <div class="tool-visual" aria-hidden="true">
+              <span class="glow glow-pink" style="width:62%;aspect-ratio:1;left:19%;top:19%"></span>
+              <svg class="blob js-parallax" viewBox="0 0 200 200" data-morph><path d="M104,12 C150,6 186,42 194,86 C202,130 176,168 138,186 C100,204 58,192 33,160 C8,128 8,84 32,52 C56,20 58,18 104,12 Z" fill="url(#gPink)"/></svg>
+            </div>
+            <div class="tool-content">
+              <svg class="mini-line" viewBox="0 0 220 44" aria-hidden="true"><path d="M0.0,22.0 L1.6,23.4 L3.1,24.5 L4.7,24.8 L6.3,24.1 L7.9,22.7 L9.4,20.9 L11.0,19.4 L12.6,18.6 L14.1,19.0 L15.7,20.5 L17.3,22.5 L18.9,24.5 L20.4,25.8 L22.0,25.8 L23.6,24.6 L25.1,22.4 L26.7,20.0 L28.3,18.1 L29.9,17.5 L31.4,18.4 L33.0,20.5 L34.6,23.3 L36.1,25.7 L37.7,27.0 L39.3,26.7 L40.9,24.7 L42.4,21.8 L44.0,18.8 L45.6,16.8 L47.1,16.4 L48.7,18.0 L50.3,20.9 L51.9,24.4 L53.4,27.1 L55.0,28.2 L56.6,27.3 L58.1,24.5 L59.7,20.8 L61.3,17.4 L62.9,15.4 L64.4,15.5 L66.0,17.9 L67.6,21.7 L69.1,25.7 L70.7,28.6 L72.3,29.4 L73.9,27.7 L75.4,24.0 L77.0,19.6 L78.6,15.9 L80.1,14.1 L81.7,14.9 L83.3,18.1 L84.9,22.7 L86.4,27.2 L88.0,30.1 L89.6,30.3 L91.1,27.7 L92.7,23.2 L94.3,18.1 L95.9,14.2 L97.4,12.9 L99.0,14.5 L100.6,18.7 L102.1,24.1 L103.7,28.9 L105.3,31.5 L106.9,31.0 L108.4,27.4 L110.0,22.0 L111.6,16.4 L113.1,12.6 L114.7,11.8 L116.3,14.5 L117.9,19.7 L119.4,25.7 L121.0,30.7 L122.6,32.8 L124.1,31.4 L125.7,26.8 L127.3,20.5 L128.9,14.6 L130.4,11.0 L132.0,11.1 L133.6,14.8 L135.1,20.9 L136.7,27.6 L138.3,32.5 L139.9,34.0 L141.4,31.5 L143.0,25.8 L144.6,18.7 L146.1,12.6 L147.7,9.5 L149.3,10.6 L150.9,15.4 L152.4,22.6 L154.0,29.6 L155.6,34.3 L157.1,34.9 L158.7,31.2 L160.3,24.4 L161.9,16.7 L163.4,10.6 L165.0,8.2 L166.6,10.4 L168.1,16.5 L169.7,24.5 L171.3,31.8 L172.9,35.9 L174.4,35.5 L176.0,30.5 L177.6,22.7 L179.1,14.5 L180.7,8.6 L182.3,7.2 L183.9,10.7 L185.4,18.0 L187.0,26.7 L188.6,34.0 L190.1,37.4 L191.7,35.7 L193.3,29.4 L194.9,20.6 L196.4,12.1 L198.0,6.8 L199.6,6.5 L201.1,11.3 L202.7,19.8 L204.3,29.1 L205.9,36.2 L207.4,38.6 L209.0,35.6 L210.6,27.9 L212.1,18.2 L213.7,9.7 L215.3,5.1 L216.9,6.1 L218.4,12.4 L220.0,22.0"/></svg>
+              <span class="tag-status js-fade" style="--dot:var(--pink)"><span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span>En producción</span>
+              <span class="cat cat-web js-fade">Web</span>
+              <h3 class="t-subhead js-mask" data-split="chars">Una página que sí vende</h3>
+              <p class="t-body-lg js-fade">Sitios a la medida con el mismo nivel de animación y detalle que estás viendo aquí. Esta página es la muestra.</p>
+              <ul class="tool-list js-list" style="--dot:var(--pink)">
+                <li>Diseño y desarrollo a la medida, sin plantillas</li>
+                <li>Animaciones y scroll de nivel profesional</li>
+                <li>Rápida en celular y lista para buscadores</li>
+                <li>Se conecta con tu WhatsApp y tu asistente de voz (no incluidos)</li>
+              </ul>
+              <a href="#contacto" class="pill magnetic js-fade" data-roll="Pedir cotización">Pedir cotización <span class="pill-arrow">&rarr;</span></a>
             </div>
           </div>
         </div>
@@ -825,15 +1132,16 @@ html.js .js-mask .split-line { overflow: hidden; }
               <svg class="blob js-parallax" viewBox="0 0 200 200" data-morph><path d="M100,8 C143,8 180,34 192,74 C204,114 188,157 154,180 C120,203 74,199 45,176 C16,153 4,112 14,73 C24,34 57,8 100,8 Z" fill="url(#gLilac)"/></svg>
             </div>
             <div class="tool-content">
-              <span class="tag-status soon js-fade"><span class="dot"></span>En desarrollo</span>
-              <span class="cat cat-video js-fade" data-scramble><span class="sc">Video</span></span>
-              <h3 class="t-subhead js-mask" data-split="chars">Fotos que se vuelven recorridos</h3>
-              <p class="t-body-lg js-fade">Convertimos las fotos de una propiedad en un recorrido en video realista, pensado para redes y portales inmobiliarios.</p>
+              <svg class="mini-line" viewBox="0 0 220 44" aria-hidden="true"><path d="M0.0,22.0 L1.6,22.1 L3.1,22.2 L4.7,22.5 L6.3,22.8 L7.9,23.2 L9.4,23.6 L11.0,23.9 L12.6,24.1 L14.1,24.2 L15.7,24.1 L17.3,23.8 L18.9,23.4 L20.4,22.8 L22.0,22.0 L23.6,21.1 L25.1,20.2 L26.7,19.2 L28.3,18.3 L29.9,17.5 L31.4,16.9 L33.0,16.6 L34.6,16.5 L36.1,16.7 L37.7,17.2 L39.3,18.0 L40.9,19.1 L42.4,20.5 L44.0,22.0 L45.6,23.6 L47.1,25.2 L48.7,26.8 L50.3,28.2 L51.9,29.3 L53.4,30.1 L55.0,30.5 L56.6,30.5 L58.1,30.0 L59.7,29.1 L61.3,27.7 L62.9,26.1 L64.4,24.1 L66.0,22.0 L67.6,19.8 L69.1,17.7 L70.7,15.7 L72.3,13.9 L73.9,12.6 L75.4,11.7 L77.0,11.3 L78.6,11.5 L80.1,12.2 L81.7,13.4 L83.3,15.1 L84.9,17.1 L86.4,19.5 L88.0,22.0 L89.6,24.6 L91.1,27.0 L92.7,29.3 L94.3,31.1 L95.9,32.6 L97.4,33.5 L99.0,33.9 L100.6,33.6 L102.1,32.7 L103.7,31.3 L105.3,29.5 L106.9,27.2 L108.4,24.7 L110.0,22.0 L111.6,19.3 L113.1,16.8 L114.7,14.5 L116.3,12.7 L117.9,11.3 L119.4,10.4 L121.0,10.1 L122.6,10.5 L124.1,11.4 L125.7,12.9 L127.3,14.7 L128.9,17.0 L130.4,19.4 L132.0,22.0 L133.6,24.5 L135.1,26.9 L136.7,28.9 L138.3,30.6 L139.9,31.8 L141.4,32.5 L143.0,32.7 L144.6,32.3 L146.1,31.4 L147.7,30.1 L149.3,28.3 L150.9,26.3 L152.4,24.2 L154.0,22.0 L155.6,19.9 L157.1,17.9 L158.7,16.3 L160.3,14.9 L161.9,14.0 L163.4,13.5 L165.0,13.5 L166.6,13.9 L168.1,14.7 L169.7,15.8 L171.3,17.2 L172.9,18.8 L174.4,20.4 L176.0,22.0 L177.6,23.5 L179.1,24.9 L180.7,26.0 L182.3,26.8 L183.9,27.3 L185.4,27.5 L187.0,27.4 L188.6,27.1 L190.1,26.5 L191.7,25.7 L193.3,24.8 L194.9,23.8 L196.4,22.9 L198.0,22.0 L199.6,21.2 L201.1,20.6 L202.7,20.2 L204.3,19.9 L205.9,19.8 L207.4,19.9 L209.0,20.1 L210.6,20.4 L212.1,20.8 L213.7,21.2 L215.3,21.5 L216.9,21.8 L218.4,21.9 L220.0,22.0"/></svg>
+              <span class="tag-status soon js-fade"><span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span>En desarrollo</span>
+              <span class="cat cat-video js-fade">Video</span>
+              <h3 class="t-subhead js-mask" data-split="chars">Recorridos que venden la casa</h3>
+              <p class="t-body-lg js-fade">Producimos el video de tu propiedad listo para publicar — sin día de grabación, sin equipo entrando a la casa, sin esperar semanas.</p>
               <ul class="tool-list js-list" style="--dot:var(--lilac)">
-                <li>Video generado a partir de fotos existentes</li>
-                <li>Pensado para verse natural, no "hecho con IA"</li>
-                <li>Ideal para redes sociales y portales</li>
-                <li>Portafolio de muestra próximamente</li>
+                <li>Listo para portales inmobiliarios y redes sociales</li>
+                <li>Sin agendar visita ni preparar la propiedad</li>
+                <li>Cada recorrido dirigido y revisado a mano</li>
+                <li>Entrega en días, no en semanas</li>
               </ul>
               <a href="#contacto" class="pill magnetic js-fade" data-roll="Preguntar por disponibilidad">Preguntar por disponibilidad <span class="pill-arrow">&rarr;</span></a>
             </div>
@@ -847,11 +1155,11 @@ html.js .js-mask .split-line { overflow: hidden; }
   <!-- ══════════ ZONA CLARA: Casos + Precios (G3) ══════════ -->
   <div id="lightZone">
 
-    <section id="casos">
+    <section id="casos" class="has-vline">
+      <svg class="voice-line" viewBox="0 0 120 1000" preserveAspectRatio="none" aria-hidden="true"><path class="vl-glow vl-path" d="M60.0,0.0 L61.0,5.9 L62.0,11.8 L62.7,17.6 L63.0,23.5 L63.0,29.4 L62.7,35.3 L62.0,41.2 L61.1,47.1 L60.0,52.9 L58.9,58.8 L57.9,64.7 L57.1,70.6 L56.6,76.5 L56.4,82.4 L56.5,88.2 L57.1,94.1 L58.0,100.0 L59.1,105.9 L60.5,111.8 L62.0,117.6 L63.5,123.5 L64.8,129.4 L65.9,135.3 L66.6,141.2 L66.8,147.1 L66.4,152.9 L65.4,158.8 L63.7,164.7 L61.4,170.6 L58.6,176.5 L55.5,182.4 L52.2,188.2 L49.1,194.1 L46.3,200.0 L44.2,205.9 L42.9,211.8 L42.8,217.6 L43.9,223.5 L46.2,229.4 L49.8,235.3 L54.4,241.2 L59.8,247.1 L65.7,252.9 L71.7,258.8 L77.4,264.7 L82.2,270.6 L85.9,276.5 L88.1,282.4 L88.6,288.2 L87.2,294.1 L84.1,300.0 L79.4,305.9 L73.5,311.8 L66.7,317.6 L59.6,323.5 L52.7,329.4 L46.6,335.3 L41.7,341.2 L38.4,347.1 L36.8,352.9 L37.2,358.8 L39.2,364.7 L42.7,370.6 L47.3,376.5 L52.5,382.4 L57.7,388.2 L62.6,394.1 L66.6,400.0 L69.6,405.9 L71.3,411.8 L71.7,417.6 L70.9,423.5 L69.1,429.4 L66.7,435.3 L64.0,441.2 L61.2,447.1 L58.7,452.9 L56.6,458.8 L55.2,464.7 L54.3,470.6 L54.2,476.5 L54.7,482.4 L55.7,488.2 L57.1,494.1 L58.8,500.0 L60.7,505.9 L62.5,511.8 L64.1,517.6 L65.4,523.5 L66.1,529.4 L66.1,535.3 L65.4,541.2 L63.9,547.1 L61.6,552.9 L58.8,558.8 L55.6,564.7 L52.5,570.6 L49.9,576.5 L48.1,582.4 L47.7,588.2 L48.7,594.1 L51.3,600.0 L55.4,605.9 L60.5,611.8 L66.3,617.6 L72.1,623.5 L77.2,629.4 L80.9,635.3 L82.8,641.2 L82.6,647.1 L80.0,652.9 L75.4,658.8 L69.2,664.7 L61.8,670.6 L54.0,676.5 L46.5,682.4 L40.0,688.2 L35.0,694.1 L32.0,700.0 L31.1,705.9 L32.3,711.8 L35.5,717.6 L40.2,723.5 L46.0,729.4 L52.5,735.3 L59.0,741.2 L65.1,747.1 L70.4,752.9 L74.6,758.8 L77.5,764.7 L79.0,770.6 L79.2,776.5 L78.2,782.4 L76.3,788.2 L73.5,794.1 L70.4,800.0 L67.0,805.9 L63.6,811.8 L60.5,817.6 L57.8,823.5 L55.7,829.4 L54.1,835.3 L53.1,841.2 L52.7,847.1 L52.9,852.9 L53.4,858.8 L54.4,864.7 L55.5,870.6 L56.9,876.5 L58.2,882.4 L59.6,888.2 L60.8,894.1 L61.9,900.0 L62.7,905.9 L63.3,911.8 L63.5,917.6 L63.5,923.5 L63.2,929.4 L62.6,935.3 L61.8,941.2 L60.8,947.1 L59.8,952.9 L58.9,958.8 L58.0,964.7 L57.4,970.6 L57.0,976.5 L57.0,982.4 L57.3,988.2 L57.9,994.1 L58.7,1000.0"/><path class="vl-path" d="M60.0,0.0 L61.0,5.9 L62.0,11.8 L62.7,17.6 L63.0,23.5 L63.0,29.4 L62.7,35.3 L62.0,41.2 L61.1,47.1 L60.0,52.9 L58.9,58.8 L57.9,64.7 L57.1,70.6 L56.6,76.5 L56.4,82.4 L56.5,88.2 L57.1,94.1 L58.0,100.0 L59.1,105.9 L60.5,111.8 L62.0,117.6 L63.5,123.5 L64.8,129.4 L65.9,135.3 L66.6,141.2 L66.8,147.1 L66.4,152.9 L65.4,158.8 L63.7,164.7 L61.4,170.6 L58.6,176.5 L55.5,182.4 L52.2,188.2 L49.1,194.1 L46.3,200.0 L44.2,205.9 L42.9,211.8 L42.8,217.6 L43.9,223.5 L46.2,229.4 L49.8,235.3 L54.4,241.2 L59.8,247.1 L65.7,252.9 L71.7,258.8 L77.4,264.7 L82.2,270.6 L85.9,276.5 L88.1,282.4 L88.6,288.2 L87.2,294.1 L84.1,300.0 L79.4,305.9 L73.5,311.8 L66.7,317.6 L59.6,323.5 L52.7,329.4 L46.6,335.3 L41.7,341.2 L38.4,347.1 L36.8,352.9 L37.2,358.8 L39.2,364.7 L42.7,370.6 L47.3,376.5 L52.5,382.4 L57.7,388.2 L62.6,394.1 L66.6,400.0 L69.6,405.9 L71.3,411.8 L71.7,417.6 L70.9,423.5 L69.1,429.4 L66.7,435.3 L64.0,441.2 L61.2,447.1 L58.7,452.9 L56.6,458.8 L55.2,464.7 L54.3,470.6 L54.2,476.5 L54.7,482.4 L55.7,488.2 L57.1,494.1 L58.8,500.0 L60.7,505.9 L62.5,511.8 L64.1,517.6 L65.4,523.5 L66.1,529.4 L66.1,535.3 L65.4,541.2 L63.9,547.1 L61.6,552.9 L58.8,558.8 L55.6,564.7 L52.5,570.6 L49.9,576.5 L48.1,582.4 L47.7,588.2 L48.7,594.1 L51.3,600.0 L55.4,605.9 L60.5,611.8 L66.3,617.6 L72.1,623.5 L77.2,629.4 L80.9,635.3 L82.8,641.2 L82.6,647.1 L80.0,652.9 L75.4,658.8 L69.2,664.7 L61.8,670.6 L54.0,676.5 L46.5,682.4 L40.0,688.2 L35.0,694.1 L32.0,700.0 L31.1,705.9 L32.3,711.8 L35.5,717.6 L40.2,723.5 L46.0,729.4 L52.5,735.3 L59.0,741.2 L65.1,747.1 L70.4,752.9 L74.6,758.8 L77.5,764.7 L79.0,770.6 L79.2,776.5 L78.2,782.4 L76.3,788.2 L73.5,794.1 L70.4,800.0 L67.0,805.9 L63.6,811.8 L60.5,817.6 L57.8,823.5 L55.7,829.4 L54.1,835.3 L53.1,841.2 L52.7,847.1 L52.9,852.9 L53.4,858.8 L54.4,864.7 L55.5,870.6 L56.9,876.5 L58.2,882.4 L59.6,888.2 L60.8,894.1 L61.9,900.0 L62.7,905.9 L63.3,911.8 L63.5,917.6 L63.5,923.5 L63.2,929.4 L62.6,935.3 L61.8,941.2 L60.8,947.1 L59.8,952.9 L58.9,958.8 L58.0,964.7 L57.4,970.6 L57.0,976.5 L57.0,982.4 L57.3,988.2 L57.9,994.1 L58.7,1000.0"/></svg>
       <div class="wrap">
         <div class="section-head">
-          <span class="bracket js-fade" data-scramble><span class="brace">{</span> <span class="sc">Casos reales</span> <span class="brace">}</span></span>
-          <h2 class="t-heading js-mask" data-split="chars">Lo que resuelve cada automatización.</h2>
+            <h2 class="t-heading js-mask" data-split="chars">Lo que resuelve cada automatización.</h2>
         </div>
       </div>
       <div class="cases-shell" id="casesShell">
@@ -861,8 +1169,8 @@ html.js .js-mask .split-line { overflow: hidden; }
               <div class="num">01</div><h3>Consultorio sin recepcionista</h3>
               <p>Sofía agenda, confirma y recuerda citas sin que nadie conteste el teléfono.</p>
             </article>
-            <article class="case-card spot" data-pv="#ff8709,#ffd9a8" data-pvlabel="Fonda">
-              <div class="num">02</div><h3>Fonda con pedidos por WhatsApp</h3>
+            <article class="case-card spot" data-pv="#ff8709,#ffd9a8" data-pvlabel="Restaurante">
+              <div class="num">02</div><h3>Restaurante con pedidos por WhatsApp</h3>
               <p>El menú del día se contesta solo, incluso en hora pico.</p>
             </article>
             <article class="case-card spot" data-pv="#fec5fb,#f100cb" data-pvlabel="Inmobiliaria">
@@ -883,31 +1191,43 @@ html.js .js-mask .split-line { overflow: hidden; }
       </div>
     </section>
 
-    <section id="precios">
+    <section id="proceso" class="has-vline">
       <div class="wrap">
         <div class="section-head">
-          <span class="bracket js-fade" data-scramble><span class="brace">{</span> <span class="sc">Precios</span> <span class="brace">}</span></span>
-          <h2 class="t-heading js-mask" data-split="chars">Plan fijo al mes. Sin sorpresas por llamada.</h2>
+          <h2 class="t-heading js-mask" data-split="chars">No vendo paquetes. Armo el tuyo.</h2>
         </div>
-        <div class="price-grid" id="priceGrid">
-          <div class="price-card spot js-fade" data-plan="esencial">
-            <div class="plan">Esencial</div><div class="amt">$1,600</div><div class="per">MXN / mes</div>
-            <div class="price-detail"><ul></ul><a href="#contacto" class="pill pill-sm" data-roll="Agendar demo">Agendar demo</a></div>
-            <div class="price-hint">Click para ver detalle</div>
+        <p class="t-body-lg js-words" style="max-width:52ch;margin-bottom:var(--sp-48)">
+          Cada negocio contesta distinto, agenda distinto y pierde clientes por razones distintas.
+          Por eso no hay tabla de precios: primero platicamos, luego te cotizo lo que de verdad necesitas.
+        </p>
+
+        <ol class="steps">
+          <li class="step js-fade"><span class="st-n">01</span>
+            <h3>Platicamos 20 minutos</h3>
+            <p>Me cuentas qué se te está cayendo: llamadas sin contestar, mensajes sin responder, citas que se pierden.</p></li>
+          <li class="step js-fade"><span class="st-n">02</span>
+            <h3>Te enseño funcionando</h3>
+            <p>Una demo con el caso de tu negocio, no un video genérico. Escuchas a la asistente contestar como lo haría contigo.</p></li>
+          <li class="step js-fade"><span class="st-n">03</span>
+            <h3>Cotización a la medida</h3>
+            <p>Un precio claro para lo que sí vas a usar. Sin planes con funciones que no te sirven.</p></li>
+          <li class="step js-fade"><span class="st-n">04</span>
+            <h3>Instalación y seguimiento</h3>
+            <p>Yo la dejo trabajando y me quedo dando soporte. No te entrego un archivo y desaparezco.</p></li>
+        </ol>
+
+        <div class="model js-fade">
+          <div class="model-col">
+            <h4>Asistentes de voz, WhatsApp e inmobiliaria</h4>
+            <p>Instalación única, más hosting y soporte mensual.</p>
           </div>
-          <div class="price-card spot js-fade feat" data-plan="negocio">
-            <div class="plan">Negocio</div><div class="amt">$2,500</div><div class="per">MXN / mes</div>
-            <div class="price-detail"><ul></ul><a href="#contacto" class="pill pill-sm" data-roll="Agendar demo">Agendar demo</a></div>
-            <div class="price-hint">Click para ver detalle</div>
-          </div>
-          <div class="price-card spot js-fade" data-plan="premium">
-            <div class="plan">Premium</div><div class="amt">$3,500</div><div class="per">MXN / mes</div>
-            <div class="price-detail"><ul></ul><a href="#contacto" class="pill pill-sm" data-roll="Agendar demo">Agendar demo</a></div>
-            <div class="price-hint">Click para ver detalle</div>
+          <div class="model-col">
+            <h4>Páginas web y video</h4>
+            <p>Proyecto cotizado a la medida según el alcance.</p>
           </div>
         </div>
         <p class="t-caption muted js-fade" style="margin-top:var(--sp-24)">
-          Instalación única de $2,500–$4,500 MXN. Combo voz + WhatsApp disponible — pregunta por el precio.
+          Pregunta para agendar una demo con el caso de tu negocio.
         </p>
       </div>
     </section>
@@ -915,21 +1235,31 @@ html.js .js-mask .split-line { overflow: hidden; }
   </div>
 
   <!-- ══════════ CIERRE ══════════ -->
-  <section class="closing" id="contacto">
+  <section class="closing has-vline" id="contacto">
+    <svg class="voice-line" viewBox="0 0 120 1000" preserveAspectRatio="none" aria-hidden="true"><path class="vl-glow vl-path" d="M60.0,0.0 L60.9,5.9 L61.8,11.8 L62.6,17.6 L63.1,23.5 L63.2,29.4 L62.8,35.3 L61.9,41.2 L60.3,47.1 L58.1,52.9 L55.5,58.8 L52.9,64.7 L50.7,70.6 L49.5,76.5 L49.8,82.4 L52.1,88.2 L56.3,94.1 L62.1,100.0 L68.9,105.9 L75.6,111.8 L81.2,117.6 L84.5,123.5 L85.0,129.4 L82.3,135.3 L76.6,141.2 L68.9,147.1 L60.1,152.9 L51.5,158.8 L44.3,164.7 L39.2,170.6 L36.8,176.5 L36.9,182.4 L39.3,188.2 L43.4,194.1 L48.3,200.0 L53.4,205.9 L58.0,211.8 L61.8,217.6 L64.5,223.5 L66.1,229.4 L66.8,235.3 L66.7,241.2 L66.1,247.1 L65.2,252.9 L64.1,258.8 L63.0,264.7 L61.9,270.6 L60.8,276.5 L59.8,282.4 L58.6,288.2 L57.5,294.1 L56.3,300.0 L55.1,305.9 L54.1,311.8 L53.4,317.6 L53.2,323.5 L53.8,329.4 L55.2,335.3 L57.7,341.2 L61.1,347.1 L65.3,352.9 L69.6,358.8 L73.7,364.7 L76.7,370.6 L78.1,376.5 L77.4,382.4 L74.5,388.2 L69.6,394.1 L63.4,400.0 L56.6,405.9 L50.4,411.8 L45.6,417.6 L43.0,423.5 L42.9,429.4 L45.0,435.3 L48.8,441.2 L53.6,447.1 L58.5,452.9 L62.7,458.8 L65.7,464.7 L67.3,470.6 L67.5,476.5 L66.5,482.4 L64.9,488.2 L62.9,494.1 L61.0,500.0 L59.4,505.9 L58.2,511.8 L57.5,517.6 L57.2,523.5 L57.4,529.4 L57.9,535.3 L58.6,541.2 L59.4,547.1 L60.3,552.9 L61.0,558.8 L61.6,564.7 L62.0,570.6 L62.0,576.5 L61.8,582.4 L61.3,588.2 L60.7,594.1 L60.0,600.0 L59.3,605.9 L58.7,611.8 L58.2,617.6 L58.0,623.5 L58.1,629.4 L58.3,635.3 L58.8,641.2 L59.4,647.1 L60.0,652.9 L60.7,658.8 L61.3,664.7 L61.7,670.6 L61.9,676.5 L62.0,682.4 L61.9,688.2 L61.5,694.1 L61.1,700.0 L60.5,705.9 L59.9,711.8 L59.4,717.6 L58.8,723.5 L58.4,729.4 L58.1,735.3 L58.0,741.2 L58.0,747.1 L58.2,752.9 L58.5,758.8 L59.0,764.7 L59.5,770.6 L60.0,776.5 L60.6,782.4 L61.1,788.2 L61.5,794.1 L61.8,800.0 L62.0,805.9 L62.0,811.8 L61.9,817.6 L61.6,823.5 L61.2,829.4 L60.7,835.3 L60.1,841.2 L59.5,847.1 L59.0,852.9 L58.5,858.8 L58.2,864.7 L58.0,870.6 L58.0,876.5 L58.2,882.4 L58.6,888.2 L59.1,894.1 L59.7,900.0 L60.3,905.9 L60.9,911.8 L61.5,917.6 L61.8,923.5 L62.0,929.4 L61.9,935.3 L61.6,941.2 L61.1,947.1 L60.5,952.9 L59.8,958.8 L59.1,964.7 L58.5,970.6 L58.1,976.5 L58.0,982.4 L58.1,988.2 L58.6,994.1 L59.2,1000.0"/><path class="vl-path" d="M60.0,0.0 L60.9,5.9 L61.8,11.8 L62.6,17.6 L63.1,23.5 L63.2,29.4 L62.8,35.3 L61.9,41.2 L60.3,47.1 L58.1,52.9 L55.5,58.8 L52.9,64.7 L50.7,70.6 L49.5,76.5 L49.8,82.4 L52.1,88.2 L56.3,94.1 L62.1,100.0 L68.9,105.9 L75.6,111.8 L81.2,117.6 L84.5,123.5 L85.0,129.4 L82.3,135.3 L76.6,141.2 L68.9,147.1 L60.1,152.9 L51.5,158.8 L44.3,164.7 L39.2,170.6 L36.8,176.5 L36.9,182.4 L39.3,188.2 L43.4,194.1 L48.3,200.0 L53.4,205.9 L58.0,211.8 L61.8,217.6 L64.5,223.5 L66.1,229.4 L66.8,235.3 L66.7,241.2 L66.1,247.1 L65.2,252.9 L64.1,258.8 L63.0,264.7 L61.9,270.6 L60.8,276.5 L59.8,282.4 L58.6,288.2 L57.5,294.1 L56.3,300.0 L55.1,305.9 L54.1,311.8 L53.4,317.6 L53.2,323.5 L53.8,329.4 L55.2,335.3 L57.7,341.2 L61.1,347.1 L65.3,352.9 L69.6,358.8 L73.7,364.7 L76.7,370.6 L78.1,376.5 L77.4,382.4 L74.5,388.2 L69.6,394.1 L63.4,400.0 L56.6,405.9 L50.4,411.8 L45.6,417.6 L43.0,423.5 L42.9,429.4 L45.0,435.3 L48.8,441.2 L53.6,447.1 L58.5,452.9 L62.7,458.8 L65.7,464.7 L67.3,470.6 L67.5,476.5 L66.5,482.4 L64.9,488.2 L62.9,494.1 L61.0,500.0 L59.4,505.9 L58.2,511.8 L57.5,517.6 L57.2,523.5 L57.4,529.4 L57.9,535.3 L58.6,541.2 L59.4,547.1 L60.3,552.9 L61.0,558.8 L61.6,564.7 L62.0,570.6 L62.0,576.5 L61.8,582.4 L61.3,588.2 L60.7,594.1 L60.0,600.0 L59.3,605.9 L58.7,611.8 L58.2,617.6 L58.0,623.5 L58.1,629.4 L58.3,635.3 L58.8,641.2 L59.4,647.1 L60.0,652.9 L60.7,658.8 L61.3,664.7 L61.7,670.6 L61.9,676.5 L62.0,682.4 L61.9,688.2 L61.5,694.1 L61.1,700.0 L60.5,705.9 L59.9,711.8 L59.4,717.6 L58.8,723.5 L58.4,729.4 L58.1,735.3 L58.0,741.2 L58.0,747.1 L58.2,752.9 L58.5,758.8 L59.0,764.7 L59.5,770.6 L60.0,776.5 L60.6,782.4 L61.1,788.2 L61.5,794.1 L61.8,800.0 L62.0,805.9 L62.0,811.8 L61.9,817.6 L61.6,823.5 L61.2,829.4 L60.7,835.3 L60.1,841.2 L59.5,847.1 L59.0,852.9 L58.5,858.8 L58.2,864.7 L58.0,870.6 L58.0,876.5 L58.2,882.4 L58.6,888.2 L59.1,894.1 L59.7,900.0 L60.3,905.9 L60.9,911.8 L61.5,917.6 L61.8,923.5 L62.0,929.4 L61.9,935.3 L61.6,941.2 L61.1,947.1 L60.5,952.9 L59.8,958.8 L59.1,964.7 L58.5,970.6 L58.1,976.5 L58.0,982.4 L58.1,988.2 L58.6,994.1 L59.2,1000.0"/></svg>
     <span class="glow glow-pink" style="width:clamp(84px,12vw,180px);aspect-ratio:1;top:8%;left:5%"></span>
     <svg class="blob cb1 js-parallax" viewBox="0 0 200 200" aria-hidden="true" data-morph><path d="M100,8 C143,8 180,34 192,74 C204,114 188,157 154,180 C120,203 74,199 45,176 C16,153 4,112 14,73 C24,34 57,8 100,8 Z" fill="url(#gPink)"/></svg>
     <span class="glow glow-lilac" style="width:clamp(66px,9.5vw,142px);aspect-ratio:1;bottom:9%;right:7%"></span>
     <svg class="blob cb2 js-parallax" viewBox="0 0 200 200" aria-hidden="true" data-morph><path d="M96,6 C138,14 178,30 190,70 C202,110 196,152 162,178 C128,204 80,206 50,182 C20,158 10,116 18,76 C26,36 54,-2 96,6 Z" fill="url(#gLilac)"/></svg>
     <div class="wrap" style="position:relative;z-index:2">
-      <span class="bracket js-fade" data-scramble><span class="brace">{</span> <span class="sc">Hablemos</span> <span class="brace">}</span></span>
       <h2 class="t-heading-lg js-mask" data-split="chars">Cero llamadas perdidas.</h2>
       <p class="t-body-lg muted js-fade" style="max-width:540px;margin:var(--sp-24) auto 0">
         Cuéntame qué proceso te está quitando más tiempo y armamos la automatización que le conviene a tu negocio.
       </p>
-      <div class="closing-cta js-fade">
-        <a href="https://wa.me/52TUNUMERO" target="_blank" rel="noopener" class="pill pill-grad magnetic" data-roll="Escríbeme por WhatsApp">Escríbeme por WhatsApp</a>
-        <a href="mailto:hola@gokubetteware.com" class="pill magnetic" data-roll="hola@gokubetteware.com">hola@gokubetteware.com</a>
-      </div>
+      <form class="cform js-fade" id="form" novalidate>
+        <div class="cf-row">
+          <label class="cf-field"><span>Tu nombre</span><input type="text" name="nombre" required autocomplete="name" placeholder="Cómo te llamas"></label>
+          <label class="cf-field"><span>Tu negocio</span><input type="text" name="negocio" autocomplete="organization" placeholder="Nombre o giro"></label>
+        </div>
+        <div class="cf-row">
+          <label class="cf-field"><span>WhatsApp</span><input type="tel" name="whatsapp" required autocomplete="tel" placeholder="10 dígitos"></label>
+          <label class="cf-field"><span>Correo</span><input type="email" name="correo" required autocomplete="email" placeholder="tucorreo@ejemplo.com"></label>
+        </div>
+        <label class="cf-field"><span>¿Qué se te está cayendo?</span><textarea name="mensaje" rows="3" placeholder="Llamadas sin contestar, mensajes sin responder, citas perdidas…"></textarea></label>
+        <label class="cf-consent"><input type="checkbox" name="consent" required><span>Acepto que me contacten y he leído el <a href="aviso-privacidad.html">aviso de privacidad</a>.</span></label>
+        <button type="submit" class="pill pill-grad magnetic cf-send">Enviar <span class="pill-arrow">&rarr;</span></button>
+        <p class="cf-msg" id="cfMsg" role="status" aria-live="polite"></p>
+      </form>
     </div>
   </section>
 
@@ -939,7 +1269,7 @@ html.js .js-mask .split-line { overflow: hidden; }
   <div class="wrap">
     <div class="footer-grid">
       <div>
-        <a href="#top" class="wordmark"><span class="mark"></span>GOKUBETTERWARE</a>
+        <a href="#top" class="wordmark"><span class="mark"></span>SAYISLESS</a>
         <p class="t-caption muted" style="max-width:280px;margin-top:var(--sp-16)">Automatización con IA para negocios en México.</p>
       </div>
       <div class="footer-cols">
@@ -948,21 +1278,22 @@ html.js .js-mask .split-line { overflow: hidden; }
           <a href="#voz" data-roll="Voz">Voz</a>
           <a href="#whatsapp" data-roll="WhatsApp">WhatsApp</a>
           <a href="#inmobiliaria" data-roll="Inmobiliaria">Inmobiliaria</a>
+          <a href="#web" data-roll="Web">Web</a>
           <a href="#videos" data-roll="Video">Video</a>
         </div>
         <div class="footer-col">
           <h4>Contacto</h4>
-          <a href="https://wa.me/52TUNUMERO" target="_blank" rel="noopener" data-roll="WhatsApp">WhatsApp</a>
-          <a href="mailto:hola@gokubetteware.com" data-roll="Email">Email</a>
+          <a href="#form" data-roll="Agendar demo">Agendar demo</a>
+          <a href="mailto:Sayisless@gmail.com" data-roll="Correo">Correo</a>
         </div>
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2026 Gokubetterware</span>
-      <span>Poza Rica de Hidalgo, Veracruz</span>
+      <span>© 2026 Sayisless</span>
+      <a href="aviso-privacidad.html">Aviso de privacidad</a>
     </div>
   </div>
-  <div class="footer-giant" aria-hidden="true"><span id="footGiant">GOKUBETTERWARE</span></div>
+  <div class="footer-giant" aria-hidden="true"><span id="footGiant">SAYISLESS</span></div>
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/gsap.min.js"></script>
@@ -970,10 +1301,8 @@ html.js .js-mask .split-line { overflow: hidden; }
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/SplitText.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/MorphSVGPlugin.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/DrawSVGPlugin.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/Flip.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/Draggable.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/InertiaPlugin.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/ScrambleTextPlugin.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/CustomEase.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
 
@@ -982,23 +1311,22 @@ html.js .js-mask .split-line { overflow: hidden; }
 'use strict';
 
 /* ═══════════════════════════════════════════════════════════
-   EDITA AQUÍ — qué incluye cada plan (M4)
-   Son marcadores hasta que me pases tu lista real. Cambia los
-   strings y ya; el Flip no depende del contenido.
+   EDITA AQUÍ — a dónde llegan los mensajes del formulario
+   Sin endpoint, el botón abre tu correo con todo prellenado, así
+   que funciona desde hoy. Cuando crees un formulario gratis en
+   formspree.io o web3forms.com, pega aquí su URL y los mensajes
+   te llegan solos, sin que el visitante vea su cliente de correo.
    ═══════════════════════════════════════════════════════════ */
-var PLANES = {
-  esencial: ['Un número de teléfono', 'Agenda y cancelación de citas', 'Google Calendar en tiempo real', 'Panel con historial de llamadas'],
-  negocio:  ['Todo lo de Esencial', 'Transcripciones completas', 'Reprogramación automática', 'Resumen diario por correo'],
-  premium:  ['Todo lo de Negocio', 'Combo voz + WhatsApp', 'Notificación por llamada, SMS o email', 'Ajustes de guion a la medida']
-};
+var FORM_ENDPOINT = '';                       // ej: 'https://formspree.io/f/xxxxxxx'
+var FORM_EMAIL    = 'Sayisless@gmail.com';    // respaldo mientras no haya endpoint
 
 /* ── Detección de capacidades ────────────────────────────────
    gsap y ScrollTrigger son obligatorios. Los demás plugins son
    opcionales: si uno no baja del CDN se apaga SOLO ese efecto y
    el resto del sitio sigue vivo. Un único `if` gigante haría que
-   un 404 en ScrambleText dejara la página estática. */
+   un 404 en DrawSVG dejara la página estática. */
 var H = {};
-['gsap','ScrollTrigger','SplitText','MorphSVGPlugin','DrawSVGPlugin','Flip','Draggable','InertiaPlugin','ScrambleTextPlugin','CustomEase','Lenis']
+['gsap','ScrollTrigger','SplitText','MorphSVGPlugin','DrawSVGPlugin','Draggable','InertiaPlugin','CustomEase','Lenis']
   .forEach(function (n) { H[n] = typeof window[n] !== 'undefined'; });
 
 var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -1011,13 +1339,6 @@ function killLoader() {
   loader.style.display = 'none';
   document.body.classList.remove('is-loading');
 }
-
-/* Rellena el detalle de precios desde PLANES (sirva o no GSAP) */
-document.querySelectorAll('.price-card').forEach(function (card) {
-  var list = PLANES[card.getAttribute('data-plan')] || [];
-  var ul = card.querySelector('.price-detail ul');
-  if (ul) ul.innerHTML = list.map(function (t) { return '<li>' + t + '</li>'; }).join('');
-});
 
 /* ── PLAN B: sin GSAP o con movimiento reducido ──────────── */
 if (!core || reduce) {
@@ -1034,10 +1355,8 @@ gsap.registerPlugin(ScrollTrigger);
 if (H.SplitText) gsap.registerPlugin(SplitText);
 if (H.MorphSVGPlugin) gsap.registerPlugin(MorphSVGPlugin);
 if (H.DrawSVGPlugin) gsap.registerPlugin(DrawSVGPlugin);
-if (H.Flip) gsap.registerPlugin(Flip);
 if (H.Draggable) gsap.registerPlugin(Draggable);
 if (H.InertiaPlugin) gsap.registerPlugin(InertiaPlugin);
-if (H.ScrambleTextPlugin) gsap.registerPlugin(ScrambleTextPlugin);
 if (H.CustomEase) gsap.registerPlugin(CustomEase);
 
 /* ── M1: una sola curva de marca ─────────────────────────────
@@ -1284,11 +1603,18 @@ function addHeroRest() {
   gsap.set('.hero-blobs .blob', { scale: 0, opacity: 0 });
   heroTl
     .to('.hero-blobs .blob', { scale: 1, opacity: 0.95, duration: 1.5, ease: 'power3.out', stagger: 0.12 }, 0.2)
-    .to('.hero .bracket', { opacity: 1, y: 0, duration: 0.7 }, 1.5)
     .to('.hero-sub', { opacity: 1, y: 0, duration: 0.9 }, 1.9)
     .to('.hero-cta', { opacity: 1, y: 0, duration: 0.9 }, 2.05)
     .to('.hero-meta .js-hero', { opacity: 1, y: 0, duration: 0.8, stagger: 0.07 }, 2.15)
     .to('.scroll-cue', { opacity: 1, y: 0, duration: 0.7 }, 2.5);
+  if (H.DrawSVGPlugin) {
+    heroTl.to('#hero .vl-path', { drawSVG: '100%', duration: 2.6, ease: 'power2.inOut' }, 2.4);
+    heroTl.call(function () {
+      var src = document.querySelector('#hero .voice-line .vl-path:not(.vl-glow)');
+      var start = makePulse(src, 5.5);
+      if (start) start();
+    }, null, 5.1);
+  }
 }
 
 buildHero();
@@ -1344,15 +1670,6 @@ function ioReveal(nodes, build) {
   return io;
 }
 
-function scrambleIn(el) {
-  var t = el.querySelector('.sc');
-  if (!t || !H.ScrambleTextPlugin) return;
-  /* Solo el nodo .sc: si ScrambleText tocara todo el .bracket se
-     comería los <span class="brace"> y se perderían las llaves. */
-  var original = t.textContent;
-  gsap.fromTo(t, { text: '' }, { duration: 1.1, scrambleText: { text: original, chars: '01_', speed: 0.45, revealDelay: 0.15 } });
-}
-
 /* ═══ M5: MARQUEE ═════════════════════════════════════════ */
 var track = document.getElementById('marquee'), mq = null;
 function buildMarquee() {
@@ -1384,19 +1701,75 @@ ScrollTrigger.create({
   }
 });
 
-/* ═══ M4: FLIP en precios ═════════════════════════════════ */
-var grid = document.getElementById('priceGrid');
-if (grid && H.Flip) {
-  grid.addEventListener('click', function (e) {
-    var card = e.target.closest('.price-card');
-    if (!card || e.target.closest('a')) return;
-    var state = Flip.getState(grid.querySelectorAll('.price-card, .price-detail'), { props: 'opacity' });
-    var wasOpen = card.classList.contains('open');
-    grid.querySelectorAll('.price-card').forEach(function (c) { c.classList.remove('open'); });
-    if (!wasOpen) card.classList.add('open');
-    Flip.from(state, { duration: 0.7, ease: 'gk', absolute: false, nested: true, stagger: 0.03 });
+/* ═══ FORMULARIO DE CONTACTO ══════════════════════════════
+   Sin backend. Con FORM_ENDPOINT configurado envía por fetch; sin
+   él, arma un mailto con todo prellenado — así el formulario sirve
+   desde el primer día en Vercel y mejora cuando pegues la URL. */
+(function () {
+  var form = document.getElementById('form');
+  if (!form) return;
+  var msg = document.getElementById('cfMsg');
+
+  function fail(el, text) {
+    el.closest('.cf-field').classList.add('bad');
+    msg.textContent = text; msg.classList.add('bad');
+    el.focus();
+    gsap.fromTo(form, { x: -7 }, { x: 0, duration: 0.5, ease: 'elastic.out(1,0.35)' });
+  }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    form.querySelectorAll('.cf-field').forEach(function (f) { f.classList.remove('bad'); });
+    msg.classList.remove('bad'); msg.textContent = '';
+
+    var d = {};
+    ['nombre', 'negocio', 'whatsapp', 'correo', 'mensaje'].forEach(function (k) {
+      d[k] = (form.elements[k].value || '').trim();
+    });
+    if (!d.nombre) { fail(form.elements.nombre, 'Me falta tu nombre.'); return; }
+    /* 10 dígitos ignorando espacios y guiones: así no se rechaza a
+       quien escribe 782 123 4567 */
+    if (d.whatsapp.replace(/[^0-9]/g, '').length < 10) { fail(form.elements.whatsapp, 'El WhatsApp necesita 10 dígitos.'); return; }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(d.correo)) { fail(form.elements.correo, 'Revisa el correo, algo no cuadra.'); return; }
+    if (!form.elements.consent.checked) {
+      msg.textContent = 'Necesito tu visto bueno para poder contactarte.';
+      msg.classList.add('bad');
+      return;
+    }
+
+    var btn = form.querySelector('.cf-send');
+    var cuerpo = 'Nombre: ' + d.nombre + '\nNegocio: ' + (d.negocio || '-') +
+                 '\nWhatsApp: ' + d.whatsapp + '\nCorreo: ' + d.correo +
+                 '\n\n' + (d.mensaje || '(sin mensaje)');
+
+    function listo() {
+      msg.textContent = 'Listo, ' + d.nombre.split(' ')[0] + '. Te contesto en menos de 24 horas.';
+      gsap.fromTo(msg, { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.5 });
+      form.reset();
+    }
+
+    if (FORM_ENDPOINT) {
+      btn.disabled = true; msg.textContent = 'Enviando...';
+      fetch(FORM_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+        body: JSON.stringify(d)
+      }).then(function (r) {
+        btn.disabled = false;
+        if (r.ok) listo();
+        else { msg.textContent = 'No salio. Escribeme a ' + FORM_EMAIL; msg.classList.add('bad'); }
+      }).catch(function () {
+        btn.disabled = false;
+        msg.textContent = 'No salio. Escribeme a ' + FORM_EMAIL; msg.classList.add('bad');
+      });
+    } else {
+      window.location.href = 'mailto:' + FORM_EMAIL +
+        '?subject=' + encodeURIComponent('Demo para ' + (d.negocio || d.nombre)) +
+        '&body=' + encodeURIComponent(cuerpo);
+      listo();
+    }
   });
-}
+})();
 
 /* ═══ MENÚ MÓVIL (M7) ═════════════════════════════════════ */
 var burger = document.getElementById('burger');
@@ -1428,6 +1801,110 @@ function closeMenu() {
   });
 }
 if (burger) burger.addEventListener('click', function () { menuOpen ? closeMenu() : openMenu(); });
+
+/* ═══ PULSO VIAJERO ══════════════════════════════════════════
+   Clona un trazo ya dibujado y hace correr por él un paquete de
+   luz en bucle — la voz sigue viajando aunque nadie haga scroll.
+   Es lo que mantiene vivas las gráficas después de su entrada. */
+function makePulse(sourcePath, dur) {
+  if (!sourcePath) return null;
+  var ghost = sourcePath.cloneNode(false);
+  ghost.removeAttribute('id');
+  ghost.setAttribute('class', 'line-pulse');
+  sourcePath.parentNode.appendChild(ghost);
+  var L = ghost.getTotalLength();
+  gsap.set(ghost, { strokeDasharray: (L * 0.07) + ' ' + L, strokeDashoffset: 0 });
+  return function start() {
+    gsap.to(ghost, { opacity: 0.85, duration: 0.6 });
+    gsap.to(ghost, { strokeDashoffset: -(L * 1.07), duration: dur, ease: 'none', repeat: -1 });
+  };
+}
+
+/* ═══ DEMO DE LLAMADA — Sofía contestando ═══════════════════
+   El HTML trae la llamada TERMINADA (transcripción completa y
+   cita creada): sin JS o con movimiento reducido eso es lo que
+   se ve. El motor solo rebobina y la actúa: timbra, contesta,
+   escribe, agenda. Está rotulada "Demo simulada" a propósito —
+   no se finge una llamada real. */
+var callTl = null;
+function playCall() {
+  var card = document.getElementById('callCard');
+  if (!card) return;
+  var bars = card.querySelectorAll('#ccWave span');
+  var lines = Array.prototype.slice.call(card.querySelectorAll('.cl'));
+  var texts = lines.map(function (l) { return l.getAttribute('data-full') || l.querySelector('.tx').textContent; });
+  lines.forEach(function (l, i) { l.setAttribute('data-full', texts[i]); });
+  var status = document.getElementById('ccStatus');
+  var timerEl = document.getElementById('ccTimer');
+  var chip = document.getElementById('ccChip');
+  var replay = document.getElementById('ccReplay');
+  var speakTween = null;
+
+  function speak(on) {
+    if (speakTween) { speakTween.kill(); speakTween = null; }
+    if (on) {
+      speakTween = gsap.to(bars, {
+        scaleY: function () { return gsap.utils.random(0.15, 1); },
+        duration: 0.13, ease: 'sine.inOut', repeat: -1, repeatRefresh: true,
+        stagger: { each: 0.015, from: 'random' }
+      });
+    } else {
+      /* En reposo no se apaga: respira bajito. Una tarjeta de "voz
+         en vivo" con la onda plana parece descompuesta. */
+      speakTween = gsap.to(bars, {
+        scaleY: function () { return gsap.utils.random(0.08, 0.26); },
+        duration: 0.5, ease: 'sine.inOut', repeat: -1, repeatRefresh: true,
+        stagger: { each: 0.03, from: 'random' }
+      });
+    }
+  }
+  function typeLine(i) {
+    var span = lines[i].querySelector('.tx'), full = texts[i], o = { n: 0 };
+    return gsap.to(o, {
+      n: full.length, duration: full.length * 0.026, ease: 'none',
+      onStart: function () { gsap.set(lines[i], { autoAlpha: 1, y: 0 }); },
+      onUpdate: function () { span.textContent = full.slice(0, Math.round(o.n)); }
+    });
+  }
+
+  if (callTl) callTl.kill();
+  speak(false);
+  lines.forEach(function (l) { l.querySelector('.tx').textContent = ''; gsap.set(l, { autoAlpha: 0, y: 8 }); });
+  gsap.set(chip, { autoAlpha: 0, y: 6 });
+  gsap.set(replay, { autoAlpha: 0 });
+  replay.style.display = 'none';
+  card.classList.add('ringing');
+  status.textContent = 'Llamada entrante…';
+  timerEl.textContent = '00:00';
+  var t = { s: 0 };
+
+  callTl = gsap.timeline();
+  callTl
+    .call(function () { card.classList.remove('ringing'); status.textContent = 'En llamada'; }, null, 1.4)
+    .to(t, { s: 18, duration: 9.5, ease: 'none',
+      onUpdate: function () { timerEl.textContent = '00:' + String(Math.round(t.s)).padStart(2, '0'); } }, 1.4)
+    .add(typeLine(0), 1.7)
+    .call(function () { speak(true); status.textContent = 'Sofía está hablando…'; }, null, '>0.15')
+    .add(typeLine(1), '<')
+    .call(function () { speak(false); status.textContent = 'En llamada'; }, null, '>0.1')
+    .add(typeLine(2), '>0.3')
+    .call(function () { speak(true); status.textContent = 'Sofía está hablando…'; }, null, '>0.15')
+    .add(typeLine(3), '<')
+    .call(function () { speak(false); status.textContent = 'Cita agendada'; }, null, '>0.2')
+    .to(chip, { autoAlpha: 1, y: 0, duration: 0.5 }, '>0.1')
+    .call(function () { replay.style.display = 'inline-block'; }, null, '>0.3')
+    .to(replay, { autoAlpha: 1, duration: 0.4 }, '<');
+}
+(function () {
+  var replay = document.getElementById('ccReplay');
+  if (replay) replay.addEventListener('click', playCall);
+  if (document.getElementById('callCard')) {
+    ScrollTrigger.create({
+      trigger: '#callCard', start: 'top 88%', once: true,
+      onEnter: function () { gsap.delayedCall(2.8, playCall); }
+    });
+  }
+})();
 
 /* ═══════════════════════════════════════════════════════════
    matchMedia: tres contextos. GSAP revierte solo lo que se creó
@@ -1461,11 +1938,6 @@ mm.add('(min-width: 901px) and (prefers-reduced-motion: no-preference)', functio
     onEnter: function (b) { gsap.to(b, { opacity: 1, y: 0, duration: 0.95, stagger: 0.06, overwrite: 'auto' }); }
   });
 
-  /* M3 — ScrambleText en etiquetas y contadores */
-  document.querySelectorAll('[data-scramble]').forEach(function (el) {
-    ScrollTrigger.create({ trigger: el, start: 'top 92%', once: true, onEnter: function () { scrambleIn(el); } });
-  });
-
   /* P9 — los items entran recortados desde la izquierda y su
      cuadrito gira 90° al aterrizar */
   document.querySelectorAll('.js-list').forEach(function (ul) {
@@ -1496,6 +1968,183 @@ mm.add('(min-width: 901px) and (prefers-reduced-motion: no-preference)', functio
         scrollTrigger: { trigger: ln.parentNode, start: 'top 95%', end: 'top 55%', scrub: true } });
     }
   });
+
+  /* FIX: los contadores del hero solo estaban cableados en móvil;
+     en desktop se quedaban en 0 para siempre. */
+  gsap.utils.toArray('[data-count]').forEach(function (el) {
+    var target = parseInt(el.getAttribute('data-count'), 10);
+    var sfx = el.getAttribute('data-suffix') || '';
+    ScrollTrigger.create({
+      trigger: el, start: 'top 92%', once: true,
+      onEnter: function () {
+        var o = { v: 0 };
+        gsap.to(o, { v: target, duration: 1.6, ease: 'power3.out',
+          onUpdate: function () { el.textContent = Math.round(o.v) + sfx; } });
+      }
+    });
+  });
+
+  /* ═══ GRÁFICA DEL DÍA ═══
+     Las dos líneas se dibujan con scrub — el scroll ES el día
+     transcurriendo. El marcador de las 23:07 y las barras entran
+     una sola vez, cuando la gráfica ya se armó. */
+  if (H.DrawSVGPlugin && document.getElementById('chartA')) {
+    var chartPulse = makePulse(document.getElementById('cASofia'), 3.6);
+    gsap.set(['#cAManual', '#cASofia', '#cASofiaGlow'], { drawSVG: '0%' });
+    gsap.set('#cAArea', { opacity: 0 });
+    gsap.set('#cAMark', { opacity: 0, scale: 0.6, transformOrigin: '92% 20%' });
+    gsap.timeline({
+      scrollTrigger: { trigger: '#chartA', start: 'top 84%', end: 'top 32%', scrub: true }
+    })
+      .to('#cAManual', { drawSVG: '100%', ease: 'none' }, 0)
+      .to(['#cASofiaGlow', '#cASofia'], { drawSVG: '100%', ease: 'none' }, 0.18);
+    ScrollTrigger.create({
+      trigger: '#chartA', start: 'top 40%', once: true,
+      onEnter: function () {
+        gsap.to('#cAArea', { opacity: 0.07, duration: 0.8 });
+        gsap.to('#cAMark', { opacity: 1, scale: 1, duration: 0.7, ease: 'back.out(2)' });
+        /* y a partir de aquí, la gráfica queda VIVA en bucle */
+        gsap.to('#cAArea', { opacity: 0.12, duration: 2.6, ease: 'sine.inOut', yoyo: true, repeat: -1, delay: 1 });
+        var ring = document.querySelector('#cAMark .cA-dot');
+        if (ring) {
+          var pulseRing = ring.cloneNode(false);
+          pulseRing.setAttribute('class', 'cA-dot');
+          pulseRing.setAttribute('fill', 'none');
+          pulseRing.setAttribute('stroke', '#0ae448');
+          ring.parentNode.appendChild(pulseRing);
+          gsap.fromTo(pulseRing, { attr: { r: 5 }, opacity: 0.8 },
+            { attr: { r: 16 }, opacity: 0, duration: 1.9, ease: 'power1.out', repeat: -1 });
+        }
+        if (chartPulse) chartPulse();
+      }
+    });
+  }
+  gsap.utils.toArray('.bar-fill').forEach(function (b) {
+    ScrollTrigger.create({
+      trigger: b, start: 'top 90%', once: true,
+      onEnter: function () { gsap.to(b, { scaleX: 1, duration: 1.1, ease: 'power3.inOut' }); }
+    });
+  });
+  if (H.DrawSVGPlugin && document.getElementById('flowPath')) {
+    var flowPulse = makePulse(document.getElementById('flowPath'), 4.2);
+    gsap.set('#flowPath', { drawSVG: '0%' });
+    ScrollTrigger.create({
+      trigger: '#flowRec', start: 'top 82%', once: true,
+      onEnter: function () {
+        gsap.to('#flowPath', {
+          drawSVG: '100%', duration: 1.6, ease: 'power2.inOut',
+          onComplete: function () { if (flowPulse) flowPulse(); }
+        });
+      }
+    });
+  }
+
+  /* ═══ LÍNEA DE VOZ — la firma ═══
+     Cada sección tiene su segmento; el scroll lo dibuja con scrub.
+     El del hero no va con scroll: lo dibuja la intro, naciendo de
+     la llamada de Sofía. Sin DrawSVG la línea queda completa desde
+     el inicio (decorativa, nunca rota). */
+  if (H.DrawSVGPlugin) {
+    document.querySelectorAll('.has-vline').forEach(function (sec) {
+      var paths = sec.querySelectorAll('.voice-line .vl-path');
+      if (!paths.length) return;
+      gsap.set(paths, { drawSVG: '0%' });
+      if (sec.id === 'hero') return;   /* lo maneja la intro */
+      gsap.to(paths, {
+        drawSVG: '100%', ease: 'none',
+        scrollTrigger: { trigger: sec, start: 'top 78%', end: 'bottom 62%', scrub: true }
+      });
+    });
+    /* Huella de voz de cada producto: se dibuja al activarse su
+       tarjeta, en el color del producto */
+    document.querySelectorAll('.mini-line path').forEach(function (mp) {
+      gsap.set(mp, { drawSVG: '0%' });
+      ScrollTrigger.create({
+        trigger: mp.closest('.stack-slot') || mp, start: 'top 55%', once: true,
+        onEnter: function () { gsap.to(mp, { drawSVG: '100%', duration: 1.3, ease: 'power2.inOut' }); }
+      });
+    });
+  }
+
+  /* ═══ REMATES: entran letra por letra y quedan brillando ═══ */
+  document.querySelectorAll('.js-punch').forEach(function (el) {
+    if (!H.SplitText) return;
+    SplitText.create(el, {
+      type: 'lines,chars', charsClass: 'char', linesClass: 'split-line',
+      mask: 'lines', autoSplit: true, aria: 'auto',
+      onSplit: function (self) {
+        return gsap.from(self.chars, {
+          yPercent: 115, opacity: 0, duration: 0.85, ease: 'expo.out',
+          stagger: { each: 0.025 },
+          scrollTrigger: { trigger: el, start: 'top 88%', once: true }
+        });
+      }
+    });
+  });
+
+  /* ═══ TEXTO QUE REACCIONA AL CURSOR ═══
+     Inter Tight cargada como variable: cada letra del titular
+     engorda según la distancia al mouse. Coordenadas de página,
+     no de viewport, para que el caché sobreviva al scroll. */
+  (function () {
+    var chars = gsap.utils.toArray('#heroDisplay .char');
+    var hero = document.getElementById('hero');
+    if (!chars.length || !hero || !window.matchMedia('(pointer: fine)').matches) return;
+    var rects = [];
+    function cache() {
+      var sy = window.pageYOffset;
+      rects = chars.map(function (c) {
+        var r = c.getBoundingClientRect();
+        return { c: c, x: r.left + r.width / 2, y: r.top + sy + r.height / 2 };
+      });
+    }
+    ScrollTrigger.addEventListener('refresh', cache);
+    var raf = false, mx = 0, my = 0, over = false;
+    hero.addEventListener('mousemove', function (e) {
+      mx = e.clientX; my = e.clientY + window.pageYOffset; over = true;
+      if (!raf) { raf = true; requestAnimationFrame(apply); }
+    });
+    hero.addEventListener('mouseleave', function () {
+      over = false;
+      chars.forEach(function (c) { c.style.fontWeight = ''; });
+    });
+    function apply() {
+      raf = false;
+      if (!over || heroTl.isActive()) return;
+      if (!rects.length) cache();
+      for (var i = 0; i < rects.length; i++) {
+        var d = Math.hypot(mx - rects[i].x, my - rects[i].y);
+        rects[i].c.style.fontWeight = d < 260 ? Math.round(600 + (1 - d / 260) * 190) : 600;
+      }
+    }
+  })();
+
+  /* ═══ DISTORSIÓN LÍQUIDA ═══
+     El displacement vive en 0 (gratis) y solo sube en ráfagas de
+     medio segundo: el costo del filtro existe únicamente mientras
+     se ve. Wordmark al hover; el gigante del footer, una vez. */
+  (function () {
+    var disp = document.getElementById('liqDisp');
+    if (!disp) return;
+    var busy = false;
+    function ripple(el, max) {
+      if (busy) return;
+      busy = true;
+      el.classList.add('liquid-on');
+      var o = { v: 0 };
+      function u() { disp.setAttribute('scale', o.v.toFixed(1)); }
+      gsap.timeline({ onComplete: function () { el.classList.remove('liquid-on'); busy = false; } })
+        .to(o, { v: max, duration: 0.28, ease: 'power2.out', onUpdate: u })
+        .to(o, { v: 0, duration: 0.6, ease: 'power2.inOut', onUpdate: u });
+    }
+    document.querySelectorAll('.wordmark').forEach(function (w) {
+      w.addEventListener('mouseenter', function () { ripple(w, 22); });
+    });
+    ScrollTrigger.create({
+      trigger: '#footGiant', start: 'top 96%', once: true,
+      onEnter: function () { ripple(document.getElementById('footGiant'), 32); }
+    });
+  })();
 
   /* G4 — morph infinito con tiempos desfasados por blob */
   if (H.MorphSVGPlugin) {
@@ -1540,7 +2189,6 @@ mm.add('(min-width: 901px) and (prefers-reduced-motion: no-preference)', functio
         trigger: '.manifesto', start: 'top top', end: 'bottom bottom', scrub: true,
         onUpdate: function (self) {
           document.getElementById('mfPct').textContent = Math.round(self.progress * 100);
-          gsap.set('#mfRail', { scaleY: self.progress });
         }
       }
     });
@@ -1650,24 +2298,6 @@ mm.add('(min-width: 901px) and (prefers-reduced-motion: no-preference)', functio
     });
   }
 
-  /* ═══ SKEW por velocidad ═══ */
-  var skewT = gsap.utils.toArray('.case-card, .price-card, .tool-visual');
-  if (skewT.length) {
-    gsap.set(skewT, { transformOrigin: 'right center', force3D: true });
-    var pxy = { s: 0 }, cl = gsap.utils.clamp(-7, 7);
-    var setSkew = gsap.quickSetter(skewT, 'skewY', 'deg');
-    ScrollTrigger.create({
-      start: 0, end: 'max',
-      onUpdate: function (self) {
-        var s = cl(self.getVelocity() / -420);
-        if (Math.abs(s) > Math.abs(pxy.s)) {
-          pxy.s = s;
-          gsap.to(pxy, { s: 0, duration: 0.85, ease: 'power3', overwrite: true, onUpdate: function () { setSkew(pxy.s); } });
-        }
-      }
-    });
-  }
-
   /* ═══ P1 + spotlight + elevación de tarjetas ═══ */
   document.querySelectorAll('.spot, .pill').forEach(function (el) {
     el.addEventListener('pointermove', function (e) {
@@ -1676,7 +2306,7 @@ mm.add('(min-width: 901px) and (prefers-reduced-motion: no-preference)', functio
       el.style.setProperty('--my', (e.clientY - r.top) + 'px');
     });
   });
-  document.querySelectorAll('.case-card, .price-card').forEach(function (card) {
+  document.querySelectorAll('.case-card').forEach(function (card) {
     card.addEventListener('mouseenter', function () { gsap.to(card, { y: -8, duration: 0.5, overwrite: 'auto' }); });
     card.addEventListener('mouseleave', function () { gsap.to(card, { y: 0, duration: 0.5, overwrite: 'auto' }); });
   });
@@ -1723,7 +2353,6 @@ mm.add('(min-width: 901px) and (prefers-reduced-motion: no-preference)', functio
     var STATES = {
       card: { width: 84, height: 84, borderRadius: '50%', text: H.Draggable ? 'Arrastra' : 'Ver' },
       pill: { width: 46, height: 46, borderRadius: '50%', text: '→' },
-      text: { width: 2, height: 28, borderRadius: '2px', text: '' },
       base: { width: 36, height: 36, borderRadius: '50%', text: '' }
     };
     var curState = 'base';
@@ -1734,13 +2363,11 @@ mm.add('(min-width: 901px) and (prefers-reduced-motion: no-preference)', functio
       label.textContent = s.text;
       gsap.to(ring, { width: s.width, height: s.height, borderRadius: s.borderRadius, duration: 0.4, overwrite: 'auto' });
       gsap.to(label, { opacity: s.text ? 1 : 0, duration: 0.3, overwrite: 'auto' });
-      gsap.to(dot, { opacity: name === 'text' ? 0 : 1, duration: 0.25, overwrite: 'auto' });
     }
     document.addEventListener('mouseover', function (e) {
       var t = e.target;
       if (t.closest('.case-card')) setCursor('card');
-      else if (t.closest('.pill, a, button, .price-card')) setCursor('pill');
-      else if (t.closest('p, h1, h2, h3, h4, li, .t-body-lg, .manifesto-text')) setCursor('text');
+      else if (t.closest('.pill, a, button')) setCursor('pill');
       else setCursor('base');
     });
   }
@@ -1772,6 +2399,10 @@ mm.add('(max-width: 900px) and (prefers-reduced-motion: no-preference)', functio
     gsap.from(s.lines, { yPercent: 115, opacity: 0, duration: 0.9, stagger: 0.08, ease: 'expo.out' });
   });
 
+  ioReveal(Array.prototype.slice.call(document.querySelectorAll('.js-punch')), function (el) {
+    gsap.from(el, { opacity: 0, y: 16, duration: 0.7 });
+  });
+
   var paras = Array.prototype.slice.call(document.querySelectorAll('.js-words'));
   ioReveal(paras, function (el) { gsap.to(el, { opacity: 1, y: 0, duration: 0.8 }); });
   gsap.set(paras, { y: 20 });
@@ -1787,7 +2418,31 @@ mm.add('(max-width: 900px) and (prefers-reduced-motion: no-preference)', functio
     if (H.DrawSVGPlugin && ln) gsap.fromTo(ln, { drawSVG: '0%' }, { drawSVG: '100%', duration: 1.1 });
   });
 
-  ioReveal(Array.prototype.slice.call(document.querySelectorAll('[data-scramble]')), scrambleIn);
+  if (H.DrawSVGPlugin && document.getElementById('chartA')) {
+    gsap.set(['#cAManual', '#cASofia', '#cASofiaGlow'], { drawSVG: '0%' });
+    gsap.set('#cAArea', { opacity: 0 });
+    gsap.set('#cAMark', { opacity: 0 });
+    ioReveal([document.getElementById('chartA')], function () {
+      var mPulse = makePulse(document.getElementById('cASofia'), 3.6);
+      gsap.timeline()
+        .to('#cAManual', { drawSVG: '100%', duration: 1.3, ease: 'power2.inOut' }, 0)
+        .to(['#cASofiaGlow', '#cASofia'], { drawSVG: '100%', duration: 1.3, ease: 'power2.inOut' }, 0.35)
+        .to('#cAArea', { opacity: 0.07, duration: 0.7 }, 1.2)
+        .to('#cAMark', { opacity: 1, duration: 0.6 }, 1.4)
+        .call(function () { if (mPulse) mPulse(); }, null, 1.9);
+    });
+  }
+  ioReveal(Array.prototype.slice.call(document.querySelectorAll('.bar-fill')), function (b) {
+    gsap.to(b, { scaleX: 1, duration: 1, ease: 'power3.inOut' });
+  });
+
+  if (H.DrawSVGPlugin) {
+    var minis = Array.prototype.slice.call(document.querySelectorAll('.mini-line'));
+    minis.forEach(function (sv) { gsap.set(sv.querySelector('path'), { drawSVG: '0%' }); });
+    ioReveal(minis, function (sv) {
+      gsap.to(sv.querySelector('path'), { drawSVG: '100%', duration: 1.2, ease: 'power2.inOut' });
+    });
+  }
 
   /* Un morph mucho más lento y solo en los blobs del hero: en
      móvil el resto no se ve lo suficiente para pagar el costo. */
