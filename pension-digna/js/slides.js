@@ -100,6 +100,8 @@
         const defaultRow = rows.find((r) => r.classList.contains('is-active'));
         const closing = slide.querySelector('.wait__closing-wrap');
 
+        const TALLEST = 290; // px: the PDF's tallest bar (the 8% / 25-year case)
+
         const apply = (row, animate) => {
           rows.forEach((r) => r.classList.toggle('is-active', r === row));
           // The closing sentence ("≈ $4.19 millones") is the PDF's 8% case.
@@ -107,16 +109,16 @@
           const nums = row.dataset.values.split(',').map(Number);
           const max = Math.max(...nums);
           bars.forEach((bar, i) => {
-            const target = (nums[i] / max) * 100;
+            const target = (nums[i] / max) * TALLEST;
             const label = values[i];
             const from = Number(label.dataset.to);
             label.dataset.to = String(nums[i]);
             if (!animate) {
-              bar.style.setProperty('--h', target + '%');
+              bar.style.setProperty('--h', target + 'px');
               label.textContent = PD.formatCount(label, nums[i]);
               return;
             }
-            gsap.to(bar, { '--h': target + '%', duration: 0.9, ease: 'power3.inOut', overwrite: 'auto' });
+            gsap.to(bar, { '--h': target + 'px', duration: 0.9, ease: 'power3.inOut', overwrite: 'auto' });
             const proxy = { v: from };
             gsap.to(proxy, {
               v: nums[i],
