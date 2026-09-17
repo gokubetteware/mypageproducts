@@ -48,6 +48,32 @@
 .accent { color: var(--accent); }
 .nowrap { white-space: nowrap; }
 
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* Glyphs the subset fonts lack (→ ≈) are drawn from the sprite */
+.arrow-glyph,
+.approx svg {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.12em;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.approx { display: inline-block; }
+.approx svg { width: 0.78em; height: 0.78em; vertical-align: -0.02em; stroke-width: 2; }
+
 .note {
   margin: auto 0 0;
   padding-top: 24px;
@@ -78,10 +104,10 @@
 .rule--strong { height: 2px; background: var(--rule-strong); }
 .rule--accent { background: var(--accent); }
 
+/* Cormorant Garamond's default figures are old-style, matching the PDF. */
 .num {
   font-family: var(--f-display);
   font-weight: 600;
-  font-variant-numeric: oldstyle-nums;
 }
 
 .grid-2 {
@@ -122,7 +148,6 @@
   font-family: var(--f-display);
   font-weight: 600;
   font-size: 40px;
-  font-variant-numeric: oldstyle-nums;
   color: var(--accent);
 }
 
@@ -143,7 +168,6 @@
   width: 100%;
   border-collapse: collapse;
   font-family: var(--f-display);
-  font-variant-numeric: oldstyle-nums;
 }
 
 .ctable th,
@@ -334,7 +358,6 @@
   font-size: 160px;
   line-height: 0.92;
   letter-spacing: -0.02em;
-  font-variant-numeric: oldstyle-nums;
 }
 
 .stat__label {
@@ -398,7 +421,6 @@
   font-family: var(--f-display);
   font-weight: 600;
   font-size: 76px;
-  font-variant-numeric: oldstyle-nums;
 }
 
 .box--solid .box__value { background: var(--c-bone); color: var(--c-forest); }
@@ -408,11 +430,9 @@
 
 .future__arrow {
   flex: 1;
-  margin-top: 132px;
+  margin-top: 140px;
   text-align: center;
-  font-family: var(--f-text);
-  font-weight: 300;
-  font-size: 64px;
+  font-size: 60px;
   line-height: 1;
   color: var(--muted);
 }
@@ -459,20 +479,18 @@
   font-family: var(--f-display);
   font-weight: 500;
   font-size: 96px;
-  font-variant-numeric: oldstyle-nums;
   color: var(--muted);
 }
 
 .inflation__arrow {
-  font-family: var(--f-text);
-  font-weight: 300;
-  font-size: 72px;
+  align-self: center;
+  font-size: 64px;
   line-height: 1;
   color: var(--muted);
 }
 
 .inflation__to {
-  font-size: 184px;
+  font-size: var(--fs-stat);
   line-height: 0.9;
   letter-spacing: -0.02em;
 }
@@ -545,7 +563,7 @@
 
 .save__pct {
   margin: 0;
-  font-size: 128px;
+  font-size: var(--fs-stat-md);
   line-height: 0.9;
   letter-spacing: -0.02em;
   flex: none;
@@ -597,7 +615,7 @@
 
 .area-chart__growth { fill: var(--accent); }
 .area-chart__contrib { fill: var(--c-bone); }
-.area-chart__line { fill: none; stroke: #3BD474; stroke-width: 2; vector-effect: non-scaling-stroke; }
+.area-chart__line { fill: none; stroke: var(--c-green-line); stroke-width: 2; vector-effect: non-scaling-stroke; }
 .area-chart__guide { stroke: rgba(244, 241, 234, 0.12); stroke-width: 1; vector-effect: non-scaling-stroke; }
 .area-chart__axis { stroke: var(--rule); stroke-width: 1; vector-effect: non-scaling-stroke; }
 
@@ -650,8 +668,8 @@
    ========================================================================== */
 .wait__grid {
   display: grid;
-  grid-template-columns: 1fr 720px;
-  gap: 0 72px;
+  grid-template-columns: 1fr 760px;
+  gap: 0 56px;
   margin-top: 48px;
   align-items: end;
 }
@@ -719,7 +737,6 @@
   width: 100%;
   border-collapse: collapse;
   font-family: var(--f-display);
-  font-variant-numeric: oldstyle-nums;
 }
 
 .rtable th,
@@ -745,13 +762,17 @@
   text-align: left;
   font-family: var(--f-text);
   font-weight: 600;
-  font-size: 16px;
+  font-size: 20px;
   line-height: 1.3;
   letter-spacing: var(--track-label);
   text-transform: uppercase;
   color: var(--c-mist);
   white-space: normal;
-  max-width: 150px;
+}
+
+.rtable thead th.rtable__corner span {
+  display: block;
+  max-width: 200px;
 }
 
 .rtable tbody th {
@@ -762,17 +783,30 @@
 }
 
 .rtable__row {
-  border-top: 1px solid rgba(244, 241, 234, 0.14);
   cursor: pointer;
   transition: color 0.3s var(--ease-out), background-color 0.3s;
-  outline: none;
+}
+
+.rtable__row th,
+.rtable__row td {
+  border-top: 1px solid rgba(244, 241, 234, 0.14);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.3s;
 }
 
 .rtable__row:hover:not(.is-active) { background: rgba(244, 241, 234, 0.04); }
 
-.rtable__row.is-active {
-  color: var(--c-green);
-  box-shadow: inset 0 1.5px 0 var(--c-green), inset 0 -1.5px 0 var(--c-green);
+.rtable__row:focus-visible {
+  outline: 2px solid var(--c-green);
+  outline-offset: -2px;
+}
+
+.rtable__row.is-active { color: var(--c-green); }
+
+.rtable__row.is-active th,
+.rtable__row.is-active td {
+  border-top-color: var(--c-green);
+  border-bottom-color: var(--c-green);
 }
 
 .rtable__row.is-active th { color: var(--c-green); }
@@ -783,7 +817,12 @@
   color: var(--c-mist);
 }
 
-.wait__closing { margin-top: 48px; }
+.wait__closing {
+  margin-top: 48px;
+  transition: opacity 0.4s var(--ease-out);
+}
+
+.wait__closing.is-muted { opacity: 0.32; }
 
 /* ==========================================================================
    11 · Ana y Beto
@@ -810,7 +849,7 @@
 }
 
 .timeline__puts {
-  font-size: 30px;
+  font-size: var(--fs-body);
   color: var(--muted);
 }
 
@@ -984,7 +1023,7 @@
 
 .need__example {
   margin: 0;
-  font-size: 30px;
+  font-size: var(--fs-body);
   line-height: 1.4;
   color: var(--muted);
 }
@@ -1000,13 +1039,15 @@
   font-size: 136px;
   line-height: 1;
   letter-spacing: -0.02em;
+  white-space: nowrap;
 }
 
-.need__approx,
-.tax__approx {
-  font-size: 0.68em;
-  font-weight: 500;
-  vertical-align: 0.08em;
+.need__capital .approx svg,
+.tax__saving .approx svg {
+  width: 0.62em;
+  height: 0.62em;
+  vertical-align: 0.06em;
+  stroke-width: 2.2;
 }
 
 /* ==========================================================================
@@ -1042,7 +1083,7 @@
 
 .order__desc {
   margin: 18px 0 0;
-  font-size: 30px;
+  font-size: var(--fs-body);
   line-height: 1.4;
   color: var(--muted);
 }
@@ -1102,7 +1143,7 @@
 
 .tax__intro {
   margin: 0 0 24px;
-  font-size: 30px;
+  font-size: var(--fs-body);
   line-height: 1.4;
 }
 
@@ -1113,9 +1154,10 @@
   font-size: 152px;
   line-height: 1;
   letter-spacing: -0.02em;
+  white-space: nowrap;
 }
 
-.tax__example .label { margin-top: 10px; }
+.tax__example .label { margin-top: 38px; }
 
 .tax__more {
   margin: 30px 0 0;
@@ -1231,7 +1273,6 @@
   font-family: var(--f-display);
   font-weight: 600;
   font-size: 42px;
-  font-variant-numeric: oldstyle-nums;
   color: var(--accent);
 }
 
@@ -1284,7 +1325,6 @@
   font-weight: 600;
   font-size: 56px;
   line-height: 1;
-  font-variant-numeric: oldstyle-nums;
 }
 
 .cta__qr {

@@ -34,7 +34,7 @@ Pulsa `F` para pantalla completa antes de presentar.
 | `Home` / `End` | Primera / última diapositiva |
 | `F` | Pantalla completa |
 | `1`–`5` (en Autoevaluación) | Marcar / desmarcar cada respuesta |
-| Pasar el cursor o clic en la tabla (Lo que cuesta esperar) | Cambia las barras al 6 %, 8 % o 10 % |
+| Clic en una fila de la tabla (Lo que cuesta esperar) | Cambia las barras al 6 %, 8 % o 10 % |
 
 El número de diapositiva y una línea de progreso aparecen en la parte inferior;
 la URL guarda la posición (`#7`) para retomar donde se dejó. Al retroceder, la
@@ -46,7 +46,7 @@ diapositiva anterior se muestra completa (sin repetir su animación).
 pension-digna/
 ├── index.html          Las 18 diapositivas (HTML semántico) + chrome del deck
 ├── css/
-│   ├── tokens.css      Colores, escala tipográfica, espaciado, temas dark/light
+│   ├── tokens.css      Colores, escala tipográfica, márgenes, temas dark/light
 │   ├── fonts.css       @font-face (Cormorant Garamond y Montserrat, variables)
 │   ├── deck.css        Escenario 1920×1080 escalado, cabecera, pie, progreso, navegación
 │   └── slides.css      Componentes compartidos y composición de cada diapositiva
@@ -83,7 +83,7 @@ duraciones por defecto en `js/animate.js`.
 
 - Las barras de "Levanta la mano si…" reproducen las proporciones ilustrativas del
   PDF (no hay datos numéricos detrás), igual que en el original.
-- El símbolo "≈" no existe en Cormorant Garamond y se resuelve con la fuente serif
-  de respaldo del sistema, como ya ocurría en el PDF.
+- Los glifos "→" y "≈" no existen en los subconjuntos latinos de las fuentes, así
+  que se dibujan como símbolos SVG del sprite (independientes del sistema).
 - La presentación está optimizada para 16:9; en pantallas con otra proporción se
   muestra centrada con bandas del color de fondo.

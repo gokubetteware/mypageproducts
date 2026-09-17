@@ -1,6 +1,7 @@
 /* ==========================================================================
    Design tokens — Pensión digna · Skal Patrimonial
-   Every color, type size, spacing and timing used by the deck lives here.
+   Palette, theme scopes, type families and the shared type scale. Slide
+   compositions in slides.css size their own display figures on top of this.
    The stage is designed at a fixed 1920 × 1080 canvas and scaled to fit.
    ========================================================================== */
 
@@ -11,16 +12,15 @@
   --mx: 144px;            /* horizontal safe margin */
   --mt: 64px;             /* top safe margin (header line) */
   --mb: 60px;             /* bottom safe margin (footer baseline) */
-  --content-w: calc(var(--stage-w) - 2 * var(--mx));
 
   /* Palette ------------------------------------------------------------ */
   --c-forest:      #10231F;   /* deep green · dark backgrounds, ink on cream */
   --c-forest-2:    #17302A;   /* panels on dark */
   --c-forest-3:    #2E4A3F;   /* muted bars on dark */
   --c-bone:        #F4F1EA;   /* cream · light backgrounds, ink on dark */
-  --c-bone-2:      #EBE6DA;   /* panels on cream */
   --c-sand:        #D9D4C7;   /* hairlines on cream */
   --c-green:       #00B140;   /* Skandia green · accent on dark */
+  --c-green-line:  #3BD474;   /* chart edge on dark */
   --c-green-deep:  #007A40;   /* accent on cream */
   --c-red:         #B83A2E;   /* negative values */
   --c-mist:        #C9CFC9;   /* secondary text on dark */
@@ -33,41 +33,25 @@
   --fs-hero:       144px;   /* cover title */
   --fs-h1:         92px;    /* slide titles */
   --fs-h1-sm:      80px;    /* two-line titles that need room */
-  --fs-stat:       184px;   /* hero figures ("68 de 100") */
+  --fs-stat:       184px;   /* hero figures */
   --fs-stat-md:    128px;   /* secondary figures */
-  --fs-stat-sm:    88px;    /* figures inside tables */
   --fs-statement:  58px;    /* serif conclusions */
   --fs-statement-sm: 48px;
-  --fs-formula:    72px;
   --fs-list:       40px;    /* list rows (Montserrat) */
   --fs-lead:       36px;    /* sans subtitles */
   --fs-body:       30px;    /* sans paragraphs */
-  --fs-body-sm:    26px;
   --fs-label:      22px;    /* uppercase labels */
   --fs-note:       22px;    /* footnotes / sources */
   --fs-footer:     20px;
 
   --lh-tight: 1.02;
-  --lh-snug:  1.18;
   --lh-body:  1.45;
 
   --track-label: 0.16em;
   --track-footer: 0.22em;
 
-  /* Spacing ------------------------------------------------------------ */
-  --s-1: 8px;
-  --s-2: 16px;
-  --s-3: 24px;
-  --s-4: 32px;
-  --s-5: 48px;
-  --s-6: 64px;
-  --s-7: 96px;
-  --s-8: 128px;
-
-  /* Motion (durations in seconds are read by JS from data attributes) --- */
+  /* Motion (GSAP durations live in js/animate.js and data-dur attributes) */
   --ease-out: cubic-bezier(0.22, 0.61, 0.36, 1);
-  --t-fast: 0.25s;
-  --t-base: 0.6s;
 }
 
 /* Theme scopes: every slide declares data-theme="dark" | "light" --------- */

@@ -150,7 +150,6 @@ button {
   font-weight: 500;
   font-variant-numeric: oldstyle-nums;
   letter-spacing: 0.04em;
-  color: var(--muted);
   pointer-events: none;
 }
 
@@ -192,12 +191,25 @@ button {
 }
 
 .hint kbd {
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
   font-family: inherit;
   font-size: inherit;
-  padding: 3px 9px;
+  padding: 2px 9px;
   border: 1px solid rgba(244, 241, 234, 0.3);
   border-radius: 4px;
   margin-right: 8px;
+}
+
+.hint .arrow-glyph {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 /* Edge navigation (appears on pointer movement) */
@@ -210,7 +222,6 @@ button {
   display: grid;
   place-items: center;
   border-radius: 50%;
-  color: currentColor;
   opacity: 0;
   transition: opacity 0.35s var(--ease-out), background-color 0.2s;
 }

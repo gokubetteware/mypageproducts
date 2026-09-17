@@ -29,6 +29,7 @@
   <symbol id="i-scale" viewBox="0 0 24 24"><path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="M7 21h10"/><path d="M12 3v18"/><path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"/></symbol>
   <symbol id="i-idcard" viewBox="0 0 24 24"><path d="M16 10h2"/><path d="M16 14h2"/><path d="M6.17 15a3 3 0 0 1 5.66 0"/><circle cx="9" cy="11" r="2"/><rect x="2" y="5" width="20" height="14" rx="2"/></symbol>
   <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+  <symbol id="i-approx" viewBox="0 0 24 24"><path d="M3.5 9.4c2.4-2.6 4.9-2.6 7.5-.4 2.6 2.2 5.1 2.2 9.5-.4"/><path d="M3.5 15.4c2.4-2.6 4.9-2.6 7.5-.4 2.6 2.2 5.1 2.2 9.5-.4"/></symbol>
   <symbol id="i-arrow-left" viewBox="0 0 24 24"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></symbol>
   <symbol id="i-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></symbol>
 </svg>
@@ -97,14 +98,14 @@
         <div class="grid-2 survey__grid">
           <div class="stat">
             <span class="rule rule--strong" data-anim="line"></span>
-            <div class="waffle" data-n="68" data-of="100" data-chart="waffle" aria-label="68 de 100"></div>
-            <p class="stat__num"><span class="num" data-anim="count" data-to="68" data-at="0.5">0</span> de 100</p>
+            <div class="waffle" data-n="68" data-of="100" data-chart="waffle" role="img" aria-label="68 de 100"></div>
+            <p class="stat__num" data-anim="fade" data-at="0.45"><span class="num" data-anim="count" data-to="68" data-at="0.5">0</span> de 100</p>
             <p class="stat__label" data-anim="rise" data-at="0.7">mencionan los apoyos del&nbsp;gobierno</p>
           </div>
           <div class="stat">
             <span class="rule rule--strong" data-anim="line" data-at="0.25"></span>
-            <div class="waffle" data-n="67" data-of="100" data-chart="waffle" aria-label="67 de 100"></div>
-            <p class="stat__num"><span class="num" data-anim="count" data-to="67" data-at="0.8">0</span> de 100</p>
+            <div class="waffle" data-n="67" data-of="100" data-chart="waffle" role="img" aria-label="67 de 100"></div>
+            <p class="stat__num" data-anim="fade" data-at="0.75"><span class="num" data-anim="count" data-to="67" data-at="0.8">0</span> de 100</p>
             <p class="stat__label" data-anim="rise" data-at="1.0">mencionan seguir trabajando</p>
           </div>
         </div>
@@ -125,7 +126,7 @@
               <span class="box__value">$30,000</span>
               <figcaption class="label">Hoy</figcaption>
             </figure>
-            <span class="future__arrow" data-anim="fade" data-at="0.55" aria-hidden="true">→</span>
+            <span class="future__arrow" data-anim="fade" data-at="0.55"><svg class="arrow-glyph" aria-hidden="true"><use href="#i-arrow-right"/></svg></span>
             <figure class="box box--outline" data-anim="rise" data-at="0.7">
               <span class="box__value box__value--accent">¿?</span>
               <figcaption class="label">A los 65</figcaption>
@@ -153,8 +154,8 @@
         <div class="grid-2 afore__grid">
           <div class="stat">
             <span class="rule rule--strong" data-anim="line"></span>
-            <div class="waffle" data-n="56" data-of="100" data-chart="waffle" aria-label="56 de 100"></div>
-            <p class="stat__num"><span class="num" data-anim="count" data-to="56" data-at="0.5">0</span> de 100</p>
+            <div class="waffle" data-n="56" data-of="100" data-chart="waffle" role="img" aria-label="56 de 100"></div>
+            <p class="stat__num" data-anim="fade" data-at="0.45"><span class="num" data-anim="count" data-to="56" data-at="0.5">0</span> de 100</p>
             <p class="stat__label" data-anim="rise" data-at="0.7">trabaja en la informalidad: años sin&nbsp;aportar.</p>
           </div>
           <ul class="facts" data-step="1" data-stagger>
@@ -179,7 +180,7 @@
             <p class="label" data-anim="fade">Lo que hoy cuesta $100</p>
             <p class="inflation__figure">
               <span class="inflation__from" data-anim="fade">$100</span>
-              <span class="inflation__arrow" data-anim="fade" aria-hidden="true">→</span>
+              <span class="inflation__arrow" data-anim="fade"><svg class="arrow-glyph" aria-hidden="true"><use href="#i-arrow-right"/></svg></span>
               <span class="inflation__to num" data-anim="count" data-from="100" data-to="203" data-prefix="$" data-dur="1.8">$100</span>
             </p>
             <p class="inflation__caption" data-anim="rise">dentro de 18 años</p>
@@ -281,7 +282,7 @@
           <div class="panel wait__table" data-step="2" data-anim="rise" data-interactive>
             <table class="rtable">
               <thead>
-                <tr><th class="rtable__corner">Si empiezas a&nbsp;los</th><th>25</th><th>30</th><th>35</th></tr>
+                <tr><th class="rtable__corner"><span>Si empiezas a&nbsp;los</span></th><th>25</th><th>30</th><th>35</th></tr>
               </thead>
               <tbody>
                 <tr class="rtable__row" data-rate="6" data-values="6.97,4.99,3.52" tabindex="0"><th>6%</th><td>$6.97 M</td><td>$4.99 M</td><td>$3.52 M</td></tr>
@@ -292,7 +293,7 @@
             <p class="rtable__caption label">Rendimiento anual neto supuesto</p>
           </div>
         </div>
-        <p class="statement accent wait__closing" data-step="3" data-anim="rise">Esperar 5 años te cuesta ≈ $4.19 millones.</p>
+        <p class="statement accent wait__closing" data-step="3" data-anim="rise">Esperar 5 años te cuesta <span class="nowrap"><span class="approx"><svg aria-hidden="true"><use href="#i-approx"/></svg><span class="sr-only">≈</span></span> $4.19</span> millones.</p>
       </div>
       <footer class="slide__foot"><span>Pensión digna · Skal Patrimonial</span></footer>
     </section>
@@ -322,7 +323,7 @@
               <tr><th>10%</th><td class="accent">$14.22 M</td><td>$7.91 M</td></tr>
             </tbody>
           </table>
-          <p class="statement statement--sm anabeto__closing" data-step="3" data-anim="rise">Ana puso tres veces menos y, al 8%, terminó con más. <span class="accent">Empezar joven vale más que aportar mucho después.</span></p>
+          <p class="statement statement--sm anabeto__closing" data-step="3" data-anim="rise">Ana puso tres veces menos y, al 8%, terminó con más. <span class="accent">Empezar joven vale más que aportar mucho&nbsp;después.</span></p>
         </div>
         <p class="note">Ejemplo hipotético: $3,500 al mes, tasas anuales netas, capitalización mensual, sin inflación, costos ni impuestos.</p>
       </div>
@@ -333,7 +334,7 @@
     <section class="slide s-market" id="s12" data-theme="light">
       <div class="slide__brand"><img class="slide__logo" src="assets/img/logo-sk.png" alt="Skandia"><span class="slide__glyph"><svg><use href="#i-shield"/></svg></span></div>
       <div class="slide__inner">
-        <h2 class="title title--sm" data-anim="rise">En un año, la bolsa asusta. En&nbsp;veinte, cuenta otra historia.</h2>
+        <h2 class="title title--sm" data-anim="rise">En un año, la bolsa asusta. En veinte,<br>cuenta otra historia.</h2>
         <div class="range">
           <div class="range__block range__block--year" data-step="1">
             <p class="label" data-anim="fade">En 1 año</p>
@@ -358,7 +359,7 @@
           </div>
           <i class="range__zero" data-anim="bar-y" data-origin="top" data-dur="0.8"></i>
         </div>
-        <p class="statement statement--sm market__closing" data-step="3" data-anim="rise">Diversificar es invertir en muchas empresas a la vez, para que un mal año de una no te hunda.</p>
+        <p class="statement statement--sm market__closing" data-step="3" data-anim="rise">Diversificar es invertir en muchas empresas a la vez, para que un mal año de una no&nbsp;te&nbsp;hunda.</p>
         <p class="note">Fuente: J.P. Morgan AM, Guide to the Markets; acciones de EE.UU. 1950–2020, en dólares. El pasado no garantiza resultados futuros.</p>
       </div>
       <footer class="slide__foot"><span>Pensión digna · Skal Patrimonial</span></footer>
@@ -390,7 +391,7 @@
             </div>
             <div data-step="3">
               <p class="need__gap" data-anim="rise">Tu brecha: $21,800 al mes.</p>
-              <p class="need__capital num"><span class="need__approx" data-anim="fade">≈</span> <span data-anim="count" data-to="6.54" data-decimals="2" data-prefix="$" data-suffix=" M" data-dur="1.6" data-at="0.2">$0.00 M</span></p>
+              <p class="need__capital num" data-anim="fade" data-at="0.15"><span class="approx"><svg aria-hidden="true"><use href="#i-approx"/></svg><span class="sr-only">≈</span></span> <span data-anim="count" data-to="6.54" data-decimals="2" data-prefix="$" data-suffix=" M" data-dur="1.6" data-at="0.2">$0.00 M</span></p>
             </div>
           </div>
         </div>
@@ -403,7 +404,7 @@
     <section class="slide s-order" id="s14" data-theme="light">
       <div class="slide__brand"><img class="slide__logo" src="assets/img/logo-sk.png" alt="Skandia"></div>
       <div class="slide__inner">
-        <h2 class="title title--sm" data-anim="rise">El problema no es cuánto ganas: es&nbsp;cómo lo ordenas.</h2>
+        <h2 class="title title--sm" data-anim="rise">El problema no es cuánto ganas: es cómo lo&nbsp;ordenas.</h2>
         <div class="order__block order__block--old">
           <p class="label" data-anim="fade" data-at="0.3">Lo de siempre</p>
           <p class="formula formula--old" id="formula-old" data-anim="rise" data-at="0.4">
@@ -441,18 +442,18 @@
             </li>
             <li class="option" data-anim="rise">
               <h3 class="option__name">Aportaciones voluntarias a tu AFORE</h3>
-              <p class="option__desc">Opción adicional; algunas son deducibles si las dejas hasta el retiro.</p>
+              <p class="option__desc">Opción adicional; algunas son deducibles si las dejas hasta&nbsp;el&nbsp;retiro.</p>
             </li>
           </ul>
           <div class="tax__example">
             <div data-step="2">
-              <p class="tax__intro" data-anim="rise">Ganas ≈ $30,000 al mes y pones $3,000 en un plan deducible.</p>
+              <p class="tax__intro" data-anim="rise"><span class="nowrap">Ganas <span class="approx"><svg aria-hidden="true"><use href="#i-approx"/></svg><span class="sr-only">≈</span></span> $30,000</span> al mes y pones $3,000 en un plan deducible.</p>
               <span class="rule rule--strong rule--accent" data-anim="line"></span>
-              <p class="tax__saving num accent"><span class="tax__approx" data-anim="fade" data-at="0.5">≈</span> <span data-anim="count" data-to="7690" data-prefix="$" data-dur="1.6" data-at="0.5">$0</span></p>
+              <p class="tax__saving num accent" data-anim="fade" data-at="0.45"><span class="approx"><svg aria-hidden="true"><use href="#i-approx"/></svg><span class="sr-only">≈</span></span> <span data-anim="count" data-to="7690" data-prefix="$" data-dur="1.6" data-at="0.5">$0</span></p>
               <p class="label" data-anim="fade" data-at="0.8">Reducción estimada del ISR al año</p>
             </div>
             <div data-step="3">
-              <p class="tax__more" data-anim="rise">Con $800,000 al año y $80,000 al plan: ≈&nbsp;$24,000.</p>
+              <p class="tax__more" data-anim="rise">Con $800,000 al año y $80,000 al plan: <span class="nowrap"><span class="approx"><svg aria-hidden="true"><use href="#i-approx"/></svg><span class="sr-only">≈</span></span> $24,000.</span></p>
               <p class="tax__warning accent" data-anim="rise">Antes de contratar, compara costos completos, liquidez y condiciones del contrato.</p>
             </div>
           </div>
@@ -525,14 +526,14 @@
       <div class="slide__inner">
         <p class="eyebrow" data-anim="fade">Consulta del 16 de septiembre de 2026</p>
         <h2 class="title" data-anim="rise">Fuentes y bibliografía</h2>
-        <div class="sources" data-stagger>
-          <div class="sources__col">
-            <section class="source" data-anim="rise"><h3 class="source__h">Pensiones</h3><p>OCDE, Pensions at a Glance 2025 y nota de país México · Secretaría de Bienestar, Pensión para Personas Adultas Mayores 2026.</p></section>
+        <div class="sources">
+          <div class="sources__col" data-stagger>
+            <section class="source" data-anim="rise"><h3 class="source__h">Pensiones</h3><p>OCDE, Pensions at a Glance 2025 y nota de país México · Secretaría de Bienestar, Pensión para Personas Adultas Mayores&nbsp;2026.</p></section>
             <section class="source" data-anim="rise"><h3 class="source__h">Empleo y hábitos</h3><p>INEGI, ENOE julio 2026 · INEGI–CNBV, ENIF 2024 · CNBV, Reporte de resultados ENIF 2024 · INEGI, INPC agosto 2026.</p></section>
-            <section class="source" data-anim="rise"><h3 class="source__h">Fiscal</h3><p>UMA 2026 (INEGI, DOF) · LISR Art. 151 fr. V, Art. 142 fr. XVIII y Art. 152 · SAT, Anexo 8 RMF 2026 (DOF 28-dic-2025).</p></section>
-            <section class="source" data-anim="rise"><h3 class="source__h">Mercados</h3><p>J.P. Morgan AM, Guide to the Markets · A. Damodaran, NYU Stern, datos históricos.</p></section>
+            <section class="source" data-anim="rise"><h3 class="source__h">Fiscal</h3><p>UMA 2026 (INEGI, DOF) · LISR Art.&nbsp;151 fr.&nbsp;V, Art.&nbsp;142 fr.&nbsp;XVIII y Art.&nbsp;152 · SAT, Anexo 8 RMF 2026 (DOF 28-dic-2025).</p></section>
+            <section class="source" data-anim="rise"><h3 class="source__h">Mercados</h3><p>J.P. Morgan AM, Guide to the Markets · A. Damodaran, NYU&nbsp;Stern, datos históricos.</p></section>
           </div>
-          <div class="sources__col">
+          <div class="sources__col" data-stagger>
             <section class="source" data-anim="rise"><h3 class="source__h">Comportamiento</h3><p>Hershfield et al. (2011), Journal of Marketing Research, sobre imágenes del yo futuro y ahorro · Kahneman y Tversky (1979), Prospect Theory, Econometrica · Thaler y Benartzi (2004), Save More Tomorrow, Journal of Political Economy.</p></section>
             <section class="source" data-anim="rise"><h3 class="source__h">Supuestos</h3><p>Tasas netas de 6, 8 y 10% · aportación al final de cada mes · capitalización mensual · inflación de 4% para pesos de hoy · retiro de 4% anual · montos fiscales 2026.</p></section>
             <section class="source" data-anim="rise"><h3 class="source__h">Aviso</h3><p>Sesión educativa; cifras ilustrativas; rendimientos no garantizados; no constituye asesoría individual, fiscal ni legal.</p></section>
@@ -544,7 +545,7 @@
 
     <!-- Deck chrome ========================================================= -->
     <div class="counter" aria-live="polite"><span class="counter__current">01</span><span class="counter__sep">/</span><span class="counter__total">18</span></div>
-    <div class="hint" aria-hidden="true"><span><kbd>→</kbd>avanzar</span><span><kbd>←</kbd>volver</span><span><kbd>F</kbd>pantalla completa</span></div>
+    <div class="hint" aria-hidden="true"><span><kbd><svg class="arrow-glyph"><use href="#i-arrow-right"/></svg></kbd>avanzar</span><span><kbd><svg class="arrow-glyph"><use href="#i-arrow-left"/></svg></kbd>volver</span><span><kbd>F</kbd>pantalla completa</span></div>
     <button class="nav nav--prev" type="button" aria-label="Diapositiva anterior"><svg><use href="#i-arrow-left"/></svg></button>
     <button class="nav nav--next" type="button" aria-label="Siguiente diapositiva"><svg><use href="#i-arrow-right"/></svg></button>
     <div class="progress" aria-hidden="true"><div class="progress__bar"></div></div>

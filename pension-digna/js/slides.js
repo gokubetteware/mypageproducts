@@ -105,9 +105,12 @@
         const values = bars.map((b) => b.querySelector('.wbar__value'));
         const defaults = values.map((v) => v.dataset.to);
         const defaultRow = rows.find((r) => r.classList.contains('is-active'));
+        const closing = slide.querySelector('.wait__closing');
 
         const apply = (row, animate) => {
           rows.forEach((r) => r.classList.toggle('is-active', r === row));
+          // The closing sentence ("≈ $4.19 millones") is the PDF's 8% case.
+          closing.classList.toggle('is-muted', row !== defaultRow);
           const nums = row.dataset.values.split(',').map(Number);
           const max = Math.max(...nums);
           bars.forEach((bar, i) => {
@@ -134,16 +137,10 @@
           });
         };
 
-        // Browsers synthesize pointer events when content appears under a parked
-        // cursor; only a genuine movement (new coordinates) switches the rate.
-        let lastPointer = null;
+        // Click (or Enter/Space on a focused row) switches the rate; hovering
+        // only highlights, so the PDF's 8% case is never left by accident.
         rows.forEach((row) => {
           row.addEventListener('click', () => apply(row, true));
-          row.addEventListener('pointermove', (e) => {
-            const moved = !lastPointer || lastPointer.x !== e.clientX || lastPointer.y !== e.clientY;
-            lastPointer = { x: e.clientX, y: e.clientY };
-            if (moved && !row.classList.contains('is-active')) apply(row, true);
-          });
           row.addEventListener('keydown', (e) => {
             if (e.key === 'Enter' || e.key === ' ') {
               e.preventDefault();

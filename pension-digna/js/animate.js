@@ -149,12 +149,12 @@
       if (n > 0) this.stepRoots(slide, n).forEach((root) => tl.set(root, { autoAlpha: 1 }, 0));
 
       let cursor = 0;
-      let lastParent = null;
+      let lastGroup = null;
       els.forEach((el, i) => {
-        const parent = el.parentElement;
-        const inGroup = parent.hasAttribute('data-stagger') && parent === lastParent;
+        const group = el.closest('[data-stagger]');
+        const inGroup = group !== null && group === lastGroup;
         if (i > 0) cursor += inGroup ? CASCADE_TIGHT : CASCADE;
-        lastParent = parent;
+        lastGroup = group;
         const at = el.dataset.at !== undefined ? Number(el.dataset.at) : cursor;
         if (el.dataset.at !== undefined) cursor = at;
         this.tween(tl, el, at);
