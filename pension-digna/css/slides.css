@@ -834,6 +834,7 @@
 }
 
 .rtable__row.is-active th { font-size: 38px; }
+.rtable__row.is-active[data-rate="10"] td { font-size: 46px; }   /* longer figures than the PDF's 8% row */
 
 .rtable__caption {
   margin: 22px 0 0;
