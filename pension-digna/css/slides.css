@@ -294,7 +294,7 @@
 }
 
 .hands__closing {
-  margin-top: auto;
+  margin: auto 0 40px;
   max-width: 1560px;
 }
 
@@ -398,7 +398,8 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 0 96px;
-  margin-top: 72px;
+  margin: auto 0;          /* centred between title and footnote */
+  padding-top: 24px;
   align-items: start;
 }
 
@@ -424,7 +425,7 @@
 }
 
 .box--solid .box__value { background: var(--c-bone); color: var(--c-forest); }
-.box--outline .box__value { border: 2px solid var(--rule-strong); }
+.box--outline .box__value { border: 1.5px dashed var(--muted); }
 .box__value--accent { color: var(--accent); font-size: 132px; }
 .box figcaption { margin-top: 22px; }
 
@@ -465,7 +466,11 @@
 /* ==========================================================================
    07 · Inflación
    ========================================================================== */
-.inflation__grid { margin-top: 72px; align-items: start; }
+.inflation__grid {
+  margin: auto 0;          /* centred between title and footnote */
+  padding-top: 24px;
+  align-items: start;
+}
 .inflation__col .rule { margin-bottom: 28px; }
 
 .inflation__figure {
@@ -817,12 +822,12 @@
   color: var(--c-mist);
 }
 
-.wait__closing {
+.wait__closing-wrap {
   margin-top: 48px;
   transition: opacity 0.4s var(--ease-out);
 }
 
-.wait__closing.is-muted { opacity: 0.32; }
+.wait__closing-wrap.is-muted { opacity: 0.32; }
 
 /* ==========================================================================
    11 · Ana y Beto
@@ -1220,7 +1225,7 @@
   justify-content: space-between;
   align-items: flex-end;
   gap: 64px;
-  margin-top: auto;
+  margin: auto 0 40px;
 }
 
 .check__closing { max-width: 1200px; }

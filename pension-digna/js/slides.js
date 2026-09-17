@@ -33,10 +33,12 @@
       enter(slide) {
         gsap.set(slide.querySelector('.moment__opening'), { clearProps: 'all' });
       },
-      step(slide, n, direction) {
+      step(slide, n, direction, _deck, tl) {
         const opening = slide.querySelector('.moment__opening');
         if (n === 1 && direction > 0) {
-          gsap.to(opening, { autoAlpha: 0, y: -28, duration: 0.7, ease: 'power2.in', overwrite: true });
+          // Let the opening line leave before the question rises into its place.
+          gsap.to(opening, { autoAlpha: 0, y: -28, duration: 0.6, ease: 'power2.in', overwrite: true });
+          if (tl) tl.pause(0).delay(0.55).restart(true);
         } else if (n === 0 && direction < 0) {
           gsap.to(opening, { autoAlpha: 1, y: 0, duration: 0.7, ease: 'power2.out', overwrite: true });
         }
@@ -105,7 +107,7 @@
         const values = bars.map((b) => b.querySelector('.wbar__value'));
         const defaults = values.map((v) => v.dataset.to);
         const defaultRow = rows.find((r) => r.classList.contains('is-active'));
-        const closing = slide.querySelector('.wait__closing');
+        const closing = slide.querySelector('.wait__closing-wrap');
 
         const apply = (row, animate) => {
           rows.forEach((r) => r.classList.toggle('is-active', r === row));
@@ -163,37 +165,49 @@
     /* -- 14 · Formula morph: the terms of "lo de siempre" reorder --------- */
     deck.on('s14', {
       step(slide, n, direction) {
-        if (n !== 1 || direction <= 0) return;
         const oldF = slide.querySelector('#formula-old');
+        if (n === 0 && direction < 0) {
+          gsap.to(oldF, { opacity: 1, duration: 0.5, overwrite: true });
+          return;
+        }
+        if (n !== 1 || direction <= 0) return;
         const newF = slide.querySelector('#formula-new');
         const scale = stageScale(slide);
         const ratio = parseFloat(getComputedStyle(oldF).fontSize) / parseFloat(getComputedStyle(newF).fontSize);
         const terms = Array.from(newF.querySelectorAll('.term'));
         const ops = newF.querySelectorAll('.op');
 
-        terms.forEach((term) => {
+        const tl = gsap.timeline({ delay: 0.15 });
+        terms.forEach((term, i) => {
           const source = oldF.querySelector(`.term[data-term="${term.dataset.term}"]`);
           const a = source.getBoundingClientRect();
           const b = term.getBoundingClientRect();
-          gsap.set(term, {
-            x: (a.left - b.left) / scale,
-            y: (a.top - b.top) / scale,
-            scale: ratio,
-            transformOrigin: '0 0',
-            opacity: 0.35,
-          });
+          const dx = (a.left - b.left) / scale;
+          const dy = (a.top - b.top) / scale;
+          // Terms that swap places travel on opposite arcs so they never collide:
+          // the one moving left rises, the one moving right dips.
+          const arc = dx === 0 ? 0 : dx > 0 ? -70 : 70;
+          gsap.set(term, { x: dx, y: dy, scale: ratio, transformOrigin: '0 0', opacity: 0 });
+          const at = i * 0.07;
+          tl.to(term, { opacity: 1, duration: 0.45, ease: 'power1.out' }, at);
+          tl.to(term, { x: 0, scale: 1, duration: 1.15, ease: 'power3.inOut' }, at);
+          tl.to(
+            term,
+            { keyframes: { '0%': { y: dy }, '50%': { y: dy / 2 + arc }, '100%': { y: 0 }, easeEach: 'sine.inOut' }, duration: 1.15 },
+            at
+          );
         });
         gsap.set(ops, { autoAlpha: 0 });
-
-        const tl = gsap.timeline({ delay: 0.15 });
-        tl.to(terms, { x: 0, y: 0, scale: 1, opacity: 1, duration: 1.15, ease: 'power3.inOut', stagger: 0.07 }, 0);
-        tl.to(ops, { autoAlpha: 1, duration: 0.5 }, 0.8);
+        tl.to(ops, { autoAlpha: 1, duration: 0.5 }, 0.85);
+        // "Lo de siempre" recedes as the new order takes over.
+        tl.to(oldF, { opacity: 0.4, duration: 0.9, ease: 'power2.out' }, 0);
       },
       leave(slide) {
-        gsap.set(slide.querySelectorAll('#formula-new .term, #formula-new .op'), { clearProps: 'all' });
+        gsap.set(slide.querySelectorAll('#formula-new .term, #formula-new .op, #formula-old'), { clearProps: 'all' });
       },
       settle(slide) {
         gsap.set(slide.querySelectorAll('#formula-new .term, #formula-new .op'), { clearProps: 'all' });
+        gsap.set(slide.querySelector('#formula-old'), { opacity: 0.4 });
       },
     });
 

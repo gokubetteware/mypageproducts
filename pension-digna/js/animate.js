@@ -108,6 +108,7 @@
         gsap.set(el.querySelectorAll('.line'), { yPercent: 108, autoAlpha: 1 });
       } else if (kind === 'count') {
         el.textContent = formatCount(el, Number(el.dataset.from || 0));
+        gsap.set(el, { autoAlpha: 0 });
       } else {
         gsap.set(el, this.startState(el));
       }
@@ -128,6 +129,7 @@
           gsap.set(el.querySelectorAll('.line'), { clearProps: 'all' });
         } else if (kind === 'count') {
           el.textContent = formatCount(el, Number(el.dataset.to || 0));
+          gsap.set(el, { clearProps: 'all' });
         } else {
           gsap.set(el, { clearProps: 'all' });
         }
@@ -174,6 +176,7 @@
           const from = Number(el.dataset.from || 0);
           const to = Number(el.dataset.to || 0);
           const proxy = { v: from };
+          tl.set(el, { autoAlpha: 1 }, at);
           tl.to(
             proxy,
             {
