@@ -1,56 +1,49 @@
 /* ==========================================================================
    Design tokens — Pensión digna · Skal Patrimonial
-   Palette, theme scopes, type families and the shared type scale. Slide
-   compositions in slides.css size their own display figures on top of this.
-   The stage is designed at a fixed 1920 × 1080 canvas and scaled to fit.
+   Palette, theme scopes, type families and the type scale, all measured
+   from the source PDF at 1920 × 1080 (1 pt = 2.667 px).
    ========================================================================== */
 
 :root {
   /* Canvas ------------------------------------------------------------- */
   --stage-w: 1920px;
   --stage-h: 1080px;
-  --mx: 144px;            /* horizontal safe margin */
-  --mt: 64px;             /* top safe margin (header line) */
-  --mb: 60px;             /* bottom safe margin (footer baseline) */
+  --mx: 96px;             /* horizontal safe margin (36 pt in the PDF) */
+  --mt: 61px;             /* eyebrow top */
+  --foot-y: 1000px;       /* footer rule */
 
   /* Palette ------------------------------------------------------------ */
-  --c-forest:      #10231F;   /* deep green · dark backgrounds, ink on cream */
-  --c-forest-2:    #17302A;   /* panels on dark */
-  --c-forest-3:    #2E4A3F;   /* muted bars on dark */
-  --c-bone:        #F4F1EA;   /* cream · light backgrounds, ink on dark */
+  --c-forest:      #0F231F;   /* deep green · dark backgrounds, ink on cream */
+  --c-forest-3:    #2B4138;   /* hairlines on dark */
+  --c-bone:        #F4F1E9;   /* cream · light backgrounds, ink on dark */
+  --c-bone-2:      #EDE9E1;   /* bibliography page */
   --c-sand:        #D9D4C7;   /* hairlines on cream */
-  --c-green:       #00B140;   /* Skandia green · accent on dark */
-  --c-green-line:  #3BD474;   /* chart edge on dark */
+  --c-green:       #00B140;   /* Skandia green · accent on dark, chapter discs */
   --c-green-deep:  #007A40;   /* accent on cream */
   --c-red:         #B83A2E;   /* negative values */
-  --c-mist:        #C9CFC9;   /* secondary text on dark */
+  --c-mist:        #C9CFC9;   /* secondary text on dark, Beto bar */
   --c-graphite:    #4A4A4A;   /* secondary text on cream */
 
   /* Typography --------------------------------------------------------- */
-  --f-display: 'Cormorant Garamond', 'Times New Roman', Georgia, serif;
+  --f-display: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
   --f-text: 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
 
-  --fs-hero:       144px;   /* cover title */
+  --fs-hero:       132px;   /* cover title */
   --fs-h1:         92px;    /* slide titles */
-  --fs-h1-sm:      80px;    /* two-line titles that need room */
-  --fs-stat:       184px;   /* hero figures */
-  --fs-stat-md:    128px;   /* secondary figures */
-  --fs-statement:  58px;    /* serif conclusions */
-  --fs-statement-sm: 48px;
-  --fs-list:       40px;    /* list rows (Montserrat) */
-  --fs-lead:       36px;    /* sans subtitles */
-  --fs-body:       30px;    /* sans paragraphs */
-  --fs-label:      22px;    /* uppercase labels */
-  --fs-note:       22px;    /* footnotes / sources */
-  --fs-footer:     20px;
+  --fs-h1-lg:      96px;    /* titles under an eyebrow */
+  --fs-h1-sm:      84px;    /* long one-line titles */
+  --fs-stat:       192px;   /* "56 de 100", "$203" */
+  --fs-row:        48px;    /* list rows, labels under figures */
+  --fs-lead:       42px;    /* sans subtitles */
+  --fs-label:      32px;    /* uppercase labels */
+  --fs-label-sm:   28px;
+  --fs-note:       26px;    /* footnotes, sources, footer */
+  --fs-pagenum:    30px;
 
-  --lh-tight: 1.02;
-  --lh-body:  1.45;
+  --track-label: 0.17em;
+  --track-footer: 0.16em;
 
-  --track-label: 0.16em;
-  --track-footer: 0.22em;
-
-  /* Motion (GSAP durations live in js/animate.js and data-dur attributes) */
+  /* Motion ------------------------------------------------------------- */
   --ease-out: cubic-bezier(0.22, 0.61, 0.36, 1);
 }
 
@@ -60,13 +53,8 @@
   --fg: var(--c-bone);
   --muted: var(--c-mist);
   --accent: var(--c-green);
-  --rule: rgba(244, 241, 234, 0.16);
+  --rule: var(--c-forest-3);
   --rule-strong: var(--c-bone);
-  --panel: var(--c-forest-2);
-  --panel-fg: var(--c-bone);
-  --bar-muted: var(--c-forest-3);
-  --bar-neutral: var(--c-bone);
-  --negative: #D9584A;
 }
 
 .slide[data-theme="light"] {
@@ -76,9 +64,4 @@
   --accent: var(--c-green-deep);
   --rule: var(--c-sand);
   --rule-strong: var(--c-forest);
-  --panel: var(--c-forest);
-  --panel-fg: var(--c-bone);
-  --bar-muted: var(--c-sand);
-  --bar-neutral: var(--c-forest);
-  --negative: var(--c-red);
 }

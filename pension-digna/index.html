@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>¿Cómo conseguir una pensión digna? · Skal Patrimonial</title>
 <meta name="description" content="Presentación de educación financiera: cómo conseguir una pensión digna. Skal Patrimonial, agencia exclusiva de Skandia.">
-<meta name="theme-color" content="#10231F">
+<meta name="theme-color" content="#0F231F">
 <link rel="icon" type="image/png" href="assets/img/logo-sk.png">
 <link rel="stylesheet" href="css/fonts.css">
 <link rel="stylesheet" href="css/tokens.css">
@@ -14,7 +14,7 @@
 </head>
 <body>
 
-<!-- Chapter glyphs (thin-stroke, 24×24) -->
+<!-- Chapter pictograms (24×24 strokes, drawn white on the green disc as in the PDF) -->
 <svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
   <symbol id="i-heart" viewBox="0 0 24 24"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/><path d="M3.22 12H9.5l.5-1 2 4.5 2-7 1.5 3.5h5.27"/></symbol>
   <symbol id="i-coins" viewBox="0 0 24 24"><circle cx="8" cy="8" r="6"/><path d="M18.09 10.37A6 6 0 1 1 10.34 18"/><path d="M7 6h1v4"/><path d="m16.71 13.88.7.71-2.82 2.82"/></symbol>
@@ -43,32 +43,34 @@
       <div class="slide__inner">
         <p class="eyebrow" data-anim="fade">Educación financiera</p>
         <h1 class="cover__title" data-anim="lines" data-at="0.15">
-          <span class="mask"><span class="line">¿Cómo conseguir</span></span>
-          <span class="mask"><span class="line">una pensión digna?</span></span>
+          <span class="mask"><span class="line">¿Cómo conseguir una pensión</span></span>
+          <span class="mask"><span class="line">digna?</span></span>
         </h1>
-        <p class="cover__sub" data-anim="rise" data-at="0.75">El tiempo es el activo más valioso que tienes.<br>Y es el único que no puedes recuperar.</p>
-        <div class="cover__timeline" data-anim="fade" data-at="1.1">
-          <div class="cover__track"><span class="cover__line" data-anim="line" data-at="1.2" data-dur="2.4"></span><span class="cover__dot"></span></div>
-          <div class="cover__ticks"><span>Hoy</span><span>65</span></div>
+        <p class="cover__sub" data-step="1" data-anim="rise" data-dur="1.1">El tiempo es el activo más valioso que tienes. Y es el único que no puedes recuperar.</p>
+        <div class="cover__timeline" data-step="2">
+          <div class="cover__track"><i class="cover__tick cover__tick--start" data-anim="fade"></i><span class="cover__line" data-anim="line" data-dur="2.4"></span><i class="cover__tick cover__tick--end" data-anim="fade" data-at="2.2"></i><span class="cover__dot"></span></div>
+          <div class="cover__ticks"><span data-anim="fade">Hoy</span><span data-anim="fade" data-at="2.2">65</span></div>
         </div>
       </div>
-      <footer class="slide__foot"><span>Skal Patrimonial · Agencia exclusiva de Skandia · 2026</span></footer>
+      <footer class="slide__foot slide__foot--bare"><span>Skal Patrimonial · Agencia exclusiva de Skandia · 2026</span></footer>
     </section>
 
     <!-- 02 · Levanta la mano =============================================== -->
     <section class="slide s-hands" id="s02" data-theme="light">
       <div class="slide__brand"><img class="slide__logo" src="assets/img/logo-sk.png" alt="Skandia"></div>
       <div class="slide__inner">
-        <p class="eyebrow" data-anim="fade">Antes de empezar</p>
-        <h2 class="title" data-anim="rise">Levanta la mano si…</h2>
+        <div class="hands__head">
+          <p class="eyebrow" data-anim="fade">Antes de empezar</p>
+          <h2 class="title title--lg" data-anim="rise">Levanta la mano si…</h2>
+        </div>
         <ol class="rows rows--hands">
-          <li class="rows__item" data-step="1"><span class="rows__n" data-anim="fade">01</span><span class="rows__text" data-anim="rise">¿Ahorras?</span><span class="rows__bar"><i class="hands__bar" style="--w:100%" data-step="6" data-anim="bar"></i></span></li>
-          <li class="rows__item" data-step="2"><span class="rows__n" data-anim="fade">02</span><span class="rows__text" data-anim="rise">¿Ahorras e inviertes?</span><span class="rows__bar"><i class="hands__bar" style="--w:72%" data-step="6" data-anim="bar"></i></span></li>
-          <li class="rows__item" data-step="3"><span class="rows__n" data-anim="fade">03</span><span class="rows__text" data-anim="rise">¿Inviertes cada mes, en automático?</span><span class="rows__bar"><i class="hands__bar" style="--w:50%" data-step="6" data-anim="bar"></i></span></li>
-          <li class="rows__item" data-step="4"><span class="rows__n" data-anim="fade">04</span><span class="rows__text" data-anim="rise">¿Inviertes con un objetivo claro?</span><span class="rows__bar"><i class="hands__bar" style="--w:29%" data-step="6" data-anim="bar"></i></span></li>
-          <li class="rows__item" data-step="5"><span class="rows__n" data-anim="fade">05</span><span class="rows__text" data-anim="rise">¿Inviertes para tu retiro?</span><span class="rows__bar"><i class="hands__bar" style="--w:13%" data-step="6" data-anim="bar"></i></span></li>
+          <li class="rows__item" data-step="1"><span class="rows__n" data-anim="fade">01</span><span class="rows__text" data-anim="rise">¿Ahorras?</span><span class="rows__bar"><i class="hands__bar" style="--w:560px" data-step="6" data-anim="bar"></i></span></li>
+          <li class="rows__item" data-step="2"><span class="rows__n" data-anim="fade">02</span><span class="rows__text" data-anim="rise">¿Ahorras e inviertes?</span><span class="rows__bar"><i class="hands__bar" style="--w:400px" data-step="6" data-anim="bar"></i></span></li>
+          <li class="rows__item" data-step="3"><span class="rows__n" data-anim="fade">03</span><span class="rows__text" data-anim="rise">¿Inviertes cada mes, en automático?</span><span class="rows__bar"><i class="hands__bar" style="--w:280px" data-step="6" data-anim="bar"></i></span></li>
+          <li class="rows__item" data-step="4"><span class="rows__n" data-anim="fade">04</span><span class="rows__text" data-anim="rise">¿Inviertes con un objetivo claro?</span><span class="rows__bar"><i class="hands__bar" style="--w:160px" data-step="6" data-anim="bar"></i></span></li>
+          <li class="rows__item" data-step="5"><span class="rows__n" data-anim="fade">05</span><span class="rows__text" data-anim="rise">¿Inviertes para tu retiro?</span><span class="rows__bar"><i class="hands__bar" style="--w:72px" data-step="6" data-anim="bar"></i></span></li>
         </ol>
-        <p class="statement hands__closing" data-step="6" data-anim="rise" data-at="0.9">Cada pregunta dejó menos manos arriba. <span class="accent">Esa es la brecha que vamos a trabajar hoy.</span></p>
+        <p class="hands__closing" data-step="6" data-anim="rise" data-at="0.9">Cada pregunta dejó menos manos arriba. <span class="accent">Esa es la brecha que vamos a trabajar hoy.</span></p>
       </div>
       <footer class="slide__foot"><span>Pensión digna · Skal Patrimonial</span></footer>
     </section>
@@ -79,10 +81,10 @@
       <div class="slide__inner">
         <div class="moment">
           <div class="moment__layer moment__opening">
-            <p class="moment__text" data-anim="rise" data-dur="1.4">Cierra los ojos un momento. Tienes 65&nbsp;años. Es martes por la mañana.</p>
+            <p class="moment__text" data-anim="rise" data-dur="1.4">Cierra los ojos un momento. Tienes 65 años. Es martes por la mañana.</p>
           </div>
           <div class="moment__layer moment__question" data-step="1">
-            <p class="moment__text" data-anim="rise" data-dur="1.2">¿Quién paga tu renta, tu comida y tus&nbsp;medicinas?</p>
+            <p class="moment__text moment__text--q" data-anim="rise" data-dur="1.2">¿Quién paga tu renta, tu comida y tus medicinas?</p>
             <p class="moment__answer accent" data-step="2" data-anim="rise" data-dur="1.2">Esa persona eres tú. Y hoy depende de ti.</p>
           </div>
         </div>
@@ -95,21 +97,19 @@
       <div class="slide__brand"><img class="slide__logo" src="assets/img/logo-sk.png" alt="Skandia"><span class="slide__glyph"><svg><use href="#i-heart"/></svg></span></div>
       <div class="slide__inner">
         <h2 class="title" data-anim="rise">¿Cómo pensamos pagar nuestra vejez?</h2>
-        <div class="grid-2 survey__grid">
-          <div class="stat">
+        <div class="stats">
+          <div class="stat" data-step="1">
             <span class="rule rule--strong" data-anim="line"></span>
-            <div class="waffle" data-n="68" data-of="100" data-chart="waffle" role="img" aria-label="68 de 100"></div>
-            <p class="stat__num" data-anim="fade" data-at="0.45"><span class="num" data-anim="count" data-to="68" data-at="0.5">0</span> de 100</p>
-            <p class="stat__label" data-anim="rise" data-at="0.7">mencionan los apoyos del&nbsp;gobierno</p>
+            <p class="stat__num" data-anim="fade" data-at="0.3"><span class="num" data-anim="count" data-to="68" data-at="0.3">0</span> de 100</p>
+            <p class="stat__label" data-anim="rise" data-at="0.6">mencionan los apoyos del gobierno</p>
           </div>
-          <div class="stat">
-            <span class="rule rule--strong" data-anim="line" data-at="0.25"></span>
-            <div class="waffle" data-n="67" data-of="100" data-chart="waffle" role="img" aria-label="67 de 100"></div>
-            <p class="stat__num" data-anim="fade" data-at="0.75"><span class="num" data-anim="count" data-to="67" data-at="0.8">0</span> de 100</p>
-            <p class="stat__label" data-anim="rise" data-at="1.0">mencionan seguir trabajando</p>
+          <div class="stat" data-step="2">
+            <span class="rule rule--strong" data-anim="line"></span>
+            <p class="stat__num" data-anim="fade" data-at="0.3"><span class="num" data-anim="count" data-to="67" data-at="0.3">0</span> de 100</p>
+            <p class="stat__label" data-anim="rise" data-at="0.6">mencionan seguir trabajando</p>
           </div>
         </div>
-        <p class="statement accent survey__closing" data-step="1" data-anim="rise">Ninguna de las dos depende del todo de ti.</p>
+        <p class="closing closing--72 accent survey__closing" data-step="3" data-anim="rise">Ninguna de las dos depende del todo de ti.</p>
         <p class="note">Fuente: INEGI–CNBV, ENIF 2024. Personas de 18 a 70 años; podían elegir más de una opción.</p>
       </div>
       <footer class="slide__foot"><span>Pensión digna · Skal Patrimonial</span></footer>
@@ -119,26 +119,27 @@
     <section class="slide s-future" id="s05" data-theme="dark">
       <div class="slide__brand"><img class="slide__logo" src="assets/img/logo-sk.png" alt="Skandia"><span class="slide__glyph"><svg><use href="#i-coins"/></svg></span></div>
       <div class="slide__inner">
-        <h2 class="title title--sm" data-anim="rise">Cuando dejes de trabajar, ¿con cuánto vas a&nbsp;vivir?</h2>
-        <div class="future__grid">
-          <div class="future__boxes">
-            <figure class="box box--solid" data-anim="rise" data-at="0.3">
+        <h2 class="title" data-anim="rise">Cuando dejes de trabajar, ¿con cuánto vas a vivir?</h2>
+        <div class="future">
+          <div class="future__boxes" data-step="1">
+            <figure class="box box--solid" data-anim="rise">
               <span class="box__value">$30,000</span>
               <figcaption class="label">Hoy</figcaption>
             </figure>
-            <span class="future__arrow" data-anim="fade" data-at="0.55"><svg class="arrow-glyph" aria-hidden="true"><use href="#i-arrow-right"/></svg></span>
-            <figure class="box box--outline" data-anim="rise" data-at="0.7">
+            <figure class="box box--outline" data-anim="rise" data-at="0.35">
               <span class="box__value box__value--accent">¿?</span>
               <figcaption class="label">A los 65</figcaption>
             </figure>
           </div>
           <div class="future__depends">
-            <p class="label" data-anim="fade" data-at="0.9">Depende de</p>
-            <ul class="depends" data-step="1" data-stagger>
-              <li class="depends__item" data-anim="rise">Tu historial laboral</li>
-              <li class="depends__item" data-anim="rise">Tu ingreso</li>
-            </ul>
-            <p class="depends__you accent" data-step="2" data-anim="rise">Lo que tú sumes</p>
+            <div data-step="2">
+              <p class="label" data-anim="fade">Depende de</p>
+              <ul class="depends" data-stagger>
+                <li class="depends__item" data-anim="rise">Tu historial laboral</li>
+                <li class="depends__item" data-anim="rise">Tu ingreso</li>
+              </ul>
+            </div>
+            <p class="depends__you accent" data-step="3" data-anim="rise">Lo que tú sumes</p>
           </div>
         </div>
         <p class="note">Referencia de planeación: 70–80% de tu último ingreso para mantener tu nivel de vida. No es garantía.</p>
@@ -151,19 +152,18 @@
       <div class="slide__brand"><img class="slide__logo" src="assets/img/logo-sk.png" alt="Skandia"><span class="slide__glyph"><svg><use href="#i-landmark"/></svg></span></div>
       <div class="slide__inner">
         <h2 class="title" data-anim="rise">Tu AFORE es un piso, no tu plan.</h2>
-        <div class="grid-2 afore__grid">
-          <div class="stat">
+        <div class="afore">
+          <div class="stat stat--afore" data-step="1">
             <span class="rule rule--strong" data-anim="line"></span>
-            <div class="waffle" data-n="56" data-of="100" data-chart="waffle" role="img" aria-label="56 de 100"></div>
-            <p class="stat__num" data-anim="fade" data-at="0.45"><span class="num" data-anim="count" data-to="56" data-at="0.5">0</span> de 100</p>
-            <p class="stat__label" data-anim="rise" data-at="0.7">trabaja en la informalidad: años sin&nbsp;aportar.</p>
+            <p class="stat__num stat__num--lg" data-anim="fade" data-at="0.3"><span class="num" data-anim="count" data-to="56" data-at="0.3">0</span> de 100</p>
+            <p class="stat__label stat__label--ink" data-anim="rise" data-at="0.6">trabaja en la informalidad: años sin aportar.</p>
           </div>
-          <ul class="facts" data-step="1" data-stagger>
+          <ul class="facts" data-step="2" data-stagger>
             <li class="facts__item" data-anim="rise">Lo que se aporta por ley es poco.</li>
             <li class="facts__item" data-anim="rise">Los apoyos del gobierno dependen del presupuesto.</li>
           </ul>
         </div>
-        <p class="statement accent afore__closing" data-step="2" data-anim="rise">Lo que construyas por tu cuenta es lo único que controlas.</p>
+        <p class="closing closing--68 accent afore__closing" data-step="3" data-anim="rise">Lo que construyas por tu cuenta es lo único que controlas.</p>
         <p class="note">Fuentes: INEGI, ENOE julio 2026; OCDE, Pensions at a Glance 2025.</p>
       </div>
       <footer class="slide__foot"><span>Pensión digna · Skal Patrimonial</span></footer>
@@ -174,7 +174,7 @@
       <div class="slide__brand"><img class="slide__logo" src="assets/img/logo-sk.png" alt="Skandia"><span class="slide__glyph"><svg><use href="#i-calendar"/></svg></span></div>
       <div class="slide__inner">
         <h2 class="title" data-anim="rise">Si tu dinero no crece, te lo están quitando.</h2>
-        <div class="grid-2 inflation__grid">
+        <div class="inflation">
           <div class="inflation__col" data-step="1">
             <span class="rule" data-anim="line"></span>
             <p class="label" data-anim="fade">Lo que hoy cuesta $100</p>
@@ -189,10 +189,10 @@
             <span class="rule" data-anim="line"></span>
             <p class="label" data-anim="fade">$100 guardados sin crecer</p>
             <div class="inflation__bars">
-              <div class="inflation__row"><i class="inflation__bar inflation__bar--full" data-anim="bar"></i><span class="inflation__bar-value num" data-anim="fade">$100</span></div>
-              <div class="inflation__row"><i class="inflation__bar inflation__bar--less" data-anim="bar" data-dur="1.4"></i><span class="inflation__bar-value num" data-anim="fade">$49</span></div>
+              <i class="inflation__bar inflation__bar--full" data-anim="bar"></i>
+              <i class="inflation__bar inflation__bar--less" data-anim="bar" data-dur="1.4"></i>
             </div>
-            <p class="inflation__caption" data-anim="rise">comprarán lo que hoy compras con&nbsp;$49</p>
+            <p class="inflation__caption" data-anim="rise">comprarán lo que hoy compras con $49</p>
           </div>
         </div>
         <p class="note">Ejemplo hipotético con inflación de 4% anual. Inflación real en agosto de 2026: 3.26% (INEGI).</p>
@@ -205,27 +205,26 @@
       <div class="slide__brand"><img class="slide__logo" src="assets/img/logo-sk.png" alt="Skandia"><span class="slide__glyph"><svg><use href="#i-unlock"/></svg></span></div>
       <div class="slide__inner">
         <h2 class="title" data-anim="rise">Ahorrar no es lo mismo que invertir.</h2>
-        <div class="grid-2 save__grid" data-step="1">
-          <div class="save__col">
+        <div class="save">
+          <div class="save__col" data-step="1">
             <span class="rule rule--strong" data-anim="line"></span>
             <h3 class="save__name" data-anim="rise">Ahorrar</h3>
             <p class="save__desc" data-anim="rise">Emergencias y metas cercanas. Disponible; crece poco.</p>
           </div>
-          <div class="save__col">
+          <div class="save__col" data-step="2">
             <span class="rule rule--strong rule--accent" data-anim="line"></span>
             <h3 class="save__name accent" data-anim="rise">Invertir</h3>
             <p class="save__desc" data-anim="rise">Metas lejanas. Sube y baja.</p>
           </div>
         </div>
-        <div class="save__stat" data-step="2">
+        <div class="save__stat" data-step="3">
           <span class="rule" data-anim="line"></span>
           <div class="save__stat-row">
-            <p class="save__pct num"><span data-anim="count" data-to="3.4" data-decimals="1" data-suffix="%" data-dur="1.4">0.0%</span></p>
-            <p class="save__stat-text" data-anim="rise">de quienes tienen cuenta tiene un plazo fijo o fondo de&nbsp;inversión</p>
+            <p class="save__pct num" data-anim="fade"><span data-anim="count" data-to="3.4" data-decimals="1" data-suffix="%" data-dur="1.4">0.0%</span></p>
+            <p class="save__stat-text" data-anim="rise" data-at="0.2">de quienes tienen cuenta tiene un plazo fijo o fondo de inversión</p>
           </div>
-          <div class="sliver" aria-hidden="true"><i class="sliver__fill" data-anim="bar" data-dur="1.4"></i></div>
         </div>
-        <p class="statement save__closing" data-step="3" data-anim="rise">Necesitas las dos. <span class="accent">El problema es quedarte solo en la primera.</span></p>
+        <p class="closing closing--60 save__closing" data-step="4" data-anim="rise">Necesitas las dos. <span class="accent">El problema es quedarte solo en la primera.</span></p>
         <p class="note">Fuente: CNBV e INEGI, ENIF 2024.</p>
       </div>
       <footer class="slide__foot"><span>Pensión digna · Skal Patrimonial</span></footer>
@@ -236,20 +235,22 @@
       <div class="slide__brand"><img class="slide__logo" src="assets/img/logo-sk.png" alt="Skandia"><span class="slide__glyph"><svg><use href="#i-chart"/></svg></span></div>
       <div class="slide__inner">
         <h2 class="title title--sm" data-anim="rise">Tu dinero gana. Y lo que gana, también gana.</h2>
-        <p class="lead" data-anim="rise">$3,500 al mes. Unos $115 al día.</p>
-        <div class="compound" data-step="1">
-          <div class="compound__chart">
+        <p class="lead lead--48" data-anim="rise">$3,500 al mes. Unos $115 al día.</p>
+        <div class="compound">
+          <div class="compound__chart" data-step="1">
             <svg id="compound-chart" class="area-chart" data-chart="compound" data-monthly="3500" data-rate="0.08" data-from="25" data-to="65" role="img" aria-label="Crecimiento de $3,500 al mes al 8% anual de los 25 a los 65 años"></svg>
-            <div class="compound__axis" data-anim="fade" data-at="0.2"><span>25</span><span>35</span><span>45</span><span>55</span><span>65</span></div>
+            <div class="compound__axis" data-anim="fade"><span>25</span><span>35</span><span>45</span><span>55</span><span>65</span></div>
+            <p class="closing closing--52 compound__closing" data-step="3" data-anim="rise">A esto se le llama interés compuesto. Necesita una sola cosa: tiempo. <span class="accent nowrap">Y tú lo tienes.</span></p>
           </div>
           <div class="compound__figures">
-            <div class="compound__fig" data-anim="rise" data-at="0.3"><span class="label">Pones</span><span class="compound__value num" data-anim="count" data-to="1.68" data-decimals="2" data-prefix="$" data-suffix=" M" data-dur="2.6" data-at="0.3">$0.00 M</span></div>
-            <div class="compound__fig compound__fig--accent" data-anim="rise" data-at="0.9"><span class="label label--accent">Tu dinero ganó</span><span class="compound__value num" data-anim="count" data-to="10.54" data-decimals="2" data-prefix="$" data-suffix=" M" data-dur="2.2" data-at="0.9">$0.00 M</span></div>
-            <span class="rule rule--strong" data-anim="line" data-at="2.0"></span>
-            <div class="compound__fig compound__fig--total" data-anim="rise" data-at="2.2"><span class="label">Total a los 65</span><span class="compound__value num" data-anim="count" data-to="12.22" data-decimals="2" data-prefix="$" data-suffix=" M" data-dur="1.4" data-at="2.2">$0.00 M</span></div>
+            <div class="compound__fig" data-step="1" data-anim="rise" data-at="0.2"><span class="label label--30">Pones</span><span class="compound__value num" data-anim="count" data-to="1.68" data-decimals="2" data-prefix="$" data-suffix=" M" data-dur="2.6" data-at="0.2">$0.00 M</span></div>
+            <div data-step="2">
+              <div class="compound__fig compound__fig--accent" data-anim="rise"><span class="label label--30 label--accent">Tu dinero ganó</span><span class="compound__value compound__value--lg num" data-anim="count" data-to="10.54" data-decimals="2" data-prefix="$" data-suffix=" M" data-dur="2.0">$0.00 M</span></div>
+              <span class="rule rule--strong compound__rule" data-anim="line" data-at="0.9"></span>
+              <div class="compound__fig compound__fig--total" data-anim="rise" data-at="1.1"><span class="label label--30">Total a los 65</span><span class="compound__value compound__value--lg num" data-anim="count" data-to="12.22" data-decimals="2" data-prefix="$" data-suffix=" M" data-dur="1.4" data-at="1.1">$0.00 M</span></div>
+            </div>
           </div>
         </div>
-        <p class="statement statement--sm compound__closing" data-step="2" data-anim="rise">A esto se le llama interés compuesto. Necesita una sola cosa: tiempo. <span class="accent nowrap">Y tú lo tienes.</span></p>
         <p class="note">Ejemplo hipotético: $3,500 al mes, 8% anual neto, aportación al final de cada mes, capitalización mensual, sin inflación, costos ni impuestos. No es un rendimiento garantizado.</p>
       </div>
       <footer class="slide__foot"><span>Pensión digna · Skal Patrimonial</span></footer>
@@ -260,22 +261,22 @@
       <div class="slide__brand"><img class="slide__logo" src="assets/img/logo-sk.png" alt="Skandia"><span class="slide__glyph"><svg><use href="#i-clock"/></svg></span></div>
       <div class="slide__inner">
         <h2 class="title" data-anim="rise">Lo que cuesta esperar.</h2>
-        <p class="lead" data-anim="rise">Mismos $3,500 al mes hasta los 65. Solo cambia cuándo empiezas.</p>
-        <div class="wait__grid">
+        <p class="lead lead--narrow" data-anim="rise">Mismos $3,500 al mes hasta los 65. Solo cambia cuándo empiezas.</p>
+        <div class="wait">
           <div class="wait__bars" data-step="1" data-interactive>
-            <div class="wbar" data-start="25" style="--h:100%">
-              <div class="wbar__col"><div class="wbar__track"><i class="wbar__fill wbar__fill--accent" data-anim="bar-y" data-at="0.1"></i><span class="wbar__value num" data-anim="count" data-to="12.22" data-decimals="2" data-prefix="$" data-suffix=" M" data-at="0.1">$0.00 M</span></div></div>
-              <span class="wbar__age label">A los 25</span>
+            <div class="wbar" data-start="25" style="--h:290px">
+              <div class="wbar__col"><div class="wbar__track"><i class="wbar__fill wbar__fill--accent" data-anim="bar-y" data-at="0.1"></i><span class="wbar__value num accent" data-anim="count" data-to="12.22" data-decimals="2" data-prefix="$" data-suffix=" M" data-at="0.1">$0.00 M</span></div></div>
+              <span class="wbar__age label label--30">A los 25</span>
               <span class="wbar__puts">Pones $1.68 M</span>
             </div>
-            <div class="wbar" data-start="30" style="--h:65.7%">
+            <div class="wbar" data-start="30" style="--h:190px">
               <div class="wbar__col"><div class="wbar__track"><i class="wbar__fill" data-anim="bar-y" data-at="0.35"></i><span class="wbar__value num" data-anim="count" data-to="8.03" data-decimals="2" data-prefix="$" data-suffix=" M" data-at="0.35">$0.00 M</span></div></div>
-              <span class="wbar__age label">A los 30</span>
+              <span class="wbar__age label label--30">A los 30</span>
               <span class="wbar__puts">Pones $1.47 M</span>
             </div>
-            <div class="wbar" data-start="35" style="--h:42.7%">
+            <div class="wbar" data-start="35" style="--h:124px">
               <div class="wbar__col"><div class="wbar__track"><i class="wbar__fill" data-anim="bar-y" data-at="0.6"></i><span class="wbar__value num" data-anim="count" data-to="5.22" data-decimals="2" data-prefix="$" data-suffix=" M" data-at="0.6">$0.00 M</span></div></div>
-              <span class="wbar__age label">A los 35</span>
+              <span class="wbar__age label label--30">A los 35</span>
               <span class="wbar__puts">Pones $1.26 M</span>
             </div>
           </div>
@@ -290,10 +291,10 @@
                 <tr class="rtable__row" data-rate="10" data-values="22.13,13.28,7.91" tabindex="0"><th>10%</th><td>$22.13 M</td><td>$13.28 M</td><td>$7.91 M</td></tr>
               </tbody>
             </table>
-            <p class="rtable__caption label">Rendimiento anual neto supuesto</p>
+            <p class="rtable__caption label label--26">Rendimiento anual neto supuesto</p>
           </div>
         </div>
-        <div class="wait__closing-wrap"><p class="statement accent wait__closing" data-step="3" data-anim="rise">Esperar 5 años te cuesta <span class="nowrap"><span class="approx"><svg aria-hidden="true"><use href="#i-approx"/></svg><span class="sr-only">≈</span></span> $4.19</span> millones.</p></div>
+        <div class="wait__closing-wrap"><p class="closing closing--72 accent wait__closing" data-step="3" data-anim="rise">Esperar 5 años te cuesta <span class="nowrap"><span class="approx"><svg aria-hidden="true"><use href="#i-approx"/></svg><span class="sr-only">≈</span></span> $4.19</span> millones.</p></div>
       </div>
       <footer class="slide__foot"><span>Pensión digna · Skal Patrimonial</span></footer>
     </section>
@@ -303,19 +304,19 @@
       <div class="slide__brand"><img class="slide__logo" src="assets/img/logo-sk.png" alt="Skandia"><span class="slide__glyph"><svg><use href="#i-users"/></svg></span></div>
       <div class="slide__inner">
         <h2 class="title" data-anim="rise">Ana pone 10 años. Beto pone 30.</h2>
-        <div class="timeline" data-step="1">
-          <div class="timeline__row">
+        <div class="timeline">
+          <div class="timeline__row" data-step="1">
             <div class="timeline__meta"><span class="timeline__name" data-anim="fade">Ana</span><span class="timeline__puts" data-anim="fade" data-at="0.9">Pone $420 mil</span></div>
-            <div class="timeline__track"><i class="timeline__seg timeline__seg--ana" data-anim="bar" data-dur="1.1"></i></div>
+            <div class="timeline__track"><i class="timeline__seg timeline__seg--ana" data-anim="bar" data-dur="1.1"></i><i class="timeline__base" data-anim="fade" data-at="0.9"></i></div>
           </div>
-          <div class="timeline__row">
-            <div class="timeline__meta"><span class="timeline__name" data-anim="fade" data-at="1.0">Beto</span><span class="timeline__puts" data-anim="fade" data-at="2.2">Pone $1.26 M</span></div>
-            <div class="timeline__track"><i class="timeline__seg timeline__seg--beto" data-anim="bar" data-at="1.1" data-dur="1.6"></i></div>
+          <div class="timeline__row" data-step="2">
+            <div class="timeline__meta"><span class="timeline__name" data-anim="fade">Beto</span><span class="timeline__puts" data-anim="fade" data-at="1.2">Pone $1.26 M</span></div>
+            <div class="timeline__track"><i class="timeline__seg timeline__seg--beto" data-anim="bar" data-at="0.1" data-dur="1.6"></i></div>
           </div>
-          <div class="timeline__axis" data-anim="fade" data-at="0"><span style="--x:0%">25</span><span style="--x:25%">35</span><span style="--x:100%">65</span></div>
+          <div class="timeline__axis" data-step="1" data-anim="fade"><span style="--x:0px">25</span><span style="--x:334px">35</span><span style="--x:1356px">65</span></div>
         </div>
         <div class="anabeto__bottom">
-          <table class="ctable" data-step="2" data-anim="rise">
+          <table class="ctable ctable--anabeto" data-step="3" data-anim="rise">
             <thead><tr><th></th><th>Ana</th><th>Beto</th></tr></thead>
             <tbody>
               <tr><th>6%</th><td>$3.45 M</td><td class="accent">$3.52 M</td></tr>
@@ -323,7 +324,7 @@
               <tr><th>10%</th><td class="accent">$14.22 M</td><td>$7.91 M</td></tr>
             </tbody>
           </table>
-          <p class="statement statement--sm anabeto__closing" data-step="3" data-anim="rise">Ana puso tres veces menos y, al 8%, terminó con más. <span class="accent">Empezar joven vale más que aportar mucho&nbsp;después.</span></p>
+          <p class="closing closing--56 anabeto__closing" data-step="4" data-anim="rise">Ana puso tres veces menos y, al 8%, terminó con más. <span class="accent">Empezar joven vale más que aportar mucho&nbsp;después.</span></p>
         </div>
         <p class="note">Ejemplo hipotético: $3,500 al mes, tasas anuales netas, capitalización mensual, sin inflación, costos ni impuestos.</p>
       </div>
@@ -334,32 +335,22 @@
     <section class="slide s-market" id="s12" data-theme="light">
       <div class="slide__brand"><img class="slide__logo" src="assets/img/logo-sk.png" alt="Skandia"><span class="slide__glyph"><svg><use href="#i-shield"/></svg></span></div>
       <div class="slide__inner">
-        <h2 class="title title--sm" data-anim="rise">En un año, la bolsa asusta. En veinte,<br>cuenta otra historia.</h2>
+        <h2 class="title" data-anim="rise">En un año, la bolsa asusta. En veinte,<br>cuenta otra historia.</h2>
         <div class="range">
-          <div class="range__block range__block--year" data-step="1">
-            <p class="label" data-anim="fade">En 1 año</p>
-            <div class="range__row">
-              <i class="range__bar range__bar--neg" data-anim="bar" data-origin="right" data-dur="1.1"></i>
-              <i class="range__bar range__bar--pos" data-anim="bar" data-origin="left" data-dur="1.1" data-at="0.1"></i>
-              <span class="range__val range__val--neg num" data-anim="fade" data-at="0.9">−39%</span>
-              <span class="range__val range__val--pos num" data-anim="fade" data-at="1.0">+47%</span>
-            </div>
-          </div>
-          <div class="range__block" data-step="2">
-            <p class="label label--accent" data-anim="fade">En 20 años · por año</p>
-            <div class="range__row range__row--long">
-              <i class="range__bar range__bar--long" data-anim="bar" data-origin="center" data-dur="1.0"></i>
-              <span class="range__val range__val--long num accent" data-anim="fade" data-at="0.6">+6% a +17%</span>
-            </div>
-          </div>
-          <div class="range__axis" data-anim="fade">
-            <span class="range__tick" style="--x:0%">−40%</span>
-            <span class="range__tick" style="--x:44.44%">0%</span>
-            <span class="range__tick" style="--x:100%">+50%</span>
-          </div>
-          <i class="range__zero" data-anim="bar-y" data-origin="top" data-dur="0.8"></i>
+          <p class="label range__label range__label--year" data-step="1" data-anim="fade">En 1 año</p>
+          <i class="range__zero" data-step="1" data-anim="bar-y" data-origin="top" data-dur="0.8"></i>
+          <i class="range__bar range__bar--neg" data-step="1" data-anim="bar" data-origin="right" data-dur="1.1" data-at="0.3"></i>
+          <i class="range__bar range__bar--pos" data-step="1" data-anim="bar" data-origin="left" data-dur="1.1" data-at="0.4"></i>
+          <span class="range__val range__val--neg num" data-step="1" data-anim="fade" data-at="1.2">−39%</span>
+          <span class="range__val range__val--pos num" data-step="1" data-anim="fade" data-at="1.3">+47%</span>
+          <p class="label range__label range__label--long accent" data-step="2" data-anim="fade">En 20 años · por año</p>
+          <i class="range__bar range__bar--long" data-step="2" data-anim="bar" data-origin="center" data-dur="1.0" data-at="0.2"></i>
+          <span class="range__val range__val--long num accent" data-step="2" data-anim="fade" data-at="0.8">+6% a +17%</span>
+          <span class="range__tick" style="--x:0px" data-step="1" data-anim="fade">−40%</span>
+          <span class="range__tick range__tick--zero" style="--x:744px" data-step="1" data-anim="fade">0%</span>
+          <span class="range__tick range__tick--end" style="--x:1632px" data-step="1" data-anim="fade">+50%</span>
         </div>
-        <p class="statement statement--sm market__closing" data-step="3" data-anim="rise">Diversificar es invertir en muchas empresas a la vez, para que un mal año de una no&nbsp;te&nbsp;hunda.</p>
+        <p class="closing closing--46 market__closing" data-step="3" data-anim="rise">Diversificar es invertir en muchas empresas a la vez, para que un mal año de una no&nbsp;te&nbsp;hunda.</p>
         <p class="note">Fuente: J.P. Morgan AM, Guide to the Markets; acciones de EE.UU. 1950–2020, en dólares. El pasado no garantiza resultados futuros.</p>
       </div>
       <footer class="slide__foot"><span>Pensión digna · Skal Patrimonial</span></footer>
@@ -371,7 +362,7 @@
       <div class="slide__inner">
         <h2 class="title title--sm" data-anim="rise">¿Cuánto necesitarías para vivir de tu dinero?</h2>
         <p class="lead" data-anim="rise">Lo que quieres al mes <span class="accent">× 300</span> (retirar cerca de 4% al año).</p>
-        <div class="need__grid">
+        <div class="need">
           <div class="need__left">
             <table class="ctable ctable--need" data-step="1">
               <thead><tr><th data-anim="fade">Quieres al mes</th><th data-anim="fade">Capital</th></tr></thead>
@@ -404,23 +395,24 @@
     <section class="slide s-order" id="s14" data-theme="light">
       <div class="slide__brand"><img class="slide__logo" src="assets/img/logo-sk.png" alt="Skandia"></div>
       <div class="slide__inner">
-        <h2 class="title title--sm" data-anim="rise">El problema no es cuánto ganas: es cómo lo&nbsp;ordenas.</h2>
-        <div class="order__block order__block--old">
-          <p class="label" data-anim="fade" data-at="0.3">Lo de siempre</p>
-          <p class="formula formula--old" id="formula-old" data-anim="rise" data-at="0.4">
+        <h2 class="title" data-anim="rise">El problema no es cuánto ganas: es cómo lo&nbsp;ordenas.</h2>
+        <span class="rule order__rule-top" data-anim="line"></span>
+        <div class="order__block order__block--old" data-step="1">
+          <p class="label label--28" data-anim="fade">Lo de siempre</p>
+          <p class="formula formula--old" id="formula-old" data-anim="rise">
             <span class="term" data-term="ingreso">Ingreso</span> <span class="op">−</span> <span class="term" data-term="gasto">Gasto</span> <span class="op">=</span> <span class="term" data-term="ahorro">Ahorro</span>
           </p>
-          <p class="order__desc" data-anim="rise" data-at="0.6">Ahorras lo que sobra. Y casi nunca sobra.</p>
+          <p class="order__desc" data-anim="rise">Ahorras lo que sobra. Y casi nunca sobra.</p>
         </div>
-        <span class="rule rule--strong rule--accent order__rule" data-anim="line" data-at="0.8"></span>
-        <div class="order__block order__block--new" data-step="1">
+        <span class="rule rule--strong rule--accent order__rule" data-step="1" data-anim="line" data-at="0.5"></span>
+        <div class="order__block order__block--new" data-step="2">
           <p class="label label--accent" data-anim="fade">Págate primero</p>
           <p class="formula formula--new accent" id="formula-new" data-anim="fade" data-dur="0.2">
             <span class="term" data-term="ingreso">Ingreso</span> <span class="op">−</span> <span class="term" data-term="ahorro">Ahorro</span> <span class="op">=</span> <span class="term" data-term="gasto">Gasto</span>
           </p>
-          <p class="order__desc order__desc--new" data-anim="rise" data-at="1.0">Tu ahorro sale primero, en automático, el día que te pagan.</p>
+          <p class="order__desc order__desc--new" data-anim="rise" data-at="1.1">Tu ahorro sale primero, en automático, el día que te pagan.</p>
         </div>
-        <p class="order__closing" data-step="2" data-anim="rise">Empieza con lo que puedas, pero empieza.</p>
+        <p class="order__closing" data-step="3" data-anim="rise">Empieza con lo que puedas, pero empieza.</p>
       </div>
       <footer class="slide__foot"><span>Pensión digna · Skal Patrimonial</span></footer>
     </section>
@@ -430,7 +422,7 @@
       <div class="slide__brand"><img class="slide__logo" src="assets/img/logo-sk.png" alt="Skandia"><span class="slide__glyph"><svg><use href="#i-scale"/></svg></span></div>
       <div class="slide__inner">
         <h2 class="title title--sm" data-anim="rise">Tu plan de retiro también puede bajar tu ISR.</h2>
-        <div class="tax__grid">
+        <div class="tax">
           <ul class="options" data-step="1">
             <li class="option" data-anim="rise">
               <h3 class="option__name">Plan Personal de Retiro</h3>
@@ -450,7 +442,7 @@
               <p class="tax__intro" data-anim="rise"><span class="nowrap">Ganas <span class="approx"><svg aria-hidden="true"><use href="#i-approx"/></svg><span class="sr-only">≈</span></span> $30,000</span> al mes y pones $3,000 en un plan deducible.</p>
               <span class="rule rule--strong rule--accent" data-anim="line"></span>
               <p class="tax__saving num accent" data-anim="fade" data-at="0.45"><span class="approx"><svg aria-hidden="true"><use href="#i-approx"/></svg><span class="sr-only">≈</span></span> <span data-anim="count" data-to="7690" data-prefix="$" data-dur="1.6" data-at="0.5">$0</span></p>
-              <p class="label" data-anim="fade" data-at="0.8">Reducción estimada del ISR al año</p>
+              <p class="label label--30" data-anim="fade" data-at="0.8">Reducción estimada del ISR al año</p>
             </div>
             <div data-step="3">
               <p class="tax__more" data-anim="rise">Con $800,000 al año y $80,000 al plan: <span class="nowrap"><span class="approx"><svg aria-hidden="true"><use href="#i-approx"/></svg><span class="sr-only">≈</span></span> $24,000.</span></p>
@@ -468,8 +460,8 @@
       <div class="slide__brand"><img class="slide__logo" src="assets/img/logo-sk.png" alt="Skandia"><span class="slide__glyph"><svg><use href="#i-idcard"/></svg></span></div>
       <div class="slide__inner">
         <p class="eyebrow" data-anim="fade">Autoevaluación</p>
-        <h2 class="title" data-anim="rise">Un punto por cada sí.</h2>
-        <ol class="rows rows--check" data-stagger>
+        <h2 class="title title--lg" data-anim="rise">Un punto por cada sí.</h2>
+        <ol class="rows rows--check" data-step="1" data-stagger>
           <li class="rows__item check__item" data-anim="rise" data-interactive data-key="1"><span class="rows__n">01</span><span class="rows__text">¿Sabes cuánto gastas al mes?</span><button class="check__toggle" type="button" aria-pressed="false" aria-label="Marcar sí"><svg><use href="#i-check"/></svg></button></li>
           <li class="rows__item check__item" data-anim="rise" data-interactive data-key="2"><span class="rows__n">02</span><span class="rows__text">¿Tienes un fondo para emergencias?</span><button class="check__toggle" type="button" aria-pressed="false" aria-label="Marcar sí"><svg><use href="#i-check"/></svg></button></li>
           <li class="rows__item check__item" data-anim="rise" data-interactive data-key="3"><span class="rows__n">03</span><span class="rows__text">¿Te pagas primero, en automático?</span><button class="check__toggle" type="button" aria-pressed="false" aria-label="Marcar sí"><svg><use href="#i-check"/></svg></button></li>
@@ -477,9 +469,9 @@
           <li class="rows__item check__item" data-anim="rise" data-interactive data-key="5"><span class="rows__n">05</span><span class="rows__text">¿Sabes cuánto necesitarías para retirarte?</span><button class="check__toggle" type="button" aria-pressed="false" aria-label="Marcar sí"><svg><use href="#i-check"/></svg></button></li>
         </ol>
         <div class="check__bottom">
-          <p class="statement statement--sm accent check__closing" data-step="1" data-anim="rise">Menos de 3 no es mala noticia: ya sabes por dónde empezar.</p>
-          <div class="score" data-anim="fade" data-at="0.8" aria-live="polite">
-            <span class="label">Puntos</span>
+          <p class="closing closing--52 accent check__closing" data-step="2" data-anim="rise">Menos de 3 no es mala noticia: ya sabes por dónde empezar.</p>
+          <div class="score" aria-live="polite">
+            <span class="label label--28">Puntos</span>
             <span class="score__value num"><span class="score__n">0</span><span class="score__of"> / 5</span></span>
           </div>
         </div>
@@ -492,8 +484,8 @@
       <div class="slide__brand"><img class="slide__logo" src="assets/img/logo-sk.png" alt="Skandia"></div>
       <div class="slide__inner">
         <p class="eyebrow" data-anim="fade">El siguiente paso</p>
-        <h2 class="title title--sm" data-anim="rise">Tu yo del futuro espera que tomes buenas&nbsp;decisiones.</h2>
-        <div class="cta__grid">
+        <h2 class="title title--lg" data-anim="rise">Tu yo del futuro espera que tomes buenas&nbsp;decisiones.</h2>
+        <div class="cta">
           <div class="cta__tasks" data-step="1">
             <span class="rule rule--strong rule--accent" data-anim="line"></span>
             <p class="label label--accent" data-anim="fade">Tu tarea de esta semana</p>
@@ -506,26 +498,26 @@
           <p class="cta__invite" data-step="2" data-anim="rise">Agenda un diagnóstico sin costo: cuánto necesitarías, tu brecha y la reducción de ISR que podrías aplicar.</p>
         </div>
       </div>
-      <div class="cta__band" data-step="2" data-anim="rise" data-at="0.35">
+      <div class="cta__band" data-step="3" data-anim="rise">
         <div class="cta__person">
           <p class="cta__name">Ing. Omar Vidal Zuviri</p>
-          <p class="cta__role label">Asesor financiero · Skal Patrimonial</p>
+          <p class="cta__role label label--28">Asesor financiero · Skal Patrimonial</p>
         </div>
         <a class="cta__contact" href="https://wa.me/527821352000" target="_blank" rel="noopener" data-interactive>
-          <span class="cta__channel label label--accent">WhatsApp</span>
+          <span class="cta__channel label label--28">WhatsApp</span>
           <span class="cta__phone">+52 782 135 2000</span>
         </a>
         <a class="cta__qr" href="https://wa.me/527821352000" target="_blank" rel="noopener" data-interactive><img src="assets/img/qr-whatsapp.png" alt="Código QR de WhatsApp"></a>
       </div>
-      <footer class="slide__foot slide__foot--plain"><span>Skal Patrimonial, agencia exclusiva de Skandia. Sesión educativa; no constituye asesoría individual.</span></footer>
+      <footer class="slide__foot slide__foot--bare slide__foot--plain"><span>Skal Patrimonial, agencia exclusiva de Skandia. Sesión educativa; no constituye asesoría individual.</span></footer>
     </section>
 
     <!-- 18 · Fuentes ======================================================== -->
     <section class="slide s-sources" id="s18" data-theme="light">
       <div class="slide__brand"><img class="slide__logo" src="assets/img/logo-sk.png" alt="Skandia"></div>
       <div class="slide__inner">
-        <p class="eyebrow" data-anim="fade">Consulta del 16 de septiembre de 2026</p>
-        <h2 class="title" data-anim="rise">Fuentes y bibliografía</h2>
+        <p class="eyebrow eyebrow--30" data-anim="fade">Consulta del 16 de septiembre de 2026</p>
+        <h2 class="title title--76" data-anim="rise">Fuentes y bibliografía</h2>
         <div class="sources">
           <div class="sources__col" data-stagger>
             <section class="source" data-anim="rise"><h3 class="source__h">Pensiones</h3><p>OCDE, Pensions at a Glance 2025 y nota de país México · Secretaría de Bienestar, Pensión para Personas Adultas Mayores&nbsp;2026.</p></section>

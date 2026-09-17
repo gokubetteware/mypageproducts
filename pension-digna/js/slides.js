@@ -1,7 +1,7 @@
 /* ==========================================================================
    Per-slide behaviour. Most slides are fully declarative (data-anim /
    data-step). The hooks here add charts and the few interactions that need
-   real logic: the cover timeline, the "65 años" swap, waffle grids, the
+   real logic: the cover timeline, the page-2/page-3 build, the "65 años" swap, the
    compound-interest chart, the rate switcher, the formula morph and the
    self-assessment checklist.
    ========================================================================== */
@@ -19,12 +19,30 @@
   PD.registerSlides = function registerSlides(deck) {
     /* -- 01 · Cover: the marker travels from "hoy" to 65 ------------------ */
     deck.on('s01', {
-      enter(slide, tl) {
+      step(slide, n, direction, _deck, tl) {
+        if (n !== 2 || direction <= 0 || !tl) return;
         const dot = slide.querySelector('.cover__dot');
-        tl.fromTo(dot, { left: '0%' }, { left: '100%', duration: 2.4, ease: 'power2.inOut' }, 1.2);
+        tl.fromTo(dot, { left: '0%', autoAlpha: 1 }, { left: '100%', duration: 2.4, ease: 'power2.inOut' }, 0);
+        tl.to(dot, { autoAlpha: 0, duration: 0.5 }, 2.3);
+      },
+      leave(slide) {
+        gsap.set(slide.querySelector('.cover__dot'), { clearProps: 'all' });
+      },
+    });
+
+    /* -- 02 · The page-2 layout becomes the page-3 layout on the last click - */
+    deck.on('s02', {
+      step(slide, n, direction, _deck, tl) {
+        const compact = n === 6;
+        slide.classList.toggle('is-compact', compact);
+        // Let the rows travel before the bars draw into their new positions.
+        if (compact && direction > 0 && tl) tl.pause(0).delay(0.55).restart(true);
       },
       settle(slide) {
-        gsap.set(slide.querySelector('.cover__dot'), { left: '100%' });
+        slide.classList.add('is-compact');
+      },
+      leave(slide) {
+        slide.classList.remove('is-compact');
       },
     });
 
@@ -50,33 +68,6 @@
         gsap.set(slide.querySelector('.moment__opening'), { clearProps: 'all' });
       },
     });
-
-    /* -- 04 / 06 · Waffle grids ------------------------------------------- */
-    const waffles = new WeakMap();
-    const waffleHook = {
-      init(slide) {
-        const list = Array.from(slide.querySelectorAll('[data-chart="waffle"]')).map((el) => ({
-          el,
-          chart: PD.Charts.waffle(el),
-        }));
-        waffles.set(slide, list);
-      },
-      enter(slide, tl) {
-        waffles.get(slide).forEach(({ el, chart }) => {
-          chart.prime();
-          const at = Number(el.parentElement.querySelector('[data-anim="count"]').dataset.at || 0);
-          chart.play(tl, at - 0.1);
-        });
-      },
-      settle(slide) {
-        waffles.get(slide).forEach(({ chart }) => chart.settle());
-      },
-      leave(slide) {
-        waffles.get(slide).forEach(({ chart }) => chart.prime());
-      },
-    };
-    deck.on('s04', waffleHook);
-    deck.on('s06', waffleHook);
 
     /* -- 09 · Compound growth chart (build step 1) ------------------------ */
     let compound = null;
@@ -165,12 +156,8 @@
     /* -- 14 · Formula morph: the terms of "lo de siempre" reorder --------- */
     deck.on('s14', {
       step(slide, n, direction) {
+        if (n !== 2 || direction <= 0) return;
         const oldF = slide.querySelector('#formula-old');
-        if (n === 0 && direction < 0) {
-          gsap.to(oldF, { opacity: 1, duration: 0.5, overwrite: true });
-          return;
-        }
-        if (n !== 1 || direction <= 0) return;
         const newF = slide.querySelector('#formula-new');
         const scale = stageScale(slide);
         const ratio = parseFloat(getComputedStyle(oldF).fontSize) / parseFloat(getComputedStyle(newF).fontSize);
@@ -199,15 +186,12 @@
         });
         gsap.set(ops, { autoAlpha: 0 });
         tl.to(ops, { autoAlpha: 1, duration: 0.5 }, 0.85);
-        // "Lo de siempre" recedes as the new order takes over.
-        tl.to(oldF, { opacity: 0.4, duration: 0.9, ease: 'power2.out' }, 0);
       },
       leave(slide) {
-        gsap.set(slide.querySelectorAll('#formula-new .term, #formula-new .op, #formula-old'), { clearProps: 'all' });
+        gsap.set(slide.querySelectorAll('#formula-new .term, #formula-new .op'), { clearProps: 'all' });
       },
       settle(slide) {
         gsap.set(slide.querySelectorAll('#formula-new .term, #formula-new .op'), { clearProps: 'all' });
-        gsap.set(slide.querySelector('#formula-old'), { opacity: 0.4 });
       },
     });
 
@@ -216,10 +200,12 @@
       init(slide) {
         const items = Array.from(slide.querySelectorAll('.check__item'));
         const scoreEl = slide.querySelector('.score__n');
+        const scoreBox = slide.querySelector('.score');
         const state = { shown: 0 };
 
         const update = () => {
           const count = items.filter((it) => it.classList.contains('is-on')).length;
+          scoreBox.classList.add('is-visible');
           gsap.to(state, {
             shown: count,
             duration: 0.5,

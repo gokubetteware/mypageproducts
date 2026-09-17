@@ -36,6 +36,8 @@ Pulsa `F` para pantalla completa antes de presentar.
 | `1`–`5` (en Autoevaluación) | Marcar / desmarcar cada respuesta |
 | Clic en una fila de la tabla (Lo que cuesta esperar) | Cambia las barras al 6 %, 8 % o 10 % |
 
+Cada clic avanza un estado: primero el título, después cada bloque de contenido
+(cifras, gráficos, conclusiones) y, agotados los estados, la siguiente diapositiva.
 El número de diapositiva y una línea de progreso aparecen en la parte inferior;
 la URL guarda la posición (`#7`) para retomar donde se dejó. Al retroceder, la
 diapositiva anterior se muestra completa (sin repetir su animación).
@@ -53,9 +55,9 @@ pension-digna/
 ├── js/
 │   ├── deck.js         Motor: navegación, pasos (builds), teclado, hash, transiciones
 │   ├── animate.js      Animaciones declarativas (data-anim / data-step) y contadores
-│   ├── charts.js       Gráficos: waffle 10×10 y área de interés compuesto (SVG)
-│   ├── slides.js       Hooks por diapositiva: portada, swap de la 03, waffles, gráfico 09,
-│   │                   selector de tasa (10), morph de fórmula (14), autoevaluación (16)
+│   ├── charts.js       Gráfico de área del interés compuesto (SVG)
+│   ├── slides.js       Hooks por diapositiva: portada, build de la 02, swap de la 03,
+│   │                   gráfico 09, selector de tasa (10), morph de fórmula (14), autoevaluación (16)
 │   └── main.js         Arranque (espera las fuentes)
 ├── assets/fonts, assets/img   Fuentes woff2, logotipo Skandia, QR de WhatsApp
 └── vendor/gsap.min.js  GSAP 3.12.5
@@ -65,6 +67,10 @@ Principios:
 
 - **Escenario fijo 1920×1080** escalado con `transform` para que la composición
   sea idéntica en cualquier pantalla, sin scroll ni desbordes.
+- **Métricas del PDF**: márgenes (96 px), tamaños tipográficos, colores y
+  posiciones se midieron página por página en el PDF original; cada
+  composición reproduce la de su página (`css/slides.css` documenta las
+  coordenadas de referencia).
 - **Animación declarativa**: cada elemento indica su entrada con `data-anim`
   (`rise`, `fade`, `line`, `bar`, `bar-y`, `count`, `lines`) y su paso de
   construcción con `data-step`. Los tiempos se ajustan con `data-at` y `data-dur`.
