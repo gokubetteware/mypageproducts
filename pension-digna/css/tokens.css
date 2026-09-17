@@ -1,0 +1,67 @@
+/* ==========================================================================
+   Design tokens — Pensión digna · Skal Patrimonial
+   Palette, theme scopes, type families and the type scale, all measured
+   from the source PDF at 1920 × 1080 (1 pt = 2.667 px).
+   ========================================================================== */
+
+:root {
+  /* Canvas ------------------------------------------------------------- */
+  --stage-w: 1920px;
+  --stage-h: 1080px;
+  --mx: 96px;             /* horizontal safe margin (36 pt in the PDF) */
+  --mt: 61px;             /* eyebrow top */
+  --foot-y: 1000px;       /* footer rule */
+
+  /* Palette ------------------------------------------------------------ */
+  --c-forest:      #0F231F;   /* deep green · dark backgrounds, ink on cream */
+  --c-forest-3:    #2B4138;   /* hairlines on dark */
+  --c-bone:        #F4F1E9;   /* cream · light backgrounds, ink on dark */
+  --c-bone-2:      #EDE9E1;   /* bibliography page */
+  --c-sand:        #D9D4C7;   /* hairlines on cream */
+  --c-green:       #00B140;   /* Skandia green · accent on dark, chapter discs */
+  --c-green-deep:  #007A40;   /* accent on cream */
+  --c-red:         #B83A2E;   /* negative values */
+  --c-mist:        #C9CFC9;   /* secondary text on dark, Beto bar */
+  --c-graphite:    #4A4A4A;   /* secondary text on cream */
+
+  /* Typography --------------------------------------------------------- */
+  --f-display: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+  --f-text: 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
+
+  --fs-hero:       132px;   /* cover title */
+  --fs-h1:         92px;    /* slide titles */
+  --fs-h1-lg:      96px;    /* titles under an eyebrow */
+  --fs-h1-sm:      84px;    /* long one-line titles */
+  --fs-stat:       192px;   /* "56 de 100", "$203" */
+  --fs-row:        48px;    /* list rows, labels under figures */
+  --fs-lead:       42px;    /* sans subtitles */
+  --fs-label:      32px;    /* uppercase labels */
+  --fs-label-sm:   28px;
+  --fs-note:       26px;    /* footnotes, sources, footer */
+  --fs-pagenum:    30px;
+
+  --track-label: 0.17em;
+  --track-footer: 0.16em;
+
+  /* Motion ------------------------------------------------------------- */
+  --ease-out: cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+/* Theme scopes: every slide declares data-theme="dark" | "light" --------- */
+.slide[data-theme="dark"] {
+  --bg: var(--c-forest);
+  --fg: var(--c-bone);
+  --muted: var(--c-mist);
+  --accent: var(--c-green);
+  --rule: var(--c-forest-3);
+  --rule-strong: var(--c-bone);
+}
+
+.slide[data-theme="light"] {
+  --bg: var(--c-bone);
+  --fg: var(--c-forest);
+  --muted: var(--c-graphite);
+  --accent: var(--c-green-deep);
+  --rule: var(--c-sand);
+  --rule-strong: var(--c-forest);
+}

@@ -1,0 +1,251 @@
+/* ==========================================================================
+   Deck chrome: viewport, scaled stage, slide shell, brand marks, footer,
+   page number, progress hairline, presenter hint, edge navigation
+   ========================================================================== */
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  background: #121212;
+}
+
+body {
+  font-family: var(--f-text);
+  color: var(--c-bone);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+img,
+svg { display: block; }
+
+a { color: inherit; text-decoration: none; }
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+/* Viewport & stage --------------------------------------------------------- */
+.viewport {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+}
+
+.stage {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: var(--stage-w);
+  height: var(--stage-h);
+  transform: translate(-50%, -50%) scale(var(--scale, 1));
+  transform-origin: center center;
+  overflow: hidden;
+  cursor: default;
+}
+
+/* Slide shell -------------------------------------------------------------- */
+.slide {
+  position: absolute;
+  inset: 0;
+  background: var(--bg);
+  color: var(--fg);
+  visibility: hidden;
+  opacity: 0;
+}
+
+.slide__inner {
+  position: absolute;
+  left: var(--mx);
+  right: var(--mx);
+  top: var(--mt);
+  bottom: 104px;                 /* content ends 24px above the footer rule */
+  display: flex;
+  flex-direction: column;
+}
+
+/* Brand marks: Skandia logo and the chapter disc below it (as in the PDF) */
+.slide__brand {
+  position: absolute;
+  top: 56px;
+  right: var(--mx);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+}
+
+.slide__logo {
+  width: 52px;
+  height: 52px;
+}
+
+.slide__glyph {
+  width: 84px;
+  height: 84px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--c-green);
+  color: #fff;
+}
+
+.slide__glyph svg {
+  width: 40px;
+  height: 40px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Footer: hairline at 1000px, running title below it */
+.slide__foot {
+  position: absolute;
+  left: var(--mx);
+  right: var(--mx);
+  top: var(--foot-y);
+  padding-top: 16px;
+  border-top: 2px solid var(--rule);
+  font-size: var(--fs-note);
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: var(--track-footer);
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.slide__foot--bare { border-top: 0; padding-top: 0; }
+
+.slide__foot--plain {
+  text-transform: none;
+  letter-spacing: 0;
+  font-weight: 400;
+  padding-top: 25px;
+}
+
+/* Page number (deck chrome, same baseline as the footer text) */
+.counter {
+  position: absolute;
+  right: var(--mx);
+  top: 1018px;
+  font-family: var(--f-display);
+  font-size: var(--fs-pagenum);
+  font-weight: 500;
+  line-height: 1;
+  color: var(--chrome-muted);
+  pointer-events: none;
+}
+
+.counter__sep { opacity: 0.45; margin: 0 0.2em; }
+.counter__total { opacity: 0.6; }
+
+/* Progress hairline (very discreet) */
+.progress {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  pointer-events: none;
+}
+
+.progress__bar {
+  width: 100%;
+  height: 100%;
+  background: var(--c-green);
+  opacity: 0.7;
+  transform-origin: left center;
+  transform: scaleX(0);
+}
+
+/* Presenter hint (cover only, fades after the first interaction) */
+.hint {
+  position: absolute;
+  right: var(--mx);
+  bottom: 22px;
+  display: flex;
+  gap: 28px;
+  font-size: 18px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--c-mist);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.hint kbd {
+  display: inline-flex;
+  align-items: center;
+  min-height: 26px;
+  font-family: inherit;
+  font-size: inherit;
+  padding: 2px 9px;
+  border: 1px solid rgba(244, 241, 234, 0.3);
+  border-radius: 4px;
+  margin-right: 8px;
+}
+
+.hint .arrow-glyph {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Edge navigation: invisible unless the pointer moves */
+.nav {
+  position: absolute;
+  top: 50%;
+  width: 64px;
+  height: 64px;
+  margin-top: -32px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.35s var(--ease-out), background-color 0.2s;
+}
+
+.nav svg {
+  width: 26px;
+  height: 26px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.nav--prev { left: 18px; }
+.nav--next { right: 18px; }
+
+.stage.is-pointer-active .nav { opacity: 0.35; }
+.stage.is-pointer-active .nav:hover { opacity: 0.9; background: rgba(127, 127, 127, 0.14); }
+.nav[disabled] { opacity: 0 !important; pointer-events: none; }
+
+/* Chrome colours follow the active slide's theme */
+.stage[data-theme="dark"] { --chrome-fg: var(--c-bone); --chrome-muted: var(--c-mist); }
+.stage[data-theme="light"] { --chrome-fg: var(--c-forest); --chrome-muted: var(--c-graphite); }
+.stage .nav { color: var(--chrome-fg); }
+.stage[data-kind="cover"] .counter { opacity: 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  .nav { transition: none; }
+}
