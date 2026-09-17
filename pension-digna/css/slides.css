@@ -629,16 +629,15 @@
   margin: 0;
 }
 
-.compound__fig dt { margin-bottom: 6px; }
+.compound__fig { display: flex; flex-direction: column; gap: 6px; }
 
-.compound__fig dd {
-  margin: 0;
+.compound__value {
   font-size: 84px;
   line-height: 1;
   letter-spacing: -0.01em;
 }
 
-.compound__fig--accent dd { font-size: 104px; color: var(--accent); }
+.compound__fig--accent .compound__value { font-size: 104px; color: var(--accent); }
 .compound__figures .rule { margin: 6px 0; }
 
 .compound__closing {

@@ -43,9 +43,9 @@
   --fs-lead:       36px;    /* sans subtitles */
   --fs-body:       30px;    /* sans paragraphs */
   --fs-body-sm:    26px;
-  --fs-label:      21px;    /* uppercase labels */
-  --fs-note:       21px;    /* footnotes / sources */
-  --fs-footer:     18px;
+  --fs-label:      22px;    /* uppercase labels */
+  --fs-note:       22px;    /* footnotes / sources */
+  --fs-footer:     20px;
 
   --lh-tight: 1.02;
   --lh-snug:  1.18;
