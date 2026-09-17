@@ -1,0 +1,1330 @@
+/* ==========================================================================
+   Slide components and per-slide compositions
+   Layout is authored at 1920 × 1080 (see tokens.css); the stage scales.
+   ========================================================================== */
+
+/* -- Shared text components -------------------------------------------- */
+.eyebrow {
+  margin: 0 0 30px;
+  font-size: var(--fs-label);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: var(--track-label);
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.title {
+  margin: 0;
+  max-width: 1480px;
+  font-family: var(--f-display);
+  font-weight: 600;
+  font-size: var(--fs-h1);
+  line-height: var(--lh-tight);
+  letter-spacing: -0.012em;
+}
+
+.title--sm { font-size: var(--fs-h1-sm); }
+
+.lead {
+  margin: 22px 0 0;
+  max-width: 1400px;
+  font-size: var(--fs-lead);
+  line-height: var(--lh-body);
+  color: var(--muted);
+}
+
+.statement {
+  margin: 0;
+  font-family: var(--f-display);
+  font-weight: 600;
+  font-size: var(--fs-statement);
+  line-height: 1.16;
+  letter-spacing: -0.005em;
+}
+
+.statement--sm { font-size: var(--fs-statement-sm); }
+
+.accent { color: var(--accent); }
+.nowrap { white-space: nowrap; }
+
+.note {
+  margin: auto 0 0;
+  padding-top: 24px;
+  max-width: 1560px;
+  font-size: var(--fs-note);
+  line-height: 1.4;
+  color: var(--muted);
+}
+
+.label {
+  margin: 0;
+  font-size: var(--fs-label);
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: var(--track-label);
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.label--accent { color: var(--accent); }
+
+.rule {
+  display: block;
+  height: 1px;
+  background: var(--rule);
+}
+
+.rule--strong { height: 2px; background: var(--rule-strong); }
+.rule--accent { background: var(--accent); }
+
+.num {
+  font-family: var(--f-display);
+  font-weight: 600;
+  font-variant-numeric: oldstyle-nums;
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 96px;
+}
+
+/* Line-mask reveal (cover title) */
+.mask {
+  display: block;
+  overflow: hidden;
+  padding: 0.05em 0 0.16em;
+  margin: -0.05em 0 -0.16em;
+}
+
+.line { display: block; }
+
+/* Numbered rows (slides 02 and 16) */
+.rows {
+  list-style: none;
+  margin: 52px 0 0;
+  padding: 0;
+  border-top: 1px solid var(--rule);
+}
+
+.rows__item {
+  display: grid;
+  grid-template-columns: 96px 1fr auto;
+  align-items: center;
+  gap: 0 24px;
+  min-height: 92px;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--rule);
+}
+
+.rows__n {
+  font-family: var(--f-display);
+  font-weight: 600;
+  font-size: 40px;
+  font-variant-numeric: oldstyle-nums;
+  color: var(--accent);
+}
+
+.rows__text {
+  font-size: var(--fs-list);
+  line-height: 1.2;
+}
+
+/* Dark panel (tables) */
+.panel {
+  background: var(--panel);
+  color: var(--panel-fg);
+  padding: 40px 44px 36px;
+}
+
+/* Comparison tables (serif figures) */
+.ctable {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--f-display);
+  font-variant-numeric: oldstyle-nums;
+}
+
+.ctable th,
+.ctable td {
+  padding: 16px 0;
+  text-align: right;
+  font-weight: 500;
+  font-size: 48px;
+  line-height: 1.15;
+  border-bottom: 1px solid var(--rule);
+}
+
+.ctable thead th {
+  padding: 0 0 14px;
+  font-family: var(--f-text);
+  font-weight: 600;
+  font-size: var(--fs-label);
+  line-height: 1.25;
+  letter-spacing: var(--track-label);
+  text-transform: uppercase;
+  color: var(--muted);
+  border-bottom: 1px solid var(--rule-strong);
+}
+
+.ctable tbody th {
+  text-align: left;
+  font-size: 40px;
+  color: var(--muted);
+}
+
+/* ==========================================================================
+   01 · Cover
+   ========================================================================== */
+.cover__title {
+  margin: 148px 0 0;
+  max-width: 1560px;
+  font-family: var(--f-display);
+  font-weight: 600;
+  font-size: var(--fs-hero);
+  line-height: var(--lh-tight);
+  letter-spacing: -0.018em;
+}
+
+.cover__sub {
+  margin: 56px 0 0;
+  max-width: 1260px;
+  font-family: var(--f-display);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 46px;
+  line-height: 1.32;
+  color: var(--muted);
+}
+
+.cover__timeline { margin-top: auto; }
+
+.cover__track {
+  position: relative;
+  height: 2px;
+  background: var(--rule);
+}
+
+.cover__track::before,
+.cover__track::after {
+  content: '';
+  position: absolute;
+  top: -7px;
+  width: 2px;
+  height: 16px;
+  background: var(--muted);
+}
+
+.cover__track::before { left: 0; }
+.cover__track::after { right: 0; }
+
+.cover__line {
+  position: absolute;
+  inset: 0;
+  background: var(--accent);
+  transform-origin: left center;
+}
+
+.cover__dot {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 16px;
+  height: 16px;
+  margin: -8px 0 0 -8px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 6px rgba(0, 177, 64, 0.18);
+}
+
+.cover__ticks {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 22px;
+  font-size: var(--fs-label);
+  font-weight: 600;
+  letter-spacing: var(--track-label);
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.stage[data-kind="cover"] .counter { opacity: 0; }
+
+/* ==========================================================================
+   02 · Levanta la mano
+   ========================================================================== */
+.rows--hands .rows__item { grid-template-columns: 96px 1fr 560px; }
+
+.rows__bar {
+  height: 30px;
+  align-self: center;
+}
+
+.hands__bar {
+  display: block;
+  width: var(--w);
+  height: 100%;
+  background: var(--accent);
+  transform-origin: left center;
+}
+
+.hands__closing {
+  margin-top: auto;
+  max-width: 1560px;
+}
+
+/* ==========================================================================
+   03 · Tienes 65 años
+   ========================================================================== */
+.moment {
+  position: relative;
+  flex: 1;
+  display: grid;
+  align-items: center;
+}
+
+.moment__layer { grid-area: 1 / 1; }
+
+.moment__text {
+  margin: 0;
+  max-width: 1460px;
+  font-family: var(--f-display);
+  font-weight: 600;
+  font-size: var(--fs-h1);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+
+.moment__answer {
+  margin: 56px 0 0;
+  font-family: var(--f-display);
+  font-weight: 600;
+  font-size: 66px;
+  line-height: 1.15;
+}
+
+/* ==========================================================================
+   04 · Encuesta  /  06 · AFORE  (stat + waffle)
+   ========================================================================== */
+.stat { display: flex; flex-direction: column; }
+.stat .rule { margin-bottom: 36px; }
+
+.waffle {
+  display: grid;
+  grid-template-columns: repeat(10, 14px);
+  gap: 8px;
+  margin-bottom: 40px;
+}
+
+.waffle__dot {
+  display: block;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--rule);
+}
+
+.waffle__dot.is-on { background: var(--accent); }
+
+.stat__num {
+  margin: 0;
+  font-family: var(--f-display);
+  font-weight: 600;
+  font-size: 160px;
+  line-height: 0.92;
+  letter-spacing: -0.02em;
+  font-variant-numeric: oldstyle-nums;
+}
+
+.stat__label {
+  margin: 22px 0 0;
+  max-width: 640px;
+  font-size: 32px;
+  line-height: 1.35;
+  color: var(--muted);
+}
+
+.survey__grid { margin-top: 64px; }
+.survey__closing { margin-top: 64px; }
+
+.afore__grid { margin-top: 64px; align-items: start; }
+
+.facts {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 2px solid var(--rule-strong);
+}
+
+.facts__item {
+  padding: 30px 0;
+  font-family: var(--f-display);
+  font-weight: 500;
+  font-size: 48px;
+  line-height: 1.2;
+  border-bottom: 1px solid var(--rule);
+}
+
+.afore__closing { margin-top: 56px; }
+
+/* ==========================================================================
+   05 · ¿Con cuánto vas a vivir?
+   ========================================================================== */
+.future__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 96px;
+  margin-top: 72px;
+  align-items: start;
+}
+
+.future__boxes {
+  display: flex;
+  align-items: flex-start;
+  gap: 32px;
+}
+
+.box {
+  margin: 0;
+  width: 330px;
+  flex: none;
+}
+
+.box__value {
+  display: grid;
+  place-items: center;
+  height: 340px;
+  font-family: var(--f-display);
+  font-weight: 600;
+  font-size: 76px;
+  font-variant-numeric: oldstyle-nums;
+}
+
+.box--solid .box__value { background: var(--c-bone); color: var(--c-forest); }
+.box--outline .box__value { border: 2px solid var(--rule-strong); }
+.box__value--accent { color: var(--accent); font-size: 132px; }
+.box figcaption { margin-top: 22px; }
+
+.future__arrow {
+  flex: 1;
+  margin-top: 132px;
+  text-align: center;
+  font-family: var(--f-text);
+  font-weight: 300;
+  font-size: 64px;
+  line-height: 1;
+  color: var(--muted);
+}
+
+.future__depends .label { margin-bottom: 6px; }
+
+.depends {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.depends__item {
+  padding: 24px 0;
+  font-family: var(--f-display);
+  font-weight: 500;
+  font-size: 58px;
+  line-height: 1.15;
+  border-bottom: 1px solid var(--rule);
+}
+
+.depends__you {
+  margin: 32px 0 0;
+  font-family: var(--f-display);
+  font-weight: 600;
+  font-size: 96px;
+  line-height: 1.1;
+}
+
+/* ==========================================================================
+   07 · Inflación
+   ========================================================================== */
+.inflation__grid { margin-top: 72px; align-items: start; }
+.inflation__col .rule { margin-bottom: 28px; }
+
+.inflation__figure {
+  display: flex;
+  align-items: baseline;
+  gap: 28px;
+  margin: 36px 0 0;
+}
+
+.inflation__from {
+  font-family: var(--f-display);
+  font-weight: 500;
+  font-size: 96px;
+  font-variant-numeric: oldstyle-nums;
+  color: var(--muted);
+}
+
+.inflation__arrow {
+  font-family: var(--f-text);
+  font-weight: 300;
+  font-size: 72px;
+  line-height: 1;
+  color: var(--muted);
+}
+
+.inflation__to {
+  font-size: 184px;
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+}
+
+.inflation__caption {
+  margin: 22px 0 0;
+  font-size: 36px;
+  line-height: 1.3;
+  color: var(--muted);
+}
+
+.inflation__bars {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  margin: 40px 0 0;
+}
+
+.inflation__row {
+  display: grid;
+  grid-template-columns: 1fr 140px;
+  align-items: center;
+  gap: 0 24px;
+}
+
+.inflation__bar {
+  display: block;
+  height: 84px;
+  transform-origin: left center;
+}
+
+.inflation__bar--full { width: 100%; background: var(--c-bone); }
+.inflation__bar--less { width: 49%; background: var(--accent); }
+
+.inflation__bar-value {
+  font-size: 44px;
+  line-height: 1;
+}
+
+/* ==========================================================================
+   08 · Ahorrar vs invertir
+   ========================================================================== */
+.save__grid { margin-top: 56px; }
+.save__col .rule { margin-bottom: 28px; }
+
+.save__name {
+  margin: 0 0 16px;
+  font-family: var(--f-display);
+  font-weight: 600;
+  font-size: 68px;
+  line-height: 1;
+}
+
+.save__desc {
+  margin: 0;
+  max-width: 640px;
+  font-size: 32px;
+  line-height: 1.4;
+  color: var(--muted);
+}
+
+.save__stat { margin-top: 56px; }
+.save__stat .rule { margin-bottom: 36px; }
+
+.save__stat-row {
+  display: flex;
+  align-items: baseline;
+  gap: 48px;
+}
+
+.save__pct {
+  margin: 0;
+  font-size: 128px;
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+  flex: none;
+}
+
+.save__stat-text {
+  margin: 0;
+  max-width: 900px;
+  font-size: 32px;
+  line-height: 1.35;
+  color: var(--muted);
+}
+
+.sliver {
+  position: relative;
+  height: 12px;
+  margin-top: 30px;
+  background: var(--bar-muted);
+}
+
+.sliver__fill {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 3.4%;
+  background: var(--accent);
+  transform-origin: left center;
+}
+
+.save__closing { margin-top: 56px; }
+
+/* ==========================================================================
+   09 · Interés compuesto
+   ========================================================================== */
+.compound {
+  display: grid;
+  grid-template-columns: 1fr 520px;
+  gap: 0 80px;
+  margin-top: 44px;
+  align-items: end;
+}
+
+.compound__chart { position: relative; }
+
+.area-chart {
+  display: block;
+  width: 100%;
+  height: 380px;
+}
+
+.area-chart__growth { fill: var(--accent); }
+.area-chart__contrib { fill: var(--c-bone); }
+.area-chart__line { fill: none; stroke: #3BD474; stroke-width: 2; vector-effect: non-scaling-stroke; }
+.area-chart__guide { stroke: rgba(244, 241, 234, 0.12); stroke-width: 1; vector-effect: non-scaling-stroke; }
+.area-chart__axis { stroke: var(--rule); stroke-width: 1; vector-effect: non-scaling-stroke; }
+
+.compound__axis {
+  position: relative;
+  height: 32px;
+  margin-top: 14px;
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.compound__axis span {
+  position: absolute;
+  top: 0;
+  transform: translateX(-50%);
+}
+
+.compound__axis span:nth-child(1) { left: 0; transform: none; }
+.compound__axis span:nth-child(2) { left: 25%; }
+.compound__axis span:nth-child(3) { left: 50%; }
+.compound__axis span:nth-child(4) { left: 75%; }
+.compound__axis span:nth-child(5) { left: 100%; transform: translateX(-100%); }
+
+.compound__figures {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  margin: 0;
+}
+
+.compound__fig dt { margin-bottom: 6px; }
+
+.compound__fig dd {
+  margin: 0;
+  font-size: 84px;
+  line-height: 1;
+  letter-spacing: -0.01em;
+}
+
+.compound__fig--accent dd { font-size: 104px; color: var(--accent); }
+.compound__figures .rule { margin: 6px 0; }
+
+.compound__closing {
+  margin-top: 36px;
+  max-width: 1500px;
+}
+
+/* ==========================================================================
+   10 · Lo que cuesta esperar
+   ========================================================================== */
+.wait__grid {
+  display: grid;
+  grid-template-columns: 1fr 720px;
+  gap: 0 72px;
+  margin-top: 48px;
+  align-items: end;
+}
+
+.wait__bars {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: end;
+}
+
+.wbar {
+  --h: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.wbar__col {
+  position: relative;
+  height: 372px;
+  padding: 0 18px;
+  border-bottom: 1px solid var(--rule-strong);
+}
+
+.wbar__track {
+  position: absolute;
+  left: 18px;
+  right: 18px;
+  bottom: 0;
+  height: 300px;
+}
+
+.wbar__fill {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: var(--h);
+  background: var(--bar-neutral);
+  transform-origin: center bottom;
+}
+
+.wbar__fill--accent { background: var(--accent); }
+
+.wbar__value {
+  position: absolute;
+  left: 0;
+  bottom: calc(var(--h) + 18px);
+  font-size: 56px;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.wbar__age { margin-top: 20px; padding: 0 18px; color: var(--fg); }
+
+.wbar__puts {
+  margin-top: 8px;
+  padding: 0 18px;
+  font-size: 27px;
+  color: var(--muted);
+}
+
+.wait__table { padding: 36px 44px 32px; }
+
+.rtable {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--f-display);
+  font-variant-numeric: oldstyle-nums;
+}
+
+.rtable th,
+.rtable td {
+  padding: 18px 0 18px 20px;
+  text-align: right;
+  font-weight: 500;
+  font-size: 36px;
+  line-height: 1.15;
+  white-space: nowrap;
+}
+
+.rtable thead th {
+  padding-top: 0;
+  padding-bottom: 18px;
+  font-size: 36px;
+  color: var(--c-bone);
+  vertical-align: bottom;
+}
+
+.rtable thead th.rtable__corner {
+  padding-left: 0;
+  text-align: left;
+  font-family: var(--f-text);
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.3;
+  letter-spacing: var(--track-label);
+  text-transform: uppercase;
+  color: var(--c-mist);
+  white-space: normal;
+  max-width: 150px;
+}
+
+.rtable tbody th {
+  padding-left: 0;
+  text-align: left;
+  font-size: 34px;
+  color: var(--c-mist);
+}
+
+.rtable__row {
+  border-top: 1px solid rgba(244, 241, 234, 0.14);
+  cursor: pointer;
+  transition: color 0.3s var(--ease-out), background-color 0.3s;
+  outline: none;
+}
+
+.rtable__row:hover:not(.is-active) { background: rgba(244, 241, 234, 0.04); }
+
+.rtable__row.is-active {
+  color: var(--c-green);
+  box-shadow: inset 0 1.5px 0 var(--c-green), inset 0 -1.5px 0 var(--c-green);
+}
+
+.rtable__row.is-active th { color: var(--c-green); }
+.rtable__row.is-active td { font-weight: 600; }
+
+.rtable__caption {
+  margin: 24px 0 0;
+  color: var(--c-mist);
+}
+
+.wait__closing { margin-top: 48px; }
+
+/* ==========================================================================
+   11 · Ana y Beto
+   ========================================================================== */
+.timeline {
+  width: 1400px;
+  margin-top: 52px;
+}
+
+.timeline__row { margin-bottom: 26px; }
+
+.timeline__meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 12px;
+}
+
+.timeline__name {
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: var(--track-label);
+  text-transform: uppercase;
+}
+
+.timeline__puts {
+  font-size: 30px;
+  color: var(--muted);
+}
+
+.timeline__track {
+  position: relative;
+  height: 40px;
+}
+
+.timeline__track::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 1px;
+  background: var(--rule);
+}
+
+.timeline__seg {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  transform-origin: left center;
+}
+
+.timeline__seg--ana { left: 0; width: 25%; background: var(--accent); }
+.timeline__seg--beto { left: 25%; width: 75%; background: var(--c-mist); }
+
+.timeline__axis {
+  position: relative;
+  height: 30px;
+  margin-top: 6px;
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.timeline__axis span {
+  position: absolute;
+  left: var(--x);
+  transform: translateX(-50%);
+}
+
+.timeline__axis span:first-child { transform: none; }
+.timeline__axis span:last-child { transform: translateX(-100%); }
+
+.anabeto__bottom {
+  display: grid;
+  grid-template-columns: 900px 1fr;
+  gap: 0 96px;
+  margin-top: 44px;
+  align-items: start;
+}
+
+.anabeto__closing { margin: 0; }
+
+/* ==========================================================================
+   12 · Volatilidad
+   ========================================================================== */
+.range {
+  position: relative;
+  margin-top: 56px;
+}
+
+.range__block .label { margin-bottom: 18px; }
+.range__block--year { margin-bottom: 104px; }
+.range__block:not(.range__block--year) { margin-bottom: 8px; }
+
+.range__row {
+  position: relative;
+  height: 96px;
+}
+
+.range__row--long { height: 72px; }
+
+.range__bar {
+  position: absolute;
+  top: 0;
+  height: 100%;
+}
+
+.range__bar--neg { right: 55.56%; width: 43.33%; background: var(--negative); }
+.range__bar--pos { left: 44.44%; width: 52.22%; background: var(--c-forest); }
+.range__bar--long { left: 51.11%; width: 12.22%; background: var(--accent); }
+
+.range__val {
+  position: absolute;
+  top: calc(100% + 16px);
+  font-size: 46px;
+  line-height: 1;
+}
+
+.range__val--neg { left: 1.11%; color: var(--negative); }
+.range__val--pos { right: 3.33%; }
+
+.range__val--long {
+  top: 50%;
+  left: calc(63.33% + 28px);
+  transform: translateY(-50%);
+}
+
+.range__axis {
+  position: relative;
+  height: 44px;
+  border-top: 1px solid var(--rule-strong);
+}
+
+.range__tick {
+  position: absolute;
+  top: 14px;
+  left: var(--x);
+  transform: translateX(-50%);
+  font-size: var(--fs-label);
+  font-weight: 600;
+  letter-spacing: var(--track-label);
+  color: var(--muted);
+}
+
+.range__tick:first-child { transform: none; }
+.range__tick:last-child { transform: translateX(-100%); }
+
+.range__zero {
+  position: absolute;
+  left: 44.44%;
+  top: 44px;
+  bottom: 44px;
+  width: 2px;
+  margin-left: -1px;
+  background: var(--c-forest);
+  transform-origin: center top;
+}
+
+.market__closing {
+  margin-top: 48px;
+  font-weight: 500;
+  font-size: 46px;
+}
+
+/* ==========================================================================
+   13 · ¿Cuánto necesitarías?
+   ========================================================================== */
+.need__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 96px;
+  margin-top: 44px;
+  align-items: start;
+}
+
+.ctable--need td { font-size: 52px; }
+.ctable--need td:first-child,
+.ctable--need th:first-child { text-align: left; }
+
+.need__afore {
+  margin: 40px 0 0;
+  font-family: var(--f-display);
+  font-weight: 500;
+  font-size: 40px;
+  line-height: 1.25;
+}
+
+.need__right .rule { margin-bottom: 28px; }
+
+.need__claim {
+  margin: 0 0 20px;
+  font-family: var(--f-display);
+  font-weight: 600;
+  font-size: 52px;
+  line-height: 1.15;
+}
+
+.need__example {
+  margin: 0;
+  font-size: 30px;
+  line-height: 1.4;
+  color: var(--muted);
+}
+
+.need__gap {
+  margin: 26px 0 0;
+  font-size: 34px;
+  font-weight: 600;
+}
+
+.need__capital {
+  margin: 10px 0 0;
+  font-size: 136px;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.need__approx,
+.tax__approx {
+  font-size: 0.68em;
+  font-weight: 500;
+  vertical-align: 0.08em;
+}
+
+/* ==========================================================================
+   14 · Págate primero
+   ========================================================================== */
+.order__block--old { margin-top: 48px; }
+.order__block .label { margin-bottom: 16px; }
+
+.formula {
+  display: flex;
+  align-items: baseline;
+  gap: 0.28em;
+  margin: 0;
+  font-family: var(--f-display);
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.formula--old {
+  font-size: 80px;
+  font-weight: 500;
+  color: var(--muted);
+}
+
+.formula--new {
+  font-size: 124px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.term { display: inline-block; }
+.op { opacity: 0.7; }
+
+.order__desc {
+  margin: 18px 0 0;
+  font-size: 30px;
+  line-height: 1.4;
+  color: var(--muted);
+}
+
+.order__desc--new {
+  font-size: 36px;
+  color: var(--fg);
+}
+
+.order__rule { margin: 44px 0 40px; }
+
+.order__closing {
+  margin: 48px 0 0;
+  font-family: var(--f-display);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 46px;
+}
+
+/* ==========================================================================
+   15 · ISR
+   ========================================================================== */
+.tax__grid {
+  display: grid;
+  grid-template-columns: 860px 1fr;
+  gap: 0 96px;
+  margin-top: 44px;
+  align-items: start;
+}
+
+.options {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 2px solid var(--rule-strong);
+}
+
+.option {
+  padding: 26px 0;
+  border-bottom: 1px solid var(--rule);
+}
+
+.option__name {
+  margin: 0 0 10px;
+  font-family: var(--f-display);
+  font-weight: 600;
+  font-size: 46px;
+  line-height: 1.1;
+}
+
+.option__desc {
+  margin: 0;
+  font-size: 27px;
+  line-height: 1.4;
+  color: var(--muted);
+}
+
+.tax__intro {
+  margin: 0 0 24px;
+  font-size: 30px;
+  line-height: 1.4;
+}
+
+.tax__example .rule { margin-bottom: 20px; }
+
+.tax__saving {
+  margin: 0;
+  font-size: 152px;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.tax__example .label { margin-top: 10px; }
+
+.tax__more {
+  margin: 30px 0 0;
+  font-family: var(--f-display);
+  font-weight: 500;
+  font-size: 38px;
+  line-height: 1.25;
+}
+
+.tax__warning {
+  margin: 22px 0 0;
+  font-family: var(--f-display);
+  font-weight: 500;
+  font-size: 36px;
+  line-height: 1.25;
+}
+
+/* ==========================================================================
+   16 · Autoevaluación
+   ========================================================================== */
+.rows--check .rows__item {
+  grid-template-columns: 96px 1fr 56px;
+  cursor: pointer;
+}
+
+.check__toggle {
+  width: 54px;
+  height: 54px;
+  display: grid;
+  place-items: center;
+  border: 1.5px solid var(--rule-strong);
+  border-radius: 50%;
+  color: transparent;
+  transition: background-color 0.25s var(--ease-out), border-color 0.25s, color 0.25s, transform 0.25s var(--ease-out);
+}
+
+.check__toggle svg {
+  width: 28px;
+  height: 28px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.check__item:hover .check__toggle { transform: scale(1.08); }
+
+.check__item.is-on .check__toggle {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--c-bone);
+}
+
+.check__item .rows__text { transition: color 0.3s; }
+.check__item.is-on .rows__text { color: var(--accent); }
+
+.check__bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 64px;
+  margin-top: auto;
+}
+
+.check__closing { max-width: 1200px; }
+
+.score { text-align: right; flex: none; }
+
+.score__value {
+  display: block;
+  margin-top: 6px;
+  font-size: 96px;
+  line-height: 1;
+}
+
+.score__of {
+  font-size: 48px;
+  color: var(--muted);
+}
+
+/* ==========================================================================
+   17 · Siguiente paso
+   ========================================================================== */
+.cta__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 96px;
+  margin-top: 52px;
+  align-items: start;
+}
+
+.cta__tasks .rule { margin-bottom: 20px; }
+.cta__tasks .label { margin-bottom: 8px; }
+
+.tasks {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.tasks__item {
+  display: flex;
+  align-items: baseline;
+  gap: 28px;
+  padding: 14px 0;
+  font-size: 36px;
+}
+
+.tasks__n {
+  width: 32px;
+  flex: none;
+  font-family: var(--f-display);
+  font-weight: 600;
+  font-size: 42px;
+  font-variant-numeric: oldstyle-nums;
+  color: var(--accent);
+}
+
+.cta__invite {
+  margin: 24px 0 0;
+  font-family: var(--f-display);
+  font-weight: 500;
+  font-size: 42px;
+  line-height: 1.3;
+  color: var(--muted);
+}
+
+.cta__band {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 116px;
+  height: 236px;
+  display: flex;
+  align-items: center;
+  gap: 72px;
+  padding: 0 var(--mx);
+  background: var(--c-bone);
+  color: var(--c-forest);
+}
+
+.cta__person { flex: 1; }
+
+.cta__name {
+  margin: 0 0 12px;
+  font-family: var(--f-display);
+  font-weight: 600;
+  font-size: 58px;
+  line-height: 1;
+}
+
+.cta__role { color: var(--c-graphite); }
+
+.cta__contact {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 12px;
+}
+
+.cta__contact .label--accent { color: var(--c-green-deep); }
+
+.cta__phone {
+  font-family: var(--f-display);
+  font-weight: 600;
+  font-size: 56px;
+  line-height: 1;
+  font-variant-numeric: oldstyle-nums;
+}
+
+.cta__qr {
+  width: 176px;
+  height: 176px;
+  padding: 10px;
+  background: #fff;
+  flex: none;
+}
+
+.cta__qr img { width: 100%; height: 100%; }
+
+/* ==========================================================================
+   18 · Fuentes
+   ========================================================================== */
+.sources {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 96px;
+  margin-top: 40px;
+}
+
+.source {
+  padding: 14px 0 22px;
+  border-top: 1.5px solid var(--rule-strong);
+}
+
+.source__h {
+  margin: 0 0 10px;
+  font-size: var(--fs-label);
+  font-weight: 600;
+  letter-spacing: var(--track-label);
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.source p {
+  margin: 0;
+  font-size: 24px;
+  line-height: 1.45;
+  color: var(--muted);
+}

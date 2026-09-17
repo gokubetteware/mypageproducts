@@ -1,0 +1,244 @@
+/* ==========================================================================
+   Deck chrome: viewport, scaled stage, slide shell, header/footer, progress
+   ========================================================================== */
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  background: var(--c-forest);
+}
+
+body {
+  font-family: var(--f-text);
+  color: var(--c-bone);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+img,
+svg { display: block; }
+
+a { color: inherit; text-decoration: none; }
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+/* Viewport & stage --------------------------------------------------------- */
+.viewport {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+}
+
+.stage {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: var(--stage-w);
+  height: var(--stage-h);
+  transform: translate(-50%, -50%) scale(var(--scale, 1));
+  transform-origin: center center;
+  overflow: hidden;
+}
+
+/* Slide shell -------------------------------------------------------------- */
+.slide {
+  position: absolute;
+  inset: 0;
+  background: var(--bg);
+  color: var(--fg);
+  visibility: hidden;
+  opacity: 0;
+}
+
+.slide__inner {
+  position: absolute;
+  left: var(--mx);
+  right: var(--mx);
+  top: var(--mt);
+  bottom: calc(var(--mb) + 56px);   /* leave room for the footer line */
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header marks: logo + chapter glyph (top-right) */
+.slide__brand {
+  position: absolute;
+  top: 52px;
+  right: var(--mx);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+}
+
+.slide__logo {
+  width: 52px;
+  height: 52px;
+}
+
+.slide__glyph {
+  width: 56px;
+  height: 56px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  border: 1.5px solid var(--rule);
+  color: var(--accent);
+}
+
+.slide__glyph svg {
+  width: 26px;
+  height: 26px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Footer */
+.slide__foot {
+  position: absolute;
+  left: var(--mx);
+  right: var(--mx);
+  bottom: var(--mb);
+  height: 40px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding-top: 14px;
+  border-top: 1px solid var(--rule);
+  font-size: var(--fs-footer);
+  font-weight: 500;
+  letter-spacing: var(--track-footer);
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.slide__foot--plain {
+  text-transform: none;
+  letter-spacing: 0.01em;
+  font-weight: 400;
+  font-size: var(--fs-note);
+}
+
+/* Slide counter (deck chrome, sits on the footer baseline) */
+.counter {
+  position: absolute;
+  right: var(--mx);
+  bottom: var(--mb);
+  height: 40px;
+  display: flex;
+  align-items: flex-end;
+  padding-top: 14px;
+  font-family: var(--f-display);
+  font-size: 26px;
+  font-weight: 500;
+  font-variant-numeric: oldstyle-nums;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+  pointer-events: none;
+}
+
+.counter__sep { opacity: 0.45; margin: 0 0.25em; }
+.counter__total { opacity: 0.6; }
+
+/* Progress hairline */
+.progress {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 4px;
+  background: transparent;
+  pointer-events: none;
+}
+
+.progress__bar {
+  width: 100%;
+  height: 100%;
+  background: var(--c-green);
+  transform-origin: left center;
+  transform: scaleX(0);
+}
+
+/* Presenter hint (cover only, fades after first interaction) */
+.hint {
+  position: absolute;
+  right: var(--mx);
+  bottom: 18px;
+  display: flex;
+  gap: 28px;
+  font-size: 17px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--c-mist);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.hint kbd {
+  font-family: inherit;
+  font-size: inherit;
+  padding: 3px 9px;
+  border: 1px solid rgba(244, 241, 234, 0.3);
+  border-radius: 4px;
+  margin-right: 8px;
+}
+
+/* Edge navigation (appears on pointer movement) */
+.nav {
+  position: absolute;
+  top: 50%;
+  width: 72px;
+  height: 72px;
+  margin-top: -36px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  color: currentColor;
+  opacity: 0;
+  transition: opacity 0.35s var(--ease-out), background-color 0.2s;
+}
+
+.nav svg {
+  width: 30px;
+  height: 30px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.nav--prev { left: 34px; }
+.nav--next { right: 34px; }
+
+.stage.is-pointer-active .nav { opacity: 0.45; }
+.stage.is-pointer-active .nav:hover { opacity: 1; background: rgba(127, 127, 127, 0.14); }
+.nav[disabled] { opacity: 0 !important; pointer-events: none; }
+
+/* Theme-aware chrome colors follow the active slide */
+.stage[data-theme="dark"] { --chrome-fg: var(--c-bone); --chrome-muted: var(--c-mist); }
+.stage[data-theme="light"] { --chrome-fg: var(--c-forest); --chrome-muted: var(--c-graphite); }
+.stage .counter { color: var(--chrome-muted); }
+.stage .nav { color: var(--chrome-fg); }
+
+/* Reduced motion: keep the deck usable, drop the choreography */
+@media (prefers-reduced-motion: reduce) {
+  .nav { transition: none; }
+}
