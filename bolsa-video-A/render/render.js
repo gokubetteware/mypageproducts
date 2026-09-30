@@ -70,6 +70,30 @@ async function renderSegment(browser, port, seg, out) {
     const probe = await openPage(browser, port, 1);
     const { DUR, ZOOMS } = await probe.evaluate(() => ({ DUR: window.DUR, ZOOMS: window.ZOOMS }));
 
+    if (args.tics) {
+      // Pista aparte con un «tic» suave en cada cifra nueva (no se hornea en el video).
+      const { TICS } = await probe.evaluate(() => ({ TICS: window.TICS }));
+      const SR = 48000, n = Math.ceil(DUR * SR), pcm = new Int16Array(n);
+      const LEN = Math.round(0.045 * SR), AMP = 0.125;   // ≈ −18 dBFS
+      for (const t0 of TICS) {
+        const s0 = Math.round(t0 * SR);
+        for (let i = 0; i < LEN && s0 + i < n; i++) {
+          const x = i / SR, env = Math.exp(-x / 0.009) * Math.min(1, i / 48);
+          const v = AMP * env * (0.7 * Math.sin(2 * Math.PI * 2200 * x) + 0.3 * Math.sin(2 * Math.PI * 1100 * x));
+          pcm[s0 + i] = Math.max(-32768, Math.min(32767, pcm[s0 + i] + Math.round(v * 32767)));
+        }
+      }
+      const hdr = Buffer.alloc(44);
+      hdr.write('RIFF', 0); hdr.writeUInt32LE(36 + n * 2, 4); hdr.write('WAVE', 8); hdr.write('fmt ', 12);
+      hdr.writeUInt32LE(16, 16); hdr.writeUInt16LE(1, 20); hdr.writeUInt16LE(1, 22); hdr.writeUInt32LE(SR, 24);
+      hdr.writeUInt32LE(SR * 2, 28); hdr.writeUInt16LE(2, 32); hdr.writeUInt16LE(16, 34); hdr.write('data', 36); hdr.writeUInt32LE(n * 2, 40);
+      const out = path.resolve(args.tics === 'true' ? path.join(ROOT, 'render/tic_track.wav') : args.tics);
+      fs.writeFileSync(out, Buffer.concat([hdr, Buffer.from(pcm.buffer)]));
+      fs.writeFileSync(out.replace(/\.wav$/, '.json'), JSON.stringify(TICS, null, 1));
+      console.log(`tic_track: ${TICS.length} tics → ${out}`);
+      return;
+    }
+
     if (args.stills) {
       // Cuadros sueltos para revisión: normales a 1080p y, si caen en zoom, también a 4K.
       const dir = args.dir || path.join(ROOT, 'render/cuadros');

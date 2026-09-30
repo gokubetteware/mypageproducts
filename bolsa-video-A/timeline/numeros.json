@@ -50,6 +50,7 @@
   "c9_papeleria_toca_hoy": "100",
   "c10_papeleria_toca_esperado": "60",
   "c11_papeleria_precio": "600",
-  "c11b_delta_papeleria": "−400"
+  "c11b_delta_papeleria": "−400",
+  "c5b_delta": "+50"
  }
 }

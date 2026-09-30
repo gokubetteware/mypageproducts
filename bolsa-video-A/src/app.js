@@ -19,7 +19,7 @@
       get('../assets/michi/michi_emotions.json'),
     ]);
     // Sin sustituciones silenciosas: si una letra no carga, se detiene la exportación.
-    const faces = ['400 40px "Instrument Serif"', '700 40px "Archivo"', '600 40px "Archivo"', '700 40px "Figtree"'];
+    const faces = ['400 40px "Instrument Serif"', '700 40px "Archivo"', '600 40px "Archivo"', '800 40px "Archivo"', '600 40px "Figtree"', '700 40px "Figtree"', '600 40px "Caveat"'];
     await Promise.all(faces.map(f => document.fonts.load(f)));
     for (const f of faces) if (!document.fonts.check(f)) fail('fuente no cargada: ' + f);
     return { TL, NUM, EMO };
@@ -66,6 +66,9 @@
     const show = (node, t, from) => tl.fromTo(node, { autoAlpha: 0, y: 24, ...from }, { autoAlpha: 1, x: 0, y: 0 }, t);
     const hide = (node, t, d) => tl.to(node, { autoAlpha: 0, duration: d || 0.4 }, t);
     const cut = (node, t) => tl.fromTo(node, { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.2, ease: 'none' }, t);
+    // «tic» suave: cada cifra nueva que aparece deja su tiempo en TICS (pista aparte, tic_track.wav).
+    const TICS = [];
+    const cutN = (node, t) => { TICS.push(t); return cut(node, t); };
 
     // Catpesos: solo los archivos originales; el valor se arma con billetes existentes.
     const BILLS = [1000, 500, 200, 100, 50, 20];
@@ -183,7 +186,7 @@
       const t3 = T('e003');
       tl.to('#v0', { autoAlpha: 0, duration: 0.25, ease: 'none' }, t3);
       tl.fromTo('#v1', { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.25, ease: 'none' }, t3);
-      cut(delta, t3);
+      cutN(delta, t3);
       const extra = billsFor(V('c7_precio_despues') - V('c1_precio_accion'));
       const bills1 = el(extra.map(b => billImg(b, 260)).join(''), { left: '910px', top: '560px' });
       show(bills1, t3, { x: 40, y: 0 });
@@ -199,8 +202,8 @@
         { left: dia === 'Ayer' ? '620px' : '1010px', top: '300px', width: '380px' });
       const rAyer = row('Ayer', 'c1_precio_accion');
       const rHoy = row('Hoy', 'c7_precio_despues', 'c7b_delta_taqueria');
-      cut(rAyer, t4);
-      cut(rHoy, t5);
+      cutN(rAyer, t4);
+      cutN(rHoy, t5);
 
       // Titular genérico «La bolsa subió» (sin logos ni marcas)
       const t7 = T('e007');
@@ -298,7 +301,7 @@
       assertEq(idRes, '= ' + res, EV(idRes).resultado);
       const d = el(`<div class="serif op-e">${expr}</div><div class="serif op-r">= ${res}</div>`, { left: '560px', top: TOP + 'px' });
       show(d, T(idOp));
-      cut(d.querySelector('.op-r'), T(idRes));
+      cutN(d.querySelector('.op-r'), T(idRes));
       tl.set(d.querySelector('.op-r'), { autoAlpha: 0 }, 0);
       return d;
     };
@@ -340,7 +343,7 @@
       show(name, T('e020'));
 
       // Cuadrícula: las líneas aparecen sobre la fachada (una sola vez, fila por fila).
-      const grid = el(`<div class="grid10">${Array.from({ length: 100 }, (_, i) => `<div class="cell" data-i="${i}"></div>`).join('')}</div>`,
+      const grid = el(`<div class="grid10" style="width:100%;height:100%">${Array.from({ length: 100 }, (_, i) => `<div class="cell" data-i="${i}"></div>`).join('')}</div>`,
         { left: G.x + 'px', top: G.y + 'px', width: G.s + 'px', height: G.s + 'px' });
       const cells = [...grid.querySelectorAll('.cell')];
       tl.fromTo(grid, { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.2, ease: 'none' }, T('e022'));
@@ -372,6 +375,7 @@
         <div style="display:flex;gap:20px;align-items:baseline"><span class="serif" style="font-size:110px;line-height:120px">${N('c2_venta')}</span><span class="lbl">catpesos</span></div>`,
         { left: '760px', top: (STAGE_FLOOR - 200) + 'px' });
       show(need, T('e030'));
+      TICS.push(T('e030'));
 
       // Vende 20 cuadritos (los dos últimos renglones)
       const sold = cells.slice(100 - V('venta_acciones'));
@@ -468,7 +472,7 @@
         { left: '540px', top: (STAGE_FLOOR - 280) + 'px' });
       assertEq('e064', `Precio: ${N('c1_precio_accion')} catpesos`, EV('e064').texto);
       tl.set(['#p1', '#pd'], { autoAlpha: 0 }, 0);
-      cut(price, t64);
+      cutN(price, t64);
       const ok2 = el(`<div class="rotulo small">¿A qué precio? ✓</div>`, { left: '540px', top: (STAGE_FLOOR - 350) + 'px' });
       const t66 = Math.max(T('e066'), t64 + 0.6);
       show(ok2, t66);
@@ -495,6 +499,7 @@
       const t71 = T('e071');
       tl.to('#p0', { autoAlpha: 0, duration: 0.25, ease: 'none' }, t71);
       tl.to(['#p1', '#pd'], { autoAlpha: 1, duration: 0.25, ease: 'none' }, t71);
+      TICS.push(t71);
 
       // Y al revés: baja (flecha, sin cifra nueva)
       const t73 = T('e073');
@@ -503,6 +508,271 @@
       show(down, t73);
     })();
     endScene(SC('S04').start);
+
+    // Ayudas para S04–S07
+    const after = (t, prev, gap) => Math.max(t, prev + (gap == null ? 0.6 : gap));   // una cosa nueva a la vez
+    const panelNum = (lbl, numHtml, unit, x, y, size) => el(`
+        <div class="lbl">${lbl}</div>
+        <div class="serif" style="font-size:${size || 130}px;line-height:${(size || 130) + 6}px;white-space:nowrap">${numHtml}</div>
+        ${unit ? `<div class="lbl">${unit}</div>` : ''}`, { left: x + 'px', top: y + 'px' });
+    const alertBox = (html, t, style) => {
+      const d = el(`<div class="alerta"><b>¡OJO!</b> ${html}</div>`, { left: '96px', top: TOP + 'px', ...style });
+      show(d, t);
+      return d;
+    };
+    const facadeGrid = (x, s, cols, rows) => {
+      const g = el(`<div class="grid10" style="width:100%;height:100%;grid-template-columns:repeat(${cols},1fr);grid-template-rows:repeat(${rows},1fr)">${Array.from({ length: cols * rows }, () => '<div class="cell"></div>').join('')}</div>`,
+        { left: x + 'px', top: (STAGE_FLOOR - s) + 'px', width: s + 'px', height: s + 'px' });
+      return [g, [...g.querySelectorAll('.cell')]];
+    };
+    const papSVG = (s, fill) => `<svg width="${s}" height="${s}" viewBox="0 0 300 300">
+      <rect x="2" y="2" width="296" height="296" fill="${fill || '#F3EFE6'}" stroke="#05070A" stroke-width="4"/>
+      ${[0, 1, 2, 3, 4, 5].map(i => `<rect x="${2 + i * 49.3}" y="2" width="49.3" height="62" fill="${i % 2 ? '#F3EFE6' : '#5E5A52'}"/>`).join('')}
+      <rect x="2" y="2" width="296" height="62" fill="none" stroke="#05070A" stroke-width="4"/>
+      <rect x="36" y="110" width="100" height="130" fill="#E3DDD0" stroke="#05070A" stroke-width="3"/>
+      <rect x="170" y="110" width="94" height="186" fill="#E3DDD0" stroke="#05070A" stroke-width="3"/>
+      <path d="M60 150h52M60 175h52M60 200h40" stroke="#05070A" stroke-width="4"/>
+    </svg>`;
+
+    // ================= S04 · Re-enganche 2 + B3 (expectativas) =================
+    (function S04() {
+      assertNums('e083', 'ganancia_hoy');
+      assertNums('e094', 'ganancia_esperada');
+      if (EV('e097').de !== V('c4_toca_hoy') || EV('e097').a !== V('c5_toca_esperado') || EV('e097').delta !== N('c5b_delta')) fail('e097: cifras no coinciden');
+      // Lupe y su cuadrícula (ya conocidas)
+      const G = { x: 150, s: 300 };
+      const facade = el(tileSVG(G.s), { left: G.x + 'px', top: (STAGE_FLOOR - G.s) + 'px' });
+      const [grid, cells] = facadeGrid(G.x, G.s, 10, 10);
+      show([facade, grid], SC('S04').start);
+
+      // Ganancia 10,000 (MICHI reacciona antes; zoom 2/3)
+      const t83 = T('e083');
+      const gan = panelNum('Ganancia', N('ganancia_hoy'), 'catpesos al año', 520, STAGE_FLOOR - 300);
+      cutN(gan, t83);
+      assertEq('e083', `Ganancia: ${N('ganancia_hoy')} catpesos al año`, EV('e083').texto);
+      const t84 = after(T('e084'), t83);
+      const cap = el(`<div class="rotulo wrap">${EV('e084').texto}</div>`, { left: '96px', top: TOP + 'px', width: '1300px' });
+      show(cap, t84);
+      const t85 = after(T('e085'), t84);
+      const q2 = el(`<div class="serif" style="font-size:88px;line-height:92px">${EV('e085').texto}</div>`, { left: '96px', top: (TOP + 150) + 'px' });
+      show(q2, t85);
+
+      // op04: 10,000 ÷ 100 = 100 → 1 cuadrito con «100»
+      hide([cap, q2, gan], T('e086') - 0.45);
+      const op4 = op('e086', 'e087', `${N('ganancia_hoy')} ÷ ${N('taqueria_acciones')}`, N('c4_toca_hoy'));
+      const t88 = after(T('e088'), T('e087'));
+      const hl = cells[44];
+      tl.set(hl, { zIndex: 2, position: 'relative' }, t88);
+      tl.fromTo(hl, { scale: 1, boxShadow: '0 0 0 0px #E8C46A' }, { scale: 1.8, boxShadow: '0 0 0 4px #E8C46A', duration: 0.5 }, t88);
+      const toca = panelNum('Le toca al año', N('c4_toca_hoy'), 'catpesos', 520, STAGE_FLOOR - 300);
+      show(toca, t88);
+      TICS.push(t88);
+
+      // Segunda taquería abierta; la gente cree que ganará más
+      const t89 = T('e089');
+      hideAfterHold(op4, 'e087', t89 - 0.45);
+      hide(toca, t89 - 0.45);
+      tl.to(hl, { scale: 1, boxShadow: '0 0 0 0px #E8C46A', duration: 0.4 }, t89 - 0.45);
+      const second = el(tileSVG(200), { left: '520px', top: (STAGE_FLOOR - 200) + 'px' });
+      show(second, t89);
+      const thinkers = [780, 880, 980].map(x => person(x, 170));
+      const bubbles = [el(`<div class="bubble">${EV('e090').texto}</div>`, { left: '760px', top: (STAGE_FLOOR - 250) + 'px' })];
+      tl.fromTo(thinkers, { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.5, stagger: 0.1 }, T('e090'));
+      tl.fromTo(bubbles, { autoAlpha: 0, scale: 0.8 }, { autoAlpha: 1, scale: 1, duration: 0.5, stagger: 0.15 }, T('e090') + 0.3);
+
+      // Tarjeta 4: EXPECTATIVAS
+      const cEnd = card('e091', T('e091') + 5);
+      // Se espera 15,000
+      const t94 = T('e094');
+      hide([...thinkers, ...bubbles], t94 - 0.45);
+      const esp = panelNum('Se espera', N('ganancia_esperada'), 'catpesos al año', 780, STAGE_FLOOR - 300);
+      assertEq('e094', `Se espera: ${N('ganancia_esperada')} catpesos al año`, EV('e094').texto);
+      cutN(esp, t94);
+
+      // op05: 15,000 ÷ 100 = 150; +50 más que hoy
+      const t95 = after(T('e095'), cEnd, 0.1);
+      if (t95 !== T('e095')) fail('e095: la tarjeta EXPECTATIVAS sigue en pantalla');
+      const op5 = op('e095', 'e096', `${N('ganancia_esperada')} ÷ ${N('taqueria_acciones')}`, N('c5_toca_esperado'));
+      const t97 = Math.max(T('e097'), holdUntil('e096'));
+      hide(esp, t97 - 0.45);
+      const mas = el(`<div class="lbl">Le toca al año</div>
+        <div style="display:flex;gap:28px;align-items:baseline;white-space:nowrap"><span class="serif" style="font-size:130px;line-height:136px">${N('c4_toca_hoy')} → ${N('c5_toca_esperado')}</span>
+        <span class="serif pos" style="font-size:110px">${N('c5b_delta')}</span></div>`, { left: '780px', top: (STAGE_FLOOR - 300) + 'px' });
+      cutN(mas, t97);
+
+      // Regla de ejemplo: 10 veces
+      const t98 = Math.max(T('e098'), t97 + EV('e097').hold_s);
+      hide(op5, t98 - 0.45);
+      assertEq('e098', `Ejemplo: se paga ${N('multiplo')} veces lo que le toca en un año`, EV('e098').texto);
+      const l98 = label(EV('e098').texto, t98);
+
+      // Tabla lado a lado: [ , Antes, Se espera ] — filas por corte, al ritmo de la voz
+      const t99 = T('e099');
+      hide([facade, grid, second, mas], t99 - 0.45);
+      const cellsT = {
+        e099: N('c4_toca_hoy'), e100: N('c5_toca_esperado'), e101: '×' + N('multiplo'), e102: '×' + N('multiplo'),
+        e103: N('c6_precio_antes'), e104: N('c7_precio_despues'),
+      };
+      for (const [id, v] of Object.entries(cellsT)) assertEq(id, v, EV(id).texto);
+      if (EV('e104').delta !== N('c7b_delta_taqueria')) fail('e104: delta');
+      const tb = el(`<table class="tabla">
+        <tr><th></th><th>Antes</th><th>Se espera</th></tr>
+        <tr><td class="rt">${EV('e099').fila_titulo}</td><td id="c99">${cellsT.e099}</td><td id="c100">${cellsT.e100}</td></tr>
+        <tr><td class="rt">${EV('e101').fila_titulo}</td><td id="c101">${cellsT.e101}</td><td id="c102">${cellsT.e102}</td></tr>
+        <tr><td class="rt">${EV('e103').fila_titulo}</td><td id="c103">${cellsT.e103}</td><td id="c104">${cellsT.e104} <span class="pos" style="font-size:80px">${N('c7b_delta_taqueria')}</span></td></tr>
+      </table>`, { left: '96px', top: '330px' });
+      const rows = [...tb.querySelectorAll('tr')];
+      tl.set([...tb.querySelectorAll('td, th')], { autoAlpha: 0 }, 0);
+      cut(tb, t99 - 0.3);
+      cut(rows[0].children, t99 - 0.3);
+      let prev = -9;
+      [['e099', 1], ['e100', 1], ['e101', 2], ['e102', 2], ['e103', 3], ['e104', 3]].forEach(([id, r]) => {
+        const tt = after(T(id), prev);
+        if (id === 'e099' || id === 'e101' || id === 'e103') cut(rows[r].children[0], tt);
+        cutN(tb.querySelector('#c' + id.slice(1).replace(/^0/, '')), tt);
+        prev = tt;
+      });
+      // «Cambia UNA cosa: lo que se espera»
+      hide(l98, T('e105') - 0.45);
+      const l105 = label(EV('e105').texto.replace('UNA', '<b>UNA</b>'), T('e105'));
+
+      // Secundaria 2 respondida
+      const t106 = Math.max(T('e106'), holdUntil('e104') - 0.2);
+      hide(l105, t106 - 0.45);
+      const ans = el(`<div class="lbl" style="text-transform:none;letter-spacing:0">${EV('e085').texto}</div>
+        <div class="serif" style="font-size:88px;line-height:92px">Cambiaron las expectativas.</div>`, { left: '96px', top: TOP + 'px' });
+      assertEq('e106', 'cambiaron las expectativas', EV('e106').texto);
+      tl.to(tb, { y: 50, scale: 0.8, transformOrigin: '0 0', duration: MOVE }, t106 - 0.45);
+      show(ans, t106);
+      // ¡OJO! El 10 es un número de ejemplo
+      const t107 = after(T('e107'), t106);
+      assertEq('e107', `El ${N('multiplo')} es un número de ejemplo`, EV('e107').texto);
+      alertBox(EV('e107').texto + '.', t107, { top: '738px' });
+    })();
+    endScene(SC('S05').start);
+
+    // ================= S05 · Papelería + trampa =================
+    (function S05() {
+      assertNums('e122', 'papeleria_valor');
+      assertNums('e131', 'papeleria_ganancia_hoy');
+      assertNums('e132', 'papeleria_ganancia_esperada');
+      if (EV('e137').de !== V('c8_papeleria_accion') || EV('e137').a !== V('c11_papeleria_precio') || EV('e137').delta !== N('c11b_delta_papeleria')) fail('e137: cifras no coinciden');
+      if (V('papeleria_acciones') !== 50) fail('la cuadrícula de la papelería es 5×10: se esperaban 50 acciones');
+
+      const l120 = label(EV('e120').texto, T('e120'));
+      const pap = el(papSVG(300), { left: '150px', top: (STAGE_FLOOR - 300) + 'px' });
+      show(pap, T('e121'));
+      const val = panelNum('Papelería', N('papeleria_valor'), 'catpesos', 520, STAGE_FLOOR - 300);
+      cutN(val, T('e122'));
+      const [grid, cells] = facadeGrid(150, 300, 10, 5);
+      tl.fromTo(grid, { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.2 }, T('e123'));
+      tl.fromTo(cells, { opacity: 0 }, { opacity: 1, duration: 0.3, stagger: 0.01 }, T('e123'));
+
+      // op06 (después de que la voz diga las cifras): 50,000 ÷ 50 = 1,000
+      const t124 = after(T('e124'), T('e123'));
+      hide([l120, val], t124 - 0.45);
+      const e124 = EV('e124'); e124.t = t124;
+      const op6 = op('e124', 'e125', `${N('papeleria_valor')} ÷ ${N('papeleria_acciones')}`, N('c8_papeleria_accion'));
+      // op07: 5,000 ÷ 50 = 100 («la misma cuenta de antes»)
+      const t126 = Math.max(T('e126'), holdUntil('e125') + 0.45);
+      hide(op6, t126 - 0.45);
+      EV('e126').t = t126;
+      const op7 = op('e126', 'e127', `${N('papeleria_ganancia_hoy')} ÷ ${N('papeleria_acciones')}`, N('c9_papeleria_toca_hoy'));
+      const nota = el(`<div class="nota">${EV('e128').texto}</div>`, { left: '520px', top: (STAGE_FLOOR - 200) + 'px' });
+      show(nota, after(T('e128'), t126));
+
+      // Papelería grande enfrente
+      const t130 = T('e130');
+      hideAfterHold(op7, 'e127', t130 - 0.45);
+      hide(nota, t130 - 0.45);
+      const big = el(papSVG(280, '#E3DDD0'), { left: '1110px', top: (STAGE_FLOOR - 280) + 'px' });
+      show(big, t130);
+      assertEq('e131', `Hoy gana: ${N('papeleria_ganancia_hoy')}`, EV('e131').texto);
+      assertEq('e132', `Se espera: ${N('papeleria_ganancia_esperada')}`, EV('e132').texto);
+      const hoy = panelNum('Hoy gana', N('papeleria_ganancia_hoy'), '', 520, STAGE_FLOOR - 310, 100);
+      const se = panelNum('Se espera', N('papeleria_ganancia_esperada'), '', 520, STAGE_FLOOR - 160, 100);
+      cutN(hoy, T('e131'));
+      cutN(se, T('e132'));
+      // op08: 3,000 ÷ 50 = 60 ; op09: 60 × 10 = 600
+      const op8 = op('e133', 'e134', `${N('papeleria_ganancia_esperada')} ÷ ${N('papeleria_acciones')}`, N('c10_papeleria_toca_esperado'));
+      const t135 = Math.max(T('e135'), holdUntil('e134') + 0.45);
+      hide(op8, t135 - 0.45);
+      EV('e135').t = t135;
+      const op9 = op('e135', 'e136', `${N('c10_papeleria_toca_esperado')} × ${N('multiplo')}`, N('c11_papeleria_precio'));
+      // El precio baja: 1,000 → 600 −400 (rojo, con signo)
+      const t137 = Math.max(T('e137'), T('e136') + 0.6);
+      hide([hoy, se, big], t137 - 0.45);
+      const baja = el(`<div class="lbl">Precio por acción</div>
+        <div style="display:flex;gap:28px;align-items:baseline;white-space:nowrap"><span class="serif" style="font-size:130px;line-height:136px">${N('c8_papeleria_accion')} → ${N('c11_papeleria_precio')}</span>
+        <span class="serif neg" style="font-size:110px">${N('c11b_delta_papeleria')}</span></div>`, { left: '520px', top: (STAGE_FLOOR - 300) + 'px' });
+      cutN(baja, t137);
+      const t138 = Math.max(T('e138'), holdUntil('e136') + 0.45, t137 + 0.6);
+      hide(op9, t138 - 0.45);
+      const l138 = label(EV('e138').texto, t138);
+
+      // ¿Casino? (se tacha suave)
+      const t139 = T('e139');
+      hide([l138, pap, grid, big, baja], t139 - 0.45);
+      const cas = el(`<div class="serif" style="font-size:180px;line-height:180px;position:relative;display:inline-block">${EV('e139').texto}<div class="strike"></div></div>`,
+        { left: '420px', top: (STAGE_FLOOR - 330) + 'px' });
+      show(cas, t139);
+      tl.fromTo(cas.querySelector('.strike'), { scaleX: 0 }, { scaleX: 1, duration: 0.8 }, t139 + 1.2);
+      const l141 = label(EV('e141').texto, T('e141'));
+      alertBox(EV('e142').texto + '.', T('e142'), { top: (TOP + 110) + 'px' });
+      void l141;
+    })();
+    endScene(SC('S06').start);
+
+    // ================= S06 · «Ya entendí» (vuelve la escena inicial; zoom 3/3) =================
+    bg('arcilla', SC('S06').start);
+    (function S06() {
+      assertEq('e151', `${N('c1_precio_accion')} → ${N('c7_precio_despues')}`, EV('e151').texto);
+      if (EV('e151').delta !== N('c7b_delta_taqueria')) fail('e151: delta');
+      const tile = el(tileSVG(300), { left: '260px', top: '300px' });
+      show(tile, T('e150'));
+      const tag = el(`
+        <div style="display:flex;gap:28px;align-items:baseline;white-space:nowrap"><span class="serif" style="font-size:128px;line-height:136px">${N('c1_precio_accion')} → ${N('c7_precio_despues')}</span>
+        <span class="serif pos" style="font-size:110px">${N('c7b_delta_taqueria')}</span></div>
+        <div class="lbl" style="margin-top:8px">catpesos</div>`, { left: '610px', top: '330px' });
+      cutN(tag, T('e151'));
+      // Pregunta principal respondida
+      const t154 = after(T('e154'), T('e153'));
+      const ansY = STAGE_FLOOR - 150;
+      const ans = el(`<div class="serif" style="font-size:72px;line-height:78px;width:1100px">${EV('e154').texto}.</div>`, { left: '260px', top: (ansY - 60) + 'px' });
+      show(ans, t154);
+      // Idea central (3.ª vez)
+      hide([ans], T('e155') - 0.45);
+      const idea1 = el(`<div class="serif" style="font-size:80px;line-height:88px">${EV('e155').texto}</div>`, { left: '260px', top: (ansY - 50) + 'px' });
+      const idea2 = el(`<div class="serif" style="font-size:80px;line-height:88px">${EV('e156').texto}</div>`, { left: '260px', top: (ansY + 40) + 'px' });
+      show(idea1, T('e155'));
+      show(idea2, T('e156'));
+    })();
+    endScene(SC('S07').start);
+
+    // ================= S07 · Salida (gancho) + pantalla final =================
+    (function S07() {
+      const p = EV('e173').props;
+      assertEq('e173', `Papelería: ${N('c8_papeleria_accion')} → ${N('c11_papeleria_precio')}`, p.texto);
+      if (p.delta !== N('c11b_delta_papeleria')) fail('e173: delta');
+      const ficha = el(`<div class="ficha"><div class="lbl" style="font-size:40px">Papelería</div>
+        <div style="display:flex;gap:24px;align-items:baseline;white-space:nowrap"><span class="serif" style="font-size:120px;line-height:130px">${N('c8_papeleria_accion')} → ${N('c11_papeleria_precio')}</span>
+        <span class="serif neg" style="font-size:100px">${N('c11b_delta_papeleria')}</span></div></div>`, { left: '420px', top: '330px' });
+      show(ficha, T('e173'));   // no es cifra nueva: sin «tic»
+      // Pantalla final
+      const te = T('e170');
+      hide(ficha, te - 0.35, 0.3);
+      tl.to([thread], { autoAlpha: 0, duration: 0.3 }, te - 0.35);
+      const words = 'Hagamos la siguiente cuenta.'.split(' ');
+      const title = el(`<div class="serif end-t">${words.map(w => `<span>${w}</span>`).join(' ')}</div>`, { left: '96px', top: TOP + 'px' });
+      tl.set(title.querySelectorAll('span'), { autoAlpha: 0 }, 0);
+      title.querySelectorAll('span').forEach((s, i) => tl.to(s, { autoAlpha: 1, duration: 0.25, ease: 'none' }, te + 0.3 + i * 0.45));
+      const btn = el(`<div class="cta">Sígueme para la siguiente cuenta</div><div class="handle">@omar.vizu</div>`, { left: '96px', top: (TOP + 260) + 'px' });
+      show(btn, te + 0.3 + words.length * 0.45 + 0.3);
+    })();
+    michiEvents.push({ t: T('e170'), ...stateOf('confiado') });
+    michiEvents.sort((a, b) => a.t - b.t);
+    zoom('e082', 990, 560, 1.3);
+    zoom('e153', 990, 560, 1.3);
 
     zoom('e002', 990, 560, 1.3);
 
@@ -525,6 +795,7 @@
     window.DUR = dur;
     window.FPS = FPS;
     window.ZOOMS = TL.eventos.filter(e => e.do === 'zoom_michi').map(e => [e.t, e.t + e.dur_s]);
+    window.TICS = [...new Set(TICS.map(x => +x.toFixed(3)))].sort((a, b) => a - b);
     window.seek = t => { tl.time(t, false); drawMichi(t); };
     window.seek(0);
   }

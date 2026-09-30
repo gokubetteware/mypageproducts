@@ -47,6 +47,7 @@ const texto = {};
 for (const [k, v] of Object.entries(valores)) texto[k] = fmt(v);
 texto.c7b_delta_taqueria = sgn(r.c7b_delta_taqueria);
 texto.c11b_delta_papeleria = sgn(r.c11b_delta_papeleria);
+texto.c5b_delta = sgn(r.c5b_mas_que_hoy);
 
 fs.writeFileSync(path.join(__dirname, 'numeros.json'),
   JSON.stringify({ generado: 'timeline/build_numeros.js', valores, texto }, null, 1) + '\n');
