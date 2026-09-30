@@ -139,11 +139,15 @@
       }
       return p;
     };
+    // Decisión de Omar: la cola «envolvente» (rodea la base por delante) deja un hueco que parece
+    // una sonrisa. Un gato no sonríe: se usa la cola «relajada» a un lado. Vale para MICHI y gatitos.
+    const sinSonrisa = p => { if (p.tail === 'envolvente') p.tail = 'relajada'; return p; };
     const michiAt = t => {
       let prev = stateOf('tranquilo'), cur = prev, t0 = -1;
       for (const m of michiEvents) { if (m.t > t) break; prev = cur; cur = m; t0 = m.t; }
       const k = t0 < 0 ? 1 : Math.min(1, (t - t0) / BLEND);
       const p = R.normalize(k >= 1 ? cur.p : R.lerp(prev.p, cur.p, easeIO(k)));
+      sinSonrisa(p);
       micro(p, cur.micro, t, k < 1);
       // MICHI mira un objeto (p. ej. la cifra en la pausa de predicción): gazeX con entrada y salida suaves.
       for (const g of GAZE) {
@@ -347,7 +351,7 @@
         let prev = g.evs[0], cur = prev;
         for (const e of g.evs) { if (e.t > t) break; prev = cur; cur = e; }
         const k = cur.t < 0 ? 1 : Math.min(1, (t - cur.t) / BLEND);
-        const p = R.normalize(k >= 1 ? cur.p : R.lerp(prev.p, cur.p, easeIO(k)));
+        const p = sinSonrisa(R.normalize(k >= 1 ? cur.p : R.lerp(prev.p, cur.p, easeIO(k))));
         g.grp.innerHTML = gatitoSVG(g.name, p, g.uid);
       }
     };
