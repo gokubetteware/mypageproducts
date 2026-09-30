@@ -7641,6 +7641,18 @@
    "frame": 3151
   },
   {
+   "id": "e056b",
+   "cue": "c025",
+   "word": "pública",
+   "off": 0.7,
+   "do": "michi",
+   "estado": "tranquilo",
+   "nota": "Omar: no dejar a MICHI preocupado 75 s seguidos.",
+   "scene": "S03",
+   "t": 105.748,
+   "frame": 3172
+  },
+  {
    "id": "e058",
    "cue": "c027",
    "word": "bolsa",

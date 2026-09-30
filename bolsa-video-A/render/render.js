@@ -70,6 +70,14 @@ async function renderSegment(browser, port, seg, out) {
     const probe = await openPage(browser, port, 1);
     const { DUR, ZOOMS } = await probe.evaluate(() => ({ DUR: window.DUR, ZOOMS: window.ZOOMS }));
 
+    if (args.sfx) {
+      const { SFX } = await probe.evaluate(() => ({ SFX: window.SFX }));
+      fs.writeFileSync(path.resolve(args.sfx), JSON.stringify({ duracion_s: DUR, eventos: SFX }, null, 1));
+      const c = {}; SFX.forEach(s => { c[s.k] = (c[s.k] || 0) + 1; });
+      console.log(`sfx: ${SFX.length} eventos ${JSON.stringify(c)}`);
+      return;
+    }
+
     if (args.tics) {
       // Pista aparte con un «tic» suave en cada cifra nueva (no se hornea en el video).
       const { TICS } = await probe.evaluate(() => ({ TICS: window.TICS }));

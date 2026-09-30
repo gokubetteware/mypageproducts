@@ -850,6 +850,15 @@
           "do": "anchor",
           "n": 2,
           "texto": "Hasta aquí: la acción se compra y se vende en la bolsa, y su precio lo fijan quienes compran y venden. Falta: por qué querrían pagar más."
+        },
+        {
+          "id": "e056b",
+          "cue": "c025",
+          "word": "pública",
+          "off": 0.7,
+          "do": "michi",
+          "estado": "tranquilo",
+          "nota": "Omar: no dejar a MICHI preocupado 75 s seguidos."
         }
       ]
     },

@@ -71,6 +71,9 @@
     const cut = (node, t) => tl.fromTo(node, { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.2, ease: 'none' }, t);
     // «tic» suave: cada cifra nueva que aparece deja su tiempo en TICS (pista aparte, tic_track.wav).
     const TICS = [];
+    // Efectos de sonido: cada suceso deja {t, k} en SFX (pista aparte, render/sfx_track.wav).
+    const SFX = [];
+    const sfx = (k, t) => { if (k && t != null && isFinite(t)) SFX.push({ t: +(+t).toFixed(3), k }); };
     const cutN = (node, t) => { TICS.push(t); return cut(node, t); };
 
     // Catpesos: solo los archivos originales; el valor se arma con billetes existentes.
@@ -159,6 +162,7 @@
       const e = EV(id);
       if (e.render !== 'ZOOM MICHI — render 4K') fail(id + ': zoom sin marca 4K');
       const to = { scale: s, x: 960 - fx * s, y: 540 - fy * s };
+      sfx('zoom', e.t);
       tl.fromTo('#world', { scale: 1, x: 0, y: 0 }, { ...to, duration: MOVE }, e.t);
       tl.to('#world', { scale: 1, x: 0, y: 0, duration: MOVE }, e.t + e.dur_s - MOVE);
     };
@@ -194,9 +198,9 @@
       const tOp = t0 == null ? T(idOp) : t0;
       return main(d, tOp, { hold: Math.max(2, T(idRes) - tOp + 1.5), parts: [{ node: d.querySelector('.op-r'), t: T(idRes), tic: true }] });
     };
-    const callout = (html, t, o) => main(mainEl(`<div class="rotulo">${html}</div>`), t, { hold: 2, ...(o || {}) });
-    const legal = (html, t) => main(mainEl(`<div class="alerta"><b>¡OJO!</b> ${html}</div>`), t, { hold: 2.2, legal: true });
-    const headline = (text, t, o) => main(mainEl(`<div class="serif headline">${text}</div>`), t, { hold: 2, ...(o || {}) });
+    const callout = (html, t, o) => main(mainEl(`<div class="rotulo">${html}</div>`), t, { hold: 2, sfx: 'suave', ...(o || {}) });
+    const legal = (html, t) => main(mainEl(`<div class="alerta"><b>¡OJO!</b> ${html}</div>`), t, { hold: 2.2, legal: true, sfx: 'ojo' });
+    const headline = (text, t, o) => main(mainEl(`<div class="serif headline">${text}</div>`), t, { hold: 2, sfx: /\?$/.test(text) ? 'pregunta' : 'suave', ...(o || {}) });
     const numBlock = (html, x, y, t, o) => main(el(html, { left: x + 'px', top: y + 'px' }, 'main'), t, { hold: 1.5, tic: true, ...(o || {}) });
 
     // Tarjeta de definición: palabra + definición corta (sin «Ejemplo»), en la franja superior,
@@ -209,7 +213,7 @@
         <div class="card-k">PALABRA ${n} DE ${cards.length}</div>
         <div class="card-t">${e.palabra.charAt(0) + e.palabra.slice(1).toLowerCase()}</div>
         <div class="card-d">${e.def}${e.nota_tarjeta ? ` ${e.nota_tarjeta}.` : ''}</div>`, {}, 'defcard');
-      return main(d, e.t, { hold: 3 });
+      return main(d, e.t, { hold: 3, sfx: 'tarjeta' });
     };
 
     // Personas (siluetas planas, sin rostro) y objetos
@@ -238,7 +242,7 @@
         { left: x + 'px', top: (STAGE_FLOOR - s) + 'px', width: s + 'px', height: s + 'px' });
       return [g, [...g.querySelectorAll('.cell')]];
     };
-    const popCell = (c, t) => { tl.set(c, { zIndex: 2, position: 'relative' }, t); toI(c, { scale: 1.8, boxShadow: '0 0 0 4px #E8C46A', duration: 0.5 }, t); tl.set(c, { scale: 1, boxShadow: '0 0 0 0px #E8C46A' }, 0); };
+    const popCell = (c, t) => { sfx('elige', t); tl.set(c, { zIndex: 2, position: 'relative' }, t); toI(c, { scale: 1.8, boxShadow: '0 0 0 4px #E8C46A', duration: 0.5 }, t); tl.set(c, { scale: 1, boxShadow: '0 0 0 0px #E8C46A' }, 0); };
     const unpopCell = (c, t) => toI(c, { scale: 1, boxShadow: '0 0 0 0px #E8C46A', duration: 0.4 }, t);
     const big = (n, extra) => `<span class="serif" style="font-size:130px;line-height:136px;white-space:nowrap">${n}</span>${extra || ''}`;
     const cue = id => TL.cues.find(c => c.id === id) || fail('cue no existe: ' + id);
@@ -266,6 +270,13 @@
         cuerpo: '<path d="M-37 -58h12M-38 -44h12M-38 -30h12M25 -58h12M26 -44h12M26 -30h12" stroke="#8C8577" stroke-width="5" stroke-linecap="round"/>',
         cuello: '<rect x="-27" y="-98" width="54" height="8" rx="4" fill="#9A3B2E"/><circle cx="0" cy="-86" r="5.5" fill="#7A5518"/>',
         cabeza: '' },
+      // Doña Lupe (nueva, propuesta de Claude para aprobar): dueña de la taquería. Mandil papel con bolsillo petróleo.
+      lupe:     { k: 0.78, pelaje: '#8A7A68', ojos: '#B7D3CF', linea: '#F3EFE6',
+        cuerpo: '<path d="M-26 -66 H26 V2 H-26 Z" fill="#F3EFE6"/><rect x="-11" y="-38" width="22" height="15" rx="2" fill="#1E5652"/>',
+        cuello: '<path d="M-22 -66 L-12 -94 M22 -66 L12 -94" stroke="#F3EFE6" stroke-width="5" stroke-linecap="round"/>',
+        cabeza: '<path d="M-13 -112 q13 7 26 0 q-2 9 -13 9 q-11 0 -13 -9z" fill="#E3DDD0"/>' },
+      // Silueta de gato genérica (sin cara ni rasgos): «mucha gente». No cuenta como personaje.
+      sombra:   { k: 0.62, pelaje: '#8C8577', ojos: '#8C8577', linea: '#8C8577', sil: true, cuerpo: '', cuello: '', cabeza: '' },
       bosco:    { k: 0.78, pelaje: '#5E5A52', ojos: '#B7D3CF', linea: '#F3EFE6',
         cuerpo: '<ellipse cx="0" cy="-36" rx="15" ry="36" fill="#E3DDD0"/><ellipse cx="-20" cy="-3" rx="11" ry="5" fill="#E3DDD0"/><ellipse cx="20" cy="-3" rx="11" ry="5" fill="#E3DDD0"/>',
         cuello: '<path d="M-27 -99 L27 -99 L0 -72 Z" fill="#1E5652"/>',
@@ -275,7 +286,7 @@
     const gatitoSVG = (name, p, uid) => {
       const G2 = GATS[name];
       const box = document.createElementNS('http://www.w3.org/2000/svg', 'g');
-      box.innerHTML = R.render(p, { bare: true, id: uid });
+      box.innerHTML = R.render(p, { bare: true, id: uid, silhouette: !!G2.sil });
       for (const n of box.querySelectorAll('*')) {
         const layerOf = n.closest('[data-layer]');
         const lay = n.getAttribute('data-layer') || (layerOf && layerOf.getAttribute('data-layer')) || '';
@@ -321,10 +332,10 @@
       const d = el(`<svg class="gsvg" viewBox="0 0 1920 1080" width="1920" height="1080" style="position:absolute;left:0;top:0;overflow:visible">
           <g transform="translate(${cx} ${STAGE_FLOOR}) scale(${o.espejo ? -sc : sc} ${sc})"><g class="gr"></g></g></svg>
           ${ob ? `<div style="position:absolute;left:${cx + (o.espejo ? -1 : 1) * Math.abs(ob.dx) * 0 + ob.dx}px;top:${STAGE_FLOOR - parseFloat(ob.html.match(/height="([\d.]+)"/)[1]) + ob.dy}px">${ob.html}</div>` : ''}`,
-        { left: '0px', top: '0px', width: '1920px', height: '1080px', pointerEvents: 'none' }, 'ilus gatito');
+        { left: '0px', top: '0px', width: '1920px', height: '1080px', pointerEvents: 'none' }, G2.sil ? 'ilus silueta' : 'ilus gatito');
       const g = { node: d, name, grp: d.querySelector('.gr'), uid: 'g' + gatitos.length, evs: [{ t: -1, p: gstate('neutro', 0) }] };
       tl.set(d, { autoAlpha: 0 }, 0);
-      g.entra = (t, desde) => { const tt = freeAt(t, 0.7); moving(tt, 0.7); tl.fromTo(d, { autoAlpha: 0, x: desde == null ? 60 : desde }, { autoAlpha: 1, x: 0, duration: 0.7 }, tt); return g; };
+      g.entra = (t, desde) => { const tt = freeAt(t, 0.7); moving(tt, 0.7); sfx(G2.sil ? 'pasos' : 'pop', tt); tl.fromTo(d, { autoAlpha: 0, x: desde == null ? 60 : desde }, { autoAlpha: 1, x: 0, duration: 0.7 }, tt); return g; };
       g.sale = (t, hacia) => { const tt = freeAt(t, 0.5); moving(tt, 0.5); tl.to(d, { autoAlpha: 0, x: hacia == null ? 60 : hacia, duration: 0.5 }, tt); return g; };
       g.cara = (key, t, lv) => { const tt = freeAt(t, BLEND); moving(tt, BLEND); g.evs.push({ t: tt, p: gstate(key, lv) }); g.evs.sort((a, b) => a.t - b.t); return g; };
       gatitos.push(g);
@@ -349,7 +360,7 @@
       // Título: presenta el tema, como lo dice la voz («Hoy vas a entender qué es la bolsa de valores»)
       const title = el(`<div class="serif" style="font-size:150px;line-height:146px">${EV('e000').texto.replace(' de valores', '<br>de valores')}</div>`,
         { left: '140px', top: '250px' }, 'main');
-      main(title, T('e000'), { hold: 3, until: T('e001') });
+      main(title, T('e000'), { hold: 3, until: T('e001'), sfx: 'intro' });
       // «con una taquería»: la taquería completa
       const shop = ilus(tileSVG(300), { left: '1060px', top: (STAGE_FLOOR - 300) + 'px' });
       showI(shop, T('e000b'));
@@ -358,6 +369,7 @@
       const [grid0, cells0] = gridIlus(260, 300, 10, 10);
       tl.set(grid0, { autoAlpha: 0 }, 0);
       tl.set(grid0, { autoAlpha: 1 }, T('e001') + 0.85);
+      sfx('cuadricula', T('e001') + 0.85);
       moving(T('e001') + 0.85, 0.5);
       tl.fromTo(cells0, { opacity: 0 }, { opacity: 1, duration: 0.3, ease: 'none', stagger: { each: 0.004, grid: [10, 10], from: 'start' } }, T('e001') + 0.85);
       popCell(cells0[44], T('e001') + 1.4);
@@ -406,9 +418,12 @@
       assertNums('e030', 'c2_venta');
       assertEq('e026', `1 de ${N('taqueria_acciones')}`, EV('e026').texto);
       if (V('taqueria_acciones') !== 100) fail('la cuadrícula es 10×10: se esperaban 100 acciones');
-      const facade = ilus(tileSVG(300), { left: '150px', top: (STAGE_FLOOR - 300) + 'px' });
+      const FX = 330;                                   // taquería de Lupe
+      const facade = ilus(tileSVG(300), { left: FX + 'px', top: (STAGE_FLOOR - 300) + 'px' });
       showI(facade, T('e020'));
-      const [grid, cells] = gridIlus(150, 300, 10, 10);
+      const lupe = gatito('lupe', 200);                 // doña Lupe, junto a su taquería
+      lupe.entra(T('e020') + 0.9, -60);
+      const [grid, cells] = gridIlus(FX, 300, 10, 10);
       tl.set(grid, { autoAlpha: 0 }, 0);
       tl.set(grid, { autoAlpha: 1 }, T('e022'));
       moving(T('e022'), 0.9);
@@ -416,24 +431,27 @@
 
       const name = el(`<div class="serif" style="font-size:72px;line-height:80px">Taquería de doña Lupe</div>
         <div style="display:flex;gap:24px;align-items:baseline;margin-top:8px">${big(N('taqueria_valor'))}<span class="lbl">catpesos</span></div>`,
-        { left: '520px', top: (STAGE_FLOOR - 250) + 'px' }, 'main');
+        { left: '700px', top: (STAGE_FLOOR - 250) + 'px' }, 'main');
       main(name, T('e020'), { hold: 3, tic: true });
       opMain('e023', 'e024', `${N('taqueria_valor')} ÷ ${N('taqueria_acciones')}`, N('c1_precio_accion'));
       popCell(cells[44], T('e026'));
-      numBlock(`<div class="serif" style="font-size:110px;line-height:110px">1 de ${N('taqueria_acciones')}</div>`, 520, STAGE_FLOOR - 190, T('e026'), { tic: false });
+      numBlock(`<div class="serif" style="font-size:110px;line-height:110px">1 de ${N('taqueria_acciones')}</div>`, 700, STAGE_FLOOR - 190, T('e026'), { tic: false });
       cardMain('e027');
       unpopCell(cells[44], T('e029') - 0.45);
-      const second = ilus(dashedTile(200), { left: '520px', top: (STAGE_FLOOR - 200) + 'px' });
+      const SX = 700;                                   // segunda taquería
+      const second = ilus(dashedTile(200), { left: SX + 'px', top: (STAGE_FLOOR - 200) + 'px' });
       showI(second, T('e029'));
-      numBlock(`<div class="lbl">Necesita</div><div style="display:flex;gap:20px;align-items:baseline">${big(N('c2_venta'))}<span class="lbl">catpesos</span></div>`, 760, STAGE_FLOOR - 200, T('e030'));
+      numBlock(`<div class="lbl">Necesita</div>${big(N('c2_venta'))}<div class="lbl">catpesos</div>`, 940, STAGE_FLOOR - 240, T('e030'));
       const sold = cells.slice(100 - V('venta_acciones'));
       moving(T('e031'), 0.9);
       tl.to(sold, { backgroundColor: '#1E5652', duration: 0.5, stagger: 0.02 }, T('e031'));
+      lupe.cara('confianza', T('e031') + 1.0);
       opMain('e032', 'e033', `${N('venta_acciones')} × ${N('c1_precio_accion')}`, N('c2_venta'));
-      const second2 = ilus(tileSVG(200), { left: '520px', top: (STAGE_FLOOR - 200) + 'px' });
+      const second2 = ilus(tileSVG(200), { left: SX + 'px', top: (STAGE_FLOOR - 200) + 'px' });
       tl.set(second2, { autoAlpha: 0 }, 0);
       hideI(second, T('e034'), 0.5);
       toI(second2, { autoAlpha: 1, duration: 0.5 }, T('e034'));
+      lupe.cara('alegria', T('e034') + 0.6);
       opMain('e035', 'e036', `${N('taqueria_acciones')} − ${N('venta_acciones')}`, N('c3_quedan'));
       // Vecinos del Michiverso: carita de gato (genérica, plana) en cada cuadrito vendido
       sold.forEach(c => { c.innerHTML = `<svg viewBox="0 0 30 30"><path d="M8 9l1-6 5 4h2l5-4 1 6c1 1 2 3 2 6 0 6-4 10-9 10s-9-4-9-10c0-3 1-5 2-6z" fill="#F3EFE6"/></svg>`; });
@@ -441,13 +459,12 @@
       tl.set(people, { autoAlpha: 0 }, 0);
       moving(T('e037'), 0.8);
       tl.to(people, { autoAlpha: 1, duration: 0.4, stagger: 0.02 }, T('e037'));
-      // Los vecinos que compraron las 20 acciones: Canela (con su frasco de ahorro) y Bosco
-      const canela = gatito('canela', 880, { objeto: true });
-      const bosco = gatito('bosco', 1190);
-      canela.entra(T('e037') + 0.4);
-      bosco.entra(T('e037') + 1.2);
+      // Una vecina que compró acciones con sus ahorros: Canela (con su frasco)
+      const canela = gatito('canela', 1110, { objeto: true });
+      canela.entra(T('e037') + 0.9);
       canela.cara('alegria', cue('c019').t + 1.0);
-      bosco.cara('alegria', cue('c019').t + 1.6);
+      // «A ellos, y a Lupe, se les llama accionistas»
+      lupe.cara('orgullo', T('e038') - 0.2);
       cardMain('e038');
     })();
     endScene(SC('S03').start);
@@ -458,50 +475,60 @@
       assertNums('e063', 'c1_precio_accion');
       assertNums('e064', 'c1_precio_accion');
       if (EV('e071').de !== V('c1_precio_accion') || EV('e071').a !== V('c7_precio_despues') || EV('e071').delta !== N('c7b_delta_taqueria')) fail('e071: cifras no coinciden');
-      const RX = 200, H = 215;
-      const ramiro = person(RX, H, true);
-      const tk = ilus(token(48), { left: (RX + 84) + 'px', top: (STAGE_FLOOR - 120) + 'px' });
-      showI([ramiro, tk], T('e052'));
+      // Don Ramiro = Tigrillo (deuda: necesita dinero) con su acción
+      const ramiro = gatito('tigrillo', 260);
+      ramiro.entra(T('e052'), -60).cara('preocupacion', T('e052') + 1.2);
+      const tk = ilus(token(46), { left: '330px', top: (STAGE_FLOOR - 104) + 'px' });
+      showI(tk, T('e052') + 0.5);
       headline(EV('e053').texto, T('e053'), { hold: 2.5 });
       callout(EV('e054').texto.replace('UNA', '<b>UNA</b>'), T('e054'));
-      const crowd = [620, 740, 860, 980, 1100, 1220].map((x, i) => person(x, 190 + (i % 3) * 10, false));
-      moving(T('e055'), 1.3);
-      tl.fromTo(crowd, { autoAlpha: 0, x: 160 }, { autoAlpha: 1, x: 0, duration: 0.9, stagger: 0.08 }, T('e055'));
+      // «deja que compre cualquier persona»: llega Mango y detrás una fila de siluetas
+      const mango = gatito('mango', 760);
+      const q1 = gatito('sombra', 930), q2 = gatito('sombra', 1060);
+      mango.entra(T('e055'));
+      q1.entra(T('e055') + 0.3); q2.entra(T('e055') + 0.5);
       cardMain('e056');
       assertEq('e058', 'BOLSA = el lugar donde se compran y venden acciones', EV('e058').texto);
       callout('<b>BOLSA</b> = el lugar donde se compran y venden acciones', T('e058'), { hold: EV('e058').min_s });
+      // Don Ramiro le vende su acción a Mango
       const t60 = T('e060');
-      hideI(crowd.slice(1), t60, 0.5);
-      toI(crowd[0], { x: -140, duration: 0.8 }, t60);
-      toI(tk, { x: 196, duration: 0.9 }, t60 + 0.9);
+      q1.sale(t60); q2.sale(t60 + 0.2);
+      toI(mango.node, { x: -180, duration: 0.8 }, t60 + 0.4);
+      toI(tk, { x: 200, duration: 0.9 }, t60 + 1.3);
+      sfx('moneda', t60 + 2.1);
+      mango.cara('alegria', t60 + 2.3);
+      ramiro.cara('alivio', t60 + 2.9);
       const tClear = cue('c029').t;
-      hideI([ramiro, tk, crowd[0]], tClear - 0.45);
+      ramiro.sale(tClear - 0.9, -60); mango.sale(tClear - 0.6);
+      hideI(tk, tClear - 0.9);
 
-      // Comprador y vendedor aceptan 1,000 (un bloque; el vendedor entra al decirlo)
+      // Precio: Mango (compradora) y Tigrillo (vendedor) aceptan 1,000
       assertEq('e062', `Comprador acepta ${N('c1_precio_accion')}`, EV('e062').texto);
       assertEq('e063', `Vendedor acepta ${N('c1_precio_accion')}`, EV('e063').texto);
-      const deal = el(['Comprador', 'Vendedor'].map((q, i) => `<div class="w${i}" style="display:flex;gap:22px;align-items:flex-end">${personSVG(150)}
-        <div><div class="lbl">${q} acepta</div><div class="serif" style="font-size:110px;line-height:110px">${N('c1_precio_accion')}</div></div></div>`).join(''),
-        { left: '120px', top: (STAGE_FLOOR - 170) + 'px', display: 'flex', gap: '120px' }, 'main');
+      const buyer = gatito('mango', 330), seller = gatito('tigrillo', 1270, { espejo: true });
+      buyer.entra(T('e062') - 0.6, -60);
+      seller.entra(T('e063') - 0.6);
+      const deal = el(`<div class="w0" style="position:absolute;left:150px;top:320px"><div class="lbl">Comprador acepta</div><div class="serif" style="font-size:110px;line-height:110px">${N('c1_precio_accion')}</div></div>
+        <div class="w1" style="position:absolute;left:960px;top:320px"><div class="lbl">Vendedor acepta</div><div class="serif" style="font-size:110px;line-height:110px">${N('c1_precio_accion')}</div></div>`,
+        { left: '0px', top: '0px', width: '1920px', height: '1080px' }, 'main');
       main(deal, T('e062'), { parts: [{ node: deal.querySelector('.w1'), t: T('e063') }] });
       tl.set(deal.querySelector('.w0'), { autoAlpha: 1 }, 0);
       assertEq('e064', `Precio: ${N('c1_precio_accion')} catpesos`, EV('e064').texto);
-      numBlock(`<div class="lbl">Precio</div>${big(N('c1_precio_accion'))}<div class="lbl">catpesos</div>`, 540, STAGE_FLOOR - 280, T('e064'));
+      numBlock(`<div class="lbl">Precio</div>${big(N('c1_precio_accion'))}<div class="lbl">catpesos</div>`, 600, STAGE_FLOOR - 280, T('e064'));
       callout(EV('e067').texto.replace('UNA', '<b>UNA</b>'), T('e067'));
-      const buyers = [96, 186, 276, 366].map(x => person(x, 220));
-      const sell1 = person(1250, 220);
-      moving(T('e068'), 1.0);
-      tl.fromTo(buyers, { autoAlpha: 0, x: -60 }, { autoAlpha: 1, x: 0, duration: 0.7, stagger: 0.08 }, T('e068'));
-      tl.fromTo(sell1, { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.5 }, T('e068') + 0.4);
+      // «muchos quieren comprar y casi nadie quiere vender»: fila de siluetas detrás de Mango
+      const s1 = gatito('sombra', 130), s2 = gatito('sombra', 205);
+      s1.entra(T('e068'), -60); s2.entra(T('e068') + 0.3, -60);
       // Predicción → Sube → 1,500 +500 → Baja: un solo bloque que cambia
-      const pq = el(`<div class="lbl">Precio</div>
+      const pq = el(`<div style="height:70px;position:relative">
+          <span class="qm serif" style="position:absolute;left:0;top:-40px;font-size:130px;line-height:130px">?</span>
+          <span class="up big-lbl" style="position:absolute;left:0;top:0">Sube ↑</span><span class="dn big-lbl" style="position:absolute;left:250px;top:0">· Baja ↓</span></div>
+        <div class="lbl">Precio</div>
         <div style="display:flex;gap:28px;align-items:baseline;position:relative">
           <span class="serif" style="font-size:150px;line-height:150px;position:relative;display:inline-block;min-width:330px">
             <span class="p0">${N('c1_precio_accion')}</span><span class="p1" style="position:absolute;left:0;top:0">${N('c7_precio_despues')}</span></span>
-          <span class="pd serif pos" style="font-size:110px">${N('c7b_delta_taqueria')}</span>
-          <span class="qm serif" style="font-size:150px;line-height:150px">?</span>
-          <span class="up big-lbl">Sube ↑</span><span class="dn big-lbl">· Baja ↓</span></div>
-        <div class="lbl">catpesos</div>`, { left: '540px', top: (STAGE_FLOOR - 280) + 'px' }, 'main');
+          <span class="pd serif pos" style="font-size:110px">${N('c7b_delta_taqueria')}</span></div>
+        <div class="lbl">catpesos</div>`, { left: '560px', top: (STAGE_FLOOR - 380) + 'px' }, 'main');
       if (T('e070') - T('e069') < EV('e069').hold_s) fail('e069: la pausa de predicción dura menos de 3 s');
       main(pq, T('e069'), { hold: T('e073') - T('e069') + 2, tic: false, parts: [
         { node: pq.querySelector('.up'), t: T('e070'), out: pq.querySelector('.qm') },
@@ -510,7 +537,13 @@
         { node: pq.querySelector('.dn'), t: T('e073') }] });
       tl.set([pq.querySelector('.p0'), pq.querySelector('.qm')], { autoAlpha: 1 }, 0);
       GAZE.push({ t0: T('e069'), t1: T('e070'), x: -0.9 });
-      hideI([...buyers, sell1], T('e073') - 0.45);
+      buyer.cara('impaciencia', T('e069') + 0.6);
+      seller.cara('duda', T('e069') + 1.4);
+      buyer.cara('sorpresa', T('e071') + 0.6);
+      seller.cara('alegria', T('e071') + 1.2);
+      s1.sale(T('e073') - 0.8, -60); s2.sale(T('e073') - 0.6, -60);
+      buyer.cara('neutro', T('e073') + 0.4);
+      seller.cara('neutro', T('e073') + 0.9);
     })();
     endScene(SC('S04').start);
 
@@ -635,7 +668,7 @@
         <div class="btn" style="margin-top:40px"><div class="cta">Sígueme para la siguiente cuenta</div><div class="handle">@omar.vizu</div></div>`,
         { left: '96px', top: TOP + 'px' }, 'main');
       tl.set(end.querySelector('.w0'), { autoAlpha: 1 }, 0);
-      main(end, te, { hold: 99, parts: [...words.slice(1).map((w, i) => ({ node: end.querySelector('.w' + (i + 1)), t: te + 0.45 * (i + 1) })),
+      main(end, te, { hold: 99, sfx: 'outro', parts: [...words.slice(1).map((w, i) => ({ node: end.querySelector('.w' + (i + 1)), t: te + 0.45 * (i + 1) })),
         { node: end.querySelector('.btn'), t: te + 0.45 * words.length + 0.3 }] });
     })();
     michiEvents.push({ t: T('e170'), ...stateOf('confiado') });
@@ -662,17 +695,23 @@
       tl.fromTo(m.node, { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: IN }, m.t);
       tl.to(m.node, { autoAlpha: 0, duration: OUT }, Math.max(m.t + IN, m.end - OUT));
       if (m.tic) TICS.push(m.t);
+      const kindOf = n => (n && n.querySelector && (n.querySelector('.pos') ? 'sube' : n.querySelector('.neg') ? 'baja' : null));
+      sfx(m.sfx || (m.tic ? (kindOf(m.node) || 'moneda') : null), m.t);
       for (const pt of m.parts) {
         const t = Math.max(pt.t, m.t + IN + 0.1);
         if (t > m.end - OUT) { DELAYS.push({ id: 'PARTE PERDIDA: ' + (pt.node.textContent || '').trim().slice(0, 30), de: pt.t, a: null }); continue; }
-        if (pt.grow) { tl.set(pt.node, { scaleX: 0 }, 0); tl.to(pt.node, { scaleX: 1, duration: 0.8 }, t); continue; }
+        if (pt.grow) { sfx('lapiz', t); tl.set(pt.node, { scaleX: 0 }, 0); tl.to(pt.node, { scaleX: 1, duration: 0.8 }, t); continue; }
         tl.set(pt.node, { autoAlpha: 0 }, 0);
         tl.to(pt.node, { autoAlpha: 1, duration: 0.2, ease: 'none' }, t);
         if (pt.out) { tl.set(pt.out, { autoAlpha: 1 }, 0); tl.to(pt.out, { autoAlpha: 0, duration: 0.2, ease: 'none' }, t); }
         if (pt.tic) TICS.push(t);
+        const pn = Array.isArray(pt.node) ? pt.node[0] : pt.node;
+        sfx(pt.sfx || (pn && pn.classList && pn.classList.contains('pos') ? 'sube' : pt.tic ? (kindOf(pn) || 'moneda') : (pn && pn.classList && (pn.classList.contains('dn')) ? 'baja' : pn && pn.classList && pn.classList.contains('up') ? 'sube' : null)), t);
       }
     });
     window.DELAYS = DELAYS;
+    TL.eventos.filter(e => e.do === 'michi' && e.estado === 'sorprendido').forEach(e => sfx('blip', e.t));
+    TL.eventos.filter(e => e.do === 'grid').forEach(e => { if (/cuadricula/.test(e.obj)) sfx('cuadricula', e.t); });
     // Microanimación de MICHI apagada mientras una ilustración se mueve.
     MICHI_QUIET.push(...ILUS_MOVES);
 
@@ -696,6 +735,7 @@
     window.DUR = dur;
     window.FPS = FPS;
     window.ZOOMS = TL.eventos.filter(e => e.do === 'zoom_michi').map(e => [e.t, e.t + e.dur_s]);
+    window.SFX = SFX.sort((a, b) => a.t - b.t);
     window.TICS = [...new Set(TICS.map(x => +x.toFixed(3)))].sort((a, b) => a - b);
     window.seek = t => { tl.time(t, false); drawMichi(t); drawGatitos(t); };
     window.seek(0);

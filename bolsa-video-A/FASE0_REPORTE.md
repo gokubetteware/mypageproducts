@@ -289,3 +289,18 @@ Las 14 cuentas de la tabla (11 operaciones y 3 diferencias) pasaron con `assert`
 - **Gatitos:** ahora son el MISMO rig de MICHI (`michi_rig.js`), recoloreado por gatito (pelaje, ojos, líneas) y con su rasgo propio encima (bufanda, gorra y mancha, lentes y cejas, collar y chapa, pañoleta, pecho, rayas).
   - Tienen las mismas orejas, la misma geometría y **los mismos 51 estados** que MICHI.
   - Muestra de los 5 gatitos en 8 estados: `render/lamina_gatitos.png`.
+
+## v3.2 · Doña Lupe, Mango y Tigrillo · música y efectos
+- **Doña Lupe (gatito nuevo, propuesta):** rig de MICHI; pelaje #8A7A68, ojos #B7D3CF, mandil papel con bolsillo petróleo. Está junto a su taquería en S02 y es accionista junto a Canela.
+- **S03:**
+  - Don Ramiro = **Tigrillo** (deuda: necesita dinero). Le vende su acción a **Mango** (tentación).
+  - «Cualquier persona» y «muchos compradores» se muestran con siluetas de gato genéricas (rig en modo silueta, gris de apoyo, sin cara). No cuentan como personajes.
+  - En el precio: Mango es la compradora (impaciente → sorpresa) y Tigrillo el vendedor (duda → alegría).
+- **MICHI** pasa a «tranquilo» con la tarjeta de empresa pública (e056b).
+- **Música y efectos: SINTETIZADOS en `render/audio_mix.py`** (sin muestras ni archivos de terceros, así que sin copyright ajeno). Es determinista.
+  - **Música:** Do mayor, 72 bpm (Cmaj9 · Am9 · Fmaj9 · G6); pad, bajo y piano en arpegio.
+  - Sube un poco de pulso en los re-enganches (S03 y S04) y se calma en S06.
+  - Baja ~9 dB cuando habla la voz (ducking) y queda a −31 LUFS contra −16 de la voz.
+  - **Efectos:** el motor los registra al ocurrir (`window.SFX`, `render/sfx_eventos.json`): moneda, sube, baja, pop, pasos, tarjeta, suave, pregunta, ojo, zoom, blip, cuadrícula, elige, lápiz, intro y outro. Todos suaves, sin alarmas.
+  - La moneda reemplaza al «tic».
+- **Render:** `render/partes1-2_S01-S03_final.mp4` (0:00–2:39, con voz, música y efectos).
