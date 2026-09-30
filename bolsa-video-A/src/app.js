@@ -13,6 +13,9 @@
 
   async function load() {
     const get = u => fetch(u).then(r => r.ok ? r.json() : fail('no se pudo leer ' + u));
+    const GMETA = await get('../assets/gatitos/gatitos_meta.json');
+    const GSVG = {};
+    await Promise.all(Object.keys(GMETA).map(k => fetch(`../assets/gatitos/${k}.svg`).then(r => r.ok ? r.text() : fail('falta ' + k)).then(s => { GSVG[k] = s; })));
     const [TL, NUM, EMO] = await Promise.all([
       fetch('../timeline/timeline_final.json').then(r => (r.ok ? r.json() : get('../timeline/timeline_nominal.json'))),
       get('../timeline/numeros.json'),
@@ -22,10 +25,10 @@
     const faces = ['400 40px "Instrument Serif"', '700 40px "Archivo"', '600 40px "Archivo"', '800 40px "Archivo"', '600 40px "Figtree"', '700 40px "Figtree"', '600 40px "Caveat"'];
     await Promise.all(faces.map(f => document.fonts.load(f)));
     for (const f of faces) if (!document.fonts.check(f)) fail('fuente no cargada: ' + f);
-    return { TL, NUM, EMO };
+    return { TL, NUM, EMO, GMETA, GSVG };
   }
 
-  function build({ TL, NUM, EMO }) {
+  function build({ TL, NUM, EMO, GMETA, GSVG }) {
     const R = window.MichiRig;
     const tl = gsap.timeline({ paused: true, defaults: { ease: EASE, duration: MOVE } });
 
@@ -240,11 +243,60 @@
     const big = (n, extra) => `<span class="serif" style="font-size:130px;line-height:136px;white-space:nowrap">${n}</span>${extra || ''}`;
     const cue = id => TL.cues.find(c => c.id === id) || fail('cue no existe: ' + id);
 
-    // Cabecera «CCM / tema»: pequeña, solo el primer y el último segundo.
-    tl.set('#header', { autoAlpha: 1 }, 0);
-    tl.to('#header', { autoAlpha: 0, duration: 0.3 }, 0.7);
-    tl.set('#header', { autoAlpha: 0 }, 1.0);
-    tl.to('#header', { autoAlpha: 1, duration: 0.3 }, TL.duracion_s - 1.0);
+    // Cabecera «CCM / tema»: fija todo el video (decisión de Omar: no es invasiva).
+
+    // ---- Gatitos del Michiverso (PDF «Personajes secundarios», v0.1) ----
+    // Desde sus trazos originales (assets/gatitos/*.svg). 78 % de la altura de MICHI; Rayitas 86 %.
+    // Máximo 2 gatitos junto a MICHI. No hablan: reaccionan. Nunca se mueven a la vez que MICHI.
+    const GAT = { canela: 0.78, mango: 0.78, rayitas: 0.86, tigrillo: 0.78, bosco: 0.78 };
+    const EXPRS = ['neutro', 'alegria', 'sorpresa', 'preocupacion', 'duda', 'alivio'];
+    const MICHI_BUSY = () => michiEvents.map(m => [m.t - 0.05, m.t + BLEND + 0.05]);
+    // Desplaza un movimiento de gatito para que no coincida con una reacción de MICHI.
+    const freeAt = (t, d) => { let x = t; for (let k = 0; k < 6; k++) { const hit = MICHI_BUSY().find(([a, b]) => x < b && x + d > a); if (!hit) break; x = hit[1]; } return x; };
+    const svgFit = (key, h, pad) => {
+      const m = GMETA[key];
+      const [x0, y0, x1, y1] = m.bbox;
+      const vb = [x0 - pad, y0 - pad, x1 - x0 + 2 * pad, y1 - y0 + 2 * pad];
+      return GSVG[key].replace(/viewBox="[^"]*"/, `viewBox="${vb.join(' ')}"`).replace('<svg ', `<svg height="${h * vb[3] / (y1 - y0)}" style="display:block;position:absolute;left:0;bottom:${-h * pad / (y1 - y0)}px" `);
+    };
+    const gatitos = [];
+    // gatito(nombre, x del centro, {objeto: true, espejo: false})
+    const gatito = (name, cx, o) => {
+      o = o || {};
+      const H = Math.round(MICHI.h * GAT[name]);
+      const m = GMETA[name + '_neutro'];
+      const w = H * (m.bbox[2] - m.bbox[0]) / (m.bbox[3] - m.bbox[1]);
+      const d = el(`<div class="gx" style="position:relative;width:${w}px;height:${H}px${o.espejo ? ';transform:scaleX(-1)' : ''}">
+          ${EXPRS.map(e => `<div class="ex ex-${e}" style="position:absolute;inset:0">${svgFit(name + '_' + e, H, 2)}</div>`).join('')}</div>
+          ${o.objeto ? (() => { const cat = GMETA[name + '_ficha'].bbox, ob = GMETA[name + '_objeto'].bbox, k = H / (cat[3] - cat[1]);
+            return `<div class="obj" style="position:absolute;left:${w * 0.5 + (ob[0] - (cat[0] + cat[2]) / 2) * k}px;bottom:${-(ob[3] - cat[3]) * k}px">${objSVG(name, H)}</div>`; })() : ''}`,
+        { left: (cx - w / 2) + 'px', top: (STAGE_FLOOR - H) + 'px' }, 'ilus gatito');
+      const exs = Object.fromEntries(EXPRS.map(e => [e, d.querySelector('.ex-' + e)]));
+      tl.set(Object.values(exs), { autoAlpha: 0 }, 0);
+      tl.set(exs.neutro, { autoAlpha: 1 }, 0);
+      let cur = 'neutro';
+      const g = {
+        node: d, name,
+        entra: (t, desde) => { const tt = freeAt(t, 0.7); moving(tt, 0.7); tl.fromTo(d, { autoAlpha: 0, x: desde == null ? 60 : desde }, { autoAlpha: 1, x: 0, duration: 0.7 }, tt); return g; },
+        sale: (t, hacia) => { const tt = freeAt(t, 0.5); moving(tt, 0.5); tl.to(d, { autoAlpha: 0, x: hacia == null ? 60 : hacia, duration: 0.5 }, tt); return g; },
+        cara: (e, t) => {
+          if (!exs[e]) fail(name + ': expresión inexistente ' + e);
+          const tt = freeAt(t, 0.25); moving(tt, 0.25);
+          tl.to(exs[cur], { autoAlpha: 0, duration: 0.2, ease: 'none' }, tt);
+          tl.to(exs[e], { autoAlpha: 1, duration: 0.2, ease: 'none' }, tt);
+          cur = e; return g;
+        },
+      };
+      gatitos.push(g);
+      return g;
+    };
+    // Objeto de la ficha (frasco, ticket, tarjeta, maceta), a la escala del gatito.
+    const objSVG = (name, H) => {
+      const cat = GMETA[name + '_ficha'].bbox, ob = GMETA[name + '_objeto'].bbox;
+      const k = H / (cat[3] - cat[1]);
+      const vb = [ob[0] - 1, ob[1] - 1, ob[2] - ob[0] + 2, ob[3] - ob[1] + 2];
+      return GSVG[name + '_objeto'].replace(/viewBox="[^"]*"/, `viewBox="${vb.join(' ')}"`).replace('<svg ', `<svg width="${vb[2] * k}" height="${vb[3] * k}" style="display:block" `);
+    };
 
     // ================= S01 · Sorpresa + Promesa + Compromiso =================
     bg('arcilla', 0);
@@ -286,8 +338,12 @@
         <div style="font-family:Archivo;font-weight:800;font-size:96px;line-height:100px">${EV('e007').texto}</div>
         <div style="margin-top:30px;display:grid;gap:16px">
           ${[820, 780, 800, 500].map(w => `<div style="height:10px;width:${w}px;background:#8C8577"></div>`).join('')}
-        </div>`, { left: '300px', top: '260px', width: '920px', padding: '44px 50px', background: '#F3EFE6', border: '2px solid #05070A' }, 'main');
+        </div>`, { left: '140px', top: '260px', width: '920px', padding: '44px 50px', background: '#F3EFE6', border: '2px solid #05070A' }, 'main');
       main(news, T('e007'), { hold: 3 });
+      // Bosco (inversión) oyó «la bolsa subió» y se quedó igual
+      const bosco = gatito('bosco', 1230);
+      bosco.entra(T('e007') + 0.2).cara('duda', T('e007') + 2.2);
+      bosco.sale(T('e010') - 0.6);
       // Pregunta principal (titular de la escena) con el pedacito y su «?»
       const qTile = ilus(`${tileSVG(240)}<div class="serif" style="position:absolute;left:84px;top:-150px;font-size:150px;line-height:150px">?</div>`, { left: '300px', top: (STAGE_FLOOR - 240) + 'px' });
       showI(qTile, T('e009'));
@@ -339,11 +395,19 @@
       hideI(second, T('e034'), 0.5);
       toI(second2, { autoAlpha: 1, duration: 0.5 }, T('e034'));
       opMain('e035', 'e036', `${N('taqueria_acciones')} − ${N('venta_acciones')}`, N('c3_quedan'));
-      sold.forEach(c => { c.innerHTML = `<svg viewBox="0 0 30 30"><circle cx="15" cy="10" r="5" fill="#F3EFE6"/><path d="M6 28v-6c0-5 4-8 9-8s9 3 9 8v6z" fill="#F3EFE6"/></svg>`; });
+      // Vecinos del Michiverso: carita de gato (genérica, plana) en cada cuadrito vendido
+      sold.forEach(c => { c.innerHTML = `<svg viewBox="0 0 30 30"><path d="M8 9l1-6 5 4h2l5-4 1 6c1 1 2 3 2 6 0 6-4 10-9 10s-9-4-9-10c0-3 1-5 2-6z" fill="#F3EFE6"/></svg>`; });
       const people = sold.map(c => c.querySelector('svg'));
       tl.set(people, { autoAlpha: 0 }, 0);
       moving(T('e037'), 0.8);
       tl.to(people, { autoAlpha: 1, duration: 0.4, stagger: 0.02 }, T('e037'));
+      // Los vecinos que compraron las 20 acciones: Canela (con su frasco de ahorro) y Bosco
+      const canela = gatito('canela', 880, { objeto: true });
+      const bosco = gatito('bosco', 1190);
+      canela.entra(T('e037') + 0.4);
+      bosco.entra(T('e037') + 1.2);
+      canela.cara('alegria', cue('c019').t + 1.0);
+      bosco.cara('alegria', cue('c019').t + 1.6);
       cardMain('e038');
     })();
     endScene(SC('S03').start);
@@ -583,7 +647,8 @@
       const il = kids.some(k => k.classList.contains('ilus')) ? 1 : 0;
       const mains = kids.filter(k => !k.classList.contains('ilus')).length;
       const head = vis($('#header')) ? 1 : 0;
-      return { total: 1 + il + mains + head, michi: 1, ilustracion: il, principal: mains, cabecera: head };
+      const gat = kids.filter(k => k.classList.contains('gatito')).length;
+      return { total: 1 + il + mains, michi: 1, ilustracion: il, principal: mains, cabecera: head, gatitos: gat };
     };
 
     const dur = TL.duracion_s;

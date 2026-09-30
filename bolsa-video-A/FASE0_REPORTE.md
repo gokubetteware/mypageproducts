@@ -260,3 +260,20 @@ Las 14 cuentas de la tabla (11 operaciones y 3 diferencias) pasaron con `assert`
 - **Micromovimiento de MICHI:** se apaga (respiración, cola y parpadeo) mientras una ilustración se mueve. Sus reacciones de estado sí se mantienen.
 - **Avisos ¡OJO! legales:** momento propio de ≥ 2.2 s, sin otro texto antes ni después.
 - **Subtítulos: opción B.** Fuera del video; `render/bolsa_A.srt` trae 178 líneas, 176 de 4 a 6 palabras, una de 3 y una de 7.
+
+---
+
+# v3 · Michiverso (gatitos secundarios) · Parte 1 (S01–S02)
+
+- **Gatitos:** `assets/gatitos/extraer_gatitos.py` saca del PDF «Personajes secundarios» (v0.1) los trazos vectoriales originales.
+  - Son 5 gatitos × 6 expresiones, su ficha y su objeto, todo en SVG, sin fondos ni textos y sin redibujar.
+- **Reglas del documento aplicadas:**
+  - Altura: 78 % de MICHI (Rayitas 86 %), sentados en el piso.
+  - Máximo 2 gatitos por plano: el barrido da 2 como máximo.
+  - No hablan; cambian de expresión y nunca se mueven al mismo tiempo que MICHI (`freeAt`).
+- **Cabecera «CCM / BOLSA DE VALORES»:** fija todo el video, al tamaño original. El conteo de capas la reporta aparte: el contenido llega a 3 capas como máximo (MICHI + ilustración + principal).
+- **Personas → gatitos.** En la cuadrícula, los 20 vecinos pasan a ser caritas de gato genéricas.
+- **Reparto en la Parte 1:**
+  - S01: Bosco (inversión) oyó «la bolsa subió» y pone cara de duda.
+  - S02: los vecinos accionistas son Canela (ahorro, con su frasco) y Bosco; se alegran al volverse dueños.
+- **Render:** `render/parte1_S01-S02_con_voz.mp4` (0:00–1:28, con voz y «tic»). Hoja de cuadros: `render/parte1/hoja_parte1.png`.

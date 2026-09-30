@@ -87,6 +87,4 @@ body { font-family: 'Archivo', sans-serif; color: var(--tinta); -webkit-font-smo
 .step { width: 400px; height: 280px; padding: 28px 32px; background: var(--papel); border: 2px solid var(--tinta); }
 .step-t { font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 40px; line-height: 48px; margin-top: 16px; }
 .big-lbl { font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 60px; line-height: 70px; white-space: nowrap; }
-#header .h1 { font-size: 20px; line-height: 26px; }
-#header .h2 { font-size: 16px; line-height: 22px; }
 #subs { display: none; }

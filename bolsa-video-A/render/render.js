@@ -97,9 +97,9 @@ async function renderSegment(browser, port, seg, out) {
     if (args.scan) {
       // Barrido de capas cada 0.25 s entre 0 y --scan segundos (sin capturas).
       const end = Math.min(parseFloat(args.scan), DUR);
-      const res = await probe.evaluate(e => { const out = []; for (let t = 0; t < e; t += 0.25) { window.seek(t); out.push([t, window.countLayers().total]); } return out; }, end);
+      const res = await probe.evaluate(e => { const out = []; for (let t = 0; t < e; t += 0.25) { window.seek(t); const c = window.countLayers(); out.push([t, c.total, c.gatitos]); } return out; }, end);
       const bad = res.filter(r => r[1] > 3);
-      console.log(`barrido 0–${end} s: ${res.length} cuadros; máx. capas ${Math.max(...res.map(r => r[1]))}; cuadros con > 3: ${bad.length}` + (bad.length ? ' → ' + bad.slice(0, 20).map(r => r[0].toFixed(2)).join(', ') : ''));
+      console.log(`barrido 0–${end} s: ${res.length} cuadros; máx. capas (sin cabecera fija) ${Math.max(...res.map(r => r[1]))}; cuadros con > 3: ${bad.length}; máx. gatitos a la vez ${Math.max(...res.map(r => r[2]))}` + (bad.length ? ' → ' + bad.slice(0, 20).map(r => r[0].toFixed(2)).join(', ') : ''));
       return;
     }
 
@@ -117,7 +117,7 @@ async function renderSegment(browser, port, seg, out) {
       }
       const delays = await probe.evaluate(() => window.DELAYS);
       fs.writeFileSync(path.join(dir, 'capas.json'), JSON.stringify({ cuadros: rows, retrasos: delays }, null, 1));
-      for (const r of rows) console.log(`t=${r.t.toFixed(2)}s  capas=${r.total}  (MICHI ${r.michi} · ilustración ${r.ilustracion} · principal ${r.principal} · cabecera ${r.cabecera})`);
+      for (const r of rows) console.log(`t=${r.t.toFixed(2)}s  capas=${r.total}  (MICHI ${r.michi} · ilustración ${r.ilustracion} · principal ${r.principal}) + cabecera fija · gatitos ${r.gatitos}`);
       return;
     }
 
