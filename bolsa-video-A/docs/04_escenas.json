@@ -8,18 +8,20 @@
       1920,
       1080
     ],
-    "duracion_nominal_s": 572,
-    "duracion_max_s": 600,
+    "duracion_nominal_s": 460,
+    "duracion_max_s": 480,
     "pantalla_final": {
       "inicio_cue": "c071",
       "duracion_max_s": 14
     },
-    "nota": "Tiempos t = estimación nominal a 110 palabras/min + pausas marcadas (recalculados el 30 sep 2026, opción C: el video pasa de 8:00; tope 10:00). La voz real manda: ver 05_SINCRONIZACION_AUDIO.md. En eventos: cue = frase de voz; word = palabra ancla dentro del cue (opcional); off = desplazamiento en segundos (negativo = antes de la palabra).",
+    "nota": "Tiempos t = estimación nominal a 140 palabras/min + pausas marcadas (decisión de Omar: mínimo 6:00, máximo 8:00). La voz real manda: ver 05_SINCRONIZACION_AUDIO.md. En eventos: cue = frase de voz; word = palabra ancla dentro del cue (opcional); off = desplazamiento en segundos (negativo = antes de la palabra).",
     "cabecera": {
       "linea1": "CCM",
       "linea2": "BOLSA DE VALORES",
       "regla": "Arriba siempre «CCM»; abajo siempre el tema del video. Visible todo el video salvo pantalla de impacto y pantalla final."
-    }
+    },
+    "ritmo_nominal_wpm": 140,
+    "duracion_min_s": 360
   },
   "convenciones": {
     "pausas_en_texto": "[pausa] = 1 s; [pausa n s] = n s; (…) = indicación de lectura; *…* = énfasis. Se quitan antes de alinear con la transcripción.",
@@ -68,32 +70,32 @@
         },
         {
           "id": "c002",
-          "t": 8.5,
+          "t": 6.9,
           "text": "Mira este pedacito de la taquería de doña Lupe."
         },
         {
           "id": "c003",
-          "t": 13.8,
+          "t": 11,
           "text": "Ayer valía 1,000 catpesos. Hoy vale 1,500. [pausa 1.5 s]"
         },
         {
           "id": "c004",
-          "t": 19.5,
+          "t": 15.8,
           "text": "(bajar la voz) Y la taquería vende lo mismo."
         },
         {
           "id": "c005",
-          "t": 23.2,
+          "t": 18.7,
           "text": "Si has oído «la bolsa subió» y te quedaste igual, no fue tu culpa."
         },
         {
           "id": "c006",
-          "t": 31.2,
+          "t": 25,
           "text": "Vas a entender qué compras en la bolsa, [pausa] y al final sabrás contestar: ¿por qué subió ese pedacito?"
         },
         {
           "id": "c007",
-          "t": 42.4,
+          "t": 34,
           "text": "Lo vemos en tres pasos: qué es un pedacito de una empresa, dónde se compra y se vende, y por qué cambia su precio."
         }
       ],
@@ -234,79 +236,79 @@
       "cues": [
         {
           "id": "c008",
-          "t": 56.7,
+          "t": 45.2,
           "tag": "ANUNCIA",
           "text": "Esta es la taquería de doña Lupe. [pausa] Vale 100,000 catpesos: el local, la plancha, todo."
         },
         {
           "id": "c009",
-          "t": 66.3,
+          "t": 52.9,
           "tag": "ANUNCIA",
           "text": "Lupe quiere dividirla en 100 pedacitos iguales. Veamos cuánto vale cada uno."
         },
         {
           "id": "c010",
-          "t": 73.3,
+          "t": 58.4,
           "tag": "MUESTRA",
           "text": "Tomamos 100,000 y lo repartimos entre 100. [pausa 2 s]"
         },
         {
           "id": "c011",
-          "t": 79.5,
+          "t": 63.7,
           "tag": "MUESTRA",
           "text": "Cada pedacito vale 1,000 catpesos."
         },
         {
           "id": "c012",
-          "t": 82.6,
+          "t": 66.1,
           "tag": "TRADUCE",
           "text": "O sea: si compras uno, tienes uno de cada 100 pedacitos de la taquería. [pausa]"
         },
         {
           "id": "c013",
-          "t": 91.6,
+          "t": 73.4,
           "text": "Ese pedacito de una empresa tiene nombre: se llama *acción*."
         },
         {
           "id": "c014",
-          "t": 97.5,
+          "t": 78,
           "text": "Lupe quiere abrir una segunda taquería y necesita 20,000 catpesos. Así que vende 20 acciones."
         },
         {
           "id": "c015",
-          "t": 106.1,
+          "t": 84.7,
           "tag": "ANUNCIA",
           "text": "Veamos cuánto junta: 20 por 1,000. [pausa 2 s] Son 20,000."
         },
         {
           "id": "c016",
-          "t": 112.8,
+          "t": 90.5,
           "tag": "TRADUCE",
           "text": "Justo lo que necesitaba."
         },
         {
           "id": "c017",
-          "t": 115.4,
+          "t": 92.5,
           "text": "¿Cuántas le quedan a Lupe? 100 menos 20. [pausa 1.5 s] Le quedan 80."
         },
         {
           "id": "c018",
-          "t": 123.3,
+          "t": 99,
           "text": "Las otras 20 ya tienen otros dueños: los vecinos."
         },
         {
           "id": "c019",
-          "t": 128.6,
+          "t": 103.1,
           "text": "Esos vecinos ya no son solo clientes: son dueños de una parte."
         },
         {
           "id": "c020",
-          "t": 135.6,
+          "t": 108.6,
           "text": "A ellos, y a Lupe, se les llama *accionistas*: personas que tienen acciones."
         },
         {
           "id": "c021",
-          "t": 143.1,
+          "t": 114.5,
           "tag": "ANCLA1",
           "text": "Hasta aquí: una acción es un pedacito de una empresa, y quien la tiene es accionista. Falta: qué pasa si un accionista quiere vender."
         }
@@ -516,86 +518,86 @@
       "cues": [
         {
           "id": "c022",
-          "t": 157.4,
+          "t": 125.6,
           "tag": "PUENTE",
           "text": "*Pero* hay un problema. Don Ramiro, uno de los vecinos, necesita dinero y quiere vender su acción."
         },
         {
           "id": "c023",
-          "t": 167,
+          "t": 133.2,
           "text": "¿A quién se la vende? ¿Y a qué precio?"
         },
         {
           "id": "c024",
-          "t": 172.3,
+          "t": 137.4,
           "tag": "PUENTE",
           "text": "*Por lo tanto*, Lupe cambia una sola cosa: deja que compre cualquier persona, no solo los vecinos. [pausa]"
         },
         {
           "id": "c025",
-          "t": 183,
+          "t": 146,
           "text": "Una empresa que vende sus acciones a cualquiera se llama *empresa pública*."
         },
         {
           "id": "c026",
-          "t": 190,
+          "t": 151.4,
           "text": "Ojo: no es del gobierno; es abierta a cualquiera."
         },
         {
           "id": "c027",
-          "t": 195.3,
+          "t": 155.6,
           "text": "Esas acciones se compran y se venden en un lugar que se llama *bolsa*."
         },
         {
           "id": "c028",
-          "t": 203.3,
+          "t": 161.9,
           "text": "Ahí Don Ramiro ya sí encuentra a quién vendérsela."
         },
         {
           "id": "c029",
-          "t": 208.6,
+          "t": 166,
           "tag": "ANUNCIA",
           "text": "Ahora, el precio. Podrías pensar que lo fija la empresa."
         },
         {
           "id": "c030",
-          "t": 214.5,
+          "t": 170.6,
           "text": "Pero el precio es lo que un comprador acepta pagar hoy y un vendedor acepta cobrar."
         },
         {
           "id": "c031",
-          "t": 223.6,
+          "t": 177.8,
           "text": "Cambiamos una sola cosa: cuánta gente quiere comprar."
         },
         {
           "id": "c032",
-          "t": 228.4,
+          "t": 181.5,
           "tag": "PREDICCION",
           "text": "Antes de ver el resultado, piénsalo: si muchos quieren comprar la acción y casi nadie quiere vender, ¿el precio sube o baja? [pausa 3 s]"
         },
         {
           "id": "c033",
-          "t": 243.8,
+          "t": 194.2,
           "text": "*Sube.* Quien vende puede pedir más, y alguien se lo paga."
         },
         {
           "id": "c034",
-          "t": 250.2,
+          "t": 199.2,
           "text": "Hoy la acción llega a 1,500 catpesos. [pausa 1.5 s]"
         },
         {
           "id": "c035",
-          "t": 255.9,
+          "t": 204,
           "text": "¿Lo pensaste así? Entonces ya entiendes cómo se mueve el precio."
         },
         {
           "id": "c036",
-          "t": 262.3,
+          "t": 209.1,
           "text": "Y al revés: si muchos quieren vender y casi nadie comprar, el precio baja."
         },
         {
           "id": "c037",
-          "t": 270.3,
+          "t": 215.4,
           "tag": "ANCLA2",
           "text": "Hasta aquí: la acción se compra y se vende en la bolsa, y su precio lo fijan quienes compran y venden. Falta: por qué querrían pagar más."
         }
@@ -848,89 +850,89 @@
       "cues": [
         {
           "id": "c038",
-          "t": 286.2,
+          "t": 227.8,
           "tag": "PUENTE",
           "text": "*Pero* mira esto: hoy la taquería gana lo mismo que ayer, 10,000 catpesos al año."
         },
         {
           "id": "c039",
-          "t": 294.8,
+          "t": 234.6,
           "text": "Aun así, la acción vale más. ¿Por qué pagaría alguien más?"
         },
         {
           "id": "c040",
-          "t": 301.2,
+          "t": 239.6,
           "tag": "PUENTE",
           "text": "*Por lo tanto*, veamos cuánto le toca a cada acción de esa ganancia."
         },
         {
           "id": "c041",
-          "t": 308.7,
+          "t": 245.4,
           "tag": "ANUNCIA",
           "text": "10,000 entre 100. [pausa 2 s] Le tocan 100 catpesos al año."
         },
         {
           "id": "c042",
-          "t": 316,
+          "t": 251.6,
           "tag": "TRADUCE",
           "text": "Es la parte de la ganancia que le corresponde a su accionista."
         },
         {
           "id": "c043",
-          "t": 323,
+          "t": 257,
           "text": "Recuerda: Lupe abrió su segunda taquería con esos 20,000."
         },
         {
           "id": "c044",
-          "t": 328.3,
+          "t": 261.2,
           "text": "La gente lo sabe, y muchos piensan que ahora ganará más. [pausa]"
         },
         {
           "id": "c045",
-          "t": 335.7,
+          "t": 267.2,
           "text": "Todavía no gana más: es lo que creen que va a pasar. A eso se le llama *expectativas*."
         },
         {
           "id": "c046",
-          "t": 345.9,
+          "t": 275.2,
           "text": "Digamos que la gente calcula 15,000 catpesos de ganancia al año."
         },
         {
           "id": "c047",
-          "t": 352.3,
+          "t": 280.2,
           "tag": "ANUNCIA",
           "text": "Veamos qué le tocaría a cada acción: 15,000 entre 100. [pausa 2 s] Serían 150 al año: 50 más que hoy."
         },
         {
           "id": "c048",
-          "t": 364.5,
+          "t": 290.3,
           "tag": "ANUNCIA",
           "text": "En este ejemplo, la gente paga por cada acción 10 veces lo que le toca en un año."
         },
         {
           "id": "c049",
-          "t": 374.7,
+          "t": 298.3,
           "text": "Antes: 100 por 10. [pausa 2 s] Son 1,000."
         },
         {
           "id": "c050",
-          "t": 380.4,
+          "t": 303.1,
           "text": "Ahora esperan 150. Multiplicamos 150 por 10. [pausa 2 s] Son 1,500."
         },
         {
           "id": "c051",
-          "t": 387.7,
+          "t": 309.3,
           "tag": "TRADUCE",
           "text": "Por eso subió el precio: nada cambió todavía en la taquería; cambiaron las expectativas."
         },
         {
           "id": "c052",
-          "t": 395.8,
+          "t": 315.6,
           "text": "(bajar la voz) Ojo: el 10 es de ejemplo; cada quien hace su propia cuenta."
         },
         {
           "id": "c053",
-          "t": 402.7,
+          "t": 321,
           "tag": "ANCLA3",
           "text": "Hasta aquí: el precio de una acción se mueve por lo que la gente espera que gane la empresa, no solo por lo que ya ganó. Falta: probarlo con otro negocio."
         }
@@ -1229,54 +1231,54 @@
       "cues": [
         {
           "id": "c054",
-          "t": 420.8,
+          "t": 335.2,
           "tag": "PUENTE",
           "text": "*Pero*, ¿esto solo pasa con taquerías? Probemos con otra cosa: una papelería."
         },
         {
           "id": "c055",
-          "t": 427.8,
+          "t": 340.7,
           "text": "Vale 50,000 catpesos y tiene 50 acciones. Cada una vale 1,000."
         },
         {
           "id": "c056",
-          "t": 434.2,
+          "t": 345.7,
           "text": "Y gana 5,000 al año, así que a cada acción le tocan 100."
         },
         {
           "id": "c057",
-          "t": 441.6,
+          "t": 351.6,
           "text": "Un día se anuncia que abrirá una papelería grande enfrente. [pausa]"
         },
         {
           "id": "c058",
-          "t": 448.5,
+          "t": 357.1,
           "text": "Hoy la papelería sigue ganando 5,000. Pero la gente espera que gane 3,000."
         },
         {
           "id": "c059",
-          "t": 456,
+          "t": 363,
           "text": "Repartimos 3,000 entre 50 acciones. Le tocan 60 a cada una."
         },
         {
           "id": "c060",
-          "t": 462.4,
+          "t": 368,
           "text": "Multiplicamos 60 por 10. [pausa 2 s] Son 600. El precio baja."
         },
         {
           "id": "c061",
-          "t": 469.7,
+          "t": 374.2,
           "tag": "PUENTE",
           "text": "*Por lo tanto*, ¿la bolsa es un casino? Mucha gente lo cree, porque casi nadie enseña la cuenta. [pausa]"
         },
         {
           "id": "c062",
-          "t": 480.9,
+          "t": 383.2,
           "text": "Pero el precio sí tiene una razón: lo que la gente espera."
         },
         {
           "id": "c063",
-          "t": 487.9,
+          "t": 388.6,
           "text": "Aun así, esperar no es saber: puede equivocarse, y nadie puede prometerte que una acción va a subir."
         }
       ],
@@ -1493,33 +1495,33 @@
       "cues": [
         {
           "id": "c064",
-          "t": 498.9,
+          "t": 397.3,
           "tag": "PUENTE",
           "text": "*Por lo tanto*, ya podemos contestar la pregunta del inicio. [pausa]"
         },
         {
           "id": "c065",
-          "t": 505.7,
+          "t": 402.8,
           "text": "¿Por qué la acción subió de 1,000 a 1,500, si la taquería vende lo mismo? [pausa 2 s]"
         },
         {
           "id": "c066",
-          "t": 516.3,
+          "t": 411.6,
           "text": "Porque la gente esperaba que ganara más mañana, y por eso pagó más hoy. [pausa 2 s]"
         },
         {
           "id": "c067",
-          "t": 526.4,
+          "t": 419.9,
           "text": "Dicho de otro modo: una acción es una parte de una empresa. [pausa]"
         },
         {
           "id": "c068",
-          "t": 534.3,
+          "t": 426.3,
           "text": "Y su precio refleja lo que todos esperan de su futuro."
         },
         {
           "id": "c069",
-          "t": 540.7,
+          "t": 431.3,
           "text": "Si la bolsa te sonaba lejana, ya puedes explicarla con una taquería. (sonrisa)"
         }
       ],
@@ -1604,12 +1606,12 @@
       "cues": [
         {
           "id": "c070",
-          "t": 548.4,
+          "t": 437.4,
           "text": "(más lento) ¿Y si todas tus acciones fueran de una sola empresa, [pausa] y te tocara *la papelería*?"
         },
         {
           "id": "c071",
-          "t": 558,
+          "t": 445.1,
           "text": "En el siguiente video hacemos la cuenta para no depender de una sola empresa. [pausa] (sonrisa) Sígueme para la siguiente cuenta."
         }
       ],

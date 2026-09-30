@@ -1,7 +1,7 @@
 # 07 · TEXTO PARA GRABAR LA VOZ
 Video A: «Qué es la bolsa de valores (explicado con una taquería)»
 
-Lee con calma: ≈105–115 palabras por minuto. Más lento que un video normal, a propósito.
+Ritmo: ≈135–140 palabras por minuto, ágil pero claro. Las pausas marcadas se respetan completas: ahí se entiende la cuenta.
 Marcas: `[pausa]` ≈ 1 s · `[pausa n s]` = n segundos · *énfasis* · (indicación de lectura, no se dice).
 Formato de grabación: WAV 48 kHz, 24 bits, mono. Un archivo por escena (S01…S07) con ~1 s de silencio al inicio y al final, o un solo archivo.
 Tono: amigo que te explica en la mesa. El suspenso se hace con pausas antes de la cifra, no con dramatismo. Las cifras importantes, más lento.
@@ -163,4 +163,4 @@ Tono: amigo que te explica en la mesa. El suspenso se hace con pausas antes de l
 **c071** En el siguiente video hacemos la cuenta para no depender de una sola empresa. [pausa] (sonrisa) Sígueme para la siguiente cuenta.
 
 ---
-Palabras habladas (sin marcas): 915 (cierre nuevo). A 110 palabras/min con las pausas: ≈ 9:30.
+Palabras habladas (sin marcas): 915 (cierre nuevo). A ≈140 palabras/min con las pausas: ≈ 7:40 (máximo 8:00).

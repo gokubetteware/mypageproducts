@@ -13,7 +13,7 @@ Claude Code marca cada punto con evidencia (cuadro, número, comando). Omar da e
 - [ ] Ningún cambio al texto de la voz respecto al guion.
 - [ ] Todas las cuentas de la tabla de números coinciden (asserts en verde).
 - [ ] Cantidades redondas; sin porcentajes solos (aquí no hay porcentajes).
-- [ ] «Ejemplo» visible donde hay cifras hipotéticas. Ningún dato real inventado.
+- [ ] Ningún dato real inventado. (Sin pie «Ejemplo» en pantalla por decisión de Omar; el aviso va en la descripción.)
 - [ ] Cada palabra difícil tiene su tarjeta ≥ 5 s desde que se dice; «bolsa» tiene su etiqueta ≥ 5 s.
 - [ ] Después de definir, se usa siempre la misma palabra.
 - [ ] Todas las preguntas abiertas se responden (principal + 2 secundarias).
@@ -35,7 +35,7 @@ Claude Code marca cada punto con evidencia (cuadro, número, comando). Omar da e
 - [ ] Nunca aparece una cifra nueva mientras la voz explica la anterior.
 
 ## E. Técnico
-- [ ] Duración total ≤ 10:00 (600 s), incluida la pantalla final.
+- [ ] Duración total entre 6:00 y 8:00 (360–480 s), incluida la pantalla final.
 - [ ] 1920×1080, 30 fps, H.264, yuv420p, `faststart`.
 - [ ] Sin cuadros negros, sin frames duplicados por errores de captura, sin parpadeos.
 - [ ] Audio sincronizado: cada cifra y tarjeta dentro de ±1 cuadro respecto a la palabra de la voz.

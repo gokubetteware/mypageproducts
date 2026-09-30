@@ -52,6 +52,6 @@ antes de re-renderizar.
 
 ## Importante
 
-- Los tiempos del guion son una ESTIMACIÓN (≈105–115 palabras por minuto). Manda tu voz real; el video se reajusta a ella.
-- Duración (decisión de Omar, opción C): nominal ≈ 9:30; tope 10:00 en total (incluye la pantalla final).
+- Los tiempos del guion son una ESTIMACIÓN (≈140 palabras por minuto). Manda tu voz real; el video se reajusta a ella.
+- Duración (regla del canal): mínimo 6:00, máximo 8:00 en total (incluye la pantalla final). Nominal ≈ 7:40.
 - Si Claude Code te hace una pregunta, contéstala: es mejor que asumir.

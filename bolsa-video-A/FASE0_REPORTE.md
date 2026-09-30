@@ -169,3 +169,40 @@ Las 14 cuentas de la tabla (11 operaciones y 3 diferencias) pasaron con `assert`
   - El tope quedó en 10:00. Actualicé los docs 00, 01, 02, 05, 06 y 07.
   - Ahora ningún cue queda comprimido.
 - Nuevo render: `render/fase1_S01.mp4` (0–56.7 s, 1701 cuadros, sin cuadros negros).
+
+---
+
+# Fase 2 · S02 y S03 (y ajustes de Omar)
+
+## Decisiones de Omar aplicadas
+- **Duración:** mínimo 6:00 y máximo 8:00, como regla del canal.
+  - Los tiempos nominales quedaron a **≈140 palabras/min**, con todas las pausas marcadas. La voz termina a ≈ 7:34 y el video completo dura **7:39**.
+  - Así los subtítulos también van más rápido.
+  - Los docs 00, 01, 02, 05, 06 y 07 dicen ahora «grabar a ≈135–140 palabras/min».
+  - `timeline/retime_nominal.js` recalcula los tiempos a otro ritmo si hace falta.
+- **Cabecera** desde el segundo 0 y **zoom a 1.3×**: aprobados.
+- **MICHI respira y parpadea:**
+  - Es la misma microanimación del panel del rig: respiración según el estado, cola y cabeza con movimiento muy sutil, y un parpadeo parcial de 170 ms cada 3.2–5.4 s.
+  - Es determinista: no usa `Math.random`, así que dos renders salen iguales.
+  - En «sorpresa» el rig congela el cuerpo, igual que en el panel.
+- **Pie «Ejemplo hipotético · 1 CATPESO = 1 peso mexicano»: eliminado.** El aviso va en la descripción del video.
+
+## S02 (taquería → acción → accionista) y S03 (empresa pública → bolsa → precio)
+- **Fondo:** cambia a agua en la explicación, según la ruta del manual.
+- **Tira de hilo:** va debajo de la cabecera. La palabra vigente sale en tinta y las anteriores en gris; en las anclas toda la tira pasa a tinta y se subraya.
+- **Zonas:** arriba van operaciones, rótulos, preguntas y tarjetas; abajo, sobre el piso, van los objetos y las personas. Nunca se enciman.
+- **Tarjetas de definición:** en petróleo («PALABRA n DE 4»), cada una ≥ 5 s: Acción, Accionista y Empresa pública (con «No es del gobierno»).
+- **«BOLSA = el lugar donde se compran y venden acciones»:** rótulo ≥ 5 s, sin tarjeta.
+- **Cuadrícula 10×10 sobre la taquería:**
+  - El cuadrito «1 de 100» se agranda con contorno ámbar.
+  - Los 20 cuadritos vendidos pasan a petróleo, con una silueta de vecino en cada uno.
+- **Operaciones:** una por pantalla, primero la cuenta y luego «= resultado», que se queda quieto ≥ 1.5–2 s.
+- **Personas:** siluetas grises sin rostro; Don Ramiro es la única con sombrero.
+- **Pausa de predicción:** «PRECIO 1,000» con «?» durante ≥ 3 s, sin respuesta, y MICHI mira la cifra.
+- **Asserts:** todas las cifras y textos de S02–S03 se comparan con el JSON y con `numeros.json`.
+- **Render:** `render/fase2_S01-S03.mp4` (0–227.8 s, 6834 cuadros, sin cuadros negros).
+- **Hoja de cuadros:** `render/fase2/contact_sheet_S02_S03.png`, con 16 momentos clave.
+
+## Dudas para Omar
+1. En S03, MICHI se queda **preocupado** desde «Pero hay un problema» hasta que el precio sube (≈ 75 s), porque el JSON no trae otro estado en medio. ¿Lo paso a **tranquilo** cuando aparece la tarjeta «Empresa pública» (≈ 2:30)?
+2. «Sube ↑ / Baja ↓» van en texto grande arriba, en tinta (el verde y el rojo quedan solo para cifras con signo). ¿Te gusta así?

@@ -30,12 +30,34 @@ body { font-family: 'Archivo', sans-serif; color: var(--tinta); -webkit-font-smo
   font-size: 48px; line-height: 76px; white-space: nowrap; opacity: 0; visibility: hidden; }
 #subs .sub span { visibility: hidden; }
 
-/* Pie: solo con ejemplo; tinta sobre el piso */
-#pie { position: absolute; left: 96px; top: 1008px; font-size: 24px; line-height: 32px; opacity: 0; }
-
 .abs { position: absolute; }
 .panel { background: var(--papel); border: 1px solid var(--gris-apoyo); }
 .serif { font-family: 'Instrument Serif', serif; font-weight: 400; font-variant-numeric: tabular-nums; }
 .lbl { font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 40px; letter-spacing: .12em; text-transform: uppercase; }
 .pos { color: var(--verde); }
 .neg { color: var(--rojo); }
+
+/* Tira de hilo: debajo de la cabecera */
+#thread { position: absolute; left: 96px; top: 136px; font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 40px; line-height: 52px; color: #5E5A52; white-space: nowrap; }
+#thread i { font-style: normal; color: #5E5A52; }
+#thread::after { content: ''; position: absolute; left: 0; bottom: -6px; height: 4px; width: calc(var(--u, 0) * 100%); background: #05070A; }
+
+/* Tarjeta de definición: petróleo; papel encima; nunca con MICHI encima */
+.defcard { width: 1300px; background: var(--petroleo); color: var(--papel); padding: 26px 40px 30px; }
+.defcard .card-k { font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 24px; letter-spacing: .16em; }
+.defcard .card-t { font-family: 'Instrument Serif', serif; font-size: 88px; line-height: 92px; }
+.defcard .card-d { font-family: 'Figtree', sans-serif; font-weight: 700; font-size: 44px; line-height: 54px; }
+.defcard .card-e { font-family: 'Figtree', sans-serif; font-weight: 600; font-size: 40px; line-height: 50px; margin-top: 4px; }
+
+/* Rótulo: papel con filete de tinta */
+.rotulo { background: var(--papel); border: 3px solid var(--tinta); padding: 14px 28px; font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 44px; line-height: 54px; white-space: nowrap; }
+.rotulo b { font-weight: 800; }
+.rotulo.small { font-size: 40px; line-height: 48px; padding: 8px 20px; }
+
+/* Operaciones: una por pantalla */
+.op-e, .op-r { font-size: 130px; line-height: 136px; white-space: nowrap; }
+
+/* Cuadrícula 10×10 */
+.grid10 { display: grid; grid-template-columns: repeat(10, 1fr); grid-template-rows: repeat(10, 1fr); }
+.grid10 .cell { border: 1.5px solid var(--tinta); }
+.grid10 .cell svg { width: 100%; height: 100%; display: block; }

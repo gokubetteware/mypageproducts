@@ -8,7 +8,7 @@ const assert = require('assert');
 
 const ROOT = path.join(__dirname, '..');
 const FPS = 30;
-const WPM = 110;
+const WPM = 140;
 const SEC_PER_WORD = 60 / WPM;
 
 const norm = w => w.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '')
@@ -140,7 +140,7 @@ function build() {
     return { id: s.id, start: s.cues[0].t, end: next ? next.cues[0].t : videoEnd };
   });
   const duration = +videoEnd.toFixed(3);
-  assert(duration <= src.video.duracion_max_s, `la duración (${duration} s) pasa del tope (${src.video.duracion_max_s} s)`);
+  assert(duration <= src.video.duracion_max_s && duration >= src.video.duracion_min_s, `la duración (${duration} s) está fuera de ${src.video.duracion_min_s}–${src.video.duracion_max_s} s`);
 
   const out = {
     generado: 'timeline/build_timeline.js · tiempos NOMINALES (estimación a ' + WPM + ' palabras/min)',

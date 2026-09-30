@@ -1,9 +1,9 @@
 # 02 · GUION MAESTRO — Video A
 **Título:** Qué es la bolsa de valores (explicado con una taquería)
-**Canal:** Cuentas Claras con MICHI · 16:9 · Duración objetivo: ≈ 9:30, tope 10:00 (incluye pantalla final; opción C). La columna «Tiempo» de abajo es la estimación vieja a 8:00; los tiempos vigentes están en 04_escenas.json
+**Canal:** Cuentas Claras con MICHI · 16:9 · Duración: mínimo 6:00, máximo 8:00 (incluye pantalla final); nominal ≈ 7:40 a ≈140 palabras/min. Los tiempos vigentes están en 04_escenas.json
 **Miniatura:** taquería dividida en cuadritos, un cuadrito resaltado y MICHI sorprendido mirándolo. Sin flechas rojas ni alarma.
 
-> Los tiempos son estimados (≈105–115 palabras por minuto). La voz real manda: ver `05_SINCRONIZACION_AUDIO.md`.
+> Los tiempos son estimados (≈140 palabras por minuto). La voz real manda: ver `05_SINCRONIZACION_AUDIO.md`.
 > El texto de la voz y las cifras NO se modifican sin avisar.
 
 ## Decisiones
@@ -12,7 +12,7 @@
 - **Ejemplo hilo:** la taquería de doña Lupe (100,000 catpesos, 100 acciones).
 - **Datos:** ninguno real. Todo es ejemplo hipotético.
 - **Palabras difíciles (4):** acción, accionista, empresa pública, expectativas. «Bolsa» lleva etiqueta, no tarjeta.
-- **Duración:** ≈ 9:30, tope 10:00 (5 conceptos encadenados). Presupuesto: 840–920 palabras, máx. 14–16 operaciones, máx. 4 palabras difíciles.
+- **Duración:** 6:00–8:00, nominal ≈ 7:40 (5 conceptos encadenados). Presupuesto: 840–920 palabras, máx. 14–16 operaciones, máx. 4 palabras difíciles.
 - **Alcance:** este video NO cubre índice, S&P 500, ETF ni diversificación (van en el Video B).
 
 ## Lectura

@@ -53,7 +53,7 @@ Video A «Qué es la bolsa de valores» · Canal «Cuentas Claras con MICHI»
 - **Papelería:** dibujo plano equivalente, cuadrícula 5×10 (50 acciones).
 - **Siluetas de personas:** planas, sin rostro, sin rasgos que identifiquen a nadie. Don Ramiro es una silueta con sombrero, solo eso.
 - **Etiqueta de valor:** cápsula redonda con la cifra y «catpesos»; es la protagonista de las escenas de precio.
-- **Rótulo «Ejemplo»:** pequeño, discreto, visible siempre que haya cifras hipotéticas.
+- **Rótulo «Ejemplo» / pie:** ELIMINADO por decisión de Omar (30 sep 2026): no va texto al pie de la pantalla. El aviso de que todo es hipotético va en la descripción del video.
 - **Íconos 1-2-3:** en S01, tres íconos simples que entran al ritmo de la voz.
 
 ## 7. Operaciones y números
