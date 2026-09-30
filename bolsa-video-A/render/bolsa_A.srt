@@ -1,0 +1,712 @@
+1
+00:00:00,074 --> 00:00:01,428
+Hoy vas a entender qué es
+
+2
+00:00:01,468 --> 00:00:02,840
+la bolsa de valores,
+
+3
+00:00:02,954 --> 00:00:05,051
+con una taquería. Mira este pedacito
+
+4
+00:00:05,091 --> 00:00:06,498
+de la taquería de doña Lupe.
+
+5
+00:00:06,538 --> 00:00:08,418
+Ayer valía 1,000 catpesos.
+
+6
+00:00:08,458 --> 00:00:10,392
+Hoy vale 1,500.
+
+7
+00:00:11,114 --> 00:00:12,994
+Y la taquería vende lo mismo.
+
+8
+00:00:13,034 --> 00:00:14,594
+Si has oído «la bolsa subió»
+
+9
+00:00:14,634 --> 00:00:15,970
+y te quedaste igual,
+
+10
+00:00:16,010 --> 00:00:17,122
+no fue tu culpa.
+
+11
+00:00:17,162 --> 00:00:18,142
+Vas a entender qué
+
+12
+00:00:18,182 --> 00:00:19,266
+compras en la bolsa,
+
+13
+00:00:19,306 --> 00:00:21,144
+y al final sabrás contestar:
+
+14
+00:00:21,194 --> 00:00:22,690
+¿por qué subió ese pedacito?
+
+15
+00:00:22,730 --> 00:00:24,418
+Lo vemos en tres pasos: qué
+
+16
+00:00:24,458 --> 00:00:26,082
+es un pedacito de una empresa,
+
+17
+00:00:26,122 --> 00:00:27,507
+dónde se compra y se vende,
+
+18
+00:00:27,547 --> 00:00:29,186
+y por qué cambia su precio.
+
+19
+00:00:29,226 --> 00:00:30,806
+Esta es la taquería de doña
+
+20
+00:00:30,846 --> 00:00:32,886
+Lupe. Vale 100,000 catpesos:
+
+21
+00:00:32,926 --> 00:00:35,417
+el local, la plancha, todo. Lupe
+
+22
+00:00:35,457 --> 00:00:37,922
+quiere dividirla en 100 pedacitos iguales.
+
+23
+00:00:37,962 --> 00:00:40,039
+Veamos cuánto vale cada uno. Tomamos
+
+24
+00:00:40,079 --> 00:00:42,168
+100,000 y lo repartimos entre 100.
+
+25
+00:00:42,474 --> 00:00:44,866
+Cada pedacito vale 1,000 catpesos.
+
+26
+00:00:44,906 --> 00:00:46,123
+O sea: si compras uno,
+
+27
+00:00:46,163 --> 00:00:47,500
+tienes uno de cada 100
+
+28
+00:00:47,540 --> 00:00:49,282
+pedacitos de la taquería.
+
+29
+00:00:49,322 --> 00:00:50,902
+Ese pedacito de una empresa tiene
+
+30
+00:00:50,942 --> 00:00:52,726
+nombre: se llama acción.
+
+31
+00:00:52,970 --> 00:00:55,278
+Lupe quiere abrir una segunda taquería
+
+32
+00:00:55,318 --> 00:00:56,962
+y necesita 20,000 catpesos.
+
+33
+00:00:57,002 --> 00:00:58,786
+Así que vende 20 acciones.
+
+34
+00:00:58,826 --> 00:01:01,092
+Veamos cuánto junta: 20 por 1,000.
+
+35
+00:01:01,132 --> 00:01:04,322
+Son 20,000. Justo lo que necesitaba.
+
+36
+00:01:04,362 --> 00:01:05,666
+¿Cuántas le quedan a Lupe?
+
+37
+00:01:05,706 --> 00:01:08,674
+100 menos 20. Le quedan 80.
+
+38
+00:01:08,714 --> 00:01:10,473
+Las otras 20 ya tienen otros
+
+39
+00:01:10,513 --> 00:01:12,766
+dueños: los vecinos. Esos vecinos ya
+
+40
+00:01:12,806 --> 00:01:13,978
+no son solo clientes:
+
+41
+00:01:14,018 --> 00:01:15,586
+son dueños de una parte.
+
+42
+00:01:15,626 --> 00:01:16,636
+A ellos, y a Lupe,
+
+43
+00:01:16,676 --> 00:01:18,181
+se les llama accionistas:
+
+44
+00:01:18,221 --> 00:01:20,866
+personas que tienen acciones. Hasta aquí:
+
+45
+00:01:20,906 --> 00:01:21,756
+una acción es un
+
+46
+00:01:21,796 --> 00:01:23,170
+pedacito de una empresa,
+
+47
+00:01:23,210 --> 00:01:24,836
+y quien la tiene es accionista.
+
+48
+00:01:24,876 --> 00:01:26,282
+Falta: qué pasa si
+
+49
+00:01:26,322 --> 00:01:27,842
+un accionista quiere vender.
+
+50
+00:01:27,882 --> 00:01:29,972
+Pero hay un problema. Don Ramiro,
+
+51
+00:01:30,012 --> 00:01:31,964
+uno de los vecinos, necesita dinero
+
+52
+00:01:32,004 --> 00:01:33,444
+y quiere vender su acción.
+
+53
+00:01:33,484 --> 00:01:34,786
+¿A quién se la vende?
+
+54
+00:01:34,826 --> 00:01:35,810
+¿Y a qué precio?
+
+55
+00:01:35,850 --> 00:01:36,933
+Por lo tanto, Lupe
+
+56
+00:01:36,973 --> 00:01:38,434
+cambia una sola cosa:
+
+57
+00:01:38,474 --> 00:01:40,354
+deja que compre cualquier persona,
+
+58
+00:01:40,394 --> 00:01:41,730
+no solo los vecinos.
+
+59
+00:01:41,770 --> 00:01:43,495
+Una empresa que vende sus acciones
+
+60
+00:01:43,535 --> 00:01:45,570
+a cualquiera se llama empresa pública.
+
+61
+00:01:45,610 --> 00:01:47,266
+Ojo: no es del gobierno;
+
+62
+00:01:47,306 --> 00:01:48,770
+es abierta a cualquiera.
+
+63
+00:01:48,810 --> 00:01:50,380
+Esas acciones se compran y se
+
+64
+00:01:50,420 --> 00:01:51,400
+venden en un lugar
+
+65
+00:01:51,440 --> 00:01:52,642
+que se llama bolsa.
+
+66
+00:01:52,682 --> 00:01:53,718
+Ahí Don Ramiro ya sí
+
+67
+00:01:53,758 --> 00:01:55,426
+encuentra a quién vendérsela.
+
+68
+00:01:55,466 --> 00:01:57,619
+Ahora, el precio. Podrías pensar que
+
+69
+00:01:57,659 --> 00:01:58,626
+lo fija la empresa.
+
+70
+00:01:58,666 --> 00:01:59,909
+Pero el precio es lo que
+
+71
+00:01:59,949 --> 00:02:01,550
+un comprador acepta pagar hoy y
+
+72
+00:02:01,590 --> 00:02:03,138
+un vendedor acepta cobrar.
+
+73
+00:02:03,178 --> 00:02:04,834
+Cambiamos una sola cosa:
+
+74
+00:02:04,874 --> 00:02:06,498
+cuánta gente quiere comprar.
+
+75
+00:02:06,538 --> 00:02:08,674
+Antes de ver el resultado, piénsalo:
+
+76
+00:02:08,714 --> 00:02:10,559
+si muchos quieren comprar la acción
+
+77
+00:02:10,599 --> 00:02:11,972
+y casi nadie quiere vender,
+
+78
+00:02:12,012 --> 00:02:14,518
+¿el precio sube o baja? Sube.
+
+79
+00:02:16,906 --> 00:02:18,385
+Quien vende puede pedir más,
+
+80
+00:02:18,425 --> 00:02:20,095
+y alguien se lo paga. Hoy
+
+81
+00:02:20,135 --> 00:02:22,712
+la acción llega a 1,500 catpesos.
+
+82
+00:02:23,434 --> 00:02:25,461
+¿Lo pensaste así? Entonces ya entiendes
+
+83
+00:02:25,501 --> 00:02:26,786
+cómo se mueve el precio.
+
+84
+00:02:26,826 --> 00:02:28,551
+Y al revés: si muchos quieren
+
+85
+00:02:28,591 --> 00:02:30,052
+vender y casi nadie comprar,
+
+86
+00:02:30,092 --> 00:02:31,847
+el precio baja. Hasta aquí:
+
+87
+00:02:31,887 --> 00:02:33,096
+la acción se compra y se
+
+88
+00:02:33,136 --> 00:02:33,995
+vende en la bolsa,
+
+89
+00:02:34,035 --> 00:02:35,443
+y su precio lo fijan quienes
+
+90
+00:02:35,483 --> 00:02:37,028
+compran y venden. Falta:
+
+91
+00:02:37,068 --> 00:02:39,074
+por qué querrían pagar más.
+
+92
+00:02:39,114 --> 00:02:40,884
+Pero mira esto: hoy la taquería
+
+93
+00:02:40,924 --> 00:02:42,151
+gana lo mismo que ayer,
+
+94
+00:02:42,191 --> 00:02:43,704
+10,000 catpesos al año.
+
+95
+00:02:43,786 --> 00:02:45,412
+Aun así, la acción vale más.
+
+96
+00:02:45,452 --> 00:02:47,330
+¿Por qué pagaría alguien más?
+
+97
+00:02:47,370 --> 00:02:48,956
+Por lo tanto, veamos cuánto le
+
+98
+00:02:48,996 --> 00:02:50,364
+toca a cada acción de esa
+
+99
+00:02:50,404 --> 00:02:52,760
+ganancia. 10,000 entre 100.
+
+100
+00:02:53,930 --> 00:02:55,970
+Le tocan 100 catpesos al año.
+
+101
+00:02:56,010 --> 00:02:57,141
+Es la parte de la ganancia
+
+102
+00:02:57,181 --> 00:02:58,660
+que le corresponde a su accionista.
+
+103
+00:02:58,700 --> 00:03:00,768
+Recuerda: Lupe abrió su segunda
+
+104
+00:03:00,808 --> 00:03:02,306
+taquería con esos 20,000.
+
+105
+00:03:02,346 --> 00:03:03,789
+La gente lo sabe, y muchos
+
+106
+00:03:03,829 --> 00:03:05,784
+piensan que ahora ganará más.
+
+107
+00:03:06,186 --> 00:03:07,586
+Todavía no gana más:
+
+108
+00:03:07,626 --> 00:03:08,462
+es lo que creen
+
+109
+00:03:08,502 --> 00:03:09,442
+que va a pasar.
+
+110
+00:03:09,482 --> 00:03:11,842
+A eso se le llama expectativas.
+
+111
+00:03:11,882 --> 00:03:13,710
+Digamos que la gente calcula 15,000
+
+112
+00:03:13,750 --> 00:03:15,490
+catpesos de ganancia al año.
+
+113
+00:03:15,530 --> 00:03:16,935
+Veamos qué le tocaría a cada
+
+114
+00:03:16,975 --> 00:03:19,256
+acción: 15,000 entre 100.
+
+115
+00:03:20,394 --> 00:03:22,370
+Serían 150 al año:
+
+116
+00:03:22,410 --> 00:03:23,906
+50 más que hoy.
+
+117
+00:03:23,946 --> 00:03:25,487
+En este ejemplo, la gente paga
+
+118
+00:03:25,527 --> 00:03:27,068
+por cada acción 10 veces lo
+
+119
+00:03:27,108 --> 00:03:28,228
+que le toca en un año.
+
+120
+00:03:28,268 --> 00:03:30,456
+Antes: 100 por 10.
+
+121
+00:03:31,338 --> 00:03:33,954
+Son 1,000. Ahora esperan 150.
+
+122
+00:03:33,994 --> 00:03:36,600
+Multiplicamos 150 por 10.
+
+123
+00:03:37,450 --> 00:03:39,915
+Son 1,500. Por eso subió el precio:
+
+124
+00:03:39,955 --> 00:03:42,018
+nada cambió todavía en la taquería;
+
+125
+00:03:42,058 --> 00:03:44,386
+cambiaron las expectativas. Ojo:
+
+126
+00:03:44,426 --> 00:03:45,890
+el 10 es de ejemplo;
+
+127
+00:03:45,930 --> 00:03:47,586
+cada quien hace su propia cuenta.
+
+128
+00:03:47,626 --> 00:03:48,991
+Hasta aquí: el precio de una
+
+129
+00:03:49,031 --> 00:03:50,346
+acción se mueve por lo que
+
+130
+00:03:50,386 --> 00:03:51,751
+la gente espera que gane la
+
+131
+00:03:51,791 --> 00:03:52,906
+empresa, no solo por lo
+
+132
+00:03:52,946 --> 00:03:54,198
+que ya ganó. Falta:
+
+133
+00:03:54,442 --> 00:03:55,938
+probarlo con otro negocio.
+
+134
+00:03:55,978 --> 00:03:57,962
+Pero, ¿esto solo pasa con taquerías?
+
+135
+00:03:58,002 --> 00:03:59,554
+Probemos con otra cosa:
+
+136
+00:03:59,594 --> 00:04:02,054
+una papelería. Vale 50,000 catpesos
+
+137
+00:04:02,094 --> 00:04:03,530
+y tiene 50 acciones.
+
+138
+00:04:03,570 --> 00:04:05,090
+Cada una vale 1,000.
+
+139
+00:04:05,130 --> 00:04:06,594
+Y gana 5,000 al año,
+
+140
+00:04:06,634 --> 00:04:07,434
+así que a cada
+
+141
+00:04:07,417 --> 00:04:08,642
+acción le tocan 100.
+
+142
+00:04:08,682 --> 00:04:10,066
+Un día se anuncia que abrirá
+
+143
+00:04:10,106 --> 00:04:11,787
+una papelería grande enfrente.
+
+144
+00:04:11,914 --> 00:04:14,242
+Hoy la papelería sigue ganando 5,000.
+
+145
+00:04:14,282 --> 00:04:16,054
+Pero la gente espera que gane
+
+146
+00:04:16,094 --> 00:04:19,167
+3,000. Repartimos 3,000 entre 50 acciones.
+
+147
+00:04:19,207 --> 00:04:21,368
+Le tocan 60 a cada una.
+
+148
+00:04:21,450 --> 00:04:23,960
+Multiplicamos 60 por 10.
+
+149
+00:04:24,746 --> 00:04:27,234
+Son 600. El precio baja.
+
+150
+00:04:27,274 --> 00:04:28,244
+Por lo tanto, ¿la
+
+151
+00:04:28,284 --> 00:04:29,634
+bolsa es un casino?
+
+152
+00:04:29,674 --> 00:04:30,818
+Mucha gente lo cree,
+
+153
+00:04:30,858 --> 00:04:33,048
+porque casi nadie enseña la cuenta.
+
+154
+00:04:33,738 --> 00:04:35,096
+Pero el precio sí tiene una
+
+155
+00:04:35,136 --> 00:04:37,154
+razón: lo que la gente espera.
+
+156
+00:04:37,194 --> 00:04:39,362
+Aun así, esperar no es saber:
+
+157
+00:04:39,402 --> 00:04:41,597
+puede equivocarse, y nadie puede prometerte
+
+158
+00:04:41,637 --> 00:04:43,202
+que una acción va a subir.
+
+159
+00:04:43,242 --> 00:04:44,940
+Por lo tanto, ya podemos contestar
+
+160
+00:04:44,980 --> 00:04:46,456
+la pregunta del inicio.
+
+161
+00:04:46,538 --> 00:04:48,103
+¿Por qué la acción subió
+
+162
+00:04:48,143 --> 00:04:49,107
+de 1,000 a 1,500,
+
+163
+00:04:49,147 --> 00:04:51,266
+si la taquería vende lo mismo?
+
+164
+00:04:51,306 --> 00:04:52,493
+Porque la gente esperaba
+
+165
+00:04:52,533 --> 00:04:53,572
+que ganara más mañana,
+
+166
+00:04:53,612 --> 00:04:55,544
+y por eso pagó más hoy.
+
+167
+00:04:56,202 --> 00:04:57,346
+Dicho de otro modo:
+
+168
+00:04:57,386 --> 00:04:58,381
+una acción es una
+
+169
+00:04:58,421 --> 00:04:59,928
+parte de una empresa.
+
+170
+00:05:00,106 --> 00:05:01,507
+Y su precio refleja lo que
+
+171
+00:05:01,547 --> 00:05:03,234
+todos esperan de su futuro.
+
+172
+00:05:03,274 --> 00:05:04,772
+Si la bolsa te sonaba lejana,
+
+173
+00:05:04,812 --> 00:05:07,010
+ya puedes explicarla con una taquería.
+
+174
+00:05:07,050 --> 00:05:08,660
+En el siguiente video vemos cómo
+
+175
+00:05:08,700 --> 00:05:10,462
+mirar la bolsa completa, sin tener
+
+176
+00:05:10,502 --> 00:05:11,970
+que escoger una sola empresa.
+
+177
+00:05:12,010 --> 00:05:13,010
+Sigue el canal para no
+
+178
+00:05:13,050 --> 00:05:15,020
+perdértelo. Nos vemos allá.
+

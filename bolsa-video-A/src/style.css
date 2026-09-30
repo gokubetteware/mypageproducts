@@ -43,14 +43,14 @@ body { font-family: 'Archivo', sans-serif; color: var(--tinta); -webkit-font-smo
 #thread::after { content: ''; position: absolute; left: 0; bottom: -6px; height: 4px; width: calc(var(--u, 0) * 100%); background: #05070A; }
 
 /* Tarjeta de definición: petróleo; papel encima; nunca con MICHI encima */
-.defcard { width: 1300px; background: var(--petroleo); color: var(--papel); padding: 26px 40px 30px; }
+.defcard { width: 1200px; background: var(--petroleo); color: var(--papel); padding: 26px 40px 30px; }
 .defcard .card-k { font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 24px; letter-spacing: .16em; }
 .defcard .card-t { font-family: 'Instrument Serif', serif; font-size: 88px; line-height: 92px; }
 .defcard .card-d { font-family: 'Figtree', sans-serif; font-weight: 700; font-size: 44px; line-height: 54px; }
 .defcard .card-e { font-family: 'Figtree', sans-serif; font-weight: 600; font-size: 40px; line-height: 50px; margin-top: 4px; }
 
 /* Rótulo: papel con filete de tinta */
-.rotulo { background: var(--papel); border: 3px solid var(--tinta); padding: 14px 28px; font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 44px; line-height: 54px; white-space: nowrap; }
+.rotulo { background: var(--papel); border: 2px solid var(--tinta); padding: 10px 22px; font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 34px; line-height: 44px; white-space: nowrap; display: inline-block; }
 .rotulo b { font-weight: 800; }
 .rotulo.small { font-size: 40px; line-height: 48px; padding: 8px 20px; }
 
@@ -64,7 +64,7 @@ body { font-family: 'Archivo', sans-serif; color: var(--tinta); -webkit-font-smo
 
 .rotulo.wrap { white-space: normal; }
 /* Alerta: papel con filete de tinta de 4 px, rótulo ocre (manual) */
-.alerta { background: var(--papel); border: 4px solid var(--tinta); padding: 12px 26px; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 44px; line-height: 54px; white-space: nowrap; }
+.alerta { background: var(--papel); border: 4px solid var(--tinta); padding: 12px 26px; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 40px; line-height: 50px; white-space: nowrap; display: inline-block; }
 .alerta b { font-weight: 800; color: var(--ocre); margin-right: 10px; }
 /* Nota al margen (Caveat) */
 .nota { font-family: 'Caveat', cursive; font-weight: 600; font-size: 64px; line-height: 70px; white-space: nowrap; }
@@ -81,3 +81,12 @@ body { font-family: 'Archivo', sans-serif; color: var(--tinta); -webkit-font-smo
 .end-t { font-size: 104px; line-height: 100px; }
 .cta { display: inline-block; background: var(--tinta); color: var(--papel); font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 44px; line-height: 54px; padding: 14px 28px; }
 .handle { font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 40px; margin-top: 18px; }
+
+/* v2 · jerarquía: un titular por escena; callouts más chicos; tarjeta sin «Ejemplo» */
+.headline { font-size: 96px; line-height: 100px; }
+.step { width: 400px; height: 280px; padding: 28px 32px; background: var(--papel); border: 2px solid var(--tinta); }
+.step-t { font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 40px; line-height: 48px; margin-top: 16px; }
+.big-lbl { font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 60px; line-height: 70px; white-space: nowrap; }
+#header .h1 { font-size: 20px; line-height: 26px; }
+#header .h2 { font-size: 16px; line-height: 22px; }
+#subs { display: none; }

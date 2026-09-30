@@ -94,6 +94,33 @@ async function renderSegment(browser, port, seg, out) {
       return;
     }
 
+    if (args.scan) {
+      // Barrido de capas cada 0.25 s entre 0 y --scan segundos (sin capturas).
+      const end = Math.min(parseFloat(args.scan), DUR);
+      const res = await probe.evaluate(e => { const out = []; for (let t = 0; t < e; t += 0.25) { window.seek(t); out.push([t, window.countLayers().total]); } return out; }, end);
+      const bad = res.filter(r => r[1] > 3);
+      console.log(`barrido 0–${end} s: ${res.length} cuadros; máx. capas ${Math.max(...res.map(r => r[1]))}; cuadros con > 3: ${bad.length}` + (bad.length ? ' → ' + bad.slice(0, 20).map(r => r[0].toFixed(2)).join(', ') : ''));
+      return;
+    }
+
+    if (args.layers) {
+      // Control de calidad: capas visibles en cuadros dados (MICHI + ilustración + principales + cabecera).
+      const dir = args.dir || path.join(ROOT, 'render/capas');
+      fs.mkdirSync(dir, { recursive: true });
+      const rows = [];
+      for (const s of args.layers.split(',')) {
+        const t = parseFloat(s);
+        await probe.evaluate(x => window.seek(x), t);
+        const c = await probe.evaluate(() => window.countLayers());
+        await probe.screenshot({ path: path.join(dir, `capas_t${t.toFixed(2).padStart(6, '0')}.png`) });
+        rows.push({ t, ...c });
+      }
+      const delays = await probe.evaluate(() => window.DELAYS);
+      fs.writeFileSync(path.join(dir, 'capas.json'), JSON.stringify({ cuadros: rows, retrasos: delays }, null, 1));
+      for (const r of rows) console.log(`t=${r.t.toFixed(2)}s  capas=${r.total}  (MICHI ${r.michi} · ilustración ${r.ilustracion} · principal ${r.principal} · cabecera ${r.cabecera})`);
+      return;
+    }
+
     if (args.stills) {
       // Cuadros sueltos para revisión: normales a 1080p y, si caen en zoom, también a 4K.
       const dir = args.dir || path.join(ROOT, 'render/cuadros');

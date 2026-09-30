@@ -11,7 +11,7 @@
     "duracion_nominal_s": 460,
     "duracion_max_s": 480,
     "pantalla_final": {
-      "inicio_cue": "c071",
+      "inicio_cue": "c070",
       "duracion_max_s": 14
     },
     "nota": "Tiempos t = estimación nominal a 140 palabras/min + pausas marcadas (decisión de Omar: mínimo 6:00, máximo 8:00). La voz real manda: ver 05_SINCRONIZACION_AUDIO.md. En eventos: cue = frase de voz; word = palabra ancla dentro del cue (opcional); off = desplazamiento en segundos (negativo = antes de la palabra).",
@@ -21,7 +21,12 @@
       "regla": "Arriba siempre «CCM»; abajo siempre el tema del video. Visible todo el video salvo pantalla de impacto y pantalla final."
     },
     "ritmo_nominal_wpm": 140,
-    "duracion_min_s": 360
+    "duracion_min_s": 300,
+    "voz": {
+      "archivo": "voz/voz_completa.mp3",
+      "duracion_s": 314.749,
+      "nota": "Narración ElevenLabs (Enrique González). Manda la voz: el video se ajusta a ella. Dura 5:15, por eso el mínimo baja a 5:00 para este video."
+    }
   },
   "convenciones": {
     "pausas_en_texto": "[pausa] = 1 s; [pausa n s] = n s; (…) = indicación de lectura; *…* = énfasis. Se quitan antes de alinear con la transcripción.",
@@ -1602,46 +1607,24 @@
     },
     {
       "id": "S07",
-      "bloque": "Salida · gancho al siguiente video",
+      "bloque": "Salida",
       "cues": [
         {
           "id": "c070",
           "t": 437.4,
-          "text": "(más lento) ¿Y si todas tus acciones fueran de una sola empresa, [pausa] y te tocara *la papelería*?"
+          "text": "En el siguiente video vemos cómo mirar la bolsa completa, sin tener que escoger una sola empresa. Sigue el canal para no perdértelo. [pausa]"
         },
         {
           "id": "c071",
           "t": 445.1,
-          "text": "En el siguiente video hacemos la cuenta para no depender de una sola empresa. [pausa] (sonrisa) Sígueme para la siguiente cuenta."
+          "text": "Nos vemos allá."
         }
       ],
       "eventos": [
         {
-          "id": "e172",
-          "cue": "c070",
-          "off": -0.5,
-          "do": "michi",
-          "estado": "preocupado",
-          "nota": "nivel N1-N2; reacciona antes de que vuelva la cifra de la papelería"
-        },
-        {
-          "id": "e173",
-          "cue": "c070",
-          "word": "papelería",
-          "off": 0,
-          "do": "show",
-          "obj": "recordatorio_papeleria",
-          "props": {
-            "texto": "Papelería: 1,000 → 600",
-            "delta": "−400",
-            "delta_color": "rojo"
-          },
-          "nota": "NO es cifra nueva: repite el resultado de S05 (cuenta 11b). Sin tic. Panel papel, como la ficha «DEBES» del video anterior."
-        },
-        {
           "id": "e170",
-          "cue": "c071",
-          "off": 0,
+          "cue": "c070",
+          "off": 0.0,
           "do": "cut_to_end_screen",
           "dur_max_s": 14,
           "elementos": [
@@ -1650,12 +1633,12 @@
             "contacto: «@omar.vizu»",
             "tarjeta_siguiente_video"
           ],
-          "nota": "Fondo arcilla. MICHI confianza N1 sentado en el piso. El titular se escribe palabra por palabra al ritmo de la voz. Único CTA. Dejar zonas libres para elementos de YouTube."
+          "nota": "La narración grabada usa el cierre original (sin el gancho de la papelería). Fondo arcilla. MICHI confiado. Único CTA. Zonas libres para YouTube."
         },
         {
           "id": "e171",
-          "cue": "c071",
-          "off": 0,
+          "cue": "c070",
+          "off": 0.0,
           "do": "music",
           "nivel": "fade out corto (≤ 2 s)"
         }

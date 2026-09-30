@@ -1,0 +1,126 @@
+{
+ "cuadros": [
+  {
+   "t": 6.16,
+   "total": 3,
+   "michi": 1,
+   "ilustracion": 1,
+   "principal": 1,
+   "cabecera": 0
+  },
+  {
+   "t": 7.15,
+   "total": 3,
+   "michi": 1,
+   "ilustracion": 1,
+   "principal": 1,
+   "cabecera": 0
+  },
+  {
+   "t": 13.4,
+   "total": 2,
+   "michi": 1,
+   "ilustracion": 0,
+   "principal": 1,
+   "cabecera": 0
+  },
+  {
+   "t": 30.15,
+   "total": 3,
+   "michi": 1,
+   "ilustracion": 1,
+   "principal": 1,
+   "cabecera": 0
+  },
+  {
+   "t": 30.71,
+   "total": 3,
+   "michi": 1,
+   "ilustracion": 1,
+   "principal": 1,
+   "cabecera": 0
+  },
+  {
+   "t": 32.87,
+   "total": 3,
+   "michi": 1,
+   "ilustracion": 1,
+   "principal": 1,
+   "cabecera": 0
+  },
+  {
+   "t": 33.39,
+   "total": 3,
+   "michi": 1,
+   "ilustracion": 1,
+   "principal": 1,
+   "cabecera": 0
+  },
+  {
+   "t": 36.06,
+   "total": 3,
+   "michi": 1,
+   "ilustracion": 1,
+   "principal": 1,
+   "cabecera": 0
+  },
+  {
+   "t": 47,
+   "total": 3,
+   "michi": 1,
+   "ilustracion": 1,
+   "principal": 1,
+   "cabecera": 0
+  },
+  {
+   "t": 51.6,
+   "total": 3,
+   "michi": 1,
+   "ilustracion": 1,
+   "principal": 1,
+   "cabecera": 0
+  }
+ ],
+ "retrasos": [
+  {
+   "id": "1Qué es un pedacito2Dónde se compra y ve",
+   "de": 24.27,
+   "a": 24.66
+  },
+  {
+   "id": "Cambia UNA cosa: cuánta gente quiere com",
+   "de": 123.18,
+   "a": 124.36
+  },
+  {
+   "id": "¿Por qué pagaría alguien más?",
+   "de": 163.79,
+   "a": 165.69
+  },
+  {
+   "id": "Se espera15,000catpesos al año",
+   "de": 193.43,
+   "a": 193.76
+  },
+  {
+   "id": "Le toca al año100 → 150 +50",
+   "de": 202.41,
+   "a": 202.58
+  },
+  {
+   "id": "AntesSe espera Le toca al año100150 Por ",
+   "de": 208.27,
+   "a": 209.37
+  },
+  {
+   "id": "¡OJO! El 10 es un número de ejemplo.",
+   "de": 223.91,
+   "a": 224.92
+  },
+  {
+   "id": "5,000 ÷ 50= 100la misma cuenta de antes",
+   "de": 245.13,
+   "a": 246.1
+  }
+ ]
+}

@@ -241,3 +241,22 @@ Las 14 cuentas de la tabla (11 operaciones y 3 diferencias) pasaron con `assert`
 - **Ajustes de tiempo (una cosa nueva a la vez):**
   - Cuando dos cosas nuevas caían a menos de 0.6 s, o antes de que terminara la pausa de un resultado, retrasé la segunda: +50 en S04, op06 y op07 en S05, y las celdas de la tabla.
   - En S05, la cuenta 50,000 ÷ 50 aparece después de que la voz dice las cifras y no antes, como estaba en el JSON.
+
+---
+
+# v2 · Limpieza visual + narración real (prueba de 60 s)
+
+## Voz
+- **Archivo:** `voz/voz_completa.mp3` (ElevenLabs, 5:14.7).
+- **Transcripción:** ElevenLabs Scribe no alcanzó por créditos (hacían falta 1,731 y había 1,516). La hice en local con sherpa-onnx: VAD silero + whisper-small, bajados de GitHub (script en `timeline/asr_sherpa.py`).
+- **Alineación** (`timeline/align_voice.py`): 859 de 907 palabras del guion (94.7 %) empatan con lo que dice la voz. El resto se interpola dentro de su tramo de voz.
+  - Cues con menos de 80 %: c015, c017, c023, c043 y c060. Son cuentas o preguntas cortas que Whisper oyó distinto («120.000», «100 - 20», «¿Quién»). Su tiempo cae entre las palabras vecinas, que sí están bien alineadas.
+- **La narración usa el cierre ORIGINAL** («En el siguiente video vemos cómo mirar la bolsa completa… Sigue el canal… Nos vemos allá»). El video sigue a la voz: se quitó la ficha de la papelería del cierre.
+- **Duración:** el video dura **5:21** (321 s = voz + pantalla final). Queda debajo del mínimo de 6:00 que pusiste; como el audio no se toca, este video usa un mínimo de 5:00.
+
+## Reglas aplicadas (motor v2)
+- **Espacio principal único:** todo texto, bloque de números o callout pasa por `main()`. Cuando entra uno, el anterior sale, así que nunca hay dos a la vez.
+- **Ilustraciones** (taquería, cuadrícula, personas, dinero) como capa aparte; MICHI es la tercera. Máximo 3 capas: el barrido de las 1,284 muestras (cada 0.25 s) da **máx. 3, 0 cuadros con más**.
+- **Micromovimiento de MICHI:** se apaga (respiración, cola y parpadeo) mientras una ilustración se mueve. Sus reacciones de estado sí se mantienen.
+- **Avisos ¡OJO! legales:** momento propio de ≥ 2.2 s, sin otro texto antes ni después.
+- **Subtítulos: opción B.** Fuera del video; `render/bolsa_A.srt` trae 178 líneas, 176 de 4 a 6 palabras, una de 3 y una de 7.

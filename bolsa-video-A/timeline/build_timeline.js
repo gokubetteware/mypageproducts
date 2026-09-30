@@ -109,6 +109,21 @@ function build() {
     cues[c.id] = { id: c.id, scene: s.id, t: c.t, end: +wt.end.toFixed(3), compress: wt.compress, words: wt.words, text: c.text };
   });
 
+  // Fase 4: si hay voz alineada (voz/proc/cues_reales.json), sus tiempos reemplazan a los nominales.
+  const realPath = path.join(ROOT, 'voz/proc/cues_reales.json');
+  const REAL = fs.existsSync(realPath) ? JSON.parse(fs.readFileSync(realPath, 'utf8')) : null;
+  if (REAL) {
+    for (const id of Object.keys(cues)) {
+      const r = REAL[id];
+      assert(r, `cues_reales.json no tiene ${id}`);
+      assert.strictEqual(r.words.length, cues[id].words.length, `${id}: número de palabras distinto`);
+      cues[id].words = r.words.map((w, i) => ({ ...cues[id].words[i], start: w.start, end: w.end }));
+      cues[id].t = r.start;
+      cues[id].end = r.end;
+      cues[id].compress = 1;
+    }
+  }
+
   const events = [];
   let zooms = 0;
   for (const s of src.escenas) for (const e of s.eventos) {
@@ -137,7 +152,7 @@ function build() {
   const videoEnd = Math.max(cues[pf.inicio_cue].t + pf.duracion_max_s, lastCue.end + 0.5);
   const scenes = src.escenas.map((s, i) => {
     const next = src.escenas[i + 1];
-    return { id: s.id, start: s.cues[0].t, end: next ? next.cues[0].t : videoEnd };
+    return { id: s.id, start: cues[s.cues[0].id].t, end: next ? cues[next.cues[0].id].t : videoEnd };
   });
   const duration = +videoEnd.toFixed(3);
   assert(duration <= src.video.duracion_max_s && duration >= src.video.duracion_min_s, `la duración (${duration} s) está fuera de ${src.video.duracion_min_s}–${src.video.duracion_max_s} s`);
@@ -149,8 +164,10 @@ function build() {
     escenas: scenes, cues: Object.values(cues), eventos: events,
     subtitulos: subtitleGroups(Object.values(cues)),
   };
-  fs.writeFileSync(path.join(__dirname, 'timeline_nominal.json'), JSON.stringify(out, null, 1) + '\n');
-  console.log(`timeline_nominal.json: ${events.length} eventos, ${zooms} zooms, ${duration} s`);
+  if (REAL) out.generado = 'timeline/build_timeline.js · tiempos REALES de la voz (voz/proc/cues_reales.json)';
+  const outName = REAL ? 'timeline_final.json' : 'timeline_nominal.json';
+  fs.writeFileSync(path.join(__dirname, outName), JSON.stringify(out, null, 1) + '\n');
+  console.log(`${outName}: ${events.length} eventos, ${zooms} zooms, ${duration} s`);
 }
 
 build();

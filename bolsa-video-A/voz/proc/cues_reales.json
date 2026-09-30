@@ -1,0 +1,6777 @@
+{
+ "c001": {
+  "words": [
+   {
+    "word": "hoy",
+    "raw": "Hoy",
+    "start": 0.074,
+    "end": 0.288,
+    "afterPause": false
+   },
+   {
+    "word": "vas",
+    "raw": "vas",
+    "start": 0.288,
+    "end": 0.503,
+    "afterPause": false
+   },
+   {
+    "word": "a",
+    "raw": "a",
+    "start": 0.503,
+    "end": 0.61,
+    "afterPause": false
+   },
+   {
+    "word": "entender",
+    "raw": "entender",
+    "start": 0.61,
+    "end": 1.093,
+    "afterPause": false
+   },
+   {
+    "word": "que",
+    "raw": "qué",
+    "start": 1.093,
+    "end": 1.307,
+    "afterPause": false
+   },
+   {
+    "word": "es",
+    "raw": "es",
+    "start": 1.307,
+    "end": 1.468,
+    "afterPause": false
+   },
+   {
+    "word": "la",
+    "raw": "la",
+    "start": 1.468,
+    "end": 1.629,
+    "afterPause": false
+   },
+   {
+    "word": "bolsa",
+    "raw": "bolsa",
+    "start": 1.629,
+    "end": 1.95,
+    "afterPause": false
+   },
+   {
+    "word": "de",
+    "raw": "de",
+    "start": 1.95,
+    "end": 2.111,
+    "afterPause": false
+   },
+   {
+    "word": "valores",
+    "raw": "valores,",
+    "start": 2.111,
+    "end": 2.54,
+    "afterPause": false
+   },
+   {
+    "word": "con",
+    "raw": "con",
+    "start": 2.954,
+    "end": 3.158,
+    "afterPause": true
+   },
+   {
+    "word": "una",
+    "raw": "una",
+    "start": 3.158,
+    "end": 3.362,
+    "afterPause": false
+   },
+   {
+    "word": "taqueria",
+    "raw": "taquería.",
+    "start": 3.362,
+    "end": 3.82,
+    "afterPause": false
+   }
+  ],
+  "start": 0.074,
+  "end": 3.82
+ },
+ "c002": {
+  "words": [
+   {
+    "word": "mira",
+    "raw": "Mira",
+    "start": 4.106,
+    "end": 4.365,
+    "afterPause": false
+   },
+   {
+    "word": "este",
+    "raw": "este",
+    "start": 4.365,
+    "end": 4.625,
+    "afterPause": false
+   },
+   {
+    "word": "pedacito",
+    "raw": "pedacito",
+    "start": 4.625,
+    "end": 5.091,
+    "afterPause": false
+   },
+   {
+    "word": "de",
+    "raw": "de",
+    "start": 5.091,
+    "end": 5.247,
+    "afterPause": false
+   },
+   {
+    "word": "la",
+    "raw": "la",
+    "start": 5.247,
+    "end": 5.402,
+    "afterPause": false
+   },
+   {
+    "word": "taqueria",
+    "raw": "taquería",
+    "start": 5.402,
+    "end": 5.869,
+    "afterPause": false
+   },
+   {
+    "word": "de",
+    "raw": "de",
+    "start": 5.869,
+    "end": 6.025,
+    "afterPause": false
+   },
+   {
+    "word": "dona",
+    "raw": "doña",
+    "start": 6.025,
+    "end": 6.284,
+    "afterPause": false
+   },
+   {
+    "word": "lupe",
+    "raw": "Lupe.",
+    "start": 6.284,
+    "end": 6.538,
+    "afterPause": false
+   }
+  ],
+  "start": 4.106,
+  "end": 6.538
+ },
+ "c003": {
+  "words": [
+   {
+    "word": "ayer",
+    "raw": "Ayer",
+    "start": 6.538,
+    "end": 6.884,
+    "afterPause": false
+   },
+   {
+    "word": "valia",
+    "raw": "valía",
+    "start": 6.884,
+    "end": 7.299,
+    "afterPause": false
+   },
+   {
+    "word": "1000",
+    "raw": "1,000",
+    "start": 7.299,
+    "end": 7.645,
+    "afterPause": false
+   },
+   {
+    "word": "catpesos",
+    "raw": "catpesos.",
+    "start": 7.645,
+    "end": 8.268,
+    "afterPause": false
+   },
+   {
+    "word": "hoy",
+    "raw": "Hoy",
+    "start": 8.458,
+    "end": 8.925,
+    "afterPause": false
+   },
+   {
+    "word": "vale",
+    "raw": "vale",
+    "start": 8.925,
+    "end": 9.508,
+    "afterPause": false
+   },
+   {
+    "word": "1500",
+    "raw": "1,500.",
+    "start": 9.508,
+    "end": 10.092,
+    "afterPause": false
+   }
+  ],
+  "start": 6.538,
+  "end": 10.092
+ },
+ "c004": {
+  "words": [
+   {
+    "word": "y",
+    "raw": "Y",
+    "start": 11.114,
+    "end": 11.239,
+    "afterPause": false
+   },
+   {
+    "word": "la",
+    "raw": "la",
+    "start": 11.239,
+    "end": 11.427,
+    "afterPause": false
+   },
+   {
+    "word": "taqueria",
+    "raw": "taquería",
+    "start": 11.427,
+    "end": 11.992,
+    "afterPause": false
+   },
+   {
+    "word": "vende",
+    "raw": "vende",
+    "start": 11.992,
+    "end": 12.368,
+    "afterPause": false
+   },
+   {
+    "word": "lo",
+    "raw": "lo",
+    "start": 12.368,
+    "end": 12.556,
+    "afterPause": false
+   },
+   {
+    "word": "mismo",
+    "raw": "mismo.",
+    "start": 12.556,
+    "end": 12.906,
+    "afterPause": false
+   }
+  ],
+  "start": 11.114,
+  "end": 12.906
+ },
+ "c005": {
+  "words": [
+   {
+    "word": "si",
+    "raw": "Si",
+    "start": 13.034,
+    "end": 13.212,
+    "afterPause": false
+   },
+   {
+    "word": "has",
+    "raw": "has",
+    "start": 13.212,
+    "end": 13.449,
+    "afterPause": false
+   },
+   {
+    "word": "oido",
+    "raw": "oído",
+    "start": 13.449,
+    "end": 13.745,
+    "afterPause": false
+   },
+   {
+    "word": "la",
+    "raw": "«la",
+    "start": 13.745,
+    "end": 13.923,
+    "afterPause": false
+   },
+   {
+    "word": "bolsa",
+    "raw": "bolsa",
+    "start": 13.923,
+    "end": 14.279,
+    "afterPause": false
+   },
+   {
+    "word": "subio",
+    "raw": "subió»",
+    "start": 14.279,
+    "end": 14.634,
+    "afterPause": false
+   },
+   {
+    "word": "y",
+    "raw": "y",
+    "start": 14.634,
+    "end": 14.753,
+    "afterPause": false
+   },
+   {
+    "word": "te",
+    "raw": "te",
+    "start": 14.753,
+    "end": 14.931,
+    "afterPause": false
+   },
+   {
+    "word": "quedaste",
+    "raw": "quedaste",
+    "start": 14.931,
+    "end": 15.464,
+    "afterPause": false
+   },
+   {
+    "word": "igual",
+    "raw": "igual,",
+    "start": 15.464,
+    "end": 15.82,
+    "afterPause": false
+   },
+   {
+    "word": "no",
+    "raw": "no",
+    "start": 16.01,
+    "end": 16.18,
+    "afterPause": false
+   },
+   {
+    "word": "fue",
+    "raw": "fue",
+    "start": 16.18,
+    "end": 16.406,
+    "afterPause": false
+   },
+   {
+    "word": "tu",
+    "raw": "tu",
+    "start": 16.406,
+    "end": 16.632,
+    "afterPause": false
+   },
+   {
+    "word": "culpa",
+    "raw": "culpa.",
+    "start": 16.632,
+    "end": 16.972,
+    "afterPause": false
+   }
+  ],
+  "start": 13.034,
+  "end": 16.972
+ },
+ "c006": {
+  "words": [
+   {
+    "word": "vas",
+    "raw": "Vas",
+    "start": 17.162,
+    "end": 17.377,
+    "afterPause": false
+   },
+   {
+    "word": "a",
+    "raw": "a",
+    "start": 17.377,
+    "end": 17.484,
+    "afterPause": false
+   },
+   {
+    "word": "entender",
+    "raw": "entender",
+    "start": 17.484,
+    "end": 17.967,
+    "afterPause": false
+   },
+   {
+    "word": "que",
+    "raw": "qué",
+    "start": 17.967,
+    "end": 18.182,
+    "afterPause": false
+   },
+   {
+    "word": "compras",
+    "raw": "compras",
+    "start": 18.182,
+    "end": 18.611,
+    "afterPause": false
+   },
+   {
+    "word": "en",
+    "raw": "en",
+    "start": 18.611,
+    "end": 18.772,
+    "afterPause": false
+   },
+   {
+    "word": "la",
+    "raw": "la",
+    "start": 18.772,
+    "end": 18.933,
+    "afterPause": false
+   },
+   {
+    "word": "bolsa",
+    "raw": "bolsa,",
+    "start": 18.933,
+    "end": 19.283,
+    "afterPause": false
+   },
+   {
+    "word": "y",
+    "raw": "y",
+    "start": 19.306,
+    "end": 19.416,
+    "afterPause": true
+   },
+   {
+    "word": "al",
+    "raw": "al",
+    "start": 19.416,
+    "end": 19.581,
+    "afterPause": false
+   },
+   {
+    "word": "final",
+    "raw": "final",
+    "start": 19.581,
+    "end": 19.91,
+    "afterPause": false
+   },
+   {
+    "word": "sabras",
+    "raw": "sabrás",
+    "start": 19.91,
+    "end": 20.295,
+    "afterPause": false
+   },
+   {
+    "word": "contestar",
+    "raw": "contestar:",
+    "start": 20.295,
+    "end": 20.844,
+    "afterPause": false
+   },
+   {
+    "word": "por",
+    "raw": "¿por",
+    "start": 21.194,
+    "end": 21.427,
+    "afterPause": false
+   },
+   {
+    "word": "que",
+    "raw": "qué",
+    "start": 21.427,
+    "end": 21.66,
+    "afterPause": false
+   },
+   {
+    "word": "subio",
+    "raw": "subió",
+    "start": 21.66,
+    "end": 22.01,
+    "afterPause": false
+   },
+   {
+    "word": "ese",
+    "raw": "ese",
+    "start": 22.01,
+    "end": 22.243,
+    "afterPause": false
+   },
+   {
+    "word": "pedacito",
+    "raw": "pedacito?",
+    "start": 22.243,
+    "end": 22.593,
+    "afterPause": false
+   }
+  ],
+  "start": 17.162,
+  "end": 22.593
+ },
+ "c007": {
+  "words": [
+   {
+    "word": "lo",
+    "raw": "Lo",
+    "start": 22.73,
+    "end": 22.901,
+    "afterPause": false
+   },
+   {
+    "word": "vemos",
+    "raw": "vemos",
+    "start": 22.901,
+    "end": 23.244,
+    "afterPause": false
+   },
+   {
+    "word": "en",
+    "raw": "en",
+    "start": 23.244,
+    "end": 23.416,
+    "afterPause": false
+   },
+   {
+    "word": "tres",
+    "raw": "tres",
+    "start": 23.416,
+    "end": 23.701,
+    "afterPause": false
+   },
+   {
+    "word": "pasos",
+    "raw": "pasos:",
+    "start": 23.701,
+    "end": 24.044,
+    "afterPause": false
+   },
+   {
+    "word": "que",
+    "raw": "qué",
+    "start": 24.266,
+    "end": 24.458,
+    "afterPause": false
+   },
+   {
+    "word": "es",
+    "raw": "es",
+    "start": 24.458,
+    "end": 24.602,
+    "afterPause": false
+   },
+   {
+    "word": "un",
+    "raw": "un",
+    "start": 24.602,
+    "end": 24.747,
+    "afterPause": false
+   },
+   {
+    "word": "pedacito",
+    "raw": "pedacito",
+    "start": 24.747,
+    "end": 25.179,
+    "afterPause": false
+   },
+   {
+    "word": "de",
+    "raw": "de",
+    "start": 25.179,
+    "end": 25.323,
+    "afterPause": false
+   },
+   {
+    "word": "una",
+    "raw": "una",
+    "start": 25.323,
+    "end": 25.516,
+    "afterPause": false
+   },
+   {
+    "word": "empresa",
+    "raw": "empresa,",
+    "start": 25.516,
+    "end": 25.9,
+    "afterPause": false
+   },
+   {
+    "word": "donde",
+    "raw": "dónde",
+    "start": 26.122,
+    "end": 26.439,
+    "afterPause": false
+   },
+   {
+    "word": "se",
+    "raw": "se",
+    "start": 26.439,
+    "end": 26.597,
+    "afterPause": false
+   },
+   {
+    "word": "compra",
+    "raw": "compra",
+    "start": 26.597,
+    "end": 26.966,
+    "afterPause": false
+   },
+   {
+    "word": "y",
+    "raw": "y",
+    "start": 26.966,
+    "end": 27.072,
+    "afterPause": false
+   },
+   {
+    "word": "se",
+    "raw": "se",
+    "start": 27.072,
+    "end": 27.23,
+    "afterPause": false
+   },
+   {
+    "word": "vende",
+    "raw": "vende,",
+    "start": 27.23,
+    "end": 27.547,
+    "afterPause": false
+   },
+   {
+    "word": "y",
+    "raw": "y",
+    "start": 27.547,
+    "end": 27.653,
+    "afterPause": false
+   },
+   {
+    "word": "por",
+    "raw": "por",
+    "start": 27.653,
+    "end": 27.864,
+    "afterPause": false
+   },
+   {
+    "word": "que",
+    "raw": "qué",
+    "start": 27.864,
+    "end": 28.075,
+    "afterPause": false
+   },
+   {
+    "word": "cambia",
+    "raw": "cambia",
+    "start": 28.075,
+    "end": 28.444,
+    "afterPause": false
+   },
+   {
+    "word": "su",
+    "raw": "su",
+    "start": 28.444,
+    "end": 28.603,
+    "afterPause": false
+   },
+   {
+    "word": "precio",
+    "raw": "precio.",
+    "start": 28.603,
+    "end": 28.972,
+    "afterPause": false
+   }
+  ],
+  "start": 22.73,
+  "end": 28.972
+ },
+ "c008": {
+  "words": [
+   {
+    "word": "esta",
+    "raw": "Esta",
+    "start": 29.226,
+    "end": 29.515,
+    "afterPause": false
+   },
+   {
+    "word": "es",
+    "raw": "es",
+    "start": 29.515,
+    "end": 29.689,
+    "afterPause": false
+   },
+   {
+    "word": "la",
+    "raw": "la",
+    "start": 29.689,
+    "end": 29.863,
+    "afterPause": false
+   },
+   {
+    "word": "taqueria",
+    "raw": "taquería",
+    "start": 29.863,
+    "end": 30.383,
+    "afterPause": false
+   },
+   {
+    "word": "de",
+    "raw": "de",
+    "start": 30.383,
+    "end": 30.557,
+    "afterPause": false
+   },
+   {
+    "word": "dona",
+    "raw": "doña",
+    "start": 30.557,
+    "end": 30.846,
+    "afterPause": false
+   },
+   {
+    "word": "lupe",
+    "raw": "Lupe.",
+    "start": 30.846,
+    "end": 31.196,
+    "afterPause": false
+   },
+   {
+    "word": "vale",
+    "raw": "Vale",
+    "start": 31.274,
+    "end": 31.667,
+    "afterPause": true
+   },
+   {
+    "word": "100000",
+    "raw": "100,000",
+    "start": 31.667,
+    "end": 32.218,
+    "afterPause": false
+   },
+   {
+    "word": "catpesos",
+    "raw": "catpesos:",
+    "start": 32.218,
+    "end": 32.926,
+    "afterPause": false
+   },
+   {
+    "word": "el",
+    "raw": "el",
+    "start": 32.926,
+    "end": 33.162,
+    "afterPause": false
+   },
+   {
+    "word": "local",
+    "raw": "local,",
+    "start": 33.162,
+    "end": 33.634,
+    "afterPause": false
+   },
+   {
+    "word": "la",
+    "raw": "la",
+    "start": 33.634,
+    "end": 33.87,
+    "afterPause": false
+   },
+   {
+    "word": "plancha",
+    "raw": "plancha,",
+    "start": 33.87,
+    "end": 34.499,
+    "afterPause": false
+   },
+   {
+    "word": "todo",
+    "raw": "todo.",
+    "start": 34.499,
+    "end": 34.892,
+    "afterPause": false
+   }
+  ],
+  "start": 29.226,
+  "end": 34.892
+ },
+ "c009": {
+  "words": [
+   {
+    "word": "lupe",
+    "raw": "Lupe",
+    "start": 35.178,
+    "end": 35.457,
+    "afterPause": false
+   },
+   {
+    "word": "quiere",
+    "raw": "quiere",
+    "start": 35.457,
+    "end": 35.848,
+    "afterPause": false
+   },
+   {
+    "word": "dividirla",
+    "raw": "dividirla",
+    "start": 35.848,
+    "end": 36.407,
+    "afterPause": false
+   },
+   {
+    "word": "en",
+    "raw": "en",
+    "start": 36.407,
+    "end": 36.575,
+    "afterPause": false
+   },
+   {
+    "word": "100",
+    "raw": "100",
+    "start": 36.575,
+    "end": 36.798,
+    "afterPause": false
+   },
+   {
+    "word": "pedacitos",
+    "raw": "pedacitos",
+    "start": 36.798,
+    "end": 37.357,
+    "afterPause": false
+   },
+   {
+    "word": "iguales",
+    "raw": "iguales.",
+    "start": 37.357,
+    "end": 37.804,
+    "afterPause": false
+   },
+   {
+    "word": "veamos",
+    "raw": "Veamos",
+    "start": 37.962,
+    "end": 38.331,
+    "afterPause": false
+   },
+   {
+    "word": "cuanto",
+    "raw": "cuánto",
+    "start": 38.331,
+    "end": 38.699,
+    "afterPause": false
+   },
+   {
+    "word": "vale",
+    "raw": "vale",
+    "start": 38.699,
+    "end": 38.962,
+    "afterPause": false
+   },
+   {
+    "word": "cada",
+    "raw": "cada",
+    "start": 38.962,
+    "end": 39.225,
+    "afterPause": false
+   },
+   {
+    "word": "uno",
+    "raw": "uno.",
+    "start": 39.225,
+    "end": 39.436,
+    "afterPause": false
+   }
+  ],
+  "start": 35.178,
+  "end": 39.436
+ },
+ "c010": {
+  "words": [
+   {
+    "word": "tomamos",
+    "raw": "Tomamos",
+    "start": 39.658,
+    "end": 40.079,
+    "afterPause": false
+   },
+   {
+    "word": "100000",
+    "raw": "100,000",
+    "start": 40.079,
+    "end": 40.447,
+    "afterPause": false
+   },
+   {
+    "word": "y",
+    "raw": "y",
+    "start": 40.447,
+    "end": 40.553,
+    "afterPause": false
+   },
+   {
+    "word": "lo",
+    "raw": "lo",
+    "start": 40.553,
+    "end": 40.763,
+    "afterPause": false
+   },
+   {
+    "word": "repartimos",
+    "raw": "repartimos",
+    "start": 40.763,
+    "end": 41.342,
+    "afterPause": false
+   },
+   {
+    "word": "entre",
+    "raw": "entre",
+    "start": 41.342,
+    "end": 41.658,
+    "afterPause": false
+   },
+   {
+    "word": "100",
+    "raw": "100.",
+    "start": 41.658,
+    "end": 41.868,
+    "afterPause": false
+   }
+  ],
+  "start": 39.658,
+  "end": 41.868
+ },
+ "c011": {
+  "words": [
+   {
+    "word": "cada",
+    "raw": "Cada",
+    "start": 42.474,
+    "end": 42.814,
+    "afterPause": false
+   },
+   {
+    "word": "pedacito",
+    "raw": "pedacito",
+    "start": 42.814,
+    "end": 43.425,
+    "afterPause": false
+   },
+   {
+    "word": "vale",
+    "raw": "vale",
+    "start": 43.425,
+    "end": 43.765,
+    "afterPause": false
+   },
+   {
+    "word": "1000",
+    "raw": "1,000",
+    "start": 43.765,
+    "end": 44.105,
+    "afterPause": false
+   },
+   {
+    "word": "catpesos",
+    "raw": "catpesos.",
+    "start": 44.105,
+    "end": 44.716,
+    "afterPause": false
+   }
+  ],
+  "start": 42.474,
+  "end": 44.716
+ },
+ "c012": {
+  "words": [
+   {
+    "word": "o",
+    "raw": "O",
+    "start": 44.906,
+    "end": 45.026,
+    "afterPause": false
+   },
+   {
+    "word": "sea",
+    "raw": "sea:",
+    "start": 45.026,
+    "end": 45.265,
+    "afterPause": false
+   },
+   {
+    "word": "si",
+    "raw": "si",
+    "start": 45.265,
+    "end": 45.445,
+    "afterPause": false
+   },
+   {
+    "word": "compras",
+    "raw": "compras",
+    "start": 45.445,
+    "end": 45.924,
+    "afterPause": false
+   },
+   {
+    "word": "uno",
+    "raw": "uno,",
+    "start": 45.924,
+    "end": 46.163,
+    "afterPause": false
+   },
+   {
+    "word": "tienes",
+    "raw": "tienes",
+    "start": 46.163,
+    "end": 46.582,
+    "afterPause": false
+   },
+   {
+    "word": "uno",
+    "raw": "uno",
+    "start": 46.582,
+    "end": 46.821,
+    "afterPause": false
+   },
+   {
+    "word": "de",
+    "raw": "de",
+    "start": 46.821,
+    "end": 47.001,
+    "afterPause": false
+   },
+   {
+    "word": "cada",
+    "raw": "cada",
+    "start": 47.001,
+    "end": 47.3,
+    "afterPause": false
+   },
+   {
+    "word": "100",
+    "raw": "100",
+    "start": 47.3,
+    "end": 47.54,
+    "afterPause": false
+   },
+   {
+    "word": "pedacitos",
+    "raw": "pedacitos",
+    "start": 47.54,
+    "end": 48.138,
+    "afterPause": false
+   },
+   {
+    "word": "de",
+    "raw": "de",
+    "start": 48.138,
+    "end": 48.318,
+    "afterPause": false
+   },
+   {
+    "word": "la",
+    "raw": "la",
+    "start": 48.318,
+    "end": 48.497,
+    "afterPause": false
+   },
+   {
+    "word": "taqueria",
+    "raw": "taquería.",
+    "start": 48.497,
+    "end": 49.036,
+    "afterPause": false
+   }
+  ],
+  "start": 44.906,
+  "end": 49.036
+ },
+ "c013": {
+  "words": [
+   {
+    "word": "ese",
+    "raw": "Ese",
+    "start": 49.322,
+    "end": 49.513,
+    "afterPause": false
+   },
+   {
+    "word": "pedacito",
+    "raw": "pedacito",
+    "start": 49.513,
+    "end": 49.942,
+    "afterPause": false
+   },
+   {
+    "word": "de",
+    "raw": "de",
+    "start": 49.942,
+    "end": 50.085,
+    "afterPause": false
+   },
+   {
+    "word": "una",
+    "raw": "una",
+    "start": 50.085,
+    "end": 50.275,
+    "afterPause": false
+   },
+   {
+    "word": "empresa",
+    "raw": "empresa",
+    "start": 50.275,
+    "end": 50.656,
+    "afterPause": false
+   },
+   {
+    "word": "tiene",
+    "raw": "tiene",
+    "start": 50.656,
+    "end": 50.942,
+    "afterPause": false
+   },
+   {
+    "word": "nombre",
+    "raw": "nombre:",
+    "start": 50.942,
+    "end": 51.276,
+    "afterPause": false
+   },
+   {
+    "word": "se",
+    "raw": "se",
+    "start": 51.562,
+    "end": 51.733,
+    "afterPause": false
+   },
+   {
+    "word": "llama",
+    "raw": "llama",
+    "start": 51.733,
+    "end": 52.076,
+    "afterPause": false
+   },
+   {
+    "word": "accion",
+    "raw": "acción.",
+    "start": 52.076,
+    "end": 52.426,
+    "afterPause": false
+   }
+  ],
+  "start": 49.322,
+  "end": 52.426
+ },
+ "c014": {
+  "words": [
+   {
+    "word": "lupe",
+    "raw": "Lupe",
+    "start": 52.97,
+    "end": 53.263,
+    "afterPause": false
+   },
+   {
+    "word": "quiere",
+    "raw": "quiere",
+    "start": 53.263,
+    "end": 53.674,
+    "afterPause": false
+   },
+   {
+    "word": "abrir",
+    "raw": "abrir",
+    "start": 53.674,
+    "end": 54.027,
+    "afterPause": false
+   },
+   {
+    "word": "una",
+    "raw": "una",
+    "start": 54.027,
+    "end": 54.261,
+    "afterPause": false
+   },
+   {
+    "word": "segunda",
+    "raw": "segunda",
+    "start": 54.261,
+    "end": 54.731,
+    "afterPause": false
+   },
+   {
+    "word": "taqueria",
+    "raw": "taquería",
+    "start": 54.731,
+    "end": 55.081,
+    "afterPause": false
+   },
+   {
+    "word": "y",
+    "raw": "y",
+    "start": 55.318,
+    "end": 55.435,
+    "afterPause": false
+   },
+   {
+    "word": "necesita",
+    "raw": "necesita",
+    "start": 55.435,
+    "end": 55.964,
+    "afterPause": false
+   },
+   {
+    "word": "20000",
+    "raw": "20,000",
+    "start": 55.964,
+    "end": 56.316,
+    "afterPause": false
+   },
+   {
+    "word": "catpesos",
+    "raw": "catpesos.",
+    "start": 56.316,
+    "end": 56.844,
+    "afterPause": false
+   },
+   {
+    "word": "asi",
+    "raw": "Así",
+    "start": 57.002,
+    "end": 57.253,
+    "afterPause": false
+   },
+   {
+    "word": "que",
+    "raw": "que",
+    "start": 57.253,
+    "end": 57.505,
+    "afterPause": false
+   },
+   {
+    "word": "vende",
+    "raw": "vende",
+    "start": 57.505,
+    "end": 57.882,
+    "afterPause": false
+   },
+   {
+    "word": "20",
+    "raw": "20",
+    "start": 57.882,
+    "end": 58.07,
+    "afterPause": false
+   },
+   {
+    "word": "acciones",
+    "raw": "acciones.",
+    "start": 58.07,
+    "end": 58.636,
+    "afterPause": false
+   }
+  ],
+  "start": 52.97,
+  "end": 58.636
+ },
+ "c015": {
+  "words": [
+   {
+    "word": "veamos",
+    "raw": "Veamos",
+    "start": 58.826,
+    "end": 59.213,
+    "afterPause": false
+   },
+   {
+    "word": "cuanto",
+    "raw": "cuánto",
+    "start": 59.213,
+    "end": 59.599,
+    "afterPause": false
+   },
+   {
+    "word": "junta",
+    "raw": "junta:",
+    "start": 59.599,
+    "end": 59.949,
+    "afterPause": false
+   },
+   {
+    "word": "20",
+    "raw": "20",
+    "start": 60.106,
+    "end": 60.362,
+    "afterPause": false
+   },
+   {
+    "word": "por",
+    "raw": "por",
+    "start": 60.362,
+    "end": 60.704,
+    "afterPause": false
+   },
+   {
+    "word": "1000",
+    "raw": "1,000.",
+    "start": 60.704,
+    "end": 61.132,
+    "afterPause": false
+   },
+   {
+    "word": "son",
+    "raw": "Son",
+    "start": 61.132,
+    "end": 61.482,
+    "afterPause": true
+   },
+   {
+    "word": "20000",
+    "raw": "20,000.",
+    "start": 62.011,
+    "end": 62.361,
+    "afterPause": false
+   }
+  ],
+  "start": 58.826,
+  "end": 62.361
+ },
+ "c016": {
+  "words": [
+   {
+    "word": "justo",
+    "raw": "Justo",
+    "start": 62.89,
+    "end": 63.195,
+    "afterPause": false
+   },
+   {
+    "word": "lo",
+    "raw": "lo",
+    "start": 63.195,
+    "end": 63.347,
+    "afterPause": false
+   },
+   {
+    "word": "que",
+    "raw": "que",
+    "start": 63.347,
+    "end": 63.55,
+    "afterPause": false
+   },
+   {
+    "word": "necesitaba",
+    "raw": "necesitaba.",
+    "start": 63.55,
+    "end": 64.108,
+    "afterPause": false
+   }
+  ],
+  "start": 62.89,
+  "end": 64.108
+ },
+ "c017": {
+  "words": [
+   {
+    "word": "cuantas",
+    "raw": "¿Cuántas",
+    "start": 64.362,
+    "end": 64.907,
+    "afterPause": false
+   },
+   {
+    "word": "le",
+    "raw": "le",
+    "start": 64.907,
+    "end": 65.111,
+    "afterPause": false
+   },
+   {
+    "word": "quedan",
+    "raw": "quedan",
+    "start": 65.111,
+    "end": 65.309,
+    "afterPause": false
+   },
+   {
+    "word": "a",
+    "raw": "a",
+    "start": 65.309,
+    "end": 65.507,
+    "afterPause": false
+   },
+   {
+    "word": "lupe",
+    "raw": "Lupe?",
+    "start": 65.508,
+    "end": 65.706,
+    "afterPause": false
+   },
+   {
+    "word": "100",
+    "raw": "100",
+    "start": 65.706,
+    "end": 66.384,
+    "afterPause": false
+   },
+   {
+    "word": "menos",
+    "raw": "menos",
+    "start": 66.384,
+    "end": 66.504,
+    "afterPause": false
+   },
+   {
+    "word": "20",
+    "raw": "20.",
+    "start": 66.384,
+    "end": 66.892,
+    "afterPause": false
+   },
+   {
+    "word": "le",
+    "raw": "Le",
+    "start": 67.498,
+    "end": 67.727,
+    "afterPause": true
+   },
+   {
+    "word": "quedan",
+    "raw": "quedan",
+    "start": 67.727,
+    "end": 68.263,
+    "afterPause": false
+   },
+   {
+    "word": "80",
+    "raw": "80.",
+    "start": 68.263,
+    "end": 68.492,
+    "afterPause": false
+   }
+  ],
+  "start": 64.362,
+  "end": 68.492
+ },
+ "c018": {
+  "words": [
+   {
+    "word": "las",
+    "raw": "Las",
+    "start": 68.714,
+    "end": 68.962,
+    "afterPause": false
+   },
+   {
+    "word": "otras",
+    "raw": "otras",
+    "start": 68.962,
+    "end": 69.334,
+    "afterPause": false
+   },
+   {
+    "word": "20",
+    "raw": "20",
+    "start": 69.334,
+    "end": 69.521,
+    "afterPause": false
+   },
+   {
+    "word": "ya",
+    "raw": "ya",
+    "start": 69.521,
+    "end": 69.707,
+    "afterPause": false
+   },
+   {
+    "word": "tienen",
+    "raw": "tienen",
+    "start": 69.707,
+    "end": 70.141,
+    "afterPause": false
+   },
+   {
+    "word": "otros",
+    "raw": "otros",
+    "start": 70.141,
+    "end": 70.513,
+    "afterPause": false
+   },
+   {
+    "word": "duenos",
+    "raw": "dueños:",
+    "start": 70.513,
+    "end": 70.947,
+    "afterPause": false
+   },
+   {
+    "word": "los",
+    "raw": "los",
+    "start": 70.947,
+    "end": 71.196,
+    "afterPause": false
+   },
+   {
+    "word": "vecinos",
+    "raw": "vecinos.",
+    "start": 71.196,
+    "end": 71.692,
+    "afterPause": false
+   }
+  ],
+  "start": 68.714,
+  "end": 71.692
+ },
+ "c019": {
+  "words": [
+   {
+    "word": "esos",
+    "raw": "Esos",
+    "start": 71.882,
+    "end": 72.171,
+    "afterPause": false
+   },
+   {
+    "word": "vecinos",
+    "raw": "vecinos",
+    "start": 72.171,
+    "end": 72.633,
+    "afterPause": false
+   },
+   {
+    "word": "ya",
+    "raw": "ya",
+    "start": 72.633,
+    "end": 72.806,
+    "afterPause": false
+   },
+   {
+    "word": "no",
+    "raw": "no",
+    "start": 72.806,
+    "end": 72.979,
+    "afterPause": false
+   },
+   {
+    "word": "son",
+    "raw": "son",
+    "start": 72.979,
+    "end": 73.21,
+    "afterPause": false
+   },
+   {
+    "word": "solo",
+    "raw": "solo",
+    "start": 73.21,
+    "end": 73.499,
+    "afterPause": false
+   },
+   {
+    "word": "clientes",
+    "raw": "clientes:",
+    "start": 73.499,
+    "end": 74.018,
+    "afterPause": false
+   },
+   {
+    "word": "son",
+    "raw": "son",
+    "start": 74.018,
+    "end": 74.249,
+    "afterPause": false
+   },
+   {
+    "word": "duenos",
+    "raw": "dueños",
+    "start": 74.249,
+    "end": 74.653,
+    "afterPause": false
+   },
+   {
+    "word": "de",
+    "raw": "de",
+    "start": 74.653,
+    "end": 74.827,
+    "afterPause": false
+   },
+   {
+    "word": "una",
+    "raw": "una",
+    "start": 74.827,
+    "end": 75.058,
+    "afterPause": false
+   },
+   {
+    "word": "parte",
+    "raw": "parte.",
+    "start": 75.058,
+    "end": 75.404,
+    "afterPause": false
+   }
+  ],
+  "start": 71.882,
+  "end": 75.404
+ },
+ "c020": {
+  "words": [
+   {
+    "word": "a",
+    "raw": "A",
+    "start": 75.626,
+    "end": 75.75,
+    "afterPause": false
+   },
+   {
+    "word": "ellos",
+    "raw": "ellos,",
+    "start": 75.75,
+    "end": 76.12,
+    "afterPause": false
+   },
+   {
+    "word": "y",
+    "raw": "y",
+    "start": 76.12,
+    "end": 76.244,
+    "afterPause": false
+   },
+   {
+    "word": "a",
+    "raw": "a",
+    "start": 76.244,
+    "end": 76.367,
+    "afterPause": false
+   },
+   {
+    "word": "lupe",
+    "raw": "Lupe,",
+    "start": 76.367,
+    "end": 76.676,
+    "afterPause": false
+   },
+   {
+    "word": "se",
+    "raw": "se",
+    "start": 76.676,
+    "end": 76.861,
+    "afterPause": false
+   },
+   {
+    "word": "les",
+    "raw": "les",
+    "start": 76.861,
+    "end": 77.109,
+    "afterPause": false
+   },
+   {
+    "word": "llama",
+    "raw": "llama",
+    "start": 77.109,
+    "end": 77.479,
+    "afterPause": false
+   },
+   {
+    "word": "accionistas",
+    "raw": "accionistas:",
+    "start": 77.479,
+    "end": 78.221,
+    "afterPause": false
+   },
+   {
+    "word": "personas",
+    "raw": "personas",
+    "start": 78.221,
+    "end": 78.777,
+    "afterPause": false
+   },
+   {
+    "word": "que",
+    "raw": "que",
+    "start": 78.777,
+    "end": 79.024,
+    "afterPause": false
+   },
+   {
+    "word": "tienen",
+    "raw": "tienen",
+    "start": 79.024,
+    "end": 79.456,
+    "afterPause": false
+   },
+   {
+    "word": "acciones",
+    "raw": "acciones.",
+    "start": 79.456,
+    "end": 80.012,
+    "afterPause": false
+   }
+  ],
+  "start": 75.626,
+  "end": 80.012
+ },
+ "c021": {
+  "words": [
+   {
+    "word": "hasta",
+    "raw": "Hasta",
+    "start": 80.17,
+    "end": 80.485,
+    "afterPause": false
+   },
+   {
+    "word": "aqui",
+    "raw": "aquí:",
+    "start": 80.485,
+    "end": 80.748,
+    "afterPause": false
+   },
+   {
+    "word": "una",
+    "raw": "una",
+    "start": 80.906,
+    "end": 81.115,
+    "afterPause": false
+   },
+   {
+    "word": "accion",
+    "raw": "acción",
+    "start": 81.115,
+    "end": 81.482,
+    "afterPause": false
+   },
+   {
+    "word": "es",
+    "raw": "es",
+    "start": 81.482,
+    "end": 81.639,
+    "afterPause": false
+   },
+   {
+    "word": "un",
+    "raw": "un",
+    "start": 81.639,
+    "end": 81.796,
+    "afterPause": false
+   },
+   {
+    "word": "pedacito",
+    "raw": "pedacito",
+    "start": 81.796,
+    "end": 82.267,
+    "afterPause": false
+   },
+   {
+    "word": "de",
+    "raw": "de",
+    "start": 82.267,
+    "end": 82.424,
+    "afterPause": false
+   },
+   {
+    "word": "una",
+    "raw": "una",
+    "start": 82.424,
+    "end": 82.633,
+    "afterPause": false
+   },
+   {
+    "word": "empresa",
+    "raw": "empresa,",
+    "start": 82.633,
+    "end": 83.052,
+    "afterPause": false
+   },
+   {
+    "word": "y",
+    "raw": "y",
+    "start": 83.21,
+    "end": 83.317,
+    "afterPause": false
+   },
+   {
+    "word": "quien",
+    "raw": "quien",
+    "start": 83.317,
+    "end": 83.64,
+    "afterPause": false
+   },
+   {
+    "word": "la",
+    "raw": "la",
+    "start": 83.64,
+    "end": 83.801,
+    "afterPause": false
+   },
+   {
+    "word": "tiene",
+    "raw": "tiene",
+    "start": 83.801,
+    "end": 84.124,
+    "afterPause": false
+   },
+   {
+    "word": "es",
+    "raw": "es",
+    "start": 84.124,
+    "end": 84.285,
+    "afterPause": false
+   },
+   {
+    "word": "accionista",
+    "raw": "accionista.",
+    "start": 84.285,
+    "end": 84.876,
+    "afterPause": false
+   },
+   {
+    "word": "falta",
+    "raw": "Falta:",
+    "start": 84.876,
+    "end": 85.226,
+    "afterPause": false
+   },
+   {
+    "word": "que",
+    "raw": "qué",
+    "start": 85.403,
+    "end": 85.753,
+    "afterPause": false
+   },
+   {
+    "word": "pasa",
+    "raw": "pasa",
+    "start": 85.93,
+    "end": 86.175,
+    "afterPause": false
+   },
+   {
+    "word": "si",
+    "raw": "si",
+    "start": 86.175,
+    "end": 86.322,
+    "afterPause": false
+   },
+   {
+    "word": "un",
+    "raw": "un",
+    "start": 86.322,
+    "end": 86.468,
+    "afterPause": false
+   },
+   {
+    "word": "accionista",
+    "raw": "accionista",
+    "start": 86.468,
+    "end": 87.007,
+    "afterPause": false
+   },
+   {
+    "word": "quiere",
+    "raw": "quiere",
+    "start": 87.007,
+    "end": 87.349,
+    "afterPause": false
+   },
+   {
+    "word": "vender",
+    "raw": "vender.",
+    "start": 87.349,
+    "end": 87.692,
+    "afterPause": false
+   }
+  ],
+  "start": 80.17,
+  "end": 87.692
+ },
+ "c022": {
+  "words": [
+   {
+    "word": "pero",
+    "raw": "Pero",
+    "start": 87.882,
+    "end": 88.187,
+    "afterPause": false
+   },
+   {
+    "word": "hay",
+    "raw": "hay",
+    "start": 88.187,
+    "end": 88.431,
+    "afterPause": false
+   },
+   {
+    "word": "un",
+    "raw": "un",
+    "start": 88.431,
+    "end": 88.615,
+    "afterPause": false
+   },
+   {
+    "word": "problema",
+    "raw": "problema.",
+    "start": 88.615,
+    "end": 89.164,
+    "afterPause": false
+   },
+   {
+    "word": "don",
+    "raw": "Don",
+    "start": 89.386,
+    "end": 89.614,
+    "afterPause": false
+   },
+   {
+    "word": "ramiro",
+    "raw": "Ramiro,",
+    "start": 89.614,
+    "end": 90.012,
+    "afterPause": false
+   },
+   {
+    "word": "uno",
+    "raw": "uno",
+    "start": 90.012,
+    "end": 90.24,
+    "afterPause": false
+   },
+   {
+    "word": "de",
+    "raw": "de",
+    "start": 90.24,
+    "end": 90.41,
+    "afterPause": false
+   },
+   {
+    "word": "los",
+    "raw": "los",
+    "start": 90.41,
+    "end": 90.638,
+    "afterPause": false
+   },
+   {
+    "word": "vecinos",
+    "raw": "vecinos,",
+    "start": 90.638,
+    "end": 91.093,
+    "afterPause": false
+   },
+   {
+    "word": "necesita",
+    "raw": "necesita",
+    "start": 91.093,
+    "end": 91.606,
+    "afterPause": false
+   },
+   {
+    "word": "dinero",
+    "raw": "dinero",
+    "start": 91.606,
+    "end": 92.004,
+    "afterPause": false
+   },
+   {
+    "word": "y",
+    "raw": "y",
+    "start": 92.004,
+    "end": 92.118,
+    "afterPause": false
+   },
+   {
+    "word": "quiere",
+    "raw": "quiere",
+    "start": 92.118,
+    "end": 92.516,
+    "afterPause": false
+   },
+   {
+    "word": "vender",
+    "raw": "vender",
+    "start": 92.516,
+    "end": 92.915,
+    "afterPause": false
+   },
+   {
+    "word": "su",
+    "raw": "su",
+    "start": 92.915,
+    "end": 93.086,
+    "afterPause": false
+   },
+   {
+    "word": "accion",
+    "raw": "acción.",
+    "start": 93.086,
+    "end": 93.484,
+    "afterPause": false
+   }
+  ],
+  "start": 87.882,
+  "end": 93.484
+ },
+ "c023": {
+  "words": [
+   {
+    "word": "a",
+    "raw": "¿A",
+    "start": 93.484,
+    "end": 93.834,
+    "afterPause": false
+   },
+   {
+    "word": "quien",
+    "raw": "quién",
+    "start": 93.834,
+    "end": 94.668,
+    "afterPause": false
+   },
+   {
+    "word": "se",
+    "raw": "se",
+    "start": 94.668,
+    "end": 94.788,
+    "afterPause": false
+   },
+   {
+    "word": "la",
+    "raw": "la",
+    "start": 94.721,
+    "end": 94.841,
+    "afterPause": false
+   },
+   {
+    "word": "vende",
+    "raw": "vende?",
+    "start": 94.773,
+    "end": 94.893,
+    "afterPause": false
+   },
+   {
+    "word": "y",
+    "raw": "¿Y",
+    "start": 94.826,
+    "end": 94.941,
+    "afterPause": false
+   },
+   {
+    "word": "a",
+    "raw": "a",
+    "start": 94.941,
+    "end": 95.057,
+    "afterPause": false
+   },
+   {
+    "word": "que",
+    "raw": "qué",
+    "start": 95.057,
+    "end": 95.288,
+    "afterPause": false
+   },
+   {
+    "word": "precio",
+    "raw": "precio?",
+    "start": 95.288,
+    "end": 95.692,
+    "afterPause": false
+   }
+  ],
+  "start": 93.484,
+  "end": 95.692
+ },
+ "c024": {
+  "words": [
+   {
+    "word": "por",
+    "raw": "Por",
+    "start": 95.85,
+    "end": 96.1,
+    "afterPause": false
+   },
+   {
+    "word": "lo",
+    "raw": "lo",
+    "start": 96.1,
+    "end": 96.287,
+    "afterPause": false
+   },
+   {
+    "word": "tanto",
+    "raw": "tanto,",
+    "start": 96.287,
+    "end": 96.661,
+    "afterPause": false
+   },
+   {
+    "word": "lupe",
+    "raw": "Lupe",
+    "start": 96.661,
+    "end": 96.973,
+    "afterPause": false
+   },
+   {
+    "word": "cambia",
+    "raw": "cambia",
+    "start": 96.973,
+    "end": 97.41,
+    "afterPause": false
+   },
+   {
+    "word": "una",
+    "raw": "una",
+    "start": 97.41,
+    "end": 97.66,
+    "afterPause": false
+   },
+   {
+    "word": "sola",
+    "raw": "sola",
+    "start": 97.66,
+    "end": 97.972,
+    "afterPause": false
+   },
+   {
+    "word": "cosa",
+    "raw": "cosa:",
+    "start": 97.972,
+    "end": 98.284,
+    "afterPause": false
+   },
+   {
+    "word": "deja",
+    "raw": "deja",
+    "start": 98.474,
+    "end": 98.733,
+    "afterPause": false
+   },
+   {
+    "word": "que",
+    "raw": "que",
+    "start": 98.733,
+    "end": 98.94,
+    "afterPause": false
+   },
+   {
+    "word": "compre",
+    "raw": "compre",
+    "start": 98.94,
+    "end": 99.303,
+    "afterPause": false
+   },
+   {
+    "word": "cualquier",
+    "raw": "cualquier",
+    "start": 99.303,
+    "end": 99.821,
+    "afterPause": false
+   },
+   {
+    "word": "persona",
+    "raw": "persona,",
+    "start": 99.821,
+    "end": 100.236,
+    "afterPause": false
+   },
+   {
+    "word": "no",
+    "raw": "no",
+    "start": 100.394,
+    "end": 100.572,
+    "afterPause": false
+   },
+   {
+    "word": "solo",
+    "raw": "solo",
+    "start": 100.572,
+    "end": 100.868,
+    "afterPause": false
+   },
+   {
+    "word": "los",
+    "raw": "los",
+    "start": 100.868,
+    "end": 101.106,
+    "afterPause": false
+   },
+   {
+    "word": "vecinos",
+    "raw": "vecinos.",
+    "start": 101.106,
+    "end": 101.58,
+    "afterPause": false
+   }
+  ],
+  "start": 95.85,
+  "end": 101.58
+ },
+ "c025": {
+  "words": [
+   {
+    "word": "una",
+    "raw": "Una",
+    "start": 101.77,
+    "end": 101.972,
+    "afterPause": false
+   },
+   {
+    "word": "empresa",
+    "raw": "empresa",
+    "start": 101.972,
+    "end": 102.375,
+    "afterPause": false
+   },
+   {
+    "word": "que",
+    "raw": "que",
+    "start": 102.375,
+    "end": 102.577,
+    "afterPause": false
+   },
+   {
+    "word": "vende",
+    "raw": "vende",
+    "start": 102.577,
+    "end": 102.88,
+    "afterPause": false
+   },
+   {
+    "word": "sus",
+    "raw": "sus",
+    "start": 102.88,
+    "end": 103.081,
+    "afterPause": false
+   },
+   {
+    "word": "acciones",
+    "raw": "acciones",
+    "start": 103.081,
+    "end": 103.535,
+    "afterPause": false
+   },
+   {
+    "word": "a",
+    "raw": "a",
+    "start": 103.535,
+    "end": 103.636,
+    "afterPause": false
+   },
+   {
+    "word": "cualquiera",
+    "raw": "cualquiera",
+    "start": 103.636,
+    "end": 104.191,
+    "afterPause": false
+   },
+   {
+    "word": "se",
+    "raw": "se",
+    "start": 104.191,
+    "end": 104.342,
+    "afterPause": false
+   },
+   {
+    "word": "llama",
+    "raw": "llama",
+    "start": 104.342,
+    "end": 104.645,
+    "afterPause": false
+   },
+   {
+    "word": "empresa",
+    "raw": "empresa",
+    "start": 104.645,
+    "end": 105.048,
+    "afterPause": false
+   },
+   {
+    "word": "publica",
+    "raw": "pública.",
+    "start": 105.048,
+    "end": 105.452,
+    "afterPause": false
+   }
+  ],
+  "start": 101.77,
+  "end": 105.452
+ },
+ "c026": {
+  "words": [
+   {
+    "word": "ojo",
+    "raw": "Ojo:",
+    "start": 105.61,
+    "end": 105.877,
+    "afterPause": false
+   },
+   {
+    "word": "no",
+    "raw": "no",
+    "start": 105.877,
+    "end": 106.078,
+    "afterPause": false
+   },
+   {
+    "word": "es",
+    "raw": "es",
+    "start": 106.078,
+    "end": 106.279,
+    "afterPause": false
+   },
+   {
+    "word": "del",
+    "raw": "del",
+    "start": 106.279,
+    "end": 106.546,
+    "afterPause": false
+   },
+   {
+    "word": "gobierno",
+    "raw": "gobierno;",
+    "start": 106.546,
+    "end": 107.148,
+    "afterPause": false
+   },
+   {
+    "word": "es",
+    "raw": "es",
+    "start": 107.306,
+    "end": 107.47,
+    "afterPause": false
+   },
+   {
+    "word": "abierta",
+    "raw": "abierta",
+    "start": 107.47,
+    "end": 107.908,
+    "afterPause": false
+   },
+   {
+    "word": "a",
+    "raw": "a",
+    "start": 107.908,
+    "end": 108.018,
+    "afterPause": false
+   },
+   {
+    "word": "cualquiera",
+    "raw": "cualquiera.",
+    "start": 108.018,
+    "end": 108.62,
+    "afterPause": false
+   }
+  ],
+  "start": 105.61,
+  "end": 108.62
+ },
+ "c027": {
+  "words": [
+   {
+    "word": "esas",
+    "raw": "Esas",
+    "start": 108.81,
+    "end": 109.078,
+    "afterPause": false
+   },
+   {
+    "word": "acciones",
+    "raw": "acciones",
+    "start": 109.078,
+    "end": 109.561,
+    "afterPause": false
+   },
+   {
+    "word": "se",
+    "raw": "se",
+    "start": 109.561,
+    "end": 109.722,
+    "afterPause": false
+   },
+   {
+    "word": "compran",
+    "raw": "compran",
+    "start": 109.722,
+    "end": 110.152,
+    "afterPause": false
+   },
+   {
+    "word": "y",
+    "raw": "y",
+    "start": 110.152,
+    "end": 110.259,
+    "afterPause": false
+   },
+   {
+    "word": "se",
+    "raw": "se",
+    "start": 110.259,
+    "end": 110.42,
+    "afterPause": false
+   },
+   {
+    "word": "venden",
+    "raw": "venden",
+    "start": 110.42,
+    "end": 110.796,
+    "afterPause": false
+   },
+   {
+    "word": "en",
+    "raw": "en",
+    "start": 110.796,
+    "end": 110.957,
+    "afterPause": false
+   },
+   {
+    "word": "un",
+    "raw": "un",
+    "start": 110.957,
+    "end": 111.118,
+    "afterPause": false
+   },
+   {
+    "word": "lugar",
+    "raw": "lugar",
+    "start": 111.118,
+    "end": 111.44,
+    "afterPause": false
+   },
+   {
+    "word": "que",
+    "raw": "que",
+    "start": 111.44,
+    "end": 111.655,
+    "afterPause": false
+   },
+   {
+    "word": "se",
+    "raw": "se",
+    "start": 111.655,
+    "end": 111.816,
+    "afterPause": false
+   },
+   {
+    "word": "llama",
+    "raw": "llama",
+    "start": 111.816,
+    "end": 112.138,
+    "afterPause": false
+   },
+   {
+    "word": "bolsa",
+    "raw": "bolsa.",
+    "start": 112.138,
+    "end": 112.46,
+    "afterPause": false
+   }
+  ],
+  "start": 108.81,
+  "end": 112.46
+ },
+ "c028": {
+  "words": [
+   {
+    "word": "ahi",
+    "raw": "Ahí",
+    "start": 112.682,
+    "end": 112.887,
+    "afterPause": false
+   },
+   {
+    "word": "don",
+    "raw": "Don",
+    "start": 112.887,
+    "end": 113.092,
+    "afterPause": false
+   },
+   {
+    "word": "ramiro",
+    "raw": "Ramiro",
+    "start": 113.092,
+    "end": 113.451,
+    "afterPause": false
+   },
+   {
+    "word": "ya",
+    "raw": "ya",
+    "start": 113.451,
+    "end": 113.604,
+    "afterPause": false
+   },
+   {
+    "word": "si",
+    "raw": "sí",
+    "start": 113.604,
+    "end": 113.758,
+    "afterPause": false
+   },
+   {
+    "word": "encuentra",
+    "raw": "encuentra",
+    "start": 113.758,
+    "end": 114.27,
+    "afterPause": false
+   },
+   {
+    "word": "a",
+    "raw": "a",
+    "start": 114.27,
+    "end": 114.373,
+    "afterPause": false
+   },
+   {
+    "word": "quien",
+    "raw": "quién",
+    "start": 114.373,
+    "end": 114.68,
+    "afterPause": false
+   },
+   {
+    "word": "vendersela",
+    "raw": "vendérsela.",
+    "start": 114.68,
+    "end": 115.244,
+    "afterPause": false
+   }
+  ],
+  "start": 112.682,
+  "end": 115.244
+ },
+ "c029": {
+  "words": [
+   {
+    "word": "ahora",
+    "raw": "Ahora,",
+    "start": 115.466,
+    "end": 115.899,
+    "afterPause": false
+   },
+   {
+    "word": "el",
+    "raw": "el",
+    "start": 115.899,
+    "end": 116.115,
+    "afterPause": false
+   },
+   {
+    "word": "precio",
+    "raw": "precio.",
+    "start": 116.115,
+    "end": 116.62,
+    "afterPause": false
+   },
+   {
+    "word": "podrias",
+    "raw": "Podrías",
+    "start": 116.842,
+    "end": 117.186,
+    "afterPause": false
+   },
+   {
+    "word": "pensar",
+    "raw": "pensar",
+    "start": 117.186,
+    "end": 117.487,
+    "afterPause": false
+   },
+   {
+    "word": "que",
+    "raw": "que",
+    "start": 117.487,
+    "end": 117.659,
+    "afterPause": false
+   },
+   {
+    "word": "lo",
+    "raw": "lo",
+    "start": 117.659,
+    "end": 117.788,
+    "afterPause": false
+   },
+   {
+    "word": "fija",
+    "raw": "fija",
+    "start": 117.788,
+    "end": 118.003,
+    "afterPause": false
+   },
+   {
+    "word": "la",
+    "raw": "la",
+    "start": 118.003,
+    "end": 118.132,
+    "afterPause": false
+   },
+   {
+    "word": "empresa",
+    "raw": "empresa.",
+    "start": 118.132,
+    "end": 118.476,
+    "afterPause": false
+   }
+  ],
+  "start": 115.466,
+  "end": 118.476
+ },
+ "c030": {
+  "words": [
+   {
+    "word": "pero",
+    "raw": "Pero",
+    "start": 118.666,
+    "end": 118.923,
+    "afterPause": false
+   },
+   {
+    "word": "el",
+    "raw": "el",
+    "start": 118.923,
+    "end": 119.076,
+    "afterPause": false
+   },
+   {
+    "word": "precio",
+    "raw": "precio",
+    "start": 119.076,
+    "end": 119.436,
+    "afterPause": false
+   },
+   {
+    "word": "es",
+    "raw": "es",
+    "start": 119.436,
+    "end": 119.589,
+    "afterPause": false
+   },
+   {
+    "word": "lo",
+    "raw": "lo",
+    "start": 119.589,
+    "end": 119.743,
+    "afterPause": false
+   },
+   {
+    "word": "que",
+    "raw": "que",
+    "start": 119.743,
+    "end": 119.949,
+    "afterPause": false
+   },
+   {
+    "word": "un",
+    "raw": "un",
+    "start": 119.949,
+    "end": 120.102,
+    "afterPause": false
+   },
+   {
+    "word": "comprador",
+    "raw": "comprador",
+    "start": 120.102,
+    "end": 120.615,
+    "afterPause": false
+   },
+   {
+    "word": "acepta",
+    "raw": "acepta",
+    "start": 120.615,
+    "end": 120.975,
+    "afterPause": false
+   },
+   {
+    "word": "pagar",
+    "raw": "pagar",
+    "start": 120.975,
+    "end": 121.282,
+    "afterPause": false
+   },
+   {
+    "word": "hoy",
+    "raw": "hoy",
+    "start": 121.282,
+    "end": 121.488,
+    "afterPause": false
+   },
+   {
+    "word": "y",
+    "raw": "y",
+    "start": 121.488,
+    "end": 121.59,
+    "afterPause": false
+   },
+   {
+    "word": "un",
+    "raw": "un",
+    "start": 121.59,
+    "end": 121.744,
+    "afterPause": false
+   },
+   {
+    "word": "vendedor",
+    "raw": "vendedor",
+    "start": 121.744,
+    "end": 122.206,
+    "afterPause": false
+   },
+   {
+    "word": "acepta",
+    "raw": "acepta",
+    "start": 122.206,
+    "end": 122.565,
+    "afterPause": false
+   },
+   {
+    "word": "cobrar",
+    "raw": "cobrar.",
+    "start": 122.565,
+    "end": 122.924,
+    "afterPause": false
+   }
+  ],
+  "start": 118.666,
+  "end": 122.924
+ },
+ "c031": {
+  "words": [
+   {
+    "word": "cambiamos",
+    "raw": "Cambiamos",
+    "start": 123.178,
+    "end": 123.792,
+    "afterPause": false
+   },
+   {
+    "word": "una",
+    "raw": "una",
+    "start": 123.792,
+    "end": 124.038,
+    "afterPause": false
+   },
+   {
+    "word": "sola",
+    "raw": "sola",
+    "start": 124.038,
+    "end": 124.345,
+    "afterPause": false
+   },
+   {
+    "word": "cosa",
+    "raw": "cosa:",
+    "start": 124.345,
+    "end": 124.652,
+    "afterPause": false
+   },
+   {
+    "word": "cuanta",
+    "raw": "cuánta",
+    "start": 124.874,
+    "end": 125.227,
+    "afterPause": false
+   },
+   {
+    "word": "gente",
+    "raw": "gente",
+    "start": 125.227,
+    "end": 125.529,
+    "afterPause": false
+   },
+   {
+    "word": "quiere",
+    "raw": "quiere",
+    "start": 125.529,
+    "end": 125.881,
+    "afterPause": false
+   },
+   {
+    "word": "comprar",
+    "raw": "comprar.",
+    "start": 125.881,
+    "end": 126.284,
+    "afterPause": false
+   }
+  ],
+  "start": 123.178,
+  "end": 126.284
+ },
+ "c032": {
+  "words": [
+   {
+    "word": "antes",
+    "raw": "Antes",
+    "start": 126.538,
+    "end": 126.862,
+    "afterPause": false
+   },
+   {
+    "word": "de",
+    "raw": "de",
+    "start": 126.862,
+    "end": 127.024,
+    "afterPause": false
+   },
+   {
+    "word": "ver",
+    "raw": "ver",
+    "start": 127.024,
+    "end": 127.24,
+    "afterPause": false
+   },
+   {
+    "word": "el",
+    "raw": "el",
+    "start": 127.24,
+    "end": 127.402,
+    "afterPause": false
+   },
+   {
+    "word": "resultado",
+    "raw": "resultado,",
+    "start": 127.402,
+    "end": 127.942,
+    "afterPause": false
+   },
+   {
+    "word": "piensalo",
+    "raw": "piénsalo:",
+    "start": 127.942,
+    "end": 128.428,
+    "afterPause": false
+   },
+   {
+    "word": "si",
+    "raw": "si",
+    "start": 128.714,
+    "end": 128.871,
+    "afterPause": false
+   },
+   {
+    "word": "muchos",
+    "raw": "muchos",
+    "start": 128.871,
+    "end": 129.237,
+    "afterPause": false
+   },
+   {
+    "word": "quieren",
+    "raw": "quieren",
+    "start": 129.237,
+    "end": 129.656,
+    "afterPause": false
+   },
+   {
+    "word": "comprar",
+    "raw": "comprar",
+    "start": 129.656,
+    "end": 130.075,
+    "afterPause": false
+   },
+   {
+    "word": "la",
+    "raw": "la",
+    "start": 130.075,
+    "end": 130.232,
+    "afterPause": false
+   },
+   {
+    "word": "accion",
+    "raw": "acción",
+    "start": 130.232,
+    "end": 130.599,
+    "afterPause": false
+   },
+   {
+    "word": "y",
+    "raw": "y",
+    "start": 130.599,
+    "end": 130.703,
+    "afterPause": false
+   },
+   {
+    "word": "casi",
+    "raw": "casi",
+    "start": 130.703,
+    "end": 130.965,
+    "afterPause": false
+   },
+   {
+    "word": "nadie",
+    "raw": "nadie",
+    "start": 130.965,
+    "end": 131.279,
+    "afterPause": false
+   },
+   {
+    "word": "quiere",
+    "raw": "quiere",
+    "start": 131.279,
+    "end": 131.646,
+    "afterPause": false
+   },
+   {
+    "word": "vender",
+    "raw": "vender,",
+    "start": 131.646,
+    "end": 132.012,
+    "afterPause": false
+   },
+   {
+    "word": "el",
+    "raw": "¿el",
+    "start": 132.012,
+    "end": 132.362,
+    "afterPause": false
+   },
+   {
+    "word": "precio",
+    "raw": "precio",
+    "start": 132.44,
+    "end": 132.79,
+    "afterPause": false
+   },
+   {
+    "word": "sube",
+    "raw": "sube",
+    "start": 132.867,
+    "end": 133.217,
+    "afterPause": false
+   },
+   {
+    "word": "o",
+    "raw": "o",
+    "start": 133.295,
+    "end": 133.459,
+    "afterPause": false
+   },
+   {
+    "word": "baja",
+    "raw": "baja?",
+    "start": 133.459,
+    "end": 133.868,
+    "afterPause": false
+   }
+  ],
+  "start": 126.538,
+  "end": 133.868
+ },
+ "c033": {
+  "words": [
+   {
+    "word": "sube",
+    "raw": "Sube.",
+    "start": 133.868,
+    "end": 134.218,
+    "afterPause": false
+   },
+   {
+    "word": "quien",
+    "raw": "Quien",
+    "start": 136.906,
+    "end": 137.231,
+    "afterPause": false
+   },
+   {
+    "word": "vende",
+    "raw": "vende",
+    "start": 137.231,
+    "end": 137.557,
+    "afterPause": false
+   },
+   {
+    "word": "puede",
+    "raw": "puede",
+    "start": 137.557,
+    "end": 137.882,
+    "afterPause": false
+   },
+   {
+    "word": "pedir",
+    "raw": "pedir",
+    "start": 137.882,
+    "end": 138.208,
+    "afterPause": false
+   },
+   {
+    "word": "mas",
+    "raw": "más,",
+    "start": 138.208,
+    "end": 138.425,
+    "afterPause": false
+   },
+   {
+    "word": "y",
+    "raw": "y",
+    "start": 138.425,
+    "end": 138.533,
+    "afterPause": false
+   },
+   {
+    "word": "alguien",
+    "raw": "alguien",
+    "start": 138.533,
+    "end": 138.967,
+    "afterPause": false
+   },
+   {
+    "word": "se",
+    "raw": "se",
+    "start": 138.967,
+    "end": 139.13,
+    "afterPause": false
+   },
+   {
+    "word": "lo",
+    "raw": "lo",
+    "start": 139.13,
+    "end": 139.293,
+    "afterPause": false
+   },
+   {
+    "word": "paga",
+    "raw": "paga.",
+    "start": 139.293,
+    "end": 139.564,
+    "afterPause": false
+   }
+  ],
+  "start": 133.868,
+  "end": 139.564
+ },
+ "c034": {
+  "words": [
+   {
+    "word": "hoy",
+    "raw": "Hoy",
+    "start": 139.85,
+    "end": 140.135,
+    "afterPause": false
+   },
+   {
+    "word": "la",
+    "raw": "la",
+    "start": 140.135,
+    "end": 140.348,
+    "afterPause": false
+   },
+   {
+    "word": "accion",
+    "raw": "acción",
+    "start": 140.348,
+    "end": 140.846,
+    "afterPause": false
+   },
+   {
+    "word": "llega",
+    "raw": "llega",
+    "start": 140.846,
+    "end": 141.273,
+    "afterPause": false
+   },
+   {
+    "word": "a",
+    "raw": "a",
+    "start": 141.273,
+    "end": 141.416,
+    "afterPause": false
+   },
+   {
+    "word": "1500",
+    "raw": "1,500",
+    "start": 141.416,
+    "end": 141.772,
+    "afterPause": false
+   },
+   {
+    "word": "catpesos",
+    "raw": "catpesos.",
+    "start": 141.772,
+    "end": 142.412,
+    "afterPause": false
+   }
+  ],
+  "start": 139.85,
+  "end": 142.412
+ },
+ "c035": {
+  "words": [
+   {
+    "word": "lo",
+    "raw": "¿Lo",
+    "start": 143.434,
+    "end": 143.602,
+    "afterPause": false
+   },
+   {
+    "word": "pensaste",
+    "raw": "pensaste",
+    "start": 143.602,
+    "end": 144.107,
+    "afterPause": false
+   },
+   {
+    "word": "asi",
+    "raw": "así?",
+    "start": 144.107,
+    "end": 144.332,
+    "afterPause": false
+   },
+   {
+    "word": "entonces",
+    "raw": "Entonces",
+    "start": 144.49,
+    "end": 144.904,
+    "afterPause": false
+   },
+   {
+    "word": "ya",
+    "raw": "ya",
+    "start": 144.904,
+    "end": 145.041,
+    "afterPause": false
+   },
+   {
+    "word": "entiendes",
+    "raw": "entiendes",
+    "start": 145.041,
+    "end": 145.501,
+    "afterPause": false
+   },
+   {
+    "word": "como",
+    "raw": "cómo",
+    "start": 145.501,
+    "end": 145.731,
+    "afterPause": false
+   },
+   {
+    "word": "se",
+    "raw": "se",
+    "start": 145.731,
+    "end": 145.869,
+    "afterPause": false
+   },
+   {
+    "word": "mueve",
+    "raw": "mueve",
+    "start": 145.869,
+    "end": 146.144,
+    "afterPause": false
+   },
+   {
+    "word": "el",
+    "raw": "el",
+    "start": 146.144,
+    "end": 146.282,
+    "afterPause": false
+   },
+   {
+    "word": "precio",
+    "raw": "precio.",
+    "start": 146.282,
+    "end": 146.604,
+    "afterPause": false
+   }
+  ],
+  "start": 143.434,
+  "end": 146.604
+ },
+ "c036": {
+  "words": [
+   {
+    "word": "y",
+    "raw": "Y",
+    "start": 146.826,
+    "end": 146.969,
+    "afterPause": false
+   },
+   {
+    "word": "al",
+    "raw": "al",
+    "start": 146.969,
+    "end": 147.183,
+    "afterPause": false
+   },
+   {
+    "word": "reves",
+    "raw": "revés:",
+    "start": 147.183,
+    "end": 147.533,
+    "afterPause": false
+   },
+   {
+    "word": "si",
+    "raw": "si",
+    "start": 147.626,
+    "end": 147.787,
+    "afterPause": false
+   },
+   {
+    "word": "muchos",
+    "raw": "muchos",
+    "start": 147.787,
+    "end": 148.162,
+    "afterPause": false
+   },
+   {
+    "word": "quieren",
+    "raw": "quieren",
+    "start": 148.162,
+    "end": 148.591,
+    "afterPause": false
+   },
+   {
+    "word": "vender",
+    "raw": "vender",
+    "start": 148.591,
+    "end": 148.966,
+    "afterPause": false
+   },
+   {
+    "word": "y",
+    "raw": "y",
+    "start": 148.966,
+    "end": 149.073,
+    "afterPause": false
+   },
+   {
+    "word": "casi",
+    "raw": "casi",
+    "start": 149.073,
+    "end": 149.341,
+    "afterPause": false
+   },
+   {
+    "word": "nadie",
+    "raw": "nadie",
+    "start": 149.341,
+    "end": 149.663,
+    "afterPause": false
+   },
+   {
+    "word": "comprar",
+    "raw": "comprar,",
+    "start": 149.663,
+    "end": 150.092,
+    "afterPause": false
+   },
+   {
+    "word": "el",
+    "raw": "el",
+    "start": 150.092,
+    "end": 150.442,
+    "afterPause": false
+   },
+   {
+    "word": "precio",
+    "raw": "precio",
+    "start": 150.442,
+    "end": 150.817,
+    "afterPause": false
+   },
+   {
+    "word": "baja",
+    "raw": "baja.",
+    "start": 150.817,
+    "end": 151.084,
+    "afterPause": false
+   }
+  ],
+  "start": 146.826,
+  "end": 151.084
+ },
+ "c037": {
+  "words": [
+   {
+    "word": "hasta",
+    "raw": "Hasta",
+    "start": 151.338,
+    "end": 151.638,
+    "afterPause": false
+   },
+   {
+    "word": "aqui",
+    "raw": "aquí:",
+    "start": 151.638,
+    "end": 151.887,
+    "afterPause": false
+   },
+   {
+    "word": "la",
+    "raw": "la",
+    "start": 151.887,
+    "end": 152.037,
+    "afterPause": false
+   },
+   {
+    "word": "accion",
+    "raw": "acción",
+    "start": 152.037,
+    "end": 152.387,
+    "afterPause": false
+   },
+   {
+    "word": "se",
+    "raw": "se",
+    "start": 152.387,
+    "end": 152.537,
+    "afterPause": false
+   },
+   {
+    "word": "compra",
+    "raw": "compra",
+    "start": 152.537,
+    "end": 152.886,
+    "afterPause": false
+   },
+   {
+    "word": "y",
+    "raw": "y",
+    "start": 152.886,
+    "end": 152.986,
+    "afterPause": false
+   },
+   {
+    "word": "se",
+    "raw": "se",
+    "start": 152.986,
+    "end": 153.136,
+    "afterPause": false
+   },
+   {
+    "word": "vende",
+    "raw": "vende",
+    "start": 153.136,
+    "end": 153.435,
+    "afterPause": false
+   },
+   {
+    "word": "en",
+    "raw": "en",
+    "start": 153.435,
+    "end": 153.585,
+    "afterPause": false
+   },
+   {
+    "word": "la",
+    "raw": "la",
+    "start": 153.585,
+    "end": 153.735,
+    "afterPause": false
+   },
+   {
+    "word": "bolsa",
+    "raw": "bolsa,",
+    "start": 153.735,
+    "end": 154.035,
+    "afterPause": false
+   },
+   {
+    "word": "y",
+    "raw": "y",
+    "start": 154.035,
+    "end": 154.135,
+    "afterPause": false
+   },
+   {
+    "word": "su",
+    "raw": "su",
+    "start": 154.135,
+    "end": 154.284,
+    "afterPause": false
+   },
+   {
+    "word": "precio",
+    "raw": "precio",
+    "start": 154.284,
+    "end": 154.634,
+    "afterPause": false
+   },
+   {
+    "word": "lo",
+    "raw": "lo",
+    "start": 154.634,
+    "end": 154.784,
+    "afterPause": false
+   },
+   {
+    "word": "fijan",
+    "raw": "fijan",
+    "start": 154.784,
+    "end": 155.083,
+    "afterPause": false
+   },
+   {
+    "word": "quienes",
+    "raw": "quienes",
+    "start": 155.083,
+    "end": 155.483,
+    "afterPause": false
+   },
+   {
+    "word": "compran",
+    "raw": "compran",
+    "start": 155.483,
+    "end": 155.883,
+    "afterPause": false
+   },
+   {
+    "word": "y",
+    "raw": "y",
+    "start": 155.883,
+    "end": 155.982,
+    "afterPause": false
+   },
+   {
+    "word": "venden",
+    "raw": "venden.",
+    "start": 155.982,
+    "end": 156.332,
+    "afterPause": false
+   },
+   {
+    "word": "falta",
+    "raw": "Falta:",
+    "start": 156.586,
+    "end": 157.068,
+    "afterPause": false
+   },
+   {
+    "word": "por",
+    "raw": "por",
+    "start": 157.068,
+    "end": 157.418,
+    "afterPause": false
+   },
+   {
+    "word": "que",
+    "raw": "qué",
+    "start": 157.546,
+    "end": 157.78,
+    "afterPause": false
+   },
+   {
+    "word": "querrian",
+    "raw": "querrían",
+    "start": 157.78,
+    "end": 158.307,
+    "afterPause": false
+   },
+   {
+    "word": "pagar",
+    "raw": "pagar",
+    "start": 158.307,
+    "end": 158.658,
+    "afterPause": false
+   },
+   {
+    "word": "mas",
+    "raw": "más.",
+    "start": 158.658,
+    "end": 158.892,
+    "afterPause": false
+   }
+  ],
+  "start": 151.338,
+  "end": 158.892
+ },
+ "c038": {
+  "words": [
+   {
+    "word": "pero",
+    "raw": "Pero",
+    "start": 159.114,
+    "end": 159.349,
+    "afterPause": false
+   },
+   {
+    "word": "mira",
+    "raw": "mira",
+    "start": 159.349,
+    "end": 159.585,
+    "afterPause": false
+   },
+   {
+    "word": "esto",
+    "raw": "esto:",
+    "start": 159.585,
+    "end": 159.82,
+    "afterPause": false
+   },
+   {
+    "word": "hoy",
+    "raw": "hoy",
+    "start": 160.042,
+    "end": 160.262,
+    "afterPause": false
+   },
+   {
+    "word": "la",
+    "raw": "la",
+    "start": 160.262,
+    "end": 160.428,
+    "afterPause": false
+   },
+   {
+    "word": "taqueria",
+    "raw": "taquería",
+    "start": 160.428,
+    "end": 160.924,
+    "afterPause": false
+   },
+   {
+    "word": "gana",
+    "raw": "gana",
+    "start": 160.924,
+    "end": 161.199,
+    "afterPause": false
+   },
+   {
+    "word": "lo",
+    "raw": "lo",
+    "start": 161.199,
+    "end": 161.365,
+    "afterPause": false
+   },
+   {
+    "word": "mismo",
+    "raw": "mismo",
+    "start": 161.365,
+    "end": 161.695,
+    "afterPause": false
+   },
+   {
+    "word": "que",
+    "raw": "que",
+    "start": 161.695,
+    "end": 161.916,
+    "afterPause": false
+   },
+   {
+    "word": "ayer",
+    "raw": "ayer,",
+    "start": 161.916,
+    "end": 162.191,
+    "afterPause": false
+   },
+   {
+    "word": "10000",
+    "raw": "10,000",
+    "start": 162.191,
+    "end": 162.522,
+    "afterPause": false
+   },
+   {
+    "word": "catpesos",
+    "raw": "catpesos",
+    "start": 162.522,
+    "end": 163.018,
+    "afterPause": false
+   },
+   {
+    "word": "al",
+    "raw": "al",
+    "start": 163.018,
+    "end": 163.184,
+    "afterPause": false
+   },
+   {
+    "word": "ano",
+    "raw": "año.",
+    "start": 163.184,
+    "end": 163.404,
+    "afterPause": false
+   }
+  ],
+  "start": 159.114,
+  "end": 163.404
+ },
+ "c039": {
+  "words": [
+   {
+    "word": "aun",
+    "raw": "Aun",
+    "start": 163.786,
+    "end": 164.033,
+    "afterPause": false
+   },
+   {
+    "word": "asi",
+    "raw": "así,",
+    "start": 164.033,
+    "end": 164.28,
+    "afterPause": false
+   },
+   {
+    "word": "la",
+    "raw": "la",
+    "start": 164.28,
+    "end": 164.465,
+    "afterPause": false
+   },
+   {
+    "word": "accion",
+    "raw": "acción",
+    "start": 164.465,
+    "end": 164.897,
+    "afterPause": false
+   },
+   {
+    "word": "vale",
+    "raw": "vale",
+    "start": 164.897,
+    "end": 165.205,
+    "afterPause": false
+   },
+   {
+    "word": "mas",
+    "raw": "más.",
+    "start": 165.205,
+    "end": 165.452,
+    "afterPause": false
+   },
+   {
+    "word": "por",
+    "raw": "¿Por",
+    "start": 165.452,
+    "end": 165.699,
+    "afterPause": false
+   },
+   {
+    "word": "que",
+    "raw": "qué",
+    "start": 165.699,
+    "end": 165.946,
+    "afterPause": false
+   },
+   {
+    "word": "pagaria",
+    "raw": "pagaría",
+    "start": 165.946,
+    "end": 166.439,
+    "afterPause": false
+   },
+   {
+    "word": "alguien",
+    "raw": "alguien",
+    "start": 166.439,
+    "end": 166.933,
+    "afterPause": false
+   },
+   {
+    "word": "mas",
+    "raw": "más?",
+    "start": 166.933,
+    "end": 167.18,
+    "afterPause": false
+   }
+  ],
+  "start": 163.786,
+  "end": 167.18
+ },
+ "c040": {
+  "words": [
+   {
+    "word": "por",
+    "raw": "Por",
+    "start": 167.37,
+    "end": 167.587,
+    "afterPause": false
+   },
+   {
+    "word": "lo",
+    "raw": "lo",
+    "start": 167.587,
+    "end": 167.749,
+    "afterPause": false
+   },
+   {
+    "word": "tanto",
+    "raw": "tanto,",
+    "start": 167.749,
+    "end": 168.074,
+    "afterPause": false
+   },
+   {
+    "word": "veamos",
+    "raw": "veamos",
+    "start": 168.074,
+    "end": 168.454,
+    "afterPause": false
+   },
+   {
+    "word": "cuanto",
+    "raw": "cuánto",
+    "start": 168.454,
+    "end": 168.833,
+    "afterPause": false
+   },
+   {
+    "word": "le",
+    "raw": "le",
+    "start": 168.833,
+    "end": 168.996,
+    "afterPause": false
+   },
+   {
+    "word": "toca",
+    "raw": "toca",
+    "start": 168.996,
+    "end": 169.266,
+    "afterPause": false
+   },
+   {
+    "word": "a",
+    "raw": "a",
+    "start": 169.266,
+    "end": 169.375,
+    "afterPause": false
+   },
+   {
+    "word": "cada",
+    "raw": "cada",
+    "start": 169.375,
+    "end": 169.646,
+    "afterPause": false
+   },
+   {
+    "word": "accion",
+    "raw": "acción",
+    "start": 169.646,
+    "end": 170.025,
+    "afterPause": false
+   },
+   {
+    "word": "de",
+    "raw": "de",
+    "start": 170.025,
+    "end": 170.188,
+    "afterPause": false
+   },
+   {
+    "word": "esa",
+    "raw": "esa",
+    "start": 170.188,
+    "end": 170.404,
+    "afterPause": false
+   },
+   {
+    "word": "ganancia",
+    "raw": "ganancia.",
+    "start": 170.404,
+    "end": 170.892,
+    "afterPause": false
+   }
+  ],
+  "start": 167.37,
+  "end": 170.892
+ },
+ "c041": {
+  "words": [
+   {
+    "word": "10000",
+    "raw": "10,000",
+    "start": 171.114,
+    "end": 171.619,
+    "afterPause": false
+   },
+   {
+    "word": "entre",
+    "raw": "entre",
+    "start": 171.619,
+    "end": 172.124,
+    "afterPause": false
+   },
+   {
+    "word": "100",
+    "raw": "100.",
+    "start": 172.124,
+    "end": 172.46,
+    "afterPause": false
+   },
+   {
+    "word": "le",
+    "raw": "Le",
+    "start": 173.93,
+    "end": 174.126,
+    "afterPause": true
+   },
+   {
+    "word": "tocan",
+    "raw": "tocan",
+    "start": 174.126,
+    "end": 174.517,
+    "afterPause": false
+   },
+   {
+    "word": "100",
+    "raw": "100",
+    "start": 174.517,
+    "end": 174.777,
+    "afterPause": false
+   },
+   {
+    "word": "catpesos",
+    "raw": "catpesos",
+    "start": 174.777,
+    "end": 175.364,
+    "afterPause": false
+   },
+   {
+    "word": "al",
+    "raw": "al",
+    "start": 175.364,
+    "end": 175.559,
+    "afterPause": false
+   },
+   {
+    "word": "ano",
+    "raw": "año.",
+    "start": 175.559,
+    "end": 175.82,
+    "afterPause": false
+   }
+  ],
+  "start": 171.114,
+  "end": 175.82
+ },
+ "c042": {
+  "words": [
+   {
+    "word": "es",
+    "raw": "Es",
+    "start": 176.01,
+    "end": 176.14,
+    "afterPause": false
+   },
+   {
+    "word": "la",
+    "raw": "la",
+    "start": 176.14,
+    "end": 176.27,
+    "afterPause": false
+   },
+   {
+    "word": "parte",
+    "raw": "parte",
+    "start": 176.27,
+    "end": 176.531,
+    "afterPause": false
+   },
+   {
+    "word": "de",
+    "raw": "de",
+    "start": 176.531,
+    "end": 176.661,
+    "afterPause": false
+   },
+   {
+    "word": "la",
+    "raw": "la",
+    "start": 176.661,
+    "end": 176.791,
+    "afterPause": false
+   },
+   {
+    "word": "ganancia",
+    "raw": "ganancia",
+    "start": 176.791,
+    "end": 177.181,
+    "afterPause": false
+   },
+   {
+    "word": "que",
+    "raw": "que",
+    "start": 177.181,
+    "end": 177.355,
+    "afterPause": false
+   },
+   {
+    "word": "le",
+    "raw": "le",
+    "start": 177.355,
+    "end": 177.485,
+    "afterPause": false
+   },
+   {
+    "word": "corresponde",
+    "raw": "corresponde",
+    "start": 177.485,
+    "end": 178.006,
+    "afterPause": false
+   },
+   {
+    "word": "a",
+    "raw": "a",
+    "start": 178.006,
+    "end": 178.093,
+    "afterPause": false
+   },
+   {
+    "word": "su",
+    "raw": "su",
+    "start": 178.093,
+    "end": 178.223,
+    "afterPause": false
+   },
+   {
+    "word": "accionista",
+    "raw": "accionista.",
+    "start": 178.223,
+    "end": 178.7,
+    "afterPause": false
+   }
+  ],
+  "start": 176.01,
+  "end": 178.7
+ },
+ "c043": {
+  "words": [
+   {
+    "word": "recuerda",
+    "raw": "Recuerda:",
+    "start": 178.7,
+    "end": 179.05,
+    "afterPause": false
+   },
+   {
+    "word": "lupe",
+    "raw": "Lupe",
+    "start": 179.594,
+    "end": 179.87,
+    "afterPause": false
+   },
+   {
+    "word": "abrio",
+    "raw": "abrió",
+    "start": 179.87,
+    "end": 180.201,
+    "afterPause": false
+   },
+   {
+    "word": "su",
+    "raw": "su",
+    "start": 180.201,
+    "end": 180.367,
+    "afterPause": false
+   },
+   {
+    "word": "segunda",
+    "raw": "segunda",
+    "start": 180.367,
+    "end": 180.808,
+    "afterPause": false
+   },
+   {
+    "word": "taqueria",
+    "raw": "taquería",
+    "start": 180.808,
+    "end": 181.158,
+    "afterPause": false
+   },
+   {
+    "word": "con",
+    "raw": "con",
+    "start": 181.36,
+    "end": 181.581,
+    "afterPause": false
+   },
+   {
+    "word": "esos",
+    "raw": "esos",
+    "start": 181.581,
+    "end": 181.857,
+    "afterPause": false
+   },
+   {
+    "word": "20000",
+    "raw": "20,000.",
+    "start": 181.857,
+    "end": 182.188,
+    "afterPause": false
+   }
+  ],
+  "start": 178.7,
+  "end": 182.188
+ },
+ "c044": {
+  "words": [
+   {
+    "word": "la",
+    "raw": "La",
+    "start": 182.346,
+    "end": 182.517,
+    "afterPause": false
+   },
+   {
+    "word": "gente",
+    "raw": "gente",
+    "start": 182.517,
+    "end": 182.859,
+    "afterPause": false
+   },
+   {
+    "word": "lo",
+    "raw": "lo",
+    "start": 182.859,
+    "end": 183.031,
+    "afterPause": false
+   },
+   {
+    "word": "sabe",
+    "raw": "sabe,",
+    "start": 183.031,
+    "end": 183.316,
+    "afterPause": false
+   },
+   {
+    "word": "y",
+    "raw": "y",
+    "start": 183.316,
+    "end": 183.43,
+    "afterPause": false
+   },
+   {
+    "word": "muchos",
+    "raw": "muchos",
+    "start": 183.43,
+    "end": 183.829,
+    "afterPause": false
+   },
+   {
+    "word": "piensan",
+    "raw": "piensan",
+    "start": 183.829,
+    "end": 184.286,
+    "afterPause": false
+   },
+   {
+    "word": "que",
+    "raw": "que",
+    "start": 184.286,
+    "end": 184.514,
+    "afterPause": false
+   },
+   {
+    "word": "ahora",
+    "raw": "ahora",
+    "start": 184.514,
+    "end": 184.856,
+    "afterPause": false
+   },
+   {
+    "word": "ganara",
+    "raw": "ganará",
+    "start": 184.856,
+    "end": 185.256,
+    "afterPause": false
+   },
+   {
+    "word": "mas",
+    "raw": "más.",
+    "start": 185.256,
+    "end": 185.484,
+    "afterPause": false
+   }
+  ],
+  "start": 182.346,
+  "end": 185.484
+ },
+ "c045": {
+  "words": [
+   {
+    "word": "todavia",
+    "raw": "Todavía",
+    "start": 186.186,
+    "end": 186.674,
+    "afterPause": false
+   },
+   {
+    "word": "no",
+    "raw": "no",
+    "start": 186.674,
+    "end": 186.858,
+    "afterPause": false
+   },
+   {
+    "word": "gana",
+    "raw": "gana",
+    "start": 186.858,
+    "end": 187.208,
+    "afterPause": false
+   },
+   {
+    "word": "mas",
+    "raw": "más:",
+    "start": 187.224,
+    "end": 187.468,
+    "afterPause": false
+   },
+   {
+    "word": "es",
+    "raw": "es",
+    "start": 187.626,
+    "end": 187.79,
+    "afterPause": false
+   },
+   {
+    "word": "lo",
+    "raw": "lo",
+    "start": 187.79,
+    "end": 187.955,
+    "afterPause": false
+   },
+   {
+    "word": "que",
+    "raw": "que",
+    "start": 187.955,
+    "end": 188.174,
+    "afterPause": false
+   },
+   {
+    "word": "creen",
+    "raw": "creen",
+    "start": 188.174,
+    "end": 188.502,
+    "afterPause": false
+   },
+   {
+    "word": "que",
+    "raw": "que",
+    "start": 188.502,
+    "end": 188.721,
+    "afterPause": false
+   },
+   {
+    "word": "va",
+    "raw": "va",
+    "start": 188.721,
+    "end": 188.886,
+    "afterPause": false
+   },
+   {
+    "word": "a",
+    "raw": "a",
+    "start": 188.886,
+    "end": 188.995,
+    "afterPause": false
+   },
+   {
+    "word": "pasar",
+    "raw": "pasar.",
+    "start": 188.995,
+    "end": 189.324,
+    "afterPause": false
+   },
+   {
+    "word": "a",
+    "raw": "A",
+    "start": 189.482,
+    "end": 189.625,
+    "afterPause": false
+   },
+   {
+    "word": "eso",
+    "raw": "eso",
+    "start": 189.625,
+    "end": 189.91,
+    "afterPause": false
+   },
+   {
+    "word": "se",
+    "raw": "se",
+    "start": 189.91,
+    "end": 190.124,
+    "afterPause": false
+   },
+   {
+    "word": "le",
+    "raw": "le",
+    "start": 190.124,
+    "end": 190.337,
+    "afterPause": false
+   },
+   {
+    "word": "llama",
+    "raw": "llama",
+    "start": 190.337,
+    "end": 190.765,
+    "afterPause": false
+   },
+   {
+    "word": "expectativas",
+    "raw": "expectativas.",
+    "start": 190.765,
+    "end": 191.692,
+    "afterPause": false
+   }
+  ],
+  "start": 186.186,
+  "end": 191.692
+ },
+ "c046": {
+  "words": [
+   {
+    "word": "digamos",
+    "raw": "Digamos",
+    "start": 191.882,
+    "end": 192.309,
+    "afterPause": false
+   },
+   {
+    "word": "que",
+    "raw": "que",
+    "start": 192.309,
+    "end": 192.522,
+    "afterPause": false
+   },
+   {
+    "word": "la",
+    "raw": "la",
+    "start": 192.522,
+    "end": 192.682,
+    "afterPause": false
+   },
+   {
+    "word": "gente",
+    "raw": "gente",
+    "start": 192.682,
+    "end": 193.003,
+    "afterPause": false
+   },
+   {
+    "word": "calcula",
+    "raw": "calcula",
+    "start": 193.003,
+    "end": 193.43,
+    "afterPause": false
+   },
+   {
+    "word": "15000",
+    "raw": "15,000",
+    "start": 193.43,
+    "end": 193.75,
+    "afterPause": false
+   },
+   {
+    "word": "catpesos",
+    "raw": "catpesos",
+    "start": 193.75,
+    "end": 194.23,
+    "afterPause": false
+   },
+   {
+    "word": "de",
+    "raw": "de",
+    "start": 194.23,
+    "end": 194.39,
+    "afterPause": false
+   },
+   {
+    "word": "ganancia",
+    "raw": "ganancia",
+    "start": 194.39,
+    "end": 194.87,
+    "afterPause": false
+   },
+   {
+    "word": "al",
+    "raw": "al",
+    "start": 194.87,
+    "end": 195.031,
+    "afterPause": false
+   },
+   {
+    "word": "ano",
+    "raw": "año.",
+    "start": 195.031,
+    "end": 195.244,
+    "afterPause": false
+   }
+  ],
+  "start": 191.882,
+  "end": 195.244
+ },
+ "c047": {
+  "words": [
+   {
+    "word": "veamos",
+    "raw": "Veamos",
+    "start": 195.53,
+    "end": 195.879,
+    "afterPause": false
+   },
+   {
+    "word": "que",
+    "raw": "qué",
+    "start": 195.879,
+    "end": 196.078,
+    "afterPause": false
+   },
+   {
+    "word": "le",
+    "raw": "le",
+    "start": 196.078,
+    "end": 196.228,
+    "afterPause": false
+   },
+   {
+    "word": "tocaria",
+    "raw": "tocaría",
+    "start": 196.228,
+    "end": 196.626,
+    "afterPause": false
+   },
+   {
+    "word": "a",
+    "raw": "a",
+    "start": 196.626,
+    "end": 196.726,
+    "afterPause": false
+   },
+   {
+    "word": "cada",
+    "raw": "cada",
+    "start": 196.726,
+    "end": 196.975,
+    "afterPause": false
+   },
+   {
+    "word": "accion",
+    "raw": "acción:",
+    "start": 196.975,
+    "end": 197.324,
+    "afterPause": false
+   },
+   {
+    "word": "15000",
+    "raw": "15,000",
+    "start": 197.578,
+    "end": 198.095,
+    "afterPause": false
+   },
+   {
+    "word": "entre",
+    "raw": "entre",
+    "start": 198.095,
+    "end": 198.611,
+    "afterPause": false
+   },
+   {
+    "word": "100",
+    "raw": "100.",
+    "start": 198.611,
+    "end": 198.956,
+    "afterPause": false
+   },
+   {
+    "word": "serian",
+    "raw": "Serían",
+    "start": 200.394,
+    "end": 201.079,
+    "afterPause": true
+   },
+   {
+    "word": "150",
+    "raw": "150",
+    "start": 201.079,
+    "end": 201.471,
+    "afterPause": false
+   },
+   {
+    "word": "al",
+    "raw": "al",
+    "start": 201.471,
+    "end": 201.764,
+    "afterPause": false
+   },
+   {
+    "word": "ano",
+    "raw": "año:",
+    "start": 201.764,
+    "end": 202.156,
+    "afterPause": false
+   },
+   {
+    "word": "50",
+    "raw": "50",
+    "start": 202.41,
+    "end": 202.679,
+    "afterPause": false
+   },
+   {
+    "word": "mas",
+    "raw": "más",
+    "start": 202.679,
+    "end": 203.038,
+    "afterPause": false
+   },
+   {
+    "word": "que",
+    "raw": "que",
+    "start": 203.038,
+    "end": 203.397,
+    "afterPause": false
+   },
+   {
+    "word": "hoy",
+    "raw": "hoy.",
+    "start": 203.397,
+    "end": 203.756,
+    "afterPause": false
+   }
+  ],
+  "start": 195.53,
+  "end": 203.756
+ },
+ "c048": {
+  "words": [
+   {
+    "word": "en",
+    "raw": "En",
+    "start": 203.946,
+    "end": 204.104,
+    "afterPause": false
+   },
+   {
+    "word": "este",
+    "raw": "este",
+    "start": 204.104,
+    "end": 204.368,
+    "afterPause": false
+   },
+   {
+    "word": "ejemplo",
+    "raw": "ejemplo,",
+    "start": 204.368,
+    "end": 204.789,
+    "afterPause": false
+   },
+   {
+    "word": "la",
+    "raw": "la",
+    "start": 204.789,
+    "end": 204.947,
+    "afterPause": false
+   },
+   {
+    "word": "gente",
+    "raw": "gente",
+    "start": 204.947,
+    "end": 205.264,
+    "afterPause": false
+   },
+   {
+    "word": "paga",
+    "raw": "paga",
+    "start": 205.264,
+    "end": 205.527,
+    "afterPause": false
+   },
+   {
+    "word": "por",
+    "raw": "por",
+    "start": 205.527,
+    "end": 205.738,
+    "afterPause": false
+   },
+   {
+    "word": "cada",
+    "raw": "cada",
+    "start": 205.738,
+    "end": 206.002,
+    "afterPause": false
+   },
+   {
+    "word": "accion",
+    "raw": "acción",
+    "start": 206.002,
+    "end": 206.371,
+    "afterPause": false
+   },
+   {
+    "word": "10",
+    "raw": "10",
+    "start": 206.371,
+    "end": 206.634,
+    "afterPause": false
+   },
+   {
+    "word": "veces",
+    "raw": "veces",
+    "start": 206.634,
+    "end": 206.95,
+    "afterPause": false
+   },
+   {
+    "word": "lo",
+    "raw": "lo",
+    "start": 206.95,
+    "end": 207.108,
+    "afterPause": false
+   },
+   {
+    "word": "que",
+    "raw": "que",
+    "start": 207.108,
+    "end": 207.319,
+    "afterPause": false
+   },
+   {
+    "word": "le",
+    "raw": "le",
+    "start": 207.319,
+    "end": 207.477,
+    "afterPause": false
+   },
+   {
+    "word": "toca",
+    "raw": "toca",
+    "start": 207.477,
+    "end": 207.741,
+    "afterPause": false
+   },
+   {
+    "word": "en",
+    "raw": "en",
+    "start": 207.741,
+    "end": 207.899,
+    "afterPause": false
+   },
+   {
+    "word": "un",
+    "raw": "un",
+    "start": 207.899,
+    "end": 208.057,
+    "afterPause": false
+   },
+   {
+    "word": "ano",
+    "raw": "año.",
+    "start": 208.057,
+    "end": 208.268,
+    "afterPause": false
+   }
+  ],
+  "start": 203.946,
+  "end": 208.268
+ },
+ "c049": {
+  "words": [
+   {
+    "word": "antes",
+    "raw": "Antes:",
+    "start": 208.268,
+    "end": 208.618,
+    "afterPause": false
+   },
+   {
+    "word": "100",
+    "raw": "100",
+    "start": 208.746,
+    "end": 209.259,
+    "afterPause": false
+   },
+   {
+    "word": "por",
+    "raw": "por",
+    "start": 209.259,
+    "end": 209.771,
+    "afterPause": false
+   },
+   {
+    "word": "10",
+    "raw": "10.",
+    "start": 209.771,
+    "end": 210.156,
+    "afterPause": false
+   },
+   {
+    "word": "son",
+    "raw": "Son",
+    "start": 211.338,
+    "end": 211.581,
+    "afterPause": true
+   },
+   {
+    "word": "1000",
+    "raw": "1,000.",
+    "start": 211.581,
+    "end": 211.884,
+    "afterPause": false
+   }
+  ],
+  "start": 208.268,
+  "end": 211.884
+ },
+ "c050": {
+  "words": [
+   {
+    "word": "ahora",
+    "raw": "Ahora",
+    "start": 212.106,
+    "end": 212.661,
+    "afterPause": false
+   },
+   {
+    "word": "esperan",
+    "raw": "esperan",
+    "start": 212.661,
+    "end": 213.402,
+    "afterPause": false
+   },
+   {
+    "word": "150",
+    "raw": "150.",
+    "start": 213.402,
+    "end": 213.772,
+    "afterPause": false
+   },
+   {
+    "word": "multiplicamos",
+    "raw": "Multiplicamos",
+    "start": 213.994,
+    "end": 215.285,
+    "afterPause": false
+   },
+   {
+    "word": "150",
+    "raw": "150",
+    "start": 215.285,
+    "end": 215.654,
+    "afterPause": false
+   },
+   {
+    "word": "por",
+    "raw": "por",
+    "start": 215.654,
+    "end": 216.023,
+    "afterPause": false
+   },
+   {
+    "word": "10",
+    "raw": "10.",
+    "start": 216.023,
+    "end": 216.3,
+    "afterPause": false
+   },
+   {
+    "word": "son",
+    "raw": "Son",
+    "start": 217.45,
+    "end": 217.92,
+    "afterPause": true
+   },
+   {
+    "word": "1500",
+    "raw": "1,500.",
+    "start": 217.92,
+    "end": 218.508,
+    "afterPause": false
+   }
+  ],
+  "start": 212.106,
+  "end": 218.508
+ },
+ "c051": {
+  "words": [
+   {
+    "word": "por",
+    "raw": "Por",
+    "start": 218.666,
+    "end": 218.881,
+    "afterPause": false
+   },
+   {
+    "word": "eso",
+    "raw": "eso",
+    "start": 218.881,
+    "end": 219.096,
+    "afterPause": false
+   },
+   {
+    "word": "subio",
+    "raw": "subió",
+    "start": 219.096,
+    "end": 219.418,
+    "afterPause": false
+   },
+   {
+    "word": "el",
+    "raw": "el",
+    "start": 219.418,
+    "end": 219.579,
+    "afterPause": false
+   },
+   {
+    "word": "precio",
+    "raw": "precio:",
+    "start": 219.579,
+    "end": 219.955,
+    "afterPause": false
+   },
+   {
+    "word": "nada",
+    "raw": "nada",
+    "start": 219.955,
+    "end": 220.224,
+    "afterPause": false
+   },
+   {
+    "word": "cambio",
+    "raw": "cambió",
+    "start": 220.224,
+    "end": 220.6,
+    "afterPause": false
+   },
+   {
+    "word": "todavia",
+    "raw": "todavía",
+    "start": 220.6,
+    "end": 221.03,
+    "afterPause": false
+   },
+   {
+    "word": "en",
+    "raw": "en",
+    "start": 221.03,
+    "end": 221.191,
+    "afterPause": false
+   },
+   {
+    "word": "la",
+    "raw": "la",
+    "start": 221.191,
+    "end": 221.352,
+    "afterPause": false
+   },
+   {
+    "word": "taqueria",
+    "raw": "taquería;",
+    "start": 221.352,
+    "end": 221.836,
+    "afterPause": false
+   },
+   {
+    "word": "cambiaron",
+    "raw": "cambiaron",
+    "start": 222.058,
+    "end": 222.675,
+    "afterPause": false
+   },
+   {
+    "word": "las",
+    "raw": "las",
+    "start": 222.675,
+    "end": 222.922,
+    "afterPause": false
+   },
+   {
+    "word": "expectativas",
+    "raw": "expectativas.",
+    "start": 222.922,
+    "end": 223.724,
+    "afterPause": false
+   }
+  ],
+  "start": 218.666,
+  "end": 223.724
+ },
+ "c052": {
+  "words": [
+   {
+    "word": "ojo",
+    "raw": "Ojo:",
+    "start": 223.914,
+    "end": 224.268,
+    "afterPause": false
+   },
+   {
+    "word": "el",
+    "raw": "el",
+    "start": 224.426,
+    "end": 224.618,
+    "afterPause": false
+   },
+   {
+    "word": "10",
+    "raw": "10",
+    "start": 224.618,
+    "end": 224.811,
+    "afterPause": false
+   },
+   {
+    "word": "es",
+    "raw": "es",
+    "start": 224.811,
+    "end": 225.003,
+    "afterPause": false
+   },
+   {
+    "word": "de",
+    "raw": "de",
+    "start": 225.003,
+    "end": 225.195,
+    "afterPause": false
+   },
+   {
+    "word": "ejemplo",
+    "raw": "ejemplo;",
+    "start": 225.195,
+    "end": 225.708,
+    "afterPause": false
+   },
+   {
+    "word": "cada",
+    "raw": "cada",
+    "start": 225.93,
+    "end": 226.148,
+    "afterPause": false
+   },
+   {
+    "word": "quien",
+    "raw": "quien",
+    "start": 226.148,
+    "end": 226.411,
+    "afterPause": false
+   },
+   {
+    "word": "hace",
+    "raw": "hace",
+    "start": 226.411,
+    "end": 226.629,
+    "afterPause": false
+   },
+   {
+    "word": "su",
+    "raw": "su",
+    "start": 226.629,
+    "end": 226.76,
+    "afterPause": false
+   },
+   {
+    "word": "propia",
+    "raw": "propia",
+    "start": 226.76,
+    "end": 227.066,
+    "afterPause": false
+   },
+   {
+    "word": "cuenta",
+    "raw": "cuenta.",
+    "start": 227.066,
+    "end": 227.372,
+    "afterPause": false
+   }
+  ],
+  "start": 223.914,
+  "end": 227.372
+ },
+ "c053": {
+  "words": [
+   {
+    "word": "hasta",
+    "raw": "Hasta",
+    "start": 227.626,
+    "end": 227.927,
+    "afterPause": false
+   },
+   {
+    "word": "aqui",
+    "raw": "aquí:",
+    "start": 227.927,
+    "end": 228.178,
+    "afterPause": false
+   },
+   {
+    "word": "el",
+    "raw": "el",
+    "start": 228.178,
+    "end": 228.329,
+    "afterPause": false
+   },
+   {
+    "word": "precio",
+    "raw": "precio",
+    "start": 228.329,
+    "end": 228.68,
+    "afterPause": false
+   },
+   {
+    "word": "de",
+    "raw": "de",
+    "start": 228.68,
+    "end": 228.83,
+    "afterPause": false
+   },
+   {
+    "word": "una",
+    "raw": "una",
+    "start": 228.83,
+    "end": 229.031,
+    "afterPause": false
+   },
+   {
+    "word": "accion",
+    "raw": "acción",
+    "start": 229.031,
+    "end": 229.383,
+    "afterPause": false
+   },
+   {
+    "word": "se",
+    "raw": "se",
+    "start": 229.383,
+    "end": 229.533,
+    "afterPause": false
+   },
+   {
+    "word": "mueve",
+    "raw": "mueve",
+    "start": 229.533,
+    "end": 229.834,
+    "afterPause": false
+   },
+   {
+    "word": "por",
+    "raw": "por",
+    "start": 229.834,
+    "end": 230.035,
+    "afterPause": false
+   },
+   {
+    "word": "lo",
+    "raw": "lo",
+    "start": 230.035,
+    "end": 230.186,
+    "afterPause": false
+   },
+   {
+    "word": "que",
+    "raw": "que",
+    "start": 230.186,
+    "end": 230.386,
+    "afterPause": false
+   },
+   {
+    "word": "la",
+    "raw": "la",
+    "start": 230.386,
+    "end": 230.537,
+    "afterPause": false
+   },
+   {
+    "word": "gente",
+    "raw": "gente",
+    "start": 230.537,
+    "end": 230.838,
+    "afterPause": false
+   },
+   {
+    "word": "espera",
+    "raw": "espera",
+    "start": 230.838,
+    "end": 231.189,
+    "afterPause": false
+   },
+   {
+    "word": "que",
+    "raw": "que",
+    "start": 231.189,
+    "end": 231.39,
+    "afterPause": false
+   },
+   {
+    "word": "gane",
+    "raw": "gane",
+    "start": 231.39,
+    "end": 231.641,
+    "afterPause": false
+   },
+   {
+    "word": "la",
+    "raw": "la",
+    "start": 231.641,
+    "end": 231.791,
+    "afterPause": false
+   },
+   {
+    "word": "empresa",
+    "raw": "empresa,",
+    "start": 231.791,
+    "end": 232.193,
+    "afterPause": false
+   },
+   {
+    "word": "no",
+    "raw": "no",
+    "start": 232.193,
+    "end": 232.344,
+    "afterPause": false
+   },
+   {
+    "word": "solo",
+    "raw": "solo",
+    "start": 232.344,
+    "end": 232.594,
+    "afterPause": false
+   },
+   {
+    "word": "por",
+    "raw": "por",
+    "start": 232.594,
+    "end": 232.795,
+    "afterPause": false
+   },
+   {
+    "word": "lo",
+    "raw": "lo",
+    "start": 232.795,
+    "end": 232.946,
+    "afterPause": false
+   },
+   {
+    "word": "que",
+    "raw": "que",
+    "start": 232.946,
+    "end": 233.147,
+    "afterPause": false
+   },
+   {
+    "word": "ya",
+    "raw": "ya",
+    "start": 233.147,
+    "end": 233.297,
+    "afterPause": false
+   },
+   {
+    "word": "gano",
+    "raw": "ganó.",
+    "start": 233.297,
+    "end": 233.548,
+    "afterPause": false
+   },
+   {
+    "word": "falta",
+    "raw": "Falta:",
+    "start": 233.548,
+    "end": 233.898,
+    "afterPause": false
+   },
+   {
+    "word": "probarlo",
+    "raw": "probarlo",
+    "start": 234.442,
+    "end": 234.897,
+    "afterPause": false
+   },
+   {
+    "word": "con",
+    "raw": "con",
+    "start": 234.897,
+    "end": 235.099,
+    "afterPause": false
+   },
+   {
+    "word": "otro",
+    "raw": "otro",
+    "start": 235.099,
+    "end": 235.352,
+    "afterPause": false
+   },
+   {
+    "word": "negocio",
+    "raw": "negocio.",
+    "start": 235.352,
+    "end": 235.756,
+    "afterPause": false
+   }
+  ],
+  "start": 227.626,
+  "end": 235.756
+ },
+ "c054": {
+  "words": [
+   {
+    "word": "pero",
+    "raw": "Pero,",
+    "start": 235.978,
+    "end": 236.276,
+    "afterPause": false
+   },
+   {
+    "word": "esto",
+    "raw": "¿esto",
+    "start": 236.276,
+    "end": 236.573,
+    "afterPause": false
+   },
+   {
+    "word": "solo",
+    "raw": "solo",
+    "start": 236.573,
+    "end": 236.871,
+    "afterPause": false
+   },
+   {
+    "word": "pasa",
+    "raw": "pasa",
+    "start": 236.871,
+    "end": 237.169,
+    "afterPause": false
+   },
+   {
+    "word": "con",
+    "raw": "con",
+    "start": 237.169,
+    "end": 237.407,
+    "afterPause": false
+   },
+   {
+    "word": "taquerias",
+    "raw": "taquerías?",
+    "start": 237.407,
+    "end": 238.002,
+    "afterPause": false
+   },
+   {
+    "word": "probemos",
+    "raw": "Probemos",
+    "start": 238.002,
+    "end": 238.538,
+    "afterPause": false
+   },
+   {
+    "word": "con",
+    "raw": "con",
+    "start": 238.538,
+    "end": 238.777,
+    "afterPause": false
+   },
+   {
+    "word": "otra",
+    "raw": "otra",
+    "start": 238.777,
+    "end": 239.074,
+    "afterPause": false
+   },
+   {
+    "word": "cosa",
+    "raw": "cosa:",
+    "start": 239.074,
+    "end": 239.372,
+    "afterPause": false
+   },
+   {
+    "word": "una",
+    "raw": "una",
+    "start": 239.594,
+    "end": 239.823,
+    "afterPause": false
+   },
+   {
+    "word": "papeleria",
+    "raw": "papelería.",
+    "start": 239.823,
+    "end": 240.396,
+    "afterPause": false
+   }
+  ],
+  "start": 235.978,
+  "end": 240.396
+ },
+ "c055": {
+  "words": [
+   {
+    "word": "vale",
+    "raw": "Vale",
+    "start": 240.618,
+    "end": 240.987,
+    "afterPause": false
+   },
+   {
+    "word": "50000",
+    "raw": "50,000",
+    "start": 240.987,
+    "end": 241.43,
+    "afterPause": false
+   },
+   {
+    "word": "catpesos",
+    "raw": "catpesos",
+    "start": 241.43,
+    "end": 242.094,
+    "afterPause": false
+   },
+   {
+    "word": "y",
+    "raw": "y",
+    "start": 242.094,
+    "end": 242.242,
+    "afterPause": false
+   },
+   {
+    "word": "tiene",
+    "raw": "tiene",
+    "start": 242.242,
+    "end": 242.684,
+    "afterPause": false
+   },
+   {
+    "word": "50",
+    "raw": "50",
+    "start": 242.684,
+    "end": 242.906,
+    "afterPause": false
+   },
+   {
+    "word": "acciones",
+    "raw": "acciones.",
+    "start": 242.906,
+    "end": 243.57,
+    "afterPause": false
+   },
+   {
+    "word": "cada",
+    "raw": "Cada",
+    "start": 243.57,
+    "end": 243.939,
+    "afterPause": false
+   },
+   {
+    "word": "una",
+    "raw": "una",
+    "start": 243.939,
+    "end": 244.234,
+    "afterPause": false
+   },
+   {
+    "word": "vale",
+    "raw": "vale",
+    "start": 244.234,
+    "end": 244.603,
+    "afterPause": false
+   },
+   {
+    "word": "1000",
+    "raw": "1,000.",
+    "start": 244.603,
+    "end": 244.972,
+    "afterPause": false
+   }
+  ],
+  "start": 240.618,
+  "end": 244.972
+ },
+ "c056": {
+  "words": [
+   {
+    "word": "y",
+    "raw": "Y",
+    "start": 245.13,
+    "end": 245.294,
+    "afterPause": false
+   },
+   {
+    "word": "gana",
+    "raw": "gana",
+    "start": 245.294,
+    "end": 245.644,
+    "afterPause": false
+   },
+   {
+    "word": "5000",
+    "raw": "5,000",
+    "start": 245.787,
+    "end": 246.198,
+    "afterPause": false
+   },
+   {
+    "word": "al",
+    "raw": "al",
+    "start": 246.198,
+    "end": 246.444,
+    "afterPause": false
+   },
+   {
+    "word": "ano",
+    "raw": "año,",
+    "start": 246.444,
+    "end": 246.634,
+    "afterPause": false
+   },
+   {
+    "word": "asi",
+    "raw": "así",
+    "start": 246.634,
+    "end": 246.843,
+    "afterPause": false
+   },
+   {
+    "word": "que",
+    "raw": "que",
+    "start": 246.843,
+    "end": 247.051,
+    "afterPause": false
+   },
+   {
+    "word": "a",
+    "raw": "a",
+    "start": 247.051,
+    "end": 247.156,
+    "afterPause": false
+   },
+   {
+    "word": "cada",
+    "raw": "cada",
+    "start": 247.156,
+    "end": 247.417,
+    "afterPause": false
+   },
+   {
+    "word": "accion",
+    "raw": "acción",
+    "start": 247.417,
+    "end": 247.782,
+    "afterPause": false
+   },
+   {
+    "word": "le",
+    "raw": "le",
+    "start": 247.782,
+    "end": 247.938,
+    "afterPause": false
+   },
+   {
+    "word": "tocan",
+    "raw": "tocan",
+    "start": 247.938,
+    "end": 248.251,
+    "afterPause": false
+   },
+   {
+    "word": "100",
+    "raw": "100.",
+    "start": 248.251,
+    "end": 248.46,
+    "afterPause": false
+   }
+  ],
+  "start": 245.13,
+  "end": 248.46
+ },
+ "c057": {
+  "words": [
+   {
+    "word": "un",
+    "raw": "Un",
+    "start": 248.682,
+    "end": 248.829,
+    "afterPause": false
+   },
+   {
+    "word": "dia",
+    "raw": "día",
+    "start": 248.829,
+    "end": 249.026,
+    "afterPause": false
+   },
+   {
+    "word": "se",
+    "raw": "se",
+    "start": 249.026,
+    "end": 249.173,
+    "afterPause": false
+   },
+   {
+    "word": "anuncia",
+    "raw": "anuncia",
+    "start": 249.173,
+    "end": 249.566,
+    "afterPause": false
+   },
+   {
+    "word": "que",
+    "raw": "que",
+    "start": 249.566,
+    "end": 249.762,
+    "afterPause": false
+   },
+   {
+    "word": "abrira",
+    "raw": "abrirá",
+    "start": 249.762,
+    "end": 250.106,
+    "afterPause": false
+   },
+   {
+    "word": "una",
+    "raw": "una",
+    "start": 250.106,
+    "end": 250.302,
+    "afterPause": false
+   },
+   {
+    "word": "papeleria",
+    "raw": "papelería",
+    "start": 250.302,
+    "end": 250.793,
+    "afterPause": false
+   },
+   {
+    "word": "grande",
+    "raw": "grande",
+    "start": 250.793,
+    "end": 251.137,
+    "afterPause": false
+   },
+   {
+    "word": "enfrente",
+    "raw": "enfrente.",
+    "start": 251.137,
+    "end": 251.487,
+    "afterPause": false
+   }
+  ],
+  "start": 248.682,
+  "end": 251.487
+ },
+ "c058": {
+  "words": [
+   {
+    "word": "hoy",
+    "raw": "Hoy",
+    "start": 251.914,
+    "end": 252.156,
+    "afterPause": false
+   },
+   {
+    "word": "la",
+    "raw": "la",
+    "start": 252.156,
+    "end": 252.338,
+    "afterPause": false
+   },
+   {
+    "word": "papeleria",
+    "raw": "papelería",
+    "start": 252.338,
+    "end": 252.942,
+    "afterPause": false
+   },
+   {
+    "word": "sigue",
+    "raw": "sigue",
+    "start": 252.942,
+    "end": 253.305,
+    "afterPause": false
+   },
+   {
+    "word": "ganando",
+    "raw": "ganando",
+    "start": 253.305,
+    "end": 253.79,
+    "afterPause": false
+   },
+   {
+    "word": "5000",
+    "raw": "5,000.",
+    "start": 253.79,
+    "end": 254.092,
+    "afterPause": false
+   },
+   {
+    "word": "pero",
+    "raw": "Pero",
+    "start": 254.282,
+    "end": 254.584,
+    "afterPause": false
+   },
+   {
+    "word": "la",
+    "raw": "la",
+    "start": 254.584,
+    "end": 254.765,
+    "afterPause": false
+   },
+   {
+    "word": "gente",
+    "raw": "gente",
+    "start": 254.765,
+    "end": 255.128,
+    "afterPause": false
+   },
+   {
+    "word": "espera",
+    "raw": "espera",
+    "start": 255.128,
+    "end": 255.55,
+    "afterPause": false
+   },
+   {
+    "word": "que",
+    "raw": "que",
+    "start": 255.55,
+    "end": 255.792,
+    "afterPause": false
+   },
+   {
+    "word": "gane",
+    "raw": "gane",
+    "start": 255.792,
+    "end": 256.094,
+    "afterPause": false
+   },
+   {
+    "word": "3000",
+    "raw": "3,000.",
+    "start": 256.094,
+    "end": 256.396,
+    "afterPause": false
+   }
+  ],
+  "start": 251.914,
+  "end": 256.396
+ },
+ "c059": {
+  "words": [
+   {
+    "word": "repartimos",
+    "raw": "Repartimos",
+    "start": 256.618,
+    "end": 257.508,
+    "afterPause": false
+   },
+   {
+    "word": "3000",
+    "raw": "3,000",
+    "start": 257.508,
+    "end": 257.913,
+    "afterPause": false
+   },
+   {
+    "word": "entre",
+    "raw": "entre",
+    "start": 257.913,
+    "end": 258.196,
+    "afterPause": false
+   },
+   {
+    "word": "50",
+    "raw": "50",
+    "start": 258.196,
+    "end": 258.479,
+    "afterPause": false
+   },
+   {
+    "word": "acciones",
+    "raw": "acciones.",
+    "start": 258.479,
+    "end": 259.207,
+    "afterPause": false
+   },
+   {
+    "word": "le",
+    "raw": "Le",
+    "start": 259.207,
+    "end": 259.45,
+    "afterPause": false
+   },
+   {
+    "word": "tocan",
+    "raw": "tocan",
+    "start": 259.45,
+    "end": 259.935,
+    "afterPause": false
+   },
+   {
+    "word": "60",
+    "raw": "60",
+    "start": 259.935,
+    "end": 260.178,
+    "afterPause": false
+   },
+   {
+    "word": "a",
+    "raw": "a",
+    "start": 260.178,
+    "end": 260.34,
+    "afterPause": false
+   },
+   {
+    "word": "cada",
+    "raw": "cada",
+    "start": 260.34,
+    "end": 260.744,
+    "afterPause": false
+   },
+   {
+    "word": "una",
+    "raw": "una.",
+    "start": 260.744,
+    "end": 261.068,
+    "afterPause": false
+   }
+  ],
+  "start": 256.618,
+  "end": 261.068
+ },
+ "c060": {
+  "words": [
+   {
+    "word": "multiplicamos",
+    "raw": "Multiplicamos",
+    "start": 261.45,
+    "end": 262.739,
+    "afterPause": false
+   },
+   {
+    "word": "60",
+    "raw": "60",
+    "start": 262.739,
+    "end": 263.015,
+    "afterPause": false
+   },
+   {
+    "word": "por",
+    "raw": "por",
+    "start": 263.015,
+    "end": 263.384,
+    "afterPause": false
+   },
+   {
+    "word": "10",
+    "raw": "10.",
+    "start": 263.384,
+    "end": 263.66,
+    "afterPause": false
+   },
+   {
+    "word": "son",
+    "raw": "Son",
+    "start": 264.746,
+    "end": 265.211,
+    "afterPause": true
+   },
+   {
+    "word": "600",
+    "raw": "600.",
+    "start": 265.211,
+    "end": 265.676,
+    "afterPause": false
+   },
+   {
+    "word": "el",
+    "raw": "El",
+    "start": 265.676,
+    "end": 266.026,
+    "afterPause": false
+   },
+   {
+    "word": "precio",
+    "raw": "precio",
+    "start": 266.209,
+    "end": 266.559,
+    "afterPause": false
+   },
+   {
+    "word": "baja",
+    "raw": "baja.",
+    "start": 266.741,
+    "end": 267.091,
+    "afterPause": false
+   }
+  ],
+  "start": 261.45,
+  "end": 267.091
+ },
+ "c061": {
+  "words": [
+   {
+    "word": "por",
+    "raw": "Por",
+    "start": 267.274,
+    "end": 267.527,
+    "afterPause": false
+   },
+   {
+    "word": "lo",
+    "raw": "lo",
+    "start": 267.527,
+    "end": 267.716,
+    "afterPause": false
+   },
+   {
+    "word": "tanto",
+    "raw": "tanto,",
+    "start": 267.716,
+    "end": 268.095,
+    "afterPause": false
+   },
+   {
+    "word": "la",
+    "raw": "¿la",
+    "start": 268.095,
+    "end": 268.284,
+    "afterPause": false
+   },
+   {
+    "word": "bolsa",
+    "raw": "bolsa",
+    "start": 268.284,
+    "end": 268.663,
+    "afterPause": false
+   },
+   {
+    "word": "es",
+    "raw": "es",
+    "start": 268.663,
+    "end": 268.853,
+    "afterPause": false
+   },
+   {
+    "word": "un",
+    "raw": "un",
+    "start": 268.853,
+    "end": 269.042,
+    "afterPause": false
+   },
+   {
+    "word": "casino",
+    "raw": "casino?",
+    "start": 269.042,
+    "end": 269.484,
+    "afterPause": false
+   },
+   {
+    "word": "mucha",
+    "raw": "Mucha",
+    "start": 269.674,
+    "end": 269.982,
+    "afterPause": false
+   },
+   {
+    "word": "gente",
+    "raw": "gente",
+    "start": 269.982,
+    "end": 270.29,
+    "afterPause": false
+   },
+   {
+    "word": "lo",
+    "raw": "lo",
+    "start": 270.29,
+    "end": 270.443,
+    "afterPause": false
+   },
+   {
+    "word": "cree",
+    "raw": "cree,",
+    "start": 270.443,
+    "end": 270.7,
+    "afterPause": false
+   },
+   {
+    "word": "porque",
+    "raw": "porque",
+    "start": 270.858,
+    "end": 271.236,
+    "afterPause": false
+   },
+   {
+    "word": "casi",
+    "raw": "casi",
+    "start": 271.236,
+    "end": 271.506,
+    "afterPause": false
+   },
+   {
+    "word": "nadie",
+    "raw": "nadie",
+    "start": 271.506,
+    "end": 271.83,
+    "afterPause": false
+   },
+   {
+    "word": "ensena",
+    "raw": "enseña",
+    "start": 271.83,
+    "end": 272.208,
+    "afterPause": false
+   },
+   {
+    "word": "la",
+    "raw": "la",
+    "start": 272.208,
+    "end": 272.37,
+    "afterPause": false
+   },
+   {
+    "word": "cuenta",
+    "raw": "cuenta.",
+    "start": 272.37,
+    "end": 272.748,
+    "afterPause": false
+   }
+  ],
+  "start": 267.274,
+  "end": 272.748
+ },
+ "c062": {
+  "words": [
+   {
+    "word": "pero",
+    "raw": "Pero",
+    "start": 273.738,
+    "end": 273.988,
+    "afterPause": false
+   },
+   {
+    "word": "el",
+    "raw": "el",
+    "start": 273.988,
+    "end": 274.138,
+    "afterPause": false
+   },
+   {
+    "word": "precio",
+    "raw": "precio",
+    "start": 274.138,
+    "end": 274.487,
+    "afterPause": false
+   },
+   {
+    "word": "si",
+    "raw": "sí",
+    "start": 274.487,
+    "end": 274.637,
+    "afterPause": false
+   },
+   {
+    "word": "tiene",
+    "raw": "tiene",
+    "start": 274.637,
+    "end": 274.937,
+    "afterPause": false
+   },
+   {
+    "word": "una",
+    "raw": "una",
+    "start": 274.937,
+    "end": 275.136,
+    "afterPause": false
+   },
+   {
+    "word": "razon",
+    "raw": "razón:",
+    "start": 275.136,
+    "end": 275.436,
+    "afterPause": false
+   },
+   {
+    "word": "lo",
+    "raw": "lo",
+    "start": 275.722,
+    "end": 275.873,
+    "afterPause": false
+   },
+   {
+    "word": "que",
+    "raw": "que",
+    "start": 275.873,
+    "end": 276.073,
+    "afterPause": false
+   },
+   {
+    "word": "la",
+    "raw": "la",
+    "start": 276.073,
+    "end": 276.224,
+    "afterPause": false
+   },
+   {
+    "word": "gente",
+    "raw": "gente",
+    "start": 276.224,
+    "end": 276.525,
+    "afterPause": false
+   },
+   {
+    "word": "espera",
+    "raw": "espera.",
+    "start": 276.525,
+    "end": 276.876,
+    "afterPause": false
+   }
+  ],
+  "start": 273.738,
+  "end": 276.876
+ },
+ "c063": {
+  "words": [
+   {
+    "word": "aun",
+    "raw": "Aun",
+    "start": 277.194,
+    "end": 277.478,
+    "afterPause": false
+   },
+   {
+    "word": "asi",
+    "raw": "así,",
+    "start": 277.478,
+    "end": 277.761,
+    "afterPause": false
+   },
+   {
+    "word": "esperar",
+    "raw": "esperar",
+    "start": 277.761,
+    "end": 278.329,
+    "afterPause": false
+   },
+   {
+    "word": "no",
+    "raw": "no",
+    "start": 278.329,
+    "end": 278.542,
+    "afterPause": false
+   },
+   {
+    "word": "es",
+    "raw": "es",
+    "start": 278.542,
+    "end": 278.754,
+    "afterPause": false
+   },
+   {
+    "word": "saber",
+    "raw": "saber:",
+    "start": 278.754,
+    "end": 279.18,
+    "afterPause": false
+   },
+   {
+    "word": "puede",
+    "raw": "puede",
+    "start": 279.402,
+    "end": 279.714,
+    "afterPause": false
+   },
+   {
+    "word": "equivocarse",
+    "raw": "equivocarse,",
+    "start": 279.714,
+    "end": 280.337,
+    "afterPause": false
+   },
+   {
+    "word": "y",
+    "raw": "y",
+    "start": 280.337,
+    "end": 280.441,
+    "afterPause": false
+   },
+   {
+    "word": "nadie",
+    "raw": "nadie",
+    "start": 280.441,
+    "end": 280.753,
+    "afterPause": false
+   },
+   {
+    "word": "puede",
+    "raw": "puede",
+    "start": 280.753,
+    "end": 281.065,
+    "afterPause": false
+   },
+   {
+    "word": "prometerte",
+    "raw": "prometerte",
+    "start": 281.065,
+    "end": 281.637,
+    "afterPause": false
+   },
+   {
+    "word": "que",
+    "raw": "que",
+    "start": 281.637,
+    "end": 281.845,
+    "afterPause": false
+   },
+   {
+    "word": "una",
+    "raw": "una",
+    "start": 281.845,
+    "end": 282.053,
+    "afterPause": false
+   },
+   {
+    "word": "accion",
+    "raw": "acción",
+    "start": 282.053,
+    "end": 282.416,
+    "afterPause": false
+   },
+   {
+    "word": "va",
+    "raw": "va",
+    "start": 282.416,
+    "end": 282.572,
+    "afterPause": false
+   },
+   {
+    "word": "a",
+    "raw": "a",
+    "start": 282.572,
+    "end": 282.676,
+    "afterPause": false
+   },
+   {
+    "word": "subir",
+    "raw": "subir.",
+    "start": 282.676,
+    "end": 282.988,
+    "afterPause": false
+   }
+  ],
+  "start": 277.194,
+  "end": 282.988
+ },
+ "c064": {
+  "words": [
+   {
+    "word": "por",
+    "raw": "Por",
+    "start": 283.242,
+    "end": 283.446,
+    "afterPause": false
+   },
+   {
+    "word": "lo",
+    "raw": "lo",
+    "start": 283.446,
+    "end": 283.6,
+    "afterPause": false
+   },
+   {
+    "word": "tanto",
+    "raw": "tanto,",
+    "start": 283.6,
+    "end": 283.907,
+    "afterPause": false
+   },
+   {
+    "word": "ya",
+    "raw": "ya",
+    "start": 283.907,
+    "end": 284.06,
+    "afterPause": false
+   },
+   {
+    "word": "podemos",
+    "raw": "podemos",
+    "start": 284.06,
+    "end": 284.469,
+    "afterPause": false
+   },
+   {
+    "word": "contestar",
+    "raw": "contestar",
+    "start": 284.469,
+    "end": 284.98,
+    "afterPause": false
+   },
+   {
+    "word": "la",
+    "raw": "la",
+    "start": 284.98,
+    "end": 285.134,
+    "afterPause": false
+   },
+   {
+    "word": "pregunta",
+    "raw": "pregunta",
+    "start": 285.134,
+    "end": 285.594,
+    "afterPause": false
+   },
+   {
+    "word": "del",
+    "raw": "del",
+    "start": 285.594,
+    "end": 285.798,
+    "afterPause": false
+   },
+   {
+    "word": "inicio",
+    "raw": "inicio.",
+    "start": 285.798,
+    "end": 286.156,
+    "afterPause": false
+   }
+  ],
+  "start": 283.242,
+  "end": 286.156
+ },
+ "c065": {
+  "words": [
+   {
+    "word": "por",
+    "raw": "¿Por",
+    "start": 286.538,
+    "end": 286.806,
+    "afterPause": false
+   },
+   {
+    "word": "que",
+    "raw": "qué",
+    "start": 286.806,
+    "end": 287.073,
+    "afterPause": false
+   },
+   {
+    "word": "la",
+    "raw": "la",
+    "start": 287.073,
+    "end": 287.274,
+    "afterPause": false
+   },
+   {
+    "word": "accion",
+    "raw": "acción",
+    "start": 287.274,
+    "end": 287.742,
+    "afterPause": false
+   },
+   {
+    "word": "subio",
+    "raw": "subió",
+    "start": 287.742,
+    "end": 288.143,
+    "afterPause": false
+   },
+   {
+    "word": "de",
+    "raw": "de",
+    "start": 288.143,
+    "end": 288.344,
+    "afterPause": false
+   },
+   {
+    "word": "1000",
+    "raw": "1,000",
+    "start": 288.344,
+    "end": 288.679,
+    "afterPause": false
+   },
+   {
+    "word": "a",
+    "raw": "a",
+    "start": 288.679,
+    "end": 288.812,
+    "afterPause": false
+   },
+   {
+    "word": "1500",
+    "raw": "1,500,",
+    "start": 288.812,
+    "end": 289.147,
+    "afterPause": false
+   },
+   {
+    "word": "si",
+    "raw": "si",
+    "start": 289.147,
+    "end": 289.347,
+    "afterPause": false
+   },
+   {
+    "word": "la",
+    "raw": "la",
+    "start": 289.347,
+    "end": 289.548,
+    "afterPause": false
+   },
+   {
+    "word": "taqueria",
+    "raw": "taquería",
+    "start": 289.548,
+    "end": 290.15,
+    "afterPause": false
+   },
+   {
+    "word": "vende",
+    "raw": "vende",
+    "start": 290.15,
+    "end": 290.5,
+    "afterPause": false
+   },
+   {
+    "word": "lo",
+    "raw": "lo",
+    "start": 290.535,
+    "end": 290.885,
+    "afterPause": false
+   },
+   {
+    "word": "mismo",
+    "raw": "mismo?",
+    "start": 290.921,
+    "end": 291.271,
+    "afterPause": false
+   }
+  ],
+  "start": 286.538,
+  "end": 291.271
+ },
+ "c066": {
+  "words": [
+   {
+    "word": "porque",
+    "raw": "Porque",
+    "start": 291.306,
+    "end": 291.649,
+    "afterPause": false
+   },
+   {
+    "word": "la",
+    "raw": "la",
+    "start": 291.649,
+    "end": 291.797,
+    "afterPause": false
+   },
+   {
+    "word": "gente",
+    "raw": "gente",
+    "start": 291.797,
+    "end": 292.091,
+    "afterPause": false
+   },
+   {
+    "word": "esperaba",
+    "raw": "esperaba",
+    "start": 292.091,
+    "end": 292.533,
+    "afterPause": false
+   },
+   {
+    "word": "que",
+    "raw": "que",
+    "start": 292.533,
+    "end": 292.729,
+    "afterPause": false
+   },
+   {
+    "word": "ganara",
+    "raw": "ganara",
+    "start": 292.729,
+    "end": 293.072,
+    "afterPause": false
+   },
+   {
+    "word": "mas",
+    "raw": "más",
+    "start": 293.072,
+    "end": 293.269,
+    "afterPause": false
+   },
+   {
+    "word": "manana",
+    "raw": "mañana,",
+    "start": 293.269,
+    "end": 293.612,
+    "afterPause": false
+   },
+   {
+    "word": "y",
+    "raw": "y",
+    "start": 293.612,
+    "end": 293.962,
+    "afterPause": false
+   },
+   {
+    "word": "por",
+    "raw": "por",
+    "start": 293.962,
+    "end": 294.206,
+    "afterPause": false
+   },
+   {
+    "word": "eso",
+    "raw": "eso",
+    "start": 294.206,
+    "end": 294.45,
+    "afterPause": false
+   },
+   {
+    "word": "pago",
+    "raw": "pagó",
+    "start": 294.45,
+    "end": 294.756,
+    "afterPause": false
+   },
+   {
+    "word": "mas",
+    "raw": "más",
+    "start": 294.756,
+    "end": 295.0,
+    "afterPause": false
+   },
+   {
+    "word": "hoy",
+    "raw": "hoy.",
+    "start": 295.0,
+    "end": 295.244,
+    "afterPause": false
+   }
+  ],
+  "start": 291.306,
+  "end": 295.244
+ },
+ "c067": {
+  "words": [
+   {
+    "word": "dicho",
+    "raw": "Dicho",
+    "start": 296.202,
+    "end": 296.475,
+    "afterPause": false
+   },
+   {
+    "word": "de",
+    "raw": "de",
+    "start": 296.475,
+    "end": 296.612,
+    "afterPause": false
+   },
+   {
+    "word": "otro",
+    "raw": "otro",
+    "start": 296.612,
+    "end": 296.84,
+    "afterPause": false
+   },
+   {
+    "word": "modo",
+    "raw": "modo:",
+    "start": 296.84,
+    "end": 297.068,
+    "afterPause": false
+   },
+   {
+    "word": "una",
+    "raw": "una",
+    "start": 297.386,
+    "end": 297.616,
+    "afterPause": false
+   },
+   {
+    "word": "accion",
+    "raw": "acción",
+    "start": 297.616,
+    "end": 298.018,
+    "afterPause": false
+   },
+   {
+    "word": "es",
+    "raw": "es",
+    "start": 298.018,
+    "end": 298.191,
+    "afterPause": false
+   },
+   {
+    "word": "una",
+    "raw": "una",
+    "start": 298.191,
+    "end": 298.421,
+    "afterPause": false
+   },
+   {
+    "word": "parte",
+    "raw": "parte",
+    "start": 298.421,
+    "end": 298.766,
+    "afterPause": false
+   },
+   {
+    "word": "de",
+    "raw": "de",
+    "start": 298.766,
+    "end": 298.938,
+    "afterPause": false
+   },
+   {
+    "word": "una",
+    "raw": "una",
+    "start": 298.938,
+    "end": 299.168,
+    "afterPause": false
+   },
+   {
+    "word": "empresa",
+    "raw": "empresa.",
+    "start": 299.168,
+    "end": 299.628,
+    "afterPause": false
+   }
+  ],
+  "start": 296.202,
+  "end": 299.628
+ },
+ "c068": {
+  "words": [
+   {
+    "word": "y",
+    "raw": "Y",
+    "start": 300.106,
+    "end": 300.213,
+    "afterPause": false
+   },
+   {
+    "word": "su",
+    "raw": "su",
+    "start": 300.213,
+    "end": 300.373,
+    "afterPause": false
+   },
+   {
+    "word": "precio",
+    "raw": "precio",
+    "start": 300.373,
+    "end": 300.746,
+    "afterPause": false
+   },
+   {
+    "word": "refleja",
+    "raw": "refleja",
+    "start": 300.746,
+    "end": 301.173,
+    "afterPause": false
+   },
+   {
+    "word": "lo",
+    "raw": "lo",
+    "start": 301.173,
+    "end": 301.334,
+    "afterPause": false
+   },
+   {
+    "word": "que",
+    "raw": "que",
+    "start": 301.334,
+    "end": 301.547,
+    "afterPause": false
+   },
+   {
+    "word": "todos",
+    "raw": "todos",
+    "start": 301.547,
+    "end": 301.867,
+    "afterPause": false
+   },
+   {
+    "word": "esperan",
+    "raw": "esperan",
+    "start": 301.867,
+    "end": 302.294,
+    "afterPause": false
+   },
+   {
+    "word": "de",
+    "raw": "de",
+    "start": 302.294,
+    "end": 302.454,
+    "afterPause": false
+   },
+   {
+    "word": "su",
+    "raw": "su",
+    "start": 302.454,
+    "end": 302.614,
+    "afterPause": false
+   },
+   {
+    "word": "futuro",
+    "raw": "futuro.",
+    "start": 302.614,
+    "end": 302.988,
+    "afterPause": false
+   }
+  ],
+  "start": 300.106,
+  "end": 302.988
+ },
+ "c069": {
+  "words": [
+   {
+    "word": "si",
+    "raw": "Si",
+    "start": 303.274,
+    "end": 303.433,
+    "afterPause": false
+   },
+   {
+    "word": "la",
+    "raw": "la",
+    "start": 303.433,
+    "end": 303.592,
+    "afterPause": false
+   },
+   {
+    "word": "bolsa",
+    "raw": "bolsa",
+    "start": 303.592,
+    "end": 303.911,
+    "afterPause": false
+   },
+   {
+    "word": "te",
+    "raw": "te",
+    "start": 303.911,
+    "end": 304.07,
+    "afterPause": false
+   },
+   {
+    "word": "sonaba",
+    "raw": "sonaba",
+    "start": 304.07,
+    "end": 304.441,
+    "afterPause": false
+   },
+   {
+    "word": "lejana",
+    "raw": "lejana,",
+    "start": 304.441,
+    "end": 304.812,
+    "afterPause": false
+   },
+   {
+    "word": "ya",
+    "raw": "ya",
+    "start": 304.812,
+    "end": 304.971,
+    "afterPause": false
+   },
+   {
+    "word": "puedes",
+    "raw": "puedes",
+    "start": 304.971,
+    "end": 305.343,
+    "afterPause": false
+   },
+   {
+    "word": "explicarla",
+    "raw": "explicarla",
+    "start": 305.343,
+    "end": 305.926,
+    "afterPause": false
+   },
+   {
+    "word": "con",
+    "raw": "con",
+    "start": 305.926,
+    "end": 306.138,
+    "afterPause": false
+   },
+   {
+    "word": "una",
+    "raw": "una",
+    "start": 306.138,
+    "end": 306.351,
+    "afterPause": false
+   },
+   {
+    "word": "taqueria",
+    "raw": "taquería.",
+    "start": 306.351,
+    "end": 306.828,
+    "afterPause": false
+   }
+  ],
+  "start": 303.274,
+  "end": 306.828
+ },
+ "c070": {
+  "words": [
+   {
+    "word": "en",
+    "raw": "En",
+    "start": 307.05,
+    "end": 307.2,
+    "afterPause": false
+   },
+   {
+    "word": "el",
+    "raw": "el",
+    "start": 307.2,
+    "end": 307.35,
+    "afterPause": false
+   },
+   {
+    "word": "siguiente",
+    "raw": "siguiente",
+    "start": 307.35,
+    "end": 307.85,
+    "afterPause": false
+   },
+   {
+    "word": "video",
+    "raw": "video",
+    "start": 307.85,
+    "end": 308.15,
+    "afterPause": false
+   },
+   {
+    "word": "vemos",
+    "raw": "vemos",
+    "start": 308.15,
+    "end": 308.45,
+    "afterPause": false
+   },
+   {
+    "word": "como",
+    "raw": "cómo",
+    "start": 308.45,
+    "end": 308.7,
+    "afterPause": false
+   },
+   {
+    "word": "mirar",
+    "raw": "mirar",
+    "start": 308.7,
+    "end": 309.0,
+    "afterPause": false
+   },
+   {
+    "word": "la",
+    "raw": "la",
+    "start": 309.0,
+    "end": 309.15,
+    "afterPause": false
+   },
+   {
+    "word": "bolsa",
+    "raw": "bolsa",
+    "start": 309.15,
+    "end": 309.45,
+    "afterPause": false
+   },
+   {
+    "word": "completa",
+    "raw": "completa,",
+    "start": 309.45,
+    "end": 309.9,
+    "afterPause": false
+   },
+   {
+    "word": "sin",
+    "raw": "sin",
+    "start": 310.058,
+    "end": 310.235,
+    "afterPause": false
+   },
+   {
+    "word": "tener",
+    "raw": "tener",
+    "start": 310.235,
+    "end": 310.502,
+    "afterPause": false
+   },
+   {
+    "word": "que",
+    "raw": "que",
+    "start": 310.502,
+    "end": 310.679,
+    "afterPause": false
+   },
+   {
+    "word": "escoger",
+    "raw": "escoger",
+    "start": 310.679,
+    "end": 311.034,
+    "afterPause": false
+   },
+   {
+    "word": "una",
+    "raw": "una",
+    "start": 311.034,
+    "end": 311.211,
+    "afterPause": false
+   },
+   {
+    "word": "sola",
+    "raw": "sola",
+    "start": 311.211,
+    "end": 311.433,
+    "afterPause": false
+   },
+   {
+    "word": "empresa",
+    "raw": "empresa.",
+    "start": 311.433,
+    "end": 311.788,
+    "afterPause": false
+   },
+   {
+    "word": "sigue",
+    "raw": "Sigue",
+    "start": 312.01,
+    "end": 312.281,
+    "afterPause": false
+   },
+   {
+    "word": "el",
+    "raw": "el",
+    "start": 312.281,
+    "end": 312.417,
+    "afterPause": false
+   },
+   {
+    "word": "canal",
+    "raw": "canal",
+    "start": 312.417,
+    "end": 312.689,
+    "afterPause": false
+   },
+   {
+    "word": "para",
+    "raw": "para",
+    "start": 312.689,
+    "end": 312.915,
+    "afterPause": false
+   },
+   {
+    "word": "no",
+    "raw": "no",
+    "start": 312.915,
+    "end": 313.05,
+    "afterPause": false
+   },
+   {
+    "word": "perdertelo",
+    "raw": "perdértelo.",
+    "start": 313.05,
+    "end": 313.548,
+    "afterPause": false
+   }
+  ],
+  "start": 307.05,
+  "end": 313.548
+ },
+ "c071": {
+  "words": [
+   {
+    "word": "nos",
+    "raw": "Nos",
+    "start": 313.834,
+    "end": 314.07,
+    "afterPause": false
+   },
+   {
+    "word": "vemos",
+    "raw": "vemos",
+    "start": 314.07,
+    "end": 314.425,
+    "afterPause": false
+   },
+   {
+    "word": "alla",
+    "raw": "allá.",
+    "start": 314.425,
+    "end": 314.72,
+    "afterPause": false
+   }
+  ],
+  "start": 313.834,
+  "end": 314.72
+ }
+}
