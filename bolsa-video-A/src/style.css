@@ -1,0 +1,33 @@
+/* Manual de marca v1.0: base fija + ruta «Arcilla y petróleo». Todo plano. */
+:root {
+  --papel: #F3EFE6; --papel-hondo: #E3DDD0; --tinta: #05070A; --ambar: #E8C46A;
+  --gris-calido: #5E5A52; --gris-apoyo: #8C8577;
+  --verde: #2F6B4F; --rojo: #9A3B2E; --ocre: #7A5518;
+  --arcilla-muro: #EDD2BC; --arcilla-piso: #E1BEA3;
+  --agua-muro: #B7D3CF; --agua-piso: #9FC2BD; --petroleo: #1E5652;
+  --piso-y: 820px;
+}
+* { box-sizing: border-box; margin: 0; }
+html, body { width: 1920px; height: 1080px; overflow: hidden; background: var(--arcilla-muro); }
+body { font-family: 'Archivo', sans-serif; color: var(--tinta); -webkit-font-smoothing: antialiased; }
+#stage { position: relative; width: 1920px; height: 1080px; overflow: hidden; }
+#world { position: absolute; inset: 0; transform-origin: 0 0; }
+#wall { position: absolute; left: 0; top: 0; width: 1920px; height: var(--piso-y); background: var(--arcilla-muro); }
+#floor { position: absolute; left: 0; top: var(--piso-y); width: 1920px; height: calc(1080px - var(--piso-y)); background: var(--arcilla-piso); }
+#layer { position: absolute; inset: 0; }
+#michi { position: absolute; left: 0; top: 0; overflow: visible; }
+
+/* Cabecera del canal: «CCM» + tema del video */
+#header { position: absolute; left: 96px; top: 56px; letter-spacing: .16em; font-weight: 700; text-transform: uppercase; }
+#header .h1 { font-size: 24px; line-height: 32px; }
+#header .h2 { font-size: 20px; line-height: 28px; color: var(--gris-calido); }
+
+/* Pie: solo con ejemplo; tinta sobre el piso */
+#pie { position: absolute; left: 96px; top: 1008px; font-size: 24px; line-height: 32px; opacity: 0; }
+
+.abs { position: absolute; }
+.panel { background: var(--papel); border: 1px solid var(--gris-apoyo); }
+.serif { font-family: 'Instrument Serif', serif; font-weight: 400; font-variant-numeric: tabular-nums; }
+.lbl { font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 40px; letter-spacing: .12em; text-transform: uppercase; }
+.pos { color: var(--verde); }
+.neg { color: var(--rojo); }

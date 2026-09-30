@@ -1,0 +1,21 @@
+{
+  "name": "bolsa-video-a",
+  "version": "1.0.0",
+  "description": "Video A · Qué es la bolsa de valores · Cuentas Claras con MICHI",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "numeros": "node timeline/build_numeros.js",
+    "timeline": "node timeline/build_timeline.js",
+    "prep": "npm run numeros && npm run timeline",
+    "render": "npm run prep && node render/render.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "gsap": "^3.15.0"
+  },
+  "private": true
+}

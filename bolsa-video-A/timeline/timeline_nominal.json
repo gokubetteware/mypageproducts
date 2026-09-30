@@ -1,0 +1,7791 @@
+{
+ "generado": "timeline/build_timeline.js · tiempos NOMINALES (estimación a 110 palabras/min)",
+ "fps": 30,
+ "duracion_s": 480,
+ "frames": 14400,
+ "cabecera": {
+  "linea1": "CCM",
+  "linea2": "BOLSA DE VALORES",
+  "regla": "Arriba siempre «CCM»; abajo siempre el tema del video. Visible todo el video salvo pantalla de impacto y pantalla final."
+ },
+ "escenas": [
+  {
+   "id": "S01",
+   "start": 0,
+   "end": 48
+  },
+  {
+   "id": "S02",
+   "start": 48,
+   "end": 134
+  },
+  {
+   "id": "S03",
+   "start": 134,
+   "end": 245
+  },
+  {
+   "id": "S04",
+   "start": 245,
+   "end": 360
+  },
+  {
+   "id": "S05",
+   "start": 360,
+   "end": 427
+  },
+  {
+   "id": "S06",
+   "start": 427,
+   "end": 465
+  },
+  {
+   "id": "S07",
+   "start": 465,
+   "end": 484.364
+  }
+ ],
+ "cues": [
+  {
+   "id": "c001",
+   "scene": "S01",
+   "t": 0,
+   "end": 5.7,
+   "compress": 0.704,
+   "words": [
+    {
+     "word": "hoy",
+     "raw": "Hoy",
+     "start": 0,
+     "end": 0.384
+    },
+    {
+     "word": "vas",
+     "raw": "vas",
+     "start": 0.384,
+     "end": 0.769
+    },
+    {
+     "word": "a",
+     "raw": "a",
+     "start": 0.769,
+     "end": 1.153
+    },
+    {
+     "word": "entender",
+     "raw": "entender",
+     "start": 1.153,
+     "end": 1.537
+    },
+    {
+     "word": "que",
+     "raw": "qué",
+     "start": 1.537,
+     "end": 1.921
+    },
+    {
+     "word": "es",
+     "raw": "es",
+     "start": 1.921,
+     "end": 2.306
+    },
+    {
+     "word": "la",
+     "raw": "la",
+     "start": 2.306,
+     "end": 2.69
+    },
+    {
+     "word": "bolsa",
+     "raw": "bolsa",
+     "start": 2.69,
+     "end": 3.074
+    },
+    {
+     "word": "de",
+     "raw": "de",
+     "start": 3.074,
+     "end": 3.458
+    },
+    {
+     "word": "valores",
+     "raw": "valores,",
+     "start": 3.458,
+     "end": 3.843
+    },
+    {
+     "word": "con",
+     "raw": "con",
+     "start": 4.547,
+     "end": 4.931
+    },
+    {
+     "word": "una",
+     "raw": "una",
+     "start": 4.931,
+     "end": 5.316
+    },
+    {
+     "word": "taqueria",
+     "raw": "taquería.",
+     "start": 5.316,
+     "end": 5.7
+    }
+   ],
+   "text": "(sonrisa) Hoy vas a entender *qué es la bolsa de valores*, [pausa] con una taquería."
+  },
+  {
+   "id": "c002",
+   "scene": "S01",
+   "t": 6,
+   "end": 9.7,
+   "compress": 0.754,
+   "words": [
+    {
+     "word": "mira",
+     "raw": "Mira",
+     "start": 6,
+     "end": 6.411
+    },
+    {
+     "word": "este",
+     "raw": "este",
+     "start": 6.411,
+     "end": 6.822
+    },
+    {
+     "word": "pedacito",
+     "raw": "pedacito",
+     "start": 6.822,
+     "end": 7.233
+    },
+    {
+     "word": "de",
+     "raw": "de",
+     "start": 7.233,
+     "end": 7.644
+    },
+    {
+     "word": "la",
+     "raw": "la",
+     "start": 7.644,
+     "end": 8.056
+    },
+    {
+     "word": "taqueria",
+     "raw": "taquería",
+     "start": 8.056,
+     "end": 8.467
+    },
+    {
+     "word": "de",
+     "raw": "de",
+     "start": 8.467,
+     "end": 8.878
+    },
+    {
+     "word": "dona",
+     "raw": "doña",
+     "start": 8.878,
+     "end": 9.289
+    },
+    {
+     "word": "lupe",
+     "raw": "Lupe.",
+     "start": 9.289,
+     "end": 9.7
+    }
+   ],
+   "text": "Mira este pedacito de la taquería de doña Lupe."
+  },
+  {
+   "id": "c003",
+   "scene": "S01",
+   "t": 10,
+   "end": 14.7,
+   "compress": 0.884,
+   "words": [
+    {
+     "word": "ayer",
+     "raw": "Ayer",
+     "start": 10,
+     "end": 10.482
+    },
+    {
+     "word": "valia",
+     "raw": "valía",
+     "start": 10.482,
+     "end": 10.964
+    },
+    {
+     "word": "1000",
+     "raw": "1,000",
+     "start": 10.964,
+     "end": 11.446
+    },
+    {
+     "word": "catpesos",
+     "raw": "catpesos.",
+     "start": 11.446,
+     "end": 11.928
+    },
+    {
+     "word": "hoy",
+     "raw": "Hoy",
+     "start": 11.928,
+     "end": 12.41
+    },
+    {
+     "word": "vale",
+     "raw": "vale",
+     "start": 12.41,
+     "end": 12.892
+    },
+    {
+     "word": "1500",
+     "raw": "1,500.",
+     "start": 12.892,
+     "end": 13.374
+    }
+   ],
+   "text": "Ayer valía 1,000 catpesos. Hoy vale 1,500. [pausa 1.5 s]"
+  },
+  {
+   "id": "c004",
+   "scene": "S01",
+   "t": 15,
+   "end": 17.7,
+   "compress": 0.825,
+   "words": [
+    {
+     "word": "y",
+     "raw": "Y",
+     "start": 15,
+     "end": 15.45
+    },
+    {
+     "word": "la",
+     "raw": "la",
+     "start": 15.45,
+     "end": 15.9
+    },
+    {
+     "word": "taqueria",
+     "raw": "taquería",
+     "start": 15.9,
+     "end": 16.35
+    },
+    {
+     "word": "vende",
+     "raw": "vende",
+     "start": 16.35,
+     "end": 16.8
+    },
+    {
+     "word": "lo",
+     "raw": "lo",
+     "start": 16.8,
+     "end": 17.25
+    },
+    {
+     "word": "mismo",
+     "raw": "mismo.",
+     "start": 17.25,
+     "end": 17.7
+    }
+   ],
+   "text": "(bajar la voz) Y la taquería vende lo mismo."
+  },
+  {
+   "id": "c005",
+   "scene": "S01",
+   "t": 18,
+   "end": 25.636,
+   "compress": 1,
+   "words": [
+    {
+     "word": "si",
+     "raw": "Si",
+     "start": 18,
+     "end": 18.545
+    },
+    {
+     "word": "has",
+     "raw": "has",
+     "start": 18.545,
+     "end": 19.091
+    },
+    {
+     "word": "oido",
+     "raw": "oído",
+     "start": 19.091,
+     "end": 19.636
+    },
+    {
+     "word": "la",
+     "raw": "«la",
+     "start": 19.636,
+     "end": 20.182
+    },
+    {
+     "word": "bolsa",
+     "raw": "bolsa",
+     "start": 20.182,
+     "end": 20.727
+    },
+    {
+     "word": "subio",
+     "raw": "subió»",
+     "start": 20.727,
+     "end": 21.273
+    },
+    {
+     "word": "y",
+     "raw": "y",
+     "start": 21.273,
+     "end": 21.818
+    },
+    {
+     "word": "te",
+     "raw": "te",
+     "start": 21.818,
+     "end": 22.364
+    },
+    {
+     "word": "quedaste",
+     "raw": "quedaste",
+     "start": 22.364,
+     "end": 22.909
+    },
+    {
+     "word": "igual",
+     "raw": "igual,",
+     "start": 22.909,
+     "end": 23.455
+    },
+    {
+     "word": "no",
+     "raw": "no",
+     "start": 23.455,
+     "end": 24
+    },
+    {
+     "word": "fue",
+     "raw": "fue",
+     "start": 24,
+     "end": 24.545
+    },
+    {
+     "word": "tu",
+     "raw": "tu",
+     "start": 24.545,
+     "end": 25.091
+    },
+    {
+     "word": "culpa",
+     "raw": "culpa.",
+     "start": 25.091,
+     "end": 25.636
+    }
+   ],
+   "text": "Si has oído «la bolsa subió» y te quedaste igual, no fue tu culpa."
+  },
+  {
+   "id": "c006",
+   "scene": "S01",
+   "t": 26,
+   "end": 34.7,
+   "compress": 0.804,
+   "words": [
+    {
+     "word": "vas",
+     "raw": "Vas",
+     "start": 26,
+     "end": 26.439
+    },
+    {
+     "word": "a",
+     "raw": "a",
+     "start": 26.439,
+     "end": 26.877
+    },
+    {
+     "word": "entender",
+     "raw": "entender",
+     "start": 26.877,
+     "end": 27.316
+    },
+    {
+     "word": "que",
+     "raw": "qué",
+     "start": 27.316,
+     "end": 27.755
+    },
+    {
+     "word": "compras",
+     "raw": "compras",
+     "start": 27.755,
+     "end": 28.193
+    },
+    {
+     "word": "en",
+     "raw": "en",
+     "start": 28.193,
+     "end": 28.632
+    },
+    {
+     "word": "la",
+     "raw": "la",
+     "start": 28.632,
+     "end": 29.071
+    },
+    {
+     "word": "bolsa",
+     "raw": "bolsa,",
+     "start": 29.071,
+     "end": 29.509
+    },
+    {
+     "word": "y",
+     "raw": "y",
+     "start": 30.313,
+     "end": 30.752
+    },
+    {
+     "word": "al",
+     "raw": "al",
+     "start": 30.752,
+     "end": 31.191
+    },
+    {
+     "word": "final",
+     "raw": "final",
+     "start": 31.191,
+     "end": 31.629
+    },
+    {
+     "word": "sabras",
+     "raw": "sabrás",
+     "start": 31.629,
+     "end": 32.068
+    },
+    {
+     "word": "contestar",
+     "raw": "contestar:",
+     "start": 32.068,
+     "end": 32.507
+    },
+    {
+     "word": "por",
+     "raw": "¿por",
+     "start": 32.507,
+     "end": 32.945
+    },
+    {
+     "word": "que",
+     "raw": "qué",
+     "start": 32.945,
+     "end": 33.384
+    },
+    {
+     "word": "subio",
+     "raw": "subió",
+     "start": 33.384,
+     "end": 33.823
+    },
+    {
+     "word": "ese",
+     "raw": "ese",
+     "start": 33.823,
+     "end": 34.261
+    },
+    {
+     "word": "pedacito",
+     "raw": "pedacito?",
+     "start": 34.261,
+     "end": 34.7
+    }
+   ],
+   "text": "Vas a entender qué compras en la bolsa, [pausa] y al final sabrás contestar: ¿por qué subió ese pedacito?"
+  },
+  {
+   "id": "c007",
+   "scene": "S01",
+   "t": 35,
+   "end": 47.7,
+   "compress": 0.97,
+   "words": [
+    {
+     "word": "lo",
+     "raw": "Lo",
+     "start": 35,
+     "end": 35.529
+    },
+    {
+     "word": "vemos",
+     "raw": "vemos",
+     "start": 35.529,
+     "end": 36.058
+    },
+    {
+     "word": "en",
+     "raw": "en",
+     "start": 36.058,
+     "end": 36.588
+    },
+    {
+     "word": "tres",
+     "raw": "tres",
+     "start": 36.588,
+     "end": 37.117
+    },
+    {
+     "word": "pasos",
+     "raw": "pasos:",
+     "start": 37.117,
+     "end": 37.646
+    },
+    {
+     "word": "que",
+     "raw": "qué",
+     "start": 37.646,
+     "end": 38.175
+    },
+    {
+     "word": "es",
+     "raw": "es",
+     "start": 38.175,
+     "end": 38.704
+    },
+    {
+     "word": "un",
+     "raw": "un",
+     "start": 38.704,
+     "end": 39.233
+    },
+    {
+     "word": "pedacito",
+     "raw": "pedacito",
+     "start": 39.233,
+     "end": 39.763
+    },
+    {
+     "word": "de",
+     "raw": "de",
+     "start": 39.763,
+     "end": 40.292
+    },
+    {
+     "word": "una",
+     "raw": "una",
+     "start": 40.292,
+     "end": 40.821
+    },
+    {
+     "word": "empresa",
+     "raw": "empresa,",
+     "start": 40.821,
+     "end": 41.35
+    },
+    {
+     "word": "donde",
+     "raw": "dónde",
+     "start": 41.35,
+     "end": 41.879
+    },
+    {
+     "word": "se",
+     "raw": "se",
+     "start": 41.879,
+     "end": 42.408
+    },
+    {
+     "word": "compra",
+     "raw": "compra",
+     "start": 42.408,
+     "end": 42.938
+    },
+    {
+     "word": "y",
+     "raw": "y",
+     "start": 42.938,
+     "end": 43.467
+    },
+    {
+     "word": "se",
+     "raw": "se",
+     "start": 43.467,
+     "end": 43.996
+    },
+    {
+     "word": "vende",
+     "raw": "vende,",
+     "start": 43.996,
+     "end": 44.525
+    },
+    {
+     "word": "y",
+     "raw": "y",
+     "start": 44.525,
+     "end": 45.054
+    },
+    {
+     "word": "por",
+     "raw": "por",
+     "start": 45.054,
+     "end": 45.583
+    },
+    {
+     "word": "que",
+     "raw": "qué",
+     "start": 45.583,
+     "end": 46.113
+    },
+    {
+     "word": "cambia",
+     "raw": "cambia",
+     "start": 46.113,
+     "end": 46.642
+    },
+    {
+     "word": "su",
+     "raw": "su",
+     "start": 46.642,
+     "end": 47.171
+    },
+    {
+     "word": "precio",
+     "raw": "precio.",
+     "start": 47.171,
+     "end": 47.7
+    }
+   ],
+   "text": "Lo vemos en tres pasos: qué es un pedacito de una empresa, dónde se compra y se vende, y por qué cambia su precio."
+  },
+  {
+   "id": "c008",
+   "scene": "S02",
+   "t": 48,
+   "end": 54.7,
+   "compress": 0.73,
+   "words": [
+    {
+     "word": "esta",
+     "raw": "Esta",
+     "start": 48,
+     "end": 48.398
+    },
+    {
+     "word": "es",
+     "raw": "es",
+     "start": 48.398,
+     "end": 48.796
+    },
+    {
+     "word": "la",
+     "raw": "la",
+     "start": 48.796,
+     "end": 49.194
+    },
+    {
+     "word": "taqueria",
+     "raw": "taquería",
+     "start": 49.194,
+     "end": 49.592
+    },
+    {
+     "word": "de",
+     "raw": "de",
+     "start": 49.592,
+     "end": 49.99
+    },
+    {
+     "word": "dona",
+     "raw": "doña",
+     "start": 49.99,
+     "end": 50.388
+    },
+    {
+     "word": "lupe",
+     "raw": "Lupe.",
+     "start": 50.388,
+     "end": 50.786
+    },
+    {
+     "word": "vale",
+     "raw": "Vale",
+     "start": 51.516,
+     "end": 51.914
+    },
+    {
+     "word": "100000",
+     "raw": "100,000",
+     "start": 51.914,
+     "end": 52.312
+    },
+    {
+     "word": "catpesos",
+     "raw": "catpesos:",
+     "start": 52.312,
+     "end": 52.71
+    },
+    {
+     "word": "el",
+     "raw": "el",
+     "start": 52.71,
+     "end": 53.108
+    },
+    {
+     "word": "local",
+     "raw": "local,",
+     "start": 53.108,
+     "end": 53.506
+    },
+    {
+     "word": "la",
+     "raw": "la",
+     "start": 53.506,
+     "end": 53.904
+    },
+    {
+     "word": "plancha",
+     "raw": "plancha,",
+     "start": 53.904,
+     "end": 54.302
+    },
+    {
+     "word": "todo",
+     "raw": "todo.",
+     "start": 54.302,
+     "end": 54.7
+    }
+   ],
+   "text": "Esta es la taquería de doña Lupe. [pausa] Vale 100,000 catpesos: el local, la plancha, todo."
+  },
+  {
+   "id": "c009",
+   "scene": "S02",
+   "t": 55,
+   "end": 61.545,
+   "compress": 1,
+   "words": [
+    {
+     "word": "lupe",
+     "raw": "Lupe",
+     "start": 55,
+     "end": 55.545
+    },
+    {
+     "word": "quiere",
+     "raw": "quiere",
+     "start": 55.545,
+     "end": 56.091
+    },
+    {
+     "word": "dividirla",
+     "raw": "dividirla",
+     "start": 56.091,
+     "end": 56.636
+    },
+    {
+     "word": "en",
+     "raw": "en",
+     "start": 56.636,
+     "end": 57.182
+    },
+    {
+     "word": "100",
+     "raw": "100",
+     "start": 57.182,
+     "end": 57.727
+    },
+    {
+     "word": "pedacitos",
+     "raw": "pedacitos",
+     "start": 57.727,
+     "end": 58.273
+    },
+    {
+     "word": "iguales",
+     "raw": "iguales.",
+     "start": 58.273,
+     "end": 58.818
+    },
+    {
+     "word": "veamos",
+     "raw": "Veamos",
+     "start": 58.818,
+     "end": 59.364
+    },
+    {
+     "word": "cuanto",
+     "raw": "cuánto",
+     "start": 59.364,
+     "end": 59.909
+    },
+    {
+     "word": "vale",
+     "raw": "vale",
+     "start": 59.909,
+     "end": 60.455
+    },
+    {
+     "word": "cada",
+     "raw": "cada",
+     "start": 60.455,
+     "end": 61
+    },
+    {
+     "word": "uno",
+     "raw": "uno.",
+     "start": 61,
+     "end": 61.545
+    }
+   ],
+   "text": "Lupe quiere dividirla en 100 pedacitos iguales. Veamos cuánto vale cada uno."
+  },
+  {
+   "id": "c010",
+   "scene": "S02",
+   "t": 62,
+   "end": 66.7,
+   "compress": 0.808,
+   "words": [
+    {
+     "word": "tomamos",
+     "raw": "Tomamos",
+     "start": 62,
+     "end": 62.441
+    },
+    {
+     "word": "100000",
+     "raw": "100,000",
+     "start": 62.441,
+     "end": 62.881
+    },
+    {
+     "word": "y",
+     "raw": "y",
+     "start": 62.881,
+     "end": 63.322
+    },
+    {
+     "word": "lo",
+     "raw": "lo",
+     "start": 63.322,
+     "end": 63.762
+    },
+    {
+     "word": "repartimos",
+     "raw": "repartimos",
+     "start": 63.762,
+     "end": 64.203
+    },
+    {
+     "word": "entre",
+     "raw": "entre",
+     "start": 64.203,
+     "end": 64.644
+    },
+    {
+     "word": "100",
+     "raw": "100.",
+     "start": 64.644,
+     "end": 65.084
+    }
+   ],
+   "text": "Tomamos 100,000 y lo repartimos entre 100. [pausa 2 s]"
+  },
+  {
+   "id": "c011",
+   "scene": "S02",
+   "t": 67,
+   "end": 68.7,
+   "compress": 0.623,
+   "words": [
+    {
+     "word": "cada",
+     "raw": "Cada",
+     "start": 67,
+     "end": 67.34
+    },
+    {
+     "word": "pedacito",
+     "raw": "pedacito",
+     "start": 67.34,
+     "end": 67.68
+    },
+    {
+     "word": "vale",
+     "raw": "vale",
+     "start": 67.68,
+     "end": 68.02
+    },
+    {
+     "word": "1000",
+     "raw": "1,000",
+     "start": 68.02,
+     "end": 68.36
+    },
+    {
+     "word": "catpesos",
+     "raw": "catpesos.",
+     "start": 68.36,
+     "end": 68.7
+    }
+   ],
+   "text": "Cada pedacito vale 1,000 catpesos."
+  },
+  {
+   "id": "c012",
+   "scene": "S02",
+   "t": 69,
+   "end": 75.7,
+   "compress": 0.776,
+   "words": [
+    {
+     "word": "o",
+     "raw": "O",
+     "start": 69,
+     "end": 69.423
+    },
+    {
+     "word": "sea",
+     "raw": "sea:",
+     "start": 69.423,
+     "end": 69.846
+    },
+    {
+     "word": "si",
+     "raw": "si",
+     "start": 69.846,
+     "end": 70.269
+    },
+    {
+     "word": "compras",
+     "raw": "compras",
+     "start": 70.269,
+     "end": 70.693
+    },
+    {
+     "word": "uno",
+     "raw": "uno,",
+     "start": 70.693,
+     "end": 71.116
+    },
+    {
+     "word": "tienes",
+     "raw": "tienes",
+     "start": 71.116,
+     "end": 71.539
+    },
+    {
+     "word": "uno",
+     "raw": "uno",
+     "start": 71.539,
+     "end": 71.962
+    },
+    {
+     "word": "de",
+     "raw": "de",
+     "start": 71.962,
+     "end": 72.385
+    },
+    {
+     "word": "cada",
+     "raw": "cada",
+     "start": 72.385,
+     "end": 72.808
+    },
+    {
+     "word": "100",
+     "raw": "100",
+     "start": 72.808,
+     "end": 73.232
+    },
+    {
+     "word": "pedacitos",
+     "raw": "pedacitos",
+     "start": 73.232,
+     "end": 73.655
+    },
+    {
+     "word": "de",
+     "raw": "de",
+     "start": 73.655,
+     "end": 74.078
+    },
+    {
+     "word": "la",
+     "raw": "la",
+     "start": 74.078,
+     "end": 74.501
+    },
+    {
+     "word": "taqueria",
+     "raw": "taquería.",
+     "start": 74.501,
+     "end": 74.924
+    }
+   ],
+   "text": "O sea: si compras uno, tienes uno de cada 100 pedacitos de la taquería. [pausa]"
+  },
+  {
+   "id": "c013",
+   "scene": "S02",
+   "t": 76,
+   "end": 81.455,
+   "compress": 1,
+   "words": [
+    {
+     "word": "ese",
+     "raw": "Ese",
+     "start": 76,
+     "end": 76.545
+    },
+    {
+     "word": "pedacito",
+     "raw": "pedacito",
+     "start": 76.545,
+     "end": 77.091
+    },
+    {
+     "word": "de",
+     "raw": "de",
+     "start": 77.091,
+     "end": 77.636
+    },
+    {
+     "word": "una",
+     "raw": "una",
+     "start": 77.636,
+     "end": 78.182
+    },
+    {
+     "word": "empresa",
+     "raw": "empresa",
+     "start": 78.182,
+     "end": 78.727
+    },
+    {
+     "word": "tiene",
+     "raw": "tiene",
+     "start": 78.727,
+     "end": 79.273
+    },
+    {
+     "word": "nombre",
+     "raw": "nombre:",
+     "start": 79.273,
+     "end": 79.818
+    },
+    {
+     "word": "se",
+     "raw": "se",
+     "start": 79.818,
+     "end": 80.364
+    },
+    {
+     "word": "llama",
+     "raw": "llama",
+     "start": 80.364,
+     "end": 80.909
+    },
+    {
+     "word": "accion",
+     "raw": "acción.",
+     "start": 80.909,
+     "end": 81.455
+    }
+   ],
+   "text": "Ese pedacito de una empresa tiene nombre: se llama *acción*."
+  },
+  {
+   "id": "c014",
+   "scene": "S02",
+   "t": 83,
+   "end": 88.7,
+   "compress": 0.697,
+   "words": [
+    {
+     "word": "lupe",
+     "raw": "Lupe",
+     "start": 83,
+     "end": 83.38
+    },
+    {
+     "word": "quiere",
+     "raw": "quiere",
+     "start": 83.38,
+     "end": 83.76
+    },
+    {
+     "word": "abrir",
+     "raw": "abrir",
+     "start": 83.76,
+     "end": 84.14
+    },
+    {
+     "word": "una",
+     "raw": "una",
+     "start": 84.14,
+     "end": 84.52
+    },
+    {
+     "word": "segunda",
+     "raw": "segunda",
+     "start": 84.52,
+     "end": 84.9
+    },
+    {
+     "word": "taqueria",
+     "raw": "taquería",
+     "start": 84.9,
+     "end": 85.28
+    },
+    {
+     "word": "y",
+     "raw": "y",
+     "start": 85.28,
+     "end": 85.66
+    },
+    {
+     "word": "necesita",
+     "raw": "necesita",
+     "start": 85.66,
+     "end": 86.04
+    },
+    {
+     "word": "20000",
+     "raw": "20,000",
+     "start": 86.04,
+     "end": 86.42
+    },
+    {
+     "word": "catpesos",
+     "raw": "catpesos.",
+     "start": 86.42,
+     "end": 86.8
+    },
+    {
+     "word": "asi",
+     "raw": "Así",
+     "start": 86.8,
+     "end": 87.18
+    },
+    {
+     "word": "que",
+     "raw": "que",
+     "start": 87.18,
+     "end": 87.56
+    },
+    {
+     "word": "vende",
+     "raw": "vende",
+     "start": 87.56,
+     "end": 87.94
+    },
+    {
+     "word": "20",
+     "raw": "20",
+     "start": 87.94,
+     "end": 88.32
+    },
+    {
+     "word": "acciones",
+     "raw": "acciones.",
+     "start": 88.32,
+     "end": 88.7
+    }
+   ],
+   "text": "Lupe quiere abrir una segunda taquería y necesita 20,000 catpesos. Así que vende 20 acciones."
+  },
+  {
+   "id": "c015",
+   "scene": "S02",
+   "t": 89,
+   "end": 93.7,
+   "compress": 0.739,
+   "words": [
+    {
+     "word": "veamos",
+     "raw": "Veamos",
+     "start": 89,
+     "end": 89.403
+    },
+    {
+     "word": "cuanto",
+     "raw": "cuánto",
+     "start": 89.403,
+     "end": 89.806
+    },
+    {
+     "word": "junta",
+     "raw": "junta:",
+     "start": 89.806,
+     "end": 90.209
+    },
+    {
+     "word": "20",
+     "raw": "20",
+     "start": 90.209,
+     "end": 90.611
+    },
+    {
+     "word": "por",
+     "raw": "por",
+     "start": 90.611,
+     "end": 91.014
+    },
+    {
+     "word": "1000",
+     "raw": "1,000.",
+     "start": 91.014,
+     "end": 91.417
+    },
+    {
+     "word": "son",
+     "raw": "Son",
+     "start": 92.894,
+     "end": 93.297
+    },
+    {
+     "word": "20000",
+     "raw": "20,000.",
+     "start": 93.297,
+     "end": 93.7
+    }
+   ],
+   "text": "Veamos cuánto junta: 20 por 1,000. [pausa 2 s] Son 20,000."
+  },
+  {
+   "id": "c016",
+   "scene": "S02",
+   "t": 94,
+   "end": 96.182,
+   "compress": 1,
+   "words": [
+    {
+     "word": "justo",
+     "raw": "Justo",
+     "start": 94,
+     "end": 94.545
+    },
+    {
+     "word": "lo",
+     "raw": "lo",
+     "start": 94.545,
+     "end": 95.091
+    },
+    {
+     "word": "que",
+     "raw": "que",
+     "start": 95.091,
+     "end": 95.636
+    },
+    {
+     "word": "necesitaba",
+     "raw": "necesitaba.",
+     "start": 95.636,
+     "end": 96.182
+    }
+   ],
+   "text": "Justo lo que necesitaba."
+  },
+  {
+   "id": "c017",
+   "scene": "S02",
+   "t": 97,
+   "end": 102.7,
+   "compress": 0.76,
+   "words": [
+    {
+     "word": "cuantas",
+     "raw": "¿Cuántas",
+     "start": 97,
+     "end": 97.415
+    },
+    {
+     "word": "le",
+     "raw": "le",
+     "start": 97.415,
+     "end": 97.829
+    },
+    {
+     "word": "quedan",
+     "raw": "quedan",
+     "start": 97.829,
+     "end": 98.244
+    },
+    {
+     "word": "a",
+     "raw": "a",
+     "start": 98.244,
+     "end": 98.658
+    },
+    {
+     "word": "lupe",
+     "raw": "Lupe?",
+     "start": 98.658,
+     "end": 99.073
+    },
+    {
+     "word": "100",
+     "raw": "100",
+     "start": 99.073,
+     "end": 99.487
+    },
+    {
+     "word": "menos",
+     "raw": "menos",
+     "start": 99.487,
+     "end": 99.902
+    },
+    {
+     "word": "20",
+     "raw": "20.",
+     "start": 99.902,
+     "end": 100.316
+    },
+    {
+     "word": "le",
+     "raw": "Le",
+     "start": 101.456,
+     "end": 101.871
+    },
+    {
+     "word": "quedan",
+     "raw": "quedan",
+     "start": 101.871,
+     "end": 102.285
+    },
+    {
+     "word": "80",
+     "raw": "80.",
+     "start": 102.285,
+     "end": 102.7
+    }
+   ],
+   "text": "¿Cuántas le quedan a Lupe? 100 menos 20. [pausa 1.5 s] Le quedan 80."
+  },
+  {
+   "id": "c018",
+   "scene": "S02",
+   "t": 103,
+   "end": 107.7,
+   "compress": 0.957,
+   "words": [
+    {
+     "word": "las",
+     "raw": "Las",
+     "start": 103,
+     "end": 103.522
+    },
+    {
+     "word": "otras",
+     "raw": "otras",
+     "start": 103.522,
+     "end": 104.044
+    },
+    {
+     "word": "20",
+     "raw": "20",
+     "start": 104.044,
+     "end": 104.567
+    },
+    {
+     "word": "ya",
+     "raw": "ya",
+     "start": 104.567,
+     "end": 105.089
+    },
+    {
+     "word": "tienen",
+     "raw": "tienen",
+     "start": 105.089,
+     "end": 105.611
+    },
+    {
+     "word": "otros",
+     "raw": "otros",
+     "start": 105.611,
+     "end": 106.133
+    },
+    {
+     "word": "duenos",
+     "raw": "dueños:",
+     "start": 106.133,
+     "end": 106.656
+    },
+    {
+     "word": "los",
+     "raw": "los",
+     "start": 106.656,
+     "end": 107.178
+    },
+    {
+     "word": "vecinos",
+     "raw": "vecinos.",
+     "start": 107.178,
+     "end": 107.7
+    }
+   ],
+   "text": "Las otras 20 ya tienen otros dueños: los vecinos."
+  },
+  {
+   "id": "c019",
+   "scene": "S02",
+   "t": 108,
+   "end": 113.7,
+   "compress": 0.871,
+   "words": [
+    {
+     "word": "esos",
+     "raw": "Esos",
+     "start": 108,
+     "end": 108.475
+    },
+    {
+     "word": "vecinos",
+     "raw": "vecinos",
+     "start": 108.475,
+     "end": 108.95
+    },
+    {
+     "word": "ya",
+     "raw": "ya",
+     "start": 108.95,
+     "end": 109.425
+    },
+    {
+     "word": "no",
+     "raw": "no",
+     "start": 109.425,
+     "end": 109.9
+    },
+    {
+     "word": "son",
+     "raw": "son",
+     "start": 109.9,
+     "end": 110.375
+    },
+    {
+     "word": "solo",
+     "raw": "solo",
+     "start": 110.375,
+     "end": 110.85
+    },
+    {
+     "word": "clientes",
+     "raw": "clientes:",
+     "start": 110.85,
+     "end": 111.325
+    },
+    {
+     "word": "son",
+     "raw": "son",
+     "start": 111.325,
+     "end": 111.8
+    },
+    {
+     "word": "duenos",
+     "raw": "dueños",
+     "start": 111.8,
+     "end": 112.275
+    },
+    {
+     "word": "de",
+     "raw": "de",
+     "start": 112.275,
+     "end": 112.75
+    },
+    {
+     "word": "una",
+     "raw": "una",
+     "start": 112.75,
+     "end": 113.225
+    },
+    {
+     "word": "parte",
+     "raw": "parte.",
+     "start": 113.225,
+     "end": 113.7
+    }
+   ],
+   "text": "Esos vecinos ya no son solo clientes: son dueños de una parte."
+  },
+  {
+   "id": "c020",
+   "scene": "S02",
+   "t": 114,
+   "end": 120.7,
+   "compress": 0.945,
+   "words": [
+    {
+     "word": "a",
+     "raw": "A",
+     "start": 114,
+     "end": 114.515
+    },
+    {
+     "word": "ellos",
+     "raw": "ellos,",
+     "start": 114.515,
+     "end": 115.031
+    },
+    {
+     "word": "y",
+     "raw": "y",
+     "start": 115.031,
+     "end": 115.546
+    },
+    {
+     "word": "a",
+     "raw": "a",
+     "start": 115.546,
+     "end": 116.062
+    },
+    {
+     "word": "lupe",
+     "raw": "Lupe,",
+     "start": 116.062,
+     "end": 116.577
+    },
+    {
+     "word": "se",
+     "raw": "se",
+     "start": 116.577,
+     "end": 117.092
+    },
+    {
+     "word": "les",
+     "raw": "les",
+     "start": 117.092,
+     "end": 117.608
+    },
+    {
+     "word": "llama",
+     "raw": "llama",
+     "start": 117.608,
+     "end": 118.123
+    },
+    {
+     "word": "accionistas",
+     "raw": "accionistas:",
+     "start": 118.123,
+     "end": 118.638
+    },
+    {
+     "word": "personas",
+     "raw": "personas",
+     "start": 118.638,
+     "end": 119.154
+    },
+    {
+     "word": "que",
+     "raw": "que",
+     "start": 119.154,
+     "end": 119.669
+    },
+    {
+     "word": "tienen",
+     "raw": "tienen",
+     "start": 119.669,
+     "end": 120.185
+    },
+    {
+     "word": "acciones",
+     "raw": "acciones.",
+     "start": 120.185,
+     "end": 120.7
+    }
+   ],
+   "text": "A ellos, y a Lupe, se les llama *accionistas*: personas que tienen acciones."
+  },
+  {
+   "id": "c021",
+   "scene": "S02",
+   "t": 121,
+   "end": 133.7,
+   "compress": 0.97,
+   "words": [
+    {
+     "word": "hasta",
+     "raw": "Hasta",
+     "start": 121,
+     "end": 121.529
+    },
+    {
+     "word": "aqui",
+     "raw": "aquí:",
+     "start": 121.529,
+     "end": 122.058
+    },
+    {
+     "word": "una",
+     "raw": "una",
+     "start": 122.058,
+     "end": 122.588
+    },
+    {
+     "word": "accion",
+     "raw": "acción",
+     "start": 122.588,
+     "end": 123.117
+    },
+    {
+     "word": "es",
+     "raw": "es",
+     "start": 123.117,
+     "end": 123.646
+    },
+    {
+     "word": "un",
+     "raw": "un",
+     "start": 123.646,
+     "end": 124.175
+    },
+    {
+     "word": "pedacito",
+     "raw": "pedacito",
+     "start": 124.175,
+     "end": 124.704
+    },
+    {
+     "word": "de",
+     "raw": "de",
+     "start": 124.704,
+     "end": 125.233
+    },
+    {
+     "word": "una",
+     "raw": "una",
+     "start": 125.233,
+     "end": 125.763
+    },
+    {
+     "word": "empresa",
+     "raw": "empresa,",
+     "start": 125.763,
+     "end": 126.292
+    },
+    {
+     "word": "y",
+     "raw": "y",
+     "start": 126.292,
+     "end": 126.821
+    },
+    {
+     "word": "quien",
+     "raw": "quien",
+     "start": 126.821,
+     "end": 127.35
+    },
+    {
+     "word": "la",
+     "raw": "la",
+     "start": 127.35,
+     "end": 127.879
+    },
+    {
+     "word": "tiene",
+     "raw": "tiene",
+     "start": 127.879,
+     "end": 128.408
+    },
+    {
+     "word": "es",
+     "raw": "es",
+     "start": 128.408,
+     "end": 128.938
+    },
+    {
+     "word": "accionista",
+     "raw": "accionista.",
+     "start": 128.938,
+     "end": 129.467
+    },
+    {
+     "word": "falta",
+     "raw": "Falta:",
+     "start": 129.467,
+     "end": 129.996
+    },
+    {
+     "word": "que",
+     "raw": "qué",
+     "start": 129.996,
+     "end": 130.525
+    },
+    {
+     "word": "pasa",
+     "raw": "pasa",
+     "start": 130.525,
+     "end": 131.054
+    },
+    {
+     "word": "si",
+     "raw": "si",
+     "start": 131.054,
+     "end": 131.583
+    },
+    {
+     "word": "un",
+     "raw": "un",
+     "start": 131.583,
+     "end": 132.113
+    },
+    {
+     "word": "accionista",
+     "raw": "accionista",
+     "start": 132.113,
+     "end": 132.642
+    },
+    {
+     "word": "quiere",
+     "raw": "quiere",
+     "start": 132.642,
+     "end": 133.171
+    },
+    {
+     "word": "vender",
+     "raw": "vender.",
+     "start": 133.171,
+     "end": 133.7
+    }
+   ],
+   "text": "Hasta aquí: una acción es un pedacito de una empresa, y quien la tiene es accionista. Falta: qué pasa si un accionista quiere vender."
+  },
+  {
+   "id": "c022",
+   "scene": "S03",
+   "t": 134,
+   "end": 141.7,
+   "compress": 0.83,
+   "words": [
+    {
+     "word": "pero",
+     "raw": "Pero",
+     "start": 134,
+     "end": 134.453
+    },
+    {
+     "word": "hay",
+     "raw": "hay",
+     "start": 134.453,
+     "end": 134.906
+    },
+    {
+     "word": "un",
+     "raw": "un",
+     "start": 134.906,
+     "end": 135.359
+    },
+    {
+     "word": "problema",
+     "raw": "problema.",
+     "start": 135.359,
+     "end": 135.812
+    },
+    {
+     "word": "don",
+     "raw": "Don",
+     "start": 135.812,
+     "end": 136.265
+    },
+    {
+     "word": "ramiro",
+     "raw": "Ramiro,",
+     "start": 136.265,
+     "end": 136.718
+    },
+    {
+     "word": "uno",
+     "raw": "uno",
+     "start": 136.718,
+     "end": 137.171
+    },
+    {
+     "word": "de",
+     "raw": "de",
+     "start": 137.171,
+     "end": 137.624
+    },
+    {
+     "word": "los",
+     "raw": "los",
+     "start": 137.624,
+     "end": 138.076
+    },
+    {
+     "word": "vecinos",
+     "raw": "vecinos,",
+     "start": 138.076,
+     "end": 138.529
+    },
+    {
+     "word": "necesita",
+     "raw": "necesita",
+     "start": 138.529,
+     "end": 138.982
+    },
+    {
+     "word": "dinero",
+     "raw": "dinero",
+     "start": 138.982,
+     "end": 139.435
+    },
+    {
+     "word": "y",
+     "raw": "y",
+     "start": 139.435,
+     "end": 139.888
+    },
+    {
+     "word": "quiere",
+     "raw": "quiere",
+     "start": 139.888,
+     "end": 140.341
+    },
+    {
+     "word": "vender",
+     "raw": "vender",
+     "start": 140.341,
+     "end": 140.794
+    },
+    {
+     "word": "su",
+     "raw": "su",
+     "start": 140.794,
+     "end": 141.247
+    },
+    {
+     "word": "accion",
+     "raw": "acción.",
+     "start": 141.247,
+     "end": 141.7
+    }
+   ],
+   "text": "*Pero* hay un problema. Don Ramiro, uno de los vecinos, necesita dinero y quiere vender su acción."
+  },
+  {
+   "id": "c023",
+   "scene": "S03",
+   "t": 142,
+   "end": 146.909,
+   "compress": 1,
+   "words": [
+    {
+     "word": "a",
+     "raw": "¿A",
+     "start": 142,
+     "end": 142.545
+    },
+    {
+     "word": "quien",
+     "raw": "quién",
+     "start": 142.545,
+     "end": 143.091
+    },
+    {
+     "word": "se",
+     "raw": "se",
+     "start": 143.091,
+     "end": 143.636
+    },
+    {
+     "word": "la",
+     "raw": "la",
+     "start": 143.636,
+     "end": 144.182
+    },
+    {
+     "word": "vende",
+     "raw": "vende?",
+     "start": 144.182,
+     "end": 144.727
+    },
+    {
+     "word": "y",
+     "raw": "¿Y",
+     "start": 144.727,
+     "end": 145.273
+    },
+    {
+     "word": "a",
+     "raw": "a",
+     "start": 145.273,
+     "end": 145.818
+    },
+    {
+     "word": "que",
+     "raw": "qué",
+     "start": 145.818,
+     "end": 146.364
+    },
+    {
+     "word": "precio",
+     "raw": "precio?",
+     "start": 146.364,
+     "end": 146.909
+    }
+   ],
+   "text": "¿A quién se la vende? ¿Y a qué precio?"
+  },
+  {
+   "id": "c024",
+   "scene": "S03",
+   "t": 148,
+   "end": 155.7,
+   "compress": 0.75,
+   "words": [
+    {
+     "word": "por",
+     "raw": "Por",
+     "start": 148,
+     "end": 148.409
+    },
+    {
+     "word": "lo",
+     "raw": "lo",
+     "start": 148.409,
+     "end": 148.818
+    },
+    {
+     "word": "tanto",
+     "raw": "tanto,",
+     "start": 148.818,
+     "end": 149.227
+    },
+    {
+     "word": "lupe",
+     "raw": "Lupe",
+     "start": 149.227,
+     "end": 149.635
+    },
+    {
+     "word": "cambia",
+     "raw": "cambia",
+     "start": 149.635,
+     "end": 150.044
+    },
+    {
+     "word": "una",
+     "raw": "una",
+     "start": 150.044,
+     "end": 150.453
+    },
+    {
+     "word": "sola",
+     "raw": "sola",
+     "start": 150.453,
+     "end": 150.862
+    },
+    {
+     "word": "cosa",
+     "raw": "cosa:",
+     "start": 150.862,
+     "end": 151.271
+    },
+    {
+     "word": "deja",
+     "raw": "deja",
+     "start": 151.271,
+     "end": 151.68
+    },
+    {
+     "word": "que",
+     "raw": "que",
+     "start": 151.68,
+     "end": 152.088
+    },
+    {
+     "word": "compre",
+     "raw": "compre",
+     "start": 152.088,
+     "end": 152.497
+    },
+    {
+     "word": "cualquier",
+     "raw": "cualquier",
+     "start": 152.497,
+     "end": 152.906
+    },
+    {
+     "word": "persona",
+     "raw": "persona,",
+     "start": 152.906,
+     "end": 153.315
+    },
+    {
+     "word": "no",
+     "raw": "no",
+     "start": 153.315,
+     "end": 153.724
+    },
+    {
+     "word": "solo",
+     "raw": "solo",
+     "start": 153.724,
+     "end": 154.133
+    },
+    {
+     "word": "los",
+     "raw": "los",
+     "start": 154.133,
+     "end": 154.542
+    },
+    {
+     "word": "vecinos",
+     "raw": "vecinos.",
+     "start": 154.542,
+     "end": 154.95
+    }
+   ],
+   "text": "*Por lo tanto*, Lupe cambia una sola cosa: deja que compre cualquier persona, no solo los vecinos. [pausa]"
+  },
+  {
+   "id": "c025",
+   "scene": "S03",
+   "t": 156,
+   "end": 162.545,
+   "compress": 1,
+   "words": [
+    {
+     "word": "una",
+     "raw": "Una",
+     "start": 156,
+     "end": 156.545
+    },
+    {
+     "word": "empresa",
+     "raw": "empresa",
+     "start": 156.545,
+     "end": 157.091
+    },
+    {
+     "word": "que",
+     "raw": "que",
+     "start": 157.091,
+     "end": 157.636
+    },
+    {
+     "word": "vende",
+     "raw": "vende",
+     "start": 157.636,
+     "end": 158.182
+    },
+    {
+     "word": "sus",
+     "raw": "sus",
+     "start": 158.182,
+     "end": 158.727
+    },
+    {
+     "word": "acciones",
+     "raw": "acciones",
+     "start": 158.727,
+     "end": 159.273
+    },
+    {
+     "word": "a",
+     "raw": "a",
+     "start": 159.273,
+     "end": 159.818
+    },
+    {
+     "word": "cualquiera",
+     "raw": "cualquiera",
+     "start": 159.818,
+     "end": 160.364
+    },
+    {
+     "word": "se",
+     "raw": "se",
+     "start": 160.364,
+     "end": 160.909
+    },
+    {
+     "word": "llama",
+     "raw": "llama",
+     "start": 160.909,
+     "end": 161.455
+    },
+    {
+     "word": "empresa",
+     "raw": "empresa",
+     "start": 161.455,
+     "end": 162
+    },
+    {
+     "word": "publica",
+     "raw": "pública.",
+     "start": 162,
+     "end": 162.545
+    }
+   ],
+   "text": "Una empresa que vende sus acciones a cualquiera se llama *empresa pública*."
+  },
+  {
+   "id": "c026",
+   "scene": "S03",
+   "t": 163,
+   "end": 167.7,
+   "compress": 0.957,
+   "words": [
+    {
+     "word": "ojo",
+     "raw": "Ojo:",
+     "start": 163,
+     "end": 163.522
+    },
+    {
+     "word": "no",
+     "raw": "no",
+     "start": 163.522,
+     "end": 164.044
+    },
+    {
+     "word": "es",
+     "raw": "es",
+     "start": 164.044,
+     "end": 164.567
+    },
+    {
+     "word": "del",
+     "raw": "del",
+     "start": 164.567,
+     "end": 165.089
+    },
+    {
+     "word": "gobierno",
+     "raw": "gobierno;",
+     "start": 165.089,
+     "end": 165.611
+    },
+    {
+     "word": "es",
+     "raw": "es",
+     "start": 165.611,
+     "end": 166.133
+    },
+    {
+     "word": "abierta",
+     "raw": "abierta",
+     "start": 166.133,
+     "end": 166.656
+    },
+    {
+     "word": "a",
+     "raw": "a",
+     "start": 166.656,
+     "end": 167.178
+    },
+    {
+     "word": "cualquiera",
+     "raw": "cualquiera.",
+     "start": 167.178,
+     "end": 167.7
+    }
+   ],
+   "text": "Ojo: no es del gobierno; es abierta a cualquiera."
+  },
+  {
+   "id": "c027",
+   "scene": "S03",
+   "t": 168,
+   "end": 173.7,
+   "compress": 0.746,
+   "words": [
+    {
+     "word": "esas",
+     "raw": "Esas",
+     "start": 168,
+     "end": 168.407
+    },
+    {
+     "word": "acciones",
+     "raw": "acciones",
+     "start": 168.407,
+     "end": 168.814
+    },
+    {
+     "word": "se",
+     "raw": "se",
+     "start": 168.814,
+     "end": 169.221
+    },
+    {
+     "word": "compran",
+     "raw": "compran",
+     "start": 169.221,
+     "end": 169.629
+    },
+    {
+     "word": "y",
+     "raw": "y",
+     "start": 169.629,
+     "end": 170.036
+    },
+    {
+     "word": "se",
+     "raw": "se",
+     "start": 170.036,
+     "end": 170.443
+    },
+    {
+     "word": "venden",
+     "raw": "venden",
+     "start": 170.443,
+     "end": 170.85
+    },
+    {
+     "word": "en",
+     "raw": "en",
+     "start": 170.85,
+     "end": 171.257
+    },
+    {
+     "word": "un",
+     "raw": "un",
+     "start": 171.257,
+     "end": 171.664
+    },
+    {
+     "word": "lugar",
+     "raw": "lugar",
+     "start": 171.664,
+     "end": 172.071
+    },
+    {
+     "word": "que",
+     "raw": "que",
+     "start": 172.071,
+     "end": 172.479
+    },
+    {
+     "word": "se",
+     "raw": "se",
+     "start": 172.479,
+     "end": 172.886
+    },
+    {
+     "word": "llama",
+     "raw": "llama",
+     "start": 172.886,
+     "end": 173.293
+    },
+    {
+     "word": "bolsa",
+     "raw": "bolsa.",
+     "start": 173.293,
+     "end": 173.7
+    }
+   ],
+   "text": "Esas acciones se compran y se venden en un lugar que se llama *bolsa*."
+  },
+  {
+   "id": "c028",
+   "scene": "S03",
+   "t": 174,
+   "end": 178.909,
+   "compress": 1,
+   "words": [
+    {
+     "word": "ahi",
+     "raw": "Ahí",
+     "start": 174,
+     "end": 174.545
+    },
+    {
+     "word": "don",
+     "raw": "Don",
+     "start": 174.545,
+     "end": 175.091
+    },
+    {
+     "word": "ramiro",
+     "raw": "Ramiro",
+     "start": 175.091,
+     "end": 175.636
+    },
+    {
+     "word": "ya",
+     "raw": "ya",
+     "start": 175.636,
+     "end": 176.182
+    },
+    {
+     "word": "si",
+     "raw": "sí",
+     "start": 176.182,
+     "end": 176.727
+    },
+    {
+     "word": "encuentra",
+     "raw": "encuentra",
+     "start": 176.727,
+     "end": 177.273
+    },
+    {
+     "word": "a",
+     "raw": "a",
+     "start": 177.273,
+     "end": 177.818
+    },
+    {
+     "word": "quien",
+     "raw": "quién",
+     "start": 177.818,
+     "end": 178.364
+    },
+    {
+     "word": "vendersela",
+     "raw": "vendérsela.",
+     "start": 178.364,
+     "end": 178.909
+    }
+   ],
+   "text": "Ahí Don Ramiro ya sí encuentra a quién vendérsela."
+  },
+  {
+   "id": "c029",
+   "scene": "S03",
+   "t": 180,
+   "end": 185.455,
+   "compress": 1,
+   "words": [
+    {
+     "word": "ahora",
+     "raw": "Ahora,",
+     "start": 180,
+     "end": 180.545
+    },
+    {
+     "word": "el",
+     "raw": "el",
+     "start": 180.545,
+     "end": 181.091
+    },
+    {
+     "word": "precio",
+     "raw": "precio.",
+     "start": 181.091,
+     "end": 181.636
+    },
+    {
+     "word": "podrias",
+     "raw": "Podrías",
+     "start": 181.636,
+     "end": 182.182
+    },
+    {
+     "word": "pensar",
+     "raw": "pensar",
+     "start": 182.182,
+     "end": 182.727
+    },
+    {
+     "word": "que",
+     "raw": "que",
+     "start": 182.727,
+     "end": 183.273
+    },
+    {
+     "word": "lo",
+     "raw": "lo",
+     "start": 183.273,
+     "end": 183.818
+    },
+    {
+     "word": "fija",
+     "raw": "fija",
+     "start": 183.818,
+     "end": 184.364
+    },
+    {
+     "word": "la",
+     "raw": "la",
+     "start": 184.364,
+     "end": 184.909
+    },
+    {
+     "word": "empresa",
+     "raw": "empresa.",
+     "start": 184.909,
+     "end": 185.455
+    }
+   ],
+   "text": "Ahora, el precio. Podrías pensar que lo fija la empresa."
+  },
+  {
+   "id": "c030",
+   "scene": "S03",
+   "t": 186,
+   "end": 193.7,
+   "compress": 0.882,
+   "words": [
+    {
+     "word": "pero",
+     "raw": "Pero",
+     "start": 186,
+     "end": 186.481
+    },
+    {
+     "word": "el",
+     "raw": "el",
+     "start": 186.481,
+     "end": 186.962
+    },
+    {
+     "word": "precio",
+     "raw": "precio",
+     "start": 186.962,
+     "end": 187.444
+    },
+    {
+     "word": "es",
+     "raw": "es",
+     "start": 187.444,
+     "end": 187.925
+    },
+    {
+     "word": "lo",
+     "raw": "lo",
+     "start": 187.925,
+     "end": 188.406
+    },
+    {
+     "word": "que",
+     "raw": "que",
+     "start": 188.406,
+     "end": 188.887
+    },
+    {
+     "word": "un",
+     "raw": "un",
+     "start": 188.887,
+     "end": 189.369
+    },
+    {
+     "word": "comprador",
+     "raw": "comprador",
+     "start": 189.369,
+     "end": 189.85
+    },
+    {
+     "word": "acepta",
+     "raw": "acepta",
+     "start": 189.85,
+     "end": 190.331
+    },
+    {
+     "word": "pagar",
+     "raw": "pagar",
+     "start": 190.331,
+     "end": 190.812
+    },
+    {
+     "word": "hoy",
+     "raw": "hoy",
+     "start": 190.812,
+     "end": 191.294
+    },
+    {
+     "word": "y",
+     "raw": "y",
+     "start": 191.294,
+     "end": 191.775
+    },
+    {
+     "word": "un",
+     "raw": "un",
+     "start": 191.775,
+     "end": 192.256
+    },
+    {
+     "word": "vendedor",
+     "raw": "vendedor",
+     "start": 192.256,
+     "end": 192.737
+    },
+    {
+     "word": "acepta",
+     "raw": "acepta",
+     "start": 192.737,
+     "end": 193.219
+    },
+    {
+     "word": "cobrar",
+     "raw": "cobrar.",
+     "start": 193.219,
+     "end": 193.7
+    }
+   ],
+   "text": "Pero el precio es lo que un comprador acepta pagar hoy y un vendedor acepta cobrar."
+  },
+  {
+   "id": "c031",
+   "scene": "S03",
+   "t": 194,
+   "end": 198.364,
+   "compress": 1,
+   "words": [
+    {
+     "word": "cambiamos",
+     "raw": "Cambiamos",
+     "start": 194,
+     "end": 194.545
+    },
+    {
+     "word": "una",
+     "raw": "una",
+     "start": 194.545,
+     "end": 195.091
+    },
+    {
+     "word": "sola",
+     "raw": "sola",
+     "start": 195.091,
+     "end": 195.636
+    },
+    {
+     "word": "cosa",
+     "raw": "cosa:",
+     "start": 195.636,
+     "end": 196.182
+    },
+    {
+     "word": "cuanta",
+     "raw": "cuánta",
+     "start": 196.182,
+     "end": 196.727
+    },
+    {
+     "word": "gente",
+     "raw": "gente",
+     "start": 196.727,
+     "end": 197.273
+    },
+    {
+     "word": "quiere",
+     "raw": "quiere",
+     "start": 197.273,
+     "end": 197.818
+    },
+    {
+     "word": "comprar",
+     "raw": "comprar.",
+     "start": 197.818,
+     "end": 198.364
+    }
+   ],
+   "text": "Cambiamos una sola cosa: cuánta gente quiere comprar."
+  },
+  {
+   "id": "c032",
+   "scene": "S03",
+   "t": 199,
+   "end": 209.7,
+   "compress": 0.713,
+   "words": [
+    {
+     "word": "antes",
+     "raw": "Antes",
+     "start": 199,
+     "end": 199.389
+    },
+    {
+     "word": "de",
+     "raw": "de",
+     "start": 199.389,
+     "end": 199.778
+    },
+    {
+     "word": "ver",
+     "raw": "ver",
+     "start": 199.778,
+     "end": 200.167
+    },
+    {
+     "word": "el",
+     "raw": "el",
+     "start": 200.167,
+     "end": 200.556
+    },
+    {
+     "word": "resultado",
+     "raw": "resultado,",
+     "start": 200.556,
+     "end": 200.945
+    },
+    {
+     "word": "piensalo",
+     "raw": "piénsalo:",
+     "start": 200.945,
+     "end": 201.335
+    },
+    {
+     "word": "si",
+     "raw": "si",
+     "start": 201.335,
+     "end": 201.724
+    },
+    {
+     "word": "muchos",
+     "raw": "muchos",
+     "start": 201.724,
+     "end": 202.113
+    },
+    {
+     "word": "quieren",
+     "raw": "quieren",
+     "start": 202.113,
+     "end": 202.502
+    },
+    {
+     "word": "comprar",
+     "raw": "comprar",
+     "start": 202.502,
+     "end": 202.891
+    },
+    {
+     "word": "la",
+     "raw": "la",
+     "start": 202.891,
+     "end": 203.28
+    },
+    {
+     "word": "accion",
+     "raw": "acción",
+     "start": 203.28,
+     "end": 203.669
+    },
+    {
+     "word": "y",
+     "raw": "y",
+     "start": 203.669,
+     "end": 204.058
+    },
+    {
+     "word": "casi",
+     "raw": "casi",
+     "start": 204.058,
+     "end": 204.447
+    },
+    {
+     "word": "nadie",
+     "raw": "nadie",
+     "start": 204.447,
+     "end": 204.836
+    },
+    {
+     "word": "quiere",
+     "raw": "quiere",
+     "start": 204.836,
+     "end": 205.225
+    },
+    {
+     "word": "vender",
+     "raw": "vender,",
+     "start": 205.225,
+     "end": 205.615
+    },
+    {
+     "word": "el",
+     "raw": "¿el",
+     "start": 205.615,
+     "end": 206.004
+    },
+    {
+     "word": "precio",
+     "raw": "precio",
+     "start": 206.004,
+     "end": 206.393
+    },
+    {
+     "word": "sube",
+     "raw": "sube",
+     "start": 206.393,
+     "end": 206.782
+    },
+    {
+     "word": "o",
+     "raw": "o",
+     "start": 206.782,
+     "end": 207.171
+    },
+    {
+     "word": "baja",
+     "raw": "baja?",
+     "start": 207.171,
+     "end": 207.56
+    }
+   ],
+   "text": "Antes de ver el resultado, piénsalo: si muchos quieren comprar la acción y casi nadie quiere vender, ¿el precio sube o baja? [pausa 3 s]"
+  },
+  {
+   "id": "c033",
+   "scene": "S03",
+   "t": 210,
+   "end": 215.7,
+   "compress": 0.95,
+   "words": [
+    {
+     "word": "sube",
+     "raw": "Sube.",
+     "start": 210,
+     "end": 210.518
+    },
+    {
+     "word": "quien",
+     "raw": "Quien",
+     "start": 210.518,
+     "end": 211.036
+    },
+    {
+     "word": "vende",
+     "raw": "vende",
+     "start": 211.036,
+     "end": 211.555
+    },
+    {
+     "word": "puede",
+     "raw": "puede",
+     "start": 211.555,
+     "end": 212.073
+    },
+    {
+     "word": "pedir",
+     "raw": "pedir",
+     "start": 212.073,
+     "end": 212.591
+    },
+    {
+     "word": "mas",
+     "raw": "más,",
+     "start": 212.591,
+     "end": 213.109
+    },
+    {
+     "word": "y",
+     "raw": "y",
+     "start": 213.109,
+     "end": 213.627
+    },
+    {
+     "word": "alguien",
+     "raw": "alguien",
+     "start": 213.627,
+     "end": 214.145
+    },
+    {
+     "word": "se",
+     "raw": "se",
+     "start": 214.145,
+     "end": 214.664
+    },
+    {
+     "word": "lo",
+     "raw": "lo",
+     "start": 214.664,
+     "end": 215.182
+    },
+    {
+     "word": "paga",
+     "raw": "paga.",
+     "start": 215.182,
+     "end": 215.7
+    }
+   ],
+   "text": "*Sube.* Quien vende puede pedir más, y alguien se lo paga."
+  },
+  {
+   "id": "c034",
+   "scene": "S03",
+   "t": 216,
+   "end": 221.318,
+   "compress": 1,
+   "words": [
+    {
+     "word": "hoy",
+     "raw": "Hoy",
+     "start": 216,
+     "end": 216.545
+    },
+    {
+     "word": "la",
+     "raw": "la",
+     "start": 216.545,
+     "end": 217.091
+    },
+    {
+     "word": "accion",
+     "raw": "acción",
+     "start": 217.091,
+     "end": 217.636
+    },
+    {
+     "word": "llega",
+     "raw": "llega",
+     "start": 217.636,
+     "end": 218.182
+    },
+    {
+     "word": "a",
+     "raw": "a",
+     "start": 218.182,
+     "end": 218.727
+    },
+    {
+     "word": "1500",
+     "raw": "1,500",
+     "start": 218.727,
+     "end": 219.273
+    },
+    {
+     "word": "catpesos",
+     "raw": "catpesos.",
+     "start": 219.273,
+     "end": 219.818
+    }
+   ],
+   "text": "Hoy la acción llega a 1,500 catpesos. [pausa 1.5 s]"
+  },
+  {
+   "id": "c035",
+   "scene": "S03",
+   "t": 222,
+   "end": 226.7,
+   "compress": 0.783,
+   "words": [
+    {
+     "word": "lo",
+     "raw": "¿Lo",
+     "start": 222,
+     "end": 222.427
+    },
+    {
+     "word": "pensaste",
+     "raw": "pensaste",
+     "start": 222.427,
+     "end": 222.855
+    },
+    {
+     "word": "asi",
+     "raw": "así?",
+     "start": 222.855,
+     "end": 223.282
+    },
+    {
+     "word": "entonces",
+     "raw": "Entonces",
+     "start": 223.282,
+     "end": 223.709
+    },
+    {
+     "word": "ya",
+     "raw": "ya",
+     "start": 223.709,
+     "end": 224.136
+    },
+    {
+     "word": "entiendes",
+     "raw": "entiendes",
+     "start": 224.136,
+     "end": 224.564
+    },
+    {
+     "word": "como",
+     "raw": "cómo",
+     "start": 224.564,
+     "end": 224.991
+    },
+    {
+     "word": "se",
+     "raw": "se",
+     "start": 224.991,
+     "end": 225.418
+    },
+    {
+     "word": "mueve",
+     "raw": "mueve",
+     "start": 225.418,
+     "end": 225.845
+    },
+    {
+     "word": "el",
+     "raw": "el",
+     "start": 225.845,
+     "end": 226.273
+    },
+    {
+     "word": "precio",
+     "raw": "precio.",
+     "start": 226.273,
+     "end": 226.7
+    }
+   ],
+   "text": "¿Lo pensaste así? Entonces ya entiendes cómo se mueve el precio."
+  },
+  {
+   "id": "c036",
+   "scene": "S03",
+   "t": 227,
+   "end": 231.7,
+   "compress": 0.615,
+   "words": [
+    {
+     "word": "y",
+     "raw": "Y",
+     "start": 227,
+     "end": 227.336
+    },
+    {
+     "word": "al",
+     "raw": "al",
+     "start": 227.336,
+     "end": 227.671
+    },
+    {
+     "word": "reves",
+     "raw": "revés:",
+     "start": 227.671,
+     "end": 228.007
+    },
+    {
+     "word": "si",
+     "raw": "si",
+     "start": 228.007,
+     "end": 228.343
+    },
+    {
+     "word": "muchos",
+     "raw": "muchos",
+     "start": 228.343,
+     "end": 228.679
+    },
+    {
+     "word": "quieren",
+     "raw": "quieren",
+     "start": 228.679,
+     "end": 229.014
+    },
+    {
+     "word": "vender",
+     "raw": "vender",
+     "start": 229.014,
+     "end": 229.35
+    },
+    {
+     "word": "y",
+     "raw": "y",
+     "start": 229.35,
+     "end": 229.686
+    },
+    {
+     "word": "casi",
+     "raw": "casi",
+     "start": 229.686,
+     "end": 230.021
+    },
+    {
+     "word": "nadie",
+     "raw": "nadie",
+     "start": 230.021,
+     "end": 230.357
+    },
+    {
+     "word": "comprar",
+     "raw": "comprar,",
+     "start": 230.357,
+     "end": 230.693
+    },
+    {
+     "word": "el",
+     "raw": "el",
+     "start": 230.693,
+     "end": 231.029
+    },
+    {
+     "word": "precio",
+     "raw": "precio",
+     "start": 231.029,
+     "end": 231.364
+    },
+    {
+     "word": "baja",
+     "raw": "baja.",
+     "start": 231.364,
+     "end": 231.7
+    }
+   ],
+   "text": "Y al revés: si muchos quieren vender y casi nadie comprar, el precio baja."
+  },
+  {
+   "id": "c037",
+   "scene": "S03",
+   "t": 232,
+   "end": 244.7,
+   "compress": 0.862,
+   "words": [
+    {
+     "word": "hasta",
+     "raw": "Hasta",
+     "start": 232,
+     "end": 232.47
+    },
+    {
+     "word": "aqui",
+     "raw": "aquí:",
+     "start": 232.47,
+     "end": 232.941
+    },
+    {
+     "word": "la",
+     "raw": "la",
+     "start": 232.941,
+     "end": 233.411
+    },
+    {
+     "word": "accion",
+     "raw": "acción",
+     "start": 233.411,
+     "end": 233.881
+    },
+    {
+     "word": "se",
+     "raw": "se",
+     "start": 233.881,
+     "end": 234.352
+    },
+    {
+     "word": "compra",
+     "raw": "compra",
+     "start": 234.352,
+     "end": 234.822
+    },
+    {
+     "word": "y",
+     "raw": "y",
+     "start": 234.822,
+     "end": 235.293
+    },
+    {
+     "word": "se",
+     "raw": "se",
+     "start": 235.293,
+     "end": 235.763
+    },
+    {
+     "word": "vende",
+     "raw": "vende",
+     "start": 235.763,
+     "end": 236.233
+    },
+    {
+     "word": "en",
+     "raw": "en",
+     "start": 236.233,
+     "end": 236.704
+    },
+    {
+     "word": "la",
+     "raw": "la",
+     "start": 236.704,
+     "end": 237.174
+    },
+    {
+     "word": "bolsa",
+     "raw": "bolsa,",
+     "start": 237.174,
+     "end": 237.644
+    },
+    {
+     "word": "y",
+     "raw": "y",
+     "start": 237.644,
+     "end": 238.115
+    },
+    {
+     "word": "su",
+     "raw": "su",
+     "start": 238.115,
+     "end": 238.585
+    },
+    {
+     "word": "precio",
+     "raw": "precio",
+     "start": 238.585,
+     "end": 239.056
+    },
+    {
+     "word": "lo",
+     "raw": "lo",
+     "start": 239.056,
+     "end": 239.526
+    },
+    {
+     "word": "fijan",
+     "raw": "fijan",
+     "start": 239.526,
+     "end": 239.996
+    },
+    {
+     "word": "quienes",
+     "raw": "quienes",
+     "start": 239.996,
+     "end": 240.467
+    },
+    {
+     "word": "compran",
+     "raw": "compran",
+     "start": 240.467,
+     "end": 240.937
+    },
+    {
+     "word": "y",
+     "raw": "y",
+     "start": 240.937,
+     "end": 241.407
+    },
+    {
+     "word": "venden",
+     "raw": "venden.",
+     "start": 241.407,
+     "end": 241.878
+    },
+    {
+     "word": "falta",
+     "raw": "Falta:",
+     "start": 241.878,
+     "end": 242.348
+    },
+    {
+     "word": "por",
+     "raw": "por",
+     "start": 242.348,
+     "end": 242.819
+    },
+    {
+     "word": "que",
+     "raw": "qué",
+     "start": 242.819,
+     "end": 243.289
+    },
+    {
+     "word": "querrian",
+     "raw": "querrían",
+     "start": 243.289,
+     "end": 243.759
+    },
+    {
+     "word": "pagar",
+     "raw": "pagar",
+     "start": 243.759,
+     "end": 244.23
+    },
+    {
+     "word": "mas",
+     "raw": "más.",
+     "start": 244.23,
+     "end": 244.7
+    }
+   ],
+   "text": "Hasta aquí: la acción se compra y se vende en la bolsa, y su precio lo fijan quienes compran y venden. Falta: por qué querrían pagar más."
+  },
+  {
+   "id": "c038",
+   "scene": "S04",
+   "t": 245,
+   "end": 251.7,
+   "compress": 0.819,
+   "words": [
+    {
+     "word": "pero",
+     "raw": "Pero",
+     "start": 245,
+     "end": 245.447
+    },
+    {
+     "word": "mira",
+     "raw": "mira",
+     "start": 245.447,
+     "end": 245.893
+    },
+    {
+     "word": "esto",
+     "raw": "esto:",
+     "start": 245.893,
+     "end": 246.34
+    },
+    {
+     "word": "hoy",
+     "raw": "hoy",
+     "start": 246.34,
+     "end": 246.787
+    },
+    {
+     "word": "la",
+     "raw": "la",
+     "start": 246.787,
+     "end": 247.233
+    },
+    {
+     "word": "taqueria",
+     "raw": "taquería",
+     "start": 247.233,
+     "end": 247.68
+    },
+    {
+     "word": "gana",
+     "raw": "gana",
+     "start": 247.68,
+     "end": 248.127
+    },
+    {
+     "word": "lo",
+     "raw": "lo",
+     "start": 248.127,
+     "end": 248.573
+    },
+    {
+     "word": "mismo",
+     "raw": "mismo",
+     "start": 248.573,
+     "end": 249.02
+    },
+    {
+     "word": "que",
+     "raw": "que",
+     "start": 249.02,
+     "end": 249.467
+    },
+    {
+     "word": "ayer",
+     "raw": "ayer,",
+     "start": 249.467,
+     "end": 249.913
+    },
+    {
+     "word": "10000",
+     "raw": "10,000",
+     "start": 249.913,
+     "end": 250.36
+    },
+    {
+     "word": "catpesos",
+     "raw": "catpesos",
+     "start": 250.36,
+     "end": 250.807
+    },
+    {
+     "word": "al",
+     "raw": "al",
+     "start": 250.807,
+     "end": 251.253
+    },
+    {
+     "word": "ano",
+     "raw": "año.",
+     "start": 251.253,
+     "end": 251.7
+    }
+   ],
+   "text": "*Pero* mira esto: hoy la taquería gana lo mismo que ayer, 10,000 catpesos al año."
+  },
+  {
+   "id": "c039",
+   "scene": "S04",
+   "t": 252,
+   "end": 258,
+   "compress": 1,
+   "words": [
+    {
+     "word": "aun",
+     "raw": "Aun",
+     "start": 252,
+     "end": 252.545
+    },
+    {
+     "word": "asi",
+     "raw": "así,",
+     "start": 252.545,
+     "end": 253.091
+    },
+    {
+     "word": "la",
+     "raw": "la",
+     "start": 253.091,
+     "end": 253.636
+    },
+    {
+     "word": "accion",
+     "raw": "acción",
+     "start": 253.636,
+     "end": 254.182
+    },
+    {
+     "word": "vale",
+     "raw": "vale",
+     "start": 254.182,
+     "end": 254.727
+    },
+    {
+     "word": "mas",
+     "raw": "más.",
+     "start": 254.727,
+     "end": 255.273
+    },
+    {
+     "word": "por",
+     "raw": "¿Por",
+     "start": 255.273,
+     "end": 255.818
+    },
+    {
+     "word": "que",
+     "raw": "qué",
+     "start": 255.818,
+     "end": 256.364
+    },
+    {
+     "word": "pagaria",
+     "raw": "pagaría",
+     "start": 256.364,
+     "end": 256.909
+    },
+    {
+     "word": "alguien",
+     "raw": "alguien",
+     "start": 256.909,
+     "end": 257.455
+    },
+    {
+     "word": "mas",
+     "raw": "más?",
+     "start": 257.455,
+     "end": 258
+    }
+   ],
+   "text": "Aun así, la acción vale más. ¿Por qué pagaría alguien más?"
+  },
+  {
+   "id": "c040",
+   "scene": "S04",
+   "t": 259,
+   "end": 264.7,
+   "compress": 0.804,
+   "words": [
+    {
+     "word": "por",
+     "raw": "Por",
+     "start": 259,
+     "end": 259.438
+    },
+    {
+     "word": "lo",
+     "raw": "lo",
+     "start": 259.438,
+     "end": 259.877
+    },
+    {
+     "word": "tanto",
+     "raw": "tanto,",
+     "start": 259.877,
+     "end": 260.315
+    },
+    {
+     "word": "veamos",
+     "raw": "veamos",
+     "start": 260.315,
+     "end": 260.754
+    },
+    {
+     "word": "cuanto",
+     "raw": "cuánto",
+     "start": 260.754,
+     "end": 261.192
+    },
+    {
+     "word": "le",
+     "raw": "le",
+     "start": 261.192,
+     "end": 261.631
+    },
+    {
+     "word": "toca",
+     "raw": "toca",
+     "start": 261.631,
+     "end": 262.069
+    },
+    {
+     "word": "a",
+     "raw": "a",
+     "start": 262.069,
+     "end": 262.508
+    },
+    {
+     "word": "cada",
+     "raw": "cada",
+     "start": 262.508,
+     "end": 262.946
+    },
+    {
+     "word": "accion",
+     "raw": "acción",
+     "start": 262.946,
+     "end": 263.385
+    },
+    {
+     "word": "de",
+     "raw": "de",
+     "start": 263.385,
+     "end": 263.823
+    },
+    {
+     "word": "esa",
+     "raw": "esa",
+     "start": 263.823,
+     "end": 264.262
+    },
+    {
+     "word": "ganancia",
+     "raw": "ganancia.",
+     "start": 264.262,
+     "end": 264.7
+    }
+   ],
+   "text": "*Por lo tanto*, veamos cuánto le toca a cada acción de esa ganancia."
+  },
+  {
+   "id": "c041",
+   "scene": "S04",
+   "t": 265,
+   "end": 271.7,
+   "compress": 0.97,
+   "words": [
+    {
+     "word": "10000",
+     "raw": "10,000",
+     "start": 265,
+     "end": 265.529
+    },
+    {
+     "word": "entre",
+     "raw": "entre",
+     "start": 265.529,
+     "end": 266.058
+    },
+    {
+     "word": "100",
+     "raw": "100.",
+     "start": 266.058,
+     "end": 266.587
+    },
+    {
+     "word": "le",
+     "raw": "Le",
+     "start": 268.526,
+     "end": 269.055
+    },
+    {
+     "word": "tocan",
+     "raw": "tocan",
+     "start": 269.055,
+     "end": 269.584
+    },
+    {
+     "word": "100",
+     "raw": "100",
+     "start": 269.584,
+     "end": 270.113
+    },
+    {
+     "word": "catpesos",
+     "raw": "catpesos",
+     "start": 270.113,
+     "end": 270.642
+    },
+    {
+     "word": "al",
+     "raw": "al",
+     "start": 270.642,
+     "end": 271.171
+    },
+    {
+     "word": "ano",
+     "raw": "año.",
+     "start": 271.171,
+     "end": 271.7
+    }
+   ],
+   "text": "10,000 entre 100. [pausa 2 s] Le tocan 100 catpesos al año."
+  },
+  {
+   "id": "c042",
+   "scene": "S04",
+   "t": 272,
+   "end": 276.7,
+   "compress": 0.718,
+   "words": [
+    {
+     "word": "es",
+     "raw": "Es",
+     "start": 272,
+     "end": 272.392
+    },
+    {
+     "word": "la",
+     "raw": "la",
+     "start": 272.392,
+     "end": 272.783
+    },
+    {
+     "word": "parte",
+     "raw": "parte",
+     "start": 272.783,
+     "end": 273.175
+    },
+    {
+     "word": "de",
+     "raw": "de",
+     "start": 273.175,
+     "end": 273.567
+    },
+    {
+     "word": "la",
+     "raw": "la",
+     "start": 273.567,
+     "end": 273.958
+    },
+    {
+     "word": "ganancia",
+     "raw": "ganancia",
+     "start": 273.958,
+     "end": 274.35
+    },
+    {
+     "word": "que",
+     "raw": "que",
+     "start": 274.35,
+     "end": 274.742
+    },
+    {
+     "word": "le",
+     "raw": "le",
+     "start": 274.742,
+     "end": 275.133
+    },
+    {
+     "word": "corresponde",
+     "raw": "corresponde",
+     "start": 275.133,
+     "end": 275.525
+    },
+    {
+     "word": "a",
+     "raw": "a",
+     "start": 275.525,
+     "end": 275.917
+    },
+    {
+     "word": "su",
+     "raw": "su",
+     "start": 275.917,
+     "end": 276.308
+    },
+    {
+     "word": "accionista",
+     "raw": "accionista.",
+     "start": 276.308,
+     "end": 276.7
+    }
+   ],
+   "text": "Es la parte de la ganancia que le corresponde a su accionista."
+  },
+  {
+   "id": "c043",
+   "scene": "S04",
+   "t": 277,
+   "end": 281.909,
+   "compress": 1,
+   "words": [
+    {
+     "word": "recuerda",
+     "raw": "Recuerda:",
+     "start": 277,
+     "end": 277.545
+    },
+    {
+     "word": "lupe",
+     "raw": "Lupe",
+     "start": 277.545,
+     "end": 278.091
+    },
+    {
+     "word": "abrio",
+     "raw": "abrió",
+     "start": 278.091,
+     "end": 278.636
+    },
+    {
+     "word": "su",
+     "raw": "su",
+     "start": 278.636,
+     "end": 279.182
+    },
+    {
+     "word": "segunda",
+     "raw": "segunda",
+     "start": 279.182,
+     "end": 279.727
+    },
+    {
+     "word": "taqueria",
+     "raw": "taquería",
+     "start": 279.727,
+     "end": 280.273
+    },
+    {
+     "word": "con",
+     "raw": "con",
+     "start": 280.273,
+     "end": 280.818
+    },
+    {
+     "word": "esos",
+     "raw": "esos",
+     "start": 280.818,
+     "end": 281.364
+    },
+    {
+     "word": "20000",
+     "raw": "20,000.",
+     "start": 281.364,
+     "end": 281.909
+    }
+   ],
+   "text": "Recuerda: Lupe abrió su segunda taquería con esos 20,000."
+  },
+  {
+   "id": "c044",
+   "scene": "S04",
+   "t": 283,
+   "end": 289.7,
+   "compress": 0.957,
+   "words": [
+    {
+     "word": "la",
+     "raw": "La",
+     "start": 283,
+     "end": 283.522
+    },
+    {
+     "word": "gente",
+     "raw": "gente",
+     "start": 283.522,
+     "end": 284.044
+    },
+    {
+     "word": "lo",
+     "raw": "lo",
+     "start": 284.044,
+     "end": 284.566
+    },
+    {
+     "word": "sabe",
+     "raw": "sabe,",
+     "start": 284.566,
+     "end": 285.088
+    },
+    {
+     "word": "y",
+     "raw": "y",
+     "start": 285.088,
+     "end": 285.61
+    },
+    {
+     "word": "muchos",
+     "raw": "muchos",
+     "start": 285.61,
+     "end": 286.132
+    },
+    {
+     "word": "piensan",
+     "raw": "piensan",
+     "start": 286.132,
+     "end": 286.655
+    },
+    {
+     "word": "que",
+     "raw": "que",
+     "start": 286.655,
+     "end": 287.177
+    },
+    {
+     "word": "ahora",
+     "raw": "ahora",
+     "start": 287.177,
+     "end": 287.699
+    },
+    {
+     "word": "ganara",
+     "raw": "ganará",
+     "start": 287.699,
+     "end": 288.221
+    },
+    {
+     "word": "mas",
+     "raw": "más.",
+     "start": 288.221,
+     "end": 288.743
+    }
+   ],
+   "text": "La gente lo sabe, y muchos piensan que ahora ganará más. [pausa]"
+  },
+  {
+   "id": "c045",
+   "scene": "S04",
+   "t": 290,
+   "end": 296.7,
+   "compress": 0.682,
+   "words": [
+    {
+     "word": "todavia",
+     "raw": "Todavía",
+     "start": 290,
+     "end": 290.372
+    },
+    {
+     "word": "no",
+     "raw": "no",
+     "start": 290.372,
+     "end": 290.744
+    },
+    {
+     "word": "gana",
+     "raw": "gana",
+     "start": 290.744,
+     "end": 291.117
+    },
+    {
+     "word": "mas",
+     "raw": "más:",
+     "start": 291.117,
+     "end": 291.489
+    },
+    {
+     "word": "es",
+     "raw": "es",
+     "start": 291.489,
+     "end": 291.861
+    },
+    {
+     "word": "lo",
+     "raw": "lo",
+     "start": 291.861,
+     "end": 292.233
+    },
+    {
+     "word": "que",
+     "raw": "que",
+     "start": 292.233,
+     "end": 292.606
+    },
+    {
+     "word": "creen",
+     "raw": "creen",
+     "start": 292.606,
+     "end": 292.978
+    },
+    {
+     "word": "que",
+     "raw": "que",
+     "start": 292.978,
+     "end": 293.35
+    },
+    {
+     "word": "va",
+     "raw": "va",
+     "start": 293.35,
+     "end": 293.722
+    },
+    {
+     "word": "a",
+     "raw": "a",
+     "start": 293.722,
+     "end": 294.094
+    },
+    {
+     "word": "pasar",
+     "raw": "pasar.",
+     "start": 294.094,
+     "end": 294.467
+    },
+    {
+     "word": "a",
+     "raw": "A",
+     "start": 294.467,
+     "end": 294.839
+    },
+    {
+     "word": "eso",
+     "raw": "eso",
+     "start": 294.839,
+     "end": 295.211
+    },
+    {
+     "word": "se",
+     "raw": "se",
+     "start": 295.211,
+     "end": 295.583
+    },
+    {
+     "word": "le",
+     "raw": "le",
+     "start": 295.583,
+     "end": 295.956
+    },
+    {
+     "word": "llama",
+     "raw": "llama",
+     "start": 295.956,
+     "end": 296.328
+    },
+    {
+     "word": "expectativas",
+     "raw": "expectativas.",
+     "start": 296.328,
+     "end": 296.7
+    }
+   ],
+   "text": "Todavía no gana más: es lo que creen que va a pasar. A eso se le llama *expectativas*."
+  },
+  {
+   "id": "c046",
+   "scene": "S04",
+   "t": 297,
+   "end": 302.7,
+   "compress": 0.95,
+   "words": [
+    {
+     "word": "digamos",
+     "raw": "Digamos",
+     "start": 297,
+     "end": 297.518
+    },
+    {
+     "word": "que",
+     "raw": "que",
+     "start": 297.518,
+     "end": 298.036
+    },
+    {
+     "word": "la",
+     "raw": "la",
+     "start": 298.036,
+     "end": 298.555
+    },
+    {
+     "word": "gente",
+     "raw": "gente",
+     "start": 298.555,
+     "end": 299.073
+    },
+    {
+     "word": "calcula",
+     "raw": "calcula",
+     "start": 299.073,
+     "end": 299.591
+    },
+    {
+     "word": "15000",
+     "raw": "15,000",
+     "start": 299.591,
+     "end": 300.109
+    },
+    {
+     "word": "catpesos",
+     "raw": "catpesos",
+     "start": 300.109,
+     "end": 300.627
+    },
+    {
+     "word": "de",
+     "raw": "de",
+     "start": 300.627,
+     "end": 301.145
+    },
+    {
+     "word": "ganancia",
+     "raw": "ganancia",
+     "start": 301.145,
+     "end": 301.664
+    },
+    {
+     "word": "al",
+     "raw": "al",
+     "start": 301.664,
+     "end": 302.182
+    },
+    {
+     "word": "ano",
+     "raw": "año.",
+     "start": 302.182,
+     "end": 302.7
+    }
+   ],
+   "text": "Digamos que la gente calcula 15,000 catpesos de ganancia al año."
+  },
+  {
+   "id": "c047",
+   "scene": "S04",
+   "t": 303,
+   "end": 312.7,
+   "compress": 0.821,
+   "words": [
+    {
+     "word": "veamos",
+     "raw": "Veamos",
+     "start": 303,
+     "end": 303.448
+    },
+    {
+     "word": "que",
+     "raw": "qué",
+     "start": 303.448,
+     "end": 303.895
+    },
+    {
+     "word": "le",
+     "raw": "le",
+     "start": 303.895,
+     "end": 304.343
+    },
+    {
+     "word": "tocaria",
+     "raw": "tocaría",
+     "start": 304.343,
+     "end": 304.791
+    },
+    {
+     "word": "a",
+     "raw": "a",
+     "start": 304.791,
+     "end": 305.238
+    },
+    {
+     "word": "cada",
+     "raw": "cada",
+     "start": 305.238,
+     "end": 305.686
+    },
+    {
+     "word": "accion",
+     "raw": "acción:",
+     "start": 305.686,
+     "end": 306.134
+    },
+    {
+     "word": "15000",
+     "raw": "15,000",
+     "start": 306.134,
+     "end": 306.582
+    },
+    {
+     "word": "entre",
+     "raw": "entre",
+     "start": 306.582,
+     "end": 307.029
+    },
+    {
+     "word": "100",
+     "raw": "100.",
+     "start": 307.029,
+     "end": 307.477
+    },
+    {
+     "word": "serian",
+     "raw": "Serían",
+     "start": 309.118,
+     "end": 309.566
+    },
+    {
+     "word": "150",
+     "raw": "150",
+     "start": 309.566,
+     "end": 310.014
+    },
+    {
+     "word": "al",
+     "raw": "al",
+     "start": 310.014,
+     "end": 310.462
+    },
+    {
+     "word": "ano",
+     "raw": "año:",
+     "start": 310.462,
+     "end": 310.909
+    },
+    {
+     "word": "50",
+     "raw": "50",
+     "start": 310.909,
+     "end": 311.357
+    },
+    {
+     "word": "mas",
+     "raw": "más",
+     "start": 311.357,
+     "end": 311.805
+    },
+    {
+     "word": "que",
+     "raw": "que",
+     "start": 311.805,
+     "end": 312.252
+    },
+    {
+     "word": "hoy",
+     "raw": "hoy.",
+     "start": 312.252,
+     "end": 312.7
+    }
+   ],
+   "text": "Veamos qué le tocaría a cada acción: 15,000 entre 100. [pausa 2 s] Serían 150 al año: 50 más que hoy."
+  },
+  {
+   "id": "c048",
+   "scene": "S04",
+   "t": 313,
+   "end": 319.7,
+   "compress": 0.682,
+   "words": [
+    {
+     "word": "en",
+     "raw": "En",
+     "start": 313,
+     "end": 313.372
+    },
+    {
+     "word": "este",
+     "raw": "este",
+     "start": 313.372,
+     "end": 313.744
+    },
+    {
+     "word": "ejemplo",
+     "raw": "ejemplo,",
+     "start": 313.744,
+     "end": 314.117
+    },
+    {
+     "word": "la",
+     "raw": "la",
+     "start": 314.117,
+     "end": 314.489
+    },
+    {
+     "word": "gente",
+     "raw": "gente",
+     "start": 314.489,
+     "end": 314.861
+    },
+    {
+     "word": "paga",
+     "raw": "paga",
+     "start": 314.861,
+     "end": 315.233
+    },
+    {
+     "word": "por",
+     "raw": "por",
+     "start": 315.233,
+     "end": 315.606
+    },
+    {
+     "word": "cada",
+     "raw": "cada",
+     "start": 315.606,
+     "end": 315.978
+    },
+    {
+     "word": "accion",
+     "raw": "acción",
+     "start": 315.978,
+     "end": 316.35
+    },
+    {
+     "word": "10",
+     "raw": "10",
+     "start": 316.35,
+     "end": 316.722
+    },
+    {
+     "word": "veces",
+     "raw": "veces",
+     "start": 316.722,
+     "end": 317.094
+    },
+    {
+     "word": "lo",
+     "raw": "lo",
+     "start": 317.094,
+     "end": 317.467
+    },
+    {
+     "word": "que",
+     "raw": "que",
+     "start": 317.467,
+     "end": 317.839
+    },
+    {
+     "word": "le",
+     "raw": "le",
+     "start": 317.839,
+     "end": 318.211
+    },
+    {
+     "word": "toca",
+     "raw": "toca",
+     "start": 318.211,
+     "end": 318.583
+    },
+    {
+     "word": "en",
+     "raw": "en",
+     "start": 318.583,
+     "end": 318.956
+    },
+    {
+     "word": "un",
+     "raw": "un",
+     "start": 318.956,
+     "end": 319.328
+    },
+    {
+     "word": "ano",
+     "raw": "año.",
+     "start": 319.328,
+     "end": 319.7
+    }
+   ],
+   "text": "En este ejemplo, la gente paga por cada acción 10 veces lo que le toca en un año."
+  },
+  {
+   "id": "c049",
+   "scene": "S04",
+   "t": 320,
+   "end": 325.273,
+   "compress": 1,
+   "words": [
+    {
+     "word": "antes",
+     "raw": "Antes:",
+     "start": 320,
+     "end": 320.545
+    },
+    {
+     "word": "100",
+     "raw": "100",
+     "start": 320.545,
+     "end": 321.091
+    },
+    {
+     "word": "por",
+     "raw": "por",
+     "start": 321.091,
+     "end": 321.636
+    },
+    {
+     "word": "10",
+     "raw": "10.",
+     "start": 321.636,
+     "end": 322.182
+    },
+    {
+     "word": "son",
+     "raw": "Son",
+     "start": 324.182,
+     "end": 324.727
+    },
+    {
+     "word": "1000",
+     "raw": "1,000.",
+     "start": 324.727,
+     "end": 325.273
+    }
+   ],
+   "text": "Antes: 100 por 10. [pausa 2 s] Son 1,000."
+  },
+  {
+   "id": "c050",
+   "scene": "S04",
+   "t": 326,
+   "end": 332.909,
+   "compress": 1,
+   "words": [
+    {
+     "word": "ahora",
+     "raw": "Ahora",
+     "start": 326,
+     "end": 326.545
+    },
+    {
+     "word": "esperan",
+     "raw": "esperan",
+     "start": 326.545,
+     "end": 327.091
+    },
+    {
+     "word": "150",
+     "raw": "150.",
+     "start": 327.091,
+     "end": 327.636
+    },
+    {
+     "word": "multiplicamos",
+     "raw": "Multiplicamos",
+     "start": 327.636,
+     "end": 328.182
+    },
+    {
+     "word": "150",
+     "raw": "150",
+     "start": 328.182,
+     "end": 328.727
+    },
+    {
+     "word": "por",
+     "raw": "por",
+     "start": 328.727,
+     "end": 329.273
+    },
+    {
+     "word": "10",
+     "raw": "10.",
+     "start": 329.273,
+     "end": 329.818
+    },
+    {
+     "word": "son",
+     "raw": "Son",
+     "start": 331.818,
+     "end": 332.364
+    },
+    {
+     "word": "1500",
+     "raw": "1,500.",
+     "start": 332.364,
+     "end": 332.909
+    }
+   ],
+   "text": "Ahora esperan 150. Multiplicamos 150 por 10. [pausa 2 s] Son 1,500."
+  },
+  {
+   "id": "c051",
+   "scene": "S04",
+   "t": 334,
+   "end": 339.7,
+   "compress": 0.746,
+   "words": [
+    {
+     "word": "por",
+     "raw": "Por",
+     "start": 334,
+     "end": 334.407
+    },
+    {
+     "word": "eso",
+     "raw": "eso",
+     "start": 334.407,
+     "end": 334.814
+    },
+    {
+     "word": "subio",
+     "raw": "subió",
+     "start": 334.814,
+     "end": 335.221
+    },
+    {
+     "word": "el",
+     "raw": "el",
+     "start": 335.221,
+     "end": 335.629
+    },
+    {
+     "word": "precio",
+     "raw": "precio:",
+     "start": 335.629,
+     "end": 336.036
+    },
+    {
+     "word": "nada",
+     "raw": "nada",
+     "start": 336.036,
+     "end": 336.443
+    },
+    {
+     "word": "cambio",
+     "raw": "cambió",
+     "start": 336.443,
+     "end": 336.85
+    },
+    {
+     "word": "todavia",
+     "raw": "todavía",
+     "start": 336.85,
+     "end": 337.257
+    },
+    {
+     "word": "en",
+     "raw": "en",
+     "start": 337.257,
+     "end": 337.664
+    },
+    {
+     "word": "la",
+     "raw": "la",
+     "start": 337.664,
+     "end": 338.071
+    },
+    {
+     "word": "taqueria",
+     "raw": "taquería;",
+     "start": 338.071,
+     "end": 338.479
+    },
+    {
+     "word": "cambiaron",
+     "raw": "cambiaron",
+     "start": 338.479,
+     "end": 338.886
+    },
+    {
+     "word": "las",
+     "raw": "las",
+     "start": 338.886,
+     "end": 339.293
+    },
+    {
+     "word": "expectativas",
+     "raw": "expectativas.",
+     "start": 339.293,
+     "end": 339.7
+    }
+   ],
+   "text": "Por eso subió el precio: nada cambió todavía en la taquería; cambiaron las expectativas."
+  },
+  {
+   "id": "c052",
+   "scene": "S04",
+   "t": 340,
+   "end": 343.7,
+   "compress": 0.565,
+   "words": [
+    {
+     "word": "ojo",
+     "raw": "Ojo:",
+     "start": 340,
+     "end": 340.308
+    },
+    {
+     "word": "el",
+     "raw": "el",
+     "start": 340.308,
+     "end": 340.617
+    },
+    {
+     "word": "10",
+     "raw": "10",
+     "start": 340.617,
+     "end": 340.925
+    },
+    {
+     "word": "es",
+     "raw": "es",
+     "start": 340.925,
+     "end": 341.233
+    },
+    {
+     "word": "de",
+     "raw": "de",
+     "start": 341.233,
+     "end": 341.542
+    },
+    {
+     "word": "ejemplo",
+     "raw": "ejemplo;",
+     "start": 341.542,
+     "end": 341.85
+    },
+    {
+     "word": "cada",
+     "raw": "cada",
+     "start": 341.85,
+     "end": 342.158
+    },
+    {
+     "word": "quien",
+     "raw": "quien",
+     "start": 342.158,
+     "end": 342.467
+    },
+    {
+     "word": "hace",
+     "raw": "hace",
+     "start": 342.467,
+     "end": 342.775
+    },
+    {
+     "word": "su",
+     "raw": "su",
+     "start": 342.775,
+     "end": 343.083
+    },
+    {
+     "word": "propia",
+     "raw": "propia",
+     "start": 343.083,
+     "end": 343.392
+    },
+    {
+     "word": "cuenta",
+     "raw": "cuenta.",
+     "start": 343.392,
+     "end": 343.7
+    }
+   ],
+   "text": "(bajar la voz) Ojo: el 10 es de ejemplo; cada quien hace su propia cuenta."
+  },
+  {
+   "id": "c053",
+   "scene": "S04",
+   "t": 344,
+   "end": 359.7,
+   "compress": 0.928,
+   "words": [
+    {
+     "word": "hasta",
+     "raw": "Hasta",
+     "start": 344,
+     "end": 344.506
+    },
+    {
+     "word": "aqui",
+     "raw": "aquí:",
+     "start": 344.506,
+     "end": 345.013
+    },
+    {
+     "word": "el",
+     "raw": "el",
+     "start": 345.013,
+     "end": 345.519
+    },
+    {
+     "word": "precio",
+     "raw": "precio",
+     "start": 345.519,
+     "end": 346.026
+    },
+    {
+     "word": "de",
+     "raw": "de",
+     "start": 346.026,
+     "end": 346.532
+    },
+    {
+     "word": "una",
+     "raw": "una",
+     "start": 346.532,
+     "end": 347.039
+    },
+    {
+     "word": "accion",
+     "raw": "acción",
+     "start": 347.039,
+     "end": 347.545
+    },
+    {
+     "word": "se",
+     "raw": "se",
+     "start": 347.545,
+     "end": 348.052
+    },
+    {
+     "word": "mueve",
+     "raw": "mueve",
+     "start": 348.052,
+     "end": 348.558
+    },
+    {
+     "word": "por",
+     "raw": "por",
+     "start": 348.558,
+     "end": 349.065
+    },
+    {
+     "word": "lo",
+     "raw": "lo",
+     "start": 349.065,
+     "end": 349.571
+    },
+    {
+     "word": "que",
+     "raw": "que",
+     "start": 349.571,
+     "end": 350.077
+    },
+    {
+     "word": "la",
+     "raw": "la",
+     "start": 350.077,
+     "end": 350.584
+    },
+    {
+     "word": "gente",
+     "raw": "gente",
+     "start": 350.584,
+     "end": 351.09
+    },
+    {
+     "word": "espera",
+     "raw": "espera",
+     "start": 351.09,
+     "end": 351.597
+    },
+    {
+     "word": "que",
+     "raw": "que",
+     "start": 351.597,
+     "end": 352.103
+    },
+    {
+     "word": "gane",
+     "raw": "gane",
+     "start": 352.103,
+     "end": 352.61
+    },
+    {
+     "word": "la",
+     "raw": "la",
+     "start": 352.61,
+     "end": 353.116
+    },
+    {
+     "word": "empresa",
+     "raw": "empresa,",
+     "start": 353.116,
+     "end": 353.623
+    },
+    {
+     "word": "no",
+     "raw": "no",
+     "start": 353.623,
+     "end": 354.129
+    },
+    {
+     "word": "solo",
+     "raw": "solo",
+     "start": 354.129,
+     "end": 354.635
+    },
+    {
+     "word": "por",
+     "raw": "por",
+     "start": 354.635,
+     "end": 355.142
+    },
+    {
+     "word": "lo",
+     "raw": "lo",
+     "start": 355.142,
+     "end": 355.648
+    },
+    {
+     "word": "que",
+     "raw": "que",
+     "start": 355.648,
+     "end": 356.155
+    },
+    {
+     "word": "ya",
+     "raw": "ya",
+     "start": 356.155,
+     "end": 356.661
+    },
+    {
+     "word": "gano",
+     "raw": "ganó.",
+     "start": 356.661,
+     "end": 357.168
+    },
+    {
+     "word": "falta",
+     "raw": "Falta:",
+     "start": 357.168,
+     "end": 357.674
+    },
+    {
+     "word": "probarlo",
+     "raw": "probarlo",
+     "start": 357.674,
+     "end": 358.181
+    },
+    {
+     "word": "con",
+     "raw": "con",
+     "start": 358.181,
+     "end": 358.687
+    },
+    {
+     "word": "otro",
+     "raw": "otro",
+     "start": 358.687,
+     "end": 359.194
+    },
+    {
+     "word": "negocio",
+     "raw": "negocio.",
+     "start": 359.194,
+     "end": 359.7
+    }
+   ],
+   "text": "Hasta aquí: el precio de una acción se mueve por lo que la gente espera que gane la empresa, no solo por lo que ya ganó. Falta: probarlo con otro negocio."
+  },
+  {
+   "id": "c054",
+   "scene": "S05",
+   "t": 360,
+   "end": 366.545,
+   "compress": 1,
+   "words": [
+    {
+     "word": "pero",
+     "raw": "Pero,",
+     "start": 360,
+     "end": 360.545
+    },
+    {
+     "word": "esto",
+     "raw": "¿esto",
+     "start": 360.545,
+     "end": 361.091
+    },
+    {
+     "word": "solo",
+     "raw": "solo",
+     "start": 361.091,
+     "end": 361.636
+    },
+    {
+     "word": "pasa",
+     "raw": "pasa",
+     "start": 361.636,
+     "end": 362.182
+    },
+    {
+     "word": "con",
+     "raw": "con",
+     "start": 362.182,
+     "end": 362.727
+    },
+    {
+     "word": "taquerias",
+     "raw": "taquerías?",
+     "start": 362.727,
+     "end": 363.273
+    },
+    {
+     "word": "probemos",
+     "raw": "Probemos",
+     "start": 363.273,
+     "end": 363.818
+    },
+    {
+     "word": "con",
+     "raw": "con",
+     "start": 363.818,
+     "end": 364.364
+    },
+    {
+     "word": "otra",
+     "raw": "otra",
+     "start": 364.364,
+     "end": 364.909
+    },
+    {
+     "word": "cosa",
+     "raw": "cosa:",
+     "start": 364.909,
+     "end": 365.455
+    },
+    {
+     "word": "una",
+     "raw": "una",
+     "start": 365.455,
+     "end": 366
+    },
+    {
+     "word": "papeleria",
+     "raw": "papelería.",
+     "start": 366,
+     "end": 366.545
+    }
+   ],
+   "text": "*Pero*, ¿esto solo pasa con taquerías? Probemos con otra cosa: una papelería."
+  },
+  {
+   "id": "c055",
+   "scene": "S05",
+   "t": 367,
+   "end": 371.7,
+   "compress": 0.783,
+   "words": [
+    {
+     "word": "vale",
+     "raw": "Vale",
+     "start": 367,
+     "end": 367.427
+    },
+    {
+     "word": "50000",
+     "raw": "50,000",
+     "start": 367.427,
+     "end": 367.855
+    },
+    {
+     "word": "catpesos",
+     "raw": "catpesos",
+     "start": 367.855,
+     "end": 368.282
+    },
+    {
+     "word": "y",
+     "raw": "y",
+     "start": 368.282,
+     "end": 368.709
+    },
+    {
+     "word": "tiene",
+     "raw": "tiene",
+     "start": 368.709,
+     "end": 369.136
+    },
+    {
+     "word": "50",
+     "raw": "50",
+     "start": 369.136,
+     "end": 369.564
+    },
+    {
+     "word": "acciones",
+     "raw": "acciones.",
+     "start": 369.564,
+     "end": 369.991
+    },
+    {
+     "word": "cada",
+     "raw": "Cada",
+     "start": 369.991,
+     "end": 370.418
+    },
+    {
+     "word": "una",
+     "raw": "una",
+     "start": 370.418,
+     "end": 370.845
+    },
+    {
+     "word": "vale",
+     "raw": "vale",
+     "start": 370.845,
+     "end": 371.273
+    },
+    {
+     "word": "1000",
+     "raw": "1,000.",
+     "start": 371.273,
+     "end": 371.7
+    }
+   ],
+   "text": "Vale 50,000 catpesos y tiene 50 acciones. Cada una vale 1,000."
+  },
+  {
+   "id": "c056",
+   "scene": "S05",
+   "t": 372,
+   "end": 377.7,
+   "compress": 0.804,
+   "words": [
+    {
+     "word": "y",
+     "raw": "Y",
+     "start": 372,
+     "end": 372.438
+    },
+    {
+     "word": "gana",
+     "raw": "gana",
+     "start": 372.438,
+     "end": 372.877
+    },
+    {
+     "word": "5000",
+     "raw": "5,000",
+     "start": 372.877,
+     "end": 373.315
+    },
+    {
+     "word": "al",
+     "raw": "al",
+     "start": 373.315,
+     "end": 373.754
+    },
+    {
+     "word": "ano",
+     "raw": "año,",
+     "start": 373.754,
+     "end": 374.192
+    },
+    {
+     "word": "asi",
+     "raw": "así",
+     "start": 374.192,
+     "end": 374.631
+    },
+    {
+     "word": "que",
+     "raw": "que",
+     "start": 374.631,
+     "end": 375.069
+    },
+    {
+     "word": "a",
+     "raw": "a",
+     "start": 375.069,
+     "end": 375.508
+    },
+    {
+     "word": "cada",
+     "raw": "cada",
+     "start": 375.508,
+     "end": 375.946
+    },
+    {
+     "word": "accion",
+     "raw": "acción",
+     "start": 375.946,
+     "end": 376.385
+    },
+    {
+     "word": "le",
+     "raw": "le",
+     "start": 376.385,
+     "end": 376.823
+    },
+    {
+     "word": "tocan",
+     "raw": "tocan",
+     "start": 376.823,
+     "end": 377.262
+    },
+    {
+     "word": "100",
+     "raw": "100.",
+     "start": 377.262,
+     "end": 377.7
+    }
+   ],
+   "text": "Y gana 5,000 al año, así que a cada acción le tocan 100."
+  },
+  {
+   "id": "c057",
+   "scene": "S05",
+   "t": 378,
+   "end": 384.455,
+   "compress": 1,
+   "words": [
+    {
+     "word": "un",
+     "raw": "Un",
+     "start": 378,
+     "end": 378.545
+    },
+    {
+     "word": "dia",
+     "raw": "día",
+     "start": 378.545,
+     "end": 379.091
+    },
+    {
+     "word": "se",
+     "raw": "se",
+     "start": 379.091,
+     "end": 379.636
+    },
+    {
+     "word": "anuncia",
+     "raw": "anuncia",
+     "start": 379.636,
+     "end": 380.182
+    },
+    {
+     "word": "que",
+     "raw": "que",
+     "start": 380.182,
+     "end": 380.727
+    },
+    {
+     "word": "abrira",
+     "raw": "abrirá",
+     "start": 380.727,
+     "end": 381.273
+    },
+    {
+     "word": "una",
+     "raw": "una",
+     "start": 381.273,
+     "end": 381.818
+    },
+    {
+     "word": "papeleria",
+     "raw": "papelería",
+     "start": 381.818,
+     "end": 382.364
+    },
+    {
+     "word": "grande",
+     "raw": "grande",
+     "start": 382.364,
+     "end": 382.909
+    },
+    {
+     "word": "enfrente",
+     "raw": "enfrente.",
+     "start": 382.909,
+     "end": 383.455
+    }
+   ],
+   "text": "Un día se anuncia que abrirá una papelería grande enfrente. [pausa]"
+  },
+  {
+   "id": "c058",
+   "scene": "S05",
+   "t": 385,
+   "end": 390.7,
+   "compress": 0.804,
+   "words": [
+    {
+     "word": "hoy",
+     "raw": "Hoy",
+     "start": 385,
+     "end": 385.438
+    },
+    {
+     "word": "la",
+     "raw": "la",
+     "start": 385.438,
+     "end": 385.877
+    },
+    {
+     "word": "papeleria",
+     "raw": "papelería",
+     "start": 385.877,
+     "end": 386.315
+    },
+    {
+     "word": "sigue",
+     "raw": "sigue",
+     "start": 386.315,
+     "end": 386.754
+    },
+    {
+     "word": "ganando",
+     "raw": "ganando",
+     "start": 386.754,
+     "end": 387.192
+    },
+    {
+     "word": "5000",
+     "raw": "5,000.",
+     "start": 387.192,
+     "end": 387.631
+    },
+    {
+     "word": "pero",
+     "raw": "Pero",
+     "start": 387.631,
+     "end": 388.069
+    },
+    {
+     "word": "la",
+     "raw": "la",
+     "start": 388.069,
+     "end": 388.508
+    },
+    {
+     "word": "gente",
+     "raw": "gente",
+     "start": 388.508,
+     "end": 388.946
+    },
+    {
+     "word": "espera",
+     "raw": "espera",
+     "start": 388.946,
+     "end": 389.385
+    },
+    {
+     "word": "que",
+     "raw": "que",
+     "start": 389.385,
+     "end": 389.823
+    },
+    {
+     "word": "gane",
+     "raw": "gane",
+     "start": 389.823,
+     "end": 390.262
+    },
+    {
+     "word": "3000",
+     "raw": "3,000.",
+     "start": 390.262,
+     "end": 390.7
+    }
+   ],
+   "text": "Hoy la papelería sigue ganando 5,000. Pero la gente espera que gane 3,000."
+  },
+  {
+   "id": "c059",
+   "scene": "S05",
+   "t": 391,
+   "end": 395.7,
+   "compress": 0.783,
+   "words": [
+    {
+     "word": "repartimos",
+     "raw": "Repartimos",
+     "start": 391,
+     "end": 391.427
+    },
+    {
+     "word": "3000",
+     "raw": "3,000",
+     "start": 391.427,
+     "end": 391.855
+    },
+    {
+     "word": "entre",
+     "raw": "entre",
+     "start": 391.855,
+     "end": 392.282
+    },
+    {
+     "word": "50",
+     "raw": "50",
+     "start": 392.282,
+     "end": 392.709
+    },
+    {
+     "word": "acciones",
+     "raw": "acciones.",
+     "start": 392.709,
+     "end": 393.136
+    },
+    {
+     "word": "le",
+     "raw": "Le",
+     "start": 393.136,
+     "end": 393.564
+    },
+    {
+     "word": "tocan",
+     "raw": "tocan",
+     "start": 393.564,
+     "end": 393.991
+    },
+    {
+     "word": "60",
+     "raw": "60",
+     "start": 393.991,
+     "end": 394.418
+    },
+    {
+     "word": "a",
+     "raw": "a",
+     "start": 394.418,
+     "end": 394.845
+    },
+    {
+     "word": "cada",
+     "raw": "cada",
+     "start": 394.845,
+     "end": 395.273
+    },
+    {
+     "word": "una",
+     "raw": "una.",
+     "start": 395.273,
+     "end": 395.7
+    }
+   ],
+   "text": "Repartimos 3,000 entre 50 acciones. Le tocan 60 a cada una."
+  },
+  {
+   "id": "c060",
+   "scene": "S05",
+   "t": 396,
+   "end": 400.7,
+   "compress": 0.68,
+   "words": [
+    {
+     "word": "multiplicamos",
+     "raw": "Multiplicamos",
+     "start": 396,
+     "end": 396.371
+    },
+    {
+     "word": "60",
+     "raw": "60",
+     "start": 396.371,
+     "end": 396.742
+    },
+    {
+     "word": "por",
+     "raw": "por",
+     "start": 396.742,
+     "end": 397.113
+    },
+    {
+     "word": "10",
+     "raw": "10.",
+     "start": 397.113,
+     "end": 397.484
+    },
+    {
+     "word": "son",
+     "raw": "Son",
+     "start": 398.845,
+     "end": 399.216
+    },
+    {
+     "word": "600",
+     "raw": "600.",
+     "start": 399.216,
+     "end": 399.587
+    },
+    {
+     "word": "el",
+     "raw": "El",
+     "start": 399.587,
+     "end": 399.958
+    },
+    {
+     "word": "precio",
+     "raw": "precio",
+     "start": 399.958,
+     "end": 400.329
+    },
+    {
+     "word": "baja",
+     "raw": "baja.",
+     "start": 400.329,
+     "end": 400.7
+    }
+   ],
+   "text": "Multiplicamos 60 por 10. [pausa 2 s] Son 600. El precio baja."
+  },
+  {
+   "id": "c061",
+   "scene": "S05",
+   "t": 401,
+   "end": 411.7,
+   "compress": 0.989,
+   "words": [
+    {
+     "word": "por",
+     "raw": "Por",
+     "start": 401,
+     "end": 401.539
+    },
+    {
+     "word": "lo",
+     "raw": "lo",
+     "start": 401.539,
+     "end": 402.079
+    },
+    {
+     "word": "tanto",
+     "raw": "tanto,",
+     "start": 402.079,
+     "end": 402.618
+    },
+    {
+     "word": "la",
+     "raw": "¿la",
+     "start": 402.618,
+     "end": 403.158
+    },
+    {
+     "word": "bolsa",
+     "raw": "bolsa",
+     "start": 403.158,
+     "end": 403.697
+    },
+    {
+     "word": "es",
+     "raw": "es",
+     "start": 403.697,
+     "end": 404.237
+    },
+    {
+     "word": "un",
+     "raw": "un",
+     "start": 404.237,
+     "end": 404.776
+    },
+    {
+     "word": "casino",
+     "raw": "casino?",
+     "start": 404.776,
+     "end": 405.316
+    },
+    {
+     "word": "mucha",
+     "raw": "Mucha",
+     "start": 405.316,
+     "end": 405.855
+    },
+    {
+     "word": "gente",
+     "raw": "gente",
+     "start": 405.855,
+     "end": 406.395
+    },
+    {
+     "word": "lo",
+     "raw": "lo",
+     "start": 406.395,
+     "end": 406.934
+    },
+    {
+     "word": "cree",
+     "raw": "cree,",
+     "start": 406.934,
+     "end": 407.474
+    },
+    {
+     "word": "porque",
+     "raw": "porque",
+     "start": 407.474,
+     "end": 408.013
+    },
+    {
+     "word": "casi",
+     "raw": "casi",
+     "start": 408.013,
+     "end": 408.553
+    },
+    {
+     "word": "nadie",
+     "raw": "nadie",
+     "start": 408.553,
+     "end": 409.092
+    },
+    {
+     "word": "ensena",
+     "raw": "enseña",
+     "start": 409.092,
+     "end": 409.632
+    },
+    {
+     "word": "la",
+     "raw": "la",
+     "start": 409.632,
+     "end": 410.171
+    },
+    {
+     "word": "cuenta",
+     "raw": "cuenta.",
+     "start": 410.171,
+     "end": 410.711
+    }
+   ],
+   "text": "*Por lo tanto*, ¿la bolsa es un casino? Mucha gente lo cree, porque casi nadie enseña la cuenta. [pausa]"
+  },
+  {
+   "id": "c062",
+   "scene": "S05",
+   "t": 412,
+   "end": 417.7,
+   "compress": 0.871,
+   "words": [
+    {
+     "word": "pero",
+     "raw": "Pero",
+     "start": 412,
+     "end": 412.475
+    },
+    {
+     "word": "el",
+     "raw": "el",
+     "start": 412.475,
+     "end": 412.95
+    },
+    {
+     "word": "precio",
+     "raw": "precio",
+     "start": 412.95,
+     "end": 413.425
+    },
+    {
+     "word": "si",
+     "raw": "sí",
+     "start": 413.425,
+     "end": 413.9
+    },
+    {
+     "word": "tiene",
+     "raw": "tiene",
+     "start": 413.9,
+     "end": 414.375
+    },
+    {
+     "word": "una",
+     "raw": "una",
+     "start": 414.375,
+     "end": 414.85
+    },
+    {
+     "word": "razon",
+     "raw": "razón:",
+     "start": 414.85,
+     "end": 415.325
+    },
+    {
+     "word": "lo",
+     "raw": "lo",
+     "start": 415.325,
+     "end": 415.8
+    },
+    {
+     "word": "que",
+     "raw": "que",
+     "start": 415.8,
+     "end": 416.275
+    },
+    {
+     "word": "la",
+     "raw": "la",
+     "start": 416.275,
+     "end": 416.75
+    },
+    {
+     "word": "gente",
+     "raw": "gente",
+     "start": 416.75,
+     "end": 417.225
+    },
+    {
+     "word": "espera",
+     "raw": "espera.",
+     "start": 417.225,
+     "end": 417.7
+    }
+   ],
+   "text": "Pero el precio sí tiene una razón: lo que la gente espera."
+  },
+  {
+   "id": "c063",
+   "scene": "S05",
+   "t": 418,
+   "end": 426.7,
+   "compress": 0.886,
+   "words": [
+    {
+     "word": "aun",
+     "raw": "Aun",
+     "start": 418,
+     "end": 418.483
+    },
+    {
+     "word": "asi",
+     "raw": "así,",
+     "start": 418.483,
+     "end": 418.967
+    },
+    {
+     "word": "esperar",
+     "raw": "esperar",
+     "start": 418.967,
+     "end": 419.45
+    },
+    {
+     "word": "no",
+     "raw": "no",
+     "start": 419.45,
+     "end": 419.933
+    },
+    {
+     "word": "es",
+     "raw": "es",
+     "start": 419.933,
+     "end": 420.417
+    },
+    {
+     "word": "saber",
+     "raw": "saber:",
+     "start": 420.417,
+     "end": 420.9
+    },
+    {
+     "word": "puede",
+     "raw": "puede",
+     "start": 420.9,
+     "end": 421.383
+    },
+    {
+     "word": "equivocarse",
+     "raw": "equivocarse,",
+     "start": 421.383,
+     "end": 421.867
+    },
+    {
+     "word": "y",
+     "raw": "y",
+     "start": 421.867,
+     "end": 422.35
+    },
+    {
+     "word": "nadie",
+     "raw": "nadie",
+     "start": 422.35,
+     "end": 422.833
+    },
+    {
+     "word": "puede",
+     "raw": "puede",
+     "start": 422.833,
+     "end": 423.317
+    },
+    {
+     "word": "prometerte",
+     "raw": "prometerte",
+     "start": 423.317,
+     "end": 423.8
+    },
+    {
+     "word": "que",
+     "raw": "que",
+     "start": 423.8,
+     "end": 424.283
+    },
+    {
+     "word": "una",
+     "raw": "una",
+     "start": 424.283,
+     "end": 424.767
+    },
+    {
+     "word": "accion",
+     "raw": "acción",
+     "start": 424.767,
+     "end": 425.25
+    },
+    {
+     "word": "va",
+     "raw": "va",
+     "start": 425.25,
+     "end": 425.733
+    },
+    {
+     "word": "a",
+     "raw": "a",
+     "start": 425.733,
+     "end": 426.217
+    },
+    {
+     "word": "subir",
+     "raw": "subir.",
+     "start": 426.217,
+     "end": 426.7
+    }
+   ],
+   "text": "Aun así, esperar no es saber: puede equivocarse, y nadie puede prometerte que una acción va a subir."
+  },
+  {
+   "id": "c064",
+   "scene": "S06",
+   "t": 427,
+   "end": 432.7,
+   "compress": 0.883,
+   "words": [
+    {
+     "word": "por",
+     "raw": "Por",
+     "start": 427,
+     "end": 427.482
+    },
+    {
+     "word": "lo",
+     "raw": "lo",
+     "start": 427.482,
+     "end": 427.963
+    },
+    {
+     "word": "tanto",
+     "raw": "tanto,",
+     "start": 427.963,
+     "end": 428.445
+    },
+    {
+     "word": "ya",
+     "raw": "ya",
+     "start": 428.445,
+     "end": 428.927
+    },
+    {
+     "word": "podemos",
+     "raw": "podemos",
+     "start": 428.927,
+     "end": 429.408
+    },
+    {
+     "word": "contestar",
+     "raw": "contestar",
+     "start": 429.408,
+     "end": 429.89
+    },
+    {
+     "word": "la",
+     "raw": "la",
+     "start": 429.89,
+     "end": 430.372
+    },
+    {
+     "word": "pregunta",
+     "raw": "pregunta",
+     "start": 430.372,
+     "end": 430.854
+    },
+    {
+     "word": "del",
+     "raw": "del",
+     "start": 430.854,
+     "end": 431.335
+    },
+    {
+     "word": "inicio",
+     "raw": "inicio.",
+     "start": 431.335,
+     "end": 431.817
+    }
+   ],
+   "text": "*Por lo tanto*, ya podemos contestar la pregunta del inicio. [pausa]"
+  },
+  {
+   "id": "c065",
+   "scene": "S06",
+   "t": 433,
+   "end": 441.7,
+   "compress": 0.854,
+   "words": [
+    {
+     "word": "por",
+     "raw": "¿Por",
+     "start": 433,
+     "end": 433.466
+    },
+    {
+     "word": "que",
+     "raw": "qué",
+     "start": 433.466,
+     "end": 433.932
+    },
+    {
+     "word": "la",
+     "raw": "la",
+     "start": 433.932,
+     "end": 434.398
+    },
+    {
+     "word": "accion",
+     "raw": "acción",
+     "start": 434.398,
+     "end": 434.864
+    },
+    {
+     "word": "subio",
+     "raw": "subió",
+     "start": 434.864,
+     "end": 435.33
+    },
+    {
+     "word": "de",
+     "raw": "de",
+     "start": 435.33,
+     "end": 435.796
+    },
+    {
+     "word": "1000",
+     "raw": "1,000",
+     "start": 435.796,
+     "end": 436.262
+    },
+    {
+     "word": "a",
+     "raw": "a",
+     "start": 436.262,
+     "end": 436.729
+    },
+    {
+     "word": "1500",
+     "raw": "1,500,",
+     "start": 436.729,
+     "end": 437.195
+    },
+    {
+     "word": "si",
+     "raw": "si",
+     "start": 437.195,
+     "end": 437.661
+    },
+    {
+     "word": "la",
+     "raw": "la",
+     "start": 437.661,
+     "end": 438.127
+    },
+    {
+     "word": "taqueria",
+     "raw": "taquería",
+     "start": 438.127,
+     "end": 438.593
+    },
+    {
+     "word": "vende",
+     "raw": "vende",
+     "start": 438.593,
+     "end": 439.059
+    },
+    {
+     "word": "lo",
+     "raw": "lo",
+     "start": 439.059,
+     "end": 439.525
+    },
+    {
+     "word": "mismo",
+     "raw": "mismo?",
+     "start": 439.525,
+     "end": 439.991
+    }
+   ],
+   "text": "¿Por qué la acción subió de 1,000 a 1,500, si la taquería vende lo mismo? [pausa 2 s]"
+  },
+  {
+   "id": "c066",
+   "scene": "S06",
+   "t": 442,
+   "end": 449.7,
+   "compress": 0.799,
+   "words": [
+    {
+     "word": "porque",
+     "raw": "Porque",
+     "start": 442,
+     "end": 442.436
+    },
+    {
+     "word": "la",
+     "raw": "la",
+     "start": 442.436,
+     "end": 442.872
+    },
+    {
+     "word": "gente",
+     "raw": "gente",
+     "start": 442.872,
+     "end": 443.308
+    },
+    {
+     "word": "esperaba",
+     "raw": "esperaba",
+     "start": 443.308,
+     "end": 443.743
+    },
+    {
+     "word": "que",
+     "raw": "que",
+     "start": 443.743,
+     "end": 444.179
+    },
+    {
+     "word": "ganara",
+     "raw": "ganara",
+     "start": 444.179,
+     "end": 444.615
+    },
+    {
+     "word": "mas",
+     "raw": "más",
+     "start": 444.615,
+     "end": 445.051
+    },
+    {
+     "word": "manana",
+     "raw": "mañana,",
+     "start": 445.051,
+     "end": 445.487
+    },
+    {
+     "word": "y",
+     "raw": "y",
+     "start": 445.487,
+     "end": 445.923
+    },
+    {
+     "word": "por",
+     "raw": "por",
+     "start": 445.923,
+     "end": 446.358
+    },
+    {
+     "word": "eso",
+     "raw": "eso",
+     "start": 446.358,
+     "end": 446.794
+    },
+    {
+     "word": "pago",
+     "raw": "pagó",
+     "start": 446.794,
+     "end": 447.23
+    },
+    {
+     "word": "mas",
+     "raw": "más",
+     "start": 447.23,
+     "end": 447.666
+    },
+    {
+     "word": "hoy",
+     "raw": "hoy.",
+     "start": 447.666,
+     "end": 448.102
+    }
+   ],
+   "text": "Porque la gente esperaba que ganara más mañana, y por eso pagó más hoy. [pausa 2 s]"
+  },
+  {
+   "id": "c067",
+   "scene": "S06",
+   "t": 450,
+   "end": 456.7,
+   "compress": 0.888,
+   "words": [
+    {
+     "word": "dicho",
+     "raw": "Dicho",
+     "start": 450,
+     "end": 450.484
+    },
+    {
+     "word": "de",
+     "raw": "de",
+     "start": 450.484,
+     "end": 450.969
+    },
+    {
+     "word": "otro",
+     "raw": "otro",
+     "start": 450.969,
+     "end": 451.453
+    },
+    {
+     "word": "modo",
+     "raw": "modo:",
+     "start": 451.453,
+     "end": 451.937
+    },
+    {
+     "word": "una",
+     "raw": "una",
+     "start": 451.937,
+     "end": 452.422
+    },
+    {
+     "word": "accion",
+     "raw": "acción",
+     "start": 452.422,
+     "end": 452.906
+    },
+    {
+     "word": "es",
+     "raw": "es",
+     "start": 452.906,
+     "end": 453.39
+    },
+    {
+     "word": "una",
+     "raw": "una",
+     "start": 453.39,
+     "end": 453.875
+    },
+    {
+     "word": "parte",
+     "raw": "parte",
+     "start": 453.875,
+     "end": 454.359
+    },
+    {
+     "word": "de",
+     "raw": "de",
+     "start": 454.359,
+     "end": 454.843
+    },
+    {
+     "word": "una",
+     "raw": "una",
+     "start": 454.843,
+     "end": 455.328
+    },
+    {
+     "word": "empresa",
+     "raw": "empresa.",
+     "start": 455.328,
+     "end": 455.812
+    }
+   ],
+   "text": "Dicho de otro modo: una acción es una parte de una empresa. [pausa]"
+  },
+  {
+   "id": "c068",
+   "scene": "S06",
+   "t": 457,
+   "end": 460.7,
+   "compress": 0.617,
+   "words": [
+    {
+     "word": "y",
+     "raw": "Y",
+     "start": 457,
+     "end": 457.336
+    },
+    {
+     "word": "su",
+     "raw": "su",
+     "start": 457.336,
+     "end": 457.673
+    },
+    {
+     "word": "precio",
+     "raw": "precio",
+     "start": 457.673,
+     "end": 458.009
+    },
+    {
+     "word": "refleja",
+     "raw": "refleja",
+     "start": 458.009,
+     "end": 458.345
+    },
+    {
+     "word": "lo",
+     "raw": "lo",
+     "start": 458.345,
+     "end": 458.682
+    },
+    {
+     "word": "que",
+     "raw": "que",
+     "start": 458.682,
+     "end": 459.018
+    },
+    {
+     "word": "todos",
+     "raw": "todos",
+     "start": 459.018,
+     "end": 459.355
+    },
+    {
+     "word": "esperan",
+     "raw": "esperan",
+     "start": 459.355,
+     "end": 459.691
+    },
+    {
+     "word": "de",
+     "raw": "de",
+     "start": 459.691,
+     "end": 460.027
+    },
+    {
+     "word": "su",
+     "raw": "su",
+     "start": 460.027,
+     "end": 460.364
+    },
+    {
+     "word": "futuro",
+     "raw": "futuro.",
+     "start": 460.364,
+     "end": 460.7
+    }
+   ],
+   "text": "Y su precio refleja lo que todos esperan de su futuro."
+  },
+  {
+   "id": "c069",
+   "scene": "S06",
+   "t": 461,
+   "end": 464.7,
+   "compress": 0.565,
+   "words": [
+    {
+     "word": "si",
+     "raw": "Si",
+     "start": 461,
+     "end": 461.308
+    },
+    {
+     "word": "la",
+     "raw": "la",
+     "start": 461.308,
+     "end": 461.617
+    },
+    {
+     "word": "bolsa",
+     "raw": "bolsa",
+     "start": 461.617,
+     "end": 461.925
+    },
+    {
+     "word": "te",
+     "raw": "te",
+     "start": 461.925,
+     "end": 462.233
+    },
+    {
+     "word": "sonaba",
+     "raw": "sonaba",
+     "start": 462.233,
+     "end": 462.542
+    },
+    {
+     "word": "lejana",
+     "raw": "lejana,",
+     "start": 462.542,
+     "end": 462.85
+    },
+    {
+     "word": "ya",
+     "raw": "ya",
+     "start": 462.85,
+     "end": 463.158
+    },
+    {
+     "word": "puedes",
+     "raw": "puedes",
+     "start": 463.158,
+     "end": 463.467
+    },
+    {
+     "word": "explicarla",
+     "raw": "explicarla",
+     "start": 463.467,
+     "end": 463.775
+    },
+    {
+     "word": "con",
+     "raw": "con",
+     "start": 463.775,
+     "end": 464.083
+    },
+    {
+     "word": "una",
+     "raw": "una",
+     "start": 464.083,
+     "end": 464.392
+    },
+    {
+     "word": "taqueria",
+     "raw": "taquería.",
+     "start": 464.392,
+     "end": 464.7
+    }
+   ],
+   "text": "Si la bolsa te sonaba lejana, ya puedes explicarla con una taquería. (sonrisa)"
+  },
+  {
+   "id": "c070",
+   "scene": "S07",
+   "t": 465,
+   "end": 471.7,
+   "compress": 0.73,
+   "words": [
+    {
+     "word": "y",
+     "raw": "¿Y",
+     "start": 465,
+     "end": 465.398
+    },
+    {
+     "word": "si",
+     "raw": "si",
+     "start": 465.398,
+     "end": 465.796
+    },
+    {
+     "word": "todas",
+     "raw": "todas",
+     "start": 465.796,
+     "end": 466.194
+    },
+    {
+     "word": "tus",
+     "raw": "tus",
+     "start": 466.194,
+     "end": 466.592
+    },
+    {
+     "word": "acciones",
+     "raw": "acciones",
+     "start": 466.592,
+     "end": 466.99
+    },
+    {
+     "word": "fueran",
+     "raw": "fueran",
+     "start": 466.99,
+     "end": 467.388
+    },
+    {
+     "word": "de",
+     "raw": "de",
+     "start": 467.388,
+     "end": 467.786
+    },
+    {
+     "word": "una",
+     "raw": "una",
+     "start": 467.786,
+     "end": 468.184
+    },
+    {
+     "word": "sola",
+     "raw": "sola",
+     "start": 468.184,
+     "end": 468.582
+    },
+    {
+     "word": "empresa",
+     "raw": "empresa,",
+     "start": 468.582,
+     "end": 468.98
+    },
+    {
+     "word": "y",
+     "raw": "y",
+     "start": 469.71,
+     "end": 470.108
+    },
+    {
+     "word": "te",
+     "raw": "te",
+     "start": 470.108,
+     "end": 470.506
+    },
+    {
+     "word": "tocara",
+     "raw": "tocara",
+     "start": 470.506,
+     "end": 470.904
+    },
+    {
+     "word": "la",
+     "raw": "la",
+     "start": 470.904,
+     "end": 471.302
+    },
+    {
+     "word": "papeleria",
+     "raw": "papelería?",
+     "start": 471.302,
+     "end": 471.7
+    }
+   ],
+   "text": "(más lento) ¿Y si todas tus acciones fueran de una sola empresa, [pausa] y te tocara *la papelería*?"
+  },
+  {
+   "id": "c071",
+   "scene": "S07",
+   "t": 472,
+   "end": 483.364,
+   "compress": 1,
+   "words": [
+    {
+     "word": "en",
+     "raw": "En",
+     "start": 472,
+     "end": 472.545
+    },
+    {
+     "word": "el",
+     "raw": "el",
+     "start": 472.545,
+     "end": 473.091
+    },
+    {
+     "word": "siguiente",
+     "raw": "siguiente",
+     "start": 473.091,
+     "end": 473.636
+    },
+    {
+     "word": "video",
+     "raw": "video",
+     "start": 473.636,
+     "end": 474.182
+    },
+    {
+     "word": "hacemos",
+     "raw": "hacemos",
+     "start": 474.182,
+     "end": 474.727
+    },
+    {
+     "word": "la",
+     "raw": "la",
+     "start": 474.727,
+     "end": 475.273
+    },
+    {
+     "word": "cuenta",
+     "raw": "cuenta",
+     "start": 475.273,
+     "end": 475.818
+    },
+    {
+     "word": "para",
+     "raw": "para",
+     "start": 475.818,
+     "end": 476.364
+    },
+    {
+     "word": "no",
+     "raw": "no",
+     "start": 476.364,
+     "end": 476.909
+    },
+    {
+     "word": "depender",
+     "raw": "depender",
+     "start": 476.909,
+     "end": 477.455
+    },
+    {
+     "word": "de",
+     "raw": "de",
+     "start": 477.455,
+     "end": 478
+    },
+    {
+     "word": "una",
+     "raw": "una",
+     "start": 478,
+     "end": 478.545
+    },
+    {
+     "word": "sola",
+     "raw": "sola",
+     "start": 478.545,
+     "end": 479.091
+    },
+    {
+     "word": "empresa",
+     "raw": "empresa.",
+     "start": 479.091,
+     "end": 479.636
+    },
+    {
+     "word": "sigueme",
+     "raw": "Sígueme",
+     "start": 480.636,
+     "end": 481.182
+    },
+    {
+     "word": "para",
+     "raw": "para",
+     "start": 481.182,
+     "end": 481.727
+    },
+    {
+     "word": "la",
+     "raw": "la",
+     "start": 481.727,
+     "end": 482.273
+    },
+    {
+     "word": "siguiente",
+     "raw": "siguiente",
+     "start": 482.273,
+     "end": 482.818
+    },
+    {
+     "word": "cuenta",
+     "raw": "cuenta.",
+     "start": 482.818,
+     "end": 483.364
+    }
+   ],
+   "text": "En el siguiente video hacemos la cuenta para no depender de una sola empresa. [pausa] (sonrisa) Sígueme para la siguiente cuenta."
+  }
+ ],
+ "eventos": [
+  {
+   "id": "e013",
+   "cue": "c001",
+   "off": 0,
+   "do": "music",
+   "nivel": "base suave y constante",
+   "scene": "S01",
+   "t": 0,
+   "frame": 0
+  },
+  {
+   "id": "e001",
+   "cue": "c001",
+   "off": 0.3,
+   "do": "show",
+   "obj": "pedacito_lupe",
+   "props": {
+    "etiqueta": "1,000 catpesos",
+    "rotulo": "Ejemplo"
+   },
+   "scene": "S01",
+   "t": 0.3,
+   "frame": 9
+  },
+  {
+   "id": "e002",
+   "cue": "c001",
+   "off": 0.8,
+   "do": "zoom_michi",
+   "dur_s": 2.2,
+   "render": "ZOOM MICHI — render 4K",
+   "cuenta": "1/3",
+   "scene": "S01",
+   "t": 0.8,
+   "frame": 24
+  },
+  {
+   "id": "e002b",
+   "cue": "c001",
+   "off": 1,
+   "do": "michi",
+   "estado": "sorprendido",
+   "nota": "medio segundo antes del cambio de cifra",
+   "scene": "S01",
+   "t": 1,
+   "frame": 30
+  },
+  {
+   "id": "e003",
+   "cue": "c001",
+   "off": 1.5,
+   "do": "num_change",
+   "obj": "pedacito_lupe",
+   "de": 1000,
+   "a": 1500,
+   "delta": "+500",
+   "delta_color": "verde",
+   "excepcion_gancho": true,
+   "nota": "Imagen de gancho: única cifra que aparece antes de que la voz la diga.",
+   "scene": "S01",
+   "t": 1.5,
+   "frame": 45
+  },
+  {
+   "id": "e004",
+   "cue": "c003",
+   "word": "1,000",
+   "off": 0,
+   "do": "value_show",
+   "obj": "etiqueta_valor",
+   "texto": "Ayer: 1,000 catpesos",
+   "scene": "S01",
+   "t": 10.964,
+   "frame": 329
+  },
+  {
+   "id": "e005",
+   "cue": "c003",
+   "word": "1,500",
+   "off": 0,
+   "do": "value_show",
+   "obj": "etiqueta_valor",
+   "texto": "Hoy: 1,500 catpesos",
+   "delta": "+500",
+   "hold_s": 1.5,
+   "scene": "S01",
+   "t": 12.892,
+   "frame": 387
+  },
+  {
+   "id": "e006",
+   "cue": "c004",
+   "off": 0,
+   "do": "michi",
+   "estado": "sorprendido",
+   "scene": "S01",
+   "t": 15,
+   "frame": 450
+  },
+  {
+   "id": "e007",
+   "cue": "c005",
+   "off": 0,
+   "do": "show",
+   "obj": "titular_generico",
+   "texto": "La bolsa subió",
+   "nota": "sin logos ni marcas reales",
+   "scene": "S01",
+   "t": 18,
+   "frame": 540
+  },
+  {
+   "id": "e008",
+   "cue": "c005",
+   "off": 0.3,
+   "do": "michi",
+   "estado": "tranquilo",
+   "scene": "S01",
+   "t": 18.3,
+   "frame": 549
+  },
+  {
+   "id": "e009",
+   "cue": "c006",
+   "word": "subió",
+   "off": 0,
+   "do": "question",
+   "tipo": "principal",
+   "estado": "abierta",
+   "texto": "¿Por qué subió ese pedacito?",
+   "scene": "S01",
+   "t": 33.384,
+   "frame": 1002
+  },
+  {
+   "id": "e010",
+   "cue": "c007",
+   "word": "qué",
+   "off": 0,
+   "do": "show",
+   "obj": "icono_paso_1",
+   "texto": "1 · Qué es un pedacito",
+   "scene": "S01",
+   "t": 37.646,
+   "frame": 1129
+  },
+  {
+   "id": "e011",
+   "cue": "c007",
+   "word": "dónde",
+   "off": 0,
+   "do": "show",
+   "obj": "icono_paso_2",
+   "texto": "2 · Dónde se compra y vende",
+   "scene": "S01",
+   "t": 41.35,
+   "frame": 1241
+  },
+  {
+   "id": "e012",
+   "cue": "c007",
+   "word": "cambia",
+   "off": 0,
+   "do": "show",
+   "obj": "icono_paso_3",
+   "texto": "3 · Por qué cambia el precio",
+   "scene": "S01",
+   "t": 46.113,
+   "frame": 1383
+  },
+  {
+   "id": "e020",
+   "cue": "c008",
+   "off": 0,
+   "do": "show",
+   "obj": "taqueria_lupe",
+   "props": {
+    "etiqueta": "100,000 catpesos",
+    "rotulo": "Ejemplo"
+   },
+   "scene": "S02",
+   "t": 48,
+   "frame": 1440
+  },
+  {
+   "id": "e021",
+   "cue": "c008",
+   "off": 0,
+   "do": "thread",
+   "items": [
+    "La taquería"
+   ],
+   "activo": 0,
+   "scene": "S02",
+   "t": 48,
+   "frame": 1440
+  },
+  {
+   "id": "e022",
+   "cue": "c009",
+   "word": "100",
+   "off": 0,
+   "do": "grid",
+   "obj": "cuadricula_10x10",
+   "nota": "la taquería se divide en 100 cuadritos iguales",
+   "scene": "S02",
+   "t": 57.182,
+   "frame": 1715
+  },
+  {
+   "id": "e023",
+   "cue": "c010",
+   "off": 0,
+   "do": "op",
+   "op": "op01",
+   "expr": "100,000 ÷ 100",
+   "una_por_pantalla": true,
+   "scene": "S02",
+   "t": 62,
+   "frame": 1860
+  },
+  {
+   "id": "e024",
+   "cue": "c011",
+   "word": "1,000",
+   "off": 0,
+   "do": "op_result",
+   "op": "op01",
+   "resultado": "= 1,000",
+   "hold_s": 2,
+   "scene": "S02",
+   "t": 68.02,
+   "frame": 2041
+  },
+  {
+   "id": "e025",
+   "cue": "c012",
+   "off": 0,
+   "do": "michi",
+   "estado": "confiado",
+   "scene": "S02",
+   "t": 69,
+   "frame": 2070
+  },
+  {
+   "id": "e026",
+   "cue": "c012",
+   "word": "uno",
+   "off": 0,
+   "do": "grid",
+   "obj": "resaltar_1_de_100",
+   "texto": "1 de 100",
+   "scene": "S02",
+   "t": 70.693,
+   "frame": 2121
+  },
+  {
+   "id": "e027",
+   "cue": "c013",
+   "word": "acción",
+   "off": 0,
+   "do": "card",
+   "palabra": "ACCIÓN",
+   "def": "Un pedacito de una empresa.",
+   "ejemplo": "Una de las 100 partes de la taquería de doña Lupe.",
+   "min_s": 5,
+   "scene": "S02",
+   "t": 80.909,
+   "frame": 2427
+  },
+  {
+   "id": "e028",
+   "cue": "c013",
+   "word": "acción",
+   "off": 0,
+   "do": "thread",
+   "items": [
+    "La taquería",
+    "Acciones"
+   ],
+   "activo": 1,
+   "scene": "S02",
+   "t": 80.909,
+   "frame": 2427
+  },
+  {
+   "id": "e029",
+   "cue": "c014",
+   "off": 0,
+   "do": "show",
+   "obj": "segunda_taqueria_punteada",
+   "scene": "S02",
+   "t": 83,
+   "frame": 2490
+  },
+  {
+   "id": "e030",
+   "cue": "c014",
+   "word": "20,000",
+   "off": 0,
+   "do": "value_show",
+   "obj": "necesita",
+   "texto": "Necesita 20,000 catpesos",
+   "scene": "S02",
+   "t": 86.04,
+   "frame": 2581
+  },
+  {
+   "id": "e031",
+   "cue": "c014",
+   "word": "20",
+   "off": 0,
+   "do": "grid",
+   "obj": "vender_20_cuadritos",
+   "scene": "S02",
+   "t": 87.94,
+   "frame": 2638
+  },
+  {
+   "id": "e032",
+   "cue": "c015",
+   "off": 0,
+   "do": "op",
+   "op": "op02",
+   "expr": "20 × 1,000",
+   "scene": "S02",
+   "t": 89,
+   "frame": 2670
+  },
+  {
+   "id": "e033",
+   "cue": "c015",
+   "word": "Son",
+   "off": 0,
+   "do": "op_result",
+   "op": "op02",
+   "resultado": "= 20,000",
+   "hold_s": 2,
+   "scene": "S02",
+   "t": 92.894,
+   "frame": 2787
+  },
+  {
+   "id": "e034",
+   "cue": "c016",
+   "off": 0,
+   "do": "show",
+   "obj": "segunda_taqueria_solida",
+   "scene": "S02",
+   "t": 94,
+   "frame": 2820
+  },
+  {
+   "id": "e035",
+   "cue": "c017",
+   "off": 0,
+   "do": "op",
+   "op": "op03",
+   "expr": "100 − 20",
+   "scene": "S02",
+   "t": 97,
+   "frame": 2910
+  },
+  {
+   "id": "e036",
+   "cue": "c017",
+   "word": "80",
+   "off": 0,
+   "do": "op_result",
+   "op": "op03",
+   "resultado": "= 80",
+   "hold_s": 1.5,
+   "scene": "S02",
+   "t": 102.285,
+   "frame": 3069
+  },
+  {
+   "id": "e037",
+   "cue": "c018",
+   "word": "vecinos",
+   "off": 0,
+   "do": "crowd",
+   "obj": "siluetas_vecinos_en_20_cuadritos",
+   "nota": "80 cuadritos color Lupe; 20 con siluetas de vecinos",
+   "scene": "S02",
+   "t": 107.178,
+   "frame": 3215
+  },
+  {
+   "id": "e038",
+   "cue": "c020",
+   "word": "accionistas",
+   "off": 0,
+   "do": "card",
+   "palabra": "ACCIONISTA",
+   "def": "Persona que tiene acciones; es dueña de una parte.",
+   "ejemplo": "El vecino que compró una de las 20 acciones.",
+   "min_s": 5,
+   "scene": "S02",
+   "t": 118.123,
+   "frame": 3544
+  },
+  {
+   "id": "e039",
+   "cue": "c020",
+   "word": "accionistas",
+   "off": 0,
+   "do": "thread",
+   "items": [
+    "La taquería",
+    "Acciones",
+    "Accionistas"
+   ],
+   "activo": 2,
+   "scene": "S02",
+   "t": 118.123,
+   "frame": 3544
+  },
+  {
+   "id": "e040",
+   "cue": "c021",
+   "off": 0,
+   "do": "anchor",
+   "n": 1,
+   "texto": "Hasta aquí: una acción es un pedacito de una empresa. Falta: qué pasa si un accionista quiere vender.",
+   "scene": "S02",
+   "t": 121,
+   "frame": 3630
+  },
+  {
+   "id": "e050",
+   "cue": "c022",
+   "off": 0,
+   "do": "music",
+   "nivel": "cambio suave de energía (re-enganche 1)",
+   "scene": "S03",
+   "t": 134,
+   "frame": 4020
+  },
+  {
+   "id": "e051",
+   "cue": "c022",
+   "off": 0,
+   "do": "michi",
+   "estado": "preocupado",
+   "scene": "S03",
+   "t": 134,
+   "frame": 4020
+  },
+  {
+   "id": "e052",
+   "cue": "c022",
+   "word": "Ramiro",
+   "off": 0,
+   "do": "show",
+   "obj": "don_ramiro_con_accion",
+   "nota": "silueta con sombrero",
+   "scene": "S03",
+   "t": 136.265,
+   "frame": 4088
+  },
+  {
+   "id": "e053",
+   "cue": "c023",
+   "off": 0,
+   "do": "question",
+   "tipo": "secundaria_1",
+   "estado": "abierta",
+   "texto": "¿A quién? ¿A qué precio?",
+   "scene": "S03",
+   "t": 142,
+   "frame": 4260
+  },
+  {
+   "id": "e054",
+   "cue": "c024",
+   "off": 0,
+   "do": "label",
+   "texto": "Cambia UNA cosa: quién puede comprar",
+   "scene": "S03",
+   "t": 148,
+   "frame": 4440
+  },
+  {
+   "id": "e055",
+   "cue": "c024",
+   "word": "cualquier",
+   "off": 0,
+   "do": "crowd",
+   "obj": "multitud_se_acerca",
+   "scene": "S03",
+   "t": 152.497,
+   "frame": 4575
+  },
+  {
+   "id": "e056",
+   "cue": "c025",
+   "word": "pública",
+   "off": 0,
+   "do": "card",
+   "palabra": "EMPRESA PÚBLICA",
+   "def": "Empresa que vende sus acciones a cualquiera.",
+   "ejemplo": "La taquería cuando deja comprar a cualquiera, no solo a los vecinos.",
+   "nota_tarjeta": "No es del gobierno",
+   "min_s": 5,
+   "scene": "S03",
+   "t": 162,
+   "frame": 4860
+  },
+  {
+   "id": "e057",
+   "cue": "c025",
+   "word": "pública",
+   "off": 0,
+   "do": "thread",
+   "items": [
+    "La taquería",
+    "Acciones",
+    "Accionistas",
+    "Empresa pública"
+   ],
+   "activo": 3,
+   "scene": "S03",
+   "t": 162,
+   "frame": 4860
+  },
+  {
+   "id": "e058",
+   "cue": "c027",
+   "word": "bolsa",
+   "off": 0,
+   "do": "label",
+   "texto": "BOLSA = el lugar donde se compran y venden acciones",
+   "min_s": 5,
+   "nota": "etiqueta, no tarjeta",
+   "scene": "S03",
+   "t": 173.293,
+   "frame": 5199
+  },
+  {
+   "id": "e059",
+   "cue": "c027",
+   "word": "bolsa",
+   "off": 0,
+   "do": "thread",
+   "items": [
+    "La taquería",
+    "Acciones",
+    "Accionistas",
+    "Empresa pública",
+    "Bolsa"
+   ],
+   "activo": 4,
+   "scene": "S03",
+   "t": 173.293,
+   "frame": 5199
+  },
+  {
+   "id": "e060",
+   "cue": "c028",
+   "off": 0,
+   "do": "show",
+   "obj": "ramiro_entrega_accion_a_comprador",
+   "scene": "S03",
+   "t": 174,
+   "frame": 5220
+  },
+  {
+   "id": "e061",
+   "cue": "c028",
+   "word": "quién",
+   "off": 0,
+   "do": "question",
+   "tipo": "secundaria_1",
+   "estado": "respondida_parte_1",
+   "texto": "a quién",
+   "scene": "S03",
+   "t": 177.818,
+   "frame": 5335
+  },
+  {
+   "id": "e062",
+   "cue": "c030",
+   "word": "comprador",
+   "off": 0,
+   "do": "show",
+   "obj": "tarjeta_comprador_acepta_1000",
+   "texto": "Comprador acepta 1,000",
+   "scene": "S03",
+   "t": 189.369,
+   "frame": 5681
+  },
+  {
+   "id": "e063",
+   "cue": "c030",
+   "word": "vendedor",
+   "off": 0,
+   "do": "show",
+   "obj": "tarjeta_vendedor_acepta_1000",
+   "texto": "Vendedor acepta 1,000",
+   "scene": "S03",
+   "t": 192.256,
+   "frame": 5768
+  },
+  {
+   "id": "e064",
+   "cue": "c030",
+   "word": "cobrar",
+   "off": 0.3,
+   "do": "value_show",
+   "obj": "precio",
+   "texto": "Precio: 1,000 catpesos",
+   "scene": "S03",
+   "t": 193.519,
+   "frame": 5806
+  },
+  {
+   "id": "e065",
+   "cue": "c030",
+   "word": "cobrar",
+   "off": 0.3,
+   "do": "thread",
+   "items": [
+    "La taquería",
+    "Acciones",
+    "Accionistas",
+    "Empresa pública",
+    "Bolsa",
+    "Precio"
+   ],
+   "activo": 5,
+   "scene": "S03",
+   "t": 193.519,
+   "frame": 5806
+  },
+  {
+   "id": "e066",
+   "cue": "c030",
+   "word": "cobrar",
+   "off": 0.6,
+   "do": "question",
+   "tipo": "secundaria_1",
+   "estado": "respondida",
+   "texto": "a qué precio",
+   "scene": "S03",
+   "t": 193.819,
+   "frame": 5815
+  },
+  {
+   "id": "e067",
+   "cue": "c031",
+   "off": 0,
+   "do": "label",
+   "texto": "Cambia UNA cosa: cuánta gente quiere comprar",
+   "scene": "S03",
+   "t": 194,
+   "frame": 5820
+  },
+  {
+   "id": "e068",
+   "cue": "c031",
+   "word": "comprar",
+   "off": 0,
+   "do": "crowd",
+   "obj": "muchos_compradores_un_vendedor",
+   "scene": "S03",
+   "t": 197.818,
+   "frame": 5935
+  },
+  {
+   "id": "e069",
+   "cue": "c032",
+   "off": 0,
+   "do": "predict",
+   "obj": "etiqueta_1000_con_interrogacion",
+   "respuesta_oculta": "Sube",
+   "hold_s": 3,
+   "michi": "mirando la cifra",
+   "scene": "S03",
+   "t": 199,
+   "frame": 5970
+  },
+  {
+   "id": "e070",
+   "cue": "c033",
+   "word": "Sube",
+   "off": 0,
+   "do": "show",
+   "obj": "respuesta_sube",
+   "scene": "S03",
+   "t": 210,
+   "frame": 6300
+  },
+  {
+   "id": "e072",
+   "cue": "c034",
+   "word": "1,500",
+   "off": -0.5,
+   "do": "michi",
+   "estado": "sorprendido",
+   "scene": "S03",
+   "t": 218.227,
+   "frame": 6547
+  },
+  {
+   "id": "e071",
+   "cue": "c034",
+   "word": "1,500",
+   "off": 0,
+   "do": "num_change",
+   "obj": "etiqueta_valor",
+   "de": 1000,
+   "a": 1500,
+   "delta": "+500",
+   "delta_color": "verde",
+   "hold_s": 1.5,
+   "scene": "S03",
+   "t": 218.727,
+   "frame": 6562
+  },
+  {
+   "id": "e073",
+   "cue": "c036",
+   "word": "baja",
+   "off": 0,
+   "do": "show",
+   "obj": "flecha_descendente",
+   "nota": "sin cifra nueva",
+   "scene": "S03",
+   "t": 231.364,
+   "frame": 6941
+  },
+  {
+   "id": "e074",
+   "cue": "c037",
+   "off": 0,
+   "do": "anchor",
+   "n": 2,
+   "texto": "Hasta aquí: la acción se compra y se vende en la bolsa, y su precio lo fijan quienes compran y venden. Falta: por qué querrían pagar más.",
+   "scene": "S03",
+   "t": 232,
+   "frame": 6960
+  },
+  {
+   "id": "e080",
+   "cue": "c038",
+   "off": 0,
+   "do": "music",
+   "nivel": "cambio suave de energía (re-enganche 2)",
+   "scene": "S04",
+   "t": 245,
+   "frame": 7350
+  },
+  {
+   "id": "e081",
+   "cue": "c038",
+   "word": "10,000",
+   "off": -0.5,
+   "do": "michi",
+   "estado": "sorprendido",
+   "scene": "S04",
+   "t": 249.413,
+   "frame": 7482
+  },
+  {
+   "id": "e082",
+   "cue": "c038",
+   "word": "10,000",
+   "off": -0.5,
+   "do": "zoom_michi",
+   "dur_s": 2,
+   "render": "ZOOM MICHI — render 4K",
+   "cuenta": "2/3",
+   "nota": "2 s y vuelta a plano general",
+   "scene": "S04",
+   "t": 249.413,
+   "frame": 7482
+  },
+  {
+   "id": "e083",
+   "cue": "c038",
+   "word": "10,000",
+   "off": 0,
+   "do": "value_show",
+   "obj": "ganancia",
+   "texto": "Ganancia: 10,000 catpesos al año",
+   "rotulo": "Ejemplo",
+   "scene": "S04",
+   "t": 249.913,
+   "frame": 7497
+  },
+  {
+   "id": "e084",
+   "cue": "c038",
+   "word": "10,000",
+   "off": 0.3,
+   "do": "caption",
+   "texto": "Ganancia: lo que le sobra a la taquería en un año, después de pagar todo (ejemplo)",
+   "scene": "S04",
+   "t": 250.213,
+   "frame": 7506
+  },
+  {
+   "id": "e085",
+   "cue": "c039",
+   "off": 0,
+   "do": "question",
+   "tipo": "secundaria_2",
+   "estado": "abierta",
+   "texto": "¿Por qué pagaría alguien más?",
+   "scene": "S04",
+   "t": 252,
+   "frame": 7560
+  },
+  {
+   "id": "e086",
+   "cue": "c041",
+   "off": 0,
+   "do": "op",
+   "op": "op04",
+   "expr": "10,000 ÷ 100",
+   "scene": "S04",
+   "t": 265,
+   "frame": 7950
+  },
+  {
+   "id": "e087",
+   "cue": "c041",
+   "word": "100",
+   "off": 0,
+   "do": "op_result",
+   "op": "op04",
+   "resultado": "= 100",
+   "hold_s": 2,
+   "nota": "segunda ocurrencia de 100 en el cue; la primera es el divisor",
+   "scene": "S04",
+   "t": 266.058,
+   "frame": 7982
+  },
+  {
+   "id": "e088",
+   "cue": "c041",
+   "word": "100",
+   "off": 0.3,
+   "do": "grid",
+   "obj": "resaltar_1_cuadrito_con_100",
+   "scene": "S04",
+   "t": 266.358,
+   "frame": 7991
+  },
+  {
+   "id": "e089",
+   "cue": "c043",
+   "off": 0,
+   "do": "show",
+   "obj": "segunda_taqueria_abierta",
+   "scene": "S04",
+   "t": 277,
+   "frame": 8310
+  },
+  {
+   "id": "e090",
+   "cue": "c044",
+   "word": "ganará",
+   "off": 0,
+   "do": "crowd",
+   "obj": "globos_de_pensamiento",
+   "texto": "¿más ganancia?",
+   "scene": "S04",
+   "t": 287.699,
+   "frame": 8631
+  },
+  {
+   "id": "e093",
+   "cue": "c045",
+   "off": 0,
+   "do": "michi",
+   "estado": "confiado",
+   "scene": "S04",
+   "t": 290,
+   "frame": 8700
+  },
+  {
+   "id": "e091",
+   "cue": "c045",
+   "word": "expectativas",
+   "off": 0,
+   "do": "card",
+   "palabra": "EXPECTATIVAS",
+   "def": "Lo que la gente cree que pasará más adelante.",
+   "ejemplo": "Creen que la taquería ganará 15,000 al año, aunque hoy gana 10,000.",
+   "min_s": 5,
+   "scene": "S04",
+   "t": 296.328,
+   "frame": 8890
+  },
+  {
+   "id": "e092",
+   "cue": "c045",
+   "word": "expectativas",
+   "off": 0,
+   "do": "thread",
+   "items": [
+    "La taquería",
+    "Acciones",
+    "Accionistas",
+    "Empresa pública",
+    "Bolsa",
+    "Precio",
+    "Expectativas"
+   ],
+   "activo": 6,
+   "scene": "S04",
+   "t": 296.328,
+   "frame": 8890
+  },
+  {
+   "id": "e094",
+   "cue": "c046",
+   "word": "15,000",
+   "off": 0,
+   "do": "value_show",
+   "obj": "ganancia_esperada",
+   "texto": "Se espera: 15,000 catpesos al año",
+   "rotulo": "Ejemplo",
+   "scene": "S04",
+   "t": 299.591,
+   "frame": 8988
+  },
+  {
+   "id": "e095",
+   "cue": "c047",
+   "off": 0,
+   "do": "op",
+   "op": "op05",
+   "expr": "15,000 ÷ 100",
+   "scene": "S04",
+   "t": 303,
+   "frame": 9090
+  },
+  {
+   "id": "e096",
+   "cue": "c047",
+   "word": "150",
+   "off": 0,
+   "do": "op_result",
+   "op": "op05",
+   "resultado": "= 150",
+   "hold_s": 2,
+   "scene": "S04",
+   "t": 309.566,
+   "frame": 9287
+  },
+  {
+   "id": "e097",
+   "cue": "c047",
+   "word": "50",
+   "off": 0,
+   "do": "num_change",
+   "obj": "por_accion",
+   "de": 100,
+   "a": 150,
+   "delta": "+50",
+   "delta_color": "verde",
+   "hold_s": 1.5,
+   "scene": "S04",
+   "t": 310.909,
+   "frame": 9327
+  },
+  {
+   "id": "e098",
+   "cue": "c048",
+   "word": "10",
+   "off": 0,
+   "do": "label",
+   "texto": "Ejemplo: se paga 10 veces lo que le toca en un año",
+   "scene": "S04",
+   "t": 316.35,
+   "frame": 9491
+  },
+  {
+   "id": "e099",
+   "cue": "c049",
+   "off": 0,
+   "do": "table_cell",
+   "tabla": "t_lado_a_lado",
+   "fila": 1,
+   "col": "Antes",
+   "texto": "100",
+   "fila_titulo": "Le toca al año",
+   "nota": "la tabla arranca con 3 columnas: [ , Antes, Se espera ]",
+   "scene": "S04",
+   "t": 320,
+   "frame": 9600
+  },
+  {
+   "id": "e100",
+   "cue": "c049",
+   "off": 0.2,
+   "do": "table_cell",
+   "tabla": "t_lado_a_lado",
+   "fila": 1,
+   "col": "Se espera",
+   "texto": "150",
+   "scene": "S04",
+   "t": 320.2,
+   "frame": 9606
+  },
+  {
+   "id": "e101",
+   "cue": "c049",
+   "word": "por",
+   "off": 0,
+   "do": "table_cell",
+   "tabla": "t_lado_a_lado",
+   "fila": 2,
+   "col": "Antes",
+   "texto": "×10",
+   "fila_titulo": "Por 10",
+   "scene": "S04",
+   "t": 321.091,
+   "frame": 9633
+  },
+  {
+   "id": "e102",
+   "cue": "c049",
+   "word": "por",
+   "off": 0.2,
+   "do": "table_cell",
+   "tabla": "t_lado_a_lado",
+   "fila": 2,
+   "col": "Se espera",
+   "texto": "×10",
+   "scene": "S04",
+   "t": 321.291,
+   "frame": 9639
+  },
+  {
+   "id": "e103",
+   "cue": "c049",
+   "word": "1,000",
+   "off": 0,
+   "do": "table_cell",
+   "tabla": "t_lado_a_lado",
+   "fila": 3,
+   "col": "Antes",
+   "texto": "1,000",
+   "fila_titulo": "Precio",
+   "scene": "S04",
+   "t": 324.727,
+   "frame": 9742
+  },
+  {
+   "id": "e105",
+   "cue": "c050",
+   "off": 0,
+   "do": "label",
+   "texto": "Cambia UNA cosa: lo que se espera",
+   "nota": "aparece al arrancar c050",
+   "scene": "S04",
+   "t": 326,
+   "frame": 9780
+  },
+  {
+   "id": "e104",
+   "cue": "c050",
+   "word": "1,500",
+   "off": 0,
+   "do": "table_cell",
+   "tabla": "t_lado_a_lado",
+   "fila": 3,
+   "col": "Se espera",
+   "texto": "1,500",
+   "delta": "+500",
+   "delta_color": "verde",
+   "hold_s": 2,
+   "scene": "S04",
+   "t": 332.364,
+   "frame": 9971
+  },
+  {
+   "id": "e106",
+   "cue": "c051",
+   "word": "expectativas",
+   "off": 0,
+   "do": "question",
+   "tipo": "secundaria_2",
+   "estado": "respondida",
+   "texto": "cambiaron las expectativas",
+   "scene": "S04",
+   "t": 339.293,
+   "frame": 10179
+  },
+  {
+   "id": "e107",
+   "cue": "c052",
+   "off": 0,
+   "do": "label",
+   "texto": "El 10 es un número de ejemplo",
+   "scene": "S04",
+   "t": 340,
+   "frame": 10200
+  },
+  {
+   "id": "e108",
+   "cue": "c053",
+   "off": 0,
+   "do": "anchor",
+   "n": 3,
+   "texto": "Hasta aquí: el precio se mueve por lo que la gente espera que gane la empresa, no solo por lo que ya ganó. Falta: probarlo con otro negocio.",
+   "nota": "2.ª vez que se dice la idea central",
+   "scene": "S04",
+   "t": 344,
+   "frame": 10320
+  },
+  {
+   "id": "e120",
+   "cue": "c054",
+   "off": 0,
+   "do": "label",
+   "texto": "Segundo ejemplo",
+   "scene": "S05",
+   "t": 360,
+   "frame": 10800
+  },
+  {
+   "id": "e121",
+   "cue": "c054",
+   "word": "papelería",
+   "off": 0,
+   "do": "show",
+   "obj": "papeleria",
+   "props": {
+    "rotulo": "Ejemplo"
+   },
+   "scene": "S05",
+   "t": 366,
+   "frame": 10980
+  },
+  {
+   "id": "e124",
+   "cue": "c055",
+   "off": 0,
+   "do": "op",
+   "op": "op06",
+   "expr": "50,000 ÷ 50",
+   "nota": "una operación por pantalla",
+   "scene": "S05",
+   "t": 367,
+   "frame": 11010
+  },
+  {
+   "id": "e122",
+   "cue": "c055",
+   "word": "50,000",
+   "off": 0,
+   "do": "value_show",
+   "obj": "valor_papeleria",
+   "texto": "50,000 catpesos",
+   "scene": "S05",
+   "t": 367.427,
+   "frame": 11023
+  },
+  {
+   "id": "e123",
+   "cue": "c055",
+   "word": "acciones",
+   "off": 0,
+   "do": "grid",
+   "obj": "cuadricula_5x10",
+   "nota": "50 acciones",
+   "scene": "S05",
+   "t": 369.564,
+   "frame": 11087
+  },
+  {
+   "id": "e125",
+   "cue": "c055",
+   "word": "1,000",
+   "off": 0,
+   "do": "op_result",
+   "op": "op06",
+   "resultado": "= 1,000",
+   "hold_s": 1.5,
+   "scene": "S05",
+   "t": 371.273,
+   "frame": 11138
+  },
+  {
+   "id": "e126",
+   "cue": "c056",
+   "off": 0,
+   "do": "op",
+   "op": "op07",
+   "expr": "5,000 ÷ 50",
+   "scene": "S05",
+   "t": 372,
+   "frame": 11160
+  },
+  {
+   "id": "e128",
+   "cue": "c056",
+   "off": 0,
+   "do": "label",
+   "texto": "la misma cuenta de antes",
+   "scene": "S05",
+   "t": 372,
+   "frame": 11160
+  },
+  {
+   "id": "e127",
+   "cue": "c056",
+   "word": "100",
+   "off": 0,
+   "do": "op_result",
+   "op": "op07",
+   "resultado": "= 100",
+   "hold_s": 1.5,
+   "scene": "S05",
+   "t": 377.262,
+   "frame": 11318
+  },
+  {
+   "id": "e129",
+   "cue": "c057",
+   "word": "enfrente",
+   "off": -0.5,
+   "do": "michi",
+   "estado": "preocupado",
+   "scene": "S05",
+   "t": 382.409,
+   "frame": 11472
+  },
+  {
+   "id": "e130",
+   "cue": "c057",
+   "word": "enfrente",
+   "off": 0,
+   "do": "show",
+   "obj": "papeleria_grande_enfrente",
+   "scene": "S05",
+   "t": 382.909,
+   "frame": 11487
+  },
+  {
+   "id": "e131",
+   "cue": "c058",
+   "word": "5,000",
+   "off": 0,
+   "do": "value_show",
+   "obj": "gana_hoy",
+   "texto": "Hoy gana: 5,000",
+   "scene": "S05",
+   "t": 387.192,
+   "frame": 11616
+  },
+  {
+   "id": "e132",
+   "cue": "c058",
+   "word": "3,000",
+   "off": 0,
+   "do": "value_show",
+   "obj": "se_espera",
+   "texto": "Se espera: 3,000",
+   "scene": "S05",
+   "t": 390.262,
+   "frame": 11708
+  },
+  {
+   "id": "e133",
+   "cue": "c059",
+   "off": 0,
+   "do": "op",
+   "op": "op08",
+   "expr": "3,000 ÷ 50",
+   "scene": "S05",
+   "t": 391,
+   "frame": 11730
+  },
+  {
+   "id": "e134",
+   "cue": "c059",
+   "word": "60",
+   "off": 0,
+   "do": "op_result",
+   "op": "op08",
+   "resultado": "= 60",
+   "hold_s": 1.5,
+   "scene": "S05",
+   "t": 393.991,
+   "frame": 11820
+  },
+  {
+   "id": "e135",
+   "cue": "c060",
+   "off": 0,
+   "do": "op",
+   "op": "op09",
+   "expr": "60 × 10",
+   "scene": "S05",
+   "t": 396,
+   "frame": 11880
+  },
+  {
+   "id": "e136",
+   "cue": "c060",
+   "word": "600",
+   "off": 0,
+   "do": "op_result",
+   "op": "op09",
+   "resultado": "= 600",
+   "hold_s": 2,
+   "scene": "S05",
+   "t": 399.216,
+   "frame": 11976
+  },
+  {
+   "id": "e137",
+   "cue": "c060",
+   "word": "baja",
+   "off": 0,
+   "do": "num_change",
+   "obj": "etiqueta_valor",
+   "de": 1000,
+   "a": 600,
+   "delta": "−400",
+   "delta_color": "rojo",
+   "hold_s": 1.5,
+   "scene": "S05",
+   "t": 400.329,
+   "frame": 12010
+  },
+  {
+   "id": "e138",
+   "cue": "c060",
+   "word": "baja",
+   "off": 0.3,
+   "do": "label",
+   "texto": "Hoy gana igual; cambió lo que se espera",
+   "scene": "S05",
+   "t": 400.629,
+   "frame": 12019
+  },
+  {
+   "id": "e140",
+   "cue": "c061",
+   "off": 0,
+   "do": "michi",
+   "estado": "tranquilo",
+   "scene": "S05",
+   "t": 401,
+   "frame": 12030
+  },
+  {
+   "id": "e139",
+   "cue": "c061",
+   "word": "casino",
+   "off": 0,
+   "do": "show",
+   "obj": "casino_tachado",
+   "texto": "¿Casino?",
+   "nota": "se tacha suave",
+   "scene": "S05",
+   "t": 404.776,
+   "frame": 12143
+  },
+  {
+   "id": "e141",
+   "cue": "c062",
+   "word": "razón",
+   "off": 0,
+   "do": "label",
+   "texto": "Razón: lo que se espera",
+   "scene": "S05",
+   "t": 414.85,
+   "frame": 12446
+  },
+  {
+   "id": "e142",
+   "cue": "c063",
+   "word": "prometerte",
+   "off": 0,
+   "do": "label",
+   "texto": "Nadie puede prometer que subirá",
+   "scene": "S05",
+   "t": 423.317,
+   "frame": 12700
+  },
+  {
+   "id": "e150",
+   "cue": "c064",
+   "off": 0,
+   "do": "show",
+   "obj": "escena_inicial_pedacito_lupe",
+   "nota": "vuelve la escena del principio",
+   "scene": "S06",
+   "t": 427,
+   "frame": 12810
+  },
+  {
+   "id": "e151",
+   "cue": "c065",
+   "word": "1,000",
+   "off": 0,
+   "do": "value_show",
+   "obj": "etiqueta_valor",
+   "texto": "1,000 → 1,500",
+   "delta": "+500",
+   "delta_color": "verde",
+   "hold_s": 1.5,
+   "scene": "S06",
+   "t": 435.796,
+   "frame": 13074
+  },
+  {
+   "id": "e152",
+   "cue": "c066",
+   "word": "Porque",
+   "off": 0,
+   "do": "michi",
+   "estado": "aliviado",
+   "scene": "S06",
+   "t": 442,
+   "frame": 13260
+  },
+  {
+   "id": "e153",
+   "cue": "c066",
+   "word": "Porque",
+   "off": 0,
+   "do": "zoom_michi",
+   "dur_s": 3,
+   "render": "ZOOM MICHI — render 4K",
+   "cuenta": "3/3",
+   "scene": "S06",
+   "t": 442,
+   "frame": 13260
+  },
+  {
+   "id": "e154",
+   "cue": "c066",
+   "off": 0,
+   "do": "question",
+   "tipo": "principal",
+   "estado": "respondida",
+   "texto": "Porque la gente esperaba que ganara más mañana",
+   "scene": "S06",
+   "t": 442,
+   "frame": 13260
+  },
+  {
+   "id": "e155",
+   "cue": "c067",
+   "word": "acción",
+   "off": 0,
+   "do": "label",
+   "texto": "Acción = parte de una empresa.",
+   "nota": "3.ª vez que se dice la idea central",
+   "scene": "S06",
+   "t": 452.422,
+   "frame": 13573
+  },
+  {
+   "id": "e156",
+   "cue": "c068",
+   "word": "precio",
+   "off": 0,
+   "do": "label",
+   "texto": "Precio = lo que se espera de ella.",
+   "scene": "S06",
+   "t": 457.673,
+   "frame": 13730
+  },
+  {
+   "id": "e157",
+   "cue": "c069",
+   "off": 0,
+   "do": "michi",
+   "estado": "aliviado",
+   "nota": "sonrisa; sin resumen de cierre ni cifras nuevas",
+   "scene": "S06",
+   "t": 461,
+   "frame": 13830
+  },
+  {
+   "id": "e172",
+   "cue": "c070",
+   "off": -0.5,
+   "do": "michi",
+   "estado": "preocupado",
+   "nota": "nivel N1-N2; reacciona antes de que vuelva la cifra de la papelería",
+   "scene": "S07",
+   "t": 464.5,
+   "frame": 13935
+  },
+  {
+   "id": "e173",
+   "cue": "c070",
+   "word": "papelería",
+   "off": 0,
+   "do": "show",
+   "obj": "recordatorio_papeleria",
+   "props": {
+    "texto": "Papelería: 1,000 → 600",
+    "delta": "−400",
+    "delta_color": "rojo"
+   },
+   "nota": "NO es cifra nueva: repite el resultado de S05 (cuenta 11b). Sin tic. Panel papel, como la ficha «DEBES» del video anterior.",
+   "scene": "S07",
+   "t": 471.302,
+   "frame": 14139
+  },
+  {
+   "id": "e170",
+   "cue": "c071",
+   "off": 0,
+   "do": "cut_to_end_screen",
+   "dur_max_s": 14,
+   "elementos": [
+    "titular: «Hagamos la siguiente cuenta.»",
+    "boton_seguir: «Sígueme para la siguiente cuenta»",
+    "contacto: «@omar.vizu»",
+    "tarjeta_siguiente_video"
+   ],
+   "nota": "Fondo arcilla. MICHI confianza N1 sentado en el piso. El titular se escribe palabra por palabra al ritmo de la voz. Único CTA. Dejar zonas libres para elementos de YouTube.",
+   "scene": "S07",
+   "t": 472,
+   "frame": 14160
+  },
+  {
+   "id": "e171",
+   "cue": "c071",
+   "off": 0,
+   "do": "music",
+   "nivel": "fade out corto (≤ 2 s)",
+   "scene": "S07",
+   "t": 472,
+   "frame": 14160
+  }
+ ]
+}

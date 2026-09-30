@@ -122,3 +122,36 @@ Las 14 cuentas de la tabla (11 operaciones y 3 diferencias) pasaron con `assert`
 ### Lo que falta para arrancar la Fase 1
 - Los archivos de los CATPESOS. Si no llegan, en la Fase 1 dibujo la etiqueta de valor sin billetes ni monedas, y los agrego cuando los mandes.
 - Tu «adelante» al estilo del manual (puntos B–H y J).
+
+---
+
+# Fase 1 · Esqueleto y animatic (S01)
+
+## Qué hay
+- **Motor.** `timeline/build_timeline.js` lee `docs/04` y genera `timeline_nominal.json` (124 eventos, 3 zooms). `timeline/build_numeros.js` hace las 14 cuentas con assert y genera `numeros.json`. `src/` tiene el HTML, el SVG y GSAP. `render/render.js` hace la captura con Playwright y la codificación con ffmpeg.
+- **Estilo del manual aplicado:**
+  - Muro y piso arcilla, con MICHI sentado sobre la línea de piso.
+  - Instrument Serif en cifras y titulares, Archivo en rótulos.
+  - Cabecera «CCM / BOLSA DE VALORES».
+  - Billetes CATPESOS originales: 1,000 = billete de 1000; 1,500 = billetes de 1000 + 500.
+  - Pie: «Ejemplo hipotético · 1 CATPESO = 1 peso mexicano».
+  - Verde solo en «+500».
+- **Render de prueba:** `render/fase1_S01.mp4`. Son 48 s, 1920×1080, 30 fps, 1440 cuadros, sin cuadros negros. Tardó 84 s con 3 procesos, así que el video completo tardará unos 14 min.
+- **Zoom 1/3 en 4K real:** `render/fase1/zoom_4k_100pct.png`, un recorte al 100 % del cuadro 3840×2160. Los bordes salen nítidos.
+- **Hoja de cuadros clave:** `render/fase1/contact_sheet_S01.png`.
+
+## Decisiones que tomé (dime si alguna no te gusta)
+1. La cabecera se ve desde el segundo 0. No es logo ni saludo, es contexto.
+2. No hay caja de subtítulos: el doc 03 dice «sin subtítulos en esta versión», aunque el video de interés compuesto sí los tenía. ¿Los quieres?
+3. En el zoom del gancho (0.8–3.0 s) la cámara se acerca a 1.3× y deja a la vista tanto a MICHI como la etiqueta, para que se vea el cambio 1,000 → 1,500.
+4. MICHI cambia de estado con un fundido de 0.4 s entre poses del rig. La cola y la pose cambian a la mitad del fundido, porque así lo hace el rig. Todavía no hay microanimación (respirar o parpadear).
+
+## ⚠️ Duración: hace falta decidir antes de que grabes
+- Son 915 palabras más 37.5 s de pausas marcadas.
+- A 105–115 palabras/min, la voz dura **8:35–9:20**, más la pantalla final. El tope es 8:00.
+- Los tiempos de `docs/04` dan por hecho unas 130 palabras/min: 54 de los 71 cues no caben a 110 palabras/min.
+- Opciones:
+  - **(a)** Leer a unas 130 palabras/min.
+  - **(b)** Recortar unas 110–120 palabras.
+  - **(c)** Permitir que el video dure unos 9:00.
+- Recomiendo **(b)**, porque un ritmo calmado es la promesa del canal. Si me dices que sí, te propongo los recortes sin tocar ninguna cifra.
