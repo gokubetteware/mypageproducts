@@ -14,7 +14,12 @@
       "inicio_cue": "c071",
       "duracion_max_s": 14
     },
-    "nota": "Tiempos t = estimación nominal en segundos (~105-115 palabras/min). La voz real manda: ver 05_SINCRONIZACION_AUDIO.md. En eventos: cue = frase de voz; word = palabra ancla dentro del cue (opcional); off = desplazamiento en segundos (negativo = antes de la palabra)."
+    "nota": "Tiempos t = estimación nominal en segundos (~105-115 palabras/min). La voz real manda: ver 05_SINCRONIZACION_AUDIO.md. En eventos: cue = frase de voz; word = palabra ancla dentro del cue (opcional); off = desplazamiento en segundos (negativo = antes de la palabra).",
+    "cabecera": {
+      "linea1": "CCM",
+      "linea2": "BOLSA DE VALORES",
+      "regla": "Arriba siempre «CCM»; abajo siempre el tema del video. Visible todo el video salvo pantalla de impacto y pantalla final."
+    }
   },
   "convenciones": {
     "pausas_en_texto": "[pausa] = 1 s; [pausa n s] = n s; (…) = indicación de lectura; *…* = énfasis. Se quitan antes de alinear con la transcripción.",

@@ -88,3 +88,37 @@ Las 14 cuentas de la tabla (11 operaciones y 3 diferencias) pasaron con `assert`
 - **Bloqueante:** los archivos vectoriales de MICHI (carpeta «MICHI-rig-y-expresiones»: `michi_rig.js` + `michi_emotions.json`).
 - Los archivos de los CATPESOS.
 - Tu visto bueno a las recomendaciones de estilo B–H y J.
+
+---
+
+## Actualización 2 · rig recibido y cabecera (30 sep 2026)
+
+### Rig de MICHI: desbloqueado ✓
+- Venía dentro de `michi-panel.html`. Lo separé en tres archivos dentro de `assets/michi/`:
+  - `michi_rig.js`: rig 2D paramétrico **vectorial** (SVG).
+  - `michi_recipes.js`: las recetas de las emociones.
+  - `michi_emotions.json`: 51 estados con 4 niveles cada uno.
+- `MichiRecipes.build(MichiRig)` genera exactamente el mismo JSON que trae el panel, así que es reproducible ✓.
+- **Colores:** el SVG usa solo 3 colores, `#05070A`, `#E8C46A` y `#FFFFFF` (el brillo del ojo). **No hay grises** ✓. Los tonos olivas que se veían en las láminas son la nariz y la boca en ámbar con opacidad 0.5–0.6.
+- **Mapeo final:**
+
+  | Guion | Estado del rig | Nivel |
+  |---|---|---|
+  | tranquilo | `tranquilidad` | N2 |
+  | confiado | `confianza` | N2 |
+  | sorprendido | `sorpresa` | N3 |
+  | preocupado | `preocupacion` | N2 |
+  | aliviado | `alivio` | N3 |
+
+- Prueba a 4K real (`deviceScaleFactor: 2`): `render/fase0_estados_4k.png`. Los bordes salen nítidos.
+- Nota: la función `scene()` del rig dibuja un fondo oscuro, un halo y una sombra. **No la voy a usar**, porque el manual pide fondos claros y cero sombras. Solo uso `render()` (el personaje sin fondo), sentado sobre la línea de piso.
+
+### Cabecera (regla del canal)
+- Arriba siempre «**CCM**» y abajo siempre **el tema del video**. En este video: «BOLSA DE VALORES».
+- Estilo copiado del video de interés compuesto: línea 1 en tinta; línea 2 en gris cálido, un poco más chica.
+- La tira de hilo baja a y≈150 para no chocar con la cabecera.
+- Queda escrito en `docs/03` (sección 3) y en `04_escenas.json` (`video.cabecera`).
+
+### Lo que falta para arrancar la Fase 1
+- Los archivos de los CATPESOS. Si no llegan, en la Fase 1 dibujo la etiqueta de valor sin billetes ni monedas, y los agrego cuando los mandes.
+- Tu «adelante» al estilo del manual (puntos B–H y J).

@@ -15,7 +15,8 @@ Video A «Qué es la bolsa de valores» · Canal «Cuentas Claras con MICHI»
 - Sin subtítulos en esta versión.
 
 ## 3. Layout base (1920×1080)
-- **Tira de hilo:** una sola línea de texto, alineada a la izquierda, en la esquina superior izquierda (x=96, y=72), alto de letra 40 px. Se va completando: «La taquería → Acciones → Accionistas → Empresa pública → Bolsa → Precio → Expectativas». La palabra vigente resaltada.
+- **Cabecera (regla del canal, todos los videos):** esquina superior izquierda (x=96, y≈60). Línea 1: «CCM» (Archivo 700, 24 px, espaciado +0.16 em, tinta #05070A). Línea 2: el TEMA DEL VIDEO en mayúsculas; en este video, «BOLSA DE VALORES» (Archivo 700, 20 px, +0.16 em, gris cálido #5E5A52). Sustituye a «OMAR · CUENTAS CLARAS» y a «CUENTAS CLARAS CON MICHI». Es la única excepción al mínimo de 40 px. Visible todo el video salvo pantalla de impacto y pantalla final.
+- **Tira de hilo:** una sola línea de texto, alineada a la izquierda, debajo de la cabecera (x=96, y≈150), alto de letra 40 px. Se va completando: «La taquería → Acciones → Accionistas → Empresa pública → Bolsa → Precio → Expectativas». La palabra vigente resaltada.
 - **Zona principal (escena):** rectángulo central de ~1300×700 px para la taquería, cuadrícula, operaciones, tablas.
 - **Zona MICHI:** esquina inferior derecha (~380 px de alto). En zoom se acerca a primer plano.
 - **Zona de tarjetas y etiquetas:** franja inferior centrada, ancho ~1300 px, alto ~220 px.
