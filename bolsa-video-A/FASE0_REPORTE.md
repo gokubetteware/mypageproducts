@@ -206,3 +206,38 @@ Las 14 cuentas de la tabla (11 operaciones y 3 diferencias) pasaron con `assert`
 ## Dudas para Omar
 1. En S03, MICHI se queda **preocupado** desde «Pero hay un problema» hasta que el precio sube (≈ 75 s), porque el JSON no trae otro estado en medio. ¿Lo paso a **tranquilo** cuando aparece la tarjeta «Empresa pública» (≈ 2:30)?
 2. «Sube ↑ / Baja ↓» van en texto grande arriba, en tinta (el verde y el rojo quedan solo para cifras con signo). ¿Te gusta así?
+
+---
+
+# Video completo (sin voz) · S01–S07
+
+- **`render/bolsa_A_silencioso.mp4`:**
+  - Formato: 7:39, 1920×1080, 30 fps, H.264, yuv420p, sin audio y con faststart.
+  - Son 13 773 cuadros, sin cuadros negros.
+  - Los 3 zooms a MICHI están renderizados en 4K real.
+- **`render/tic_track.wav`:** pista aparte con 30 «tics», uno por cada cifra nueva. Los tiempos están en `tic_track.json`. Se regenera con `node render/render.js --tics true` y no se sube a git porque pesa 44 MB.
+- **`render/bolsa_A_preview_con_tic.mp4`:** es el mismo video con el «tic» ya mezclado, solo para revisar.
+- **S04 (expectativas):**
+  - Ganancia de 10,000 con el zoom 2/3, seguida de la nota que explica qué es la ganancia.
+  - Operación 10,000 ÷ 100, cuadrito resaltado y segunda taquería.
+  - La gente piensa «¿más ganancia?»; aparece la tarjeta 4 «Expectativas».
+  - Operación 15,000 ÷ 100 y el cambio 100 → 150 +50.
+  - Tabla lado a lado (Antes / Se espera) cuyas filas entran al ritmo de la voz.
+  - Rótulo «Cambiaron las expectativas.» y alerta «¡OJO! El 10 es un número de ejemplo.».
+- **S05 (papelería):**
+  - La papelería vale 50,000 y se divide en una cuadrícula de 5×10.
+  - Operaciones 50,000 ÷ 50 y 5,000 ÷ 50, con la nota «la misma cuenta de antes».
+  - Llega la papelería grande enfrente: «Hoy gana 5,000» y «Se espera 3,000».
+  - Operaciones 3,000 ÷ 50 y 60 × 10; el precio pasa de 1,000 a 600 con −400 en rojo.
+  - «¿Casino?» se tacha, y aparecen «Razón: lo que se espera» y la alerta «¡OJO! Nadie puede prometer que subirá.».
+- **S06 (ya entendí):**
+  - El fondo vuelve a arcilla con la escena del inicio: 1,000 → 1,500 +500.
+  - Zoom 3/3 con MICHI aliviado y la respuesta a la pregunta principal.
+  - Las dos ideas centrales, «Acción = …» y «Precio = …».
+- **S07 (cierre):**
+  - Vuelve la ficha «Papelería 1,000 → 600 −400», sin «tic».
+  - Pantalla final: «Hagamos la siguiente cuenta.» se escribe palabra por palabra.
+  - Botón «Sígueme para la siguiente cuenta» y @omar.vizu, con MICHI en confianza.
+- **Ajustes de tiempo (una cosa nueva a la vez):**
+  - Cuando dos cosas nuevas caían a menos de 0.6 s, o antes de que terminara la pausa de un resultado, retrasé la segunda: +50 en S04, op06 y op07 en S05, y las celdas de la tabla.
+  - En S05, la cuenta 50,000 ÷ 50 aparece después de que la voz dice las cifras y no antes, como estaba en el JSON.
