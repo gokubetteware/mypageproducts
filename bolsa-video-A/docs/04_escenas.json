@@ -106,45 +106,49 @@
       ],
       "eventos": [
         {
-          "id": "e001",
+          "id": "e000",
           "cue": "c001",
-          "off": 0.3,
+          "off": 0.1,
+          "do": "headline",
+          "texto": "¿Qué es la bolsa de valores?",
+          "nota": "Omar: los primeros segundos presentan el tema, conforme al audio («Hoy vas a entender qué es la bolsa de valores»)."
+        },
+        {
+          "id": "e000b",
+          "cue": "c001",
+          "word": "taquería",
+          "off": 0.0,
+          "do": "show",
+          "obj": "taqueria_lupe_completa",
+          "nota": "«con una taquería»"
+        },
+        {
+          "id": "e001",
+          "cue": "c002",
+          "word": "pedacito",
+          "off": 0.0,
           "do": "show",
           "obj": "pedacito_lupe",
-          "props": {
-            "etiqueta": "1,000 catpesos",
-            "rotulo": "Ejemplo"
-          }
+          "nota": "la taquería se reduce a un pedacito"
+        },
+        {
+          "id": "e002b",
+          "cue": "c003",
+          "word": "1,500",
+          "off": -0.5,
+          "do": "michi",
+          "estado": "sorprendido",
+          "nota": "medio segundo antes de la cifra"
         },
         {
           "id": "e002",
-          "cue": "c001",
-          "off": 0.8,
+          "cue": "c003",
+          "word": "1,500",
+          "off": -0.6,
           "do": "zoom_michi",
           "dur_s": 2.2,
           "render": "ZOOM MICHI — render 4K",
           "cuenta": "1/3"
-        },
-        {
-          "id": "e002b",
-          "cue": "c001",
-          "off": 1,
-          "do": "michi",
-          "estado": "sorprendido",
-          "nota": "medio segundo antes del cambio de cifra"
-        },
-        {
-          "id": "e003",
-          "cue": "c001",
-          "off": 1.5,
-          "do": "num_change",
-          "obj": "pedacito_lupe",
-          "de": 1000,
-          "a": 1500,
-          "delta": "+500",
-          "delta_color": "verde",
-          "excepcion_gancho": true,
-          "nota": "Imagen de gancho: única cifra que aparece antes de que la voz la diga."
         },
         {
           "id": "e004",

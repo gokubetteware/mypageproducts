@@ -1,0 +1,51 @@
+<html><body style="margin:0;background:#B7D3CF"><div id="o"></div>
+<script src="../assets/michi/michi_rig.js"></script><script>
+const R=window.MichiRig;    const GATS = {
+      canela:   { k: 0.78, pelaje: '#A68F6E', ojos: '#1E5652', linea: '#05070A',
+        cuerpo: '<ellipse cx="0" cy="-38" rx="15" ry="36" fill="#F3EFE6"/>',
+        cuello: '<rect x="-30" y="-101" width="60" height="12" rx="6" fill="#2F6B4F"/><path d="M8 -92 l10 30 l-10 3 l-7 -31z" fill="#2F6B4F"/>',
+        cabeza: '<path d="M-13 -112 q13 7 26 0 q-2 9 -13 9 q-11 0 -13 -9z" fill="#F3EFE6"/>' },
+      mango:    { k: 0.78, pelaje: '#9A7F5F', ojos: '#9FC2BD', linea: '#05070A',
+        cuerpo: '<circle cx="15" cy="-30" r="17" fill="#5E5A52"/>',
+        cuello: '',
+        cabeza: '<circle cx="-36" cy="-166" r="13" fill="#5E5A52"/><path d="M-40 -170 C-38 -196 38 -196 40 -170 Z" fill="#7A5518"/><rect x="18" y="-173" width="44" height="7" rx="3.5" fill="#7A5518"/>' },
+      rayitas:  { k: 0.86, pelaje: '#8C8577', ojos: '#E3DDD0', linea: '#F3EFE6',
+        cuerpo: '<path d="M-37 -60h13M-38 -46h13M-38 -32h13M24 -60h13M25 -46h13M25 -32h13" stroke="#5E5A52" stroke-width="5" stroke-linecap="round"/>',
+        cuello: '',
+        cabeza: '<g fill="none" stroke="#05070A" stroke-width="3.4"><circle cx="-18.24" cy="-135.95" r="15"/><circle cx="18.24" cy="-135.95" r="15"/><path d="M-3.2 -137h6.4"/></g><path d="M-30 -156l15 -3M30 -156l-15 -3" stroke="#F3EFE6" stroke-width="3.6" stroke-linecap="round"/>' },
+      tigrillo: { k: 0.78, pelaje: '#5F6664', ojos: '#E1BEA3', linea: '#F3EFE6',
+        cuerpo: '<path d="M-37 -58h12M-38 -44h12M-38 -30h12M25 -58h12M26 -44h12M26 -30h12" stroke="#8C8577" stroke-width="5" stroke-linecap="round"/>',
+        cuello: '<rect x="-27" y="-98" width="54" height="8" rx="4" fill="#9A3B2E"/><circle cx="0" cy="-86" r="5.5" fill="#7A5518"/>',
+        cabeza: '' },
+      bosco:    { k: 0.78, pelaje: '#5E5A52', ojos: '#B7D3CF', linea: '#F3EFE6',
+        cuerpo: '<ellipse cx="0" cy="-36" rx="15" ry="36" fill="#E3DDD0"/><ellipse cx="-20" cy="-3" rx="11" ry="5" fill="#E3DDD0"/><ellipse cx="20" cy="-3" rx="11" ry="5" fill="#E3DDD0"/>',
+        cuello: '<path d="M-27 -99 L27 -99 L0 -72 Z" fill="#1E5652"/>',
+        cabeza: '<path d="M-13 -112 q13 7 26 0 q-2 9 -13 9 q-11 0 -13 -9z" fill="#E3DDD0"/>' },
+    };
+    const GOLD = /#E8C46A/gi, INK = '#05070A';
+    const gatitoSVG = (name, p, uid) => {
+      const G2 = GATS[name];
+      const box = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+      box.innerHTML = R.render(p, { bare: true, id: uid });
+      for (const n of box.querySelectorAll('*')) {
+        const layerOf = n.closest('[data-layer]');
+        const lay = n.getAttribute('data-layer') || (layerOf && layerOf.getAttribute('data-layer')) || '';
+        const isPupil = /PUPIL/.test(lay);
+        for (const at of ['fill', 'stroke']) {
+          const v = (n.getAttribute(at) || '').toUpperCase();
+          if (v === INK && !isPupil) n.setAttribute(at, G2.pelaje);
+          else if (v === '#E8C46A') {
+            if (/IRIS/.test(lay)) n.setAttribute(at, G2.ojos);
+            else { n.setAttribute(at, G2.linea); }
+          }
+        }
+      }
+      const body = box.querySelector('[data-layer="MICHI_BODY"]');
+      // rasgos del cuerpo recortados a la silueta del cuerpo (no se salen)
+      if (body) body.insertAdjacentHTML('beforeend', `<clipPath id="${uid}-cb"><path d="${R.G.body}"/></clipPath><g clip-path="url(#${uid}-cb)">${G2.cuerpo}</g>${G2.cuello}`);
+      const head = box.querySelector('[data-layer="MICHI_HEAD"]');
+      if (head && G2.cabeza) head.insertAdjacentHTML('beforeend', G2.cabeza);
+      return box.innerHTML;
+    };
+
+</script></body></html>

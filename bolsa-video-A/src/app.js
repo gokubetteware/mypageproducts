@@ -245,95 +245,135 @@
 
     // Cabecera «CCM / tema»: fija todo el video (decisión de Omar: no es invasiva).
 
-    // ---- Gatitos del Michiverso (PDF «Personajes secundarios», v0.1) ----
-    // Desde sus trazos originales (assets/gatitos/*.svg). 78 % de la altura de MICHI; Rayitas 86 %.
-    // Máximo 2 gatitos junto a MICHI. No hablan: reaccionan. Nunca se mueven a la vez que MICHI.
-    const GAT = { canela: 0.78, mango: 0.78, rayitas: 0.86, tigrillo: 0.78, bosco: 0.78 };
-    const EXPRS = ['neutro', 'alegria', 'sorpresa', 'preocupacion', 'duda', 'alivio'];
-    const MICHI_BUSY = () => michiEvents.map(m => [m.t - 0.05, m.t + BLEND + 0.05]);
-    // Desplaza un movimiento de gatito para que no coincida con una reacción de MICHI.
-    const freeAt = (t, d) => { let x = t; for (let k = 0; k < 6; k++) { const hit = MICHI_BUSY().find(([a, b]) => x < b && x + d > a); if (!hit) break; x = hit[1]; } return x; };
-    const svgFit = (key, h, pad) => {
-      const m = GMETA[key];
-      const [x0, y0, x1, y1] = m.bbox;
-      const vb = [x0 - pad, y0 - pad, x1 - x0 + 2 * pad, y1 - y0 + 2 * pad];
-      return GSVG[key].replace(/viewBox="[^"]*"/, `viewBox="${vb.join(' ')}"`).replace('<svg ', `<svg height="${h * vb[3] / (y1 - y0)}" style="display:block;position:absolute;left:0;bottom:${-h * pad / (y1 - y0)}px" `);
+    // ---- Gatitos del Michiverso: el MISMO rig de MICHI, recoloreado, con su rasgo propio ----
+    // Paleta y rasgos: PDF «Personajes secundarios» (v0.1). Todos comparten los 51 estados de MICHI.
+    // 78 % de la altura de MICHI (Rayitas 86 %). Máximo 2 junto a MICHI. No hablan: reaccionan.
+    // Nunca ámbar ni negro con ojos ámbar (eso es solo de MICHI). Planos, sin sombras ni contornos.
+    const GATS = {
+      canela:   { k: 0.78, pelaje: '#A68F6E', ojos: '#1E5652', linea: '#05070A',
+        cuerpo: '<ellipse cx="0" cy="-38" rx="15" ry="36" fill="#F3EFE6"/>',
+        cuello: '<rect x="-30" y="-101" width="60" height="12" rx="6" fill="#2F6B4F"/><path d="M8 -92 l10 30 l-10 3 l-7 -31z" fill="#2F6B4F"/>',
+        cabeza: '<path d="M-13 -112 q13 7 26 0 q-2 9 -13 9 q-11 0 -13 -9z" fill="#F3EFE6"/>' },
+      mango:    { k: 0.78, pelaje: '#9A7F5F', ojos: '#9FC2BD', linea: '#05070A',
+        cuerpo: '<circle cx="15" cy="-30" r="17" fill="#5E5A52"/>',
+        cuello: '',
+        cabeza: '<circle cx="-36" cy="-166" r="13" fill="#5E5A52"/><path d="M-40 -170 C-38 -196 38 -196 40 -170 Z" fill="#7A5518"/><rect x="18" y="-173" width="44" height="7" rx="3.5" fill="#7A5518"/>' },
+      rayitas:  { k: 0.86, pelaje: '#8C8577', ojos: '#E3DDD0', linea: '#F3EFE6',
+        cuerpo: '<path d="M-37 -60h13M-38 -46h13M-38 -32h13M24 -60h13M25 -46h13M25 -32h13" stroke="#5E5A52" stroke-width="5" stroke-linecap="round"/>',
+        cuello: '',
+        cabeza: '<g fill="none" stroke="#05070A" stroke-width="3.4"><circle cx="-18.24" cy="-135.95" r="15"/><circle cx="18.24" cy="-135.95" r="15"/><path d="M-3.2 -137h6.4"/></g><path d="M-30 -156l15 -3M30 -156l-15 -3" stroke="#F3EFE6" stroke-width="3.6" stroke-linecap="round"/>' },
+      tigrillo: { k: 0.78, pelaje: '#5F6664', ojos: '#E1BEA3', linea: '#F3EFE6',
+        cuerpo: '<path d="M-37 -58h12M-38 -44h12M-38 -30h12M25 -58h12M26 -44h12M26 -30h12" stroke="#8C8577" stroke-width="5" stroke-linecap="round"/>',
+        cuello: '<rect x="-27" y="-98" width="54" height="8" rx="4" fill="#9A3B2E"/><circle cx="0" cy="-86" r="5.5" fill="#7A5518"/>',
+        cabeza: '' },
+      bosco:    { k: 0.78, pelaje: '#5E5A52', ojos: '#B7D3CF', linea: '#F3EFE6',
+        cuerpo: '<ellipse cx="0" cy="-36" rx="15" ry="36" fill="#E3DDD0"/><ellipse cx="-20" cy="-3" rx="11" ry="5" fill="#E3DDD0"/><ellipse cx="20" cy="-3" rx="11" ry="5" fill="#E3DDD0"/>',
+        cuello: '<path d="M-27 -99 L27 -99 L0 -72 Z" fill="#1E5652"/>',
+        cabeza: '<path d="M-13 -112 q13 7 26 0 q-2 9 -13 9 q-11 0 -13 -9z" fill="#E3DDD0"/>' },
     };
+    const GOLD = /#E8C46A/gi, INK = '#05070A';
+    const gatitoSVG = (name, p, uid) => {
+      const G2 = GATS[name];
+      const box = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+      box.innerHTML = R.render(p, { bare: true, id: uid });
+      for (const n of box.querySelectorAll('*')) {
+        const layerOf = n.closest('[data-layer]');
+        const lay = n.getAttribute('data-layer') || (layerOf && layerOf.getAttribute('data-layer')) || '';
+        const isPupil = /PUPIL/.test(lay);
+        for (const at of ['fill', 'stroke']) {
+          const v = (n.getAttribute(at) || '').toUpperCase();
+          if (v === INK && !isPupil) n.setAttribute(at, G2.pelaje);
+          else if (v === '#E8C46A') {
+            if (/IRIS/.test(lay)) n.setAttribute(at, G2.ojos);
+            else { n.setAttribute(at, G2.linea); }
+          }
+        }
+      }
+      const body = box.querySelector('[data-layer="MICHI_BODY"]');
+      // rasgos del cuerpo recortados a la silueta del cuerpo (no se salen)
+      if (body) body.insertAdjacentHTML('beforeend', `<clipPath id="${uid}-cb"><path d="${R.G.body}"/></clipPath><g clip-path="url(#${uid}-cb)">${G2.cuerpo}</g>${G2.cuello}`);
+      const head = box.querySelector('[data-layer="MICHI_HEAD"]');
+      if (head && G2.cabeza) head.insertAdjacentHTML('beforeend', G2.cabeza);
+      return box.innerHTML;
+    };
+    const GAT_EVENTS = [];                       // [{g, t, p}] cambios de estado (se mezclan como en MICHI)
     const gatitos = [];
-    // gatito(nombre, x del centro, {objeto: true, espejo: false})
+    const MICHI_BUSY = () => michiEvents.map(m => [m.t - 0.05, m.t + BLEND + 0.05]);
+    const freeAt = (t, d) => { let x = t; for (let k = 0; k < 6; k++) { const hit = MICHI_BUSY().find(([a, b]) => x < b && x + d > a); if (!hit) break; x = hit[1]; } return x; };
+    const gstate = (key, lv) => {
+      const st = EMO.states.find(s => s.key === key) || fail('estado no existe en el rig: ' + key);
+      return st.levels[Math.min(lv == null ? 1 : lv, st.levels.length - 1)];
+    };
+    // Objeto de su ficha (frasco, ticket, tarjeta, maceta), a escala del gatito.
+    const objSVG = (name, Hpx) => {
+      const cat = GMETA[name + '_ficha'].bbox, ob = GMETA[name + '_objeto'].bbox;
+      const k = Hpx / (cat[3] - cat[1]);
+      const vb = [ob[0] - 1, ob[1] - 1, ob[2] - ob[0] + 2, ob[3] - ob[1] + 2];
+      return { html: GSVG[name + '_objeto'].replace(/viewBox="[^"]*"/, `viewBox="${vb.join(' ')}"`).replace('<svg ', `<svg width="${vb[2] * k}" height="${vb[3] * k}" style="display:block" `),
+        dx: (ob[0] - (cat[0] + cat[2]) / 2) * k, dy: (ob[3] - cat[3]) * k };
+    };
+    // gatito(nombre, x del centro, { objeto, espejo })
     const gatito = (name, cx, o) => {
       o = o || {};
-      const H = Math.round(MICHI.h * GAT[name]);
-      const m = GMETA[name + '_neutro'];
-      const w = H * (m.bbox[2] - m.bbox[0]) / (m.bbox[3] - m.bbox[1]);
-      const d = el(`<div class="gx" style="position:relative;width:${w}px;height:${H}px${o.espejo ? ';transform:scaleX(-1)' : ''}">
-          ${EXPRS.map(e => `<div class="ex ex-${e}" style="position:absolute;inset:0">${svgFit(name + '_' + e, H, 2)}</div>`).join('')}</div>
-          ${o.objeto ? (() => { const cat = GMETA[name + '_ficha'].bbox, ob = GMETA[name + '_objeto'].bbox, k = H / (cat[3] - cat[1]);
-            return `<div class="obj" style="position:absolute;left:${w * 0.5 + (ob[0] - (cat[0] + cat[2]) / 2) * k}px;bottom:${-(ob[3] - cat[3]) * k}px">${objSVG(name, H)}</div>`; })() : ''}`,
-        { left: (cx - w / 2) + 'px', top: (STAGE_FLOOR - H) + 'px' }, 'ilus gatito');
-      const exs = Object.fromEntries(EXPRS.map(e => [e, d.querySelector('.ex-' + e)]));
-      tl.set(Object.values(exs), { autoAlpha: 0 }, 0);
-      tl.set(exs.neutro, { autoAlpha: 1 }, 0);
-      let cur = 'neutro';
-      const g = {
-        node: d, name,
-        entra: (t, desde) => { const tt = freeAt(t, 0.7); moving(tt, 0.7); tl.fromTo(d, { autoAlpha: 0, x: desde == null ? 60 : desde }, { autoAlpha: 1, x: 0, duration: 0.7 }, tt); return g; },
-        sale: (t, hacia) => { const tt = freeAt(t, 0.5); moving(tt, 0.5); tl.to(d, { autoAlpha: 0, x: hacia == null ? 60 : hacia, duration: 0.5 }, tt); return g; },
-        cara: (e, t) => {
-          if (!exs[e]) fail(name + ': expresión inexistente ' + e);
-          const tt = freeAt(t, 0.25); moving(tt, 0.25);
-          tl.to(exs[cur], { autoAlpha: 0, duration: 0.2, ease: 'none' }, tt);
-          tl.to(exs[e], { autoAlpha: 1, duration: 0.2, ease: 'none' }, tt);
-          cur = e; return g;
-        },
-      };
+      const G2 = GATS[name] || fail('gatito desconocido: ' + name);
+      const Hpx = MICHI.h * G2.k, sc = Hpx / 199;
+      const ob = o.objeto ? objSVG(name, Hpx) : null;
+      const d = el(`<svg class="gsvg" viewBox="0 0 1920 1080" width="1920" height="1080" style="position:absolute;left:0;top:0;overflow:visible">
+          <g transform="translate(${cx} ${STAGE_FLOOR}) scale(${o.espejo ? -sc : sc} ${sc})"><g class="gr"></g></g></svg>
+          ${ob ? `<div style="position:absolute;left:${cx + (o.espejo ? -1 : 1) * Math.abs(ob.dx) * 0 + ob.dx}px;top:${STAGE_FLOOR - parseFloat(ob.html.match(/height="([\d.]+)"/)[1]) + ob.dy}px">${ob.html}</div>` : ''}`,
+        { left: '0px', top: '0px', width: '1920px', height: '1080px', pointerEvents: 'none' }, 'ilus gatito');
+      const g = { node: d, name, grp: d.querySelector('.gr'), uid: 'g' + gatitos.length, evs: [{ t: -1, p: gstate('neutro', 0) }] };
+      tl.set(d, { autoAlpha: 0 }, 0);
+      g.entra = (t, desde) => { const tt = freeAt(t, 0.7); moving(tt, 0.7); tl.fromTo(d, { autoAlpha: 0, x: desde == null ? 60 : desde }, { autoAlpha: 1, x: 0, duration: 0.7 }, tt); return g; };
+      g.sale = (t, hacia) => { const tt = freeAt(t, 0.5); moving(tt, 0.5); tl.to(d, { autoAlpha: 0, x: hacia == null ? 60 : hacia, duration: 0.5 }, tt); return g; };
+      g.cara = (key, t, lv) => { const tt = freeAt(t, BLEND); moving(tt, BLEND); g.evs.push({ t: tt, p: gstate(key, lv) }); g.evs.sort((a, b) => a.t - b.t); return g; };
       gatitos.push(g);
       return g;
     };
-    // Objeto de la ficha (frasco, ticket, tarjeta, maceta), a la escala del gatito.
-    const objSVG = (name, H) => {
-      const cat = GMETA[name + '_ficha'].bbox, ob = GMETA[name + '_objeto'].bbox;
-      const k = H / (cat[3] - cat[1]);
-      const vb = [ob[0] - 1, ob[1] - 1, ob[2] - ob[0] + 2, ob[3] - ob[1] + 2];
-      return GSVG[name + '_objeto'].replace(/viewBox="[^"]*"/, `viewBox="${vb.join(' ')}"`).replace('<svg ', `<svg width="${vb[2] * k}" height="${vb[3] * k}" style="display:block" `);
+    const drawGatitos = t => {
+      for (const g of gatitos) {
+        if (+getComputedStyle(g.node).opacity < 0.01) continue;
+        let prev = g.evs[0], cur = prev;
+        for (const e of g.evs) { if (e.t > t) break; prev = cur; cur = e; }
+        const k = cur.t < 0 ? 1 : Math.min(1, (t - cur.t) / BLEND);
+        const p = R.normalize(k >= 1 ? cur.p : R.lerp(prev.p, cur.p, easeIO(k)));
+        g.grp.innerHTML = gatitoSVG(g.name, p, g.uid);
+      }
     };
 
     // ================= S01 · Sorpresa + Promesa + Compromiso =================
     bg('arcilla', 0);
     (function S01() {
-      if (EV('e003').de !== V('c1_precio_accion') || EV('e003').a !== V('c7_precio_despues')) fail('e003: de/a no coinciden con numeros.json');
-      if (EV('e003').delta !== N('c7b_delta_taqueria')) fail('e003: delta no coincide');
       assertNums('e004', 'c1_precio_accion');
       assertNums('e005', 'c7_precio_despues', 'c7b_delta_taqueria');
-
-      const tile = ilus(tileSVG(300), { left: '260px', top: '300px' });
-      showI(tile, Math.max(T('e001'), 1.0));   // entra cuando se va la cabecera (máx. 3 capas)
-      // Gancho: 1,000 → 1,500 (+500) con billetes CATPESOS
-      const hook = el(`
-        <div class="serif" style="font-size:150px;line-height:150px;position:relative;height:150px">
-          <span class="v0" style="position:absolute;left:0;top:0">${N('c1_precio_accion')}</span>
-          <span class="v1" style="position:absolute;left:0;top:0">${N('c7_precio_despues')}</span>
-          <span class="dl serif pos" style="position:absolute;left:390px;top:20px;font-size:110px">${N('c7b_delta_taqueria')}</span>
-        </div>
-        <div class="lbl" style="margin-top:8px">catpesos</div>
-        <div style="display:flex;gap:20px;margin-top:22px">${billsFor(V('c1_precio_accion')).map(b => billImg(b, 260)).join('')}
-          <span class="b1" style="display:flex">${billsFor(V('c7_precio_despues') - V('c1_precio_accion')).map(b => billImg(b, 260)).join('')}</span></div>`,
-        { left: '610px', top: '310px' }, 'main');
-      main(hook, T('e001'), { hold: 3, parts: [
-        { node: hook.querySelector('.v1'), t: T('e003'), out: hook.querySelector('.v0'), tic: true },
-        { node: hook.querySelector('.dl'), t: T('e003') },
-        { node: hook.querySelector('.b1'), t: T('e003') },
-      ] });
-      // Ayer / Hoy
+      // Título: presenta el tema, como lo dice la voz («Hoy vas a entender qué es la bolsa de valores»)
+      const title = el(`<div class="serif" style="font-size:150px;line-height:146px">${EV('e000').texto.replace(' de valores', '<br>de valores')}</div>`,
+        { left: '140px', top: '250px' }, 'main');
+      main(title, T('e000'), { hold: 3, until: T('e001') });
+      // «con una taquería»: la taquería completa
+      const shop = ilus(tileSVG(300), { left: '1060px', top: (STAGE_FLOOR - 300) + 'px' });
+      showI(shop, T('e000b'));
+      // «Mira este pedacito»: la taquería va a la izquierda, se cuadricula y se resalta un pedacito
+      toI(shop, { x: -800, duration: 0.8 }, T('e001'));
+      const [grid0, cells0] = gridIlus(260, 300, 10, 10);
+      tl.set(grid0, { autoAlpha: 0 }, 0);
+      tl.set(grid0, { autoAlpha: 1 }, T('e001') + 0.85);
+      moving(T('e001') + 0.85, 0.5);
+      tl.fromTo(cells0, { opacity: 0 }, { opacity: 1, duration: 0.3, ease: 'none', stagger: { each: 0.004, grid: [10, 10], from: 'start' } }, T('e001') + 0.85);
+      popCell(cells0[44], T('e001') + 1.4);
+      // «Ayer valía 1,000» · «Hoy vale 1,500» (+500): un solo bloque, con sus billetes CATPESOS
       const rows = el(`
         <div style="display:flex;gap:70px">
-          <div><div class="lbl">Ayer</div>${big(N('c1_precio_accion'))}<div class="lbl">catpesos</div></div>
-          <div class="hoy"><div class="lbl">Hoy</div>${big(N('c7_precio_despues'))}<div class="lbl">catpesos</div>
-            <div class="serif pos" style="font-size:96px;line-height:110px">${N('c7b_delta_taqueria')}</div></div>
-        </div>`, { left: '620px', top: '300px' }, 'main');
-      main(rows, T('e004'), { tic: true, parts: [{ node: rows.querySelector('.hoy'), t: T('e005'), tic: true }] });
+          <div><div class="lbl">Ayer</div>${big(N('c1_precio_accion'))}<div class="lbl">catpesos</div>
+            <div style="margin-top:18px">${billsFor(V('c1_precio_accion')).map(b => billImg(b, 240)).join('')}</div></div>
+          <div class="hoy"><div class="lbl">Hoy</div><div style="display:flex;gap:22px;align-items:baseline">${big(N('c7_precio_despues'))}
+            <span class="serif pos" style="font-size:96px">${N('c7b_delta_taqueria')}</span></div><div class="lbl">catpesos</div>
+            <div style="margin-top:18px;display:flex;gap:12px">${billsFor(V('c1_precio_accion')).concat(billsFor(V('c7_precio_despues') - V('c1_precio_accion'))).map(b => billImg(b, 200)).join('')}</div></div>
+        </div>`, { left: '640px', top: '250px' }, 'main');
+      main(rows, T('e004'), { tic: true, hold: 3, parts: [{ node: rows.querySelector('.hoy'), t: T('e005'), tic: true }] });
+      const tile = shop;
       // «La bolsa subió»: titular genérico de periódico (sans; sin logos)
-      hideI(tile, T('e007') - 0.45);
+      hideI([tile, grid0], T('e007') - 0.45);
       const news = el(`
         <div style="font-family:Archivo;font-weight:800;font-size:96px;line-height:100px">${EV('e007').texto}</div>
         <div style="margin-top:30px;display:grid;gap:16px">
@@ -657,7 +697,7 @@
     window.FPS = FPS;
     window.ZOOMS = TL.eventos.filter(e => e.do === 'zoom_michi').map(e => [e.t, e.t + e.dur_s]);
     window.TICS = [...new Set(TICS.map(x => +x.toFixed(3)))].sort((a, b) => a - b);
-    window.seek = t => { tl.time(t, false); drawMichi(t); };
+    window.seek = t => { tl.time(t, false); drawMichi(t); drawGatitos(t); };
     window.seek(0);
   }
 

@@ -277,3 +277,15 @@ Las 14 cuentas de la tabla (11 operaciones y 3 diferencias) pasaron con `assert`
   - S01: Bosco (inversión) oyó «la bolsa subió» y pone cara de duda.
   - S02: los vecinos accionistas son Canela (ahorro, con su frasco) y Bosco; se alegran al volverse dueños.
 - **Render:** `render/parte1_S01-S02_con_voz.mp4` (0:00–1:28, con voz y «tic»). Hoja de cuadros: `render/parte1/hoja_parte1.png`.
+
+## v3.1 · Inicio conforme al audio + gatitos con el rig de MICHI
+- **Inicio** (eventos e000, e000b, e001, e002, e002b en `docs/04`):
+  - 0.2 s: título «¿Qué es la bolsa de valores?».
+  - 3.4 s («con una taquería»): entra la taquería.
+  - 4.6 s («Mira este pedacito»): la taquería se cuadricula y se resalta un pedacito.
+  - 7.3 s: aparece «Ayer 1,000» con su billete.
+  - 9.5 s: «Hoy 1,500 +500»; MICHI se sorprende 0.5 s antes y entra el zoom 1/3.
+  - Ya no aparece ninguna cifra antes de que la voz la diga (se quitó la excepción del gancho).
+- **Gatitos:** ahora son el MISMO rig de MICHI (`michi_rig.js`), recoloreado por gatito (pelaje, ojos, líneas) y con su rasgo propio encima (bufanda, gorra y mancha, lentes y cejas, collar y chapa, pañoleta, pecho, rayas).
+  - Tienen las mismas orejas, la misma geometría y **los mismos 51 estados** que MICHI.
+  - Muestra de los 5 gatitos en 8 estados: `render/lamina_gatitos.png`.
