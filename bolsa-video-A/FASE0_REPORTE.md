@@ -304,3 +304,5 @@ Las 14 cuentas de la tabla (11 operaciones y 3 diferencias) pasaron con `assert`
   - **Efectos:** el motor los registra al ocurrir (`window.SFX`, `render/sfx_eventos.json`): moneda, sube, baja, pop, pasos, tarjeta, suave, pregunta, ojo, zoom, blip, cuadrícula, elige, lápiz, intro y outro. Todos suaves, sin alarmas.
   - La moneda reemplaza al «tic».
 - **Render:** `render/partes1-2_S01-S03_final.mp4` (0:00–2:39, con voz, música y efectos).
+
+- **v3.3 (decisión de Omar): sin música.** Mezcla = voz + efectos, normalizada a −16 LUFS con pico −1.5 dBTP. La música sigue disponible con `--con-musica`.

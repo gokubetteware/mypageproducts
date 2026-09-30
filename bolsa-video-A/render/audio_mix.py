@@ -138,10 +138,16 @@ for i in range(len(e)):
     cur = k * cur + (1 - k) * e[i]; g[i] = cur
 duck = db(-9) + (1 - db(-9)) * (1 - g)
 MUS, FXG = db(-14), db(-8)
-mezcla = voz + musica * MUS * duck + sfx * FXG
+# Decisión de Omar (30 sep): SIN música. Solo voz + efectos. (Para volver a ponerla: --con-musica)
+CON_MUSICA = '--con-musica' in args
+mezcla = voz + (musica * MUS * duck if CON_MUSICA else 0) + sfx * FXG
 out = lambda name, x: subprocess.run(['ffmpeg', '-loglevel', 'error', '-y', '-f', 'f64le', '-ar', str(SR), '-ac', '1', '-i', '-',
     '-af', 'alimiter=limit=0.89:level=false', '-c:a', 'pcm_s24le', os.path.join(ROOT, 'render', name)], input=x[:int(DUR * SR)].astype(np.float64).tobytes(), check=True)
 out('musica.wav', musica * MUS)
 out('sfx_track.wav', sfx * FXG)
-out('mezcla.wav', mezcla)
-print(f'audio: {DUR:.1f} s · efectos {sum(usados.values())} {json.dumps(usados)} · música con ducking bajo la voz')
+out('mezcla_cruda.wav', mezcla)
+# la voz manda: la mezcla final queda en −16 LUFS integrados y pico ≤ −1 dBTP (como pide 05_SINCRONIZACION)
+subprocess.run(['ffmpeg', '-loglevel', 'error', '-y', '-i', os.path.join(ROOT, 'render/mezcla_cruda.wav'), '-af',
+    'loudnorm=I=-16:TP=-1.5:LRA=11:linear=true,aresample=48000', '-c:a', 'pcm_s24le', os.path.join(ROOT, 'render/mezcla.wav')], check=True)
+os.remove(os.path.join(ROOT, 'render/mezcla_cruda.wav'))
+print(f'audio: {DUR:.1f} s · efectos {sum(usados.values())} {json.dumps(usados)} · música: {"sí" if CON_MUSICA else "no"}')
