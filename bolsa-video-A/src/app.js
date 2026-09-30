@@ -198,6 +198,20 @@
 
     zoom('e002', 990, 560, 1.3);
 
+    // ---- Subtítulos: grupos y tiempos por palabra desde timeline (nominal o voz real) ----
+    const subs = $('#subs');
+    const endScreen = TL.eventos.find(e => e.do === 'cut_to_end_screen');
+    for (const g of TL.subtitulos) {
+      if (endScreen && g.start >= endScreen.t) continue;   // la pantalla final va sin subtítulo
+      const box = document.createElement('div');
+      box.className = 'sub';
+      box.innerHTML = g.words.map(w => `<span>${w.raw}</span>`).join(' ');
+      subs.appendChild(box);
+      tl.set(box, { autoAlpha: 1 }, g.start);
+      box.querySelectorAll('span').forEach((s, i) => tl.set(s, { visibility: 'visible' }, g.words[i].start));
+      tl.set(box, { autoAlpha: 0 }, endScreen ? Math.min(g.end, endScreen.t) : g.end);
+    }
+
     const dur = TL.duracion_s;
     tl.set({}, {}, dur);
     window.DUR = dur;

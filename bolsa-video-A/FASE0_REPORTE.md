@@ -155,3 +155,17 @@ Las 14 cuentas de la tabla (11 operaciones y 3 diferencias) pasaron con `assert`
   - **(b)** Recortar unas 110–120 palabras.
   - **(c)** Permitir que el video dure unos 9:00.
 - Recomiendo **(b)**, porque un ritmo calmado es la promesa del canal. Si me dices que sí, te propongo los recortes sin tocar ninguna cifra.
+
+---
+
+## Actualización 3 · decisiones de Omar sobre la Fase 1
+- **Subtítulos: sí**, como en el video de interés compuesto:
+  - Caja papel centrada sobre el piso, Figtree 700 de 48 px, en una sola línea.
+  - La caja toma el ancho de la frase completa y cada palabra aparece cuando se dice.
+  - Los grupos se arman solos en `timeline/build_timeline.js`: 192 grupos, de 10 palabras o 42 caracteres como máximo, cortados por sentido.
+  - En la Fase 4 se vuelven a sincronizar con la voz real, palabra por palabra.
+- **Duración: opción C.**
+  - Recalculé los tiempos nominales a 110 palabras/min, con las pausas marcadas: la voz termina a ≈ 9:18 y el video completo dura **9:32** con la pantalla final.
+  - El tope quedó en 10:00. Actualicé los docs 00, 01, 02, 05, 06 y 07.
+  - Ahora ningún cue queda comprimido.
+- Nuevo render: `render/fase1_S01.mp4` (0–56.7 s, 1701 cuadros, sin cuadros negros).

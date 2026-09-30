@@ -163,4 +163,4 @@ Tono: amigo que te explica en la mesa. El suspenso se hace con pausas antes de l
 **c071** En el siguiente video hacemos la cuenta para no depender de una sola empresa. [pausa] (sonrisa) Sígueme para la siguiente cuenta.
 
 ---
-Palabras habladas (sin marcas): 915 (cierre nuevo). Rango objetivo del formato 8:00: 840–920.
+Palabras habladas (sin marcas): 915 (cierre nuevo). A 110 palabras/min con las pausas: ≈ 9:30.

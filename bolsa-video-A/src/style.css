@@ -22,6 +22,14 @@ body { font-family: 'Archivo', sans-serif; color: var(--tinta); -webkit-font-smo
 #header .h1 { font-size: 24px; line-height: 32px; }
 #header .h2 { font-size: 20px; line-height: 28px; color: var(--gris-calido); }
 
+/* Caja de subtítulo (como el video de interés compuesto): papel, sin esquinas redondeadas,
+   centrada sobre el piso; Figtree 700 48 px; ancho de la frase completa y las palabras
+   aparecen al decirse. */
+#subs .sub { position: absolute; top: 878px; left: 960px; transform: translateX(-50%); height: 76px;
+  padding: 0 28px; background: var(--papel); font-family: 'Figtree', sans-serif; font-weight: 700;
+  font-size: 48px; line-height: 76px; white-space: nowrap; opacity: 0; visibility: hidden; }
+#subs .sub span { visibility: hidden; }
+
 /* Pie: solo con ejemplo; tinta sobre el piso */
 #pie { position: absolute; left: 96px; top: 1008px; font-size: 24px; line-height: 32px; opacity: 0; }
 

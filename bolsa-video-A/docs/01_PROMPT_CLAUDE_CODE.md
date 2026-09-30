@@ -7,7 +7,7 @@ Eres el director técnico de animación del canal. Vas a construir CON CÓDIGO u
 Meta del video: que cualquier persona, sin saber nada de bolsa, entienda a la primera vista qué es una acción y por qué su precio sube o baja. El video explica con calma; no compite por adrenalina.
 
 ## 2. Qué debes entregar
-1. `render/bolsa_A_silencioso.mp4`: 1920×1080, 30 fps, H.264, sin audio, duración nominal 8:00 (máximo 8:00 incluyendo pantalla final).
+1. `render/bolsa_A_silencioso.mp4`: 1920×1080, 30 fps, H.264, sin audio, duración nominal ≈ 9:30 (máximo 10:00 incluyendo pantalla final).
 2. `render/tic_track.wav`: pista de audio APARTE con el «tic» suave de cada número que aparece (generada a partir de los eventos, no horneada en el video).
 3. Proyecto reproducible: `src/` (HTML + SVG + GSAP), `timeline/timeline_nominal.json`, `timeline/numeros.json`, scripts de render y `render/README.md` con los comandos exactos.
 4. En la Fase 4 (cuando yo entregue la voz): `render/bolsa_A_final.mp4`, `render/capitulos.txt` con tiempos reales y `render/qa_report.md`.
@@ -76,7 +76,7 @@ Entrégame ese reporte y ESPERA mi «adelante».
 ### Fase 3 — Export silencioso y QA técnico
 - Render final `render/bolsa_A_silencioso.mp4` y `render/tic_track.wav`.
 - Ejecuta `docs/06_CHECKLIST_QA.md` y entrega `render/qa_report.md`.
-- Verifica: duración ≤ 480 s, 1920×1080, 30 fps, sin audio, sin cuadros negros, sin frames duplicados por errores de captura.
+- Verifica: duración ≤ 600 s, 1920×1080, 30 fps, sin audio, sin cuadros negros, sin frames duplicados por errores de captura.
 
 ### Fase 4 — Sincronización con la voz (solo cuando yo entregue audio en `voz/`)
 Sigue `docs/05_SINCRONIZACION_AUDIO.md`. Antes de re-renderizar, entrégame el INFORME DE ALINEACIÓN y espera mi visto bueno.
@@ -94,5 +94,5 @@ El video está listo cuando:
 2. Todas las cifras coinciden con la tabla de números del guion (asserts en verde).
 3. Los 4 conceptos difíciles (acción, accionista, empresa pública, expectativas) tienen su tarjeta ≥ 5 s. «Bolsa» tiene su etiqueta ≥ 5 s.
 4. Solo hay 3 zooms a MICHI, los 3 en 4K real.
-5. La duración total es ≤ 8:00 y, tras la Fase 4, el video queda alineado a la voz real con tolerancia ≤ 1 cuadro (33 ms) en cada número y tarjeta.
+5. La duración total es ≤ 10:00 y, tras la Fase 4, el video queda alineado a la voz real con tolerancia ≤ 1 cuadro (33 ms) en cada número y tarjeta.
 6. `06_CHECKLIST_QA.md` está completo y firmado por mí.

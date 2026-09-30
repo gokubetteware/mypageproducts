@@ -39,12 +39,12 @@ Ejemplo: MICHI reacciona `off: -0.5` respecto a la palabra «1,500» (medio segu
 
 ### Paso 4 — INFORME DE ALINEACIÓN (obligatorio, antes de re-renderizar)
 Entrega a Omar, corto:
-1. Duración total real de la voz y compárala con el tope de 8:00 (480 s), incluida la pantalla final (≈14 s bajo la última frase).
+1. Duración total real de la voz y compárala con el tope de 10:00 (600 s), incluida la pantalla final (≈14 s bajo la última frase).
 2. Cues con alineación < 80 %.
 3. Pausas marcadas que la voz real NO cumple (por ejemplo, `[pausa 2 s]` en c015 midió 0.8 s).
 4. Silencios de más de 3 s fuera de pausas marcadas (advertencia) y de más de 5 s (error).
 5. Cues cuya velocidad se sale de 95–125 palabras/min (aviso).
-6. Si la duración total > 8:00, la lista de recortes sugeridos (guion, «Qué se recorta primero»). NO recortes automáticamente.
+6. Si la duración total > 10:00, la lista de recortes sugeridos (guion, «Qué se recorta primero»). NO recortes automáticamente.
 Espera el visto bueno de Omar.
 
 ### Paso 5 — Recalcular la línea de tiempo
@@ -60,6 +60,9 @@ Aplica estas reglas en orden, en `timeline/timeline_final.json`:
 6. **Zooms a MICHI:** máximo 3; duración según el evento; vuelven a plano general antes del siguiente número.
 7. **Música:** los dos re-enganches caen en los cues indicados (`c022` y `c038`).
 8. Convierte todo a cuadros: `frame = round(t × 30)`.
+
+### Paso 5b — Subtítulos
+- `build_timeline.js` rearma los grupos de subtítulo con los tiempos REALES de cada palabra (`voz_words.json`), así que cada palabra aparece cuando Omar la dice. Si whisper transcribe distinto, el texto del subtítulo es SIEMPRE el del guion, nunca el de la transcripción.
 
 ### Paso 6 — Re-render
 - Renderiza de nuevo (mismo motor, mismo `deviceScaleFactor` en zooms).
@@ -90,5 +93,5 @@ Genera `render/capitulos.txt` con los tiempos reales de los cues `c001`, `c008`,
 
 ## 4. Si algo no cuadra
 - Regrabar UNA frase es más barato que deformar el video: dime qué cue y cómo debería sonar (por ejemplo, alargar la pausa).
-- Si la voz real dura mucho más de 8:00, se aplican primero los recortes del guion; después se le pide a Omar decidir.
+- Si la voz real dura mucho más de 10:00, se aplican primero los recortes del guion; después se le pide a Omar decidir.
 - Claude Code NUNCA cambia la velocidad de la voz para que quepa.

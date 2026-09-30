@@ -35,7 +35,7 @@ Claude Code marca cada punto con evidencia (cuadro, número, comando). Omar da e
 - [ ] Nunca aparece una cifra nueva mientras la voz explica la anterior.
 
 ## E. Técnico
-- [ ] Duración total ≤ 8:00 (480 s), incluida la pantalla final.
+- [ ] Duración total ≤ 10:00 (600 s), incluida la pantalla final.
 - [ ] 1920×1080, 30 fps, H.264, yuv420p, `faststart`.
 - [ ] Sin cuadros negros, sin frames duplicados por errores de captura, sin parpadeos.
 - [ ] Audio sincronizado: cada cifra y tarjeta dentro de ±1 cuadro respecto a la palabra de la voz.

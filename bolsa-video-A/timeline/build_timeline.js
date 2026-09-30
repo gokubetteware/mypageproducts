@@ -37,12 +37,66 @@ function wordTimes(cue, windowEnd) {
   const k = windowEnd != null && cue.t + natural > windowEnd ? (windowEnd - cue.t) / natural : 1;
   let t = cue.t;
   const words = [];
+  let afterPause = false;
   for (const tok of toks) {
-    if (tok.pause) { t += tok.pause * k; continue; }
-    words.push({ word: tok.word, raw: tok.raw, start: +t.toFixed(3), end: +(t + SEC_PER_WORD * k).toFixed(3) });
+    if (tok.pause) { t += tok.pause * k; afterPause = true; continue; }
+    words.push({ word: tok.word, raw: tok.raw, start: +t.toFixed(3), end: +(t + SEC_PER_WORD * k).toFixed(3), afterPause });
+    afterPause = false;
     t += SEC_PER_WORD * k;
   }
   return { words, end: t, compress: +k.toFixed(3) };
+}
+
+// Subtítulos (caja de subtítulo del manual): una línea, ≤ 10 palabras y ≤ 42 caracteres,
+// cortes por sentido. 1) frases: se corta en fin de oración, en pausa marcada y en coma;
+// 2) frases cortas seguidas por coma se juntan si caben; 3) las largas se parten parejo.
+// Las palabras aparecen al decirse (start de cada palabra).
+const SUB_MAX_CHARS = 42;
+const SUB_MAX_WORDS = 10;
+const SUB_TAIL = 0.6;
+const joinLen = ws => ws.reduce((n, w) => n + w.raw.length, 0) + ws.length - 1;
+function subtitleGroups(cueList) {
+  const groups = [];
+  for (const c of cueList) {
+    const phrases = [];
+    let cur = [];
+    c.words.forEach((w, i) => {
+      if (cur.length && w.afterPause) { phrases.push({ ws: cur, soft: false }); cur = []; }
+      cur.push(w);
+      const next = c.words[i + 1];
+      if (/[.?!:;]»?$/.test(w.raw)) { phrases.push({ ws: cur, soft: false }); cur = []; }
+      else if (/,$/.test(w.raw) && next && !next.afterPause) { phrases.push({ ws: cur, soft: true }); cur = []; }
+    });
+    if (cur.length) phrases.push({ ws: cur, soft: false });
+    // juntar frases cortadas por coma si caben en una línea
+    const merged = [];
+    for (const ph of phrases) {
+      const last = merged[merged.length - 1];
+      if (last && last.soft && joinLen([...last.ws, ...ph.ws]) <= SUB_MAX_CHARS && last.ws.length + ph.ws.length <= SUB_MAX_WORDS) {
+        last.ws.push(...ph.ws); last.soft = ph.soft;
+      } else merged.push({ ws: [...ph.ws], soft: ph.soft });
+    }
+    for (const { ws } of merged) {
+      const n = Math.max(Math.ceil(joinLen(ws) / SUB_MAX_CHARS), Math.ceil(ws.length / SUB_MAX_WORDS));
+      const target = joinLen(ws) / n;
+      let chunk = [];
+      const flush = () => { if (chunk.length) groups.push({ cue: c.id, ws: chunk }); chunk = []; };
+      for (const w of ws) {
+        const len = joinLen([...chunk, w]);
+        if (chunk.length && (len > SUB_MAX_CHARS || chunk.length >= SUB_MAX_WORDS ||
+            (joinLen(chunk) >= target && len - target > target - joinLen(chunk)))) flush();
+        chunk.push(w);
+      }
+      flush();
+    }
+  }
+  return groups.map((g, i) => {
+    const next = groups[i + 1];
+    const lastEnd = g.ws[g.ws.length - 1].end;
+    const end = next ? Math.min(lastEnd + SUB_TAIL, next.ws[0].start) : lastEnd + SUB_TAIL;
+    return { cue: g.cue, text: g.ws.map(w => w.raw).join(' '), start: g.ws[0].start, end: +end.toFixed(3),
+      words: g.ws.map(w => ({ raw: w.raw, start: w.start })) };
+  });
 }
 
 function build() {
@@ -77,19 +131,23 @@ function build() {
   assert(zooms <= 3, `hay ${zooms} zooms; el máximo es 3`);
   events.sort((a, b) => a.t - b.t || a.id.localeCompare(b.id));
 
+  // El video termina cuando acaba la pantalla final (≤ 14 s desde su cue), o con la voz si dura más.
+  const pf = src.video.pantalla_final;
+  const lastCue = cues[src.escenas[src.escenas.length - 1].cues.slice(-1)[0].id];
+  const videoEnd = Math.max(cues[pf.inicio_cue].t + pf.duracion_max_s, lastCue.end + 0.5);
   const scenes = src.escenas.map((s, i) => {
     const next = src.escenas[i + 1];
-    const last = cues[s.cues[s.cues.length - 1].id];
-    return { id: s.id, start: s.cues[0].t, end: next ? next.cues[0].t : Math.max(last.end + 1, src.video.duracion_max_s) };
+    return { id: s.id, start: s.cues[0].t, end: next ? next.cues[0].t : videoEnd };
   });
-  const duration = Math.min(src.video.duracion_max_s, scenes[scenes.length - 1].end);
-  assert(duration <= 480, 'la duración pasa de 8:00');
+  const duration = +videoEnd.toFixed(3);
+  assert(duration <= src.video.duracion_max_s, `la duración (${duration} s) pasa del tope (${src.video.duracion_max_s} s)`);
 
   const out = {
     generado: 'timeline/build_timeline.js · tiempos NOMINALES (estimación a ' + WPM + ' palabras/min)',
     fps: FPS, duracion_s: duration, frames: Math.round(duration * FPS),
     cabecera: src.video.cabecera,
     escenas: scenes, cues: Object.values(cues), eventos: events,
+    subtitulos: subtitleGroups(Object.values(cues)),
   };
   fs.writeFileSync(path.join(__dirname, 'timeline_nominal.json'), JSON.stringify(out, null, 1) + '\n');
   console.log(`timeline_nominal.json: ${events.length} eventos, ${zooms} zooms, ${duration} s`);

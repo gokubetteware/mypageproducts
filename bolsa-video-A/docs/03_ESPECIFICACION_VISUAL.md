@@ -12,7 +12,7 @@ Video A «Qué es la bolsa de valores» · Canal «Cuentas Claras con MICHI»
 ## 2. Lienzo y cuadros
 - 1920×1080, 16:9, 30 fps. Salida H.264 (High), yuv420p.
 - Márgenes seguros: 96 px a cada lado (5 %). Todo texto importante dentro.
-- Sin subtítulos en esta versión.
+- **Con subtítulos** (decisión de Omar), como el video de interés compuesto: caja papel #F3EFE6 sin esquinas redondeadas, centrada sobre el piso (y = 878–954), Figtree 700 48 px en tinta, una línea (≤ 10 palabras, ≤ 42 caracteres), cortes por sentido. La caja toma el ancho de la frase completa y cada palabra aparece cuando se dice. No van en la pantalla final.
 
 ## 3. Layout base (1920×1080)
 - **Cabecera (regla del canal, todos los videos):** esquina superior izquierda (x=96, y≈60). Línea 1: «CCM» (Archivo 700, 24 px, espaciado +0.16 em, tinta #05070A). Línea 2: el TEMA DEL VIDEO en mayúsculas; en este video, «BOLSA DE VALORES» (Archivo 700, 20 px, +0.16 em, gris cálido #5E5A52). Sustituye a «OMAR · CUENTAS CLARAS» y a «CUENTAS CLARAS CON MICHI». Es la única excepción al mínimo de 40 px. Visible todo el video salvo pantalla de impacto y pantalla final.
