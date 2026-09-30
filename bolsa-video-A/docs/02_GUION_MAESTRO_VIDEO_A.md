@@ -78,7 +78,8 @@ Zooms a MICHI: 3 de 3 (S01 0:00, S04 4:05, S06 7:07), todos «ZOOM MICHI — ren
 | 6:18 | Un día se anuncia que abrirá una papelería grande enfrente. [pausa] Hoy la papelería sigue ganando 5,000. Pero la gente espera que gane 3,000. Repartimos 3,000 entre 50 acciones. Le tocan 60 a cada una. Multiplicamos 60 por 10. [pausa 2 s] Son 600. El precio baja. | MICHI preocupado, reacciona antes. 3,000 ÷ 50 = 60; 60 × 10 = 600. Precio 1,000 → 600 con «−400» en rojo. Rótulo: «Hoy gana igual; cambió lo que se espera». |
 | 6:41 | **[PUENTE]** *POR LO TANTO*, ¿la bolsa es un casino? Mucha gente lo cree, porque casi nadie enseña la cuenta. [pausa] Pero el precio sí tiene una razón: lo que la gente espera. Aun así, esperar no es saber: puede equivocarse, y nadie puede prometerte que una acción va a subir. | **TRAMPA COMÚN.** «¿Casino?» se tacha suave. Texto: «Razón: lo que se espera» y «Nadie puede prometer que subirá». MICHI tranquilo. |
 | 7:07 | **[PUENTE]** *POR LO TANTO*, ya podemos contestar la pregunta del inicio. [pausa] ¿Por qué la acción subió de 1,000 a 1,500, si la taquería vende lo mismo? [pausa 2 s] Porque la gente esperaba que ganara más mañana, y por eso pagó más hoy. [pausa 2 s] Dicho de otro modo: una acción es una parte de una empresa. [pausa] Y su precio refleja lo que todos esperan de su futuro. Si la bolsa te sonaba lejana, ya puedes explicarla con una taquería. (sonrisa) | **PREGUNTA PRINCIPAL (respondida).** Vuelve la escena inicial con «1,000 → 1,500 +500». zoom: "ZOOM MICHI — render 4K" (3/3), MICHI aliviado. Texto: «Acción = parte de una empresa. Precio = lo que se espera de ella.» Es la 3.ª vez que se dice la idea central. |
-| 7:46 | En el siguiente video vemos cómo mirar la bolsa completa, sin tener que escoger una sola empresa. Sigue el canal para no perdértelo. [pausa] Nos vemos allá. | Corte directo a pantalla final (5–20 s; aquí ≈14 s hasta 8:00): botón de seguir y tarjeta del siguiente video. Único CTA. Sin música de salida larga. |
+| 7:45 | ¿Y si todas tus acciones fueran de una sola empresa, [pausa] y te tocara la papelería? | MICHI **preocupado** (reacciona antes). Vuelve la ficha de la papelería: «1,000 → 600 −400» en rojo (no es cifra nueva; sin «tic»). |
+| 7:52 | En el siguiente video hacemos la cuenta para no depender de una sola empresa. [pausa] Sígueme para la siguiente cuenta. | Corte a pantalla final (≤ 14 s, fondo arcilla): titular «Hagamos la siguiente cuenta.», botón «Sígueme para la siguiente cuenta», «@omar.vizu» y tarjeta del siguiente video. MICHI confianza. Único CTA. Sin música de salida larga. |
 
 ## Tabla de números calculados
 
@@ -125,16 +126,17 @@ Ningún dato real. La taquería, la papelería, los catpesos y la regla de «10 
 - 07:07 Ya entendí
 
 ## Descripción
-Qué es la bolsa de valores, explicada con una taquería imaginaria: qué es una acción, quién es accionista y por qué el precio de una acción sube o baja. Todo con cuentas sencillas y dinero imaginario (catpesos). Los ejemplos y las cifras son hipotéticos y no son una recomendación de inversión. Sigue el canal y no te pierdas el siguiente video, donde vemos cómo mirar la bolsa completa. Capítulos: (pegar la lista de arriba).
+Qué es la bolsa de valores, explicada con una taquería imaginaria: qué es una acción, quién es accionista y por qué el precio de una acción sube o baja. Todo con cuentas sencillas y dinero imaginario (catpesos). Los ejemplos y las cifras son hipotéticos y no son una recomendación de inversión. En el siguiente video hacemos la cuenta para no depender de una sola empresa. Sígueme para la siguiente cuenta: @omar.vizu. Capítulos: (pegar la lista de arriba).
 
 ## Qué se recorta primero si la voz queda larga
 1. En B2: «Y al revés: si muchos quieren vender y casi nadie comprar, el precio baja.» (14 palabras; la papelería ya muestra la baja.)
-2. En la salida: «Sigue el canal para no perdértelo.» (la invitación queda en la pantalla final.)
+2. En la salida: «Sígueme para la siguiente cuenta.» (la invitación queda escrita en la pantalla final.)
 
 ## Puntos a decidir con Omar
 - «Empresa pública» en México suele entenderse como del gobierno (Pemex, CFE). Por eso la tarjeta y la voz aclaran «no es del gobierno». Alternativa: «empresa que cotiza en bolsa».
 - La regla de «10 veces» es una simplificación para que la cuenta cuadre; se dice y se muestra como ejemplo.
-- Conteo de palabras: ≈900 (aproximado). Claude Code debe contarlas con script en la Fase 0.
+- Conteo de palabras: 915 con el cierre nuevo (contado con script; rango 840–920).
+- Cierre: gancho que reusa la baja de la papelería (−400) y promete la cuenta del Video B, con la misma estructura que el cierre del video de deudas («Y si ya tienes una deuda que creció así…»).
 
 ## Cómo se mide
 Retención ≥ 50 % a los 30 s frente a los últimos 10 videos de duración similar. Comprensión: enseñarlo a 3 personas sin ayuda y pedirles que expliquen la idea con sus palabras; el bloque donde se traben es el que hay que ralentizar o partir.

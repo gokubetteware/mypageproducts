@@ -69,3 +69,22 @@ Las 14 cuentas de la tabla (11 operaciones y 3 diferencias) pasaron con `assert`
 2. **Dinero:** ¿catpesos (como está el guion) o michipesos y cascabeles (como dice el manual)? Si eliges michipesos, pásame los archivos.
 3. **Estilo:** ¿apruebo los puntos B–H y J según el manual (lo que recomiendo)?
 4. **Cierre:** ¿mantengo la frase del guion o uso la del manual?
+
+---
+
+## Actualización · decisiones de Omar (30 sep 2026)
+
+### Dinero y cierre
+- **Dinero:** se usan **CATPESOS**. El manual v1.0 que me mandaste (sección 17, «Economía: CATPESOS») lo confirma, así que el guion no cambia. Pendiente: poner en pantalla el pie «1 CATPESO = 1 peso mexicano en este ejemplo» y usar los archivos oficiales de los catpesos (billetes de 20 a 1000; monedas de 1, 2, 5 y 10). Esos archivos todavía no los tengo.
+- **Cierre (lo elegí yo, con la estructura del video de deudas):**
+  - c070 · «¿Y si todas tus acciones fueran de una sola empresa, [pausa] y te tocara la papelería?»
+  - c071 · «En el siguiente video hacemos la cuenta para no depender de una sola empresa. [pausa] Sígueme para la siguiente cuenta.»
+  - En pantalla: vuelve la ficha «Papelería: 1,000 → 600 −400». No es una cifra nueva y no lleva «tic». Luego viene la pantalla final en arcilla: «Hagamos la siguiente cuenta.», el botón «Sígueme para la siguiente cuenta» y «@omar.vizu».
+  - Palabras: 907 → **915** (dentro del rango de 840 a 920).
+  - Se quita «Nos vemos allá.».
+- **Manuales:** el manual v1.0 dice que el cierre lleva «Cuentas claras, decisiones tranquilas.». Aquí se usa la fórmula del video que aprobaste, que coincide con el manual v1.1.
+
+### Lo que sigue pendiente
+- **Bloqueante:** los archivos vectoriales de MICHI (carpeta «MICHI-rig-y-expresiones»: `michi_rig.js` + `michi_emotions.json`).
+- Los archivos de los CATPESOS.
+- Tu visto bueno a las recomendaciones de estilo B–H y J.

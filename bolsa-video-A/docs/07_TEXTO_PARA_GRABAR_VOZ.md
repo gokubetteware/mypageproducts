@@ -158,9 +158,9 @@ Tono: amigo que te explica en la mesa. El suspenso se hace con pausas antes de l
 
 ## S07 · Salida
 
-**c070** En el siguiente video vemos cómo mirar la bolsa completa, sin tener que escoger una sola empresa. Sigue el canal para no perdértelo. [pausa]
+**c070** (más lento) ¿Y si todas tus acciones fueran de una sola empresa, [pausa] y te tocara *la papelería*?
 
-**c071** Nos vemos allá.
+**c071** En el siguiente video hacemos la cuenta para no depender de una sola empresa. [pausa] (sonrisa) Sígueme para la siguiente cuenta.
 
 ---
-Palabras habladas (sin marcas): 907. Rango objetivo del formato 8:00: 840–920.
+Palabras habladas (sin marcas): 915 (cierre nuevo). Rango objetivo del formato 8:00: 840–920.
