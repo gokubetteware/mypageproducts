@@ -556,34 +556,41 @@
       assertNums('e083', 'ganancia_hoy');
       assertNums('e094', 'ganancia_esperada');
       if (EV('e097').de !== V('c4_toca_hoy') || EV('e097').a !== V('c5_toca_esperado') || EV('e097').delta !== N('c5b_delta')) fail('e097: cifras no coinciden');
-      const facade = ilus(tileSVG(300), { left: '150px', top: (STAGE_FLOOR - 300) + 'px' });
-      const [grid, cells] = gridIlus(150, 300, 10, 10);
+      const facade = ilus(tileSVG(300), { left: '330px', top: (STAGE_FLOOR - 300) + 'px' });
+      const [grid, cells] = gridIlus(330, 300, 10, 10);
       showI([facade, grid], SC('S04').start);
+      const lupe = gatito('lupe', 200);
+      lupe.entra(SC('S04').start + 0.8, -60);
       // Ganancia 10,000 + qué es la ganancia (un solo bloque)
       assertEq('e083', `Ganancia: ${N('ganancia_hoy')} catpesos al año`, EV('e083').texto);
       const gan = el(`<div class="lbl">Ganancia</div><div style="display:flex;gap:24px;align-items:baseline">${big(N('ganancia_hoy'))}<span class="lbl">catpesos al año</span></div>
-        <div class="gdef rotulo wrap" style="margin-top:14px;width:820px">${EV('e084').texto}</div>`, { left: '520px', top: (STAGE_FLOOR - 470) + 'px' }, 'main');
+        <div class="gdef rotulo wrap" style="margin-top:14px;width:820px">${EV('e084').texto}</div>`, { left: '560px', top: TOP + 'px' }, 'main');
       main(gan, T('e083'), { hold: 3.5, tic: true, parts: [{ node: gan.querySelector('.gdef'), t: T('e084') }] });
       headline(EV('e085').texto, T('e085'));
       opMain('e086', 'e087', `${N('ganancia_hoy')} ÷ ${N('taqueria_acciones')}`, N('c4_toca_hoy'));
       popCell(cells[44], T('e088'));
       unpopCell(cells[44], T('e089') - 0.45);
-      const second = ilus(tileSVG(200), { left: '520px', top: (STAGE_FLOOR - 200) + 'px' });
+      const second = ilus(tileSVG(200), { left: '700px', top: (STAGE_FLOOR - 200) + 'px' });
       showI(second, T('e089'));
-      const thinkers = [780, 880, 980].map(x => person(x, 170));
-      const bubble = ilus(`<div class="bubble">${EV('e090').texto}</div>`, { left: '760px', top: (STAGE_FLOOR - 250) + 'px' });
-      showI([...thinkers, bubble], T('e090'));
+      lupe.cara('alegria', T('e089') + 0.8);
+      // «muchos piensan que ahora ganará más»: Bosco (inversión) con su maceta
+      const bosco = gatito('bosco', 1090, { objeto: true });
+      bosco.entra(T('e090') - 0.8);
+      const bubble = ilus(`<div class="bubble">${EV('e090').texto}</div>`, { left: '930px', top: (STAGE_FLOOR - 400) + 'px' });
+      showI(bubble, T('e090') + 0.3);
+      bosco.cara('esperanza', T('e090') + 1.2);
+      hideI(bubble, T('e091') - 0.45);
       cardMain('e091');
-      hideI([...thinkers, bubble], T('e094') - 0.45);
       assertEq('e094', `Se espera: ${N('ganancia_esperada')} catpesos al año`, EV('e094').texto);
-      numBlock(`<div class="lbl">Se espera</div>${big(N('ganancia_esperada'))}<div class="lbl">catpesos al año</div>`, 780, STAGE_FLOOR - 300, T('e094'));
+      numBlock(`<div class="lbl">Se espera</div>${big(N('ganancia_esperada'))}<div class="lbl">catpesos al año</div>`, 560, TOP, T('e094'));
       opMain('e095', 'e096', `${N('ganancia_esperada')} ÷ ${N('taqueria_acciones')}`, N('c5_toca_esperado'));
       numBlock(`<div class="lbl">Le toca al año</div><div style="display:flex;gap:28px;align-items:baseline">${big(`${N('c4_toca_hoy')} → ${N('c5_toca_esperado')}`)}
-        <span class="serif pos" style="font-size:110px">${N('c5b_delta')}</span></div>`, 780, STAGE_FLOOR - 300, T('e097'));
+        <span class="serif pos" style="font-size:110px">${N('c5b_delta')}</span></div>`, 560, TOP, T('e097'));
       assertEq('e098', `Ejemplo: se paga ${N('multiplo')} veces lo que le toca en un año`, EV('e098').texto);
       callout(EV('e098').texto, T('e098'), { hold: 3 });
       // Tabla lado a lado: el bloque principal; las filas entran con la voz
       hideI([facade, grid, second], T('e099') - 0.45);
+      lupe.sale(T('e099') - 0.9, -60); bosco.sale(T('e099') - 0.6);
       const cellsT = { e099: N('c4_toca_hoy'), e100: N('c5_toca_esperado'), e101: '×' + N('multiplo'), e102: '×' + N('multiplo'), e103: N('c6_precio_antes'), e104: N('c7_precio_despues') };
       for (const [id, v] of Object.entries(cellsT)) assertEq(id, v, EV(id).texto);
       if (EV('e104').delta !== N('c7b_delta_taqueria')) fail('e104: delta');
@@ -641,8 +648,11 @@
         <span class="serif neg" style="font-size:110px">${N('c11b_delta_papeleria')}</span></div>`, 520, STAGE_FLOOR - 300, T('e137'), { hold: 2 });
       hideI([pap, grid], T('e139') - 0.45);
       const cas = el(`<div class="serif" style="font-size:180px;line-height:180px;position:relative;display:inline-block">${EV('e139').texto}<div class="strike"></div></div>`,
-        { left: '420px', top: (STAGE_FLOOR - 400) + 'px' }, 'main');
+        { left: '200px', top: (STAGE_FLOOR - 400) + 'px' }, 'main');
       main(cas, T('e139'), { hold: 3, parts: [{ node: cas.querySelector('.strike'), t: T('e139') + 1.2, grow: true }] });
+      // la tentación de «apostar»: Mango
+      const mango = gatito('mango', 1200);
+      mango.entra(T('e139') - 0.9).cara('emocion', T('e139') + 0.2).cara('duda', T('e139') + 2.2).cara('preocupacion', T('e142') + 0.4);
       callout(EV('e141').texto, T('e141'));
       legal(EV('e142').texto + '.', T('e142'));
     })();
@@ -653,13 +663,18 @@
     (function S06() {
       assertEq('e151', `${N('c1_precio_accion')} → ${N('c7_precio_despues')}`, EV('e151').texto);
       if (EV('e151').delta !== N('c7b_delta_taqueria')) fail('e151: delta');
-      const tile = ilus(tileSVG(300), { left: '260px', top: '300px' });
+      const tile = ilus(tileSVG(300), { left: '330px', top: (STAGE_FLOOR - 300) + 'px' });
       showI(tile, T('e150'));
+      const lupe = gatito('lupe', 200);
+      lupe.entra(T('e150') + 0.6, -60).cara('alegria', T('e154') + 0.8).sale(T('e155') - 0.9, -60);
+      const bosco = gatito('bosco', 1210, { objeto: true });
+      bosco.entra(T('e155') + 0.4).cara('alivio', T('e156') + 0.6);
       numBlock(`<div style="display:flex;gap:28px;align-items:baseline"><span class="serif" style="font-size:128px;line-height:136px;white-space:nowrap">${N('c1_precio_accion')} → ${N('c7_precio_despues')}</span>
-        <span class="serif pos" style="font-size:110px">${N('c7b_delta_taqueria')}</span></div><div class="lbl" style="margin-top:8px">catpesos</div>`, 610, 330, T('e151'), { hold: 3 });
-      callout(EV('e154').texto + '.', T('e154'), { hold: 3 });
+        <span class="serif pos" style="font-size:110px">${N('c7b_delta_taqueria')}</span></div><div class="lbl" style="margin-top:8px">catpesos</div>`, 460, TOP, T('e151'), { hold: 3 });
+      // respuesta: visible completa durante el zoom 3/3 (encuadre x ≥ 252)
+      main(mainEl(`<div class="rotulo">${EV('e154').texto}.</div>`, { left: '420px' }), T('e154'), { hold: 3, sfx: 'suave' });
       hideI(tile, T('e155') - 0.45);
-      const ideas = el(`<div class="serif headline">${EV('e155').texto}</div><div class="i2 serif headline">${EV('e156').texto}</div>`, { left: '96px', top: '330px' }, 'main');
+      const ideas = el(`<div class="serif headline">${EV('e155').texto}</div><div class="i2 serif headline">${EV('e156').texto}</div>`, { left: '96px', top: '250px' }, 'main');
       main(ideas, T('e155'), { hold: 4, parts: [{ node: ideas.querySelector('.i2'), t: T('e156') }] });
     })();
     endScene(SC('S07').start);
@@ -674,6 +689,9 @@
       tl.set(end.querySelector('.w0'), { autoAlpha: 1 }, 0);
       main(end, te, { hold: 99, sfx: 'outro', parts: [...words.slice(1).map((w, i) => ({ node: end.querySelector('.w' + (i + 1)), t: te + 0.45 * (i + 1) })),
         { node: end.querySelector('.btn'), t: te + 0.45 * words.length + 0.3 }] });
+      // despedida del Michiverso: Canela y Bosco contentos (el cuadrante superior derecho queda libre para YouTube)
+      gatito('canela', 900).entra(te + 0.6).cara('alegria', te + 1.6);
+      gatito('bosco', 1160).entra(te + 1.0).cara('alegria', te + 2.1);
     })();
     michiEvents.push({ t: T('e170'), ...stateOf('confiado') });
     michiEvents.sort((a, b) => a.t - b.t);
