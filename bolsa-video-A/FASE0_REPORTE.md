@@ -306,3 +306,5 @@ Las 14 cuentas de la tabla (11 operaciones y 3 diferencias) pasaron con `assert`
 - **Render:** `render/partes1-2_S01-S03_final.mp4` (0:00–2:39, con voz, música y efectos).
 
 - **v3.3 (decisión de Omar): sin música.** Mezcla = voz + efectos, normalizada a −16 LUFS con pico −1.5 dBTP. La música sigue disponible con `--con-musica`.
+
+- **v3.4 · Corrección de audio:** `loudnorm` entrega 192 kHz y el script lo leía como 48 kHz, así que la voz sonaba 4 veces más lenta en las entregas v3.2 y v3.3. Ahora se re-muestrea después de `loudnorm` y hay un assert de duración contra el mp3 original. Verificado por correlación con el original: 0.98, desfase 5 ms.

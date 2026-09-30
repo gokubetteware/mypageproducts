@@ -125,8 +125,12 @@ for e in SFXJ['eventos']:
 # ---------------------------------------------------------------- voz + mezcla con «ducking»
 vpath = os.path.join(ROOT, 'render/.voz48.wav')
 subprocess.run(['ffmpeg', '-loglevel', 'error', '-y', '-i', os.path.join(ROOT, 'voz/voz_completa.mp3'), '-af',
-                'aresample=48000,loudnorm=I=-16:TP=-1.5:LRA=11', '-ac', '1', '-f', 'f32le', vpath], check=True)
+                'loudnorm=I=-16:TP=-1.5:LRA=11,aresample=48000', '-ar', '48000', '-ac', '1', '-f', 'f32le', vpath], check=True)
 voz = np.fromfile(vpath, dtype=np.float32).astype(np.float64); os.remove(vpath)
+# control: la voz procesada debe durar lo mismo que el archivo original (loudnorm sube a 192 kHz si no se re-muestrea)
+dur_orig = float(subprocess.run(['ffprobe', '-v', 'error', '-show_entries', 'format=duration', '-of', 'csv=p=0',
+    os.path.join(ROOT, 'voz/voz_completa.mp3')], capture_output=True, text=True).stdout)
+assert abs(len(voz) / SR - dur_orig) < 0.1, f'la voz procesada dura {len(voz) / SR:.2f} s y el original {dur_orig:.2f} s'
 voz = np.pad(voz, (0, max(0, N - len(voz))))[:N]
 # envolvente de la voz → la música baja ~9 dB cuando hay voz (ataque 80 ms, salida 450 ms)
 e = np.sqrt(np.maximum(0, lp(voz ** 2, 12)))
