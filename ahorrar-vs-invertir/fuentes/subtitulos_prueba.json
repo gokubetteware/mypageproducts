@@ -1,0 +1,1140 @@
+{
+ "capa": "subtitulos_prueba",
+ "activa": true,
+ "nota": "Solo para la prueba sin voz. El video final de YouTube va SIN subtítulos: poner activa=false.",
+ "grupos": [
+  {
+   "n": 1,
+   "bloque": 1,
+   "t_entrada": 0,
+   "t_salida": 4.0,
+   "lineas": [
+    "Juntaste cincuenta mil pesos,",
+    "entre el aguinaldo y una tanda."
+   ]
+  },
+  {
+   "n": 2,
+   "bloque": 1,
+   "t_entrada": 4.3,
+   "t_salida": 7.34,
+   "lineas": [
+    "Y ahora viene la",
+    "pregunta que casi todos"
+   ]
+  },
+  {
+   "n": 3,
+   "bloque": 1,
+   "t_entrada": 7.34,
+   "t_salida": 10.2,
+   "lineas": [
+    "se hacen: ¿primero ahorro",
+    "o primero invierto?"
+   ]
+  },
+  {
+   "n": 4,
+   "bloque": 2,
+   "t_entrada": 10.5,
+   "t_salida": 13.83,
+   "lineas": [
+    "Uno te dice: guárdalo",
+    "y no lo toques."
+   ]
+  },
+  {
+   "n": 5,
+   "bloque": 2,
+   "t_entrada": 13.83,
+   "t_salida": 18.2,
+   "lineas": [
+    "Otro te dice: si no lo",
+    "inviertes, lo estás perdiendo."
+   ]
+  },
+  {
+   "n": 6,
+   "bloque": 3,
+   "t_entrada": 18.5,
+   "t_salida": 20.83,
+   "lineas": [
+    "Los dos tienen algo de razón."
+   ]
+  },
+  {
+   "n": 7,
+   "bloque": 3,
+   "t_entrada": 20.83,
+   "t_salida": 23.17,
+   "lineas": [
+    "Pero ninguno te dice el orden."
+   ]
+  },
+  {
+   "n": 8,
+   "bloque": 3,
+   "t_entrada": 23.17,
+   "t_salida": 26.28,
+   "lineas": [
+    "Al final de este video lo vas a"
+   ]
+  },
+  {
+   "n": 9,
+   "bloque": 3,
+   "t_entrada": 26.28,
+   "t_salida": 29,
+   "lineas": [
+    "decidir tú, con tres",
+    "cuentas de primaria."
+   ]
+  },
+  {
+   "n": 10,
+   "bloque": 4,
+   "t_entrada": 29,
+   "t_salida": 31.85,
+   "lineas": [
+    "Antes que nada, armemos",
+    "el ejemplo, porque"
+   ]
+  },
+  {
+   "n": 11,
+   "bloque": 4,
+   "t_entrada": 31.85,
+   "t_salida": 34.9,
+   "lineas": [
+    "lo vamos a usar todo el video."
+   ]
+  },
+  {
+   "n": 12,
+   "bloque": 4,
+   "t_entrada": 35.2,
+   "t_salida": 36.83,
+   "lineas": [
+    "Tienes cincuenta mil pesos."
+   ]
+  },
+  {
+   "n": 13,
+   "bloque": 4,
+   "t_entrada": 36.83,
+   "t_salida": 40.91,
+   "lineas": [
+    "Gastas diez mil al mes: renta,",
+    "despensa, luz y transporte."
+   ]
+  },
+  {
+   "n": 14,
+   "bloque": 4,
+   "t_entrada": 40.91,
+   "t_salida": 43.35,
+   "lineas": [
+    "Y traes una deuda en la"
+   ]
+  },
+  {
+   "n": 15,
+   "bloque": 4,
+   "t_entrada": 43.35,
+   "t_salida": 45.59,
+   "lineas": [
+    "tarjeta de diez mil pesos."
+   ]
+  },
+  {
+   "n": 16,
+   "bloque": 4,
+   "t_entrada": 45.89,
+   "t_salida": 49.15,
+   "lineas": [
+    "Con eso hacemos tres",
+    "cuentas, una por cada"
+   ]
+  },
+  {
+   "n": 17,
+   "bloque": 4,
+   "t_entrada": 49.15,
+   "t_salida": 52,
+   "lineas": [
+    "cosa que hay que poner en orden."
+   ]
+  },
+  {
+   "n": 18,
+   "bloque": 5,
+   "t_entrada": 52,
+   "t_salida": 53.41,
+   "lineas": [
+    "Primero, la deuda."
+   ]
+  },
+  {
+   "n": 19,
+   "bloque": 5,
+   "t_entrada": 53.71,
+   "t_salida": 57.73,
+   "lineas": [
+    "La tarjeta te cobra por",
+    "usar dinero que no es"
+   ]
+  },
+  {
+   "n": 20,
+   "bloque": 5,
+   "t_entrada": 57.73,
+   "t_salida": 61.76,
+   "lineas": [
+    "tuyo, y ese cobro se mide",
+    "en porcentaje al año."
+   ]
+  },
+  {
+   "n": 21,
+   "bloque": 5,
+   "t_entrada": 61.76,
+   "t_salida": 64.17,
+   "lineas": [
+    "Digamos sesenta por",
+    "ciento, como ejemplo."
+   ]
+  },
+  {
+   "n": 22,
+   "bloque": 5,
+   "t_entrada": 64.17,
+   "t_salida": 66.59,
+   "lineas": [
+    "Sesenta por ciento",
+    "quiere decir sesenta"
+   ]
+  },
+  {
+   "n": 23,
+   "bloque": 5,
+   "t_entrada": 66.59,
+   "t_salida": 69.2,
+   "lineas": [
+    "pesos por cada cien que debes."
+   ]
+  },
+  {
+   "n": 24,
+   "bloque": 6,
+   "t_entrada": 69.5,
+   "t_salida": 71.17,
+   "lineas": [
+    "Tú debes diez mil."
+   ]
+  },
+  {
+   "n": 25,
+   "bloque": 6,
+   "t_entrada": 71.17,
+   "t_salida": 73.67,
+   "lineas": [
+    "Diez mil son cien veces cien."
+   ]
+  },
+  {
+   "n": 26,
+   "bloque": 6,
+   "t_entrada": 73.67,
+   "t_salida": 77.2,
+   "lineas": [
+    "Cien veces sesenta:",
+    "seis mil pesos al año."
+   ]
+  },
+  {
+   "n": 27,
+   "bloque": 7,
+   "t_entrada": 77.5,
+   "t_salida": 80.2,
+   "lineas": [
+    "Ese porcentaje tiene",
+    "nombre: la tasa."
+   ]
+  },
+  {
+   "n": 28,
+   "bloque": 8,
+   "t_entrada": 82,
+   "t_salida": 85.41,
+   "lineas": [
+    "¿Y qué pasa si en",
+    "lugar de pagar la"
+   ]
+  },
+  {
+   "n": 29,
+   "bloque": 8,
+   "t_entrada": 85.41,
+   "t_salida": 88.43,
+   "lineas": [
+    "tarjeta, metes esos",
+    "diez mil a invertir, con"
+   ]
+  },
+  {
+   "n": 30,
+   "bloque": 8,
+   "t_entrada": 88.43,
+   "t_salida": 91.46,
+   "lineas": [
+    "una tasa de ejemplo",
+    "de ocho por ciento?"
+   ]
+  },
+  {
+   "n": 31,
+   "bloque": 8,
+   "t_entrada": 91.46,
+   "t_salida": 93.35,
+   "lineas": [
+    "Ocho pesos por cada cien."
+   ]
+  },
+  {
+   "n": 32,
+   "bloque": 8,
+   "t_entrada": 93.35,
+   "t_salida": 96.2,
+   "lineas": [
+    "Cien veces ocho:",
+    "ochocientos pesos al año."
+   ]
+  },
+  {
+   "n": 33,
+   "bloque": 9,
+   "t_entrada": 96.5,
+   "t_salida": 99.29,
+   "lineas": [
+    "Ganas ochocientos",
+    "y pagas seis mil."
+   ]
+  },
+  {
+   "n": 34,
+   "bloque": 9,
+   "t_entrada": 99.29,
+   "t_salida": 103.2,
+   "lineas": [
+    "Ochocientos menos seis mil:",
+    "menos cinco mil doscientos."
+   ]
+  },
+  {
+   "n": 35,
+   "bloque": 10,
+   "t_entrada": 103.5,
+   "t_salida": 106.55,
+   "lineas": [
+    "Es como llenar una cubeta con un"
+   ]
+  },
+  {
+   "n": 36,
+   "bloque": 10,
+   "t_entrada": 106.55,
+   "t_salida": 109.16,
+   "lineas": [
+    "agujero más grande que la llave."
+   ]
+  },
+  {
+   "n": 37,
+   "bloque": 10,
+   "t_entrada": 109.16,
+   "t_salida": 113.08,
+   "lineas": [
+    "Por eso la deuda cara",
+    "va primero: pagarla te"
+   ]
+  },
+  {
+   "n": 38,
+   "bloque": 10,
+   "t_entrada": 113.08,
+   "t_salida": 117,
+   "lineas": [
+    "ahorra seis mil pesos al",
+    "año, sin adivinar nada."
+   ]
+  },
+  {
+   "n": 39,
+   "bloque": 11,
+   "t_entrada": 117,
+   "t_salida": 121.17,
+   "lineas": [
+    "Pero ya pagaste la tarjeta",
+    "y te quedan cuarenta mil."
+   ]
+  },
+  {
+   "n": 40,
+   "bloque": 11,
+   "t_entrada": 121.17,
+   "t_salida": 123.45,
+   "lineas": [
+    "¿Ahora sí, todo a invertir?"
+   ]
+  },
+  {
+   "n": 41,
+   "bloque": 11,
+   "t_entrada": 123.75,
+   "t_salida": 124.95,
+   "lineas": [
+    "Todavía no."
+   ]
+  },
+  {
+   "n": 42,
+   "bloque": 11,
+   "t_entrada": 124.95,
+   "t_salida": 127.5,
+   "lineas": [
+    "Falta la cuenta que",
+    "casi nadie hace:"
+   ]
+  },
+  {
+   "n": 43,
+   "bloque": 11,
+   "t_entrada": 127.5,
+   "t_salida": 130,
+   "lineas": [
+    "la de lo que no planeaste."
+   ]
+  },
+  {
+   "n": 44,
+   "bloque": 12,
+   "t_entrada": 130,
+   "t_salida": 131.48,
+   "lineas": [
+    "Ahora, el colchón."
+   ]
+  },
+  {
+   "n": 45,
+   "bloque": 12,
+   "t_entrada": 131.78,
+   "t_salida": 134.33,
+   "lineas": [
+    "Un martes cualquiera",
+    "se descompone el"
+   ]
+  },
+  {
+   "n": 46,
+   "bloque": 12,
+   "t_entrada": 134.33,
+   "t_salida": 136.88,
+   "lineas": [
+    "coche, o te duele una muela."
+   ]
+  },
+  {
+   "n": 47,
+   "bloque": 12,
+   "t_entrada": 136.88,
+   "t_salida": 139.2,
+   "lineas": [
+    "Ocho mil pesos, para mañana."
+   ]
+  },
+  {
+   "n": 48,
+   "bloque": 13,
+   "t_entrada": 139.5,
+   "t_salida": 142.62,
+   "lineas": [
+    "Si no tienes nada",
+    "guardado, ¿con qué pagas?"
+   ]
+  },
+  {
+   "n": 49,
+   "bloque": 13,
+   "t_entrada": 142.62,
+   "t_salida": 146.14,
+   "lineas": [
+    "Con la tarjeta, otra vez",
+    "al sesenta por ciento."
+   ]
+  },
+  {
+   "n": 50,
+   "bloque": 13,
+   "t_entrada": 146.14,
+   "t_salida": 148.48,
+   "lineas": [
+    "Ocho mil son ochenta veces cien."
+   ]
+  },
+  {
+   "n": 51,
+   "bloque": 13,
+   "t_entrada": 148.48,
+   "t_salida": 152.2,
+   "lineas": [
+    "Ochenta veces sesenta: cuatro",
+    "mil ochocientos pesos al año."
+   ]
+  },
+  {
+   "n": 52,
+   "bloque": 14,
+   "t_entrada": 152.5,
+   "t_salida": 155.81,
+   "lineas": [
+    "Volviste a la deuda",
+    "que acababas de pagar."
+   ]
+  },
+  {
+   "n": 53,
+   "bloque": 14,
+   "t_entrada": 156.11,
+   "t_salida": 160.2,
+   "lineas": [
+    "Para que eso no pase existe",
+    "el fondo de emergencia."
+   ]
+  },
+  {
+   "n": 54,
+   "bloque": 15,
+   "t_entrada": 162,
+   "t_salida": 166.35,
+   "lineas": [
+    "Una regla común es juntar",
+    "tres meses de tus gastos."
+   ]
+  },
+  {
+   "n": 55,
+   "bloque": 15,
+   "t_entrada": 166.35,
+   "t_salida": 168.96,
+   "lineas": [
+    "Tú gastas diez mil al mes."
+   ]
+  },
+  {
+   "n": 56,
+   "bloque": 15,
+   "t_entrada": 168.96,
+   "t_salida": 172.2,
+   "lineas": [
+    "Tres por diez mil:",
+    "treinta mil pesos."
+   ]
+  },
+  {
+   "n": 57,
+   "bloque": 16,
+   "t_entrada": 172.5,
+   "t_salida": 175.35,
+   "lineas": [
+    "Ese dinero no está",
+    "ahí para crecer."
+   ]
+  },
+  {
+   "n": 58,
+   "bloque": 16,
+   "t_entrada": 175.35,
+   "t_salida": 177.79,
+   "lineas": [
+    "Está ahí para que lo tengas"
+   ]
+  },
+  {
+   "n": 59,
+   "bloque": 16,
+   "t_entrada": 177.79,
+   "t_salida": 179.83,
+   "lineas": [
+    "el día que lo necesites."
+   ]
+  },
+  {
+   "n": 60,
+   "bloque": 16,
+   "t_entrada": 179.83,
+   "t_salida": 183.49,
+   "lineas": [
+    "Es como la llanta de",
+    "refacción: no la usas"
+   ]
+  },
+  {
+   "n": 61,
+   "bloque": 16,
+   "t_entrada": 183.49,
+   "t_salida": 186.74,
+   "lineas": [
+    "para correr, la usas",
+    "para no quedarte tirado."
+   ]
+  },
+  {
+   "n": 62,
+   "bloque": 16,
+   "t_entrada": 186.74,
+   "t_salida": 190,
+   "lineas": [
+    "Así que, antes de invertir,",
+    "primero el colchón."
+   ]
+  },
+  {
+   "n": 63,
+   "bloque": 17,
+   "t_entrada": 190,
+   "t_salida": 193.92,
+   "lineas": [
+    "Por lo tanto, de tus cincuenta",
+    "mil ya acomodaste cuarenta:"
+   ]
+  },
+  {
+   "n": 64,
+   "bloque": 17,
+   "t_entrada": 193.92,
+   "t_salida": 197.45,
+   "lineas": [
+    "diez para la deuda y",
+    "treinta para el colchón."
+   ]
+  },
+  {
+   "n": 65,
+   "bloque": 17,
+   "t_entrada": 197.45,
+   "t_salida": 199.21,
+   "lineas": [
+    "Te quedan diez mil."
+   ]
+  },
+  {
+   "n": 66,
+   "bloque": 17,
+   "t_entrada": 199.51,
+   "t_salida": 201.08,
+   "lineas": [
+    "¿Esos sí se invierten?"
+   ]
+  },
+  {
+   "n": 67,
+   "bloque": 17,
+   "t_entrada": 201.08,
+   "t_salida": 205,
+   "lineas": [
+    "Depende de una sola pregunta:",
+    "¿cuándo los vas a necesitar?"
+   ]
+  },
+  {
+   "n": 68,
+   "bloque": 18,
+   "t_entrada": 205,
+   "t_salida": 206.78,
+   "lineas": [
+    "Al final, el tiempo."
+   ]
+  },
+  {
+   "n": 69,
+   "bloque": 18,
+   "t_entrada": 207.08,
+   "t_salida": 209.84,
+   "lineas": [
+    "Una inversión no",
+    "sube en línea recta."
+   ]
+  },
+  {
+   "n": 70,
+   "bloque": 18,
+   "t_entrada": 209.84,
+   "t_salida": 213,
+   "lineas": [
+    "Hay meses que baja",
+    "y meses que sube."
+   ]
+  },
+  {
+   "n": 71,
+   "bloque": 19,
+   "t_entrada": 213,
+   "t_salida": 216.52,
+   "lineas": [
+    "Si tus diez mil",
+    "bajan diez por ciento"
+   ]
+  },
+  {
+   "n": 72,
+   "bloque": 19,
+   "t_entrada": 216.52,
+   "t_salida": 219.6,
+   "lineas": [
+    "justo el mes que",
+    "los necesitas, diez"
+   ]
+  },
+  {
+   "n": 73,
+   "bloque": 19,
+   "t_entrada": 219.6,
+   "t_salida": 222.68,
+   "lineas": [
+    "por ciento de diez mil son mil."
+   ]
+  },
+  {
+   "n": 74,
+   "bloque": 19,
+   "t_entrada": 222.68,
+   "t_salida": 224.2,
+   "lineas": [
+    "Sacas nueve mil."
+   ]
+  },
+  {
+   "n": 75,
+   "bloque": 20,
+   "t_entrada": 224.5,
+   "t_salida": 227.52,
+   "lineas": [
+    "Pero si no los vas a tocar en"
+   ]
+  },
+  {
+   "n": 76,
+   "bloque": 20,
+   "t_entrada": 227.52,
+   "t_salida": 230.54,
+   "lineas": [
+    "cinco años, hay más",
+    "tiempo para que esos"
+   ]
+  },
+  {
+   "n": 77,
+   "bloque": 20,
+   "t_entrada": 230.54,
+   "t_salida": 233.18,
+   "lineas": [
+    "meses malos pasen, aunque",
+    "nadie lo garantiza."
+   ]
+  },
+  {
+   "n": 78,
+   "bloque": 20,
+   "t_entrada": 233.18,
+   "t_salida": 236.58,
+   "lineas": [
+    "Con el ocho por ciento",
+    "de ejemplo, y dejando"
+   ]
+  },
+  {
+   "n": 79,
+   "bloque": 20,
+   "t_entrada": 236.58,
+   "t_salida": 239.98,
+   "lineas": [
+    "adentro lo que ganas",
+    "cada año, tus diez mil"
+   ]
+  },
+  {
+   "n": 80,
+   "bloque": 20,
+   "t_entrada": 239.98,
+   "t_salida": 243.2,
+   "lineas": [
+    "llegarían a catorce mil",
+    "seiscientos noventa y tres."
+   ]
+  },
+  {
+   "n": 81,
+   "bloque": 21,
+   "t_entrada": 243.5,
+   "t_salida": 245.95,
+   "lineas": [
+    "Ese tiempo que dejas tu dinero"
+   ]
+  },
+  {
+   "n": 82,
+   "bloque": 21,
+   "t_entrada": 245.95,
+   "t_salida": 248.2,
+   "lineas": [
+    "sin tocar se llama plazo."
+   ]
+  },
+  {
+   "n": 83,
+   "bloque": 22,
+   "t_entrada": 250,
+   "t_salida": 252.8,
+   "lineas": [
+    "Es como la maceta:",
+    "no le escarbas"
+   ]
+  },
+  {
+   "n": 84,
+   "bloque": 22,
+   "t_entrada": 252.8,
+   "t_salida": 255.6,
+   "lineas": [
+    "cada semana para",
+    "ver si ya creció."
+   ]
+  },
+  {
+   "n": 85,
+   "bloque": 22,
+   "t_entrada": 255.6,
+   "t_salida": 259.2,
+   "lineas": [
+    "Dinero que vas a necesitar",
+    "este año: se ahorra."
+   ]
+  },
+  {
+   "n": 86,
+   "bloque": 22,
+   "t_entrada": 259.2,
+   "t_salida": 261.6,
+   "lineas": [
+    "Dinero que no vas a tocar"
+   ]
+  },
+  {
+   "n": 87,
+   "bloque": 22,
+   "t_entrada": 261.6,
+   "t_salida": 264,
+   "lineas": [
+    "en años: ese sí",
+    "puede invertirse."
+   ]
+  },
+  {
+   "n": 88,
+   "bloque": 23,
+   "t_entrada": 264,
+   "t_salida": 267.72,
+   "lineas": [
+    "Pero ojo con algo:",
+    "el sesenta y el ocho"
+   ]
+  },
+  {
+   "n": 89,
+   "bloque": 23,
+   "t_entrada": 267.72,
+   "t_salida": 271.03,
+   "lineas": [
+    "por ciento son ejemplos",
+    "para hacer la cuenta."
+   ]
+  },
+  {
+   "n": 90,
+   "bloque": 23,
+   "t_entrada": 271.03,
+   "t_salida": 273.52,
+   "lineas": [
+    "La tasa real de tu tarjeta"
+   ]
+  },
+  {
+   "n": 91,
+   "bloque": 23,
+   "t_entrada": 273.52,
+   "t_salida": 276,
+   "lineas": [
+    "viene en tu estado de cuenta."
+   ]
+  },
+  {
+   "n": 92,
+   "bloque": 24,
+   "t_entrada": 276,
+   "t_salida": 279.84,
+   "lineas": [
+    "Ahora mira qué pasa",
+    "si lo haces al revés."
+   ]
+  },
+  {
+   "n": 93,
+   "bloque": 24,
+   "t_entrada": 280.14,
+   "t_salida": 282.57,
+   "lineas": [
+    "Metes los cincuenta",
+    "mil a invertir"
+   ]
+  },
+  {
+   "n": 94,
+   "bloque": 24,
+   "t_entrada": 282.57,
+   "t_salida": 285,
+   "lineas": [
+    "y la tarjeta la pagas después."
+   ]
+  },
+  {
+   "n": 95,
+   "bloque": 25,
+   "t_entrada": 285,
+   "t_salida": 287.48,
+   "lineas": [
+    "Cincuenta mil son",
+    "quinientas veces cien."
+   ]
+  },
+  {
+   "n": 96,
+   "bloque": 25,
+   "t_entrada": 287.48,
+   "t_salida": 289.55,
+   "lineas": [
+    "Quinientas veces",
+    "ocho: cuatro mil."
+   ]
+  },
+  {
+   "n": 97,
+   "bloque": 25,
+   "t_entrada": 289.55,
+   "t_salida": 292.45,
+   "lineas": [
+    "Pero la deuda te cobra seis mil."
+   ]
+  },
+  {
+   "n": 98,
+   "bloque": 25,
+   "t_entrada": 292.45,
+   "t_salida": 295.76,
+   "lineas": [
+    "Cuatro mil menos seis",
+    "mil: menos dos mil."
+   ]
+  },
+  {
+   "n": 99,
+   "bloque": 25,
+   "t_entrada": 295.76,
+   "t_salida": 297.2,
+   "lineas": [
+    "Y sin colchón."
+   ]
+  },
+  {
+   "n": 100,
+   "bloque": 26,
+   "t_entrada": 297.5,
+   "t_salida": 299.87,
+   "lineas": [
+    "En orden: pagas",
+    "la deuda, guardas"
+   ]
+  },
+  {
+   "n": 101,
+   "bloque": 26,
+   "t_entrada": 299.87,
+   "t_salida": 302.24,
+   "lineas": [
+    "treinta mil e",
+    "inviertes diez mil."
+   ]
+  },
+  {
+   "n": 102,
+   "bloque": 26,
+   "t_entrada": 302.24,
+   "t_salida": 305.2,
+   "lineas": [
+    "Ganas ochocientos, sin",
+    "deuda y con colchón."
+   ]
+  },
+  {
+   "n": 103,
+   "bloque": 27,
+   "t_entrada": 307,
+   "t_salida": 309.29,
+   "lineas": [
+    "Invertiste cinco veces menos…"
+   ]
+  },
+  {
+   "n": 104,
+   "bloque": 27,
+   "t_entrada": 309.29,
+   "t_salida": 311.2,
+   "lineas": [
+    "y terminaste mejor."
+   ]
+  },
+  {
+   "n": 105,
+   "bloque": 28,
+   "t_entrada": 311.5,
+   "t_salida": 314.33,
+   "lineas": [
+    "Primero lo que te cobra."
+   ]
+  },
+  {
+   "n": 106,
+   "bloque": 28,
+   "t_entrada": 314.33,
+   "t_salida": 317.17,
+   "lineas": [
+    "Luego lo que te cuida."
+   ]
+  },
+  {
+   "n": 107,
+   "bloque": 28,
+   "t_entrada": 317.17,
+   "t_salida": 320,
+   "lineas": [
+    "Al final, lo que crece."
+   ]
+  },
+  {
+   "n": 108,
+   "bloque": 29,
+   "t_entrada": 320,
+   "t_salida": 322.58,
+   "lineas": [
+    "Entonces, ¿primero ahorras",
+    "o primero inviertes?"
+   ]
+  },
+  {
+   "n": 109,
+   "bloque": 29,
+   "t_entrada": 322.88,
+   "t_salida": 326.06,
+   "lineas": [
+    "Uno: paga la deuda",
+    "cara, porque te cobra"
+   ]
+  },
+  {
+   "n": 110,
+   "bloque": 29,
+   "t_entrada": 326.06,
+   "t_salida": 329.23,
+   "lineas": [
+    "más de lo que una",
+    "inversión suele pagarte."
+   ]
+  },
+  {
+   "n": 111,
+   "bloque": 29,
+   "t_entrada": 329.23,
+   "t_salida": 332.01,
+   "lineas": [
+    "Dos: junta tu fondo",
+    "de emergencia, para"
+   ]
+  },
+  {
+   "n": 112,
+   "bloque": 29,
+   "t_entrada": 332.01,
+   "t_salida": 334.79,
+   "lineas": [
+    "no volver a endeudarte",
+    "cuando algo falle."
+   ]
+  },
+  {
+   "n": 113,
+   "bloque": 29,
+   "t_entrada": 334.79,
+   "t_salida": 337.96,
+   "lineas": [
+    "Tres: lo que sobre, si no lo vas"
+   ]
+  },
+  {
+   "n": 114,
+   "bloque": 29,
+   "t_entrada": 337.96,
+   "t_salida": 340.94,
+   "lineas": [
+    "a tocar en años, ponlo a crecer."
+   ]
+  },
+  {
+   "n": 115,
+   "bloque": 29,
+   "t_entrada": 341.24,
+   "t_salida": 343.22,
+   "lineas": [
+    "No es ahorrar o invertir."
+   ]
+  },
+  {
+   "n": 116,
+   "bloque": 29,
+   "t_entrada": 343.22,
+   "t_salida": 346,
+   "lineas": [
+    "Es poner las tres",
+    "cosas en orden."
+   ]
+  },
+  {
+   "n": 117,
+   "bloque": 30,
+   "t_entrada": 346,
+   "t_salida": 351.65,
+   "lineas": [
+    "¿Quieres hacer esta cuenta",
+    "con tus propios números?"
+   ]
+  },
+  {
+   "n": 118,
+   "bloque": 30,
+   "t_entrada": 351.65,
+   "t_salida": 358.2,
+   "lineas": [
+    "Escríbele a Omar en Instagram:",
+    "arroba omar punto vizu."
+   ]
+  }
+ ]
+}

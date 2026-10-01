@@ -1,0 +1,56 @@
+@font-face { font-family: 'Instrument Serif'; font-weight: 400; src: url('/node_modules/@fontsource/instrument-serif/files/instrument-serif-latin-400-normal.woff2') format('woff2'); }
+@font-face { font-family: 'Archivo'; font-weight: 400; src: url('/node_modules/@fontsource/archivo/files/archivo-latin-400-normal.woff2') format('woff2'); }
+@font-face { font-family: 'Archivo'; font-weight: 600; src: url('/node_modules/@fontsource/archivo/files/archivo-latin-600-normal.woff2') format('woff2'); }
+@font-face { font-family: 'Archivo'; font-weight: 700; src: url('/node_modules/@fontsource/archivo/files/archivo-latin-700-normal.woff2') format('woff2'); }
+@font-face { font-family: 'Figtree'; font-weight: 600; src: url('/node_modules/@fontsource/figtree/files/figtree-latin-600-normal.woff2') format('woff2'); }
+@font-face { font-family: 'Figtree'; font-weight: 700; src: url('/node_modules/@fontsource/figtree/files/figtree-latin-700-normal.woff2') format('woff2'); }
+@font-face { font-family: 'Permanent Marker'; font-weight: 400; src: url('/node_modules/@fontsource/permanent-marker/files/permanent-marker-latin-400-normal.woff2') format('woff2'); }
+
+:root {
+  --papel: #F3EFE6; --papel-hondo: #E3DDD0; --tinta: #05070A; --ambar: #E8C46A;
+  --gris-calido: #5E5A52; --gris-apoyo: #8C8577; --verde: #2F6B4F; --rojo: #9A3B2E; --ocre: #7A5518;
+  --arcilla-muro: #EDD2BC; --arcilla-piso: #E1BEA3; --agua-muro: #B7D3CF; --agua-piso: #9FC2BD; --petroleo: #1E5652;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; background: var(--tinta); }
+#stage { position: relative; width: 1920px; height: 1080px; overflow: hidden; background: var(--arcilla-muro); }
+#fondo, #escena { position: absolute; inset: 0; }
+#muro { position: absolute; left: 0; top: 0; width: 1920px; height: 820px; background: var(--arcilla-muro); }
+#piso { position: absolute; left: 0; top: 820px; width: 1920px; height: 260px; background: var(--arcilla-piso); }
+.abs { position: absolute; visibility: hidden; white-space: nowrap; }
+.tnum { font-variant-numeric: tabular-nums lining-nums; }
+
+.cabecera { font: 700 24px/30px Archivo; letter-spacing: .16em; text-transform: uppercase; color: var(--tinta); }
+.cabecera .tema { color: var(--gris-calido); }
+.cabecera.sobre-petroleo, .cabecera.sobre-petroleo .tema { color: var(--papel); }
+
+.titulo { font: 400 104px/100px 'Instrument Serif'; color: var(--tinta); }
+.cifra { font: 400 220px/220px 'Instrument Serif'; color: var(--tinta); }
+.operacion { font: 400 120px/120px 'Instrument Serif'; color: var(--tinta); }
+.dato { font: 600 44px/52px Archivo; color: var(--tinta); }
+.etiqueta { font: 700 28px/34px Archivo; letter-spacing: .16em; text-transform: uppercase; color: var(--tinta); }
+.pie { font: 400 22px/28px Archivo; color: var(--tinta); }
+.rojo { color: var(--rojo); }
+.verde { color: var(--verde); }
+
+.panel { background: var(--papel); border: 1px solid var(--gris-apoyo); }
+.fila { display: flex; justify-content: space-between; gap: 48px; padding: 10px 32px; border-top: 1px solid var(--gris-apoyo); }
+.fila:first-child { border-top: 0; }
+
+.tarjeta-def { background: var(--petroleo); width: 660px; padding: 36px 40px 40px; white-space: normal; }
+.tarjeta-def .etq { font: 700 28px/34px Archivo; letter-spacing: .16em; color: var(--papel); }
+.tarjeta-def .termino { position: relative; display: inline-block; margin-top: 16px; font: 400 80px/80px 'Instrument Serif'; color: var(--papel); }
+.tarjeta-def .termino .marca { position: absolute; left: 0; right: 0; bottom: -6px; height: 10px; background: var(--ambar); transform-origin: left center; }
+.tarjeta-def .signif { margin-top: 22px; font: 600 38px/48px Figtree; color: var(--papel); }
+
+.alerta { background: var(--papel); border: 4px solid var(--tinta); padding: 24px 32px 28px; width: 820px; white-space: normal; }
+.alerta .rotulo { font: 400 64px/72px 'Permanent Marker'; color: var(--ocre); }
+.alerta .acl { margin-top: 6px; font: 700 44px/52px Archivo; color: var(--tinta); }
+
+.casilla { display: inline-block; width: 64px; height: 64px; background: var(--papel-hondo); border: 1px solid var(--gris-apoyo); vertical-align: middle; position: relative; }
+.contacto { background: var(--tinta); color: var(--papel); font: 700 52px/60px Archivo; padding: 12px 24px; }
+
+#capa-subtitulos { position: absolute; inset: 0; pointer-events: none; }
+#capa-subtitulos .caja { position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); max-width: 880px;
+  background: #F3EFE6; border-radius: 16px; padding: 18px 24px; text-align: center;
+  font-family: Figtree; font-weight: 700; color: #05070A; white-space: nowrap; display: none; }

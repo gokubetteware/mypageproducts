@@ -1,0 +1,2433 @@
+{
+ "subtitulos": false,
+ "fichas": [
+  {
+   "n": 1,
+   "t": 9.7,
+   "etiqueta": "GANCHO",
+   "rango": "0:00–0:10",
+   "michi": "curiosidad 2",
+   "archivo": "bloque_01.png",
+   "cajas": [
+    {
+     "qa": "texto",
+     "nombre": "50,000",
+     "x0": 96,
+     "y0": 137,
+     "x1": 633,
+     "y1": 423
+    },
+    {
+     "qa": "texto",
+     "nombre": "CATPESOS",
+     "x0": 104,
+     "y0": 401,
+     "x1": 295,
+     "y1": 432
+    },
+    {
+     "qa": "objeto",
+     "nombre": "pila de catpesos",
+     "x0": 230,
+     "y0": 680,
+     "x1": 510,
+     "y1": 820
+    },
+    {
+     "qa": "objeto",
+     "nombre": "pila de catpesos",
+     "x0": 242,
+     "y0": 658,
+     "x1": 522,
+     "y1": 798
+    },
+    {
+     "qa": "objeto",
+     "nombre": "pila de catpesos",
+     "x0": 254,
+     "y0": 636,
+     "x1": 534,
+     "y1": 776
+    },
+    {
+     "qa": "objeto",
+     "nombre": "pila de catpesos",
+     "x0": 266,
+     "y0": 614,
+     "x1": 546,
+     "y1": 754
+    },
+    {
+     "qa": "objeto",
+     "nombre": "pila de catpesos",
+     "x0": 278,
+     "y0": 592,
+     "x1": 558,
+     "y1": 732
+    },
+    {
+     "qa": "texto",
+     "nombre": "¿Primero ahorro oprimero invierto?",
+     "x0": 760,
+     "y0": 152,
+     "x1": 1403,
+     "y1": 387
+    },
+    {
+     "qa": "texto",
+     "nombre": "pie",
+     "x0": 96,
+     "y0": 998,
+     "x1": 404,
+     "y1": 1022
+    },
+    {
+     "qa": "michi-host",
+     "nombre": "",
+     "x0": 1208,
+     "y0": 364,
+     "x1": 1672,
+     "y1": 896
+    },
+    {
+     "qa": "personaje",
+     "nombre": "MICHI",
+     "x0": 1360,
+     "x1": 1590,
+     "y0": 420,
+     "y1": 820
+    }
+   ]
+  },
+  {
+   "n": 2,
+   "t": 17.7,
+   "etiqueta": null,
+   "rango": "0:10–0:18",
+   "michi": "duda 2",
+   "archivo": "bloque_02.png",
+   "cajas": [
+    {
+     "qa": "texto",
+     "nombre": "¿Primero ahorro oprimero invierto?",
+     "x0": 760,
+     "y0": 152,
+     "x1": 1403,
+     "y1": 387
+    },
+    {
+     "qa": "objeto",
+     "nombre": "frasco cerrado",
+     "x0": 200,
+     "y0": 490,
+     "x1": 410,
+     "y1": 835
+    },
+    {
+     "qa": "texto",
+     "nombre": "Guárdalo",
+     "x0": 236,
+     "y0": 522,
+     "x1": 424,
+     "y1": 570
+    },
+    {
+     "qa": "objeto",
+     "nombre": "maceta",
+     "x0": 520,
+     "y0": 490,
+     "x1": 730,
+     "y1": 835
+    },
+    {
+     "qa": "texto",
+     "nombre": "Inviértelo",
+     "x0": 556,
+     "y0": 514,
+     "x1": 745,
+     "y1": 562
+    },
+    {
+     "qa": "michi-host",
+     "nombre": "",
+     "x0": 1208,
+     "y0": 364,
+     "x1": 1672,
+     "y1": 896
+    },
+    {
+     "qa": "personaje",
+     "nombre": "MICHI",
+     "x0": 1360,
+     "x1": 1590,
+     "y0": 420,
+     "y1": 820
+    }
+   ]
+  },
+  {
+   "n": 3,
+   "t": 28.7,
+   "etiqueta": null,
+   "rango": "0:18–0:29",
+   "michi": "confianza 2",
+   "archivo": "bloque_03.png",
+   "cajas": [
+    {
+     "qa": "objeto",
+     "nombre": "frasco cerrado",
+     "x0": 200,
+     "y0": 490,
+     "x1": 410,
+     "y1": 835
+    },
+    {
+     "qa": "texto",
+     "nombre": "Guárdalo",
+     "x0": 236,
+     "y0": 522,
+     "x1": 424,
+     "y1": 570
+    },
+    {
+     "qa": "objeto",
+     "nombre": "maceta",
+     "x0": 520,
+     "y0": 490,
+     "x1": 730,
+     "y1": 835
+    },
+    {
+     "qa": "texto",
+     "nombre": "Inviértelo",
+     "x0": 556,
+     "y0": 514,
+     "x1": 745,
+     "y1": 562
+    },
+    {
+     "qa": "objeto",
+     "nombre": "tarjeta",
+     "x0": 840,
+     "y0": 490,
+     "x1": 1050,
+     "y1": 835
+    },
+    {
+     "qa": "texto",
+     "nombre": "¿En qué orden?",
+     "x0": 96,
+     "y0": 152,
+     "x1": 632,
+     "y1": 287
+    },
+    {
+     "qa": "texto",
+     "nombre": "casillas 1 2 3",
+     "x0": 96,
+     "y0": 292,
+     "x1": 510,
+     "y1": 407
+    },
+    {
+     "qa": "texto",
+     "nombre": "+ − × ÷",
+     "x0": 800,
+     "y0": 272,
+     "x1": 1116,
+     "y1": 428
+    },
+    {
+     "qa": "michi-host",
+     "nombre": "",
+     "x0": 1208,
+     "y0": 364,
+     "x1": 1672,
+     "y1": 896
+    },
+    {
+     "qa": "personaje",
+     "nombre": "MICHI",
+     "x0": 1360,
+     "x1": 1590,
+     "y0": 420,
+     "y1": 820
+    }
+   ]
+  },
+  {
+   "n": 4,
+   "t": 51.7,
+   "etiqueta": "PLANTEAR LA CUENTA",
+   "rango": "0:29–0:52",
+   "michi": "tranquilidad 2",
+   "archivo": "bloque_04.png",
+   "cajas": [
+    {
+     "qa": "texto",
+     "nombre": "cabecera",
+     "x0": 96,
+     "y0": 56,
+     "x1": 451,
+     "y1": 116
+    },
+    {
+     "qa": "texto",
+     "nombre": "Tienes50,000",
+     "x0": 673,
+     "y0": 180,
+     "x1": 1307,
+     "y1": 232
+    },
+    {
+     "qa": "texto",
+     "nombre": "Gastas al mes10,000",
+     "x0": 673,
+     "y0": 251,
+     "x1": 1307,
+     "y1": 303
+    },
+    {
+     "qa": "texto",
+     "nombre": "Debes en la tarjeta−10,000",
+     "x0": 673,
+     "y0": 322,
+     "x1": 1307,
+     "y1": 374
+    },
+    {
+     "qa": "objeto",
+     "nombre": "bolsa de despensa",
+     "x0": 150,
+     "y0": 580,
+     "x1": 350,
+     "y1": 820
+    },
+    {
+     "qa": "objeto",
+     "nombre": "ticket de luz",
+     "x0": 380,
+     "y0": 640,
+     "x1": 500,
+     "y1": 820
+    },
+    {
+     "qa": "texto",
+     "nombre": "pie",
+     "x0": 96,
+     "y0": 998,
+     "x1": 404,
+     "y1": 1022
+    },
+    {
+     "qa": "michi-host",
+     "nombre": "",
+     "x0": 1208,
+     "y0": 364,
+     "x1": 1672,
+     "y1": 896
+    },
+    {
+     "qa": "personaje",
+     "nombre": "MICHI",
+     "x0": 1360,
+     "x1": 1590,
+     "y0": 420,
+     "y1": 820
+    }
+   ]
+  },
+  {
+   "n": 5,
+   "t": 68.7,
+   "etiqueta": "IDEA 1",
+   "rango": "0:52–1:09",
+   "michi": "preocupacion 1",
+   "archivo": "bloque_05.png",
+   "cajas": [
+    {
+     "qa": "texto",
+     "nombre": "cabecera",
+     "x0": 96,
+     "y0": 56,
+     "x1": 451,
+     "y1": 116
+    },
+    {
+     "qa": "personaje",
+     "nombre": "tigrillo",
+     "x0": 198,
+     "y0": 509,
+     "x1": 365,
+     "y1": 820
+    },
+    {
+     "qa": "objeto",
+     "nombre": "tigrillo_objeto",
+     "x0": 340,
+     "y0": 600,
+     "x1": 480,
+     "y1": 830
+    },
+    {
+     "qa": "texto",
+     "nombre": "60 % = 60 por cada 100",
+     "x0": 800,
+     "y0": 152,
+     "x1": 1736,
+     "y1": 308
+    },
+    {
+     "qa": "texto",
+     "nombre": "pie",
+     "x0": 96,
+     "y0": 998,
+     "x1": 254,
+     "y1": 1022
+    },
+    {
+     "qa": "michi-host",
+     "nombre": "",
+     "x0": 1208,
+     "y0": 364,
+     "x1": 1672,
+     "y1": 896
+    },
+    {
+     "qa": "personaje",
+     "nombre": "MICHI",
+     "x0": 1360,
+     "x1": 1590,
+     "y0": 420,
+     "y1": 820
+    }
+   ]
+  },
+  {
+   "n": 6,
+   "t": 76.7,
+   "etiqueta": null,
+   "rango": "1:09–1:17",
+   "michi": "sorpresa 2",
+   "archivo": "bloque_06.png",
+   "cajas": [
+    {
+     "qa": "texto",
+     "nombre": "cabecera",
+     "x0": 96,
+     "y0": 56,
+     "x1": 451,
+     "y1": 116
+    },
+    {
+     "qa": "personaje",
+     "nombre": "tigrillo",
+     "x0": 198,
+     "y0": 509,
+     "x1": 365,
+     "y1": 820
+    },
+    {
+     "qa": "objeto",
+     "nombre": "tigrillo_objeto",
+     "x0": 340,
+     "y0": 600,
+     "x1": 480,
+     "y1": 830
+    },
+    {
+     "qa": "texto",
+     "nombre": "10,000 = 100 × 100",
+     "x0": 800,
+     "y0": 152,
+     "x1": 1566,
+     "y1": 308
+    },
+    {
+     "qa": "texto",
+     "nombre": "100 × 60 = 6,000",
+     "x0": 800,
+     "y0": 272,
+     "x1": 1492,
+     "y1": 428
+    },
+    {
+     "qa": "objeto",
+     "nombre": "recibo −6,000",
+     "x0": 500,
+     "y0": 630,
+     "x1": 650,
+     "y1": 820
+    },
+    {
+     "qa": "texto",
+     "nombre": "pie",
+     "x0": 96,
+     "y0": 998,
+     "x1": 404,
+     "y1": 1022
+    },
+    {
+     "qa": "michi-host",
+     "nombre": "",
+     "x0": 1208,
+     "y0": 364,
+     "x1": 1672,
+     "y1": 896
+    },
+    {
+     "qa": "personaje",
+     "nombre": "MICHI",
+     "x0": 1360,
+     "x1": 1590,
+     "y0": 420,
+     "y1": 820
+    }
+   ]
+  },
+  {
+   "n": 7,
+   "t": 81.7,
+   "etiqueta": null,
+   "rango": "1:17–1:22",
+   "michi": "me-di-cuenta 2",
+   "archivo": "bloque_07.png",
+   "cajas": [
+    {
+     "qa": "texto",
+     "nombre": "cabecera",
+     "x0": 96,
+     "y0": 56,
+     "x1": 451,
+     "y1": 116
+    },
+    {
+     "qa": "personaje",
+     "nombre": "tigrillo",
+     "x0": 198,
+     "y0": 509,
+     "x1": 365,
+     "y1": 820
+    },
+    {
+     "qa": "objeto",
+     "nombre": "tigrillo_objeto",
+     "x0": 340,
+     "y0": 600,
+     "x1": 480,
+     "y1": 830
+    },
+    {
+     "qa": "texto",
+     "nombre": "10,000 = 100 × 100",
+     "x0": 800,
+     "y0": 152,
+     "x1": 1566,
+     "y1": 308
+    },
+    {
+     "qa": "texto",
+     "nombre": "100 × 60 = 6,000",
+     "x0": 800,
+     "y0": 272,
+     "x1": 1492,
+     "y1": 428
+    },
+    {
+     "qa": "objeto",
+     "nombre": "recibo −6,000",
+     "x0": 500,
+     "y0": 630,
+     "x1": 650,
+     "y1": 820
+    },
+    {
+     "qa": "texto",
+     "nombre": "pie",
+     "x0": 96,
+     "y0": 998,
+     "x1": 404,
+     "y1": 1022
+    },
+    {
+     "qa": "texto",
+     "nombre": "tarjeta 1",
+     "x0": 136,
+     "y0": 186,
+     "x1": 716,
+     "y1": 434
+    },
+    {
+     "qa": "michi-host",
+     "nombre": "",
+     "x0": 1208,
+     "y0": 364,
+     "x1": 1672,
+     "y1": 896
+    },
+    {
+     "qa": "personaje",
+     "nombre": "MICHI",
+     "x0": 1360,
+     "x1": 1590,
+     "y0": 420,
+     "y1": 820
+    }
+   ]
+  },
+  {
+   "n": 8,
+   "t": 95.7,
+   "etiqueta": null,
+   "rango": "1:22–1:36",
+   "michi": "curiosidad 2",
+   "archivo": "bloque_08.png",
+   "cajas": [
+    {
+     "qa": "texto",
+     "nombre": "cabecera",
+     "x0": 96,
+     "y0": 56,
+     "x1": 451,
+     "y1": 116
+    },
+    {
+     "qa": "personaje",
+     "nombre": "tigrillo",
+     "x0": 198,
+     "y0": 509,
+     "x1": 365,
+     "y1": 820
+    },
+    {
+     "qa": "objeto",
+     "nombre": "tigrillo_objeto",
+     "x0": 340,
+     "y0": 600,
+     "x1": 480,
+     "y1": 830
+    },
+    {
+     "qa": "texto",
+     "nombre": "pie",
+     "x0": 96,
+     "y0": 998,
+     "x1": 404,
+     "y1": 1022
+    },
+    {
+     "qa": "personaje",
+     "nombre": "bosco",
+     "x0": 638,
+     "y0": 509,
+     "x1": 805,
+     "y1": 820
+    },
+    {
+     "qa": "objeto",
+     "nombre": "bosco_objeto",
+     "x0": 780,
+     "y0": 600,
+     "x1": 920,
+     "y1": 830
+    },
+    {
+     "qa": "texto",
+     "nombre": "8 % = 8 por cada 100",
+     "x0": 800,
+     "y0": 152,
+     "x1": 1633,
+     "y1": 308
+    },
+    {
+     "qa": "texto",
+     "nombre": "100 × 8 = 800",
+     "x0": 800,
+     "y0": 272,
+     "x1": 1364,
+     "y1": 428
+    },
+    {
+     "qa": "objeto",
+     "nombre": "recibo +800",
+     "x0": 950,
+     "y0": 630,
+     "x1": 1100,
+     "y1": 820
+    },
+    {
+     "qa": "michi-host",
+     "nombre": "",
+     "x0": 1208,
+     "y0": 364,
+     "x1": 1672,
+     "y1": 896
+    },
+    {
+     "qa": "personaje",
+     "nombre": "MICHI",
+     "x0": 1360,
+     "x1": 1590,
+     "y0": 420,
+     "y1": 820
+    }
+   ]
+  },
+  {
+   "n": 9,
+   "t": 102.7,
+   "etiqueta": null,
+   "rango": "1:36–1:43",
+   "michi": "sorpresa 3",
+   "archivo": "bloque_09.png",
+   "cajas": [
+    {
+     "qa": "texto",
+     "nombre": "cabecera",
+     "x0": 96,
+     "y0": 56,
+     "x1": 451,
+     "y1": 116
+    },
+    {
+     "qa": "personaje",
+     "nombre": "tigrillo",
+     "x0": 198,
+     "y0": 509,
+     "x1": 365,
+     "y1": 820
+    },
+    {
+     "qa": "objeto",
+     "nombre": "tigrillo_objeto",
+     "x0": 340,
+     "y0": 600,
+     "x1": 480,
+     "y1": 830
+    },
+    {
+     "qa": "texto",
+     "nombre": "pie",
+     "x0": 96,
+     "y0": 998,
+     "x1": 404,
+     "y1": 1022
+    },
+    {
+     "qa": "personaje",
+     "nombre": "bosco",
+     "x0": 638,
+     "y0": 509,
+     "x1": 805,
+     "y1": 820
+    },
+    {
+     "qa": "objeto",
+     "nombre": "bosco_objeto",
+     "x0": 780,
+     "y0": 600,
+     "x1": 920,
+     "y1": 830
+    },
+    {
+     "qa": "objeto",
+     "nombre": "recibo +800",
+     "x0": 950,
+     "y0": 630,
+     "x1": 1100,
+     "y1": 820
+    },
+    {
+     "qa": "texto",
+     "nombre": "800 − 6,000 = −5,200",
+     "x0": 800,
+     "y0": 152,
+     "x1": 1701,
+     "y1": 308
+    },
+    {
+     "qa": "michi-host",
+     "nombre": "",
+     "x0": 1208,
+     "y0": 364,
+     "x1": 1672,
+     "y1": 896
+    },
+    {
+     "qa": "personaje",
+     "nombre": "MICHI",
+     "x0": 1360,
+     "x1": 1590,
+     "y0": 420,
+     "y1": 820
+    }
+   ]
+  },
+  {
+   "n": 10,
+   "t": 116.7,
+   "etiqueta": null,
+   "rango": "1:43–1:57",
+   "michi": "alivio 2",
+   "archivo": "bloque_10.png",
+   "cajas": [
+    {
+     "qa": "texto",
+     "nombre": "cabecera",
+     "x0": 96,
+     "y0": 56,
+     "x1": 451,
+     "y1": 116
+    },
+    {
+     "qa": "personaje",
+     "nombre": "tigrillo",
+     "x0": 198,
+     "y0": 509,
+     "x1": 365,
+     "y1": 820
+    },
+    {
+     "qa": "objeto",
+     "nombre": "tigrillo_objeto",
+     "x0": 340,
+     "y0": 600,
+     "x1": 480,
+     "y1": 830
+    },
+    {
+     "qa": "objeto",
+     "nombre": "cubeta",
+     "x0": 560,
+     "y0": 514,
+     "x1": 812,
+     "y1": 820
+    },
+    {
+     "qa": "texto",
+     "nombre": "lista en orden",
+     "x0": 97,
+     "y0": 171,
+     "x1": 655,
+     "y1": 423
+    },
+    {
+     "qa": "texto",
+     "nombre": "pie",
+     "x0": 96,
+     "y0": 998,
+     "x1": 278,
+     "y1": 1022
+    },
+    {
+     "qa": "michi-host",
+     "nombre": "",
+     "x0": 1208,
+     "y0": 364,
+     "x1": 1672,
+     "y1": 896
+    },
+    {
+     "qa": "personaje",
+     "nombre": "MICHI",
+     "x0": 1360,
+     "x1": 1590,
+     "y0": 420,
+     "y1": 820
+    }
+   ]
+  },
+  {
+   "n": 11,
+   "t": 129.7,
+   "etiqueta": "RE-ENGANCHE 1",
+   "rango": "1:57–2:10",
+   "michi": "duda 2",
+   "archivo": "bloque_11.png",
+   "cajas": [
+    {
+     "qa": "texto",
+     "nombre": "cabecera",
+     "x0": 96,
+     "y0": 56,
+     "x1": 451,
+     "y1": 116
+    },
+    {
+     "qa": "texto",
+     "nombre": "50,000 − 10,000 = 40,000",
+     "x0": 96,
+     "y0": 152,
+     "x1": 1168,
+     "y1": 308
+    },
+    {
+     "qa": "texto",
+     "nombre": "¿Ahora sí, a invertir?",
+     "x0": 96,
+     "y0": 312,
+     "x1": 810,
+     "y1": 447
+    },
+    {
+     "qa": "texto",
+     "nombre": "pie",
+     "x0": 96,
+     "y0": 998,
+     "x1": 404,
+     "y1": 1022
+    },
+    {
+     "qa": "michi-host",
+     "nombre": "",
+     "x0": 1208,
+     "y0": 364,
+     "x1": 1672,
+     "y1": 896
+    },
+    {
+     "qa": "personaje",
+     "nombre": "MICHI",
+     "x0": 1360,
+     "x1": 1590,
+     "y0": 420,
+     "y1": 820
+    }
+   ]
+  },
+  {
+   "n": 12,
+   "t": 138.7,
+   "etiqueta": "IDEA 2",
+   "rango": "2:10–2:19",
+   "michi": "preocupacion 1",
+   "archivo": "bloque_12.png",
+   "cajas": [
+    {
+     "qa": "texto",
+     "nombre": "cabecera",
+     "x0": 96,
+     "y0": 56,
+     "x1": 451,
+     "y1": 116
+    },
+    {
+     "qa": "personaje",
+     "nombre": "canela",
+     "x0": 198,
+     "y0": 509,
+     "x1": 365,
+     "y1": 820
+    },
+    {
+     "qa": "objeto",
+     "nombre": "canela_objeto",
+     "x0": 340,
+     "y0": 600,
+     "x1": 480,
+     "y1": 830
+    },
+    {
+     "qa": "objeto",
+     "nombre": "ticket taller",
+     "x0": 470,
+     "y0": 652,
+     "x1": 620,
+     "y1": 820
+    },
+    {
+     "qa": "michi-host",
+     "nombre": "",
+     "x0": 1208,
+     "y0": 364,
+     "x1": 1672,
+     "y1": 896
+    },
+    {
+     "qa": "personaje",
+     "nombre": "MICHI",
+     "x0": 1360,
+     "x1": 1590,
+     "y0": 420,
+     "y1": 820
+    }
+   ]
+  },
+  {
+   "n": 13,
+   "t": 151.7,
+   "etiqueta": null,
+   "rango": "2:19–2:32",
+   "michi": "preocupacion 2",
+   "archivo": "bloque_13.png",
+   "cajas": [
+    {
+     "qa": "texto",
+     "nombre": "cabecera",
+     "x0": 96,
+     "y0": 56,
+     "x1": 451,
+     "y1": 116
+    },
+    {
+     "qa": "personaje",
+     "nombre": "canela",
+     "x0": 198,
+     "y0": 509,
+     "x1": 365,
+     "y1": 820
+    },
+    {
+     "qa": "objeto",
+     "nombre": "canela_objeto",
+     "x0": 340,
+     "y0": 600,
+     "x1": 480,
+     "y1": 830
+    },
+    {
+     "qa": "objeto",
+     "nombre": "ticket taller",
+     "x0": 470,
+     "y0": 652,
+     "x1": 620,
+     "y1": 820
+    },
+    {
+     "qa": "personaje",
+     "nombre": "tigrillo",
+     "x0": 638,
+     "y0": 509,
+     "x1": 805,
+     "y1": 820
+    },
+    {
+     "qa": "objeto",
+     "nombre": "tigrillo_objeto",
+     "x0": 780,
+     "y0": 600,
+     "x1": 920,
+     "y1": 830
+    },
+    {
+     "qa": "texto",
+     "nombre": "8,000 = 80 × 100",
+     "x0": 800,
+     "y0": 152,
+     "x1": 1498,
+     "y1": 308
+    },
+    {
+     "qa": "texto",
+     "nombre": "80 × 60 = 4,800",
+     "x0": 800,
+     "y0": 272,
+     "x1": 1454,
+     "y1": 428
+    },
+    {
+     "qa": "objeto",
+     "nombre": "recibo −4,800",
+     "x0": 950,
+     "y0": 630,
+     "x1": 1100,
+     "y1": 820
+    },
+    {
+     "qa": "texto",
+     "nombre": "pie",
+     "x0": 96,
+     "y0": 998,
+     "x1": 302,
+     "y1": 1022
+    },
+    {
+     "qa": "michi-host",
+     "nombre": "",
+     "x0": 1208,
+     "y0": 364,
+     "x1": 1672,
+     "y1": 896
+    },
+    {
+     "qa": "personaje",
+     "nombre": "MICHI",
+     "x0": 1360,
+     "x1": 1590,
+     "y0": 420,
+     "y1": 820
+    }
+   ]
+  },
+  {
+   "n": 14,
+   "t": 161.7,
+   "etiqueta": null,
+   "rango": "2:32–2:42",
+   "michi": "me-di-cuenta 2",
+   "archivo": "bloque_14.png",
+   "cajas": [
+    {
+     "qa": "texto",
+     "nombre": "cabecera",
+     "x0": 96,
+     "y0": 56,
+     "x1": 451,
+     "y1": 116
+    },
+    {
+     "qa": "personaje",
+     "nombre": "canela",
+     "x0": 198,
+     "y0": 509,
+     "x1": 365,
+     "y1": 820
+    },
+    {
+     "qa": "objeto",
+     "nombre": "canela_objeto",
+     "x0": 340,
+     "y0": 600,
+     "x1": 480,
+     "y1": 830
+    },
+    {
+     "qa": "objeto",
+     "nombre": "ticket taller",
+     "x0": 470,
+     "y0": 652,
+     "x1": 620,
+     "y1": 820
+    },
+    {
+     "qa": "texto",
+     "nombre": "8,000 = 80 × 100",
+     "x0": 800,
+     "y0": 152,
+     "x1": 1498,
+     "y1": 308
+    },
+    {
+     "qa": "texto",
+     "nombre": "80 × 60 = 4,800",
+     "x0": 800,
+     "y0": 272,
+     "x1": 1454,
+     "y1": 428
+    },
+    {
+     "qa": "texto",
+     "nombre": "pie",
+     "x0": 96,
+     "y0": 998,
+     "x1": 302,
+     "y1": 1022
+    },
+    {
+     "qa": "texto",
+     "nombre": "tarjeta 2",
+     "x0": 136,
+     "y0": 186,
+     "x1": 716,
+     "y1": 482
+    },
+    {
+     "qa": "michi-host",
+     "nombre": "",
+     "x0": 1208,
+     "y0": 364,
+     "x1": 1672,
+     "y1": 896
+    },
+    {
+     "qa": "personaje",
+     "nombre": "MICHI",
+     "x0": 1360,
+     "x1": 1590,
+     "y0": 420,
+     "y1": 820
+    }
+   ]
+  },
+  {
+   "n": 15,
+   "t": 171.7,
+   "etiqueta": null,
+   "rango": "2:42–2:52",
+   "michi": "neutro 1",
+   "archivo": "bloque_15.png",
+   "cajas": [
+    {
+     "qa": "texto",
+     "nombre": "cabecera",
+     "x0": 96,
+     "y0": 56,
+     "x1": 451,
+     "y1": 116
+    },
+    {
+     "qa": "personaje",
+     "nombre": "canela",
+     "x0": 198,
+     "y0": 509,
+     "x1": 365,
+     "y1": 820
+    },
+    {
+     "qa": "objeto",
+     "nombre": "canela_objeto",
+     "x0": 340,
+     "y0": 600,
+     "x1": 480,
+     "y1": 830
+    },
+    {
+     "qa": "objeto",
+     "nombre": "ticket taller",
+     "x0": 470,
+     "y0": 652,
+     "x1": 620,
+     "y1": 820
+    },
+    {
+     "qa": "texto",
+     "nombre": "3 × 10,000 = 30,000",
+     "x0": 800,
+     "y0": 152,
+     "x1": 1622,
+     "y1": 308
+    },
+    {
+     "qa": "texto",
+     "nombre": "pie",
+     "x0": 96,
+     "y0": 998,
+     "x1": 366,
+     "y1": 1022
+    },
+    {
+     "qa": "michi-host",
+     "nombre": "",
+     "x0": 1208,
+     "y0": 364,
+     "x1": 1672,
+     "y1": 896
+    },
+    {
+     "qa": "personaje",
+     "nombre": "MICHI",
+     "x0": 1360,
+     "x1": 1590,
+     "y0": 420,
+     "y1": 820
+    }
+   ]
+  },
+  {
+   "n": 16,
+   "t": 189.7,
+   "etiqueta": null,
+   "rango": "2:52–3:10",
+   "michi": "alivio 2",
+   "archivo": "bloque_16.png",
+   "cajas": [
+    {
+     "qa": "texto",
+     "nombre": "cabecera",
+     "x0": 96,
+     "y0": 56,
+     "x1": 451,
+     "y1": 116
+    },
+    {
+     "qa": "personaje",
+     "nombre": "canela",
+     "x0": 198,
+     "y0": 509,
+     "x1": 365,
+     "y1": 820
+    },
+    {
+     "qa": "objeto",
+     "nombre": "canela_objeto",
+     "x0": 340,
+     "y0": 600,
+     "x1": 480,
+     "y1": 830
+    },
+    {
+     "qa": "objeto",
+     "nombre": "ticket taller pagado",
+     "x0": 700,
+     "y0": 652,
+     "x1": 850,
+     "y1": 820
+    },
+    {
+     "qa": "objeto",
+     "nombre": "palomita",
+     "x0": 800,
+     "y0": 612,
+     "x1": 864,
+     "y1": 676
+    },
+    {
+     "qa": "objeto",
+     "nombre": "llanta",
+     "x0": 470,
+     "y0": 620,
+     "x1": 670,
+     "y1": 820
+    },
+    {
+     "qa": "texto",
+     "nombre": "lista en orden",
+     "x0": 97,
+     "y0": 171,
+     "x1": 655,
+     "y1": 423
+    },
+    {
+     "qa": "michi-host",
+     "nombre": "",
+     "x0": 1208,
+     "y0": 364,
+     "x1": 1672,
+     "y1": 896
+    },
+    {
+     "qa": "personaje",
+     "nombre": "MICHI",
+     "x0": 1360,
+     "x1": 1590,
+     "y0": 420,
+     "y1": 820
+    }
+   ]
+  },
+  {
+   "n": 17,
+   "t": 204.7,
+   "etiqueta": "RE-ENGANCHE 2",
+   "rango": "3:10–3:25",
+   "michi": "curiosidad 2",
+   "archivo": "bloque_17.png",
+   "cajas": [
+    {
+     "qa": "texto",
+     "nombre": "cabecera",
+     "x0": 96,
+     "y0": 56,
+     "x1": 451,
+     "y1": 116
+    },
+    {
+     "qa": "personaje",
+     "nombre": "canela",
+     "x0": 198,
+     "y0": 509,
+     "x1": 365,
+     "y1": 820
+    },
+    {
+     "qa": "objeto",
+     "nombre": "canela_objeto",
+     "x0": 340,
+     "y0": 600,
+     "x1": 480,
+     "y1": 830
+    },
+    {
+     "qa": "texto",
+     "nombre": "¿Cuándo los vas a necesitar?",
+     "x0": 96,
+     "y0": 152,
+     "x1": 1076,
+     "y1": 287
+    },
+    {
+     "qa": "texto",
+     "nombre": "pie",
+     "x0": 96,
+     "y0": 998,
+     "x1": 404,
+     "y1": 1022
+    },
+    {
+     "qa": "michi-host",
+     "nombre": "",
+     "x0": 1208,
+     "y0": 364,
+     "x1": 1672,
+     "y1": 896
+    },
+    {
+     "qa": "personaje",
+     "nombre": "MICHI",
+     "x0": 1360,
+     "x1": 1590,
+     "y0": 420,
+     "y1": 820
+    }
+   ]
+  },
+  {
+   "n": 18,
+   "t": 212.7,
+   "etiqueta": "IDEA 3",
+   "rango": "3:25–3:33",
+   "michi": "tranquilidad 2",
+   "archivo": "bloque_18.png",
+   "cajas": [
+    {
+     "qa": "texto",
+     "nombre": "cabecera",
+     "x0": 96,
+     "y0": 56,
+     "x1": 451,
+     "y1": 116
+    },
+    {
+     "qa": "personaje",
+     "nombre": "bosco",
+     "x0": 198,
+     "y0": 509,
+     "x1": 365,
+     "y1": 820
+    },
+    {
+     "qa": "objeto",
+     "nombre": "bosco_objeto",
+     "x0": 340,
+     "y0": 600,
+     "x1": 480,
+     "y1": 830
+    },
+    {
+     "qa": "objeto",
+     "nombre": "calendario",
+     "x0": 96,
+     "y0": 170,
+     "x1": 546,
+     "y1": 440
+    },
+    {
+     "qa": "michi-host",
+     "nombre": "",
+     "x0": 1208,
+     "y0": 364,
+     "x1": 1672,
+     "y1": 896
+    },
+    {
+     "qa": "personaje",
+     "nombre": "MICHI",
+     "x0": 1360,
+     "x1": 1590,
+     "y0": 420,
+     "y1": 820
+    }
+   ]
+  },
+  {
+   "n": 19,
+   "t": 223.7,
+   "etiqueta": null,
+   "rango": "3:33–3:44",
+   "michi": "preocupacion 1",
+   "archivo": "bloque_19.png",
+   "cajas": [
+    {
+     "qa": "texto",
+     "nombre": "cabecera",
+     "x0": 96,
+     "y0": 56,
+     "x1": 451,
+     "y1": 116
+    },
+    {
+     "qa": "personaje",
+     "nombre": "bosco",
+     "x0": 198,
+     "y0": 509,
+     "x1": 365,
+     "y1": 820
+    },
+    {
+     "qa": "objeto",
+     "nombre": "bosco_objeto",
+     "x0": 340,
+     "y0": 600,
+     "x1": 480,
+     "y1": 830
+    },
+    {
+     "qa": "objeto",
+     "nombre": "calendario",
+     "x0": 96,
+     "y0": 170,
+     "x1": 546,
+     "y1": 440
+    },
+    {
+     "qa": "texto",
+     "nombre": "10 % de 10,000 = 1,000",
+     "x0": 800,
+     "y0": 152,
+     "x1": 1717,
+     "y1": 308
+    },
+    {
+     "qa": "texto",
+     "nombre": "10,000 − 1,000 = 9,000",
+     "x0": 800,
+     "y0": 272,
+     "x1": 1741,
+     "y1": 428
+    },
+    {
+     "qa": "objeto",
+     "nombre": "recibo −1,000",
+     "x0": 500,
+     "y0": 630,
+     "x1": 650,
+     "y1": 820
+    },
+    {
+     "qa": "texto",
+     "nombre": "pie",
+     "x0": 96,
+     "y0": 998,
+     "x1": 278,
+     "y1": 1022
+    },
+    {
+     "qa": "michi-host",
+     "nombre": "",
+     "x0": 1208,
+     "y0": 364,
+     "x1": 1672,
+     "y1": 896
+    },
+    {
+     "qa": "personaje",
+     "nombre": "MICHI",
+     "x0": 1360,
+     "x1": 1590,
+     "y0": 420,
+     "y1": 820
+    }
+   ]
+  },
+  {
+   "n": 20,
+   "t": 242.7,
+   "etiqueta": null,
+   "rango": "3:44–4:03",
+   "michi": "sorpresa 2",
+   "archivo": "bloque_20.png",
+   "cajas": [
+    {
+     "qa": "texto",
+     "nombre": "cabecera",
+     "x0": 96,
+     "y0": 56,
+     "x1": 451,
+     "y1": 116
+    },
+    {
+     "qa": "personaje",
+     "nombre": "bosco",
+     "x0": 198,
+     "y0": 509,
+     "x1": 365,
+     "y1": 820
+    },
+    {
+     "qa": "objeto",
+     "nombre": "bosco_objeto",
+     "x0": 340,
+     "y0": 600,
+     "x1": 480,
+     "y1": 830
+    },
+    {
+     "qa": "objeto",
+     "nombre": "calendario 5 años",
+     "x0": 96,
+     "y0": 170,
+     "x1": 544,
+     "y1": 432
+    },
+    {
+     "qa": "texto",
+     "nombre": "10,000 → 14,693",
+     "x0": 800,
+     "y0": 152,
+     "x1": 1481,
+     "y1": 308
+    },
+    {
+     "qa": "texto",
+     "nombre": "pie",
+     "x0": 96,
+     "y0": 998,
+     "x1": 285,
+     "y1": 1022
+    },
+    {
+     "qa": "michi-host",
+     "nombre": "",
+     "x0": 1208,
+     "y0": 364,
+     "x1": 1672,
+     "y1": 896
+    },
+    {
+     "qa": "personaje",
+     "nombre": "MICHI",
+     "x0": 1360,
+     "x1": 1590,
+     "y0": 420,
+     "y1": 820
+    }
+   ]
+  },
+  {
+   "n": 21,
+   "t": 249.7,
+   "etiqueta": null,
+   "rango": "4:03–4:10",
+   "michi": "me-di-cuenta 2",
+   "archivo": "bloque_21.png",
+   "cajas": [
+    {
+     "qa": "texto",
+     "nombre": "cabecera",
+     "x0": 96,
+     "y0": 56,
+     "x1": 451,
+     "y1": 116
+    },
+    {
+     "qa": "personaje",
+     "nombre": "bosco",
+     "x0": 198,
+     "y0": 509,
+     "x1": 365,
+     "y1": 820
+    },
+    {
+     "qa": "objeto",
+     "nombre": "bosco_objeto",
+     "x0": 340,
+     "y0": 600,
+     "x1": 480,
+     "y1": 830
+    },
+    {
+     "qa": "texto",
+     "nombre": "10,000 → 14,693",
+     "x0": 800,
+     "y0": 152,
+     "x1": 1481,
+     "y1": 308
+    },
+    {
+     "qa": "texto",
+     "nombre": "pie",
+     "x0": 96,
+     "y0": 998,
+     "x1": 285,
+     "y1": 1022
+    },
+    {
+     "qa": "texto",
+     "nombre": "tarjeta 3",
+     "x0": 136,
+     "y0": 186,
+     "x1": 716,
+     "y1": 434
+    },
+    {
+     "qa": "michi-host",
+     "nombre": "",
+     "x0": 1208,
+     "y0": 364,
+     "x1": 1672,
+     "y1": 896
+    },
+    {
+     "qa": "personaje",
+     "nombre": "MICHI",
+     "x0": 1360,
+     "x1": 1590,
+     "y0": 420,
+     "y1": 820
+    }
+   ]
+  },
+  {
+   "n": 22,
+   "t": 263.7,
+   "etiqueta": null,
+   "rango": "4:10–4:24",
+   "michi": "confianza 2",
+   "archivo": "bloque_22.png",
+   "cajas": [
+    {
+     "qa": "texto",
+     "nombre": "cabecera",
+     "x0": 96,
+     "y0": 56,
+     "x1": 451,
+     "y1": 116
+    },
+    {
+     "qa": "personaje",
+     "nombre": "bosco",
+     "x0": 198,
+     "y0": 509,
+     "x1": 365,
+     "y1": 820
+    },
+    {
+     "qa": "objeto",
+     "nombre": "bosco_objeto",
+     "x0": 340,
+     "y0": 600,
+     "x1": 480,
+     "y1": 830
+    },
+    {
+     "qa": "texto",
+     "nombre": "lista en orden",
+     "x0": 97,
+     "y0": 171,
+     "x1": 655,
+     "y1": 423
+    },
+    {
+     "qa": "texto",
+     "nombre": "Lo necesito este año → ahorro",
+     "x0": 833,
+     "y0": 180,
+     "x1": 1444,
+     "y1": 232
+    },
+    {
+     "qa": "texto",
+     "nombre": "No lo toco en años → puede invertirse",
+     "x0": 833,
+     "y0": 251,
+     "x1": 1593,
+     "y1": 303
+    },
+    {
+     "qa": "michi-host",
+     "nombre": "",
+     "x0": 1208,
+     "y0": 364,
+     "x1": 1672,
+     "y1": 896
+    },
+    {
+     "qa": "personaje",
+     "nombre": "MICHI",
+     "x0": 1360,
+     "x1": 1590,
+     "y0": 420,
+     "y1": 820
+    }
+   ]
+  },
+  {
+   "n": 23,
+   "t": 275.7,
+   "etiqueta": "¡OJO!",
+   "rango": "4:24–4:36",
+   "michi": "duda 2",
+   "archivo": "bloque_23.png",
+   "cajas": [
+    {
+     "qa": "texto",
+     "nombre": "cabecera",
+     "x0": 96,
+     "y0": 56,
+     "x1": 451,
+     "y1": 116
+    },
+    {
+     "qa": "personaje",
+     "nombre": "bosco",
+     "x0": 198,
+     "y0": 509,
+     "x1": 365,
+     "y1": 820
+    },
+    {
+     "qa": "objeto",
+     "nombre": "bosco_objeto",
+     "x0": 340,
+     "y0": 600,
+     "x1": 480,
+     "y1": 830
+    },
+    {
+     "qa": "personaje",
+     "nombre": "tigrillo",
+     "x0": 638,
+     "y0": 509,
+     "x1": 805,
+     "y1": 820
+    },
+    {
+     "qa": "objeto",
+     "nombre": "tigrillo_objeto",
+     "x0": 780,
+     "y0": 600,
+     "x1": 920,
+     "y1": 830
+    },
+    {
+     "qa": "texto",
+     "nombre": "Ejemplos",
+     "x0": 96,
+     "y0": 132,
+     "x1": 419,
+     "y1": 267
+    },
+    {
+     "qa": "texto",
+     "nombre": "caja ¡OJO!",
+     "x0": 132,
+     "y0": 286,
+     "x1": 880,
+     "y1": 478
+    },
+    {
+     "qa": "michi-host",
+     "nombre": "",
+     "x0": 1208,
+     "y0": 364,
+     "x1": 1672,
+     "y1": 896
+    },
+    {
+     "qa": "personaje",
+     "nombre": "MICHI",
+     "x0": 1360,
+     "x1": 1590,
+     "y0": 420,
+     "y1": 820
+    }
+   ]
+  },
+  {
+   "n": 24,
+   "t": 284.7,
+   "etiqueta": "MOMENTO FUERTE",
+   "rango": "4:36–4:45",
+   "michi": "curiosidad 2",
+   "archivo": "bloque_24.png",
+   "cajas": [
+    {
+     "qa": "texto",
+     "nombre": "cabecera",
+     "x0": 96,
+     "y0": 56,
+     "x1": 451,
+     "y1": 116
+    },
+    {
+     "qa": "linea",
+     "nombre": "división",
+     "x0": 960,
+     "y0": 150,
+     "x1": 961,
+     "y1": 820
+    },
+    {
+     "qa": "texto",
+     "nombre": "Al revés",
+     "x0": 96,
+     "y0": 152,
+     "x1": 259,
+     "y1": 200
+    },
+    {
+     "qa": "texto",
+     "nombre": "En orden",
+     "x0": 1000,
+     "y0": 152,
+     "x1": 1182,
+     "y1": 200
+    },
+    {
+     "qa": "personaje",
+     "nombre": "tigrillo",
+     "x0": 158,
+     "y0": 509,
+     "x1": 325,
+     "y1": 820
+    },
+    {
+     "qa": "objeto",
+     "nombre": "tigrillo_objeto",
+     "x0": 300,
+     "y0": 600,
+     "x1": 440,
+     "y1": 830
+    },
+    {
+     "qa": "objeto",
+     "nombre": "maceta grande",
+     "x0": 456,
+     "y0": 380,
+     "x1": 736,
+     "y1": 840
+    },
+    {
+     "qa": "objeto",
+     "nombre": "tarjeta partida",
+     "x0": 980,
+     "y0": 600,
+     "x1": 1120,
+     "y1": 830
+    },
+    {
+     "qa": "objeto",
+     "nombre": "frasco lleno",
+     "x0": 1060,
+     "y0": 600,
+     "x1": 1200,
+     "y1": 830
+    },
+    {
+     "qa": "objeto",
+     "nombre": "maceta chica",
+     "x0": 1150,
+     "y0": 600,
+     "x1": 1290,
+     "y1": 830
+    },
+    {
+     "qa": "michi-host",
+     "nombre": "",
+     "x0": 1208,
+     "y0": 364,
+     "x1": 1672,
+     "y1": 896
+    },
+    {
+     "qa": "personaje",
+     "nombre": "MICHI",
+     "x0": 1360,
+     "x1": 1590,
+     "y0": 420,
+     "y1": 820
+    }
+   ]
+  },
+  {
+   "n": 25,
+   "t": 296.7,
+   "etiqueta": null,
+   "rango": "4:45–4:57",
+   "michi": "sorpresa 2",
+   "archivo": "bloque_25.png",
+   "cajas": [
+    {
+     "qa": "texto",
+     "nombre": "cabecera",
+     "x0": 96,
+     "y0": 56,
+     "x1": 451,
+     "y1": 116
+    },
+    {
+     "qa": "linea",
+     "nombre": "división",
+     "x0": 960,
+     "y0": 150,
+     "x1": 961,
+     "y1": 820
+    },
+    {
+     "qa": "texto",
+     "nombre": "Al revés",
+     "x0": 96,
+     "y0": 152,
+     "x1": 259,
+     "y1": 200
+    },
+    {
+     "qa": "texto",
+     "nombre": "En orden",
+     "x0": 1000,
+     "y0": 152,
+     "x1": 1182,
+     "y1": 200
+    },
+    {
+     "qa": "personaje",
+     "nombre": "tigrillo",
+     "x0": 158,
+     "y0": 509,
+     "x1": 325,
+     "y1": 820
+    },
+    {
+     "qa": "objeto",
+     "nombre": "tigrillo_objeto",
+     "x0": 300,
+     "y0": 600,
+     "x1": 440,
+     "y1": 830
+    },
+    {
+     "qa": "objeto",
+     "nombre": "maceta grande",
+     "x0": 456,
+     "y0": 380,
+     "x1": 736,
+     "y1": 840
+    },
+    {
+     "qa": "objeto",
+     "nombre": "tarjeta partida",
+     "x0": 980,
+     "y0": 600,
+     "x1": 1120,
+     "y1": 830
+    },
+    {
+     "qa": "objeto",
+     "nombre": "frasco lleno",
+     "x0": 1060,
+     "y0": 600,
+     "x1": 1200,
+     "y1": 830
+    },
+    {
+     "qa": "objeto",
+     "nombre": "maceta chica",
+     "x0": 1150,
+     "y0": 600,
+     "x1": 1290,
+     "y1": 830
+    },
+    {
+     "qa": "texto",
+     "nombre": "4,000 − 6,000 =",
+     "x0": 96,
+     "y0": 232,
+     "x1": 761,
+     "y1": 388
+    },
+    {
+     "qa": "texto",
+     "nombre": "−2,000",
+     "x0": 96,
+     "y0": 352,
+     "x1": 400,
+     "y1": 508
+    },
+    {
+     "qa": "objeto",
+     "nombre": "frasco vacío",
+     "x0": 700,
+     "y0": 600,
+     "x1": 840,
+     "y1": 830
+    },
+    {
+     "qa": "texto",
+     "nombre": "pie",
+     "x0": 96,
+     "y0": 998,
+     "x1": 404,
+     "y1": 1022
+    },
+    {
+     "qa": "michi-host",
+     "nombre": "",
+     "x0": 1208,
+     "y0": 364,
+     "x1": 1672,
+     "y1": 896
+    },
+    {
+     "qa": "personaje",
+     "nombre": "MICHI",
+     "x0": 1360,
+     "x1": 1590,
+     "y0": 420,
+     "y1": 820
+    }
+   ]
+  },
+  {
+   "n": 26,
+   "t": 306.7,
+   "etiqueta": null,
+   "rango": "4:57–5:07",
+   "michi": "alivio 2",
+   "archivo": "bloque_26.png",
+   "cajas": [
+    {
+     "qa": "texto",
+     "nombre": "cabecera",
+     "x0": 96,
+     "y0": 56,
+     "x1": 451,
+     "y1": 116
+    },
+    {
+     "qa": "linea",
+     "nombre": "división",
+     "x0": 960,
+     "y0": 150,
+     "x1": 961,
+     "y1": 820
+    },
+    {
+     "qa": "texto",
+     "nombre": "Al revés",
+     "x0": 96,
+     "y0": 152,
+     "x1": 259,
+     "y1": 200
+    },
+    {
+     "qa": "texto",
+     "nombre": "En orden",
+     "x0": 1000,
+     "y0": 152,
+     "x1": 1182,
+     "y1": 200
+    },
+    {
+     "qa": "personaje",
+     "nombre": "tigrillo",
+     "x0": 158,
+     "y0": 509,
+     "x1": 325,
+     "y1": 820
+    },
+    {
+     "qa": "objeto",
+     "nombre": "tigrillo_objeto",
+     "x0": 300,
+     "y0": 600,
+     "x1": 440,
+     "y1": 830
+    },
+    {
+     "qa": "objeto",
+     "nombre": "maceta grande",
+     "x0": 456,
+     "y0": 380,
+     "x1": 736,
+     "y1": 840
+    },
+    {
+     "qa": "objeto",
+     "nombre": "tarjeta partida",
+     "x0": 980,
+     "y0": 600,
+     "x1": 1120,
+     "y1": 830
+    },
+    {
+     "qa": "objeto",
+     "nombre": "frasco lleno",
+     "x0": 1060,
+     "y0": 600,
+     "x1": 1200,
+     "y1": 830
+    },
+    {
+     "qa": "objeto",
+     "nombre": "maceta chica",
+     "x0": 1150,
+     "y0": 600,
+     "x1": 1290,
+     "y1": 830
+    },
+    {
+     "qa": "texto",
+     "nombre": "4,000 − 6,000 =",
+     "x0": 96,
+     "y0": 232,
+     "x1": 761,
+     "y1": 388
+    },
+    {
+     "qa": "texto",
+     "nombre": "−2,000",
+     "x0": 96,
+     "y0": 352,
+     "x1": 400,
+     "y1": 508
+    },
+    {
+     "qa": "objeto",
+     "nombre": "frasco vacío",
+     "x0": 700,
+     "y0": 600,
+     "x1": 840,
+     "y1": 830
+    },
+    {
+     "qa": "texto",
+     "nombre": "+800",
+     "x0": 1000,
+     "y0": 232,
+     "x1": 1226,
+     "y1": 388
+    },
+    {
+     "qa": "texto",
+     "nombre": "Sin deuda ·Colchón 30,000",
+     "x0": 1000,
+     "y0": 392,
+     "x1": 1319,
+     "y1": 492
+    },
+    {
+     "qa": "texto",
+     "nombre": "pie",
+     "x0": 96,
+     "y0": 998,
+     "x1": 404,
+     "y1": 1022
+    },
+    {
+     "qa": "michi-host",
+     "nombre": "",
+     "x0": 1208,
+     "y0": 364,
+     "x1": 1672,
+     "y1": 896
+    },
+    {
+     "qa": "personaje",
+     "nombre": "MICHI",
+     "x0": 1360,
+     "x1": 1590,
+     "y0": 420,
+     "y1": 820
+    }
+   ]
+  },
+  {
+   "n": 27,
+   "t": 310.7,
+   "etiqueta": null,
+   "rango": "5:07–5:11",
+   "michi": "confianza 2",
+   "archivo": "bloque_27.png",
+   "cajas": [
+    {
+     "qa": "texto",
+     "nombre": "cabecera",
+     "x0": 96,
+     "y0": 56,
+     "x1": 451,
+     "y1": 116
+    },
+    {
+     "qa": "texto",
+     "nombre": "50,000 ÷ 10,000 = 5",
+     "x0": 560,
+     "y0": 202,
+     "x1": 1384,
+     "y1": 358
+    },
+    {
+     "qa": "michi-host",
+     "nombre": "",
+     "x0": 1208,
+     "y0": 364,
+     "x1": 1672,
+     "y1": 896
+    },
+    {
+     "qa": "personaje",
+     "nombre": "MICHI",
+     "x0": 1360,
+     "x1": 1590,
+     "y0": 420,
+     "y1": 820
+    }
+   ]
+  },
+  {
+   "n": 28,
+   "t": 319.7,
+   "etiqueta": "PETRÓLEO",
+   "rango": "5:11–5:20",
+   "michi": "— (sin MICHI)",
+   "archivo": "bloque_28.png",
+   "cajas": [
+    {
+     "qa": "texto",
+     "nombre": "cabecera",
+     "x0": 96,
+     "y0": 56,
+     "x1": 451,
+     "y1": 116
+    },
+    {
+     "qa": "texto",
+     "nombre": "frase petróleo 1",
+     "x0": 96,
+     "y0": 282,
+     "x1": 935,
+     "y1": 417
+    },
+    {
+     "qa": "texto",
+     "nombre": "Luego lo que te cuida.",
+     "x0": 96,
+     "y0": 394,
+     "x1": 854,
+     "y1": 529
+    },
+    {
+     "qa": "texto",
+     "nombre": "Al final, lo que crece.",
+     "x0": 96,
+     "y0": 506,
+     "x1": 818,
+     "y1": 641
+    }
+   ]
+  },
+  {
+   "n": 29,
+   "t": 345.7,
+   "etiqueta": "LAS 3 IDEAS",
+   "rango": "5:20–5:46",
+   "michi": "satisfaccion 2",
+   "archivo": "bloque_29.png",
+   "cajas": [
+    {
+     "qa": "texto",
+     "nombre": "cabecera",
+     "x0": 96,
+     "y0": 56,
+     "x1": 451,
+     "y1": 116
+    },
+    {
+     "qa": "texto",
+     "nombre": "1.Paga la deuda cara",
+     "x0": 96,
+     "y0": 195,
+     "x1": 628,
+     "y1": 322
+    },
+    {
+     "qa": "texto",
+     "nombre": "2.Junta tu fondo de emergencia",
+     "x0": 96,
+     "y0": 345,
+     "x1": 857,
+     "y1": 472
+    },
+    {
+     "qa": "texto",
+     "nombre": "3.Lo que no tocarás en años, a crecer",
+     "x0": 96,
+     "y0": 495,
+     "x1": 965,
+     "y1": 622
+    },
+    {
+     "qa": "michi-host",
+     "nombre": "",
+     "x0": 1208,
+     "y0": 364,
+     "x1": 1672,
+     "y1": 896
+    },
+    {
+     "qa": "personaje",
+     "nombre": "MICHI",
+     "x0": 1360,
+     "x1": 1590,
+     "y0": 420,
+     "y1": 820
+    }
+   ]
+  },
+  {
+   "n": 30,
+   "t": 357.9,
+   "etiqueta": "TARJETA FINAL",
+   "rango": "5:46–5:58",
+   "michi": "tranquilidad 2",
+   "archivo": "bloque_30.png",
+   "cajas": [
+    {
+     "qa": "texto",
+     "nombre": "cabecera",
+     "x0": 96,
+     "y0": 56,
+     "x1": 451,
+     "y1": 116
+    },
+    {
+     "qa": "texto",
+     "nombre": "Pon tu dineroen orden.",
+     "x0": 96,
+     "y0": 132,
+     "x1": 575,
+     "y1": 367
+    },
+    {
+     "qa": "texto",
+     "nombre": "@omar.vizu",
+     "x0": 120,
+     "y0": 379,
+     "x1": 411,
+     "y1": 436
+    },
+    {
+     "qa": "objeto",
+     "nombre": "QR",
+     "x0": 96,
+     "y0": 470,
+     "x1": 456,
+     "y1": 830
+    },
+    {
+     "qa": "texto",
+     "nombre": "Escanea para ir a Instagram",
+     "x0": 96,
+     "y0": 847,
+     "x1": 450,
+     "y1": 878
+    },
+    {
+     "qa": "michi-host",
+     "nombre": "",
+     "x0": 408,
+     "y0": 364,
+     "x1": 872,
+     "y1": 896
+    },
+    {
+     "qa": "personaje",
+     "nombre": "MICHI",
+     "x0": 560,
+     "x1": 790,
+     "y0": 420,
+     "y1": 820
+    }
+   ]
+  }
+ ]
+}

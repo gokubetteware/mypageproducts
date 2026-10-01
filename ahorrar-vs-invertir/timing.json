@@ -1,0 +1,6724 @@
+{
+ "estado": "ESTIMADO, sin audio real",
+ "nota": "Tiempos de bloque tomados de la columna «Tiempo» del guion; tiempos de palabra repartidos dentro de cada grupo de subtitulos_prueba.json (~150 palabras por minuto con pausas). Se reemplaza al transcribir la voz real.",
+ "fps": 30,
+ "duracion": 358.2,
+ "bloques": [
+  {
+   "n": 1,
+   "etiqueta": "GANCHO",
+   "t_in": 0,
+   "t_out": 10,
+   "palabras": 25
+  },
+  {
+   "n": 2,
+   "etiqueta": null,
+   "t_in": 10,
+   "t_out": 18,
+   "palabras": 18
+  },
+  {
+   "n": 3,
+   "etiqueta": null,
+   "t_in": 18,
+   "t_out": 29,
+   "palabras": 27
+  },
+  {
+   "n": 4,
+   "etiqueta": "PLANTEAR LA CUENTA",
+   "t_in": 29,
+   "t_out": 52,
+   "palabras": 54
+  },
+  {
+   "n": 5,
+   "etiqueta": "IDEA 1",
+   "t_in": 52,
+   "t_out": 69,
+   "palabras": 41
+  },
+  {
+   "n": 6,
+   "etiqueta": null,
+   "t_in": 69,
+   "t_out": 77,
+   "palabras": 18
+  },
+  {
+   "n": 7,
+   "etiqueta": null,
+   "t_in": 77,
+   "t_out": 82,
+   "palabras": 6
+  },
+  {
+   "n": 8,
+   "etiqueta": null,
+   "t_in": 82,
+   "t_out": 96,
+   "palabras": 37
+  },
+  {
+   "n": 9,
+   "etiqueta": null,
+   "t_in": 96,
+   "t_out": 103,
+   "palabras": 14
+  },
+  {
+   "n": 10,
+   "etiqueta": null,
+   "t_in": 103,
+   "t_out": 117,
+   "palabras": 31
+  },
+  {
+   "n": 11,
+   "etiqueta": "RE-ENGANCHE 1",
+   "t_in": 117,
+   "t_out": 130,
+   "palabras": 30
+  },
+  {
+   "n": 12,
+   "etiqueta": "IDEA 2",
+   "t_in": 130,
+   "t_out": 139,
+   "palabras": 20
+  },
+  {
+   "n": 13,
+   "etiqueta": null,
+   "t_in": 139,
+   "t_out": 152,
+   "palabras": 32
+  },
+  {
+   "n": 14,
+   "etiqueta": null,
+   "t_in": 152,
+   "t_out": 162,
+   "palabras": 18
+  },
+  {
+   "n": 15,
+   "etiqueta": null,
+   "t_in": 162,
+   "t_out": 172,
+   "palabras": 23
+  },
+  {
+   "n": 16,
+   "etiqueta": null,
+   "t_in": 172,
+   "t_out": 190,
+   "palabras": 43
+  },
+  {
+   "n": 17,
+   "etiqueta": "RE-ENGANCHE 2",
+   "t_in": 190,
+   "t_out": 205,
+   "palabras": 37
+  },
+  {
+   "n": 18,
+   "etiqueta": "IDEA 3",
+   "t_in": 205,
+   "t_out": 213,
+   "palabras": 19
+  },
+  {
+   "n": 19,
+   "etiqueta": null,
+   "t_in": 213,
+   "t_out": 224,
+   "palabras": 25
+  },
+  {
+   "n": 20,
+   "etiqueta": null,
+   "t_in": 224,
+   "t_out": 243,
+   "palabras": 49
+  },
+  {
+   "n": 21,
+   "etiqueta": null,
+   "t_in": 243,
+   "t_out": 250,
+   "palabras": 11
+  },
+  {
+   "n": 22,
+   "etiqueta": null,
+   "t_in": 250,
+   "t_out": 264,
+   "palabras": 35
+  },
+  {
+   "n": 23,
+   "etiqueta": "¡OJO!",
+   "t_in": 264,
+   "t_out": 276,
+   "palabras": 29
+  },
+  {
+   "n": 24,
+   "etiqueta": "MOMENTO FUERTE",
+   "t_in": 276,
+   "t_out": 285,
+   "palabras": 21
+  },
+  {
+   "n": 25,
+   "etiqueta": null,
+   "t_in": 285,
+   "t_out": 297,
+   "palabras": 29
+  },
+  {
+   "n": 26,
+   "etiqueta": null,
+   "t_in": 297,
+   "t_out": 307,
+   "palabras": 19
+  },
+  {
+   "n": 27,
+   "etiqueta": null,
+   "t_in": 307,
+   "t_out": 311,
+   "palabras": 7
+  },
+  {
+   "n": 28,
+   "etiqueta": "PETRÓLEO",
+   "t_in": 311,
+   "t_out": 320,
+   "palabras": 15
+  },
+  {
+   "n": 29,
+   "etiqueta": "LAS 3 IDEAS",
+   "t_in": 320,
+   "t_out": 346,
+   "palabras": 63
+  },
+  {
+   "n": 30,
+   "etiqueta": "TARJETA FINAL",
+   "t_in": 346,
+   "t_out": 358.2,
+   "palabras": 17
+  }
+ ],
+ "palabras": [
+  {
+   "w": "Juntaste",
+   "k": "juntaste",
+   "bloque": 1,
+   "grupo": 1,
+   "t0": 0,
+   "t1": 0.581
+  },
+  {
+   "w": "cincuenta",
+   "k": "cincuenta",
+   "bloque": 1,
+   "grupo": 1,
+   "t0": 0.581,
+   "t1": 1.226
+  },
+  {
+   "w": "mil",
+   "k": "mil",
+   "bloque": 1,
+   "grupo": 1,
+   "t0": 1.226,
+   "t1": 1.484
+  },
+  {
+   "w": "pesos,",
+   "k": "pesos",
+   "bloque": 1,
+   "grupo": 1,
+   "t0": 1.484,
+   "t1": 1.935
+  },
+  {
+   "w": "entre",
+   "k": "entre",
+   "bloque": 1,
+   "grupo": 1,
+   "t0": 1.935,
+   "t1": 2.323
+  },
+  {
+   "w": "el",
+   "k": "el",
+   "bloque": 1,
+   "grupo": 1,
+   "t0": 2.323,
+   "t1": 2.516
+  },
+  {
+   "w": "aguinaldo",
+   "k": "aguinaldo",
+   "bloque": 1,
+   "grupo": 1,
+   "t0": 2.516,
+   "t1": 3.161
+  },
+  {
+   "w": "y",
+   "k": "y",
+   "bloque": 1,
+   "grupo": 1,
+   "t0": 3.161,
+   "t1": 3.29
+  },
+  {
+   "w": "una",
+   "k": "una",
+   "bloque": 1,
+   "grupo": 1,
+   "t0": 3.29,
+   "t1": 3.548
+  },
+  {
+   "w": "tanda.",
+   "k": "tanda",
+   "bloque": 1,
+   "grupo": 1,
+   "t0": 3.548,
+   "t1": 4
+  },
+  {
+   "w": "Y",
+   "k": "y",
+   "bloque": 1,
+   "grupo": 2,
+   "t0": 4.3,
+   "t1": 4.448
+  },
+  {
+   "w": "ahora",
+   "k": "ahora",
+   "bloque": 1,
+   "grupo": 2,
+   "t0": 4.448,
+   "t1": 4.893
+  },
+  {
+   "w": "viene",
+   "k": "viene",
+   "bloque": 1,
+   "grupo": 2,
+   "t0": 4.893,
+   "t1": 5.338
+  },
+  {
+   "w": "la",
+   "k": "la",
+   "bloque": 1,
+   "grupo": 2,
+   "t0": 5.338,
+   "t1": 5.56
+  },
+  {
+   "w": "pregunta",
+   "k": "pregunta",
+   "bloque": 1,
+   "grupo": 2,
+   "t0": 5.56,
+   "t1": 6.228
+  },
+  {
+   "w": "que",
+   "k": "que",
+   "bloque": 1,
+   "grupo": 2,
+   "t0": 6.228,
+   "t1": 6.524
+  },
+  {
+   "w": "casi",
+   "k": "casi",
+   "bloque": 1,
+   "grupo": 2,
+   "t0": 6.524,
+   "t1": 6.895
+  },
+  {
+   "w": "todos",
+   "k": "todos",
+   "bloque": 1,
+   "grupo": 2,
+   "t0": 6.895,
+   "t1": 7.34
+  },
+  {
+   "w": "se",
+   "k": "se",
+   "bloque": 1,
+   "grupo": 3,
+   "t0": 7.34,
+   "t1": 7.527
+  },
+  {
+   "w": "hacen:",
+   "k": "hacen",
+   "bloque": 1,
+   "grupo": 3,
+   "t0": 7.527,
+   "t1": 7.962
+  },
+  {
+   "w": "¿primero",
+   "k": "primero",
+   "bloque": 1,
+   "grupo": 3,
+   "t0": 7.962,
+   "t1": 8.521
+  },
+  {
+   "w": "ahorro",
+   "k": "ahorro",
+   "bloque": 1,
+   "grupo": 3,
+   "t0": 8.521,
+   "t1": 8.957
+  },
+  {
+   "w": "o",
+   "k": "o",
+   "bloque": 1,
+   "grupo": 3,
+   "t0": 8.957,
+   "t1": 9.081
+  },
+  {
+   "w": "primero",
+   "k": "primero",
+   "bloque": 1,
+   "grupo": 3,
+   "t0": 9.081,
+   "t1": 9.578
+  },
+  {
+   "w": "invierto?",
+   "k": "invierto",
+   "bloque": 1,
+   "grupo": 3,
+   "t0": 9.578,
+   "t1": 10.2
+  },
+  {
+   "w": "Uno",
+   "k": "uno",
+   "bloque": 2,
+   "grupo": 4,
+   "t0": 10.5,
+   "t1": 10.851
+  },
+  {
+   "w": "te",
+   "k": "te",
+   "bloque": 2,
+   "grupo": 4,
+   "t0": 10.851,
+   "t1": 11.113
+  },
+  {
+   "w": "dice:",
+   "k": "dice",
+   "bloque": 2,
+   "grupo": 4,
+   "t0": 11.113,
+   "t1": 11.639
+  },
+  {
+   "w": "guárdalo",
+   "k": "guardalo",
+   "bloque": 2,
+   "grupo": 4,
+   "t0": 11.639,
+   "t1": 12.428
+  },
+  {
+   "w": "y",
+   "k": "y",
+   "bloque": 2,
+   "grupo": 4,
+   "t0": 12.428,
+   "t1": 12.603
+  },
+  {
+   "w": "no",
+   "k": "no",
+   "bloque": 2,
+   "grupo": 4,
+   "t0": 12.603,
+   "t1": 12.866
+  },
+  {
+   "w": "lo",
+   "k": "lo",
+   "bloque": 2,
+   "grupo": 4,
+   "t0": 12.866,
+   "t1": 13.129
+  },
+  {
+   "w": "toques.",
+   "k": "toques",
+   "bloque": 2,
+   "grupo": 4,
+   "t0": 13.129,
+   "t1": 13.83
+  },
+  {
+   "w": "Otro",
+   "k": "otro",
+   "bloque": 2,
+   "grupo": 5,
+   "t0": 13.83,
+   "t1": 14.235
+  },
+  {
+   "w": "te",
+   "k": "te",
+   "bloque": 2,
+   "grupo": 5,
+   "t0": 14.235,
+   "t1": 14.477
+  },
+  {
+   "w": "dice:",
+   "k": "dice",
+   "bloque": 2,
+   "grupo": 5,
+   "t0": 14.477,
+   "t1": 14.963
+  },
+  {
+   "w": "si",
+   "k": "si",
+   "bloque": 2,
+   "grupo": 5,
+   "t0": 14.963,
+   "t1": 15.206
+  },
+  {
+   "w": "no",
+   "k": "no",
+   "bloque": 2,
+   "grupo": 5,
+   "t0": 15.206,
+   "t1": 15.449
+  },
+  {
+   "w": "lo",
+   "k": "lo",
+   "bloque": 2,
+   "grupo": 5,
+   "t0": 15.449,
+   "t1": 15.691
+  },
+  {
+   "w": "inviertes,",
+   "k": "inviertes",
+   "bloque": 2,
+   "grupo": 5,
+   "t0": 15.691,
+   "t1": 16.581
+  },
+  {
+   "w": "lo",
+   "k": "lo",
+   "bloque": 2,
+   "grupo": 5,
+   "t0": 16.581,
+   "t1": 16.824
+  },
+  {
+   "w": "estás",
+   "k": "estas",
+   "bloque": 2,
+   "grupo": 5,
+   "t0": 16.824,
+   "t1": 17.31
+  },
+  {
+   "w": "perdiendo.",
+   "k": "perdiendo",
+   "bloque": 2,
+   "grupo": 5,
+   "t0": 17.31,
+   "t1": 18.2
+  },
+  {
+   "w": "Los",
+   "k": "los",
+   "bloque": 3,
+   "grupo": 6,
+   "t0": 18.5,
+   "t1": 18.811
+  },
+  {
+   "w": "dos",
+   "k": "dos",
+   "bloque": 3,
+   "grupo": 6,
+   "t0": 18.811,
+   "t1": 19.121
+  },
+  {
+   "w": "tienen",
+   "k": "tienen",
+   "bloque": 3,
+   "grupo": 6,
+   "t0": 19.121,
+   "t1": 19.665
+  },
+  {
+   "w": "algo",
+   "k": "algo",
+   "bloque": 3,
+   "grupo": 6,
+   "t0": 19.665,
+   "t1": 20.053
+  },
+  {
+   "w": "de",
+   "k": "de",
+   "bloque": 3,
+   "grupo": 6,
+   "t0": 20.053,
+   "t1": 20.286
+  },
+  {
+   "w": "razón.",
+   "k": "razon",
+   "bloque": 3,
+   "grupo": 6,
+   "t0": 20.286,
+   "t1": 20.83
+  },
+  {
+   "w": "Pero",
+   "k": "pero",
+   "bloque": 3,
+   "grupo": 7,
+   "t0": 20.83,
+   "t1": 21.207
+  },
+  {
+   "w": "ninguno",
+   "k": "ninguno",
+   "bloque": 3,
+   "grupo": 7,
+   "t0": 21.207,
+   "t1": 21.811
+  },
+  {
+   "w": "te",
+   "k": "te",
+   "bloque": 3,
+   "grupo": 7,
+   "t0": 21.811,
+   "t1": 22.038
+  },
+  {
+   "w": "dice",
+   "k": "dice",
+   "bloque": 3,
+   "grupo": 7,
+   "t0": 22.038,
+   "t1": 22.415
+  },
+  {
+   "w": "el",
+   "k": "el",
+   "bloque": 3,
+   "grupo": 7,
+   "t0": 22.415,
+   "t1": 22.642
+  },
+  {
+   "w": "orden.",
+   "k": "orden",
+   "bloque": 3,
+   "grupo": 7,
+   "t0": 22.642,
+   "t1": 23.17
+  },
+  {
+   "w": "Al",
+   "k": "al",
+   "bloque": 3,
+   "grupo": 8,
+   "t0": 23.17,
+   "t1": 23.462
+  },
+  {
+   "w": "final",
+   "k": "final",
+   "bloque": 3,
+   "grupo": 8,
+   "t0": 23.462,
+   "t1": 24.045
+  },
+  {
+   "w": "de",
+   "k": "de",
+   "bloque": 3,
+   "grupo": 8,
+   "t0": 24.045,
+   "t1": 24.336
+  },
+  {
+   "w": "este",
+   "k": "este",
+   "bloque": 3,
+   "grupo": 8,
+   "t0": 24.336,
+   "t1": 24.822
+  },
+  {
+   "w": "video",
+   "k": "video",
+   "bloque": 3,
+   "grupo": 8,
+   "t0": 24.822,
+   "t1": 25.405
+  },
+  {
+   "w": "lo",
+   "k": "lo",
+   "bloque": 3,
+   "grupo": 8,
+   "t0": 25.405,
+   "t1": 25.697
+  },
+  {
+   "w": "vas",
+   "k": "vas",
+   "bloque": 3,
+   "grupo": 8,
+   "t0": 25.697,
+   "t1": 26.086
+  },
+  {
+   "w": "a",
+   "k": "a",
+   "bloque": 3,
+   "grupo": 8,
+   "t0": 26.086,
+   "t1": 26.28
+  },
+  {
+   "w": "decidir",
+   "k": "decidir",
+   "bloque": 3,
+   "grupo": 9,
+   "t0": 26.28,
+   "t1": 26.798
+  },
+  {
+   "w": "tú,",
+   "k": "tu",
+   "bloque": 3,
+   "grupo": 9,
+   "t0": 26.798,
+   "t1": 27.057
+  },
+  {
+   "w": "con",
+   "k": "con",
+   "bloque": 3,
+   "grupo": 9,
+   "t0": 27.057,
+   "t1": 27.316
+  },
+  {
+   "w": "tres",
+   "k": "tres",
+   "bloque": 3,
+   "grupo": 9,
+   "t0": 27.316,
+   "t1": 27.64
+  },
+  {
+   "w": "cuentas",
+   "k": "cuentas",
+   "bloque": 3,
+   "grupo": 9,
+   "t0": 27.64,
+   "t1": 28.158
+  },
+  {
+   "w": "de",
+   "k": "de",
+   "bloque": 3,
+   "grupo": 9,
+   "t0": 28.158,
+   "t1": 28.352
+  },
+  {
+   "w": "primaria.",
+   "k": "primaria",
+   "bloque": 3,
+   "grupo": 9,
+   "t0": 28.352,
+   "t1": 29
+  },
+  {
+   "w": "Antes",
+   "k": "antes",
+   "bloque": 4,
+   "grupo": 10,
+   "t0": 29,
+   "t1": 29.398
+  },
+  {
+   "w": "que",
+   "k": "que",
+   "bloque": 4,
+   "grupo": 10,
+   "t0": 29.398,
+   "t1": 29.663
+  },
+  {
+   "w": "nada,",
+   "k": "nada",
+   "bloque": 4,
+   "grupo": 10,
+   "t0": 29.663,
+   "t1": 30.06
+  },
+  {
+   "w": "armemos",
+   "k": "armemos",
+   "bloque": 4,
+   "grupo": 10,
+   "t0": 30.06,
+   "t1": 30.591
+  },
+  {
+   "w": "el",
+   "k": "el",
+   "bloque": 4,
+   "grupo": 10,
+   "t0": 30.591,
+   "t1": 30.79
+  },
+  {
+   "w": "ejemplo,",
+   "k": "ejemplo",
+   "bloque": 4,
+   "grupo": 10,
+   "t0": 30.79,
+   "t1": 31.386
+  },
+  {
+   "w": "porque",
+   "k": "porque",
+   "bloque": 4,
+   "grupo": 10,
+   "t0": 31.386,
+   "t1": 31.85
+  },
+  {
+   "w": "lo",
+   "k": "lo",
+   "bloque": 4,
+   "grupo": 11,
+   "t0": 31.85,
+   "t1": 32.145
+  },
+  {
+   "w": "vamos",
+   "k": "vamos",
+   "bloque": 4,
+   "grupo": 11,
+   "t0": 32.145,
+   "t1": 32.735
+  },
+  {
+   "w": "a",
+   "k": "a",
+   "bloque": 4,
+   "grupo": 11,
+   "t0": 32.735,
+   "t1": 32.932
+  },
+  {
+   "w": "usar",
+   "k": "usar",
+   "bloque": 4,
+   "grupo": 11,
+   "t0": 32.932,
+   "t1": 33.424
+  },
+  {
+   "w": "todo",
+   "k": "todo",
+   "bloque": 4,
+   "grupo": 11,
+   "t0": 33.424,
+   "t1": 33.916
+  },
+  {
+   "w": "el",
+   "k": "el",
+   "bloque": 4,
+   "grupo": 11,
+   "t0": 33.916,
+   "t1": 34.211
+  },
+  {
+   "w": "video.",
+   "k": "video",
+   "bloque": 4,
+   "grupo": 11,
+   "t0": 34.211,
+   "t1": 34.9
+  },
+  {
+   "w": "Tienes",
+   "k": "tienes",
+   "bloque": 4,
+   "grupo": 12,
+   "t0": 35.2,
+   "t1": 35.608
+  },
+  {
+   "w": "cincuenta",
+   "k": "cincuenta",
+   "bloque": 4,
+   "grupo": 12,
+   "t0": 35.608,
+   "t1": 36.19
+  },
+  {
+   "w": "mil",
+   "k": "mil",
+   "bloque": 4,
+   "grupo": 12,
+   "t0": 36.19,
+   "t1": 36.422
+  },
+  {
+   "w": "pesos.",
+   "k": "pesos",
+   "bloque": 4,
+   "grupo": 12,
+   "t0": 36.422,
+   "t1": 36.83
+  },
+  {
+   "w": "Gastas",
+   "k": "gastas",
+   "bloque": 4,
+   "grupo": 13,
+   "t0": 36.83,
+   "t1": 37.314
+  },
+  {
+   "w": "diez",
+   "k": "diez",
+   "bloque": 4,
+   "grupo": 13,
+   "t0": 37.314,
+   "t1": 37.66
+  },
+  {
+   "w": "mil",
+   "k": "mil",
+   "bloque": 4,
+   "grupo": 13,
+   "t0": 37.66,
+   "t1": 37.936
+  },
+  {
+   "w": "al",
+   "k": "al",
+   "bloque": 4,
+   "grupo": 13,
+   "t0": 37.936,
+   "t1": 38.144
+  },
+  {
+   "w": "mes:",
+   "k": "mes",
+   "bloque": 4,
+   "grupo": 13,
+   "t0": 38.144,
+   "t1": 38.49
+  },
+  {
+   "w": "renta,",
+   "k": "renta",
+   "bloque": 4,
+   "grupo": 13,
+   "t0": 38.49,
+   "t1": 38.974
+  },
+  {
+   "w": "despensa,",
+   "k": "despensa",
+   "bloque": 4,
+   "grupo": 13,
+   "t0": 38.974,
+   "t1": 39.665
+  },
+  {
+   "w": "luz",
+   "k": "luz",
+   "bloque": 4,
+   "grupo": 13,
+   "t0": 39.665,
+   "t1": 39.942
+  },
+  {
+   "w": "y",
+   "k": "y",
+   "bloque": 4,
+   "grupo": 13,
+   "t0": 39.942,
+   "t1": 40.08
+  },
+  {
+   "w": "transporte.",
+   "k": "transporte",
+   "bloque": 4,
+   "grupo": 13,
+   "t0": 40.08,
+   "t1": 40.91
+  },
+  {
+   "w": "Y",
+   "k": "y",
+   "bloque": 4,
+   "grupo": 14,
+   "t0": 40.91,
+   "t1": 41.113
+  },
+  {
+   "w": "traes",
+   "k": "traes",
+   "bloque": 4,
+   "grupo": 14,
+   "t0": 41.113,
+   "t1": 41.723
+  },
+  {
+   "w": "una",
+   "k": "una",
+   "bloque": 4,
+   "grupo": 14,
+   "t0": 41.723,
+   "t1": 42.13
+  },
+  {
+   "w": "deuda",
+   "k": "deuda",
+   "bloque": 4,
+   "grupo": 14,
+   "t0": 42.13,
+   "t1": 42.74
+  },
+  {
+   "w": "en",
+   "k": "en",
+   "bloque": 4,
+   "grupo": 14,
+   "t0": 42.74,
+   "t1": 43.045
+  },
+  {
+   "w": "la",
+   "k": "la",
+   "bloque": 4,
+   "grupo": 14,
+   "t0": 43.045,
+   "t1": 43.35
+  },
+  {
+   "w": "tarjeta",
+   "k": "tarjeta",
+   "bloque": 4,
+   "grupo": 15,
+   "t0": 43.35,
+   "t1": 44.014
+  },
+  {
+   "w": "de",
+   "k": "de",
+   "bloque": 4,
+   "grupo": 15,
+   "t0": 44.014,
+   "t1": 44.263
+  },
+  {
+   "w": "diez",
+   "k": "diez",
+   "bloque": 4,
+   "grupo": 15,
+   "t0": 44.263,
+   "t1": 44.677
+  },
+  {
+   "w": "mil",
+   "k": "mil",
+   "bloque": 4,
+   "grupo": 15,
+   "t0": 44.677,
+   "t1": 45.009
+  },
+  {
+   "w": "pesos.",
+   "k": "pesos",
+   "bloque": 4,
+   "grupo": 15,
+   "t0": 45.009,
+   "t1": 45.59
+  },
+  {
+   "w": "Con",
+   "k": "con",
+   "bloque": 4,
+   "grupo": 16,
+   "t0": 45.89,
+   "t1": 46.193
+  },
+  {
+   "w": "eso",
+   "k": "eso",
+   "bloque": 4,
+   "grupo": 16,
+   "t0": 46.193,
+   "t1": 46.497
+  },
+  {
+   "w": "hacemos",
+   "k": "hacemos",
+   "bloque": 4,
+   "grupo": 16,
+   "t0": 46.497,
+   "t1": 47.103
+  },
+  {
+   "w": "tres",
+   "k": "tres",
+   "bloque": 4,
+   "grupo": 16,
+   "t0": 47.103,
+   "t1": 47.482
+  },
+  {
+   "w": "cuentas,",
+   "k": "cuentas",
+   "bloque": 4,
+   "grupo": 16,
+   "t0": 47.482,
+   "t1": 48.164
+  },
+  {
+   "w": "una",
+   "k": "una",
+   "bloque": 4,
+   "grupo": 16,
+   "t0": 48.164,
+   "t1": 48.468
+  },
+  {
+   "w": "por",
+   "k": "por",
+   "bloque": 4,
+   "grupo": 16,
+   "t0": 48.468,
+   "t1": 48.771
+  },
+  {
+   "w": "cada",
+   "k": "cada",
+   "bloque": 4,
+   "grupo": 16,
+   "t0": 48.771,
+   "t1": 49.15
+  },
+  {
+   "w": "cosa",
+   "k": "cosa",
+   "bloque": 4,
+   "grupo": 17,
+   "t0": 49.15,
+   "t1": 49.582
+  },
+  {
+   "w": "que",
+   "k": "que",
+   "bloque": 4,
+   "grupo": 17,
+   "t0": 49.582,
+   "t1": 49.927
+  },
+  {
+   "w": "hay",
+   "k": "hay",
+   "bloque": 4,
+   "grupo": 17,
+   "t0": 49.927,
+   "t1": 50.273
+  },
+  {
+   "w": "que",
+   "k": "que",
+   "bloque": 4,
+   "grupo": 17,
+   "t0": 50.273,
+   "t1": 50.618
+  },
+  {
+   "w": "poner",
+   "k": "poner",
+   "bloque": 4,
+   "grupo": 17,
+   "t0": 50.618,
+   "t1": 51.136
+  },
+  {
+   "w": "en",
+   "k": "en",
+   "bloque": 4,
+   "grupo": 17,
+   "t0": 51.136,
+   "t1": 51.395
+  },
+  {
+   "w": "orden.",
+   "k": "orden",
+   "bloque": 4,
+   "grupo": 17,
+   "t0": 51.395,
+   "t1": 52
+  },
+  {
+   "w": "Primero,",
+   "k": "primero",
+   "bloque": 5,
+   "grupo": 18,
+   "t0": 52,
+   "t1": 52.668
+  },
+  {
+   "w": "la",
+   "k": "la",
+   "bloque": 5,
+   "grupo": 18,
+   "t0": 52.668,
+   "t1": 52.891
+  },
+  {
+   "w": "deuda.",
+   "k": "deuda",
+   "bloque": 5,
+   "grupo": 18,
+   "t0": 52.891,
+   "t1": 53.41
+  },
+  {
+   "w": "La",
+   "k": "la",
+   "bloque": 5,
+   "grupo": 19,
+   "t0": 53.71,
+   "t1": 53.972
+  },
+  {
+   "w": "tarjeta",
+   "k": "tarjeta",
+   "bloque": 5,
+   "grupo": 19,
+   "t0": 53.972,
+   "t1": 54.671
+  },
+  {
+   "w": "te",
+   "k": "te",
+   "bloque": 5,
+   "grupo": 19,
+   "t0": 54.671,
+   "t1": 54.933
+  },
+  {
+   "w": "cobra",
+   "k": "cobra",
+   "bloque": 5,
+   "grupo": 19,
+   "t0": 54.933,
+   "t1": 55.458
+  },
+  {
+   "w": "por",
+   "k": "por",
+   "bloque": 5,
+   "grupo": 19,
+   "t0": 55.458,
+   "t1": 55.807
+  },
+  {
+   "w": "usar",
+   "k": "usar",
+   "bloque": 5,
+   "grupo": 19,
+   "t0": 55.807,
+   "t1": 56.244
+  },
+  {
+   "w": "dinero",
+   "k": "dinero",
+   "bloque": 5,
+   "grupo": 19,
+   "t0": 56.244,
+   "t1": 56.856
+  },
+  {
+   "w": "que",
+   "k": "que",
+   "bloque": 5,
+   "grupo": 19,
+   "t0": 56.856,
+   "t1": 57.206
+  },
+  {
+   "w": "no",
+   "k": "no",
+   "bloque": 5,
+   "grupo": 19,
+   "t0": 57.206,
+   "t1": 57.468
+  },
+  {
+   "w": "es",
+   "k": "es",
+   "bloque": 5,
+   "grupo": 19,
+   "t0": 57.468,
+   "t1": 57.73
+  },
+  {
+   "w": "tuyo,",
+   "k": "tuyo",
+   "bloque": 5,
+   "grupo": 20,
+   "t0": 57.73,
+   "t1": 58.234
+  },
+  {
+   "w": "y",
+   "k": "y",
+   "bloque": 5,
+   "grupo": 20,
+   "t0": 58.234,
+   "t1": 58.402
+  },
+  {
+   "w": "ese",
+   "k": "ese",
+   "bloque": 5,
+   "grupo": 20,
+   "t0": 58.402,
+   "t1": 58.738
+  },
+  {
+   "w": "cobro",
+   "k": "cobro",
+   "bloque": 5,
+   "grupo": 20,
+   "t0": 58.738,
+   "t1": 59.241
+  },
+  {
+   "w": "se",
+   "k": "se",
+   "bloque": 5,
+   "grupo": 20,
+   "t0": 59.241,
+   "t1": 59.493
+  },
+  {
+   "w": "mide",
+   "k": "mide",
+   "bloque": 5,
+   "grupo": 20,
+   "t0": 59.493,
+   "t1": 59.913
+  },
+  {
+   "w": "en",
+   "k": "en",
+   "bloque": 5,
+   "grupo": 20,
+   "t0": 59.913,
+   "t1": 60.165
+  },
+  {
+   "w": "porcentaje",
+   "k": "porcentaje",
+   "bloque": 5,
+   "grupo": 20,
+   "t0": 60.165,
+   "t1": 61.088
+  },
+  {
+   "w": "al",
+   "k": "al",
+   "bloque": 5,
+   "grupo": 20,
+   "t0": 61.088,
+   "t1": 61.34
+  },
+  {
+   "w": "año.",
+   "k": "ano",
+   "bloque": 5,
+   "grupo": 20,
+   "t0": 61.34,
+   "t1": 61.76
+  },
+  {
+   "w": "Digamos",
+   "k": "digamos",
+   "bloque": 5,
+   "grupo": 21,
+   "t0": 61.76,
+   "t1": 62.219
+  },
+  {
+   "w": "sesenta",
+   "k": "sesenta",
+   "bloque": 5,
+   "grupo": 21,
+   "t0": 62.219,
+   "t1": 62.678
+  },
+  {
+   "w": "por",
+   "k": "por",
+   "bloque": 5,
+   "grupo": 21,
+   "t0": 62.678,
+   "t1": 62.908
+  },
+  {
+   "w": "ciento,",
+   "k": "ciento",
+   "bloque": 5,
+   "grupo": 21,
+   "t0": 62.908,
+   "t1": 63.367
+  },
+  {
+   "w": "como",
+   "k": "como",
+   "bloque": 5,
+   "grupo": 21,
+   "t0": 63.367,
+   "t1": 63.654
+  },
+  {
+   "w": "ejemplo.",
+   "k": "ejemplo",
+   "bloque": 5,
+   "grupo": 21,
+   "t0": 63.654,
+   "t1": 64.17
+  },
+  {
+   "w": "Sesenta",
+   "k": "sesenta",
+   "bloque": 5,
+   "grupo": 22,
+   "t0": 64.17,
+   "t1": 64.654
+  },
+  {
+   "w": "por",
+   "k": "por",
+   "bloque": 5,
+   "grupo": 22,
+   "t0": 64.654,
+   "t1": 64.896
+  },
+  {
+   "w": "ciento",
+   "k": "ciento",
+   "bloque": 5,
+   "grupo": 22,
+   "t0": 64.896,
+   "t1": 65.32
+  },
+  {
+   "w": "quiere",
+   "k": "quiere",
+   "bloque": 5,
+   "grupo": 22,
+   "t0": 65.32,
+   "t1": 65.743
+  },
+  {
+   "w": "decir",
+   "k": "decir",
+   "bloque": 5,
+   "grupo": 22,
+   "t0": 65.743,
+   "t1": 66.106
+  },
+  {
+   "w": "sesenta",
+   "k": "sesenta",
+   "bloque": 5,
+   "grupo": 22,
+   "t0": 66.106,
+   "t1": 66.59
+  },
+  {
+   "w": "pesos",
+   "k": "pesos",
+   "bloque": 5,
+   "grupo": 23,
+   "t0": 66.59,
+   "t1": 67.095
+  },
+  {
+   "w": "por",
+   "k": "por",
+   "bloque": 5,
+   "grupo": 23,
+   "t0": 67.095,
+   "t1": 67.432
+  },
+  {
+   "w": "cada",
+   "k": "cada",
+   "bloque": 5,
+   "grupo": 23,
+   "t0": 67.432,
+   "t1": 67.853
+  },
+  {
+   "w": "cien",
+   "k": "cien",
+   "bloque": 5,
+   "grupo": 23,
+   "t0": 67.853,
+   "t1": 68.274
+  },
+  {
+   "w": "que",
+   "k": "que",
+   "bloque": 5,
+   "grupo": 23,
+   "t0": 68.274,
+   "t1": 68.611
+  },
+  {
+   "w": "debes.",
+   "k": "debes",
+   "bloque": 5,
+   "grupo": 23,
+   "t0": 68.611,
+   "t1": 69.2
+  },
+  {
+   "w": "Tú",
+   "k": "tu",
+   "bloque": 6,
+   "grupo": 24,
+   "t0": 69.5,
+   "t1": 69.764
+  },
+  {
+   "w": "debes",
+   "k": "debes",
+   "bloque": 6,
+   "grupo": 24,
+   "t0": 69.764,
+   "t1": 70.291
+  },
+  {
+   "w": "diez",
+   "k": "diez",
+   "bloque": 6,
+   "grupo": 24,
+   "t0": 70.291,
+   "t1": 70.731
+  },
+  {
+   "w": "mil.",
+   "k": "mil",
+   "bloque": 6,
+   "grupo": 24,
+   "t0": 70.731,
+   "t1": 71.17
+  },
+  {
+   "w": "Diez",
+   "k": "diez",
+   "bloque": 6,
+   "grupo": 25,
+   "t0": 71.17,
+   "t1": 71.587
+  },
+  {
+   "w": "mil",
+   "k": "mil",
+   "bloque": 6,
+   "grupo": 25,
+   "t0": 71.587,
+   "t1": 71.92
+  },
+  {
+   "w": "son",
+   "k": "son",
+   "bloque": 6,
+   "grupo": 25,
+   "t0": 71.92,
+   "t1": 72.253
+  },
+  {
+   "w": "cien",
+   "k": "cien",
+   "bloque": 6,
+   "grupo": 25,
+   "t0": 72.253,
+   "t1": 72.67
+  },
+  {
+   "w": "veces",
+   "k": "veces",
+   "bloque": 6,
+   "grupo": 25,
+   "t0": 72.67,
+   "t1": 73.17
+  },
+  {
+   "w": "cien.",
+   "k": "cien",
+   "bloque": 6,
+   "grupo": 25,
+   "t0": 73.17,
+   "t1": 73.67
+  },
+  {
+   "w": "Cien",
+   "k": "cien",
+   "bloque": 6,
+   "grupo": 26,
+   "t0": 73.67,
+   "t1": 74.08
+  },
+  {
+   "w": "veces",
+   "k": "veces",
+   "bloque": 6,
+   "grupo": 26,
+   "t0": 74.08,
+   "t1": 74.573
+  },
+  {
+   "w": "sesenta:",
+   "k": "sesenta",
+   "bloque": 6,
+   "grupo": 26,
+   "t0": 74.573,
+   "t1": 75.312
+  },
+  {
+   "w": "seis",
+   "k": "seis",
+   "bloque": 6,
+   "grupo": 26,
+   "t0": 75.312,
+   "t1": 75.722
+  },
+  {
+   "w": "mil",
+   "k": "mil",
+   "bloque": 6,
+   "grupo": 26,
+   "t0": 75.722,
+   "t1": 76.051
+  },
+  {
+   "w": "pesos",
+   "k": "pesos",
+   "bloque": 6,
+   "grupo": 26,
+   "t0": 76.051,
+   "t1": 76.543
+  },
+  {
+   "w": "al",
+   "k": "al",
+   "bloque": 6,
+   "grupo": 26,
+   "t0": 76.543,
+   "t1": 76.79
+  },
+  {
+   "w": "año.",
+   "k": "ano",
+   "bloque": 6,
+   "grupo": 26,
+   "t0": 76.79,
+   "t1": 77.2
+  },
+  {
+   "w": "Ese",
+   "k": "ese",
+   "bloque": 7,
+   "grupo": 27,
+   "t0": 77.5,
+   "t1": 77.784
+  },
+  {
+   "w": "porcentaje",
+   "k": "porcentaje",
+   "bloque": 7,
+   "grupo": 27,
+   "t0": 77.784,
+   "t1": 78.566
+  },
+  {
+   "w": "tiene",
+   "k": "tiene",
+   "bloque": 7,
+   "grupo": 27,
+   "t0": 78.566,
+   "t1": 78.992
+  },
+  {
+   "w": "nombre:",
+   "k": "nombre",
+   "bloque": 7,
+   "grupo": 27,
+   "t0": 78.992,
+   "t1": 79.561
+  },
+  {
+   "w": "la",
+   "k": "la",
+   "bloque": 7,
+   "grupo": 27,
+   "t0": 79.561,
+   "t1": 79.774
+  },
+  {
+   "w": "tasa.",
+   "k": "tasa",
+   "bloque": 7,
+   "grupo": 27,
+   "t0": 79.774,
+   "t1": 80.2
+  },
+  {
+   "w": "¿Y",
+   "k": "y",
+   "bloque": 8,
+   "grupo": 28,
+   "t0": 82,
+   "t1": 82.284
+  },
+  {
+   "w": "qué",
+   "k": "que",
+   "bloque": 8,
+   "grupo": 28,
+   "t0": 82.284,
+   "t1": 82.663
+  },
+  {
+   "w": "pasa",
+   "k": "pasa",
+   "bloque": 8,
+   "grupo": 28,
+   "t0": 82.663,
+   "t1": 83.137
+  },
+  {
+   "w": "si",
+   "k": "si",
+   "bloque": 8,
+   "grupo": 28,
+   "t0": 83.137,
+   "t1": 83.421
+  },
+  {
+   "w": "en",
+   "k": "en",
+   "bloque": 8,
+   "grupo": 28,
+   "t0": 83.421,
+   "t1": 83.705
+  },
+  {
+   "w": "lugar",
+   "k": "lugar",
+   "bloque": 8,
+   "grupo": 28,
+   "t0": 83.705,
+   "t1": 84.273
+  },
+  {
+   "w": "de",
+   "k": "de",
+   "bloque": 8,
+   "grupo": 28,
+   "t0": 84.273,
+   "t1": 84.557
+  },
+  {
+   "w": "pagar",
+   "k": "pagar",
+   "bloque": 8,
+   "grupo": 28,
+   "t0": 84.557,
+   "t1": 85.126
+  },
+  {
+   "w": "la",
+   "k": "la",
+   "bloque": 8,
+   "grupo": 28,
+   "t0": 85.126,
+   "t1": 85.41
+  },
+  {
+   "w": "tarjeta,",
+   "k": "tarjeta",
+   "bloque": 8,
+   "grupo": 29,
+   "t0": 85.41,
+   "t1": 86.014
+  },
+  {
+   "w": "metes",
+   "k": "metes",
+   "bloque": 8,
+   "grupo": 29,
+   "t0": 86.014,
+   "t1": 86.417
+  },
+  {
+   "w": "esos",
+   "k": "esos",
+   "bloque": 8,
+   "grupo": 29,
+   "t0": 86.417,
+   "t1": 86.752
+  },
+  {
+   "w": "diez",
+   "k": "diez",
+   "bloque": 8,
+   "grupo": 29,
+   "t0": 86.752,
+   "t1": 87.088
+  },
+  {
+   "w": "mil",
+   "k": "mil",
+   "bloque": 8,
+   "grupo": 29,
+   "t0": 87.088,
+   "t1": 87.356
+  },
+  {
+   "w": "a",
+   "k": "a",
+   "bloque": 8,
+   "grupo": 29,
+   "t0": 87.356,
+   "t1": 87.49
+  },
+  {
+   "w": "invertir,",
+   "k": "invertir",
+   "bloque": 8,
+   "grupo": 29,
+   "t0": 87.49,
+   "t1": 88.162
+  },
+  {
+   "w": "con",
+   "k": "con",
+   "bloque": 8,
+   "grupo": 29,
+   "t0": 88.162,
+   "t1": 88.43
+  },
+  {
+   "w": "una",
+   "k": "una",
+   "bloque": 8,
+   "grupo": 30,
+   "t0": 88.43,
+   "t1": 88.733
+  },
+  {
+   "w": "tasa",
+   "k": "tasa",
+   "bloque": 8,
+   "grupo": 30,
+   "t0": 88.733,
+   "t1": 89.112
+  },
+  {
+   "w": "de",
+   "k": "de",
+   "bloque": 8,
+   "grupo": 30,
+   "t0": 89.112,
+   "t1": 89.339
+  },
+  {
+   "w": "ejemplo",
+   "k": "ejemplo",
+   "bloque": 8,
+   "grupo": 30,
+   "t0": 89.339,
+   "t1": 89.945
+  },
+  {
+   "w": "de",
+   "k": "de",
+   "bloque": 8,
+   "grupo": 30,
+   "t0": 89.945,
+   "t1": 90.172
+  },
+  {
+   "w": "ocho",
+   "k": "ocho",
+   "bloque": 8,
+   "grupo": 30,
+   "t0": 90.172,
+   "t1": 90.551
+  },
+  {
+   "w": "por",
+   "k": "por",
+   "bloque": 8,
+   "grupo": 30,
+   "t0": 90.551,
+   "t1": 90.854
+  },
+  {
+   "w": "ciento?",
+   "k": "ciento",
+   "bloque": 8,
+   "grupo": 30,
+   "t0": 90.854,
+   "t1": 91.46
+  },
+  {
+   "w": "Ocho",
+   "k": "ocho",
+   "bloque": 8,
+   "grupo": 31,
+   "t0": 91.46,
+   "t1": 91.823
+  },
+  {
+   "w": "pesos",
+   "k": "pesos",
+   "bloque": 8,
+   "grupo": 31,
+   "t0": 91.823,
+   "t1": 92.26
+  },
+  {
+   "w": "por",
+   "k": "por",
+   "bloque": 8,
+   "grupo": 31,
+   "t0": 92.26,
+   "t1": 92.55
+  },
+  {
+   "w": "cada",
+   "k": "cada",
+   "bloque": 8,
+   "grupo": 31,
+   "t0": 92.55,
+   "t1": 92.914
+  },
+  {
+   "w": "cien.",
+   "k": "cien",
+   "bloque": 8,
+   "grupo": 31,
+   "t0": 92.914,
+   "t1": 93.35
+  },
+  {
+   "w": "Cien",
+   "k": "cien",
+   "bloque": 8,
+   "grupo": 32,
+   "t0": 93.35,
+   "t1": 93.681
+  },
+  {
+   "w": "veces",
+   "k": "veces",
+   "bloque": 8,
+   "grupo": 32,
+   "t0": 93.681,
+   "t1": 94.079
+  },
+  {
+   "w": "ocho:",
+   "k": "ocho",
+   "bloque": 8,
+   "grupo": 32,
+   "t0": 94.079,
+   "t1": 94.477
+  },
+  {
+   "w": "ochocientos",
+   "k": "ochocientos",
+   "bloque": 8,
+   "grupo": 32,
+   "t0": 94.477,
+   "t1": 95.272
+  },
+  {
+   "w": "pesos",
+   "k": "pesos",
+   "bloque": 8,
+   "grupo": 32,
+   "t0": 95.272,
+   "t1": 95.67
+  },
+  {
+   "w": "al",
+   "k": "al",
+   "bloque": 8,
+   "grupo": 32,
+   "t0": 95.67,
+   "t1": 95.869
+  },
+  {
+   "w": "año.",
+   "k": "ano",
+   "bloque": 8,
+   "grupo": 32,
+   "t0": 95.869,
+   "t1": 96.2
+  },
+  {
+   "w": "Ganas",
+   "k": "ganas",
+   "bloque": 9,
+   "grupo": 33,
+   "t0": 96.5,
+   "t1": 96.965
+  },
+  {
+   "w": "ochocientos",
+   "k": "ochocientos",
+   "bloque": 9,
+   "grupo": 33,
+   "t0": 96.965,
+   "t1": 97.895
+  },
+  {
+   "w": "y",
+   "k": "y",
+   "bloque": 9,
+   "grupo": 33,
+   "t0": 97.895,
+   "t1": 98.05
+  },
+  {
+   "w": "pagas",
+   "k": "pagas",
+   "bloque": 9,
+   "grupo": 33,
+   "t0": 98.05,
+   "t1": 98.515
+  },
+  {
+   "w": "seis",
+   "k": "seis",
+   "bloque": 9,
+   "grupo": 33,
+   "t0": 98.515,
+   "t1": 98.903
+  },
+  {
+   "w": "mil.",
+   "k": "mil",
+   "bloque": 9,
+   "grupo": 33,
+   "t0": 98.903,
+   "t1": 99.29
+  },
+  {
+   "w": "Ochocientos",
+   "k": "ochocientos",
+   "bloque": 9,
+   "grupo": 34,
+   "t0": 99.29,
+   "t1": 100.128
+  },
+  {
+   "w": "menos",
+   "k": "menos",
+   "bloque": 9,
+   "grupo": 34,
+   "t0": 100.128,
+   "t1": 100.547
+  },
+  {
+   "w": "seis",
+   "k": "seis",
+   "bloque": 9,
+   "grupo": 34,
+   "t0": 100.547,
+   "t1": 100.896
+  },
+  {
+   "w": "mil:",
+   "k": "mil",
+   "bloque": 9,
+   "grupo": 34,
+   "t0": 100.896,
+   "t1": 101.245
+  },
+  {
+   "w": "menos",
+   "k": "menos",
+   "bloque": 9,
+   "grupo": 34,
+   "t0": 101.245,
+   "t1": 101.664
+  },
+  {
+   "w": "cinco",
+   "k": "cinco",
+   "bloque": 9,
+   "grupo": 34,
+   "t0": 101.664,
+   "t1": 102.083
+  },
+  {
+   "w": "mil",
+   "k": "mil",
+   "bloque": 9,
+   "grupo": 34,
+   "t0": 102.083,
+   "t1": 102.362
+  },
+  {
+   "w": "doscientos.",
+   "k": "doscientos",
+   "bloque": 9,
+   "grupo": 34,
+   "t0": 102.362,
+   "t1": 103.2
+  },
+  {
+   "w": "Es",
+   "k": "es",
+   "bloque": 10,
+   "grupo": 35,
+   "t0": 103.5,
+   "t1": 103.777
+  },
+  {
+   "w": "como",
+   "k": "como",
+   "bloque": 10,
+   "grupo": 35,
+   "t0": 103.777,
+   "t1": 104.239
+  },
+  {
+   "w": "llenar",
+   "k": "llenar",
+   "bloque": 10,
+   "grupo": 35,
+   "t0": 104.239,
+   "t1": 104.886
+  },
+  {
+   "w": "una",
+   "k": "una",
+   "bloque": 10,
+   "grupo": 35,
+   "t0": 104.886,
+   "t1": 105.256
+  },
+  {
+   "w": "cubeta",
+   "k": "cubeta",
+   "bloque": 10,
+   "grupo": 35,
+   "t0": 105.256,
+   "t1": 105.903
+  },
+  {
+   "w": "con",
+   "k": "con",
+   "bloque": 10,
+   "grupo": 35,
+   "t0": 105.903,
+   "t1": 106.273
+  },
+  {
+   "w": "un",
+   "k": "un",
+   "bloque": 10,
+   "grupo": 35,
+   "t0": 106.273,
+   "t1": 106.55
+  },
+  {
+   "w": "agujero",
+   "k": "agujero",
+   "bloque": 10,
+   "grupo": 36,
+   "t0": 106.55,
+   "t1": 107.183
+  },
+  {
+   "w": "más",
+   "k": "mas",
+   "bloque": 10,
+   "grupo": 36,
+   "t0": 107.183,
+   "t1": 107.499
+  },
+  {
+   "w": "grande",
+   "k": "grande",
+   "bloque": 10,
+   "grupo": 36,
+   "t0": 107.499,
+   "t1": 108.053
+  },
+  {
+   "w": "que",
+   "k": "que",
+   "bloque": 10,
+   "grupo": 36,
+   "t0": 108.053,
+   "t1": 108.369
+  },
+  {
+   "w": "la",
+   "k": "la",
+   "bloque": 10,
+   "grupo": 36,
+   "t0": 108.369,
+   "t1": 108.606
+  },
+  {
+   "w": "llave.",
+   "k": "llave",
+   "bloque": 10,
+   "grupo": 36,
+   "t0": 108.606,
+   "t1": 109.16
+  },
+  {
+   "w": "Por",
+   "k": "por",
+   "bloque": 10,
+   "grupo": 37,
+   "t0": 109.16,
+   "t1": 109.508
+  },
+  {
+   "w": "eso",
+   "k": "eso",
+   "bloque": 10,
+   "grupo": 37,
+   "t0": 109.508,
+   "t1": 109.857
+  },
+  {
+   "w": "la",
+   "k": "la",
+   "bloque": 10,
+   "grupo": 37,
+   "t0": 109.857,
+   "t1": 110.118
+  },
+  {
+   "w": "deuda",
+   "k": "deuda",
+   "bloque": 10,
+   "grupo": 37,
+   "t0": 110.118,
+   "t1": 110.641
+  },
+  {
+   "w": "cara",
+   "k": "cara",
+   "bloque": 10,
+   "grupo": 37,
+   "t0": 110.641,
+   "t1": 111.076
+  },
+  {
+   "w": "va",
+   "k": "va",
+   "bloque": 10,
+   "grupo": 37,
+   "t0": 111.076,
+   "t1": 111.338
+  },
+  {
+   "w": "primero:",
+   "k": "primero",
+   "bloque": 10,
+   "grupo": 37,
+   "t0": 111.338,
+   "t1": 112.122
+  },
+  {
+   "w": "pagarla",
+   "k": "pagarla",
+   "bloque": 10,
+   "grupo": 37,
+   "t0": 112.122,
+   "t1": 112.819
+  },
+  {
+   "w": "te",
+   "k": "te",
+   "bloque": 10,
+   "grupo": 37,
+   "t0": 112.819,
+   "t1": 113.08
+  },
+  {
+   "w": "ahorra",
+   "k": "ahorra",
+   "bloque": 10,
+   "grupo": 38,
+   "t0": 113.08,
+   "t1": 113.64
+  },
+  {
+   "w": "seis",
+   "k": "seis",
+   "bloque": 10,
+   "grupo": 38,
+   "t0": 113.64,
+   "t1": 114.04
+  },
+  {
+   "w": "mil",
+   "k": "mil",
+   "bloque": 10,
+   "grupo": 38,
+   "t0": 114.04,
+   "t1": 114.36
+  },
+  {
+   "w": "pesos",
+   "k": "pesos",
+   "bloque": 10,
+   "grupo": 38,
+   "t0": 114.36,
+   "t1": 114.84
+  },
+  {
+   "w": "al",
+   "k": "al",
+   "bloque": 10,
+   "grupo": 38,
+   "t0": 114.84,
+   "t1": 115.08
+  },
+  {
+   "w": "año,",
+   "k": "ano",
+   "bloque": 10,
+   "grupo": 38,
+   "t0": 115.08,
+   "t1": 115.48
+  },
+  {
+   "w": "sin",
+   "k": "sin",
+   "bloque": 10,
+   "grupo": 38,
+   "t0": 115.48,
+   "t1": 115.8
+  },
+  {
+   "w": "adivinar",
+   "k": "adivinar",
+   "bloque": 10,
+   "grupo": 38,
+   "t0": 115.8,
+   "t1": 116.52
+  },
+  {
+   "w": "nada.",
+   "k": "nada",
+   "bloque": 10,
+   "grupo": 38,
+   "t0": 116.52,
+   "t1": 117
+  },
+  {
+   "w": "Pero",
+   "k": "pero",
+   "bloque": 11,
+   "grupo": 39,
+   "t0": 117,
+   "t1": 117.393
+  },
+  {
+   "w": "ya",
+   "k": "ya",
+   "bloque": 11,
+   "grupo": 39,
+   "t0": 117.393,
+   "t1": 117.629
+  },
+  {
+   "w": "pagaste",
+   "k": "pagaste",
+   "bloque": 11,
+   "grupo": 39,
+   "t0": 117.629,
+   "t1": 118.259
+  },
+  {
+   "w": "la",
+   "k": "la",
+   "bloque": 11,
+   "grupo": 39,
+   "t0": 118.259,
+   "t1": 118.495
+  },
+  {
+   "w": "tarjeta",
+   "k": "tarjeta",
+   "bloque": 11,
+   "grupo": 39,
+   "t0": 118.495,
+   "t1": 119.124
+  },
+  {
+   "w": "y",
+   "k": "y",
+   "bloque": 11,
+   "grupo": 39,
+   "t0": 119.124,
+   "t1": 119.282
+  },
+  {
+   "w": "te",
+   "k": "te",
+   "bloque": 11,
+   "grupo": 39,
+   "t0": 119.282,
+   "t1": 119.518
+  },
+  {
+   "w": "quedan",
+   "k": "quedan",
+   "bloque": 11,
+   "grupo": 39,
+   "t0": 119.518,
+   "t1": 120.068
+  },
+  {
+   "w": "cuarenta",
+   "k": "cuarenta",
+   "bloque": 11,
+   "grupo": 39,
+   "t0": 120.068,
+   "t1": 120.777
+  },
+  {
+   "w": "mil.",
+   "k": "mil",
+   "bloque": 11,
+   "grupo": 39,
+   "t0": 120.777,
+   "t1": 121.17
+  },
+  {
+   "w": "¿Ahora",
+   "k": "ahora",
+   "bloque": 11,
+   "grupo": 40,
+   "t0": 121.17,
+   "t1": 121.74
+  },
+  {
+   "w": "sí,",
+   "k": "si",
+   "bloque": 11,
+   "grupo": 40,
+   "t0": 121.74,
+   "t1": 122.066
+  },
+  {
+   "w": "todo",
+   "k": "todo",
+   "bloque": 11,
+   "grupo": 40,
+   "t0": 122.066,
+   "t1": 122.473
+  },
+  {
+   "w": "a",
+   "k": "a",
+   "bloque": 11,
+   "grupo": 40,
+   "t0": 122.473,
+   "t1": 122.636
+  },
+  {
+   "w": "invertir?",
+   "k": "invertir",
+   "bloque": 11,
+   "grupo": 40,
+   "t0": 122.636,
+   "t1": 123.45
+  },
+  {
+   "w": "Todavía",
+   "k": "todavia",
+   "bloque": 11,
+   "grupo": 41,
+   "t0": 123.75,
+   "t1": 124.55
+  },
+  {
+   "w": "no.",
+   "k": "no",
+   "bloque": 11,
+   "grupo": 41,
+   "t0": 124.55,
+   "t1": 124.95
+  },
+  {
+   "w": "Falta",
+   "k": "falta",
+   "bloque": 11,
+   "grupo": 42,
+   "t0": 124.95,
+   "t1": 125.364
+  },
+  {
+   "w": "la",
+   "k": "la",
+   "bloque": 11,
+   "grupo": 42,
+   "t0": 125.364,
+   "t1": 125.57
+  },
+  {
+   "w": "cuenta",
+   "k": "cuenta",
+   "bloque": 11,
+   "grupo": 42,
+   "t0": 125.57,
+   "t1": 126.053
+  },
+  {
+   "w": "que",
+   "k": "que",
+   "bloque": 11,
+   "grupo": 42,
+   "t0": 126.053,
+   "t1": 126.328
+  },
+  {
+   "w": "casi",
+   "k": "casi",
+   "bloque": 11,
+   "grupo": 42,
+   "t0": 126.328,
+   "t1": 126.673
+  },
+  {
+   "w": "nadie",
+   "k": "nadie",
+   "bloque": 11,
+   "grupo": 42,
+   "t0": 126.673,
+   "t1": 127.086
+  },
+  {
+   "w": "hace:",
+   "k": "hace",
+   "bloque": 11,
+   "grupo": 42,
+   "t0": 127.086,
+   "t1": 127.5
+  },
+  {
+   "w": "la",
+   "k": "la",
+   "bloque": 11,
+   "grupo": 43,
+   "t0": 127.5,
+   "t1": 127.778
+  },
+  {
+   "w": "de",
+   "k": "de",
+   "bloque": 11,
+   "grupo": 43,
+   "t0": 127.778,
+   "t1": 128.056
+  },
+  {
+   "w": "lo",
+   "k": "lo",
+   "bloque": 11,
+   "grupo": 43,
+   "t0": 128.056,
+   "t1": 128.333
+  },
+  {
+   "w": "que",
+   "k": "que",
+   "bloque": 11,
+   "grupo": 43,
+   "t0": 128.333,
+   "t1": 128.704
+  },
+  {
+   "w": "no",
+   "k": "no",
+   "bloque": 11,
+   "grupo": 43,
+   "t0": 128.704,
+   "t1": 128.981
+  },
+  {
+   "w": "planeaste.",
+   "k": "planeaste",
+   "bloque": 11,
+   "grupo": 43,
+   "t0": 128.981,
+   "t1": 130
+  },
+  {
+   "w": "Ahora,",
+   "k": "ahora",
+   "bloque": 12,
+   "grupo": 44,
+   "t0": 130,
+   "t1": 130.545
+  },
+  {
+   "w": "el",
+   "k": "el",
+   "bloque": 12,
+   "grupo": 44,
+   "t0": 130.545,
+   "t1": 130.779
+  },
+  {
+   "w": "colchón.",
+   "k": "colchon",
+   "bloque": 12,
+   "grupo": 44,
+   "t0": 130.779,
+   "t1": 131.48
+  },
+  {
+   "w": "Un",
+   "k": "un",
+   "bloque": 12,
+   "grupo": 45,
+   "t0": 131.78,
+   "t1": 131.981
+  },
+  {
+   "w": "martes",
+   "k": "martes",
+   "bloque": 12,
+   "grupo": 45,
+   "t0": 131.981,
+   "t1": 132.451
+  },
+  {
+   "w": "cualquiera",
+   "k": "cualquiera",
+   "bloque": 12,
+   "grupo": 45,
+   "t0": 132.451,
+   "t1": 133.189
+  },
+  {
+   "w": "se",
+   "k": "se",
+   "bloque": 12,
+   "grupo": 45,
+   "t0": 133.189,
+   "t1": 133.391
+  },
+  {
+   "w": "descompone",
+   "k": "descompone",
+   "bloque": 12,
+   "grupo": 45,
+   "t0": 133.391,
+   "t1": 134.129
+  },
+  {
+   "w": "el",
+   "k": "el",
+   "bloque": 12,
+   "grupo": 45,
+   "t0": 134.129,
+   "t1": 134.33
+  },
+  {
+   "w": "coche,",
+   "k": "coche",
+   "bloque": 12,
+   "grupo": 46,
+   "t0": 134.33,
+   "t1": 134.946
+  },
+  {
+   "w": "o",
+   "k": "o",
+   "bloque": 12,
+   "grupo": 46,
+   "t0": 134.946,
+   "t1": 135.121
+  },
+  {
+   "w": "te",
+   "k": "te",
+   "bloque": 12,
+   "grupo": 46,
+   "t0": 135.121,
+   "t1": 135.385
+  },
+  {
+   "w": "duele",
+   "k": "duele",
+   "bloque": 12,
+   "grupo": 46,
+   "t0": 135.385,
+   "t1": 135.913
+  },
+  {
+   "w": "una",
+   "k": "una",
+   "bloque": 12,
+   "grupo": 46,
+   "t0": 135.913,
+   "t1": 136.264
+  },
+  {
+   "w": "muela.",
+   "k": "muela",
+   "bloque": 12,
+   "grupo": 46,
+   "t0": 136.264,
+   "t1": 136.88
+  },
+  {
+   "w": "Ocho",
+   "k": "ocho",
+   "bloque": 12,
+   "grupo": 47,
+   "t0": 136.88,
+   "t1": 137.28
+  },
+  {
+   "w": "mil",
+   "k": "mil",
+   "bloque": 12,
+   "grupo": 47,
+   "t0": 137.28,
+   "t1": 137.6
+  },
+  {
+   "w": "pesos,",
+   "k": "pesos",
+   "bloque": 12,
+   "grupo": 47,
+   "t0": 137.6,
+   "t1": 138.16
+  },
+  {
+   "w": "para",
+   "k": "para",
+   "bloque": 12,
+   "grupo": 47,
+   "t0": 138.16,
+   "t1": 138.56
+  },
+  {
+   "w": "mañana.",
+   "k": "manana",
+   "bloque": 12,
+   "grupo": 47,
+   "t0": 138.56,
+   "t1": 139.2
+  },
+  {
+   "w": "Si",
+   "k": "si",
+   "bloque": 13,
+   "grupo": 48,
+   "t0": 139.5,
+   "t1": 139.713
+  },
+  {
+   "w": "no",
+   "k": "no",
+   "bloque": 13,
+   "grupo": 48,
+   "t0": 139.713,
+   "t1": 139.925
+  },
+  {
+   "w": "tienes",
+   "k": "tienes",
+   "bloque": 13,
+   "grupo": 48,
+   "t0": 139.925,
+   "t1": 140.422
+  },
+  {
+   "w": "nada",
+   "k": "nada",
+   "bloque": 13,
+   "grupo": 48,
+   "t0": 140.422,
+   "t1": 140.776
+  },
+  {
+   "w": "guardado,",
+   "k": "guardado",
+   "bloque": 13,
+   "grupo": 48,
+   "t0": 140.776,
+   "t1": 141.485
+  },
+  {
+   "w": "¿con",
+   "k": "con",
+   "bloque": 13,
+   "grupo": 48,
+   "t0": 141.485,
+   "t1": 141.84
+  },
+  {
+   "w": "qué",
+   "k": "que",
+   "bloque": 13,
+   "grupo": 48,
+   "t0": 141.84,
+   "t1": 142.124
+  },
+  {
+   "w": "pagas?",
+   "k": "pagas",
+   "bloque": 13,
+   "grupo": 48,
+   "t0": 142.124,
+   "t1": 142.62
+  },
+  {
+   "w": "Con",
+   "k": "con",
+   "bloque": 13,
+   "grupo": 49,
+   "t0": 142.62,
+   "t1": 142.913
+  },
+  {
+   "w": "la",
+   "k": "la",
+   "bloque": 13,
+   "grupo": 49,
+   "t0": 142.913,
+   "t1": 143.133
+  },
+  {
+   "w": "tarjeta,",
+   "k": "tarjeta",
+   "bloque": 13,
+   "grupo": 49,
+   "t0": 143.133,
+   "t1": 143.793
+  },
+  {
+   "w": "otra",
+   "k": "otra",
+   "bloque": 13,
+   "grupo": 49,
+   "t0": 143.793,
+   "t1": 144.16
+  },
+  {
+   "w": "vez",
+   "k": "vez",
+   "bloque": 13,
+   "grupo": 49,
+   "t0": 144.16,
+   "t1": 144.453
+  },
+  {
+   "w": "al",
+   "k": "al",
+   "bloque": 13,
+   "grupo": 49,
+   "t0": 144.453,
+   "t1": 144.673
+  },
+  {
+   "w": "sesenta",
+   "k": "sesenta",
+   "bloque": 13,
+   "grupo": 49,
+   "t0": 144.673,
+   "t1": 145.26
+  },
+  {
+   "w": "por",
+   "k": "por",
+   "bloque": 13,
+   "grupo": 49,
+   "t0": 145.26,
+   "t1": 145.553
+  },
+  {
+   "w": "ciento.",
+   "k": "ciento",
+   "bloque": 13,
+   "grupo": 49,
+   "t0": 145.553,
+   "t1": 146.14
+  },
+  {
+   "w": "Ocho",
+   "k": "ocho",
+   "bloque": 13,
+   "grupo": 50,
+   "t0": 146.14,
+   "t1": 146.495
+  },
+  {
+   "w": "mil",
+   "k": "mil",
+   "bloque": 13,
+   "grupo": 50,
+   "t0": 146.495,
+   "t1": 146.778
+  },
+  {
+   "w": "son",
+   "k": "son",
+   "bloque": 13,
+   "grupo": 50,
+   "t0": 146.778,
+   "t1": 147.062
+  },
+  {
+   "w": "ochenta",
+   "k": "ochenta",
+   "bloque": 13,
+   "grupo": 50,
+   "t0": 147.062,
+   "t1": 147.629
+  },
+  {
+   "w": "veces",
+   "k": "veces",
+   "bloque": 13,
+   "grupo": 50,
+   "t0": 147.629,
+   "t1": 148.055
+  },
+  {
+   "w": "cien.",
+   "k": "cien",
+   "bloque": 13,
+   "grupo": 50,
+   "t0": 148.055,
+   "t1": 148.48
+  },
+  {
+   "w": "Ochenta",
+   "k": "ochenta",
+   "bloque": 13,
+   "grupo": 51,
+   "t0": 148.48,
+   "t1": 148.976
+  },
+  {
+   "w": "veces",
+   "k": "veces",
+   "bloque": 13,
+   "grupo": 51,
+   "t0": 148.976,
+   "t1": 149.348
+  },
+  {
+   "w": "sesenta:",
+   "k": "sesenta",
+   "bloque": 13,
+   "grupo": 51,
+   "t0": 149.348,
+   "t1": 149.906
+  },
+  {
+   "w": "cuatro",
+   "k": "cuatro",
+   "bloque": 13,
+   "grupo": 51,
+   "t0": 149.906,
+   "t1": 150.34
+  },
+  {
+   "w": "mil",
+   "k": "mil",
+   "bloque": 13,
+   "grupo": 51,
+   "t0": 150.34,
+   "t1": 150.588
+  },
+  {
+   "w": "ochocientos",
+   "k": "ochocientos",
+   "bloque": 13,
+   "grupo": 51,
+   "t0": 150.588,
+   "t1": 151.332
+  },
+  {
+   "w": "pesos",
+   "k": "pesos",
+   "bloque": 13,
+   "grupo": 51,
+   "t0": 151.332,
+   "t1": 151.704
+  },
+  {
+   "w": "al",
+   "k": "al",
+   "bloque": 13,
+   "grupo": 51,
+   "t0": 151.704,
+   "t1": 151.89
+  },
+  {
+   "w": "año.",
+   "k": "ano",
+   "bloque": 13,
+   "grupo": 51,
+   "t0": 151.89,
+   "t1": 152.2
+  },
+  {
+   "w": "Volviste",
+   "k": "volviste",
+   "bloque": 14,
+   "grupo": 52,
+   "t0": 152.5,
+   "t1": 153.193
+  },
+  {
+   "w": "a",
+   "k": "a",
+   "bloque": 14,
+   "grupo": 52,
+   "t0": 153.193,
+   "t1": 153.347
+  },
+  {
+   "w": "la",
+   "k": "la",
+   "bloque": 14,
+   "grupo": 52,
+   "t0": 153.347,
+   "t1": 153.578
+  },
+  {
+   "w": "deuda",
+   "k": "deuda",
+   "bloque": 14,
+   "grupo": 52,
+   "t0": 153.578,
+   "t1": 154.04
+  },
+  {
+   "w": "que",
+   "k": "que",
+   "bloque": 14,
+   "grupo": 52,
+   "t0": 154.04,
+   "t1": 154.347
+  },
+  {
+   "w": "acababas",
+   "k": "acababas",
+   "bloque": 14,
+   "grupo": 52,
+   "t0": 154.347,
+   "t1": 155.04
+  },
+  {
+   "w": "de",
+   "k": "de",
+   "bloque": 14,
+   "grupo": 52,
+   "t0": 155.04,
+   "t1": 155.271
+  },
+  {
+   "w": "pagar.",
+   "k": "pagar",
+   "bloque": 14,
+   "grupo": 52,
+   "t0": 155.271,
+   "t1": 155.81
+  },
+  {
+   "w": "Para",
+   "k": "para",
+   "bloque": 14,
+   "grupo": 53,
+   "t0": 156.11,
+   "t1": 156.503
+  },
+  {
+   "w": "que",
+   "k": "que",
+   "bloque": 14,
+   "grupo": 53,
+   "t0": 156.503,
+   "t1": 156.818
+  },
+  {
+   "w": "eso",
+   "k": "eso",
+   "bloque": 14,
+   "grupo": 53,
+   "t0": 156.818,
+   "t1": 157.133
+  },
+  {
+   "w": "no",
+   "k": "no",
+   "bloque": 14,
+   "grupo": 53,
+   "t0": 157.133,
+   "t1": 157.368
+  },
+  {
+   "w": "pase",
+   "k": "pase",
+   "bloque": 14,
+   "grupo": 53,
+   "t0": 157.368,
+   "t1": 157.762
+  },
+  {
+   "w": "existe",
+   "k": "existe",
+   "bloque": 14,
+   "grupo": 53,
+   "t0": 157.762,
+   "t1": 158.312
+  },
+  {
+   "w": "el",
+   "k": "el",
+   "bloque": 14,
+   "grupo": 53,
+   "t0": 158.312,
+   "t1": 158.548
+  },
+  {
+   "w": "fondo",
+   "k": "fondo",
+   "bloque": 14,
+   "grupo": 53,
+   "t0": 158.548,
+   "t1": 159.02
+  },
+  {
+   "w": "de",
+   "k": "de",
+   "bloque": 14,
+   "grupo": 53,
+   "t0": 159.02,
+   "t1": 159.256
+  },
+  {
+   "w": "emergencia.",
+   "k": "emergencia",
+   "bloque": 14,
+   "grupo": 53,
+   "t0": 159.256,
+   "t1": 160.2
+  },
+  {
+   "w": "Una",
+   "k": "una",
+   "bloque": 15,
+   "grupo": 54,
+   "t0": 162,
+   "t1": 162.335
+  },
+  {
+   "w": "regla",
+   "k": "regla",
+   "bloque": 15,
+   "grupo": 54,
+   "t0": 162.335,
+   "t1": 162.837
+  },
+  {
+   "w": "común",
+   "k": "comun",
+   "bloque": 15,
+   "grupo": 54,
+   "t0": 162.837,
+   "t1": 163.338
+  },
+  {
+   "w": "es",
+   "k": "es",
+   "bloque": 15,
+   "grupo": 54,
+   "t0": 163.338,
+   "t1": 163.589
+  },
+  {
+   "w": "juntar",
+   "k": "juntar",
+   "bloque": 15,
+   "grupo": 54,
+   "t0": 163.589,
+   "t1": 164.175
+  },
+  {
+   "w": "tres",
+   "k": "tres",
+   "bloque": 15,
+   "grupo": 54,
+   "t0": 164.175,
+   "t1": 164.593
+  },
+  {
+   "w": "meses",
+   "k": "meses",
+   "bloque": 15,
+   "grupo": 54,
+   "t0": 164.593,
+   "t1": 165.095
+  },
+  {
+   "w": "de",
+   "k": "de",
+   "bloque": 15,
+   "grupo": 54,
+   "t0": 165.095,
+   "t1": 165.346
+  },
+  {
+   "w": "tus",
+   "k": "tus",
+   "bloque": 15,
+   "grupo": 54,
+   "t0": 165.346,
+   "t1": 165.681
+  },
+  {
+   "w": "gastos.",
+   "k": "gastos",
+   "bloque": 15,
+   "grupo": 54,
+   "t0": 165.681,
+   "t1": 166.35
+  },
+  {
+   "w": "Tú",
+   "k": "tu",
+   "bloque": 15,
+   "grupo": 55,
+   "t0": 166.35,
+   "t1": 166.64
+  },
+  {
+   "w": "gastas",
+   "k": "gastas",
+   "bloque": 15,
+   "grupo": 55,
+   "t0": 166.64,
+   "t1": 167.317
+  },
+  {
+   "w": "diez",
+   "k": "diez",
+   "bloque": 15,
+   "grupo": 55,
+   "t0": 167.317,
+   "t1": 167.8
+  },
+  {
+   "w": "mil",
+   "k": "mil",
+   "bloque": 15,
+   "grupo": 55,
+   "t0": 167.8,
+   "t1": 168.187
+  },
+  {
+   "w": "al",
+   "k": "al",
+   "bloque": 15,
+   "grupo": 55,
+   "t0": 168.187,
+   "t1": 168.477
+  },
+  {
+   "w": "mes.",
+   "k": "mes",
+   "bloque": 15,
+   "grupo": 55,
+   "t0": 168.477,
+   "t1": 168.96
+  },
+  {
+   "w": "Tres",
+   "k": "tres",
+   "bloque": 15,
+   "grupo": 56,
+   "t0": 168.96,
+   "t1": 169.386
+  },
+  {
+   "w": "por",
+   "k": "por",
+   "bloque": 15,
+   "grupo": 56,
+   "t0": 169.386,
+   "t1": 169.727
+  },
+  {
+   "w": "diez",
+   "k": "diez",
+   "bloque": 15,
+   "grupo": 56,
+   "t0": 169.727,
+   "t1": 170.154
+  },
+  {
+   "w": "mil:",
+   "k": "mil",
+   "bloque": 15,
+   "grupo": 56,
+   "t0": 170.154,
+   "t1": 170.58
+  },
+  {
+   "w": "treinta",
+   "k": "treinta",
+   "bloque": 15,
+   "grupo": 56,
+   "t0": 170.58,
+   "t1": 171.262
+  },
+  {
+   "w": "mil",
+   "k": "mil",
+   "bloque": 15,
+   "grupo": 56,
+   "t0": 171.262,
+   "t1": 171.603
+  },
+  {
+   "w": "pesos.",
+   "k": "pesos",
+   "bloque": 15,
+   "grupo": 56,
+   "t0": 171.603,
+   "t1": 172.2
+  },
+  {
+   "w": "Ese",
+   "k": "ese",
+   "bloque": 16,
+   "grupo": 57,
+   "t0": 172.5,
+   "t1": 172.817
+  },
+  {
+   "w": "dinero",
+   "k": "dinero",
+   "bloque": 16,
+   "grupo": 57,
+   "t0": 172.817,
+   "t1": 173.371
+  },
+  {
+   "w": "no",
+   "k": "no",
+   "bloque": 16,
+   "grupo": 57,
+   "t0": 173.371,
+   "t1": 173.608
+  },
+  {
+   "w": "está",
+   "k": "esta",
+   "bloque": 16,
+   "grupo": 57,
+   "t0": 173.608,
+   "t1": 174.004
+  },
+  {
+   "w": "ahí",
+   "k": "ahi",
+   "bloque": 16,
+   "grupo": 57,
+   "t0": 174.004,
+   "t1": 174.321
+  },
+  {
+   "w": "para",
+   "k": "para",
+   "bloque": 16,
+   "grupo": 57,
+   "t0": 174.321,
+   "t1": 174.717
+  },
+  {
+   "w": "crecer.",
+   "k": "crecer",
+   "bloque": 16,
+   "grupo": 57,
+   "t0": 174.717,
+   "t1": 175.35
+  },
+  {
+   "w": "Está",
+   "k": "esta",
+   "bloque": 16,
+   "grupo": 58,
+   "t0": 175.35,
+   "t1": 175.786
+  },
+  {
+   "w": "ahí",
+   "k": "ahi",
+   "bloque": 16,
+   "grupo": 58,
+   "t0": 175.786,
+   "t1": 176.134
+  },
+  {
+   "w": "para",
+   "k": "para",
+   "bloque": 16,
+   "grupo": 58,
+   "t0": 176.134,
+   "t1": 176.57
+  },
+  {
+   "w": "que",
+   "k": "que",
+   "bloque": 16,
+   "grupo": 58,
+   "t0": 176.57,
+   "t1": 176.919
+  },
+  {
+   "w": "lo",
+   "k": "lo",
+   "bloque": 16,
+   "grupo": 58,
+   "t0": 176.919,
+   "t1": 177.18
+  },
+  {
+   "w": "tengas",
+   "k": "tengas",
+   "bloque": 16,
+   "grupo": 58,
+   "t0": 177.18,
+   "t1": 177.79
+  },
+  {
+   "w": "el",
+   "k": "el",
+   "bloque": 16,
+   "grupo": 59,
+   "t0": 177.79,
+   "t1": 178.035
+  },
+  {
+   "w": "día",
+   "k": "dia",
+   "bloque": 16,
+   "grupo": 59,
+   "t0": 178.035,
+   "t1": 178.361
+  },
+  {
+   "w": "que",
+   "k": "que",
+   "bloque": 16,
+   "grupo": 59,
+   "t0": 178.361,
+   "t1": 178.688
+  },
+  {
+   "w": "lo",
+   "k": "lo",
+   "bloque": 16,
+   "grupo": 59,
+   "t0": 178.688,
+   "t1": 178.932
+  },
+  {
+   "w": "necesites.",
+   "k": "necesites",
+   "bloque": 16,
+   "grupo": 59,
+   "t0": 178.932,
+   "t1": 179.83
+  },
+  {
+   "w": "Es",
+   "k": "es",
+   "bloque": 16,
+   "grupo": 60,
+   "t0": 179.83,
+   "t1": 180.085
+  },
+  {
+   "w": "como",
+   "k": "como",
+   "bloque": 16,
+   "grupo": 60,
+   "t0": 180.085,
+   "t1": 180.511
+  },
+  {
+   "w": "la",
+   "k": "la",
+   "bloque": 16,
+   "grupo": 60,
+   "t0": 180.511,
+   "t1": 180.766
+  },
+  {
+   "w": "llanta",
+   "k": "llanta",
+   "bloque": 16,
+   "grupo": 60,
+   "t0": 180.766,
+   "t1": 181.362
+  },
+  {
+   "w": "de",
+   "k": "de",
+   "bloque": 16,
+   "grupo": 60,
+   "t0": 181.362,
+   "t1": 181.617
+  },
+  {
+   "w": "refacción:",
+   "k": "refaccion",
+   "bloque": 16,
+   "grupo": 60,
+   "t0": 181.617,
+   "t1": 182.554
+  },
+  {
+   "w": "no",
+   "k": "no",
+   "bloque": 16,
+   "grupo": 60,
+   "t0": 182.554,
+   "t1": 182.809
+  },
+  {
+   "w": "la",
+   "k": "la",
+   "bloque": 16,
+   "grupo": 60,
+   "t0": 182.809,
+   "t1": 183.064
+  },
+  {
+   "w": "usas",
+   "k": "usas",
+   "bloque": 16,
+   "grupo": 60,
+   "t0": 183.064,
+   "t1": 183.49
+  },
+  {
+   "w": "para",
+   "k": "para",
+   "bloque": 16,
+   "grupo": 61,
+   "t0": 183.49,
+   "t1": 183.843
+  },
+  {
+   "w": "correr,",
+   "k": "correr",
+   "bloque": 16,
+   "grupo": 61,
+   "t0": 183.843,
+   "t1": 184.408
+  },
+  {
+   "w": "la",
+   "k": "la",
+   "bloque": 16,
+   "grupo": 61,
+   "t0": 184.408,
+   "t1": 184.62
+  },
+  {
+   "w": "usas",
+   "k": "usas",
+   "bloque": 16,
+   "grupo": 61,
+   "t0": 184.62,
+   "t1": 184.974
+  },
+  {
+   "w": "para",
+   "k": "para",
+   "bloque": 16,
+   "grupo": 61,
+   "t0": 184.974,
+   "t1": 185.327
+  },
+  {
+   "w": "no",
+   "k": "no",
+   "bloque": 16,
+   "grupo": 61,
+   "t0": 185.327,
+   "t1": 185.539
+  },
+  {
+   "w": "quedarte",
+   "k": "quedarte",
+   "bloque": 16,
+   "grupo": 61,
+   "t0": 185.539,
+   "t1": 186.175
+  },
+  {
+   "w": "tirado.",
+   "k": "tirado",
+   "bloque": 16,
+   "grupo": 61,
+   "t0": 186.175,
+   "t1": 186.74
+  },
+  {
+   "w": "Así",
+   "k": "asi",
+   "bloque": 16,
+   "grupo": 62,
+   "t0": 186.74,
+   "t1": 187.012
+  },
+  {
+   "w": "que,",
+   "k": "que",
+   "bloque": 16,
+   "grupo": 62,
+   "t0": 187.012,
+   "t1": 187.351
+  },
+  {
+   "w": "antes",
+   "k": "antes",
+   "bloque": 16,
+   "grupo": 62,
+   "t0": 187.351,
+   "t1": 187.759
+  },
+  {
+   "w": "de",
+   "k": "de",
+   "bloque": 16,
+   "grupo": 62,
+   "t0": 187.759,
+   "t1": 187.963
+  },
+  {
+   "w": "invertir,",
+   "k": "invertir",
+   "bloque": 16,
+   "grupo": 62,
+   "t0": 187.963,
+   "t1": 188.642
+  },
+  {
+   "w": "primero",
+   "k": "primero",
+   "bloque": 16,
+   "grupo": 62,
+   "t0": 188.642,
+   "t1": 189.185
+  },
+  {
+   "w": "el",
+   "k": "el",
+   "bloque": 16,
+   "grupo": 62,
+   "t0": 189.185,
+   "t1": 189.389
+  },
+  {
+   "w": "colchón.",
+   "k": "colchon",
+   "bloque": 16,
+   "grupo": 62,
+   "t0": 189.389,
+   "t1": 190
+  },
+  {
+   "w": "Por",
+   "k": "por",
+   "bloque": 17,
+   "grupo": 63,
+   "t0": 190,
+   "t1": 190.266
+  },
+  {
+   "w": "lo",
+   "k": "lo",
+   "bloque": 17,
+   "grupo": 63,
+   "t0": 190.266,
+   "t1": 190.465
+  },
+  {
+   "w": "tanto,",
+   "k": "tanto",
+   "bloque": 17,
+   "grupo": 63,
+   "t0": 190.465,
+   "t1": 190.93
+  },
+  {
+   "w": "de",
+   "k": "de",
+   "bloque": 17,
+   "grupo": 63,
+   "t0": 190.93,
+   "t1": 191.129
+  },
+  {
+   "w": "tus",
+   "k": "tus",
+   "bloque": 17,
+   "grupo": 63,
+   "t0": 191.129,
+   "t1": 191.395
+  },
+  {
+   "w": "cincuenta",
+   "k": "cincuenta",
+   "bloque": 17,
+   "grupo": 63,
+   "t0": 191.395,
+   "t1": 192.06
+  },
+  {
+   "w": "mil",
+   "k": "mil",
+   "bloque": 17,
+   "grupo": 63,
+   "t0": 192.06,
+   "t1": 192.325
+  },
+  {
+   "w": "ya",
+   "k": "ya",
+   "bloque": 17,
+   "grupo": 63,
+   "t0": 192.325,
+   "t1": 192.525
+  },
+  {
+   "w": "acomodaste",
+   "k": "acomodaste",
+   "bloque": 17,
+   "grupo": 63,
+   "t0": 192.525,
+   "t1": 193.256
+  },
+  {
+   "w": "cuarenta:",
+   "k": "cuarenta",
+   "bloque": 17,
+   "grupo": 63,
+   "t0": 193.256,
+   "t1": 193.92
+  },
+  {
+   "w": "diez",
+   "k": "diez",
+   "bloque": 17,
+   "grupo": 64,
+   "t0": 193.92,
+   "t1": 194.304
+  },
+  {
+   "w": "para",
+   "k": "para",
+   "bloque": 17,
+   "grupo": 64,
+   "t0": 194.304,
+   "t1": 194.687
+  },
+  {
+   "w": "la",
+   "k": "la",
+   "bloque": 17,
+   "grupo": 64,
+   "t0": 194.687,
+   "t1": 194.918
+  },
+  {
+   "w": "deuda",
+   "k": "deuda",
+   "bloque": 17,
+   "grupo": 64,
+   "t0": 194.918,
+   "t1": 195.378
+  },
+  {
+   "w": "y",
+   "k": "y",
+   "bloque": 17,
+   "grupo": 64,
+   "t0": 195.378,
+   "t1": 195.532
+  },
+  {
+   "w": "treinta",
+   "k": "treinta",
+   "bloque": 17,
+   "grupo": 64,
+   "t0": 195.532,
+   "t1": 196.145
+  },
+  {
+   "w": "para",
+   "k": "para",
+   "bloque": 17,
+   "grupo": 64,
+   "t0": 196.145,
+   "t1": 196.529
+  },
+  {
+   "w": "el",
+   "k": "el",
+   "bloque": 17,
+   "grupo": 64,
+   "t0": 196.529,
+   "t1": 196.759
+  },
+  {
+   "w": "colchón.",
+   "k": "colchon",
+   "bloque": 17,
+   "grupo": 64,
+   "t0": 196.759,
+   "t1": 197.45
+  },
+  {
+   "w": "Te",
+   "k": "te",
+   "bloque": 17,
+   "grupo": 65,
+   "t0": 197.45,
+   "t1": 197.714
+  },
+  {
+   "w": "quedan",
+   "k": "quedan",
+   "bloque": 17,
+   "grupo": 65,
+   "t0": 197.714,
+   "t1": 198.33
+  },
+  {
+   "w": "diez",
+   "k": "diez",
+   "bloque": 17,
+   "grupo": 65,
+   "t0": 198.33,
+   "t1": 198.77
+  },
+  {
+   "w": "mil.",
+   "k": "mil",
+   "bloque": 17,
+   "grupo": 65,
+   "t0": 198.77,
+   "t1": 199.21
+  },
+  {
+   "w": "¿Esos",
+   "k": "esos",
+   "bloque": 17,
+   "grupo": 66,
+   "t0": 199.51,
+   "t1": 199.92
+  },
+  {
+   "w": "sí",
+   "k": "si",
+   "bloque": 17,
+   "grupo": 66,
+   "t0": 199.92,
+   "t1": 200.124
+  },
+  {
+   "w": "se",
+   "k": "se",
+   "bloque": 17,
+   "grupo": 66,
+   "t0": 200.124,
+   "t1": 200.329
+  },
+  {
+   "w": "invierten?",
+   "k": "invierten",
+   "bloque": 17,
+   "grupo": 66,
+   "t0": 200.329,
+   "t1": 201.08
+  },
+  {
+   "w": "Depende",
+   "k": "depende",
+   "bloque": 17,
+   "grupo": 67,
+   "t0": 201.08,
+   "t1": 201.612
+  },
+  {
+   "w": "de",
+   "k": "de",
+   "bloque": 17,
+   "grupo": 67,
+   "t0": 201.612,
+   "t1": 201.811
+  },
+  {
+   "w": "una",
+   "k": "una",
+   "bloque": 17,
+   "grupo": 67,
+   "t0": 201.811,
+   "t1": 202.077
+  },
+  {
+   "w": "sola",
+   "k": "sola",
+   "bloque": 17,
+   "grupo": 67,
+   "t0": 202.077,
+   "t1": 202.409
+  },
+  {
+   "w": "pregunta:",
+   "k": "pregunta",
+   "bloque": 17,
+   "grupo": 67,
+   "t0": 202.409,
+   "t1": 203.073
+  },
+  {
+   "w": "¿cuándo",
+   "k": "cuando",
+   "bloque": 17,
+   "grupo": 67,
+   "t0": 203.073,
+   "t1": 203.605
+  },
+  {
+   "w": "los",
+   "k": "los",
+   "bloque": 17,
+   "grupo": 67,
+   "t0": 203.605,
+   "t1": 203.871
+  },
+  {
+   "w": "vas",
+   "k": "vas",
+   "bloque": 17,
+   "grupo": 67,
+   "t0": 203.871,
+   "t1": 204.136
+  },
+  {
+   "w": "a",
+   "k": "a",
+   "bloque": 17,
+   "grupo": 67,
+   "t0": 204.136,
+   "t1": 204.269
+  },
+  {
+   "w": "necesitar?",
+   "k": "necesitar",
+   "bloque": 17,
+   "grupo": 67,
+   "t0": 204.269,
+   "t1": 205
+  },
+  {
+   "w": "Al",
+   "k": "al",
+   "bloque": 18,
+   "grupo": 68,
+   "t0": 205,
+   "t1": 205.254
+  },
+  {
+   "w": "final,",
+   "k": "final",
+   "bloque": 18,
+   "grupo": 68,
+   "t0": 205.254,
+   "t1": 205.848
+  },
+  {
+   "w": "el",
+   "k": "el",
+   "bloque": 18,
+   "grupo": 68,
+   "t0": 205.848,
+   "t1": 206.102
+  },
+  {
+   "w": "tiempo.",
+   "k": "tiempo",
+   "bloque": 18,
+   "grupo": 68,
+   "t0": 206.102,
+   "t1": 206.78
+  },
+  {
+   "w": "Una",
+   "k": "una",
+   "bloque": 18,
+   "grupo": 69,
+   "t0": 207.08,
+   "t1": 207.371
+  },
+  {
+   "w": "inversión",
+   "k": "inversion",
+   "bloque": 18,
+   "grupo": 69,
+   "t0": 207.371,
+   "t1": 208.097
+  },
+  {
+   "w": "no",
+   "k": "no",
+   "bloque": 18,
+   "grupo": 69,
+   "t0": 208.097,
+   "t1": 208.315
+  },
+  {
+   "w": "sube",
+   "k": "sube",
+   "bloque": 18,
+   "grupo": 69,
+   "t0": 208.315,
+   "t1": 208.678
+  },
+  {
+   "w": "en",
+   "k": "en",
+   "bloque": 18,
+   "grupo": 69,
+   "t0": 208.678,
+   "t1": 208.896
+  },
+  {
+   "w": "línea",
+   "k": "linea",
+   "bloque": 18,
+   "grupo": 69,
+   "t0": 208.896,
+   "t1": 209.332
+  },
+  {
+   "w": "recta.",
+   "k": "recta",
+   "bloque": 18,
+   "grupo": 69,
+   "t0": 209.332,
+   "t1": 209.84
+  },
+  {
+   "w": "Hay",
+   "k": "hay",
+   "bloque": 18,
+   "grupo": 70,
+   "t0": 209.84,
+   "t1": 210.182
+  },
+  {
+   "w": "meses",
+   "k": "meses",
+   "bloque": 18,
+   "grupo": 70,
+   "t0": 210.182,
+   "t1": 210.694
+  },
+  {
+   "w": "que",
+   "k": "que",
+   "bloque": 18,
+   "grupo": 70,
+   "t0": 210.694,
+   "t1": 211.036
+  },
+  {
+   "w": "baja",
+   "k": "baja",
+   "bloque": 18,
+   "grupo": 70,
+   "t0": 211.036,
+   "t1": 211.463
+  },
+  {
+   "w": "y",
+   "k": "y",
+   "bloque": 18,
+   "grupo": 70,
+   "t0": 211.463,
+   "t1": 211.634
+  },
+  {
+   "w": "meses",
+   "k": "meses",
+   "bloque": 18,
+   "grupo": 70,
+   "t0": 211.634,
+   "t1": 212.146
+  },
+  {
+   "w": "que",
+   "k": "que",
+   "bloque": 18,
+   "grupo": 70,
+   "t0": 212.146,
+   "t1": 212.488
+  },
+  {
+   "w": "sube.",
+   "k": "sube",
+   "bloque": 18,
+   "grupo": 70,
+   "t0": 212.488,
+   "t1": 213
+  },
+  {
+   "w": "Si",
+   "k": "si",
+   "bloque": 19,
+   "grupo": 71,
+   "t0": 213,
+   "t1": 213.278
+  },
+  {
+   "w": "tus",
+   "k": "tus",
+   "bloque": 19,
+   "grupo": 71,
+   "t0": 213.278,
+   "t1": 213.648
+  },
+  {
+   "w": "diez",
+   "k": "diez",
+   "bloque": 19,
+   "grupo": 71,
+   "t0": 213.648,
+   "t1": 214.112
+  },
+  {
+   "w": "mil",
+   "k": "mil",
+   "bloque": 19,
+   "grupo": 71,
+   "t0": 214.112,
+   "t1": 214.482
+  },
+  {
+   "w": "bajan",
+   "k": "bajan",
+   "bloque": 19,
+   "grupo": 71,
+   "t0": 214.482,
+   "t1": 215.038
+  },
+  {
+   "w": "diez",
+   "k": "diez",
+   "bloque": 19,
+   "grupo": 71,
+   "t0": 215.038,
+   "t1": 215.501
+  },
+  {
+   "w": "por",
+   "k": "por",
+   "bloque": 19,
+   "grupo": 71,
+   "t0": 215.501,
+   "t1": 215.872
+  },
+  {
+   "w": "ciento",
+   "k": "ciento",
+   "bloque": 19,
+   "grupo": 71,
+   "t0": 215.872,
+   "t1": 216.52
+  },
+  {
+   "w": "justo",
+   "k": "justo",
+   "bloque": 19,
+   "grupo": 72,
+   "t0": 216.52,
+   "t1": 217.019
+  },
+  {
+   "w": "el",
+   "k": "el",
+   "bloque": 19,
+   "grupo": 72,
+   "t0": 217.019,
+   "t1": 217.269
+  },
+  {
+   "w": "mes",
+   "k": "mes",
+   "bloque": 19,
+   "grupo": 72,
+   "t0": 217.269,
+   "t1": 217.602
+  },
+  {
+   "w": "que",
+   "k": "que",
+   "bloque": 19,
+   "grupo": 72,
+   "t0": 217.602,
+   "t1": 217.935
+  },
+  {
+   "w": "los",
+   "k": "los",
+   "bloque": 19,
+   "grupo": 72,
+   "t0": 217.935,
+   "t1": 218.268
+  },
+  {
+   "w": "necesitas,",
+   "k": "necesitas",
+   "bloque": 19,
+   "grupo": 72,
+   "t0": 218.268,
+   "t1": 219.184
+  },
+  {
+   "w": "diez",
+   "k": "diez",
+   "bloque": 19,
+   "grupo": 72,
+   "t0": 219.184,
+   "t1": 219.6
+  },
+  {
+   "w": "por",
+   "k": "por",
+   "bloque": 19,
+   "grupo": 73,
+   "t0": 219.6,
+   "t1": 219.985
+  },
+  {
+   "w": "ciento",
+   "k": "ciento",
+   "bloque": 19,
+   "grupo": 73,
+   "t0": 219.985,
+   "t1": 220.659
+  },
+  {
+   "w": "de",
+   "k": "de",
+   "bloque": 19,
+   "grupo": 73,
+   "t0": 220.659,
+   "t1": 220.947
+  },
+  {
+   "w": "diez",
+   "k": "diez",
+   "bloque": 19,
+   "grupo": 73,
+   "t0": 220.947,
+   "t1": 221.429
+  },
+  {
+   "w": "mil",
+   "k": "mil",
+   "bloque": 19,
+   "grupo": 73,
+   "t0": 221.429,
+   "t1": 221.814
+  },
+  {
+   "w": "son",
+   "k": "son",
+   "bloque": 19,
+   "grupo": 73,
+   "t0": 221.814,
+   "t1": 222.199
+  },
+  {
+   "w": "mil.",
+   "k": "mil",
+   "bloque": 19,
+   "grupo": 73,
+   "t0": 222.199,
+   "t1": 222.68
+  },
+  {
+   "w": "Sacas",
+   "k": "sacas",
+   "bloque": 19,
+   "grupo": 74,
+   "t0": 222.68,
+   "t1": 223.216
+  },
+  {
+   "w": "nueve",
+   "k": "nueve",
+   "bloque": 19,
+   "grupo": 74,
+   "t0": 223.216,
+   "t1": 223.753
+  },
+  {
+   "w": "mil.",
+   "k": "mil",
+   "bloque": 19,
+   "grupo": 74,
+   "t0": 223.753,
+   "t1": 224.2
+  },
+  {
+   "w": "Pero",
+   "k": "pero",
+   "bloque": 20,
+   "grupo": 75,
+   "t0": 224.5,
+   "t1": 225.003
+  },
+  {
+   "w": "si",
+   "k": "si",
+   "bloque": 20,
+   "grupo": 75,
+   "t0": 225.003,
+   "t1": 225.305
+  },
+  {
+   "w": "no",
+   "k": "no",
+   "bloque": 20,
+   "grupo": 75,
+   "t0": 225.305,
+   "t1": 225.607
+  },
+  {
+   "w": "los",
+   "k": "los",
+   "bloque": 20,
+   "grupo": 75,
+   "t0": 225.607,
+   "t1": 226.01
+  },
+  {
+   "w": "vas",
+   "k": "vas",
+   "bloque": 20,
+   "grupo": 75,
+   "t0": 226.01,
+   "t1": 226.413
+  },
+  {
+   "w": "a",
+   "k": "a",
+   "bloque": 20,
+   "grupo": 75,
+   "t0": 226.413,
+   "t1": 226.614
+  },
+  {
+   "w": "tocar",
+   "k": "tocar",
+   "bloque": 20,
+   "grupo": 75,
+   "t0": 226.614,
+   "t1": 227.218
+  },
+  {
+   "w": "en",
+   "k": "en",
+   "bloque": 20,
+   "grupo": 75,
+   "t0": 227.218,
+   "t1": 227.52
+  },
+  {
+   "w": "cinco",
+   "k": "cinco",
+   "bloque": 20,
+   "grupo": 76,
+   "t0": 227.52,
+   "t1": 227.962
+  },
+  {
+   "w": "años,",
+   "k": "anos",
+   "bloque": 20,
+   "grupo": 76,
+   "t0": 227.962,
+   "t1": 228.404
+  },
+  {
+   "w": "hay",
+   "k": "hay",
+   "bloque": 20,
+   "grupo": 76,
+   "t0": 228.404,
+   "t1": 228.699
+  },
+  {
+   "w": "más",
+   "k": "mas",
+   "bloque": 20,
+   "grupo": 76,
+   "t0": 228.699,
+   "t1": 228.993
+  },
+  {
+   "w": "tiempo",
+   "k": "tiempo",
+   "bloque": 20,
+   "grupo": 76,
+   "t0": 228.993,
+   "t1": 229.509
+  },
+  {
+   "w": "para",
+   "k": "para",
+   "bloque": 20,
+   "grupo": 76,
+   "t0": 229.509,
+   "t1": 229.877
+  },
+  {
+   "w": "que",
+   "k": "que",
+   "bloque": 20,
+   "grupo": 76,
+   "t0": 229.877,
+   "t1": 230.172
+  },
+  {
+   "w": "esos",
+   "k": "esos",
+   "bloque": 20,
+   "grupo": 76,
+   "t0": 230.172,
+   "t1": 230.54
+  },
+  {
+   "w": "meses",
+   "k": "meses",
+   "bloque": 20,
+   "grupo": 77,
+   "t0": 230.54,
+   "t1": 230.884
+  },
+  {
+   "w": "malos",
+   "k": "malos",
+   "bloque": 20,
+   "grupo": 77,
+   "t0": 230.884,
+   "t1": 231.229
+  },
+  {
+   "w": "pasen,",
+   "k": "pasen",
+   "bloque": 20,
+   "grupo": 77,
+   "t0": 231.229,
+   "t1": 231.63
+  },
+  {
+   "w": "aunque",
+   "k": "aunque",
+   "bloque": 20,
+   "grupo": 77,
+   "t0": 231.63,
+   "t1": 232.032
+  },
+  {
+   "w": "nadie",
+   "k": "nadie",
+   "bloque": 20,
+   "grupo": 77,
+   "t0": 232.032,
+   "t1": 232.377
+  },
+  {
+   "w": "lo",
+   "k": "lo",
+   "bloque": 20,
+   "grupo": 77,
+   "t0": 232.377,
+   "t1": 232.549
+  },
+  {
+   "w": "garantiza.",
+   "k": "garantiza",
+   "bloque": 20,
+   "grupo": 77,
+   "t0": 232.549,
+   "t1": 233.18
+  },
+  {
+   "w": "Con",
+   "k": "con",
+   "bloque": 20,
+   "grupo": 78,
+   "t0": 233.18,
+   "t1": 233.482
+  },
+  {
+   "w": "el",
+   "k": "el",
+   "bloque": 20,
+   "grupo": 78,
+   "t0": 233.482,
+   "t1": 233.709
+  },
+  {
+   "w": "ocho",
+   "k": "ocho",
+   "bloque": 20,
+   "grupo": 78,
+   "t0": 233.709,
+   "t1": 234.087
+  },
+  {
+   "w": "por",
+   "k": "por",
+   "bloque": 20,
+   "grupo": 78,
+   "t0": 234.087,
+   "t1": 234.389
+  },
+  {
+   "w": "ciento",
+   "k": "ciento",
+   "bloque": 20,
+   "grupo": 78,
+   "t0": 234.389,
+   "t1": 234.918
+  },
+  {
+   "w": "de",
+   "k": "de",
+   "bloque": 20,
+   "grupo": 78,
+   "t0": 234.918,
+   "t1": 235.144
+  },
+  {
+   "w": "ejemplo,",
+   "k": "ejemplo",
+   "bloque": 20,
+   "grupo": 78,
+   "t0": 235.144,
+   "t1": 235.824
+  },
+  {
+   "w": "y",
+   "k": "y",
+   "bloque": 20,
+   "grupo": 78,
+   "t0": 235.824,
+   "t1": 235.976
+  },
+  {
+   "w": "dejando",
+   "k": "dejando",
+   "bloque": 20,
+   "grupo": 78,
+   "t0": 235.976,
+   "t1": 236.58
+  },
+  {
+   "w": "adentro",
+   "k": "adentro",
+   "bloque": 20,
+   "grupo": 79,
+   "t0": 236.58,
+   "t1": 237.198
+  },
+  {
+   "w": "lo",
+   "k": "lo",
+   "bloque": 20,
+   "grupo": 79,
+   "t0": 237.198,
+   "t1": 237.43
+  },
+  {
+   "w": "que",
+   "k": "que",
+   "bloque": 20,
+   "grupo": 79,
+   "t0": 237.43,
+   "t1": 237.739
+  },
+  {
+   "w": "ganas",
+   "k": "ganas",
+   "bloque": 20,
+   "grupo": 79,
+   "t0": 237.739,
+   "t1": 238.203
+  },
+  {
+   "w": "cada",
+   "k": "cada",
+   "bloque": 20,
+   "grupo": 79,
+   "t0": 238.203,
+   "t1": 238.589
+  },
+  {
+   "w": "año,",
+   "k": "ano",
+   "bloque": 20,
+   "grupo": 79,
+   "t0": 238.589,
+   "t1": 238.975
+  },
+  {
+   "w": "tus",
+   "k": "tus",
+   "bloque": 20,
+   "grupo": 79,
+   "t0": 238.975,
+   "t1": 239.285
+  },
+  {
+   "w": "diez",
+   "k": "diez",
+   "bloque": 20,
+   "grupo": 79,
+   "t0": 239.285,
+   "t1": 239.671
+  },
+  {
+   "w": "mil",
+   "k": "mil",
+   "bloque": 20,
+   "grupo": 79,
+   "t0": 239.671,
+   "t1": 239.98
+  },
+  {
+   "w": "llegarían",
+   "k": "llegarian",
+   "bloque": 20,
+   "grupo": 80,
+   "t0": 239.98,
+   "t1": 240.599
+  },
+  {
+   "w": "a",
+   "k": "a",
+   "bloque": 20,
+   "grupo": 80,
+   "t0": 240.599,
+   "t1": 240.723
+  },
+  {
+   "w": "catorce",
+   "k": "catorce",
+   "bloque": 20,
+   "grupo": 80,
+   "t0": 240.723,
+   "t1": 241.218
+  },
+  {
+   "w": "mil",
+   "k": "mil",
+   "bloque": 20,
+   "grupo": 80,
+   "t0": 241.218,
+   "t1": 241.466
+  },
+  {
+   "w": "seiscientos",
+   "k": "seiscientos",
+   "bloque": 20,
+   "grupo": 80,
+   "t0": 241.466,
+   "t1": 242.209
+  },
+  {
+   "w": "noventa",
+   "k": "noventa",
+   "bloque": 20,
+   "grupo": 80,
+   "t0": 242.209,
+   "t1": 242.705
+  },
+  {
+   "w": "y",
+   "k": "y",
+   "bloque": 20,
+   "grupo": 80,
+   "t0": 242.705,
+   "t1": 242.828
+  },
+  {
+   "w": "tres.",
+   "k": "tres",
+   "bloque": 20,
+   "grupo": 80,
+   "t0": 242.828,
+   "t1": 243.2
+  },
+  {
+   "w": "Ese",
+   "k": "ese",
+   "bloque": 21,
+   "grupo": 81,
+   "t0": 243.5,
+   "t1": 243.816
+  },
+  {
+   "w": "tiempo",
+   "k": "tiempo",
+   "bloque": 21,
+   "grupo": 81,
+   "t0": 243.816,
+   "t1": 244.369
+  },
+  {
+   "w": "que",
+   "k": "que",
+   "bloque": 21,
+   "grupo": 81,
+   "t0": 244.369,
+   "t1": 244.685
+  },
+  {
+   "w": "dejas",
+   "k": "dejas",
+   "bloque": 21,
+   "grupo": 81,
+   "t0": 244.685,
+   "t1": 245.16
+  },
+  {
+   "w": "tu",
+   "k": "tu",
+   "bloque": 21,
+   "grupo": 81,
+   "t0": 245.16,
+   "t1": 245.397
+  },
+  {
+   "w": "dinero",
+   "k": "dinero",
+   "bloque": 21,
+   "grupo": 81,
+   "t0": 245.397,
+   "t1": 245.95
+  },
+  {
+   "w": "sin",
+   "k": "sin",
+   "bloque": 21,
+   "grupo": 82,
+   "t0": 245.95,
+   "t1": 246.296
+  },
+  {
+   "w": "tocar",
+   "k": "tocar",
+   "bloque": 21,
+   "grupo": 82,
+   "t0": 246.296,
+   "t1": 246.815
+  },
+  {
+   "w": "se",
+   "k": "se",
+   "bloque": 21,
+   "grupo": 82,
+   "t0": 246.815,
+   "t1": 247.075
+  },
+  {
+   "w": "llama",
+   "k": "llama",
+   "bloque": 21,
+   "grupo": 82,
+   "t0": 247.075,
+   "t1": 247.594
+  },
+  {
+   "w": "plazo.",
+   "k": "plazo",
+   "bloque": 21,
+   "grupo": 82,
+   "t0": 247.594,
+   "t1": 248.2
+  },
+  {
+   "w": "Es",
+   "k": "es",
+   "bloque": 22,
+   "grupo": 83,
+   "t0": 250,
+   "t1": 250.247
+  },
+  {
+   "w": "como",
+   "k": "como",
+   "bloque": 22,
+   "grupo": 83,
+   "t0": 250.247,
+   "t1": 250.659
+  },
+  {
+   "w": "la",
+   "k": "la",
+   "bloque": 22,
+   "grupo": 83,
+   "t0": 250.659,
+   "t1": 250.906
+  },
+  {
+   "w": "maceta:",
+   "k": "maceta",
+   "bloque": 22,
+   "grupo": 83,
+   "t0": 250.906,
+   "t1": 251.565
+  },
+  {
+   "w": "no",
+   "k": "no",
+   "bloque": 22,
+   "grupo": 83,
+   "t0": 251.565,
+   "t1": 251.812
+  },
+  {
+   "w": "le",
+   "k": "le",
+   "bloque": 22,
+   "grupo": 83,
+   "t0": 251.812,
+   "t1": 252.059
+  },
+  {
+   "w": "escarbas",
+   "k": "escarbas",
+   "bloque": 22,
+   "grupo": 83,
+   "t0": 252.059,
+   "t1": 252.8
+  },
+  {
+   "w": "cada",
+   "k": "cada",
+   "bloque": 22,
+   "grupo": 84,
+   "t0": 252.8,
+   "t1": 253.2
+  },
+  {
+   "w": "semana",
+   "k": "semana",
+   "bloque": 22,
+   "grupo": 84,
+   "t0": 253.2,
+   "t1": 253.76
+  },
+  {
+   "w": "para",
+   "k": "para",
+   "bloque": 22,
+   "grupo": 84,
+   "t0": 253.76,
+   "t1": 254.16
+  },
+  {
+   "w": "ver",
+   "k": "ver",
+   "bloque": 22,
+   "grupo": 84,
+   "t0": 254.16,
+   "t1": 254.48
+  },
+  {
+   "w": "si",
+   "k": "si",
+   "bloque": 22,
+   "grupo": 84,
+   "t0": 254.48,
+   "t1": 254.72
+  },
+  {
+   "w": "ya",
+   "k": "ya",
+   "bloque": 22,
+   "grupo": 84,
+   "t0": 254.72,
+   "t1": 254.96
+  },
+  {
+   "w": "creció.",
+   "k": "crecio",
+   "bloque": 22,
+   "grupo": 84,
+   "t0": 254.96,
+   "t1": 255.6
+  },
+  {
+   "w": "Dinero",
+   "k": "dinero",
+   "bloque": 22,
+   "grupo": 85,
+   "t0": 255.6,
+   "t1": 256.125
+  },
+  {
+   "w": "que",
+   "k": "que",
+   "bloque": 22,
+   "grupo": 85,
+   "t0": 256.125,
+   "t1": 256.425
+  },
+  {
+   "w": "vas",
+   "k": "vas",
+   "bloque": 22,
+   "grupo": 85,
+   "t0": 256.425,
+   "t1": 256.725
+  },
+  {
+   "w": "a",
+   "k": "a",
+   "bloque": 22,
+   "grupo": 85,
+   "t0": 256.725,
+   "t1": 256.875
+  },
+  {
+   "w": "necesitar",
+   "k": "necesitar",
+   "bloque": 22,
+   "grupo": 85,
+   "t0": 256.875,
+   "t1": 257.625
+  },
+  {
+   "w": "este",
+   "k": "este",
+   "bloque": 22,
+   "grupo": 85,
+   "t0": 257.625,
+   "t1": 258
+  },
+  {
+   "w": "año:",
+   "k": "ano",
+   "bloque": 22,
+   "grupo": 85,
+   "t0": 258,
+   "t1": 258.375
+  },
+  {
+   "w": "se",
+   "k": "se",
+   "bloque": 22,
+   "grupo": 85,
+   "t0": 258.375,
+   "t1": 258.6
+  },
+  {
+   "w": "ahorra.",
+   "k": "ahorra",
+   "bloque": 22,
+   "grupo": 85,
+   "t0": 258.6,
+   "t1": 259.2
+  },
+  {
+   "w": "Dinero",
+   "k": "dinero",
+   "bloque": 22,
+   "grupo": 86,
+   "t0": 259.2,
+   "t1": 259.846
+  },
+  {
+   "w": "que",
+   "k": "que",
+   "bloque": 22,
+   "grupo": 86,
+   "t0": 259.846,
+   "t1": 260.215
+  },
+  {
+   "w": "no",
+   "k": "no",
+   "bloque": 22,
+   "grupo": 86,
+   "t0": 260.215,
+   "t1": 260.492
+  },
+  {
+   "w": "vas",
+   "k": "vas",
+   "bloque": 22,
+   "grupo": 86,
+   "t0": 260.492,
+   "t1": 260.862
+  },
+  {
+   "w": "a",
+   "k": "a",
+   "bloque": 22,
+   "grupo": 86,
+   "t0": 260.862,
+   "t1": 261.046
+  },
+  {
+   "w": "tocar",
+   "k": "tocar",
+   "bloque": 22,
+   "grupo": 86,
+   "t0": 261.046,
+   "t1": 261.6
+  },
+  {
+   "w": "en",
+   "k": "en",
+   "bloque": 22,
+   "grupo": 87,
+   "t0": 261.6,
+   "t1": 261.812
+  },
+  {
+   "w": "años:",
+   "k": "anos",
+   "bloque": 22,
+   "grupo": 87,
+   "t0": 261.812,
+   "t1": 262.235
+  },
+  {
+   "w": "ese",
+   "k": "ese",
+   "bloque": 22,
+   "grupo": 87,
+   "t0": 262.235,
+   "t1": 262.518
+  },
+  {
+   "w": "sí",
+   "k": "si",
+   "bloque": 22,
+   "grupo": 87,
+   "t0": 262.518,
+   "t1": 262.729
+  },
+  {
+   "w": "puede",
+   "k": "puede",
+   "bloque": 22,
+   "grupo": 87,
+   "t0": 262.729,
+   "t1": 263.153
+  },
+  {
+   "w": "invertirse.",
+   "k": "invertirse",
+   "bloque": 22,
+   "grupo": 87,
+   "t0": 263.153,
+   "t1": 264
+  },
+  {
+   "w": "Pero",
+   "k": "pero",
+   "bloque": 23,
+   "grupo": 88,
+   "t0": 264,
+   "t1": 264.465
+  },
+  {
+   "w": "ojo",
+   "k": "ojo",
+   "bloque": 23,
+   "grupo": 88,
+   "t0": 264.465,
+   "t1": 264.837
+  },
+  {
+   "w": "con",
+   "k": "con",
+   "bloque": 23,
+   "grupo": 88,
+   "t0": 264.837,
+   "t1": 265.209
+  },
+  {
+   "w": "algo:",
+   "k": "algo",
+   "bloque": 23,
+   "grupo": 88,
+   "t0": 265.209,
+   "t1": 265.767
+  },
+  {
+   "w": "el",
+   "k": "el",
+   "bloque": 23,
+   "grupo": 88,
+   "t0": 265.767,
+   "t1": 266.046
+  },
+  {
+   "w": "sesenta",
+   "k": "sesenta",
+   "bloque": 23,
+   "grupo": 88,
+   "t0": 266.046,
+   "t1": 266.79
+  },
+  {
+   "w": "y",
+   "k": "y",
+   "bloque": 23,
+   "grupo": 88,
+   "t0": 266.79,
+   "t1": 266.976
+  },
+  {
+   "w": "el",
+   "k": "el",
+   "bloque": 23,
+   "grupo": 88,
+   "t0": 266.976,
+   "t1": 267.255
+  },
+  {
+   "w": "ocho",
+   "k": "ocho",
+   "bloque": 23,
+   "grupo": 88,
+   "t0": 267.255,
+   "t1": 267.72
+  },
+  {
+   "w": "por",
+   "k": "por",
+   "bloque": 23,
+   "grupo": 89,
+   "t0": 267.72,
+   "t1": 268.008
+  },
+  {
+   "w": "ciento",
+   "k": "ciento",
+   "bloque": 23,
+   "grupo": 89,
+   "t0": 268.008,
+   "t1": 268.512
+  },
+  {
+   "w": "son",
+   "k": "son",
+   "bloque": 23,
+   "grupo": 89,
+   "t0": 268.512,
+   "t1": 268.799
+  },
+  {
+   "w": "ejemplos",
+   "k": "ejemplos",
+   "bloque": 23,
+   "grupo": 89,
+   "t0": 268.799,
+   "t1": 269.447
+  },
+  {
+   "w": "para",
+   "k": "para",
+   "bloque": 23,
+   "grupo": 89,
+   "t0": 269.447,
+   "t1": 269.807
+  },
+  {
+   "w": "hacer",
+   "k": "hacer",
+   "bloque": 23,
+   "grupo": 89,
+   "t0": 269.807,
+   "t1": 270.238
+  },
+  {
+   "w": "la",
+   "k": "la",
+   "bloque": 23,
+   "grupo": 89,
+   "t0": 270.238,
+   "t1": 270.454
+  },
+  {
+   "w": "cuenta.",
+   "k": "cuenta",
+   "bloque": 23,
+   "grupo": 89,
+   "t0": 270.454,
+   "t1": 271.03
+  },
+  {
+   "w": "La",
+   "k": "la",
+   "bloque": 23,
+   "grupo": 90,
+   "t0": 271.03,
+   "t1": 271.307
+  },
+  {
+   "w": "tasa",
+   "k": "tasa",
+   "bloque": 23,
+   "grupo": 90,
+   "t0": 271.307,
+   "t1": 271.768
+  },
+  {
+   "w": "real",
+   "k": "real",
+   "bloque": 23,
+   "grupo": 90,
+   "t0": 271.768,
+   "t1": 272.229
+  },
+  {
+   "w": "de",
+   "k": "de",
+   "bloque": 23,
+   "grupo": 90,
+   "t0": 272.229,
+   "t1": 272.506
+  },
+  {
+   "w": "tu",
+   "k": "tu",
+   "bloque": 23,
+   "grupo": 90,
+   "t0": 272.506,
+   "t1": 272.782
+  },
+  {
+   "w": "tarjeta",
+   "k": "tarjeta",
+   "bloque": 23,
+   "grupo": 90,
+   "t0": 272.782,
+   "t1": 273.52
+  },
+  {
+   "w": "viene",
+   "k": "viene",
+   "bloque": 23,
+   "grupo": 91,
+   "t0": 273.52,
+   "t1": 274.016
+  },
+  {
+   "w": "en",
+   "k": "en",
+   "bloque": 23,
+   "grupo": 91,
+   "t0": 274.016,
+   "t1": 274.264
+  },
+  {
+   "w": "tu",
+   "k": "tu",
+   "bloque": 23,
+   "grupo": 91,
+   "t0": 274.264,
+   "t1": 274.512
+  },
+  {
+   "w": "estado",
+   "k": "estado",
+   "bloque": 23,
+   "grupo": 91,
+   "t0": 274.512,
+   "t1": 275.091
+  },
+  {
+   "w": "de",
+   "k": "de",
+   "bloque": 23,
+   "grupo": 91,
+   "t0": 275.091,
+   "t1": 275.339
+  },
+  {
+   "w": "cuenta.",
+   "k": "cuenta",
+   "bloque": 23,
+   "grupo": 91,
+   "t0": 275.339,
+   "t1": 276
+  },
+  {
+   "w": "Ahora",
+   "k": "ahora",
+   "bloque": 24,
+   "grupo": 92,
+   "t0": 276,
+   "t1": 276.549
+  },
+  {
+   "w": "mira",
+   "k": "mira",
+   "bloque": 24,
+   "grupo": 92,
+   "t0": 276.549,
+   "t1": 277.006
+  },
+  {
+   "w": "qué",
+   "k": "que",
+   "bloque": 24,
+   "grupo": 92,
+   "t0": 277.006,
+   "t1": 277.371
+  },
+  {
+   "w": "pasa",
+   "k": "pasa",
+   "bloque": 24,
+   "grupo": 92,
+   "t0": 277.371,
+   "t1": 277.829
+  },
+  {
+   "w": "si",
+   "k": "si",
+   "bloque": 24,
+   "grupo": 92,
+   "t0": 277.829,
+   "t1": 278.103
+  },
+  {
+   "w": "lo",
+   "k": "lo",
+   "bloque": 24,
+   "grupo": 92,
+   "t0": 278.103,
+   "t1": 278.377
+  },
+  {
+   "w": "haces",
+   "k": "haces",
+   "bloque": 24,
+   "grupo": 92,
+   "t0": 278.377,
+   "t1": 278.926
+  },
+  {
+   "w": "al",
+   "k": "al",
+   "bloque": 24,
+   "grupo": 92,
+   "t0": 278.926,
+   "t1": 279.2
+  },
+  {
+   "w": "revés.",
+   "k": "reves",
+   "bloque": 24,
+   "grupo": 92,
+   "t0": 279.2,
+   "t1": 279.84
+  },
+  {
+   "w": "Metes",
+   "k": "metes",
+   "bloque": 24,
+   "grupo": 93,
+   "t0": 280.14,
+   "t1": 280.557
+  },
+  {
+   "w": "los",
+   "k": "los",
+   "bloque": 24,
+   "grupo": 93,
+   "t0": 280.557,
+   "t1": 280.834
+  },
+  {
+   "w": "cincuenta",
+   "k": "cincuenta",
+   "bloque": 24,
+   "grupo": 93,
+   "t0": 280.834,
+   "t1": 281.529
+  },
+  {
+   "w": "mil",
+   "k": "mil",
+   "bloque": 24,
+   "grupo": 93,
+   "t0": 281.529,
+   "t1": 281.806
+  },
+  {
+   "w": "a",
+   "k": "a",
+   "bloque": 24,
+   "grupo": 93,
+   "t0": 281.806,
+   "t1": 281.945
+  },
+  {
+   "w": "invertir",
+   "k": "invertir",
+   "bloque": 24,
+   "grupo": 93,
+   "t0": 281.945,
+   "t1": 282.57
+  },
+  {
+   "w": "y",
+   "k": "y",
+   "bloque": 24,
+   "grupo": 94,
+   "t0": 282.57,
+   "t1": 282.727
+  },
+  {
+   "w": "la",
+   "k": "la",
+   "bloque": 24,
+   "grupo": 94,
+   "t0": 282.727,
+   "t1": 282.962
+  },
+  {
+   "w": "tarjeta",
+   "k": "tarjeta",
+   "bloque": 24,
+   "grupo": 94,
+   "t0": 282.962,
+   "t1": 283.589
+  },
+  {
+   "w": "la",
+   "k": "la",
+   "bloque": 24,
+   "grupo": 94,
+   "t0": 283.589,
+   "t1": 283.824
+  },
+  {
+   "w": "pagas",
+   "k": "pagas",
+   "bloque": 24,
+   "grupo": 94,
+   "t0": 283.824,
+   "t1": 284.295
+  },
+  {
+   "w": "después.",
+   "k": "despues",
+   "bloque": 24,
+   "grupo": 94,
+   "t0": 284.295,
+   "t1": 285
+  },
+  {
+   "w": "Cincuenta",
+   "k": "cincuenta",
+   "bloque": 25,
+   "grupo": 95,
+   "t0": 285,
+   "t1": 285.605
+  },
+  {
+   "w": "mil",
+   "k": "mil",
+   "bloque": 25,
+   "grupo": 95,
+   "t0": 285.605,
+   "t1": 285.847
+  },
+  {
+   "w": "son",
+   "k": "son",
+   "bloque": 25,
+   "grupo": 95,
+   "t0": 285.847,
+   "t1": 286.089
+  },
+  {
+   "w": "quinientas",
+   "k": "quinientas",
+   "bloque": 25,
+   "grupo": 95,
+   "t0": 286.089,
+   "t1": 286.754
+  },
+  {
+   "w": "veces",
+   "k": "veces",
+   "bloque": 25,
+   "grupo": 95,
+   "t0": 286.754,
+   "t1": 287.117
+  },
+  {
+   "w": "cien.",
+   "k": "cien",
+   "bloque": 25,
+   "grupo": 95,
+   "t0": 287.117,
+   "t1": 287.48
+  },
+  {
+   "w": "Quinientas",
+   "k": "quinientas",
+   "bloque": 25,
+   "grupo": 96,
+   "t0": 287.48,
+   "t1": 288.131
+  },
+  {
+   "w": "veces",
+   "k": "veces",
+   "bloque": 25,
+   "grupo": 96,
+   "t0": 288.131,
+   "t1": 288.485
+  },
+  {
+   "w": "ocho:",
+   "k": "ocho",
+   "bloque": 25,
+   "grupo": 96,
+   "t0": 288.485,
+   "t1": 288.84
+  },
+  {
+   "w": "cuatro",
+   "k": "cuatro",
+   "bloque": 25,
+   "grupo": 96,
+   "t0": 288.84,
+   "t1": 289.254
+  },
+  {
+   "w": "mil.",
+   "k": "mil",
+   "bloque": 25,
+   "grupo": 96,
+   "t0": 289.254,
+   "t1": 289.55
+  },
+  {
+   "w": "Pero",
+   "k": "pero",
+   "bloque": 25,
+   "grupo": 97,
+   "t0": 289.55,
+   "t1": 289.989
+  },
+  {
+   "w": "la",
+   "k": "la",
+   "bloque": 25,
+   "grupo": 97,
+   "t0": 289.989,
+   "t1": 290.253
+  },
+  {
+   "w": "deuda",
+   "k": "deuda",
+   "bloque": 25,
+   "grupo": 97,
+   "t0": 290.253,
+   "t1": 290.78
+  },
+  {
+   "w": "te",
+   "k": "te",
+   "bloque": 25,
+   "grupo": 97,
+   "t0": 290.78,
+   "t1": 291.044
+  },
+  {
+   "w": "cobra",
+   "k": "cobra",
+   "bloque": 25,
+   "grupo": 97,
+   "t0": 291.044,
+   "t1": 291.571
+  },
+  {
+   "w": "seis",
+   "k": "seis",
+   "bloque": 25,
+   "grupo": 97,
+   "t0": 291.571,
+   "t1": 292.011
+  },
+  {
+   "w": "mil.",
+   "k": "mil",
+   "bloque": 25,
+   "grupo": 97,
+   "t0": 292.011,
+   "t1": 292.45
+  },
+  {
+   "w": "Cuatro",
+   "k": "cuatro",
+   "bloque": 25,
+   "grupo": 98,
+   "t0": 292.45,
+   "t1": 293.002
+  },
+  {
+   "w": "mil",
+   "k": "mil",
+   "bloque": 25,
+   "grupo": 98,
+   "t0": 293.002,
+   "t1": 293.317
+  },
+  {
+   "w": "menos",
+   "k": "menos",
+   "bloque": 25,
+   "grupo": 98,
+   "t0": 293.317,
+   "t1": 293.79
+  },
+  {
+   "w": "seis",
+   "k": "seis",
+   "bloque": 25,
+   "grupo": 98,
+   "t0": 293.79,
+   "t1": 294.184
+  },
+  {
+   "w": "mil:",
+   "k": "mil",
+   "bloque": 25,
+   "grupo": 98,
+   "t0": 294.184,
+   "t1": 294.578
+  },
+  {
+   "w": "menos",
+   "k": "menos",
+   "bloque": 25,
+   "grupo": 98,
+   "t0": 294.578,
+   "t1": 295.051
+  },
+  {
+   "w": "dos",
+   "k": "dos",
+   "bloque": 25,
+   "grupo": 98,
+   "t0": 295.051,
+   "t1": 295.366
+  },
+  {
+   "w": "mil.",
+   "k": "mil",
+   "bloque": 25,
+   "grupo": 98,
+   "t0": 295.366,
+   "t1": 295.76
+  },
+  {
+   "w": "Y",
+   "k": "y",
+   "bloque": 25,
+   "grupo": 99,
+   "t0": 295.76,
+   "t1": 295.952
+  },
+  {
+   "w": "sin",
+   "k": "sin",
+   "bloque": 25,
+   "grupo": 99,
+   "t0": 295.952,
+   "t1": 296.336
+  },
+  {
+   "w": "colchón.",
+   "k": "colchon",
+   "bloque": 25,
+   "grupo": 99,
+   "t0": 296.336,
+   "t1": 297.2
+  },
+  {
+   "w": "En",
+   "k": "en",
+   "bloque": 26,
+   "grupo": 100,
+   "t0": 297.5,
+   "t1": 297.709
+  },
+  {
+   "w": "orden:",
+   "k": "orden",
+   "bloque": 26,
+   "grupo": 100,
+   "t0": 297.709,
+   "t1": 298.197
+  },
+  {
+   "w": "pagas",
+   "k": "pagas",
+   "bloque": 26,
+   "grupo": 100,
+   "t0": 298.197,
+   "t1": 298.615
+  },
+  {
+   "w": "la",
+   "k": "la",
+   "bloque": 26,
+   "grupo": 100,
+   "t0": 298.615,
+   "t1": 298.824
+  },
+  {
+   "w": "deuda,",
+   "k": "deuda",
+   "bloque": 26,
+   "grupo": 100,
+   "t0": 298.824,
+   "t1": 299.312
+  },
+  {
+   "w": "guardas",
+   "k": "guardas",
+   "bloque": 26,
+   "grupo": 100,
+   "t0": 299.312,
+   "t1": 299.87
+  },
+  {
+   "w": "treinta",
+   "k": "treinta",
+   "bloque": 26,
+   "grupo": 101,
+   "t0": 299.87,
+   "t1": 300.428
+  },
+  {
+   "w": "mil",
+   "k": "mil",
+   "bloque": 26,
+   "grupo": 101,
+   "t0": 300.428,
+   "t1": 300.706
+  },
+  {
+   "w": "e",
+   "k": "e",
+   "bloque": 26,
+   "grupo": 101,
+   "t0": 300.706,
+   "t1": 300.846
+  },
+  {
+   "w": "inviertes",
+   "k": "inviertes",
+   "bloque": 26,
+   "grupo": 101,
+   "t0": 300.846,
+   "t1": 301.543
+  },
+  {
+   "w": "diez",
+   "k": "diez",
+   "bloque": 26,
+   "grupo": 101,
+   "t0": 301.543,
+   "t1": 301.891
+  },
+  {
+   "w": "mil.",
+   "k": "mil",
+   "bloque": 26,
+   "grupo": 101,
+   "t0": 301.891,
+   "t1": 302.24
+  },
+  {
+   "w": "Ganas",
+   "k": "ganas",
+   "bloque": 26,
+   "grupo": 102,
+   "t0": 302.24,
+   "t1": 302.644
+  },
+  {
+   "w": "ochocientos,",
+   "k": "ochocientos",
+   "bloque": 26,
+   "grupo": 102,
+   "t0": 302.644,
+   "t1": 303.518
+  },
+  {
+   "w": "sin",
+   "k": "sin",
+   "bloque": 26,
+   "grupo": 102,
+   "t0": 303.518,
+   "t1": 303.787
+  },
+  {
+   "w": "deuda",
+   "k": "deuda",
+   "bloque": 26,
+   "grupo": 102,
+   "t0": 303.787,
+   "t1": 304.191
+  },
+  {
+   "w": "y",
+   "k": "y",
+   "bloque": 26,
+   "grupo": 102,
+   "t0": 304.191,
+   "t1": 304.325
+  },
+  {
+   "w": "con",
+   "k": "con",
+   "bloque": 26,
+   "grupo": 102,
+   "t0": 304.325,
+   "t1": 304.595
+  },
+  {
+   "w": "colchón.",
+   "k": "colchon",
+   "bloque": 26,
+   "grupo": 102,
+   "t0": 304.595,
+   "t1": 305.2
+  },
+  {
+   "w": "Invertiste",
+   "k": "invertiste",
+   "bloque": 27,
+   "grupo": 103,
+   "t0": 307,
+   "t1": 307.84
+  },
+  {
+   "w": "cinco",
+   "k": "cinco",
+   "bloque": 27,
+   "grupo": 103,
+   "t0": 307.84,
+   "t1": 308.298
+  },
+  {
+   "w": "veces",
+   "k": "veces",
+   "bloque": 27,
+   "grupo": 103,
+   "t0": 308.298,
+   "t1": 308.756
+  },
+  {
+   "w": "menos…",
+   "k": "menos",
+   "bloque": 27,
+   "grupo": 103,
+   "t0": 308.756,
+   "t1": 309.29
+  },
+  {
+   "w": "y",
+   "k": "y",
+   "bloque": 27,
+   "grupo": 104,
+   "t0": 309.29,
+   "t1": 309.481
+  },
+  {
+   "w": "terminaste",
+   "k": "terminaste",
+   "bloque": 27,
+   "grupo": 104,
+   "t0": 309.481,
+   "t1": 310.531
+  },
+  {
+   "w": "mejor.",
+   "k": "mejor",
+   "bloque": 27,
+   "grupo": 104,
+   "t0": 310.531,
+   "t1": 311.2
+  },
+  {
+   "w": "Primero",
+   "k": "primero",
+   "bloque": 28,
+   "grupo": 105,
+   "t0": 311.5,
+   "t1": 312.406
+  },
+  {
+   "w": "lo",
+   "k": "lo",
+   "bloque": 28,
+   "grupo": 105,
+   "t0": 312.406,
+   "t1": 312.745
+  },
+  {
+   "w": "que",
+   "k": "que",
+   "bloque": 28,
+   "grupo": 105,
+   "t0": 312.745,
+   "t1": 313.198
+  },
+  {
+   "w": "te",
+   "k": "te",
+   "bloque": 28,
+   "grupo": 105,
+   "t0": 313.198,
+   "t1": 313.538
+  },
+  {
+   "w": "cobra.",
+   "k": "cobra",
+   "bloque": 28,
+   "grupo": 105,
+   "t0": 313.538,
+   "t1": 314.33
+  },
+  {
+   "w": "Luego",
+   "k": "luego",
+   "bloque": 28,
+   "grupo": 106,
+   "t0": 314.33,
+   "t1": 315.071
+  },
+  {
+   "w": "lo",
+   "k": "lo",
+   "bloque": 28,
+   "grupo": 106,
+   "t0": 315.071,
+   "t1": 315.441
+  },
+  {
+   "w": "que",
+   "k": "que",
+   "bloque": 28,
+   "grupo": 106,
+   "t0": 315.441,
+   "t1": 315.935
+  },
+  {
+   "w": "te",
+   "k": "te",
+   "bloque": 28,
+   "grupo": 106,
+   "t0": 315.935,
+   "t1": 316.306
+  },
+  {
+   "w": "cuida.",
+   "k": "cuida",
+   "bloque": 28,
+   "grupo": 106,
+   "t0": 316.306,
+   "t1": 317.17
+  },
+  {
+   "w": "Al",
+   "k": "al",
+   "bloque": 28,
+   "grupo": 107,
+   "t0": 317.17,
+   "t1": 317.524
+  },
+  {
+   "w": "final,",
+   "k": "final",
+   "bloque": 28,
+   "grupo": 107,
+   "t0": 317.524,
+   "t1": 318.349
+  },
+  {
+   "w": "lo",
+   "k": "lo",
+   "bloque": 28,
+   "grupo": 107,
+   "t0": 318.349,
+   "t1": 318.703
+  },
+  {
+   "w": "que",
+   "k": "que",
+   "bloque": 28,
+   "grupo": 107,
+   "t0": 318.703,
+   "t1": 319.175
+  },
+  {
+   "w": "crece.",
+   "k": "crece",
+   "bloque": 28,
+   "grupo": 107,
+   "t0": 319.175,
+   "t1": 320
+  },
+  {
+   "w": "Entonces,",
+   "k": "entonces",
+   "bloque": 29,
+   "grupo": 108,
+   "t0": 320,
+   "t1": 320.538
+  },
+  {
+   "w": "¿primero",
+   "k": "primero",
+   "bloque": 29,
+   "grupo": 108,
+   "t0": 320.538,
+   "t1": 321.021
+  },
+  {
+   "w": "ahorras",
+   "k": "ahorras",
+   "bloque": 29,
+   "grupo": 108,
+   "t0": 321.021,
+   "t1": 321.451
+  },
+  {
+   "w": "o",
+   "k": "o",
+   "bloque": 29,
+   "grupo": 108,
+   "t0": 321.451,
+   "t1": 321.559
+  },
+  {
+   "w": "primero",
+   "k": "primero",
+   "bloque": 29,
+   "grupo": 108,
+   "t0": 321.559,
+   "t1": 321.989
+  },
+  {
+   "w": "inviertes?",
+   "k": "inviertes",
+   "bloque": 29,
+   "grupo": 108,
+   "t0": 321.989,
+   "t1": 322.58
+  },
+  {
+   "w": "Uno:",
+   "k": "uno",
+   "bloque": 29,
+   "grupo": 109,
+   "t0": 322.88,
+   "t1": 323.268
+  },
+  {
+   "w": "paga",
+   "k": "paga",
+   "bloque": 29,
+   "grupo": 109,
+   "t0": 323.268,
+   "t1": 323.656
+  },
+  {
+   "w": "la",
+   "k": "la",
+   "bloque": 29,
+   "grupo": 109,
+   "t0": 323.656,
+   "t1": 323.888
+  },
+  {
+   "w": "deuda",
+   "k": "deuda",
+   "bloque": 29,
+   "grupo": 109,
+   "t0": 323.888,
+   "t1": 324.354
+  },
+  {
+   "w": "cara,",
+   "k": "cara",
+   "bloque": 29,
+   "grupo": 109,
+   "t0": 324.354,
+   "t1": 324.819
+  },
+  {
+   "w": "porque",
+   "k": "porque",
+   "bloque": 29,
+   "grupo": 109,
+   "t0": 324.819,
+   "t1": 325.362
+  },
+  {
+   "w": "te",
+   "k": "te",
+   "bloque": 29,
+   "grupo": 109,
+   "t0": 325.362,
+   "t1": 325.595
+  },
+  {
+   "w": "cobra",
+   "k": "cobra",
+   "bloque": 29,
+   "grupo": 109,
+   "t0": 325.595,
+   "t1": 326.06
+  },
+  {
+   "w": "más",
+   "k": "mas",
+   "bloque": 29,
+   "grupo": 110,
+   "t0": 326.06,
+   "t1": 326.355
+  },
+  {
+   "w": "de",
+   "k": "de",
+   "bloque": 29,
+   "grupo": 110,
+   "t0": 326.355,
+   "t1": 326.576
+  },
+  {
+   "w": "lo",
+   "k": "lo",
+   "bloque": 29,
+   "grupo": 110,
+   "t0": 326.576,
+   "t1": 326.797
+  },
+  {
+   "w": "que",
+   "k": "que",
+   "bloque": 29,
+   "grupo": 110,
+   "t0": 326.797,
+   "t1": 327.092
+  },
+  {
+   "w": "una",
+   "k": "una",
+   "bloque": 29,
+   "grupo": 110,
+   "t0": 327.092,
+   "t1": 327.387
+  },
+  {
+   "w": "inversión",
+   "k": "inversion",
+   "bloque": 29,
+   "grupo": 110,
+   "t0": 327.387,
+   "t1": 328.124
+  },
+  {
+   "w": "suele",
+   "k": "suele",
+   "bloque": 29,
+   "grupo": 110,
+   "t0": 328.124,
+   "t1": 328.567
+  },
+  {
+   "w": "pagarte.",
+   "k": "pagarte",
+   "bloque": 29,
+   "grupo": 110,
+   "t0": 328.567,
+   "t1": 329.23
+  },
+  {
+   "w": "Dos:",
+   "k": "dos",
+   "bloque": 29,
+   "grupo": 111,
+   "t0": 329.23,
+   "t1": 329.577
+  },
+  {
+   "w": "junta",
+   "k": "junta",
+   "bloque": 29,
+   "grupo": 111,
+   "t0": 329.577,
+   "t1": 329.994
+  },
+  {
+   "w": "tu",
+   "k": "tu",
+   "bloque": 29,
+   "grupo": 111,
+   "t0": 329.994,
+   "t1": 330.203
+  },
+  {
+   "w": "fondo",
+   "k": "fondo",
+   "bloque": 29,
+   "grupo": 111,
+   "t0": 330.203,
+   "t1": 330.62
+  },
+  {
+   "w": "de",
+   "k": "de",
+   "bloque": 29,
+   "grupo": 111,
+   "t0": 330.62,
+   "t1": 330.828
+  },
+  {
+   "w": "emergencia,",
+   "k": "emergencia",
+   "bloque": 29,
+   "grupo": 111,
+   "t0": 330.828,
+   "t1": 331.662
+  },
+  {
+   "w": "para",
+   "k": "para",
+   "bloque": 29,
+   "grupo": 111,
+   "t0": 331.662,
+   "t1": 332.01
+  },
+  {
+   "w": "no",
+   "k": "no",
+   "bloque": 29,
+   "grupo": 112,
+   "t0": 332.01,
+   "t1": 332.209
+  },
+  {
+   "w": "volver",
+   "k": "volver",
+   "bloque": 29,
+   "grupo": 112,
+   "t0": 332.209,
+   "t1": 332.672
+  },
+  {
+   "w": "a",
+   "k": "a",
+   "bloque": 29,
+   "grupo": 112,
+   "t0": 332.672,
+   "t1": 332.804
+  },
+  {
+   "w": "endeudarte",
+   "k": "endeudarte",
+   "bloque": 29,
+   "grupo": 112,
+   "t0": 332.804,
+   "t1": 333.532
+  },
+  {
+   "w": "cuando",
+   "k": "cuando",
+   "bloque": 29,
+   "grupo": 112,
+   "t0": 333.532,
+   "t1": 333.996
+  },
+  {
+   "w": "algo",
+   "k": "algo",
+   "bloque": 29,
+   "grupo": 112,
+   "t0": 333.996,
+   "t1": 334.327
+  },
+  {
+   "w": "falle.",
+   "k": "falle",
+   "bloque": 29,
+   "grupo": 112,
+   "t0": 334.327,
+   "t1": 334.79
+  },
+  {
+   "w": "Tres:",
+   "k": "tres",
+   "bloque": 29,
+   "grupo": 113,
+   "t0": 334.79,
+   "t1": 335.366
+  },
+  {
+   "w": "lo",
+   "k": "lo",
+   "bloque": 29,
+   "grupo": 113,
+   "t0": 335.366,
+   "t1": 335.655
+  },
+  {
+   "w": "que",
+   "k": "que",
+   "bloque": 29,
+   "grupo": 113,
+   "t0": 335.655,
+   "t1": 336.039
+  },
+  {
+   "w": "sobre,",
+   "k": "sobre",
+   "bloque": 29,
+   "grupo": 113,
+   "t0": 336.039,
+   "t1": 336.711
+  },
+  {
+   "w": "si",
+   "k": "si",
+   "bloque": 29,
+   "grupo": 113,
+   "t0": 336.711,
+   "t1": 336.999
+  },
+  {
+   "w": "no",
+   "k": "no",
+   "bloque": 29,
+   "grupo": 113,
+   "t0": 336.999,
+   "t1": 337.288
+  },
+  {
+   "w": "lo",
+   "k": "lo",
+   "bloque": 29,
+   "grupo": 113,
+   "t0": 337.288,
+   "t1": 337.576
+  },
+  {
+   "w": "vas",
+   "k": "vas",
+   "bloque": 29,
+   "grupo": 113,
+   "t0": 337.576,
+   "t1": 337.96
+  },
+  {
+   "w": "a",
+   "k": "a",
+   "bloque": 29,
+   "grupo": 114,
+   "t0": 337.96,
+   "t1": 338.141
+  },
+  {
+   "w": "tocar",
+   "k": "tocar",
+   "bloque": 29,
+   "grupo": 114,
+   "t0": 338.141,
+   "t1": 338.682
+  },
+  {
+   "w": "en",
+   "k": "en",
+   "bloque": 29,
+   "grupo": 114,
+   "t0": 338.682,
+   "t1": 338.953
+  },
+  {
+   "w": "años,",
+   "k": "anos",
+   "bloque": 29,
+   "grupo": 114,
+   "t0": 338.953,
+   "t1": 339.495
+  },
+  {
+   "w": "ponlo",
+   "k": "ponlo",
+   "bloque": 29,
+   "grupo": 114,
+   "t0": 339.495,
+   "t1": 340.037
+  },
+  {
+   "w": "a",
+   "k": "a",
+   "bloque": 29,
+   "grupo": 114,
+   "t0": 340.037,
+   "t1": 340.218
+  },
+  {
+   "w": "crecer.",
+   "k": "crecer",
+   "bloque": 29,
+   "grupo": 114,
+   "t0": 340.218,
+   "t1": 340.94
+  },
+  {
+   "w": "No",
+   "k": "no",
+   "bloque": 29,
+   "grupo": 115,
+   "t0": 341.24,
+   "t1": 341.468
+  },
+  {
+   "w": "es",
+   "k": "es",
+   "bloque": 29,
+   "grupo": 115,
+   "t0": 341.468,
+   "t1": 341.697
+  },
+  {
+   "w": "ahorrar",
+   "k": "ahorrar",
+   "bloque": 29,
+   "grupo": 115,
+   "t0": 341.697,
+   "t1": 342.306
+  },
+  {
+   "w": "o",
+   "k": "o",
+   "bloque": 29,
+   "grupo": 115,
+   "t0": 342.306,
+   "t1": 342.458
+  },
+  {
+   "w": "invertir.",
+   "k": "invertir",
+   "bloque": 29,
+   "grupo": 115,
+   "t0": 342.458,
+   "t1": 343.22
+  },
+  {
+   "w": "Es",
+   "k": "es",
+   "bloque": 29,
+   "grupo": 116,
+   "t0": 343.22,
+   "t1": 343.465
+  },
+  {
+   "w": "poner",
+   "k": "poner",
+   "bloque": 29,
+   "grupo": 116,
+   "t0": 343.465,
+   "t1": 343.956
+  },
+  {
+   "w": "las",
+   "k": "las",
+   "bloque": 29,
+   "grupo": 116,
+   "t0": 343.956,
+   "t1": 344.283
+  },
+  {
+   "w": "tres",
+   "k": "tres",
+   "bloque": 29,
+   "grupo": 116,
+   "t0": 344.283,
+   "t1": 344.692
+  },
+  {
+   "w": "cosas",
+   "k": "cosas",
+   "bloque": 29,
+   "grupo": 116,
+   "t0": 344.692,
+   "t1": 345.182
+  },
+  {
+   "w": "en",
+   "k": "en",
+   "bloque": 29,
+   "grupo": 116,
+   "t0": 345.182,
+   "t1": 345.428
+  },
+  {
+   "w": "orden.",
+   "k": "orden",
+   "bloque": 29,
+   "grupo": 116,
+   "t0": 345.428,
+   "t1": 346
+  },
+  {
+   "w": "¿Quieres",
+   "k": "quieres",
+   "bloque": 30,
+   "grupo": 117,
+   "t0": 346,
+   "t1": 346.978
+  },
+  {
+   "w": "hacer",
+   "k": "hacer",
+   "bloque": 30,
+   "grupo": 117,
+   "t0": 346.978,
+   "t1": 347.63
+  },
+  {
+   "w": "esta",
+   "k": "esta",
+   "bloque": 30,
+   "grupo": 117,
+   "t0": 347.63,
+   "t1": 348.173
+  },
+  {
+   "w": "cuenta",
+   "k": "cuenta",
+   "bloque": 30,
+   "grupo": 117,
+   "t0": 348.173,
+   "t1": 348.934
+  },
+  {
+   "w": "con",
+   "k": "con",
+   "bloque": 30,
+   "grupo": 117,
+   "t0": 348.934,
+   "t1": 349.368
+  },
+  {
+   "w": "tus",
+   "k": "tus",
+   "bloque": 30,
+   "grupo": 117,
+   "t0": 349.368,
+   "t1": 349.803
+  },
+  {
+   "w": "propios",
+   "k": "propios",
+   "bloque": 30,
+   "grupo": 117,
+   "t0": 349.803,
+   "t1": 350.672
+  },
+  {
+   "w": "números?",
+   "k": "numeros",
+   "bloque": 30,
+   "grupo": 117,
+   "t0": 350.672,
+   "t1": 351.65
+  },
+  {
+   "w": "Escríbele",
+   "k": "escribele",
+   "bloque": 30,
+   "grupo": 118,
+   "t0": 351.65,
+   "t1": 352.841
+  },
+  {
+   "w": "a",
+   "k": "a",
+   "bloque": 30,
+   "grupo": 118,
+   "t0": 352.841,
+   "t1": 353.079
+  },
+  {
+   "w": "Omar",
+   "k": "omar",
+   "bloque": 30,
+   "grupo": 118,
+   "t0": 353.079,
+   "t1": 353.675
+  },
+  {
+   "w": "en",
+   "k": "en",
+   "bloque": 30,
+   "grupo": 118,
+   "t0": 353.675,
+   "t1": 354.032
+  },
+  {
+   "w": "Instagram:",
+   "k": "instagram",
+   "bloque": 30,
+   "grupo": 118,
+   "t0": 354.032,
+   "t1": 355.342
+  },
+  {
+   "w": "arroba",
+   "k": "arroba",
+   "bloque": 30,
+   "grupo": 118,
+   "t0": 355.342,
+   "t1": 356.175
+  },
+  {
+   "w": "omar",
+   "k": "omar",
+   "bloque": 30,
+   "grupo": 118,
+   "t0": 356.175,
+   "t1": 356.771
+  },
+  {
+   "w": "punto",
+   "k": "punto",
+   "bloque": 30,
+   "grupo": 118,
+   "t0": 356.771,
+   "t1": 357.485
+  },
+  {
+   "w": "vizu.",
+   "k": "vizu",
+   "bloque": 30,
+   "grupo": 118,
+   "t0": 357.485,
+   "t1": 358.2
+  }
+ ]
+}
