@@ -15,6 +15,7 @@
 import { H, M, mode, mm, safe, ambient, arrive, ioReveal, splitHeading, makePulse, setScroll, tokens, lenis } from './core.js';
 
 const DESK = '(min-width: 901px) and (prefers-reduced-motion: no-preference)';
+const PIN = DESK + ' and (hover: hover) and (pointer: fine)';   /* el pin de Casos es de ratón: en táctil es scroll nativo con snap (E.2) */
 const MOB = '(max-width: 900px) and (prefers-reduced-motion: no-preference)';
 const AMB = { morph: 2.6, orbMorph: 2.7 };   /* periodo de cada forma de los blobs (s): ambiente, no es un token de interfaz */
 const PAR = 14;                              /* parallax de los blobs: % de su alto, solo translateY */
@@ -53,8 +54,8 @@ function ring(el, dur) {
 
 /* ═══ LLEGADAS (G-09) ═══════════════════════════════════════════════════════
    Los .js-fade y .js-words pasan a .m-arrive (CSS + el IO de core): cero ScrollTriggers, cero
-   letras ni palabras partidas. Corre siempre (también con reduce y sin GSAP: sin movimiento,
-   las distancias valen 0 y queda un fundido de --m-dur-base). */
+   letras ni palabras partidas. Corre siempre (también sin GSAP); con reduce los bloques ya están a
+   la vista desde el primer cuadro (motion-sections.css) y no se desplaza nada. */
 function initArrivals() {
   const stagedFlow = !!(mode.motion && H.DrawSVGPlugin && $('flowPath') && mqOK('(min-width: 901px)'));
   const list = [];
@@ -367,7 +368,7 @@ function initManifiesto() {
 
 /* ═══ CASOS (G-12) ══════════════════════════════════════════════════════════
    El único pin del sitio. Base accesible: el carril es scroll horizontal nativo en todos los anchos
-   (corrige P1-1: 761–900 px y reduce); solo con movimiento y ≥901 px JS lo ancla (.is-pinned).
+   (corrige P1-1: 761–900 px y reduce); solo con movimiento, ≥901 px y puntero fino JS lo ancla (.is-pinned).
    Tarjeta activa por índice (se escribe solo al cambiar), segmentos sin texto y flechas = una tarjeta.
    La vista previa que persigue al cursor y la elevación por hover viven en ui.js / motion-ui.css (puntero
    fino, sin lecturas de rect por cuadro): aquí solo se le da foco a la tarjeta activa tras una flecha, y la
@@ -400,7 +401,7 @@ function initCasos() {
   vp.addEventListener('scroll', () => { if (!pinned) setActive(max ? clamp(Math.round(vp.scrollLeft / max * (n - 1)), 0, n - 1) : 0); }, { passive: true });
 
   /* teclado: ← → desplazan una tarjeta; Inicio/Fin van a los extremos. Al asentarse el scroll el foco pasa a la
-     tarjeta activa (tabindex -1 solo mientras la tiene): el lector la anuncia y la vista previa se ancla a ella. */
+     tarjeta activa (con tabindex solo mientras la tiene): el lector la anuncia y la vista previa se ancla a ella. */
   if (mqOK('(any-hover: none) and (any-pointer: coarse)')) vp.removeAttribute('tabindex');   /* sin teclado, sin parada de tab */
   let kbT = 0;
   function goTo(i) {
@@ -408,7 +409,7 @@ function initCasos() {
     if (pinned && casesST) setScroll(casesST.start + f * (casesST.end - casesST.start));
     else vp.scrollTo({ left: f * max, behavior: mode.reduced ? 'auto' : 'smooth' });
   }
-  cards.forEach((c) => { c.addEventListener('focusout', () => { if (c.getAttribute('tabindex') === '-1') c.removeAttribute('tabindex'); }); });
+  cards.forEach((c) => { c.addEventListener('focusout', () => { if (c.hasAttribute('data-kbfocus')) { c.removeAttribute('data-kbfocus'); c.removeAttribute('tabindex'); } }); });
   vp.addEventListener('keydown', (e) => {
     const onCard = e.target.closest && e.target.closest('.case-card');
     if ((e.target !== vp && !onCard) || e.altKey || e.ctrlKey || e.metaKey) return;
@@ -417,12 +418,12 @@ function initCasos() {
     e.preventDefault();
     goTo(clamp(i, 0, n - 1));
     clearTimeout(kbT);
-    kbT = setTimeout(() => { const c = cards[active]; c.setAttribute('tabindex', '-1'); c.focus({ preventScroll: true }); }, 420);
+    kbT = setTimeout(() => { const c = cards[active]; c.setAttribute('tabindex', '0'); c.setAttribute('data-kbfocus', ''); c.focus({ preventScroll: true }); }, 420);   /* tabindex 0 (no -1): el anillo de foco de motion.css lo suprime en -1 */
   });
 
-  /* anclaje: solo con movimiento y ≥901 px */
+  /* anclaje: solo con movimiento, ≥901 px y puntero fino; en táctil el carril sigue siendo scroll nativo con snap */
   if (!mode.motion) return;
-  mm.add(DESK, () => {
+  mm.add(PIN, () => {
     const dist = () => Math.max(0, track.scrollWidth - window.innerWidth);
     vp.classList.add('is-pinned'); pinned = true;
     const tw = gsap.to(track, {
@@ -435,7 +436,7 @@ function initCasos() {
     });
     casesST = tw.scrollTrigger;
     /* arrastre: mueve la POSICIÓN DE SCROLL (un solo dueño del transform), solo con ratón */
-    if (H.Draggable && mqOK('(hover: hover) and (pointer: fine)')) {
+    if (H.Draggable) {
       const proxy = document.createElement('div');
       let startScroll = 0, startX = 0;
       const apply = (d) => { if (casesST) setScroll(clamp(startScroll - (d.x - startX) * CASES_RATIO, casesST.start, casesST.end), true); };

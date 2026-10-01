@@ -1,7 +1,55 @@
 /* ============================================================================
    css/motion-gl.css — CAPAS WEBGL (propietario: gl)
-   Seda y iridiscente del hero, grainient de producto, listón de scroll:
-   respaldos CSS, cuadro estático en movimiento reducido, anulaciones de
-   mezcla. Se carga al final: lee solo los tokens --m-* (nada de números
-   sueltos). Ver js/CONTRATO.md, «v2 · núcleo».
+   Seda y titular nacarado del hero, grainient de producto, listón de scroll:
+   respaldos CSS, cuadro estático en movimiento reducido, anulación de las mezclas
+   del hero. Se carga al final: lee solo los tokens --m-* (nada de números sueltos
+   de tiempo). Ver js/CONTRATO.md, «v2 · núcleo», y el encabezado de js/gl.js.
    ============================================================================ */
+
+/* ── Titular nacarado (G-08) ─────────────────────────────────────────────────
+   Antes: lienzo iridiscente DEBAJO del h1 + `mix-blend-mode: darken` en el h1 (con caja #000) +
+   `mix-blend-mode: lighten` en .hero-title. Sin los dos blends el reposo del hero rinde +33 %
+   (informe 01, H2) y la caja negra ya no hace falta.
+   Ahora: gl.js pinta un lienzo ENCIMA del texto, solo dentro de las letras, con composición normal.
+   Hasta que la capa entra (intro) el texto del DOM se ve con el color MEDIO del campo nacarado
+   (media del shader original sobre rejilla y tiempo: #cdc4e4), así no hay salto de tono al entrar.
+   Con la capa encendida (html.gl-nacre-on) el relleno del DOM pasa a transparente: el h1 sigue
+   siendo texto real (seleccionable, lector de pantalla, buscador). */
+:root { --gl-nacre-mean: #cdc4e4; }
+
+.hero-title { mix-blend-mode: normal; }
+#heroDisplay { background: transparent; mix-blend-mode: normal; }
+
+/* La caja del lienzo la fija gl.js (unión de las letras + margen); aquí solo el apilado */
+.hero-irid { inset: auto; left: 0; top: 0; width: 0; height: 0; z-index: 2; overflow: visible; pointer-events: none; }
+
+html.gl-nacre #heroDisplay { color: var(--gl-nacre-mean); }
+html.gl-nacre-on #heroDisplay,
+html.gl-nacre-on #heroDisplay * { -webkit-text-fill-color: transparent; }
+
+/* Alto contraste e impresión: sin lienzo, el texto del DOM con el color del sistema */
+@media (forced-colors: active) {
+  .hero-irid { display: none; }
+  html.gl-nacre-on #heroDisplay, html.gl-nacre-on #heroDisplay * { -webkit-text-fill-color: currentColor; }
+}
+@media print {
+  .hero-irid, .scroll-ribbon { display: none; }
+  html.gl-nacre-on #heroDisplay, html.gl-nacre-on #heroDisplay * { -webkit-text-fill-color: currentColor; }
+}
+
+/* ── Lienzos que entran sobre el tinte CSS ────────────────────────────────────
+   Los grainient, el nacarado y el listón se crean tarde (IO / tras el intro): nacen en opacidad 0 y
+   gl.js pone .gl-ready tras el primer cuadro. El tinte sólido de cada panel (--ag-tint) queda debajo
+   como respaldo. En movimiento reducido la opacidad sigue transicionando a --m-dur-base (es estado). */
+.grainient canvas, .hero-irid canvas, .scroll-ribbon canvas {
+  opacity: 0;
+  transition: opacity var(--m-dur-base, 180ms) var(--m-ease-state, ease);
+}
+.grainient canvas.gl-ready, .hero-irid canvas.gl-ready, .scroll-ribbon canvas.gl-ready { opacity: 1; }
+
+/* Cuadros estáticos 2D (reducido, sin WebGL2, contexto perdido): ocupan el mismo lugar que el lienzo */
+.gl-still { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+
+/* Listón: con movimiento reducido en vivo (core pone html.m-reduced) no hay listón; gl.js ya
+   no lo crea si la página cargó en reducido */
+html.m-reduced .scroll-ribbon { display: none; }

@@ -1,6 +1,139 @@
 /* ============================================================================
    css/motion-accordion.css — ACORDEÓN DE PRODUCTOS (propietario: accordion)
-   Cascada de contenido (.ag-body .tool-content > * con --i), estados del
-   panel, foco, atenuado. Se carga después de motion-sections.css: lee solo los
-   tokens --m-* (nada de números sueltos). Ver js/CONTRATO.md, «v2 · núcleo».
+   Cascada de contenido (.ag-body .tool-content > * con --i), estados del panel,
+   foco, atenuado, legibilidad y alto de la fila. Se carga después de
+   motion-sections.css: lee solo los tokens --m-* (con respaldo idéntico al de
+   motion.css). Ver js/CONTRATO.md, «v2 · núcleo», y js/accordion.js.
+
+   Reparto de trabajo: GSAP mueve solo flex-grow, rotateY y el parallax del medio.
+   Todo lo demás (atenuado, etiqueta vertical, cuerpo, cascada, velo de lectura) es
+   CSS: interrumpible por naturaleza y sin recálculo de variables.
+   Los estados ocultos viven bajo .ag-live (la pone accordion.js al arrancar): si el
+   script no corre, queda el comportamiento de site.css.
    ============================================================================ */
+
+/* ── 0. Alias locales (solo nombres; los números salen de --m-*) ───────────── */
+.ag-row {
+  --ag-in:  var(--m-dur-enter, 280ms);
+  --ag-out: calc(var(--m-dur-enter, 280ms) * var(--m-exit, .6));
+  --ag-lay: var(--m-dur-layout, 440ms);
+  --ag-cue: calc(var(--m-dur-layout, 440ms) * .35);        /* la cascada arranca cuando el panel ya creció un tercio */
+  touch-action: pan-y;                                      /* el gesto horizontal es del acordeón; el vertical sigue siendo scroll */
+}
+/* sin transiciones en el primer reparto (accordion.js quita .ag-init tras asentarlo) */
+.ag-row.ag-init, .ag-row.ag-init *, .ag-row.ag-init *::before, .ag-row.ag-init *::after { transition: none !important; }
+
+/* ── 1. FOCO: los 6 paneles tienen indicador visible (antes outline:none y var(--lila) inexistente) ── */
+.ag-panel:focus-visible {
+  outline: 2px solid transparent;                           /* visible en alto contraste; el anillo real es la sombra doble */
+  outline-offset: 2px;
+  box-shadow: var(--m-focus, 0 0 0 2px var(--bg), 0 0 0 4px var(--ink));
+}
+
+/* ── 2. ESTADO DEL PANEL (solo escritorio: ≥901 px, con GSAP) ─────────────── */
+@media (min-width: 901px) {
+  html.js:not(.m-nogsap) .ag-row.ag-live {
+    /* ALTO: la fila crece hasta que el cuerpo más alto quepa entero (accordion.js mide --ag-need).
+       El panel recortaba 20-83 px y el CTA en 1366×768, 1280×720 y iPad horizontal. */
+    height: max(clamp(520px, 62vh, 600px), var(--ag-need, 0px));
+  }
+
+  /* El atenuado ya no es una variable animada en 6 subárboles: es la opacidad de un elemento */
+  html.js:not(.m-nogsap) .ag-row.ag-live .ag-dim { opacity: .5; transition: opacity var(--ag-lay) var(--m-ease, cubic-bezier(.2, .7, .2, 1)); }
+  html.js:not(.m-nogsap) .ag-row.ag-live .ag-panel--active .ag-dim { opacity: .06; }
+
+  /* Etiqueta vertical del cerrado: sale rápido al abrirse, vuelve cuando el panel ya se cerró un poco */
+  html.js:not(.m-nogsap) .ag-row.ag-live .ag-spine { opacity: 1; transition: opacity var(--ag-in) var(--m-ease-state, ease) var(--ag-cue); }
+  html.js:not(.m-nogsap) .ag-row.ag-live .ag-panel--active .ag-spine { opacity: 0; transition: opacity var(--ag-out) var(--m-ease-exit, cubic-bezier(.4, 0, 1, 1)); }
+
+  /* Cuerpo: el contenedor ya no se atenúa entero, lo hacen sus hijos (cascada) y el velo de lectura.
+     El cuerpo del cerrado queda invisible y fuera del orden de Tab (además de inert desde JS). */
+  html.js:not(.m-nogsap) .ag-row.ag-live .ag-body { opacity: 1; }
+  html.js:not(.m-nogsap) .ag-row.ag-live .ag-panel:not(.ag-panel--active) .ag-body { visibility: hidden; transition: visibility 0s linear var(--ag-out); }
+  html.js:not(.m-nogsap) .ag-row.ag-live .ag-panel--active .ag-body { visibility: visible; transition: visibility 0s linear 0s; }
+
+  /* Cascada: etiqueta de estado, categoría, título, descripción, viñetas, remate y enlace entran en orden
+     (--i del marcado, 0-7; tope de retraso = 6 × stagger). Sale en 0.6 × la entrada y sin escalonar. */
+  html.js:not(.m-nogsap) .ag-row.ag-live .ag-body .tool-content > * {
+    opacity: 0; transform: translateY(var(--m-dist-1, 12px));
+    transition: opacity var(--ag-out) var(--m-ease-exit, cubic-bezier(.4, 0, 1, 1)),
+                transform var(--ag-out) var(--m-ease-exit, cubic-bezier(.4, 0, 1, 1));
+  }
+  html.js:not(.m-nogsap) .ag-row.ag-live .ag-panel--active .ag-body .tool-content > * {
+    --ag-d: calc(var(--ag-cue) + min(var(--i, 0), 6) * var(--m-stagger-each, 40ms));
+    opacity: 1; transform: none;
+    transition: opacity var(--ag-in) var(--m-ease-state, ease) var(--ag-d),
+                transform var(--ag-in) var(--m-ease, cubic-bezier(.2, .7, .2, 1)) var(--ag-d);
+  }
+  /* El botón conserva sus propias transiciones de interfaz (motion-ui.css: color, borde, imán, presión) */
+  html.js:not(.m-nogsap) .ag-row.ag-live .ag-body .tool-content > a.pill {
+    transition: color var(--m-dur-fast, 120ms) var(--m-ease-state, ease),
+                border-color var(--m-dur-fast, 120ms) var(--m-ease-state, ease),
+                translate var(--m-dur-layout, 440ms) var(--m-ease, cubic-bezier(.2, .7, .2, 1)),
+                scale var(--m-dur-fast, 120ms) var(--m-ease, cubic-bezier(.2, .7, .2, 1)),
+                opacity var(--ag-out) var(--m-ease-exit, cubic-bezier(.4, 0, 1, 1)),
+                transform var(--ag-out) var(--m-ease-exit, cubic-bezier(.4, 0, 1, 1));
+  }
+  html.js:not(.m-nogsap) .ag-row.ag-live .ag-panel--active .ag-body .tool-content > a.pill {
+    transition: color var(--m-dur-fast, 120ms) var(--m-ease-state, ease),
+                border-color var(--m-dur-fast, 120ms) var(--m-ease-state, ease),
+                translate var(--m-dur-layout, 440ms) var(--m-ease, cubic-bezier(.2, .7, .2, 1)),
+                scale var(--m-dur-fast, 120ms) var(--m-ease, cubic-bezier(.2, .7, .2, 1)),
+                opacity var(--ag-in) var(--m-ease-state, ease) var(--ag-d),
+                transform var(--ag-in) var(--m-ease, cubic-bezier(.2, .7, .2, 1)) var(--ag-d);
+  }
+
+  /* will-change solo mientras los paneles cambian (accordion.js pone .ag-moving durante M.dur.layout) */
+  .ag-row.ag-moving .ag-panel { will-change: transform; }
+
+  /* Barras «eq» de «En producción»: solo suenan en el panel abierto (core las pausa fuera de pantalla) */
+  html.js:not(.m-nogsap) .ag-row.ag-live .ag-panel:not(.ag-panel--active) .eq i { animation-play-state: paused; }
+}
+
+/* ── 3. REMATE: texto plano (ya no se parte por letra) en el color del producto, aclarado 22 % hacia --ink ── */
+.ag-body .punch { color: var(--pc, var(--ink)); color: color-mix(in srgb, var(--pc, var(--ink)) 78%, var(--ink)); }   /* el color del producto, un poco aclarado: es lo que la mitad del degradado original hacía con --ink */
+
+/* ── 4. LEGIBILIDAD: velo de lectura bajo el texto (P1-5) ─────────────────────
+   El texto de producto medía 1.4–2.9:1 (mediana) sobre los shaders. Solo tres textos fallaban:
+   la etiqueta de estado y la descripción (gris --ink-50) y la categoría (13 px en el color del
+   producto, casi del mismo tono que el shader). El resto (títulos, viñetas, botón) ya pasaba.
+   · Velo: un pozo oscuro detrás del grupo mini-onda / estado / categoría (donde el color del
+     producto compite con su propio fondo) y un baño suave arriba. No toca ningún color de
+     producto (tinte, acento, punto, etiqueta, remate) y deja vivo el resto del shader.
+   · Gris neutro: la descripción y el estado pasan de --ink-50 a una mezcla clara de --ink
+     (hacerlos legibles solo con velo exigía oscurecer todo el panel al 90 %).
+   Los números de abajo son el único lugar donde se afina cuánto se oscurece. */
+.ag-row { --ag-pool: .82; --ag-wash: .34; }
+.ag-body::before {
+  content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background:
+    radial-gradient(ellipse 300px 200px at 140px 150px,
+      rgba(10, 10, 10, var(--ag-pool)) 0%, rgba(10, 10, 10, var(--ag-pool)) 32%, rgba(10, 10, 10, calc(var(--ag-pool) * .72)) 52%,
+      rgba(10, 10, 10, calc(var(--ag-pool) * .38)) 72%, rgba(10, 10, 10, calc(var(--ag-pool) * .12)) 88%, rgba(10, 10, 10, 0) 100%),
+    linear-gradient(180deg, rgba(10, 10, 10, var(--ag-wash)) 0%, rgba(10, 10, 10, calc(var(--ag-wash) * .5)) 45%, rgba(10, 10, 10, 0) 70%);
+}
+.ag-body .t-body-lg, .ag-body .tag-status { color: #D3CFDC; color: color-mix(in srgb, var(--ink) 82%, var(--ink-50)); }
+@media (min-width: 901px) {
+  html.js:not(.m-nogsap) .ag-row.ag-live .ag-body::before { opacity: 0; transition: opacity var(--ag-out) var(--m-ease-exit, cubic-bezier(.4, 0, 1, 1)); }
+  html.js:not(.m-nogsap) .ag-row.ag-live .ag-panel--active .ag-body::before { opacity: 1; transition: opacity var(--ag-in) var(--m-ease-state, ease); }
+}
+
+/* ── 5. MOVIMIENTO REDUCIDO (D-2): el estado cambia sin desplazamiento ─────────
+   motion.css ya limita las transiciones a opacidad/color/sombra a 180 ms y sin retraso. Aquí:
+   el contenido que sale hace fundido de 120 ms (el que entra, 180 ms), sin deslizar. */
+@media (prefers-reduced-motion: reduce) {
+  html.js:not(.m-nogsap) .ag-row.ag-live .ag-body .tool-content > * { transform: none !important; transition: opacity var(--m-dur-fast, 120ms) var(--m-ease-state, ease) !important; }
+  html.js:not(.m-nogsap) .ag-row.ag-live .ag-panel--active .ag-body .tool-content > * { transition: opacity var(--m-dur-base, 180ms) var(--m-ease-state, ease) !important; }
+  html.js:not(.m-nogsap) .ag-row.ag-live .ag-body .tool-content > a.pill { transition: color var(--m-dur-fast, 120ms) var(--m-ease-state, ease), border-color var(--m-dur-fast, 120ms) var(--m-ease-state, ease), opacity var(--m-dur-fast, 120ms) var(--m-ease-state, ease) !important; }
+  html.js:not(.m-nogsap) .ag-row.ag-live .ag-panel--active .ag-body .tool-content > a.pill { transition: color var(--m-dur-fast, 120ms) var(--m-ease-state, ease), border-color var(--m-dur-fast, 120ms) var(--m-ease-state, ease), opacity var(--m-dur-base, 180ms) var(--m-ease-state, ease) !important; }
+  html.js:not(.m-nogsap) .ag-row.ag-live .ag-panel:not(.ag-panel--active) .ag-body { transition: visibility 0s linear var(--m-dur-fast, 120ms) !important; }
+  html.js:not(.m-nogsap) .ag-row.ag-live .ag-panel--active .ag-body { transition: visibility 0s linear 0s !important; }
+  html.js:not(.m-nogsap) .ag-row.ag-live .ag-dim { transition: opacity var(--m-dur-base, 180ms) var(--m-ease-state, ease) !important; }
+  html.js:not(.m-nogsap) .ag-row.ag-live .ag-spine { transition: opacity var(--m-dur-base, 180ms) var(--m-ease-state, ease) !important; }
+  html.js:not(.m-nogsap) .ag-row.ag-live .ag-body::before { transition: opacity var(--m-dur-base, 180ms) var(--m-ease-state, ease) !important; }
+  .ag-row { touch-action: pan-y; }
+}
+
+/* ── 6. LISTA APILADA (≤900 px) y plan B sin GSAP: todo abierto, velo siempre puesto ── */
+@media (max-width: 900px) { .ag-body::before { opacity: 1; } }
+html.m-nogsap .ag-body::before, html:not(.js) .ag-body::before { opacity: 1; }

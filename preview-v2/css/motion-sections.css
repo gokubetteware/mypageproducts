@@ -38,13 +38,11 @@ html.js .m-draw.m-in { transform: none; }
 html.js .bar-fill.m-bar { transition: transform var(--m-dur-count) var(--m-ease); }
 html.js .bar-fill.m-bar:not(.m-in) { transform: scaleX(0); }
 
-/* Movimiento reducido: el bloque llega con un fundido de --m-dur-base (las distancias ya valen 0).
-   site.css lo dejaba siempre visible (opacity:1 !important): este selector, más específico, lo
-   oculta hasta que el IO pone .m-in y deja el fundido a motion.css. */
+/* Movimiento reducido: los bloques están a la vista desde el primer cuadro (sin estado oculto a la espera del
+   IO: Ctrl+F, impresión y lectores los encuentran) y nada se desplaza. site.css ya lo hacía con .js-fade
+   (opacity:1 !important); aquí se completan los párrafos y la hairline que este módulo marca. */
 @media (prefers-reduced-motion: reduce) {
-  html.js .js-fade.m-arrive:not(.m-in) { opacity: 0 !important; }
-  html.js .m-draw { transform: none; opacity: 0; }
-  html.js .m-draw.m-in { opacity: 1; }
+  html.js .js-words.m-arrive, html.js .m-draw { opacity: 1 !important; transform: none !important; }
 }
 
 
@@ -86,6 +84,7 @@ html.js .m-strike:not(.m-in) .dc-new { opacity: 0; transform: translateY(var(--m
 @media (prefers-reduced-motion: reduce) {
   /* ya tachado desde el primer cuadro; el estado lo dice el texto */
   html.js .m-strike:not(.m-in) .dc-old::after { transform: scaleX(1); }
+  html.js .m-strike:not(.m-in) .dc-new { opacity: 1; transform: none; }
   /* la marca queda con dos círculos concéntricos estáticos (el punto y un halo), sin sonar */
   .m-ring--mark { display: block; opacity: .55; transform: scale(.26); }
 }
@@ -126,10 +125,13 @@ html.js .m-strike:not(.m-in) .dc-new { opacity: 0; transform: translateY(var(--m
 
 /* ── 6. CASOS ────────────────────────────────────────────────────────────── */
 
-/* Base accesible (P1-1): el carril es scroll horizontal nativo en TODOS los anchos y con reduce.
-   Solo con movimiento y ≥901 px el JS lo ancla (.is-pinned) y arrastra el scroll de la página. */
-.cases-shell { --cases-pad: max(var(--gutter), calc((100vw - var(--max-w)) / 2)); }
+/* Base accesible (P1-1): el carril es scroll horizontal nativo en TODOS los anchos, con reduce y en táctil.
+   Solo con movimiento, ≥901 px y puntero fino el JS lo ancla (.is-pinned) y arrastra el scroll de la página. */
+.cases-shell { --cases-pad: max(var(--gutter), calc((100vw - var(--max-w)) / 2)); display: flow-root; }
 .cases-viewport {
+  /* aire vertical que no mueve nada (padding y margen se cancelan): la tarjeta activa sube 6 px y su anillo de foco
+     sale 4 px; sin él el recorte del carril les comía el borde superior */
+  padding-block: 12px; margin-block: -12px;
   overflow-x: auto; overflow-y: hidden; overscroll-behavior-x: contain;
   scroll-padding-left: var(--cases-pad);
   scrollbar-width: thin; scrollbar-color: var(--ink-25) transparent;
