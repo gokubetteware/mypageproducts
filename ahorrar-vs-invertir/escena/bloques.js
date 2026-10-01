@@ -23,7 +23,7 @@ window.BLOQUES = function (E) {
     return d;
   }
   const pie = (texto, tin, tout) => txt(texto, 'pie', 96, 996, tin, tout, { nombre: 'pie' });
-  const EQUIV = '1 CATPESO = 1 peso mexicano';
+
   function tarjeta(n, termino, signif, t, tout) {
     const d = txt(`<div class="etq">PALABRA ${n} DE 3</div><div class="termino">${termino}<div class="marca"></div></div><div class="signif">${signif}</div>`,
       'tarjeta-def', 96, 150, t, tout, { nombre: 'tarjeta ' + n });
@@ -63,7 +63,6 @@ window.BLOQUES = function (E) {
   txt('CATPESOS', 'etiqueta', 104, 400, 0, fin(1));
   for (let i = 0; i < 5; i++) E.el(img('/assets/catpesos/b1000.png'), { x: 230 + i * 12, y: 820 - 140 - i * 22, w: 280, h: 140, qa: 'objeto', nombre: 'pila de catpesos' }, 0, fin(1));
   txt('¿Primero ahorro o<br>primero invierto?', 'titulo', 760, 170, 5.0, fin(2));
-  pie(EQUIV, 0, fin(1));
   E.michiEn(0, 'curiosidad', 2);
 
   // ---------- 2 · Guárdalo / Inviértelo ----------
@@ -88,7 +87,6 @@ window.BLOQUES = function (E) {
   filaTabla('Debes en la tarjeta', MENOS + '10,000', 312, T(4, 'traes una deuda'), fin(4), 'rojo');
   E.objPiso(O.bolsaDespensa(), 150, 200, 240, T(4, 'despensa'), fin(4), 'bolsa de despensa');
   E.objPiso(O.ticketLuz(), 380, 120, 180, T(4, 'luz'), fin(4), 'ticket de luz');
-  pie(EQUIV, B(4).t_in, fin(4));
   E.michiEn(B(4).t_in, 'tranquilidad', 2);
 
   // ---------- 5–10 · IDEA 1: la deuda (arcilla, Tigrillo) ----------
@@ -104,7 +102,6 @@ window.BLOQUES = function (E) {
   op([['100 × 60 = ', T(6, 'Cien veces sesenta')], ['6,000', T(6, 'seis mil')]], CX, 290, fin(7));
   E.objPiso(O.recibo(MENOS + '6,000', C.rojo), 500, 150, 190, T(6, 'seis mil'), fin(7), 'recibo −6,000');
   E.michiEn(T(6, 'seis mil') - 0.5, 'sorpresa', 2);
-  pie(EQUIV, B(6).t_in, fin(9));
 
   // 7 · PALABRA 1 DE 3
   tarjeta(1, 'Tasa', 'Lo que te cobran o te pagan por cada 100, en un año.', T(7, 'tasa'), fin(7));
@@ -131,7 +128,6 @@ window.BLOQUES = function (E) {
   // ---------- 11 · RE-ENGANCHE 1 (arcilla, sin gatito) ----------
   op([[`50,000 ${MENOS} 10,000 = `, B(11).t_in], ['40,000', T(11, 'cuarenta')]], 96, 170, fin(11));
   txt('¿Ahora sí, a invertir?', 'titulo', 96, 330, T(11, 'Ahora sí'), fin(11));
-  pie(EQUIV, B(11).t_in, fin(11));
   E.michiEn(T(11, 'Ahora sí'), 'duda', 2, { gaze: [0, 0] });
 
   // ---------- 12–17 · IDEA 2: el colchón (agua, Canela) ----------
@@ -170,7 +166,6 @@ window.BLOQUES = function (E) {
   op([['10,000 + 30,000 = 40,000', T(17, 'diez para la deuda')]], 96, 170, T(17, 'cuándo los'));
   op([[`50,000 ${MENOS} 40,000 = `, T(17, 'Te quedan')], ['10,000', T(17, 'quedan diez')]], 96, 290, T(17, 'cuándo los'));
   txt('¿Cuándo los vas a necesitar?', 'titulo', 96, 170, T(17, 'cuándo los'), fin(17));
-  pie(EQUIV, B(17).t_in, fin(17));
   E.michiEn(B(17).t_in, 'curiosidad', 2);
 
   // ---------- 18–22 · IDEA 3: el tiempo (arcilla, Bosco) ----------
@@ -238,7 +233,6 @@ window.BLOQUES = function (E) {
   txt('+800', 'operacion tnum verde', 1000, 250, T(26, 'Ganas ochocientos'), fin(26));
   txt('Sin deuda ·<br>Colchón 30,000', 'dato tnum', 1000, 390, T(26, 'sin deuda'), fin(26));
   E.michiEn(B(26).t_in, 'alivio', 2);
-  pie(EQUIV, B(25).t_in, fin(26));
 
   // 27
   op([['50,000 ÷ 10,000 = 5', B(27).t_in]], 560, 220, fin(27));

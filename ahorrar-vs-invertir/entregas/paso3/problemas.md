@@ -22,7 +22,7 @@ Fecha: 1 oct 2026 · Tiempos: **ESTIMADOS, sin audio real** · Controles automá
 5. **Duración 5:58**, abajo del mínimo de 6 a 8 min del manual. Además, los re-enganches caen en 1:57 y 3:10, no cerca de 2:45 y 4:15 como pide el manual. Lo decide el guion; con el audio real puede cambiar.
 6. **La cabecera entra en 0:29**, al empezar el bloque 4. El guion pide los primeros 30 s sin cabecera, así que entra 1 s antes. Puedo moverla a 0:30.
 7. **Flechas «→» en el bloque 22** («Lo necesito este año → ahorro»). El manual solo permite → entre dos cifras. El texto viene así del guion y no lo cambié.
-8. **Texto del pie.** El guion dice «1 CATPESO = 1 peso mexicano»; el manual maestro, «… en este ejemplo» (más de las 6 palabras que permite el pie). Usé el del guion. Cuando un bloque trae su propio pie («Tasa de ejemplo», «Ejemplo hipotético», «Si la pagas en un año», «Criterio general, no regla fija», «8 % fijo, de ejemplo»), se ve ese pie en lugar de la equivalencia, porque cabe un solo pie a la vez.
+8. **Pie de equivalencia QUITADO a pedido (1 oct).** Ya no sale «1 CATPESO = 1 peso mexicano». El manual maestro y el de marca piden declararla mientras dura la cuenta; queda pendiente si va en la descripción. Antes: **texto del pie.** El guion dice «1 CATPESO = 1 peso mexicano»; el manual maestro, «… en este ejemplo» (más de las 6 palabras que permite el pie). Usé el del guion. Cuando un bloque trae su propio pie («Tasa de ejemplo», «Ejemplo hipotético», «Si la pagas en un año», «Criterio general, no regla fija», «8 % fijo, de ejemplo»), se ve ese pie en lugar de la equivalencia, porque cabe un solo pie a la vez.
 9. **Aviso de información general:** el manual lo pide cuando se habla de invertir, y el guion no lo trae en voz ni en pantalla. Va en la descripción, pero falta decidir si también sale en el pie.
 10. **Marca ámbar del bloque 28:** la puse como franja debajo de «Primero» con la letra en papel. El ejemplo del manual la pone detrás de la palabra y con la letra oscura, pero así quedaba tinta sobre petróleo, que está prohibido.
 11. **Escala de los objetos sin gatito:** en los bloques 2 y 3, el frasco, la maceta y la tarjeta van al 150 % de su tamaño junto al gatito, y la «maceta grande» del bloque 24 al 200 %. Lo hice para que se lean solos, pero no hay regla para esto.
@@ -45,3 +45,8 @@ Fecha: 1 oct 2026 · Tiempos: **ESTIMADOS, sin audio real** · Controles automá
 22. **Bloque 26:** «−2,000» va en su propia línea, debajo de «4,000 − 6,000 =», porque no cabía en la mitad izquierda.
 23. **Cubeta del bloque 10:** la llave sale de un tubo que baja de arriba; se ve algo suelta. Puedo apoyarla en una pared.
 24. **Holgura con MICHI:** la segunda línea de operación (y 290–410) queda a unos 10 px de las orejas de MICHI en los bloques 6, 7, 13, 14 y 19. No se tocan, pero está justo.
+
+## E. Cambios a pedido después del paso 3
+
+25. **Música tranquila** en el animatic: pieza original sintetizada por código (`tools/musica.py`, 72 BPM, pad + bajo + notas de piano), a −20 LUFS, con 2.5 s de entrada y 5 s de salida. El guion decía «Sin música», y el manual pide «voz primero». Cuando exista la voz, hay que bajar la música por debajo de la voz (la voz va a −14 LUFS) o quitarla.
+26. **4K:** el manual fija 1920×1080 a 30 fps, con 4K solo como opción. El animatic va a 960×540 porque así lo pide el paso 5 del flujo. La escena ya puede exportar a 3840×2160 (escala ×2) en el render final.
