@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Saphiless — Automatización con IA para tu negocio</title>
+<meta name="description" content="Asistentes de voz y WhatsApp que contestan, agendan y dan seguimiento las 24 horas. También páginas web, video y expedientes clínicos.">
+<meta name="theme-color" content="#0A0A0A">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Saphiless — Automatización con IA">
+<meta property="og:description" content="Asistentes de voz y WhatsApp que contestan las 24 horas. Cero llamadas perdidas.">
+<meta property="og:image" content="og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" sizes="32x32" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAIAAAD8GO2jAAACjElEQVR4nO2VzUtUURjGn/e933e6fqGEGlGUGWoQhrlpMYuWQYX0F7hr0x/Run1LN+0iaFNBEDrQoqSZWphYKEJqmlPM6Myd6/04b4uZnLGxsg8XwTxc7urc3+85L+dw6Xr/exxm+FDpLUFL0BK0BAeLTgRiqOTfo5kBgh4GEoWSamciEiUifw0mMINAfkklkdCrZ+WHdwuzT0tJDNsl02aV/LlG0ymOJCirJJazY86VyQ6qwnLT/uOp4rtssLoYuh6bNouIKBzIVK1MlMRSKiQdPfqZUTs94aVveLpB1Ni2sJk8mio8niquL0eaTpZDVRMAUU1YBgCiWuU4FK9LS0941252Hh8068ue3CuOpt2ePr2uyScz97fnX1bmZ4PVxVA3iAi6SawBDRsKAwEQ7UjnUW1o3Bm8YF+66jWiy1vqzXOfbk+u2S4Pj9ljl1PdvXVNdUMzD7bnX1TKW2rjQ+QXFWsQAAJNp2MDpmHRwHnrOy4Af1vlMn424xfyCd25ta4UgoqyHR4asy82aXb7hoEiJggEYIbr7XOHytsql/FfZ/xCPjEd1g3oSgGAm2KlkJ3xF7JB7wljeNw5fc5yUnWEaZNpa83EaqJQVhejXMZfW46+fIoth902FgWVoFa2pjnCSYyluXBpLmzr0rp7tZFx59SIRRrZDjVDk0g2VuLstL+xEhXySRyLaXHKY5H6zd0zDaUAguUSAL+kFueSpbeh186sUU+/3nfSYK5pNlejj8tRFIpfVtGOGBYZJpkWidS67mafcVdPJGuwXQJQ8QUixc87C7lgdw0z6QaISdPJMEgE1ac5+wi+eWofsAYCNIMIe6YkUjtR6qeX8ceCRtPu+/fz//8PWoJf5ivXZjzU3FQtcwAAAABJRU5ErkJggg==">
+<link rel="icon" type="image/png" sizes="48x48" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAIAAADYYG7QAAAEO0lEQVR4nO2Wy29UVRzHv99z7mOm02kt+GgBpUSwRB5RISUmanxgWAKJ0T/AlUbiH+GSuDGuZenGsCMmaiSwMFaS8ZWWh9AgVCzPtrRz3/f8XJw7M7SIFw0Ii/tZzOLMufd8zvf8zi+X+9f+hocJ9aAFVlIJlVEJlVEJlVEJlVEJlVEJlVEJlVEJlVEJlaHUw6REBRUsGhJKP2AVpaA04lDUzjcbcShLC8YO/f9QQWuGbVmcM6ObPYrIz8eDLz6Zax1tmxx9A0qRxojI/RaBrZaoLWksm57z938w9Mq+Jo0REgB+OhYc/nSudbSdJqj10aspk98XLRJKM0slXDIknt7u73tv6NW3mo5LAMxzgYAEFQCcaUWtb4Mjh+Yv/57WGsr1ec8C60SSJQiWTP+gev2dgZf39m95sW5VTC4gaZcyBhBQwaa1cC0/8tn8N5/fvDqTJZHUGvRqSkTE4N+a2a2SnUgUVj3h7NrT2Pf+0FNjnp2T50KSBAlOToRjO3ytWWgBEFGaAOJQpn4Ivzy0cKYVzZxNHJeeT9en0sU2xNxBQlkVipE0kSSSNJZVw84zz/uvvT0wvqfRHNIATF4kZ1UAXDiT8KN3L42sd8d3N54dr2sNq0VAOloA5q/mxw4vnpwIz/4SX7mYRm2jNEk4HpUGbsssiUQEeSaez9Ujzoat/tiO2kt7m91ITA4Q7NgAOH8qmfiqPT0V8+MPZ5NY8kyG17vjb/S07O7tAXXbQRzKhVPxyRPR5PdhcNNcvpgGC0bpW5QE2uG6TZ7rYWxnfcuu+uhWr/lI8XxRGIQA3YZ8/mQy8XV7eioWA79OHjwwaxNLYslTGR51x3c3Nm7z6w1lhURAwBghuaJRJZEkkaFi18iu1Ndc1v7FwBihslkUB5om8sd0alOxKiDEgAcPzPaqj0giMYL+QbVxmz++u/HoiFO8VCAGoF1ASHZvze2IgXSmkZBbbjGAYNG0jge/fhfenMvzrKdicXpvEYjA9QkiCqR1LDjdikZG3S276pu2+7U+RV1Mo6aNTaRTQOwdWRelWBQsOpGcS388Hlw6n964knk1Oi4dD2KWPdUT6mpBoDT6+lWeYXoymZ5MBlbpx9c5aza4m1+o2czYNWDnKTvIW4eLPKZORDPnktkL6fy1PMvE81Wjqez+b78QvSP7W2zOeYoskyyV5qAaGfW0gzUbvCc3uo+tdeyh+HUCyFLJEoHi/JVs5lx68WwSR3Ljcnb9z0w5dBw4bnGC/9DMVia0MjADANqBdlnrY5ZheiqG4HQr0i77BxUApbh62FEKc9fyODRKIViSJDRUJOG4bAwqSOFR2ldLhAotAQQCdMMgKIKwLfbvhRsxBNqBvXFKFxdNAEinAd4ddyW0TM72JwCd/kRAu7aUICiK3dyhid97oeV2nR9ZMfbfeZg+YAFUQuVUQmVUQmVUQmX8BZV8Ela9fiGPAAAAAElFTkSuQmCC">
+<link rel="apple-touch-icon" href="data:image/png;base64,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">
+<meta property="og:locale" content="es_MX">
+<meta name="robots" content="noindex,nofollow">
+<link rel="canonical" href="https://www.saphiless.com/">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+
+<script>
+  /* Marca JS activo (habilita el intro) y red de seguridad: si algún
+     plugin del CDN no baja, el loader se quita solo a los 4s y la
+     página queda legible aunque no anime nada. */
+  document.documentElement.classList.add('js');
+  setTimeout(function () {
+    var l = document.getElementById('loader');
+    if (l && !l.dataset.done) { l.style.display = 'none'; document.body.classList.remove('is-loading'); }
+  }, 4000);
+</script>
+
+<link rel="stylesheet" href="css/site.css">
+</head>
+<body class="is-loading">
+
+<!-- ══════════ INTRO: 6 columnas ══════════ -->
+<div id="loader">
+  <div class="lo-px" id="loPx" aria-hidden="true"></div>
+</div>
+
+<!-- ══════════ DEFS: gradientes, halos y las 4 formas del morph ══════════ -->
+<svg id="blobDefs" aria-hidden="true" focusable="false">
+  <defs>
+    <radialGradient id="gGreen" cx="32%" cy="28%" r="80%">
+      <stop offset="0%" stop-color="#BDA8F1"/><stop offset="52%" stop-color="#511BDB"/><stop offset="100%" stop-color="#2E0B8A"/>
+    </radialGradient>
+    <radialGradient id="gAzul" cx="32%" cy="28%" r="80%">
+      <stop offset="0%" stop-color="#B5D0FC"/><stop offset="52%" stop-color="#3B82F6"/><stop offset="100%" stop-color="#204887"/>
+    </radialGradient>
+    <radialGradient id="gLila" cx="32%" cy="28%" r="80%">
+      <stop offset="0%" stop-color="#D3C8F6"/><stop offset="52%" stop-color="#8B6DE8"/><stop offset="100%" stop-color="#4C3C80"/>
+    </radialGradient>
+    <radialGradient id="gOrange" cx="32%" cy="28%" r="80%">
+      <stop offset="0%" stop-color="#FBDDAB"/><stop offset="52%" stop-color="#F5A623"/><stop offset="100%" stop-color="#875B13"/>
+    </radialGradient>
+    <radialGradient id="gLilac" cx="32%" cy="28%" r="80%">
+      <stop offset="0%" stop-color="#DEBEFC"/><stop offset="52%" stop-color="#A855F7"/><stop offset="100%" stop-color="#5C2F88"/>
+    </radialGradient>
+    <radialGradient id="gBlue" cx="32%" cy="28%" r="80%">
+      <stop offset="0%" stop-color="#A6E4E9"/><stop offset="52%" stop-color="#14B8C4"/><stop offset="100%" stop-color="#0B656C"/>
+    </radialGradient>
+    <radialGradient id="gPink" cx="32%" cy="28%" r="80%">
+      <stop offset="0%" stop-color="#FBB9CE"/><stop offset="48%" stop-color="#F5487F"/><stop offset="100%" stop-color="#872846"/>
+    </radialGradient>
+    <radialGradient id="gMagenta" cx="32%" cy="28%" r="80%">
+      <stop offset="0%" stop-color="#FA9EEB"/><stop offset="52%" stop-color="#f100cb"/><stop offset="100%" stop-color="#850070"/>
+    </radialGradient>
+    <radialGradient id="gMix" cx="30%" cy="25%" r="82%">
+      <stop offset="0%" stop-color="#F5487F"/><stop offset="45%" stop-color="#A855F7"/><stop offset="100%" stop-color="#14B8C4"/>
+    </radialGradient>
+
+    <!-- Halos: SOLO para los blobs del hero. flood-opacity la modula
+         la velocidad de scroll (P5). -->
+    <filter id="haloMix" x="-70%" y="-70%" width="240%" height="240%">
+      <feDropShadow dx="0" dy="0" stdDeviation="16" flood-color="#A855F7" flood-opacity="0.5"/>
+    </filter>
+    <filter id="haloOrange" x="-70%" y="-70%" width="240%" height="240%">
+      <feDropShadow dx="0" dy="0" stdDeviation="16" flood-color="#F5A623" flood-opacity="0.5"/>
+    </filter>
+    <filter id="haloLilac" x="-70%" y="-70%" width="240%" height="240%">
+      <feDropShadow dx="0" dy="0" stdDeviation="16" flood-color="#A855F7" flood-opacity="0.5"/>
+    </filter>
+    <filter id="haloGreen" x="-70%" y="-70%" width="240%" height="240%">
+      <feDropShadow dx="0" dy="0" stdDeviation="16" flood-color="#511BDB" flood-opacity="0.5"/>
+    </filter>
+
+    <!-- Las 4 formas destino. Mismo número de segmentos para que el
+         morph sea limpio; MorphSVG igual resuelve si difieren. -->
+    <linearGradient id="gLine" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#8B6DE8"/><stop offset="100%" stop-color="#D3C8F6"/>
+    </linearGradient>
+    <linearGradient id="gLineH" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#8B6DE8"/><stop offset="100%" stop-color="#D3C8F6"/>
+    </linearGradient>
+    <!-- Distorsión líquida: se anima el scale del displacement en
+         ráfagas cortas; tenerlo a 0 en reposo no cuesta nada. -->
+    <filter id="liquid" x="-20%" y="-20%" width="140%" height="140%">
+      <feTurbulence id="liqTurb" type="fractalNoise" baseFrequency="0.015 0.045" numOctaves="2" result="n"/>
+      <feDisplacementMap id="liqDisp" in="SourceGraphic" in2="n" scale="0"/>
+    </filter>
+
+    <path id="bs1" d="M100,8 C143,8 180,34 192,74 C204,114 188,157 154,180 C120,203 74,199 45,176 C16,153 4,112 14,73 C24,34 57,8 100,8 Z"/>
+    <path id="bs2" d="M104,12 C150,6 186,42 194,86 C202,130 176,168 138,186 C100,204 58,192 33,160 C8,128 8,84 32,52 C56,20 58,18 104,12 Z"/>
+    <path id="bs3" d="M96,6 C138,14 178,30 190,70 C202,110 196,152 162,178 C128,204 80,206 50,182 C20,158 10,116 18,76 C26,36 54,-2 96,6 Z"/>
+    <path id="bs5" d="M191.4,100.0 C195.1,106.8 195.6,116.1 193.6,123.1 C191.5,130.0 184.4,136.2 179.3,141.6 C174.1,147.0 168.4,151.5 162.9,155.7 C157.4,160.0 152.5,165.0 146.3,167.1 C140.2,169.3 132.5,169.5 126.0,168.6 C119.5,167.7 113.1,162.7 107.5,161.8 C101.9,160.9 98.3,160.9 92.3,163.1 C86.4,165.2 79.3,172.4 71.6,174.9 C63.9,177.4 53.2,180.2 46.1,178.1 C39.0,176.1 32.9,169.1 29.1,162.8 C25.2,156.5 24.6,147.6 22.9,140.5 C21.2,133.3 19.6,126.7 19.1,119.9 C18.7,113.2 18.0,106.1 20.2,100.0 C22.5,93.9 28.4,88.1 32.7,83.4 C37.1,78.7 43.5,76.5 46.3,71.8 C49.0,67.1 48.4,62.1 49.2,55.0 C49.9,47.8 48.2,36.5 51.0,29.0 C53.7,21.4 59.4,13.1 65.8,9.7 C72.1,6.3 81.5,7.5 88.9,8.4 C96.3,9.4 103.5,13.0 110.3,15.4 C117.0,17.8 123.7,19.2 129.3,22.7 C134.9,26.3 140.5,31.0 143.7,36.6 C147.0,42.3 147.2,50.8 148.9,56.7 C150.6,62.5 150.3,67.4 154.0,71.6 C157.8,75.9 165.4,77.6 171.6,82.4 C177.8,87.1 187.8,93.2 191.4,100.0 Z"/>
+    <path id="bs6" d="M199.7,100.0 C200.4,107.5 196.8,116.1 193.4,123.0 C190.0,130.0 183.9,135.8 179.3,141.6 C174.7,147.5 170.5,153.0 165.7,158.2 C160.9,163.5 156.4,169.7 150.5,173.1 C144.5,176.5 136.7,178.9 129.8,178.5 C122.8,178.0 114.7,173.7 108.5,170.3 C102.4,166.9 97.8,160.9 92.9,158.1 C88.1,155.4 84.8,154.2 79.6,153.8 C74.4,153.4 68.0,155.9 61.6,155.6 C55.3,155.2 47.2,154.7 41.5,151.8 C35.9,148.9 31.2,143.3 27.7,138.0 C24.1,132.6 22.9,125.9 20.5,119.6 C18.0,113.3 15.5,107.1 13.0,100.0 C10.6,92.9 6.4,84.7 5.7,76.7 C5.0,68.8 5.1,58.9 8.8,52.2 C12.5,45.4 20.4,39.3 27.9,36.1 C35.3,32.9 45.8,33.2 53.7,32.9 C61.6,32.6 68.8,34.5 75.1,34.4 C81.5,34.3 86.2,32.9 91.8,32.1 C97.3,31.4 103.1,29.3 108.5,30.0 C113.9,30.6 119.7,32.9 124.3,35.9 C128.9,38.9 132.0,44.3 135.9,47.9 C139.9,51.5 142.8,54.7 148.0,57.5 C153.2,60.3 160.5,61.2 167.3,64.7 C174.2,68.1 183.8,72.1 189.2,78.0 C194.6,83.9 199.0,92.5 199.7,100.0 Z"/>
+    <path id="bs4" d="M100,14 C146,10 170,48 186,82 C202,116 198,156 166,180 C134,204 86,202 54,184 C22,166 2,124 12,84 C22,44 54,18 100,14 Z"/>
+  </defs>
+</svg>
+
+<div class="grain" aria-hidden="true"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
+<div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
+<div class="cursor-ring" id="cursorRing" aria-hidden="true"><span class="cur-label" id="curLabel"></span></div>
+
+<div id="preview" aria-hidden="true">
+  <span class="pv-art" id="pvArt"></span>
+  <span class="pv-label" id="pvLabel">Caso</span>
+</div>
+
+<!-- P4 — índice de sección -->
+<div class="sec-index" id="secIndex" aria-hidden="true">
+  <i data-sec="top"><b></b>01</i>
+  <i data-sec="manifiesto"><b></b>02</i>
+  <i data-sec="voz"><b></b>03</i>
+  <i data-sec="casos"><b></b>04</i>
+  <i data-sec="proceso"><b></b>05</i>
+  <i data-sec="contacto"><b></b>06</i>
+</div>
+
+<div class="banner">
+  Asistentes que contestan por ti las 24 horas — <a href="#contacto">agenda una demo &rarr;</a>
+</div>
+
+<header id="siteHeader">
+  <nav class="wrap">
+    <a href="#top" class="wordmark"><svg class="logo-svg" height="21" role="img" aria-label="Saphiless" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000.0 161.9"><g transform="translate(0,141.67) scale(0.202388,-0.202388)"><g fill="#FFFFFF"><path transform="translate(0,0)" d="M10 600H570V420H196Q196 405 198.0 402.5Q200 400 215 400H570V245Q570 172 567.5 125.5Q565 79 554.0 53.0Q543 27 517.0 16.0Q491 5 445.0 2.5Q399 0 325 0H10V280H365Q380 280 382.0 282.5Q384 285 384 300H10Z"/><path transform="translate(580,0)" d="M630 600V0H330V43H310V0H255Q182 0 135.5 2.5Q89 5 63.0 16.0Q37 27 26.0 53.0Q15 79 12.5 125.5Q10 172 10 245V355Q10 428 12.5 474.5Q15 521 26.0 547.0Q37 573 63.0 584.0Q89 595 135.5 597.5Q182 600 255 600ZM310 300H330V400Q315 400 312.5 397.5Q310 395 310 380Z"/><path transform="translate(1220,0)" d="M310 -100H10V600H385Q458 600 504.5 597.5Q551 595 577.0 584.0Q603 573 614.0 547.0Q625 521 627.5 475.0Q630 429 630 355V245Q630 172 627.5 125.5Q625 79 614.0 53.0Q603 27 577.0 16.0Q551 5 505.0 2.5Q459 0 385 0H310ZM310 300H330V380Q330 395 327.5 397.5Q325 400 310 400Z"/><path transform="translate(1860,0)" d="M10 700H310V600H385Q458 600 504.5 597.5Q551 595 577.0 584.0Q603 573 614.0 547.0Q625 521 627.5 475.0Q630 429 630 355V0H330V380Q330 392 329.0 396.0Q328 400 320 400H310V0H10Z"/><path transform="translate(2500,0)" d="M10 700H310V620H10ZM311 0H256Q182 0 135.5 2.5Q89 5 63.5 16.0Q38 27 26.5 53.0Q15 79 13.0 125.5Q11 172 11 245V600H311Z"/></g><g fill="#511BDB"><path transform="translate(2821,0)" d="M310 0H255Q182 0 135.5 2.5Q89 5 63.0 16.0Q37 27 26.0 53.0Q15 79 12.5 125.5Q10 172 10 245V700H310Z"/><path transform="translate(3141,0)" d="M10 355Q10 428 12.5 474.5Q15 521 26.0 547.0Q37 573 63.0 584.0Q89 595 135.5 597.5Q182 600 255 600H385Q458 600 504.5 597.5Q551 595 577.0 584.0Q603 573 614.0 547.0Q625 521 627.5 475.0Q630 429 630 355V120H310V100H630V0L160 1Q104 3 73.0 12.5Q42 22 28.5 47.0Q15 72 12.5 119.5Q10 167 10 245ZM310 400V300H330V380Q330 395 327.5 397.5Q325 400 310 400Z"/><path transform="translate(3781,0)" d="M10 600H570V420H196Q196 405 198.0 402.5Q200 400 215 400H570V245Q570 172 567.5 125.5Q565 79 554.0 53.0Q543 27 517.0 16.0Q491 5 445.0 2.5Q399 0 325 0H10V280H365Q380 280 382.0 282.5Q384 285 384 300H10Z"/><path transform="translate(4361,0)" d="M10 600H570V420H196Q196 405 198.0 402.5Q200 400 215 400H570V245Q570 172 567.5 125.5Q565 79 554.0 53.0Q543 27 517.0 16.0Q491 5 445.0 2.5Q399 0 325 0H10V280H365Q380 280 382.0 282.5Q384 285 384 300H10Z"/></g></g></svg></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#voz" data-roll="Voz">Voz</a></li>
+      <li><a href="#whatsapp" data-roll="WhatsApp">WhatsApp</a></li>
+      <li><a href="#inmobiliaria" data-roll="Inmobiliaria">Inmobiliaria</a></li>
+      <li><a href="#web" data-roll="Web">Web</a></li>
+      <li><a href="#casos" data-roll="Casos">Casos</a></li>
+      <li><a href="#proceso" data-roll="Cómo trabajo">Cómo trabajo</a></li>
+    </ul>
+    <div class="nav-right">
+      <a href="#contacto" class="pill pill-grad pill-sm magnetic" data-roll="Agendar demo">Agendar demo</a>
+      <button class="burger" id="burger" aria-label="Abrir menú" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+</header>
+
+<!-- M7 — overlay móvil -->
+<div class="nav-overlay" id="navOverlay">
+  <div class="ov-hit" id="ovHit" aria-hidden="true"></div>
+  <span class="ov-pre ov-pre1" aria-hidden="true"></span>
+  <span class="ov-pre ov-pre2" aria-hidden="true"></span>
+  <div class="ov-panel">
+    <button class="ov-close" id="ovClose" aria-label="Cerrar menú">Cerrar ✕</button>
+    <ul>
+      <li><a class="ov-item" href="#voz"><span class="ov-num">01</span>Voz</a></li>
+      <li><a class="ov-item" href="#whatsapp"><span class="ov-num">02</span>WhatsApp</a></li>
+      <li><a class="ov-item" href="#inmobiliaria"><span class="ov-num">03</span>Inmobiliaria</a></li>
+      <li><a class="ov-item" href="#web"><span class="ov-num">04</span>Web</a></li>
+      <li><a class="ov-item" href="#casos"><span class="ov-num">05</span>Casos</a></li>
+      <li><a class="ov-item" href="#proceso"><span class="ov-num">06</span>Cómo trabajo</a></li>
+      <li><a class="ov-item ov-cta" href="#contacto"><span class="ov-num">07</span>Agendar demo</a></li>
+    </ul>
+    <a class="ov-mail" href="mailto:sayisless@gmail.com">Correo →</a>
+  </div>
+</div>
+
+<main id="top">
+
+  <!-- ══════════ HERO ══════════ -->
+  <section class="hero has-vline" id="hero">
+    <div class="hero-silk" aria-hidden="true"></div>
+    <div class="hero-aurora" aria-hidden="true">
+      <span class="au au1"></span><span class="au au2"></span><span class="au au3"></span>
+    </div>
+    <div class="wrap hero-inner">
+
+      <div class="hero-blobs hero-blobs--back" aria-hidden="true">
+      </div>
+
+      <div class="hero-title">
+        <h1 class="t-display" id="heroDisplay">Atiende a todos. <span class="grad-chars">Siempre.</span></h1>
+        <span class="hero-irid" aria-hidden="true"></span>
+      </div>
+
+      <div class="hero-blobs hero-blobs--front" aria-hidden="true">
+      </div>
+
+      <p class="t-body-lg hero-sub js-hero">
+        Asistentes de voz y WhatsApp, páginas web, video y más — todo a la medida de tu negocio.
+        Tus clientes reciben respuesta en segundos, a cualquier hora, sin que nadie conteste.
+      </p>
+
+      <div class="hero-cta js-hero">
+        <a href="#voz" class="pill magnetic" data-roll="Ver productos">Ver productos <span class="pill-arrow">&rarr;</span></a>
+        <a href="#contacto" class="pill pill-grad magnetic" data-roll="Agendar demo">Agendar demo</a>
+      </div>
+
+      <div class="hero-meta">
+        <div class="js-hero"><div class="n" data-count="24">0</div><div class="l">Horas al día activo</div></div>
+        <div class="js-hero"><div class="n" data-count="3">0</div><div class="l">Canales conectados</div></div>
+        <div class="js-hero"><div class="n" data-count="100" data-suffix="%">0</div><div class="l">En automático</div></div>
+        <div class="js-hero"><div class="n">0</div><div class="l">Llamadas perdidas</div></div>
+      </div>
+
+      <span class="scroll-cue js-hero"><span class="rail"></span> Scroll</span>
+    </div>
+  </section>
+
+  <!-- ══════════ MARQUEE ══════════ -->
+  <div class="marquee-band">
+    <div class="marquee-track" id="marquee" aria-hidden="true">
+      <span>Consultorios</span><span>Restaurantes</span><span>Inmobiliarias</span><span>Salones</span><span>Talleres</span><span>Despachos</span><span>Gimnasios</span><span>Veterinarias</span><span>Dentistas</span><span>Agencias</span>
+      <span>Consultorios</span><span>Restaurantes</span><span>Inmobiliarias</span><span>Salones</span><span>Talleres</span><span>Despachos</span><span>Gimnasios</span><span>Veterinarias</span><span>Dentistas</span><span>Agencias</span>
+    </div>
+  </div>
+
+  <!-- ══════════ LA DIFERENCIA, EN DATOS ══════════ -->
+  <section class="has-vline" id="datos">
+    <svg class="blob amb amb-datos js-parallax" viewBox="0 0 200 200" aria-hidden="true" data-morph><path d="M187.9,100.0 C190.4,106.9 191.9,115.2 190.9,122.4 C189.8,129.6 186.4,137.3 181.8,143.0 C177.3,148.6 170.2,153.2 163.6,156.4 C157.1,159.5 149.3,160.7 142.7,161.8 C136.0,162.9 129.8,162.6 124.0,163.2 C118.2,163.9 113.4,164.5 108.0,165.9 C102.6,167.3 97.5,169.7 91.3,171.5 C85.2,173.2 78.2,175.8 71.1,176.3 C63.9,176.8 55.5,176.8 48.6,174.4 C41.7,172.1 34.4,167.7 29.6,162.3 C24.8,156.9 21.4,149.2 19.9,142.1 C18.3,134.9 19.3,126.6 20.6,119.6 C22.0,112.6 25.4,105.9 27.9,100.0 C30.4,94.1 33.5,89.3 35.5,84.1 C37.6,78.9 38.8,74.2 40.2,68.6 C41.6,63.0 41.9,56.7 43.9,50.3 C45.8,43.9 47.9,36.2 51.8,30.1 C55.7,24.0 61.1,17.5 67.2,13.6 C73.4,9.8 81.5,7.2 88.7,7.1 C95.9,6.9 104.1,9.4 110.6,12.6 C117.1,15.9 123.0,21.7 127.8,26.7 C132.6,31.7 135.9,37.8 139.5,42.8 C143.1,47.7 145.7,52.1 149.4,56.2 C153.1,60.4 157.1,63.5 161.5,67.7 C166.0,71.9 171.6,75.9 176.0,81.3 C180.4,86.7 185.4,93.1 187.9,100.0 Z" fill="url(#gGreen)"/></svg>
+    <div class="wrap">
+      <div class="section-head">
+        <h2 class="t-heading js-mask" data-split="chars">El costo de no contestar.</h2>
+      </div>
+      <svg class="hairline-svg js-draw" preserveAspectRatio="none" aria-hidden="true"><line x1="0" y1="0.5" x2="100%" y2="0.5"/></svg>
+      <p class="t-body-lg js-words" style="color:var(--ink);max-width:52ch;margin-bottom:var(--sp-48)">
+        Un negocio chico no puede tener a alguien pegado al teléfono todo el día.
+        Esto es lo que cambia cuando alguien — Sofía — siempre contesta.
+      </p>
+
+        <!-- ═══ GRÁFICA A: un día de llamadas ═══ -->
+        <div class="chart-card js-fade">
+          <div class="chart-head">
+            <h3 class="t-subhead">Un día de llamadas</h3>
+            <div class="chart-legend"><span class="lg lg-man">Manual</span><span class="lg lg-sof">Con Sofía</span></div>
+          </div>
+          <svg id="chartA" viewBox="0 0 800 300" aria-label="Capacidad de respuesta a lo largo del día: manual contra automatizada">
+            <rect class="cA-night" x="60" y="40" width="240" height="220"/>
+            <rect class="cA-night" x="660" y="40" width="120" height="220"/>
+            <line class="cA-grid" x1="60" y1="260" x2="780" y2="260"/>
+            <line class="cA-grid" x1="60" y1="154" x2="780" y2="154"/>
+            <line class="cA-grid" x1="60" y1="48" x2="780" y2="48"/>
+            <text class="cA-ax" x="54" y="264" text-anchor="end">0%</text>
+            <text class="cA-ax" x="54" y="158" text-anchor="end">50%</text>
+            <text class="cA-ax" x="54" y="52" text-anchor="end">100%</text>
+            <text class="cA-ax" x="60" y="282">12 am</text>
+            <text class="cA-ax" x="240" y="282" text-anchor="middle">6 am</text>
+            <text class="cA-ax" x="420" y="282" text-anchor="middle">12 pm</text>
+            <text class="cA-ax" x="600" y="282" text-anchor="middle">6 pm</text>
+            <text class="cA-ax" x="780" y="282" text-anchor="end">12 am</text>
+            <path id="cAArea" class="cA-area" d="M60.0,56.5 L780.0,56.5 L780.0,260 L60.0,260 Z"/>
+            <path id="cAManual" class="cA-manual" d="M60.0,260.0 L63.6,260.0 L67.2,260.0 L70.8,260.0 L74.4,260.0 L78.0,260.0 L81.6,260.0 L85.2,260.0 L88.8,260.0 L92.4,260.0 L96.0,260.0 L99.6,260.0 L103.2,260.0 L106.8,260.0 L110.4,260.0 L114.0,260.0 L117.6,260.0 L121.2,260.0 L124.8,260.0 L128.4,260.0 L132.0,260.0 L135.6,260.0 L139.2,260.0 L142.8,260.0 L146.4,260.0 L150.0,260.0 L153.6,260.0 L157.2,260.0 L160.8,260.0 L164.4,260.0 L168.0,260.0 L171.6,260.0 L175.2,260.0 L178.8,260.0 L182.4,260.0 L186.0,260.0 L189.6,260.0 L193.2,260.0 L196.8,260.0 L200.4,260.0 L204.0,260.0 L207.6,260.0 L211.2,260.0 L214.8,260.0 L218.4,260.0 L222.0,260.0 L225.6,260.0 L229.2,260.0 L232.8,260.0 L236.4,260.0 L240.0,260.0 L243.6,260.0 L247.2,260.0 L250.8,260.0 L254.4,260.0 L258.0,260.0 L261.6,260.0 L265.2,260.0 L268.8,260.0 L272.4,260.0 L276.0,260.0 L279.6,260.0 L283.2,260.0 L286.8,260.0 L290.4,260.0 L294.0,260.0 L297.6,260.0 L301.2,260.0 L304.8,260.0 L308.4,260.0 L312.0,260.0 L315.6,260.0 L319.2,260.0 L322.8,257.9 L326.4,243.0 L330.0,218.4 L333.6,189.4 L337.2,161.2 L340.8,139.2 L344.4,128.8 L348.0,128.6 L351.6,128.8 L355.2,129.0 L358.8,129.3 L362.4,129.7 L366.0,130.1 L369.6,130.6 L373.2,131.0 L376.8,131.4 L380.4,131.9 L384.0,132.2 L387.6,132.5 L391.2,132.7 L394.8,132.8 L398.4,137.2 L402.0,155.2 L405.6,177.6 L409.2,193.9 L412.8,194.0 L416.4,178.9 L420.0,157.9 L423.6,141.1 L427.2,137.0 L430.8,137.1 L434.4,137.3 L438.0,137.6 L441.6,138.0 L445.2,138.4 L448.8,138.8 L452.4,139.3 L456.0,139.7 L459.6,140.1 L463.2,140.5 L466.8,140.8 L470.4,141.1 L474.0,141.2 L477.6,141.9 L481.2,164.7 L484.8,203.9 L488.4,236.4 L492.0,243.0 L495.6,243.0 L499.2,243.0 L502.8,243.0 L506.4,243.0 L510.0,243.0 L513.6,243.0 L517.2,243.0 L520.8,243.0 L524.4,239.4 L528.0,223.3 L531.6,199.6 L535.2,174.4 L538.8,153.8 L542.4,143.6 L546.0,143.5 L549.6,144.0 L553.2,144.8 L556.8,145.8 L560.4,146.9 L564.0,148.2 L567.6,149.4 L571.2,150.7 L574.8,151.8 L578.4,152.8 L582.0,153.5 L585.6,153.9 L589.2,154.9 L592.8,166.4 L596.4,187.3 L600.0,212.3 L603.6,236.2 L607.2,253.8 L610.8,260.0 L614.4,260.0 L618.0,260.0 L621.6,260.0 L625.2,260.0 L628.8,260.0 L632.4,260.0 L636.0,260.0 L639.6,260.0 L643.2,260.0 L646.8,260.0 L650.4,260.0 L654.0,260.0 L657.6,260.0 L661.2,260.0 L664.8,260.0 L668.4,260.0 L672.0,260.0 L675.6,260.0 L679.2,260.0 L682.8,260.0 L686.4,260.0 L690.0,260.0 L693.6,260.0 L697.2,260.0 L700.8,260.0 L704.4,260.0 L708.0,260.0 L711.6,260.0 L715.2,260.0 L718.8,260.0 L722.4,260.0 L726.0,260.0 L729.6,260.0 L733.2,260.0 L736.8,260.0 L740.4,260.0 L744.0,260.0 L747.6,260.0 L751.2,260.0 L754.8,260.0 L758.4,260.0 L762.0,260.0 L765.6,260.0 L769.2,260.0 L772.8,260.0 L776.4,260.0 L780.0,260.0"/>
+            <path id="cASofiaGlow" class="cA-sofia cA-glow" d="M60.0,56.5 L780.0,56.5"/>
+            <path id="cASofia" class="cA-sofia" d="M60.0,56.5 L780.0,56.5"/>
+            <g id="cAMark">
+              <line class="cA-lead" x1="754" y1="56" x2="740" y2="82"/>
+              <circle class="cA-dot" cx="754" cy="56" r="5"/>
+              <text class="cA-tag" x="736" y="96" text-anchor="end">23:07 · cita agendada</text>
+            </g>
+          </svg>
+          <p class="chart-foot">Capacidad de respuesta a lo largo del día. Cobertura horaria: escenario ilustrativo (L–V, 9–18 con comida) frente a 24/7.</p>
+        </div>
+
+        <!-- ═══ MÉTRICAS ═══ -->
+        <div class="data-grid">
+          <div class="data-card js-fade">
+            <div class="dc-label">Horas por semana con alguien que contesta</div>
+            <div class="dc-bar"><span class="dc-name">Manual</span><span class="bar"><i class="bar-fill bf-man" style="width:27%"></i></span><span class="dc-val"><span data-count="45" data-suffix=" h">0</span></span></div>
+            <div class="dc-bar"><span class="dc-name">Sofía</span><span class="bar"><i class="bar-fill bf-sof" style="width:100%"></i></span><span class="dc-val"><span data-count="168" data-suffix=" h">0</span></span></div>
+          </div>
+          <div class="data-card js-fade">
+            <div class="dc-label">Primera respuesta al cliente</div>
+            <div class="dc-big"><s class="dc-old">42 h</s> <span class="dc-arrow">&rarr;</span> <span class="dc-new">1<small>er</small> timbre</span></div>
+            <p class="dc-sub">42 horas fue el promedio real de respuesta en una auditoría a 2,241 empresas. Sofía contesta antes del segundo timbre.</p>
+          </div>
+          <div class="data-card js-fade">
+            <div class="dc-label">Clientes recuperados por responder ya</div>
+            <div class="dc-big"><span class="dc-new">&times;<span data-count="7">0</span></span></div>
+            <p class="dc-sub">Más probabilidad de convertir un contacto si respondes en la primera hora — y &times;60 frente a responder al día siguiente.</p>
+          </div>
+        </div>
+        <p class="t-caption muted data-src js-fade">Fuente: Oldroyd, McElheran y Elkington, "The Short Life of Online Sales Leads", Harvard Business Review (2011).</p>
+
+        <!-- ═══ FLUJO: cómo se recupera un cliente ═══ -->
+        <h3 class="t-subhead flow-head js-mask" data-split="chars">Cómo se recupera un cliente</h3>
+        <div class="flow" id="flowRec">
+          <svg class="flow-line" viewBox="0 0 1000 40" preserveAspectRatio="none" aria-hidden="true"><path id="flowPath" d="M0.0,20.0 L6.2,21.9 L12.5,23.0 L18.8,22.6 L25.0,20.9 L31.2,18.9 L37.5,17.3 L43.8,17.1 L50.0,18.2 L56.2,20.2 L62.5,22.1 L68.8,23.0 L75.0,22.4 L81.2,20.7 L87.5,18.6 L93.8,17.2 L100.0,17.1 L106.2,18.4 L112.5,20.5 L118.8,22.3 L125.0,23.0 L131.2,22.3 L137.5,20.5 L143.8,18.4 L150.0,17.1 L156.2,17.1 L162.5,18.5 L168.8,20.8 L175.0,22.7 L181.2,23.5 L187.5,22.6 L193.8,20.3 L200.0,17.5 L206.2,15.6 L212.5,15.6 L218.8,17.9 L225.0,21.8 L231.2,25.5 L237.5,27.0 L243.8,25.1 L250.0,20.0 L256.2,14.1 L262.5,10.3 L268.8,11.1 L275.0,16.6 L281.2,24.4 L287.5,30.4 L293.8,31.6 L300.0,27.1 L306.2,19.1 L312.5,11.7 L318.8,8.6 L325.0,11.1 L331.2,17.6 L337.5,24.4 L343.8,28.4 L350.0,28.0 L356.2,24.1 L362.5,18.9 L368.8,15.1 L375.0,14.1 L381.2,15.9 L387.5,19.2 L393.8,22.4 L400.0,24.0 L406.2,23.6 L412.5,21.7 L418.8,19.2 L425.0,17.2 L431.2,16.7 L437.5,17.7 L443.8,19.8 L450.0,21.8 L456.2,23.0 L462.5,22.8 L468.8,21.2 L475.0,19.0 L481.2,17.3 L487.5,16.8 L493.8,17.8 L500.0,20.0 L506.2,22.4 L512.5,23.8 L518.8,23.5 L525.0,21.4 L531.2,18.1 L537.5,15.3 L543.8,14.3 L550.0,16.3 L556.2,20.5 L562.5,25.4 L568.8,28.3 L575.0,27.3 L581.2,22.3 L587.5,15.3 L593.8,10.0 L600.0,9.2 L606.2,13.9 L612.5,21.9 L618.8,29.1 L625.0,32.0 L631.2,29.0 L637.5,21.8 L643.8,14.2 L650.0,10.0 L656.2,10.8 L662.5,15.8 L668.8,22.0 L675.0,26.4 L681.2,27.2 L687.5,24.7 L693.8,20.5 L700.0,16.8 L706.2,15.1 L712.5,15.9 L718.8,18.4 L725.0,21.2 L731.2,23.2 L737.5,23.5 L743.8,22.2 L750.0,20.0 L756.2,17.9 L762.5,16.9 L768.8,17.4 L775.0,19.1 L781.2,21.2 L787.5,22.7 L793.8,22.9 L800.0,21.8 L806.2,19.8 L812.5,17.9 L818.8,17.0 L825.0,17.6 L831.2,19.3 L837.5,21.4 L843.8,22.8 L850.0,22.9 L856.2,21.6 L862.5,19.5 L868.8,17.7 L875.0,17.0 L881.2,17.7 L887.5,19.5 L893.8,21.6 L900.0,22.9 L906.2,22.8 L912.5,21.4 L918.8,19.3 L925.0,17.6 L931.2,17.0 L937.5,17.9 L943.8,19.8 L950.0,21.8 L956.2,22.9 L962.5,22.7 L968.8,21.1 L975.0,19.1 L981.2,17.4 L987.5,17.0 L993.8,18.1 L1000.0,20.0"/></svg>
+          <div class="flow-step js-fade"><span class="fs-time">23:07</span><h4>Un cliente llama</h4><p>Fuera de horario. Antes, esta llamada se iba al buzón.</p></div>
+          <div class="flow-step js-fade"><span class="fs-time">23:07</span><h4>Sofía contesta al primer timbre</h4><p>Escucha, resuelve la duda y propone horarios reales.</p></div>
+          <div class="flow-step js-fade"><span class="fs-time">23:09</span><h4>Cita agendada y confirmada</h4><p>Directo a tu Google Calendar, con confirmación por WhatsApp.</p></div>
+          <div class="flow-step js-fade"><span class="fs-time">8:00 am</span><h4>Cliente recuperado</h4><p>Tú llegas y el día ya trae una cita más.</p></div>
+        </div>
+    </div>
+  </section>
+
+  <!-- ══════════ MANIFIESTO (G2) ══════════ -->
+  <section class="manifesto has-vline" id="manifiesto">
+    <div class="manifesto-pin">
+      <div class="mf-waves" aria-hidden="true">
+        <svg class="mf-wave w1" viewBox="0 0 2400 300" preserveAspectRatio="none"><path d="M0.0,150.0 L4.6,161.3 L9.2,173.5 L13.8,185.9 L18.5,197.8 L23.1,208.3 L27.7,216.7 L32.3,222.2 L36.9,224.3 L41.5,222.6 L46.2,216.8 L50.8,207.1 L55.4,193.7 L60.0,177.3 L64.6,158.7 L69.2,138.9 L73.8,119.0 L78.5,100.1 L83.1,83.4 L87.7,69.9 L92.3,60.2 L96.9,55.1 L101.5,54.8 L106.2,59.3 L110.8,68.2 L115.4,80.9 L120.0,96.7 L124.6,114.6 L129.2,133.4 L133.8,152.0 L138.5,169.5 L143.1,185.0 L147.7,197.6 L152.3,206.8 L156.9,212.5 L161.5,214.5 L166.2,213.1 L170.8,208.6 L175.4,201.7 L180.0,192.9 L184.6,182.9 L189.2,172.5 L193.8,162.3 L198.5,152.9 L203.1,144.6 L207.7,137.9 L212.3,132.8 L216.9,129.3 L221.5,127.6 L226.2,127.2 L230.8,128.2 L235.4,130.1 L240.0,132.7 L244.6,135.7 L249.2,138.9 L253.8,142.2 L258.5,145.3 L263.1,148.1 L267.7,150.5 L272.3,152.6 L276.9,154.2 L281.5,155.5 L286.2,156.3 L290.8,156.9 L295.4,157.0 L300.0,156.9 L304.6,156.5 L309.2,155.9 L313.8,155.1 L318.5,154.0 L323.1,152.9 L327.7,151.6 L332.3,150.3 L336.9,149.0 L341.5,147.7 L346.2,146.6 L350.8,145.6 L355.4,144.8 L360.0,144.3 L364.6,144.0 L369.2,144.0 L373.8,144.3 L378.5,144.9 L383.1,145.7 L387.7,146.7 L392.3,147.9 L396.9,149.1 L401.5,150.4 L406.2,151.7 L410.8,152.9 L415.4,154.0 L420.0,154.9 L424.6,155.5 L429.2,155.9 L433.8,156.0 L438.5,155.8 L443.1,155.4 L447.7,154.7 L452.3,153.8 L456.9,152.7 L461.5,151.5 L466.2,150.2 L470.8,148.8 L475.4,147.4 L480.0,146.1 L484.6,144.8 L489.2,143.7 L493.8,142.8 L498.5,142.1 L503.1,141.7 L507.7,141.6 L512.3,141.9 L516.9,142.7 L521.5,144.0 L526.2,145.9 L530.8,148.4 L535.4,151.4 L540.0,155.0 L544.6,159.1 L549.2,163.4 L553.8,167.8 L558.5,172.0 L563.1,175.6 L567.7,178.4 L572.3,179.9 L576.9,179.9 L581.5,178.0 L586.2,174.0 L590.8,168.0 L595.4,159.9 L600.0,150.0 L604.6,138.7 L609.2,126.5 L613.8,114.1 L618.5,102.2 L623.1,91.7 L627.7,83.3 L632.3,77.8 L636.9,75.7 L641.5,77.4 L646.2,83.2 L650.8,92.9 L655.4,106.3 L660.0,122.7 L664.6,141.3 L669.2,161.1 L673.8,181.0 L678.5,199.9 L683.1,216.6 L687.7,230.1 L692.3,239.8 L696.9,244.9 L701.5,245.2 L706.2,240.7 L710.8,231.8 L715.4,219.1 L720.0,203.3 L724.6,185.4 L729.2,166.6 L733.8,148.0 L738.5,130.5 L743.1,115.0 L747.7,102.4 L752.3,93.2 L756.9,87.5 L761.5,85.5 L766.2,86.9 L770.8,91.4 L775.4,98.3 L780.0,107.1 L784.6,117.1 L789.2,127.5 L793.8,137.7 L798.5,147.1 L803.1,155.4 L807.7,162.1 L812.3,167.2 L816.9,170.7 L821.5,172.4 L826.2,172.8 L830.8,171.8 L835.4,169.9 L840.0,167.3 L844.6,164.3 L849.2,161.1 L853.8,157.8 L858.5,154.7 L863.1,151.9 L867.7,149.5 L872.3,147.4 L876.9,145.8 L881.5,144.5 L886.2,143.7 L890.8,143.1 L895.4,143.0 L900.0,143.1 L904.6,143.5 L909.2,144.1 L913.8,144.9 L918.5,146.0 L923.1,147.1 L927.7,148.4 L932.3,149.7 L936.9,151.0 L941.5,152.3 L946.2,153.4 L950.8,154.4 L955.4,155.2 L960.0,155.7 L964.6,156.0 L969.2,156.0 L973.8,155.7 L978.5,155.1 L983.1,154.3 L987.7,153.3 L992.3,152.1 L996.9,150.9 L1001.5,149.6 L1006.2,148.3 L1010.8,147.1 L1015.4,146.0 L1020.0,145.1 L1024.6,144.5 L1029.2,144.1 L1033.8,144.0 L1038.5,144.2 L1043.1,144.6 L1047.7,145.3 L1052.3,146.2 L1056.9,147.3 L1061.5,148.5 L1066.2,149.8 L1070.8,151.2 L1075.4,152.6 L1080.0,153.9 L1084.6,155.2 L1089.2,156.3 L1093.8,157.2 L1098.5,157.9 L1103.1,158.3 L1107.7,158.4 L1112.3,158.1 L1116.9,157.3 L1121.5,156.0 L1126.2,154.1 L1130.8,151.6 L1135.4,148.6 L1140.0,145.0 L1144.6,140.9 L1149.2,136.6 L1153.8,132.2 L1158.5,128.0 L1163.1,124.4 L1167.7,121.6 L1172.3,120.1 L1176.9,120.1 L1181.5,122.0 L1186.2,126.0 L1190.8,132.0 L1195.4,140.1 L1200.0,150.0 L1204.6,161.3 L1209.2,173.5 L1213.8,185.9 L1218.5,197.8 L1223.1,208.3 L1227.7,216.7 L1232.3,222.2 L1236.9,224.3 L1241.5,222.6 L1246.2,216.8 L1250.8,207.1 L1255.4,193.7 L1260.0,177.3 L1264.6,158.7 L1269.2,138.9 L1273.8,119.0 L1278.5,100.1 L1283.1,83.4 L1287.7,69.9 L1292.3,60.2 L1296.9,55.1 L1301.5,54.8 L1306.2,59.3 L1310.8,68.2 L1315.4,80.9 L1320.0,96.7 L1324.6,114.6 L1329.2,133.4 L1333.8,152.0 L1338.5,169.5 L1343.1,185.0 L1347.7,197.6 L1352.3,206.8 L1356.9,212.5 L1361.5,214.5 L1366.2,213.1 L1370.8,208.6 L1375.4,201.7 L1380.0,192.9 L1384.6,182.9 L1389.2,172.5 L1393.8,162.3 L1398.5,152.9 L1403.1,144.6 L1407.7,137.9 L1412.3,132.8 L1416.9,129.3 L1421.5,127.6 L1426.2,127.2 L1430.8,128.2 L1435.4,130.1 L1440.0,132.7 L1444.6,135.7 L1449.2,138.9 L1453.8,142.2 L1458.5,145.3 L1463.1,148.1 L1467.7,150.5 L1472.3,152.6 L1476.9,154.2 L1481.5,155.5 L1486.2,156.3 L1490.8,156.9 L1495.4,157.0 L1500.0,156.9 L1504.6,156.5 L1509.2,155.9 L1513.8,155.1 L1518.5,154.0 L1523.1,152.9 L1527.7,151.6 L1532.3,150.3 L1536.9,149.0 L1541.5,147.7 L1546.2,146.6 L1550.8,145.6 L1555.4,144.8 L1560.0,144.3 L1564.6,144.0 L1569.2,144.0 L1573.8,144.3 L1578.5,144.9 L1583.1,145.7 L1587.7,146.7 L1592.3,147.9 L1596.9,149.1 L1601.5,150.4 L1606.2,151.7 L1610.8,152.9 L1615.4,154.0 L1620.0,154.9 L1624.6,155.5 L1629.2,155.9 L1633.8,156.0 L1638.5,155.8 L1643.1,155.4 L1647.7,154.7 L1652.3,153.8 L1656.9,152.7 L1661.5,151.5 L1666.2,150.2 L1670.8,148.8 L1675.4,147.4 L1680.0,146.1 L1684.6,144.8 L1689.2,143.7 L1693.8,142.8 L1698.5,142.1 L1703.1,141.7 L1707.7,141.6 L1712.3,141.9 L1716.9,142.7 L1721.5,144.0 L1726.2,145.9 L1730.8,148.4 L1735.4,151.4 L1740.0,155.0 L1744.6,159.1 L1749.2,163.4 L1753.8,167.8 L1758.5,172.0 L1763.1,175.6 L1767.7,178.4 L1772.3,179.9 L1776.9,179.9 L1781.5,178.0 L1786.2,174.0 L1790.8,168.0 L1795.4,159.9 L1800.0,150.0 L1804.6,138.7 L1809.2,126.5 L1813.8,114.1 L1818.5,102.2 L1823.1,91.7 L1827.7,83.3 L1832.3,77.8 L1836.9,75.7 L1841.5,77.4 L1846.2,83.2 L1850.8,92.9 L1855.4,106.3 L1860.0,122.7 L1864.6,141.3 L1869.2,161.1 L1873.8,181.0 L1878.5,199.9 L1883.1,216.6 L1887.7,230.1 L1892.3,239.8 L1896.9,244.9 L1901.5,245.2 L1906.2,240.7 L1910.8,231.8 L1915.4,219.1 L1920.0,203.3 L1924.6,185.4 L1929.2,166.6 L1933.8,148.0 L1938.5,130.5 L1943.1,115.0 L1947.7,102.4 L1952.3,93.2 L1956.9,87.5 L1961.5,85.5 L1966.2,86.9 L1970.8,91.4 L1975.4,98.3 L1980.0,107.1 L1984.6,117.1 L1989.2,127.5 L1993.8,137.7 L1998.5,147.1 L2003.1,155.4 L2007.7,162.1 L2012.3,167.2 L2016.9,170.7 L2021.5,172.4 L2026.2,172.8 L2030.8,171.8 L2035.4,169.9 L2040.0,167.3 L2044.6,164.3 L2049.2,161.1 L2053.8,157.8 L2058.5,154.7 L2063.1,151.9 L2067.7,149.5 L2072.3,147.4 L2076.9,145.8 L2081.5,144.5 L2086.2,143.7 L2090.8,143.1 L2095.4,143.0 L2100.0,143.1 L2104.6,143.5 L2109.2,144.1 L2113.8,144.9 L2118.5,146.0 L2123.1,147.1 L2127.7,148.4 L2132.3,149.7 L2136.9,151.0 L2141.5,152.3 L2146.2,153.4 L2150.8,154.4 L2155.4,155.2 L2160.0,155.7 L2164.6,156.0 L2169.2,156.0 L2173.8,155.7 L2178.5,155.1 L2183.1,154.3 L2187.7,153.3 L2192.3,152.1 L2196.9,150.9 L2201.5,149.6 L2206.2,148.3 L2210.8,147.1 L2215.4,146.0 L2220.0,145.1 L2224.6,144.5 L2229.2,144.1 L2233.8,144.0 L2238.5,144.2 L2243.1,144.6 L2247.7,145.3 L2252.3,146.2 L2256.9,147.3 L2261.5,148.5 L2266.2,149.8 L2270.8,151.2 L2275.4,152.6 L2280.0,153.9 L2284.6,155.2 L2289.2,156.3 L2293.8,157.2 L2298.5,157.9 L2303.1,158.3 L2307.7,158.4 L2312.3,158.1 L2316.9,157.3 L2321.5,156.0 L2326.2,154.1 L2330.8,151.6 L2335.4,148.6 L2340.0,145.0 L2344.6,140.9 L2349.2,136.6 L2353.8,132.2 L2358.5,128.0 L2363.1,124.4 L2367.7,121.6 L2372.3,120.1 L2376.9,120.1 L2381.5,122.0 L2386.2,126.0 L2390.8,132.0 L2395.4,140.1 L2400.0,150.0"/></svg>
+        <svg class="mf-wave w2" viewBox="0 0 2400 300" preserveAspectRatio="none"><path d="M0.0,150.0 L4.6,156.8 L9.2,163.2 L13.8,169.2 L18.5,174.6 L23.1,179.4 L27.7,183.6 L32.3,187.0 L36.9,189.7 L41.5,191.6 L46.2,192.8 L50.8,193.3 L55.4,193.0 L60.0,192.1 L64.6,190.5 L69.2,188.5 L73.8,185.9 L78.5,182.9 L83.1,179.6 L87.7,176.0 L92.3,172.2 L96.9,168.4 L101.5,164.5 L106.2,160.7 L110.8,156.9 L115.4,153.4 L120.0,150.0 L124.6,146.9 L129.2,144.1 L133.8,141.6 L138.5,139.5 L143.1,137.7 L147.7,136.3 L152.3,135.2 L156.9,134.4 L161.5,134.0 L166.2,133.9 L170.8,134.0 L175.4,134.4 L180.0,135.1 L184.6,135.9 L189.2,136.8 L193.8,137.9 L198.5,139.1 L203.1,140.4 L207.7,141.6 L212.3,142.9 L216.9,144.2 L221.5,145.5 L226.2,146.7 L230.8,147.9 L235.4,149.0 L240.0,150.0 L244.6,150.9 L249.2,151.8 L253.8,152.5 L258.5,153.1 L263.1,153.7 L267.7,154.1 L272.3,154.5 L276.9,154.8 L281.5,155.0 L286.2,155.1 L290.8,155.1 L295.4,155.1 L300.0,155.0 L304.6,154.8 L309.2,154.6 L313.8,154.4 L318.5,154.1 L323.1,153.7 L327.7,153.3 L332.3,152.9 L336.9,152.5 L341.5,152.0 L346.2,151.5 L350.8,151.0 L355.4,150.5 L360.0,150.0 L364.6,149.5 L369.2,149.0 L373.8,148.6 L378.5,148.1 L383.1,147.7 L387.7,147.3 L392.3,147.0 L396.9,146.7 L401.5,146.4 L406.2,146.2 L410.8,146.1 L415.4,146.0 L420.0,146.0 L424.6,146.0 L429.2,146.1 L433.8,146.3 L438.5,146.5 L443.1,146.7 L447.7,147.0 L452.3,147.3 L456.9,147.7 L461.5,148.1 L466.2,148.6 L470.8,149.0 L475.4,149.5 L480.0,150.0 L484.6,150.5 L489.2,151.0 L493.8,151.4 L498.5,151.9 L503.1,152.3 L507.7,152.7 L512.3,153.0 L516.9,153.3 L521.5,153.5 L526.2,153.7 L530.8,153.9 L535.4,154.0 L540.0,154.0 L544.6,154.0 L549.2,153.9 L553.8,153.7 L558.5,153.5 L563.1,153.3 L567.7,153.0 L572.3,152.7 L576.9,152.3 L581.5,151.9 L586.2,151.4 L590.8,151.0 L595.4,150.5 L600.0,150.0 L604.6,149.5 L609.2,149.0 L613.8,148.6 L618.5,148.1 L623.1,147.7 L627.7,147.3 L632.3,146.9 L636.9,146.6 L641.5,146.3 L646.2,146.1 L650.8,145.9 L655.4,145.8 L660.0,145.7 L664.6,145.7 L669.2,145.7 L673.8,145.8 L678.5,146.0 L683.1,146.2 L687.7,146.4 L692.3,146.8 L696.9,147.2 L701.5,147.6 L706.2,148.1 L710.8,148.7 L715.4,149.3 L720.0,150.0 L724.6,150.7 L729.2,151.5 L733.8,152.3 L738.5,153.1 L743.1,154.0 L747.7,154.8 L752.3,155.7 L756.9,156.5 L761.5,157.4 L766.2,158.1 L770.8,158.9 L775.4,159.5 L780.0,160.0 L784.6,160.5 L789.2,160.7 L793.8,160.9 L798.5,160.8 L803.1,160.5 L807.7,160.1 L812.3,159.4 L816.9,158.4 L821.5,157.2 L826.2,155.8 L830.8,154.1 L835.4,152.2 L840.0,150.0 L844.6,147.6 L849.2,145.1 L853.8,142.4 L858.5,139.6 L863.1,136.7 L867.7,133.8 L872.3,131.0 L876.9,128.2 L881.5,125.6 L886.2,123.2 L890.8,121.1 L895.4,119.3 L900.0,117.9 L904.6,117.0 L909.2,116.5 L913.8,116.6 L918.5,117.3 L923.1,118.6 L927.7,120.5 L932.3,123.1 L936.9,126.2 L941.5,130.0 L946.2,134.3 L950.8,139.1 L955.4,144.4 L960.0,150.0 L964.6,155.9 L969.2,162.1 L973.8,168.3 L978.5,174.5 L983.1,180.6 L987.7,186.5 L992.3,192.0 L996.9,197.0 L1001.5,201.5 L1006.2,205.4 L1010.8,208.4 L1015.4,210.7 L1020.0,212.0 L1024.6,212.4 L1029.2,211.8 L1033.8,210.3 L1038.5,207.7 L1043.1,204.2 L1047.7,199.8 L1052.3,194.5 L1056.9,188.4 L1061.5,181.7 L1066.2,174.3 L1070.8,166.5 L1075.4,158.3 L1080.0,150.0 L1084.6,141.6 L1089.2,133.3 L1093.8,125.2 L1098.5,117.5 L1103.1,110.2 L1107.7,103.7 L1112.3,97.8 L1116.9,92.8 L1121.5,88.6 L1126.2,85.5 L1130.8,83.4 L1135.4,82.3 L1140.0,82.3 L1144.6,83.3 L1149.2,85.3 L1153.8,88.3 L1158.5,92.1 L1163.1,96.8 L1167.7,102.2 L1172.3,108.2 L1176.9,114.7 L1181.5,121.5 L1186.2,128.6 L1190.8,135.8 L1195.4,143.0 L1200.0,150.0 L1204.6,156.8 L1209.2,163.2 L1213.8,169.2 L1218.5,174.6 L1223.1,179.4 L1227.7,183.6 L1232.3,187.0 L1236.9,189.7 L1241.5,191.6 L1246.2,192.8 L1250.8,193.3 L1255.4,193.0 L1260.0,192.1 L1264.6,190.5 L1269.2,188.5 L1273.8,185.9 L1278.5,182.9 L1283.1,179.6 L1287.7,176.0 L1292.3,172.2 L1296.9,168.4 L1301.5,164.5 L1306.2,160.7 L1310.8,156.9 L1315.4,153.4 L1320.0,150.0 L1324.6,146.9 L1329.2,144.1 L1333.8,141.6 L1338.5,139.5 L1343.1,137.7 L1347.7,136.3 L1352.3,135.2 L1356.9,134.4 L1361.5,134.0 L1366.2,133.9 L1370.8,134.0 L1375.4,134.4 L1380.0,135.1 L1384.6,135.9 L1389.2,136.8 L1393.8,137.9 L1398.5,139.1 L1403.1,140.4 L1407.7,141.6 L1412.3,142.9 L1416.9,144.2 L1421.5,145.5 L1426.2,146.7 L1430.8,147.9 L1435.4,149.0 L1440.0,150.0 L1444.6,150.9 L1449.2,151.8 L1453.8,152.5 L1458.5,153.1 L1463.1,153.7 L1467.7,154.1 L1472.3,154.5 L1476.9,154.8 L1481.5,155.0 L1486.2,155.1 L1490.8,155.1 L1495.4,155.1 L1500.0,155.0 L1504.6,154.8 L1509.2,154.6 L1513.8,154.4 L1518.5,154.1 L1523.1,153.7 L1527.7,153.3 L1532.3,152.9 L1536.9,152.5 L1541.5,152.0 L1546.2,151.5 L1550.8,151.0 L1555.4,150.5 L1560.0,150.0 L1564.6,149.5 L1569.2,149.0 L1573.8,148.6 L1578.5,148.1 L1583.1,147.7 L1587.7,147.3 L1592.3,147.0 L1596.9,146.7 L1601.5,146.4 L1606.2,146.2 L1610.8,146.1 L1615.4,146.0 L1620.0,146.0 L1624.6,146.0 L1629.2,146.1 L1633.8,146.3 L1638.5,146.5 L1643.1,146.7 L1647.7,147.0 L1652.3,147.3 L1656.9,147.7 L1661.5,148.1 L1666.2,148.6 L1670.8,149.0 L1675.4,149.5 L1680.0,150.0 L1684.6,150.5 L1689.2,151.0 L1693.8,151.4 L1698.5,151.9 L1703.1,152.3 L1707.7,152.7 L1712.3,153.0 L1716.9,153.3 L1721.5,153.5 L1726.2,153.7 L1730.8,153.9 L1735.4,154.0 L1740.0,154.0 L1744.6,154.0 L1749.2,153.9 L1753.8,153.7 L1758.5,153.5 L1763.1,153.3 L1767.7,153.0 L1772.3,152.7 L1776.9,152.3 L1781.5,151.9 L1786.2,151.4 L1790.8,151.0 L1795.4,150.5 L1800.0,150.0 L1804.6,149.5 L1809.2,149.0 L1813.8,148.6 L1818.5,148.1 L1823.1,147.7 L1827.7,147.3 L1832.3,146.9 L1836.9,146.6 L1841.5,146.3 L1846.2,146.1 L1850.8,145.9 L1855.4,145.8 L1860.0,145.7 L1864.6,145.7 L1869.2,145.7 L1873.8,145.8 L1878.5,146.0 L1883.1,146.2 L1887.7,146.4 L1892.3,146.8 L1896.9,147.2 L1901.5,147.6 L1906.2,148.1 L1910.8,148.7 L1915.4,149.3 L1920.0,150.0 L1924.6,150.7 L1929.2,151.5 L1933.8,152.3 L1938.5,153.1 L1943.1,154.0 L1947.7,154.8 L1952.3,155.7 L1956.9,156.5 L1961.5,157.4 L1966.2,158.1 L1970.8,158.9 L1975.4,159.5 L1980.0,160.0 L1984.6,160.5 L1989.2,160.7 L1993.8,160.9 L1998.5,160.8 L2003.1,160.5 L2007.7,160.1 L2012.3,159.4 L2016.9,158.4 L2021.5,157.2 L2026.2,155.8 L2030.8,154.1 L2035.4,152.2 L2040.0,150.0 L2044.6,147.6 L2049.2,145.1 L2053.8,142.4 L2058.5,139.6 L2063.1,136.7 L2067.7,133.8 L2072.3,131.0 L2076.9,128.2 L2081.5,125.6 L2086.2,123.2 L2090.8,121.1 L2095.4,119.3 L2100.0,117.9 L2104.6,117.0 L2109.2,116.5 L2113.8,116.6 L2118.5,117.3 L2123.1,118.6 L2127.7,120.5 L2132.3,123.1 L2136.9,126.2 L2141.5,130.0 L2146.2,134.3 L2150.8,139.1 L2155.4,144.4 L2160.0,150.0 L2164.6,155.9 L2169.2,162.1 L2173.8,168.3 L2178.5,174.5 L2183.1,180.6 L2187.7,186.5 L2192.3,192.0 L2196.9,197.0 L2201.5,201.5 L2206.2,205.4 L2210.8,208.4 L2215.4,210.7 L2220.0,212.0 L2224.6,212.4 L2229.2,211.8 L2233.8,210.3 L2238.5,207.7 L2243.1,204.2 L2247.7,199.8 L2252.3,194.5 L2256.9,188.4 L2261.5,181.7 L2266.2,174.3 L2270.8,166.5 L2275.4,158.3 L2280.0,150.0 L2284.6,141.6 L2289.2,133.3 L2293.8,125.2 L2298.5,117.5 L2303.1,110.2 L2307.7,103.7 L2312.3,97.8 L2316.9,92.8 L2321.5,88.6 L2326.2,85.5 L2330.8,83.4 L2335.4,82.3 L2340.0,82.3 L2344.6,83.3 L2349.2,85.3 L2353.8,88.3 L2358.5,92.1 L2363.1,96.8 L2367.7,102.2 L2372.3,108.2 L2376.9,114.7 L2381.5,121.5 L2386.2,128.6 L2390.8,135.8 L2395.4,143.0 L2400.0,150.0"/></svg>
+      </div>
+      <div class="mf-orb" aria-hidden="true">
+        <svg class="orb-svg" viewBox="0 0 200 200">
+          <defs>
+            <radialGradient id="gOrb" cx="38%" cy="30%" r="80%">
+              <stop offset="0%" stop-color="#EDE7FB"/><stop offset="40%" stop-color="#511BDB" stop-opacity="0.95"/><stop offset="100%" stop-color="#2E0B8A" stop-opacity="0.55"/>
+            </radialGradient>
+          </defs>
+          <path id="orbPath" d="M100,8 C143,8 180,34 192,74 C204,114 188,157 154,180 C120,203 74,199 45,176 C16,153 4,112 14,73 C24,34 57,8 100,8 Z" fill="url(#gOrb)"/>
+        </svg>
+      </div>
+      <div class="mf-dial" aria-hidden="true">
+        <svg viewBox="0 0 64 64"><circle class="d-bg" cx="32" cy="32" r="28"/><circle class="d-fg" id="mfDial" cx="32" cy="32" r="28"/></svg>
+        <span class="d-pct"><span id="mfPct">0</span>%</span>
+      </div>
+      <div class="wrap" style="width:100%;position:relative">
+        <p class="t-heading manifesto-text" id="manifestoText">Cada llamada que no contestas es un cliente que ya llamó a otro. Nuestra asistente no se cansa, no come, no se va de vacaciones <span id="mfEnd">y no deja sonar el teléfono.</span></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ PRODUCTOS EN ACORDEÓN (G5) ══════════ -->
+  <section id="productos">
+    <div class="wrap">
+      <div class="kicker ag-kicker">Productos</div>
+      <div class="ag-wrap">
+        <div class="ag-row" id="agRow" role="list" aria-label="Productos de Saphiless">
+        <div class="ag-panel" id="voz" data-p="voz" role="listitem" tabindex="0" aria-label="VOZ" style="--ag-accent:#F5A623;--ag-tint:#261D0D">
+          <span class="ag-frame" aria-hidden="true"><span class="ag-media"><div class="grainient" data-g="voz" aria-hidden="true"></div></span><span class="ag-dim"></span></span>
+          <span class="ag-spine" aria-hidden="true"><span>VOZ</span></span>
+          <div class="ag-body"><div class="tool-content" style="--dot:var(--orangey)">
+              <svg class="mini-line" viewBox="0 0 220 44" aria-hidden="true"><path d="M0.0,22.0 L1.6,29.0 L3.1,33.1 L4.7,31.9 L6.3,25.3 L7.9,16.3 L9.4,9.5 L11.0,8.6 L12.6,14.5 L14.1,24.7 L15.7,34.1 L17.3,37.8 L18.9,33.7 L20.4,23.5 L22.0,12.2 L23.6,5.6 L25.1,7.1 L26.7,16.0 L28.3,28.0 L29.9,36.9 L31.4,38.4 L33.0,31.8 L34.6,20.5 L36.1,10.3 L37.7,6.2 L39.3,9.9 L40.9,19.3 L42.4,29.5 L44.0,35.4 L45.6,34.5 L47.1,27.7 L48.7,18.7 L50.3,12.1 L51.9,10.8 L53.4,15.0 L55.0,22.0 L56.6,28.2 L58.1,30.7 L59.7,28.8 L61.3,24.0 L62.9,19.0 L64.4,16.1 L66.0,16.4 L67.6,19.2 L69.1,22.9 L70.7,25.5 L72.3,26.2 L73.9,24.8 L75.4,22.3 L77.0,20.0 L78.6,18.9 L80.1,19.3 L81.7,20.9 L83.3,23.1 L84.9,24.7 L86.4,25.1 L88.0,24.0 L89.6,21.7 L91.1,19.2 L92.7,17.9 L94.3,18.5 L95.9,21.1 L97.4,24.8 L99.0,27.6 L100.6,27.9 L102.1,25.0 L103.7,20.0 L105.3,15.2 L106.9,13.4 L108.4,15.8 L110.0,22.0 L111.6,29.0 L113.1,33.1 L114.7,31.9 L116.3,25.3 L117.9,16.4 L119.4,9.5 L121.0,8.6 L122.6,14.5 L124.1,24.7 L125.7,34.1 L127.3,37.8 L128.9,33.7 L130.4,23.5 L132.0,12.2 L133.6,5.6 L135.1,7.1 L136.7,16.0 L138.3,28.0 L139.9,36.9 L141.4,38.4 L143.0,31.8 L144.6,20.5 L146.1,10.3 L147.7,6.2 L149.3,9.9 L150.9,19.3 L152.4,29.5 L154.0,35.4 L155.6,34.5 L157.1,27.7 L158.7,18.7 L160.3,12.1 L161.9,10.8 L163.4,15.0 L165.0,22.0 L166.6,28.2 L168.1,30.7 L169.7,28.8 L171.3,24.0 L172.9,19.0 L174.4,16.1 L176.0,16.4 L177.6,19.2 L179.1,22.9 L180.7,25.6 L182.3,26.2 L183.9,24.8 L185.4,22.3 L187.0,20.0 L188.6,18.9 L190.1,19.3 L191.7,20.9 L193.3,23.1 L194.9,24.7 L196.4,25.1 L198.0,24.0 L199.6,21.7 L201.1,19.2 L202.7,17.9 L204.3,18.5 L205.9,21.1 L207.4,24.8 L209.0,27.6 L210.6,27.9 L212.1,25.0 L213.7,20.0 L215.3,15.2 L216.9,13.4 L218.4,15.9 L220.0,22.0"/></svg>
+              <span class="tag-status js-fade" style="--dot:var(--orangey)"><span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span>En producción</span>
+              <span class="cat cat-voz js-fade">Voz</span>
+              <h3 class="t-subhead js-mask" data-split="chars">Sofía contesta por ti</h3>
+              <p class="t-body-lg js-fade">Atiende cada llamada, agenda citas directo en tu calendario y resuelve dudas — como si fuera parte de tu equipo.</p>
+              <ul class="tool-list js-list" style="--dot:var(--orangey)">
+                <li>Agenda, cancela y reprograma citas automáticamente</li>
+                <li>Conectada a Google Calendar en tiempo real</li>
+                <li>Panel con historial de llamadas y transcripciones</li>
+              </ul>
+              <p class="punch js-punch" style="--pc:var(--orangey)">Disponible 24/7, incluso fuera de horario.</p>
+              <a href="#contacto" class="pill magnetic js-fade" data-roll="Ver demo de voz">Ver demo de voz <span class="pill-arrow">&rarr;</span></a>
+            </div></div>
+        </div>
+        <div class="ag-panel" id="whatsapp" data-p="whatsapp" role="listitem" tabindex="0" aria-label="WHATSAPP" style="--ag-accent:#3B82F6;--ag-tint:#101826">
+          <span class="ag-frame" aria-hidden="true"><span class="ag-media"><div class="grainient" data-g="whatsapp" aria-hidden="true"></div></span><span class="ag-dim"></span></span>
+          <span class="ag-spine" aria-hidden="true"><span>WHATSAPP</span></span>
+          <div class="ag-body"><div class="tool-content" style="--dot:var(--light-green)">
+              <svg class="mini-line" viewBox="0 0 220 44" aria-hidden="true"><path d="M0.0,22.0 L1.6,35.4 L3.1,36.7 L4.7,24.9 L6.3,10.4 L7.9,6.4 L9.4,21.1 L11.0,23.5 L12.6,24.5 L14.1,23.3 L15.7,20.9 L17.3,19.5 L18.9,20.4 L20.4,22.7 L22.0,24.4 L23.6,24.0 L25.1,21.8 L26.7,19.8 L28.3,7.9 L29.9,20.6 L31.4,34.5 L33.0,37.2 L34.6,26.3 L36.1,11.5 L37.7,19.5 L39.3,20.9 L40.9,23.3 L42.4,24.5 L44.0,23.5 L45.6,21.1 L47.1,19.6 L48.7,20.2 L50.3,22.4 L51.9,24.3 L53.4,24.1 L55.0,22.0 L56.6,8.6 L58.1,7.3 L59.7,19.1 L61.3,33.6 L62.9,37.6 L64.4,22.9 L66.0,20.5 L67.6,19.5 L69.1,20.7 L70.7,23.1 L72.3,24.5 L73.9,23.6 L75.4,21.3 L77.0,19.6 L78.6,20.0 L80.1,22.2 L81.7,24.2 L83.3,36.1 L84.9,23.4 L86.4,9.5 L88.0,6.8 L89.6,17.7 L91.1,32.5 L92.7,24.5 L94.3,23.1 L95.9,20.7 L97.4,19.5 L99.0,20.5 L100.6,22.9 L102.1,24.4 L103.7,23.8 L105.3,21.6 L106.9,19.7 L108.4,19.9 L110.0,22.0 L111.6,35.4 L113.1,36.7 L114.7,24.9 L116.3,10.4 L117.9,6.4 L119.4,21.1 L121.0,23.5 L122.6,24.5 L124.1,23.3 L125.7,20.9 L127.3,19.5 L128.9,20.4 L130.4,22.7 L132.0,24.4 L133.6,24.0 L135.1,21.8 L136.7,19.8 L138.3,7.9 L139.9,20.6 L141.4,34.5 L143.0,37.2 L144.6,26.3 L146.1,11.5 L147.7,19.5 L149.3,20.9 L150.9,23.3 L152.4,24.5 L154.0,23.5 L155.6,21.1 L157.1,19.6 L158.7,20.2 L160.3,22.4 L161.9,24.3 L163.4,24.1 L165.0,22.0 L166.6,8.6 L168.1,7.3 L169.7,19.1 L171.3,33.6 L172.9,37.6 L174.4,22.9 L176.0,20.5 L177.6,19.5 L179.1,20.7 L180.7,23.1 L182.3,24.5 L183.9,23.6 L185.4,21.3 L187.0,19.6 L188.6,20.0 L190.1,22.2 L191.7,24.2 L193.3,36.1 L194.9,23.4 L196.4,9.5 L198.0,6.8 L199.6,17.7 L201.1,32.5 L202.7,24.5 L204.3,23.1 L205.9,20.7 L207.4,19.5 L209.0,20.5 L210.6,22.9 L212.1,24.4 L213.7,23.8 L215.3,21.6 L216.9,19.7 L218.4,19.9 L220.0,22.0"/></svg>
+              <span class="tag-status js-fade" style="--dot:var(--light-green)"><span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span>En producción</span>
+              <span class="cat cat-wa js-fade">WhatsApp</span>
+              <h3 class="t-subhead js-mask" data-split="chars">Tu WhatsApp, trabajando solo</h3>
+              <p class="t-body-lg js-fade">Agenda citas, contesta preguntas frecuentes y toma pedidos — todo dentro de WhatsApp, sin que tu cliente descargue nada.</p>
+              <ul class="tool-list js-list" style="--dot:var(--light-green)">
+                <li>Agenda y cancela citas automáticamente por chat</li>
+                <li>Módulo comida corrida: pedidos diarios por WhatsApp</li>
+                <li>Panel de administración con historial por negocio</li>
+                <li>Integración con Google Calendar</li>
+              </ul>
+              <p class="punch js-punch" style="--pc:var(--light-green)">Las posibilidades son infinitas.</p>
+              <a href="#contacto" class="pill magnetic js-fade" data-roll="Ver demo de WhatsApp">Ver demo de WhatsApp <span class="pill-arrow">&rarr;</span></a>
+            </div></div>
+        </div>
+        <div class="ag-panel" id="inmobiliaria" data-p="inmobiliaria" role="listitem" tabindex="0" aria-label="INMOBILIARIA" style="--ag-accent:#14B8C4;--ag-tint:#0B1F20">
+          <span class="ag-frame" aria-hidden="true"><span class="ag-media"><div class="grainient" data-g="inmobiliaria" aria-hidden="true"></div></span><span class="ag-dim"></span></span>
+          <span class="ag-spine" aria-hidden="true"><span>INMOBILIARIA</span></span>
+          <div class="ag-body"><div class="tool-content" style="--dot:var(--blue)">
+              <svg class="mini-line" viewBox="0 0 220 44" aria-hidden="true"><path d="M0.0,22.0 L1.6,23.5 L3.1,24.4 L4.7,24.4 L6.3,23.5 L7.9,22.0 L9.4,20.5 L11.0,19.6 L12.6,19.6 L14.1,20.5 L15.7,22.0 L17.3,23.5 L18.9,24.4 L20.4,24.4 L22.0,23.5 L23.6,22.0 L25.1,20.5 L26.7,19.6 L28.3,19.6 L29.9,20.5 L31.4,22.0 L33.0,23.5 L34.6,24.4 L36.1,24.4 L37.7,23.5 L39.3,22.0 L40.9,20.5 L42.4,19.6 L44.0,19.6 L45.6,20.5 L47.1,22.0 L48.7,23.6 L50.3,24.5 L51.9,24.6 L53.4,23.6 L55.0,22.0 L56.6,20.3 L58.1,19.1 L59.7,19.0 L61.3,20.0 L62.9,22.0 L64.4,24.2 L66.0,25.7 L67.6,26.0 L69.1,24.7 L70.7,22.0 L72.3,18.9 L73.9,16.6 L75.4,16.1 L77.0,18.0 L78.6,22.0 L80.1,26.7 L81.7,30.2 L83.3,30.9 L84.9,27.9 L86.4,22.0 L88.0,15.1 L89.6,10.1 L91.1,9.3 L92.7,13.7 L94.3,22.0 L95.9,31.2 L97.4,37.6 L99.0,38.2 L100.6,32.4 L102.1,22.0 L103.7,11.0 L105.3,3.9 L106.9,3.7 L108.4,10.6 L110.0,22.0 L111.6,33.4 L113.1,40.3 L114.7,40.1 L116.3,33.0 L117.9,22.0 L119.4,11.6 L121.0,5.8 L122.6,6.4 L124.1,12.8 L125.7,22.0 L127.3,30.3 L128.9,34.7 L130.4,33.9 L132.0,28.9 L133.6,22.0 L135.1,16.1 L136.7,13.1 L138.3,13.8 L139.9,17.3 L141.4,22.0 L143.0,26.0 L144.6,27.9 L146.1,27.4 L147.7,25.1 L149.3,22.0 L150.9,19.3 L152.4,18.0 L154.0,18.3 L155.6,19.8 L157.1,22.0 L158.7,24.0 L160.3,25.0 L161.9,24.9 L163.4,23.7 L165.0,22.0 L166.6,20.4 L168.1,19.4 L169.7,19.5 L171.3,20.4 L172.9,22.0 L174.4,23.5 L176.0,24.4 L177.6,24.4 L179.1,23.5 L180.7,22.0 L182.3,20.5 L183.9,19.6 L185.4,19.6 L187.0,20.5 L188.6,22.0 L190.1,23.5 L191.7,24.4 L193.3,24.4 L194.9,23.5 L196.4,22.0 L198.0,20.5 L199.6,19.6 L201.1,19.6 L202.7,20.5 L204.3,22.0 L205.9,23.5 L207.4,24.4 L209.0,24.4 L210.6,23.5 L212.1,22.0 L213.7,20.5 L215.3,19.6 L216.9,19.6 L218.4,20.5 L220.0,22.0"/></svg>
+              <span class="tag-status js-fade" style="--dot:var(--blue)"><span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span>En producción</span>
+              <span class="cat cat-inmo js-fade">Inmobiliaria</span>
+              <h3 class="t-subhead js-mask" data-split="chars">Leads calificados, en automático</h3>
+              <p class="t-body-lg js-fade">Alejandro contesta la llamada, platica con el prospecto, agenda la visita y te notifica al instante con el score del lead.</p>
+              <ul class="tool-list js-list" style="--dot:var(--blue)">
+                <li>Extrae y califica el lead de cada llamada</li>
+                <li>Notifica por llamada, SMS o email según la urgencia</li>
+                <li>Agenda visitas en tu calendario de disponibilidad</li>
+                <li>Resumen diario de actividad</li>
+              </ul>
+              <p class="punch js-punch" style="--pc:var(--blue)">Personalizada a ti, para ti.</p>
+              <a href="#contacto" class="pill magnetic js-fade" data-roll="Ver cómo funciona">Ver cómo funciona <span class="pill-arrow">&rarr;</span></a>
+            </div></div>
+        </div>
+        <div class="ag-panel" id="web" data-p="web" role="listitem" tabindex="0" aria-label="WEB" style="--ag-accent:#F5487F;--ag-tint:#261118">
+          <span class="ag-frame" aria-hidden="true"><span class="ag-media"><div class="grainient" data-g="web" aria-hidden="true"></div></span><span class="ag-dim"></span></span>
+          <span class="ag-spine" aria-hidden="true"><span>WEB</span></span>
+          <div class="ag-body"><div class="tool-content" style="--dot:var(--pink)">
+              <svg class="mini-line" viewBox="0 0 220 44" aria-hidden="true"><path d="M0.0,22.0 L1.6,23.4 L3.1,24.5 L4.7,24.8 L6.3,24.1 L7.9,22.7 L9.4,20.9 L11.0,19.4 L12.6,18.6 L14.1,19.0 L15.7,20.5 L17.3,22.5 L18.9,24.5 L20.4,25.8 L22.0,25.8 L23.6,24.6 L25.1,22.4 L26.7,20.0 L28.3,18.1 L29.9,17.5 L31.4,18.4 L33.0,20.5 L34.6,23.3 L36.1,25.7 L37.7,27.0 L39.3,26.7 L40.9,24.7 L42.4,21.8 L44.0,18.8 L45.6,16.8 L47.1,16.4 L48.7,18.0 L50.3,20.9 L51.9,24.4 L53.4,27.1 L55.0,28.2 L56.6,27.3 L58.1,24.5 L59.7,20.8 L61.3,17.4 L62.9,15.4 L64.4,15.5 L66.0,17.9 L67.6,21.7 L69.1,25.7 L70.7,28.6 L72.3,29.4 L73.9,27.7 L75.4,24.0 L77.0,19.6 L78.6,15.9 L80.1,14.1 L81.7,14.9 L83.3,18.1 L84.9,22.7 L86.4,27.2 L88.0,30.1 L89.6,30.3 L91.1,27.7 L92.7,23.2 L94.3,18.1 L95.9,14.2 L97.4,12.9 L99.0,14.5 L100.6,18.7 L102.1,24.1 L103.7,28.9 L105.3,31.5 L106.9,31.0 L108.4,27.4 L110.0,22.0 L111.6,16.4 L113.1,12.6 L114.7,11.8 L116.3,14.5 L117.9,19.7 L119.4,25.7 L121.0,30.7 L122.6,32.8 L124.1,31.4 L125.7,26.8 L127.3,20.5 L128.9,14.6 L130.4,11.0 L132.0,11.1 L133.6,14.8 L135.1,20.9 L136.7,27.6 L138.3,32.5 L139.9,34.0 L141.4,31.5 L143.0,25.8 L144.6,18.7 L146.1,12.6 L147.7,9.5 L149.3,10.6 L150.9,15.4 L152.4,22.6 L154.0,29.6 L155.6,34.3 L157.1,34.9 L158.7,31.2 L160.3,24.4 L161.9,16.7 L163.4,10.6 L165.0,8.2 L166.6,10.4 L168.1,16.5 L169.7,24.5 L171.3,31.8 L172.9,35.9 L174.4,35.5 L176.0,30.5 L177.6,22.7 L179.1,14.5 L180.7,8.6 L182.3,7.2 L183.9,10.7 L185.4,18.0 L187.0,26.7 L188.6,34.0 L190.1,37.4 L191.7,35.7 L193.3,29.4 L194.9,20.6 L196.4,12.1 L198.0,6.8 L199.6,6.5 L201.1,11.3 L202.7,19.8 L204.3,29.1 L205.9,36.2 L207.4,38.6 L209.0,35.6 L210.6,27.9 L212.1,18.2 L213.7,9.7 L215.3,5.1 L216.9,6.1 L218.4,12.4 L220.0,22.0"/></svg>
+              <span class="tag-status js-fade" style="--dot:var(--pink)"><span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span>En producción</span>
+              <span class="cat cat-web js-fade">Web</span>
+              <h3 class="t-subhead js-mask" data-split="chars">Una página que sí vende</h3>
+              <p class="t-body-lg js-fade">Sitios a la medida con el mismo nivel de animación y detalle que estás viendo aquí. Esta página es la muestra.</p>
+              <ul class="tool-list js-list" style="--dot:var(--pink)">
+                <li>Diseño y desarrollo a la medida, sin plantillas</li>
+                <li>Animaciones y scroll de nivel profesional</li>
+                <li>Rápida en celular y lista para buscadores</li>
+                <li>Se conecta con tu WhatsApp y tu asistente de voz (no incluidos)</li>
+              </ul>
+              <a href="#contacto" class="pill magnetic js-fade" data-roll="Pedir cotización">Pedir cotización <span class="pill-arrow">&rarr;</span></a>
+            </div></div>
+        </div>
+        <div class="ag-panel" id="salud" data-p="salud" role="listitem" tabindex="0" aria-label="SALUD" style="--ag-accent:#F100CB;--ag-tint:#260921">
+          <span class="ag-frame" aria-hidden="true"><span class="ag-media"><div class="grainient" data-g="salud" aria-hidden="true"></div></span><span class="ag-dim"></span></span>
+          <span class="ag-spine" aria-hidden="true"><span>SALUD</span></span>
+          <div class="ag-body"><div class="tool-content" style="--dot:var(--lipstick)">
+              <svg class="mini-line" viewBox="0 0 220 44" aria-hidden="true"><path d="M8.0,27.0 L17.0,27.0 L20.0,23.5 L23.0,27.0 L29.0,27.0 L31.0,29.5 L33.0,10.0 L36.0,40.0 L38.0,27.0 L46.0,27.0 L51.0,22.5 L56.0,27.0 L68.0,27.0 L76.0,27.0 L85.0,27.0 L88.0,23.5 L91.0,27.0 L97.0,27.0 L99.0,29.5 L101.0,10.0 L104.0,40.0 L106.0,27.0 L114.0,27.0 L119.0,22.5 L124.0,27.0 L136.0,27.0 L144.0,27.0 L153.0,27.0 L156.0,23.5 L159.0,27.0 L165.0,27.0 L167.0,29.5 L169.0,10.0 L172.0,40.0 L174.0,27.0 L182.0,27.0 L187.0,22.5 L192.0,27.0 L204.0,27.0 L220.0,27.0"/></svg>
+              <span class="tag-status soon js-fade"><span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span>En desarrollo</span>
+              <span class="cat cat-salud js-fade">Salud</span>
+              <h3 class="t-subhead js-mask" data-split="chars">El expediente, en tu bolsillo</h3>
+              <p class="t-body-lg js-fade">Un sistema para que lleves el historial clínico de tus pacientes contigo: escribes su nombre y aparece todo — consultas, notas y tratamientos.</p>
+              <ul class="tool-list js-list" style="--dot:var(--lipstick)">
+                <li>Buscas el nombre y el expediente abre en segundos</li>
+                <li>Consultas, diagnósticos y tratamientos en un solo lugar</li>
+                <li>Desde el celular en consulta o la laptop en el consultorio</li>
+                <li>Cada doctor ve únicamente a sus pacientes</li>
+              </ul>
+              <p class="punch js-punch" style="--pc:var(--lipstick)">Cada paciente, a un nombre de distancia.</p>
+              <a href="#contacto" class="pill magnetic js-fade" data-roll="Quiero ser de los primeros">Quiero ser de los primeros <span class="pill-arrow">&rarr;</span></a>
+            </div></div>
+        </div>
+        <div class="ag-panel" id="videos" data-p="videos" role="listitem" tabindex="0" aria-label="VIDEO" style="--ag-accent:#A855F7;--ag-tint:#1D1326">
+          <span class="ag-frame" aria-hidden="true"><span class="ag-media"><div class="grainient" data-g="videos" aria-hidden="true"></div></span><span class="ag-dim"></span></span>
+          <span class="ag-spine" aria-hidden="true"><span>VIDEO</span></span>
+          <div class="ag-body"><div class="tool-content" style="--dot:var(--lilac)">
+              <svg class="mini-line" viewBox="0 0 220 44" aria-hidden="true"><path d="M0.0,22.0 L1.6,22.1 L3.1,22.2 L4.7,22.5 L6.3,22.8 L7.9,23.2 L9.4,23.6 L11.0,23.9 L12.6,24.1 L14.1,24.2 L15.7,24.1 L17.3,23.8 L18.9,23.4 L20.4,22.8 L22.0,22.0 L23.6,21.1 L25.1,20.2 L26.7,19.2 L28.3,18.3 L29.9,17.5 L31.4,16.9 L33.0,16.6 L34.6,16.5 L36.1,16.7 L37.7,17.2 L39.3,18.0 L40.9,19.1 L42.4,20.5 L44.0,22.0 L45.6,23.6 L47.1,25.2 L48.7,26.8 L50.3,28.2 L51.9,29.3 L53.4,30.1 L55.0,30.5 L56.6,30.5 L58.1,30.0 L59.7,29.1 L61.3,27.7 L62.9,26.1 L64.4,24.1 L66.0,22.0 L67.6,19.8 L69.1,17.7 L70.7,15.7 L72.3,13.9 L73.9,12.6 L75.4,11.7 L77.0,11.3 L78.6,11.5 L80.1,12.2 L81.7,13.4 L83.3,15.1 L84.9,17.1 L86.4,19.5 L88.0,22.0 L89.6,24.6 L91.1,27.0 L92.7,29.3 L94.3,31.1 L95.9,32.6 L97.4,33.5 L99.0,33.9 L100.6,33.6 L102.1,32.7 L103.7,31.3 L105.3,29.5 L106.9,27.2 L108.4,24.7 L110.0,22.0 L111.6,19.3 L113.1,16.8 L114.7,14.5 L116.3,12.7 L117.9,11.3 L119.4,10.4 L121.0,10.1 L122.6,10.5 L124.1,11.4 L125.7,12.9 L127.3,14.7 L128.9,17.0 L130.4,19.4 L132.0,22.0 L133.6,24.5 L135.1,26.9 L136.7,28.9 L138.3,30.6 L139.9,31.8 L141.4,32.5 L143.0,32.7 L144.6,32.3 L146.1,31.4 L147.7,30.1 L149.3,28.3 L150.9,26.3 L152.4,24.2 L154.0,22.0 L155.6,19.9 L157.1,17.9 L158.7,16.3 L160.3,14.9 L161.9,14.0 L163.4,13.5 L165.0,13.5 L166.6,13.9 L168.1,14.7 L169.7,15.8 L171.3,17.2 L172.9,18.8 L174.4,20.4 L176.0,22.0 L177.6,23.5 L179.1,24.9 L180.7,26.0 L182.3,26.8 L183.9,27.3 L185.4,27.5 L187.0,27.4 L188.6,27.1 L190.1,26.5 L191.7,25.7 L193.3,24.8 L194.9,23.8 L196.4,22.9 L198.0,22.0 L199.6,21.2 L201.1,20.6 L202.7,20.2 L204.3,19.9 L205.9,19.8 L207.4,19.9 L209.0,20.1 L210.6,20.4 L212.1,20.8 L213.7,21.2 L215.3,21.5 L216.9,21.8 L218.4,21.9 L220.0,22.0"/></svg>
+              <span class="tag-status soon js-fade"><span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span>En desarrollo</span>
+              <span class="cat cat-video js-fade">Video</span>
+              <h3 class="t-subhead js-mask" data-split="chars">Recorridos que venden la casa</h3>
+              <p class="t-body-lg js-fade">Producimos el video de tu propiedad listo para publicar — sin día de grabación, sin equipo entrando a la casa, sin esperar semanas.</p>
+              <ul class="tool-list js-list" style="--dot:var(--lilac)">
+                <li>Listo para portales inmobiliarios y redes sociales</li>
+                <li>Sin agendar visita ni preparar la propiedad</li>
+                <li>Cada recorrido dirigido y revisado a mano</li>
+                <li>Entrega en días, no en semanas</li>
+              </ul>
+              <a href="#contacto" class="pill magnetic js-fade" data-roll="Preguntar por disponibilidad">Preguntar por disponibilidad <span class="pill-arrow">&rarr;</span></a>
+            </div></div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ ZONA CLARA: Casos + Precios (G3) ══════════ -->
+  <div id="lightZone">
+
+    <section id="casos" class="has-vline">
+    <svg class="blob amb amb-casos js-parallax" viewBox="0 0 200 200" aria-hidden="true" data-morph><path d="M195.4,100.0 C196.1,107.5 195.1,115.7 192.9,122.9 C190.6,130.0 186.4,137.2 181.7,142.9 C177.0,148.6 170.6,153.5 164.5,157.1 C158.3,160.7 151.1,163.0 144.6,164.6 C138.1,166.2 131.4,166.5 125.3,166.7 C119.2,166.8 113.5,166.1 108.0,165.6 C102.5,165.1 97.5,164.2 92.3,163.5 C87.1,162.8 82.1,162.3 76.7,161.4 C71.3,160.4 65.7,159.7 59.9,158.0 C54.1,156.4 47.8,154.5 41.9,151.5 C36.0,148.4 29.7,144.5 24.5,139.6 C19.4,134.7 14.3,128.5 11.0,121.9 C7.7,115.3 5.2,107.5 4.6,100.0 C3.9,92.5 4.9,84.3 7.1,77.1 C9.4,70.0 13.6,62.8 18.3,57.1 C23.0,51.4 29.4,46.5 35.5,42.9 C41.7,39.3 48.9,37.0 55.4,35.4 C61.9,33.8 68.6,33.5 74.7,33.3 C80.8,33.2 86.5,33.9 92.0,34.4 C97.5,34.9 102.5,35.8 107.7,36.5 C112.9,37.2 117.9,37.7 123.3,38.6 C128.7,39.6 134.3,40.3 140.1,42.0 C145.9,43.6 152.2,45.5 158.1,48.5 C164.0,51.6 170.3,55.5 175.5,60.4 C180.6,65.3 185.7,71.5 189.0,78.1 C192.3,84.7 194.8,92.5 195.4,100.0 Z" fill="url(#gPink)"/></svg>
+      <div class="wrap">
+        <div class="section-head">
+            <h2 class="t-heading js-mask" data-split="chars">Lo que resuelve cada automatización.</h2>
+        </div>
+      </div>
+      <div class="cases-shell" id="casesShell">
+        <div class="cases-viewport" id="casesViewport" data-lenis-prevent>
+          <div class="cases-track" id="casesTrack">
+            <article class="case-card spot" data-pv="#F5A623,#FBDDAB" data-pvlabel="Consultorio">
+              <h3>Consultorio sin recepcionista</h3>
+              <p>Sofía agenda, confirma y recuerda citas sin que nadie conteste el teléfono.</p>
+            </article>
+            <article class="case-card spot" data-pv="#3B82F6,#B5D0FC" data-pvlabel="Restaurante">
+              <h3>Restaurante con pedidos por WhatsApp</h3>
+              <p>El menú del día se contesta solo, incluso en hora pico.</p>
+            </article>
+            <article class="case-card spot" data-pv="#14B8C4,#A6E4E9" data-pvlabel="Inmobiliaria">
+              <h3>Inmobiliaria con leads fríos</h3>
+              <p>Cada llamada se califica y el agente recibe aviso antes de que el lead se enfríe.</p>
+            </article>
+            <article class="case-card spot" data-pv="#511BDB,#BDA8F1" data-pvlabel="Fuera de horario">
+              <h3>Negocio fuera de horario</h3>
+              <p>Un cliente llama a las 11pm y aun así queda agendado para mañana.</p>
+            </article>
+            <article class="case-card spot" data-pv="#8B6DE8,#D3C8F6" data-pvlabel="Equipo chico">
+              <h3>Equipo chico, muchas llamadas</h3>
+              <p>Nadie tiene que soltar lo que está haciendo para contestar el teléfono.</p>
+            </article>
+          </div>
+        </div>
+        <div class="wrap"><div class="cases-progress"><span id="casesBar"></span></div></div>
+      </div>
+    </section>
+
+    <section id="proceso" class="has-vline">
+    <svg class="blob amb amb-proceso js-parallax" viewBox="0 0 200 200" aria-hidden="true" data-morph><path d="M182.2,100.0 C185.4,106.4 189.3,115.1 188.2,121.7 C187.1,128.4 181.3,135.3 175.7,139.7 C170.1,144.2 160.7,145.5 154.7,148.4 C148.6,151.4 143.9,152.9 139.5,157.2 C135.1,161.6 133.0,169.0 128.2,174.4 C123.4,179.7 117.3,187.4 110.9,189.5 C104.4,191.6 95.7,190.2 89.4,187.0 C83.2,183.8 78.1,175.4 73.3,170.4 C68.5,165.4 65.9,160.0 60.8,156.8 C55.6,153.6 49.0,153.6 42.4,151.0 C35.9,148.4 26.2,146.2 21.4,141.3 C16.5,136.3 13.2,128.2 13.3,121.4 C13.4,114.5 18.9,106.3 22.2,100.0 C25.4,93.7 30.9,89.2 32.9,83.5 C34.8,77.7 33.7,72.2 34.0,65.4 C34.4,58.5 32.5,49.0 34.9,42.3 C37.4,35.7 42.5,28.5 48.6,25.6 C54.7,22.6 64.3,23.9 71.5,24.8 C78.6,25.6 85.4,30.1 91.6,30.6 C97.8,31.2 102.3,29.8 108.7,28.2 C115.1,26.5 122.9,21.3 130.0,20.8 C137.2,20.3 146.3,21.1 151.7,25.1 C157.0,29.2 160.3,37.9 162.2,44.9 C164.1,51.9 162.0,60.5 163.1,66.9 C164.1,73.3 165.5,77.6 168.6,83.1 C171.8,88.6 178.9,93.6 182.2,100.0 Z" fill="url(#gGreen)"/></svg>
+      <div class="wrap">
+        <div class="section-head">
+          <h2 class="t-heading js-mask" data-split="chars">A la medida o nada.</h2>
+        </div>
+        <p class="t-body-lg js-words" style="max-width:52ch;margin-bottom:var(--sp-48)">
+          Dos negocios iguales no existen: lo que a un restaurante le sobra, a un
+          consultorio le falta. Aquí no verás paquetes — verás una demo hecha con tu
+          caso y un precio claro por lo que sí vas a usar.
+        </p>
+
+        <ol class="steps">
+          <li class="step js-fade"><span class="st-n">01</span>
+            <h3>Me cuentas</h3>
+            <p>Veinte minutos. Me dices qué se te escapa — llamadas, mensajes, citas — y yo escucho.</p></li>
+          <li class="step js-fade"><span class="st-n">02</span>
+            <h3>Lo ves funcionando</h3>
+            <p>Armo una demo con tu giro, tus horarios y tus precios. La asistente contesta como contestaría en tu negocio.</p></li>
+          <li class="step js-fade"><span class="st-n">03</span>
+            <h3>Un precio, claro</h3>
+            <p>Te cotizo exactamente lo que vas a usar. Ni una función de relleno, ni una letra chica.</p></li>
+          <li class="step js-fade"><span class="st-n">04</span>
+            <h3>Lo instalo y me quedo</h3>
+            <p>La dejo trabajando, te enseño a leerla y sigo al pendiente. No te entrego un archivo y desaparezco.</p></li>
+        </ol>
+
+        <div class="model js-fade">
+          <div class="model-col">
+            <h4>Asistentes que contestan</h4>
+            <p>Voz, WhatsApp e inmobiliaria: instalación única y una mensualidad que cubre hosting y soporte.</p>
+          </div>
+          <div class="model-col">
+            <h4>Proyectos que se entregan</h4>
+            <p>Páginas web y video: un solo precio cerrado, cotizado por el alcance de tu proyecto.</p>
+          </div>
+        </div>
+        <p class="t-caption muted js-fade" style="margin-top:var(--sp-24)">
+          El primer paso no cuesta nada — pide tu demo aquí abajo.
+        </p>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- ══════════ CIERRE ══════════ -->
+  <section class="closing has-vline" id="contacto">
+    <svg class="blob amb amb-cierre js-parallax" viewBox="0 0 200 200" aria-hidden="true" data-morph><path d="M192.3,100.0 C191.2,106.9 185.9,114.4 181.1,120.0 C176.3,125.5 168.6,129.2 163.5,133.3 C158.3,137.4 153.8,139.9 150.2,144.5 C146.6,149.0 145.1,154.6 141.8,160.6 C138.5,166.5 135.5,174.8 130.4,180.1 C125.3,185.4 118.0,190.8 111.2,192.2 C104.3,193.5 95.7,191.6 89.3,188.3 C82.8,185.0 77.2,177.7 72.6,172.3 C67.9,166.9 65.4,160.4 61.4,156.0 C57.3,151.6 53.6,149.0 48.3,145.8 C43.0,142.6 35.6,141.0 29.5,137.0 C23.5,133.0 15.8,127.8 12.2,121.6 C8.5,115.5 6.6,106.9 7.7,100.0 C8.8,93.1 14.1,85.6 18.9,80.0 C23.7,74.5 31.4,70.8 36.5,66.7 C41.7,62.6 46.2,60.1 49.8,55.5 C53.4,51.0 54.9,45.4 58.2,39.4 C61.5,33.5 64.5,25.2 69.6,19.9 C74.7,14.6 82.0,9.2 88.8,7.8 C95.7,6.5 104.3,8.4 110.7,11.7 C117.2,15.0 122.8,22.3 127.4,27.7 C132.1,33.1 134.6,39.6 138.6,44.0 C142.7,48.4 146.4,51.0 151.7,54.2 C157.0,57.4 164.4,59.0 170.5,63.0 C176.5,67.0 184.2,72.2 187.8,78.4 C191.5,84.5 193.4,93.1 192.3,100.0 Z" fill="url(#gLila)"/></svg>
+    <span class="glow glow-morado" style="width:clamp(84px,12vw,180px);aspect-ratio:1;top:8%;left:5%"></span>
+    <svg class="blob cb1 js-parallax" viewBox="0 0 200 200" aria-hidden="true" data-morph><path d="M100,8 C143,8 180,34 192,74 C204,114 188,157 154,180 C120,203 74,199 45,176 C16,153 4,112 14,73 C24,34 57,8 100,8 Z" fill="url(#gGreen)"/></svg>
+    <span class="glow glow-lila" style="width:clamp(66px,9.5vw,142px);aspect-ratio:1;bottom:9%;right:7%"></span>
+    <svg class="blob cb2 js-parallax" viewBox="0 0 200 200" aria-hidden="true" data-morph><path d="M96,6 C138,14 178,30 190,70 C202,110 196,152 162,178 C128,204 80,206 50,182 C20,158 10,116 18,76 C26,36 54,-2 96,6 Z" fill="url(#gLila)"/></svg>
+    <div class="wrap" style="position:relative;z-index:2">
+      <h2 class="t-heading-lg js-mask" data-split="chars">Deja de perder clientes.</h2>
+      <p class="t-body-lg muted js-fade" style="max-width:540px;margin:var(--sp-24) auto 0">
+        Cuéntame qué proceso te está quitando más tiempo y armamos la automatización que le conviene a tu negocio.
+      </p>
+      <form class="cform js-fade" id="form" novalidate>
+        <div class="cf-row">
+          <label class="cf-field"><span>Tu nombre</span><input type="text" name="nombre" required autocomplete="name" placeholder="Cómo te llamas"></label>
+          <label class="cf-field"><span>Tu negocio</span><input type="text" name="negocio" autocomplete="organization" placeholder="Nombre o giro"></label>
+        </div>
+        <div class="cf-row">
+          <label class="cf-field"><span>WhatsApp</span><input type="tel" name="whatsapp" required autocomplete="tel" placeholder="10 dígitos"></label>
+          <label class="cf-field"><span>Correo</span><input type="email" name="correo" required autocomplete="email" placeholder="tucorreo@ejemplo.com"></label>
+        </div>
+        <label class="cf-field"><span>¿Qué se te está cayendo?</span><textarea name="mensaje" rows="3" placeholder="Llamadas sin contestar, mensajes sin responder, citas perdidas…"></textarea></label>
+        <label class="cf-consent"><input type="checkbox" name="consent" required><span>Acepto que me contacten y he leído el <a href="aviso-privacidad.html">aviso de privacidad</a>.</span></label>
+        <button type="submit" class="pill pill-grad magnetic cf-send">Enviar <span class="pill-arrow">&rarr;</span></button>
+        <p class="cf-msg" id="cfMsg" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a href="#top" class="wordmark"><svg class="logo-svg" height="22" role="img" aria-label="Saphiless" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000.0 161.9"><g transform="translate(0,141.67) scale(0.202388,-0.202388)"><g fill="#FFFFFF"><path transform="translate(0,0)" d="M10 600H570V420H196Q196 405 198.0 402.5Q200 400 215 400H570V245Q570 172 567.5 125.5Q565 79 554.0 53.0Q543 27 517.0 16.0Q491 5 445.0 2.5Q399 0 325 0H10V280H365Q380 280 382.0 282.5Q384 285 384 300H10Z"/><path transform="translate(580,0)" d="M630 600V0H330V43H310V0H255Q182 0 135.5 2.5Q89 5 63.0 16.0Q37 27 26.0 53.0Q15 79 12.5 125.5Q10 172 10 245V355Q10 428 12.5 474.5Q15 521 26.0 547.0Q37 573 63.0 584.0Q89 595 135.5 597.5Q182 600 255 600ZM310 300H330V400Q315 400 312.5 397.5Q310 395 310 380Z"/><path transform="translate(1220,0)" d="M310 -100H10V600H385Q458 600 504.5 597.5Q551 595 577.0 584.0Q603 573 614.0 547.0Q625 521 627.5 475.0Q630 429 630 355V245Q630 172 627.5 125.5Q625 79 614.0 53.0Q603 27 577.0 16.0Q551 5 505.0 2.5Q459 0 385 0H310ZM310 300H330V380Q330 395 327.5 397.5Q325 400 310 400Z"/><path transform="translate(1860,0)" d="M10 700H310V600H385Q458 600 504.5 597.5Q551 595 577.0 584.0Q603 573 614.0 547.0Q625 521 627.5 475.0Q630 429 630 355V0H330V380Q330 392 329.0 396.0Q328 400 320 400H310V0H10Z"/><path transform="translate(2500,0)" d="M10 700H310V620H10ZM311 0H256Q182 0 135.5 2.5Q89 5 63.5 16.0Q38 27 26.5 53.0Q15 79 13.0 125.5Q11 172 11 245V600H311Z"/></g><g fill="#511BDB"><path transform="translate(2821,0)" d="M310 0H255Q182 0 135.5 2.5Q89 5 63.0 16.0Q37 27 26.0 53.0Q15 79 12.5 125.5Q10 172 10 245V700H310Z"/><path transform="translate(3141,0)" d="M10 355Q10 428 12.5 474.5Q15 521 26.0 547.0Q37 573 63.0 584.0Q89 595 135.5 597.5Q182 600 255 600H385Q458 600 504.5 597.5Q551 595 577.0 584.0Q603 573 614.0 547.0Q625 521 627.5 475.0Q630 429 630 355V120H310V100H630V0L160 1Q104 3 73.0 12.5Q42 22 28.5 47.0Q15 72 12.5 119.5Q10 167 10 245ZM310 400V300H330V380Q330 395 327.5 397.5Q325 400 310 400Z"/><path transform="translate(3781,0)" d="M10 600H570V420H196Q196 405 198.0 402.5Q200 400 215 400H570V245Q570 172 567.5 125.5Q565 79 554.0 53.0Q543 27 517.0 16.0Q491 5 445.0 2.5Q399 0 325 0H10V280H365Q380 280 382.0 282.5Q384 285 384 300H10Z"/><path transform="translate(4361,0)" d="M10 600H570V420H196Q196 405 198.0 402.5Q200 400 215 400H570V245Q570 172 567.5 125.5Q565 79 554.0 53.0Q543 27 517.0 16.0Q491 5 445.0 2.5Q399 0 325 0H10V280H365Q380 280 382.0 282.5Q384 285 384 300H10Z"/></g></g></svg></a>
+        <p class="t-caption muted" style="max-width:280px;margin-top:var(--sp-16)">Automatización con IA para negocios en México.</p>
+      </div>
+      <div class="footer-cols">
+        <div class="footer-col">
+          <h4>Productos</h4>
+          <a href="#voz" data-roll="Voz">Voz</a>
+          <a href="#whatsapp" data-roll="WhatsApp">WhatsApp</a>
+          <a href="#inmobiliaria" data-roll="Inmobiliaria">Inmobiliaria</a>
+          <a href="#web" data-roll="Web">Web</a>
+          <a href="#salud" data-roll="Salud">Salud</a>
+          <a href="#videos" data-roll="Video">Video</a>
+        </div>
+        <div class="footer-col">
+          <h4>Contacto</h4>
+          <a href="#form" data-roll="Agendar demo">Agendar demo</a>
+          <a href="mailto:sayisless@gmail.com" data-roll="Correo">Correo</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Saphiless</span>
+      <a href="aviso-privacidad.html">Aviso de privacidad</a>
+    </div>
+  </div>
+  <div class="footer-giant" aria-hidden="true"><span id="footGiant"><svg class="wm-svg" role="img" aria-label="Saphiless" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000.0 161.9"><g transform="translate(0,141.67) scale(0.202388,-0.202388)"><g fill="#FFFFFF"><path transform="translate(0,0)" d="M10 600H570V420H196Q196 405 198.0 402.5Q200 400 215 400H570V245Q570 172 567.5 125.5Q565 79 554.0 53.0Q543 27 517.0 16.0Q491 5 445.0 2.5Q399 0 325 0H10V280H365Q380 280 382.0 282.5Q384 285 384 300H10Z"/><path transform="translate(580,0)" d="M630 600V0H330V43H310V0H255Q182 0 135.5 2.5Q89 5 63.0 16.0Q37 27 26.0 53.0Q15 79 12.5 125.5Q10 172 10 245V355Q10 428 12.5 474.5Q15 521 26.0 547.0Q37 573 63.0 584.0Q89 595 135.5 597.5Q182 600 255 600ZM310 300H330V400Q315 400 312.5 397.5Q310 395 310 380Z"/><path transform="translate(1220,0)" d="M310 -100H10V600H385Q458 600 504.5 597.5Q551 595 577.0 584.0Q603 573 614.0 547.0Q625 521 627.5 475.0Q630 429 630 355V245Q630 172 627.5 125.5Q625 79 614.0 53.0Q603 27 577.0 16.0Q551 5 505.0 2.5Q459 0 385 0H310ZM310 300H330V380Q330 395 327.5 397.5Q325 400 310 400Z"/><path transform="translate(1860,0)" d="M10 700H310V600H385Q458 600 504.5 597.5Q551 595 577.0 584.0Q603 573 614.0 547.0Q625 521 627.5 475.0Q630 429 630 355V0H330V380Q330 392 329.0 396.0Q328 400 320 400H310V0H10Z"/><path transform="translate(2500,0)" d="M10 700H310V620H10ZM311 0H256Q182 0 135.5 2.5Q89 5 63.5 16.0Q38 27 26.5 53.0Q15 79 13.0 125.5Q11 172 11 245V600H311Z"/></g><g fill="#FFFFFF"><path transform="translate(2821,0)" d="M310 0H255Q182 0 135.5 2.5Q89 5 63.0 16.0Q37 27 26.0 53.0Q15 79 12.5 125.5Q10 172 10 245V700H310Z"/><path transform="translate(3141,0)" d="M10 355Q10 428 12.5 474.5Q15 521 26.0 547.0Q37 573 63.0 584.0Q89 595 135.5 597.5Q182 600 255 600H385Q458 600 504.5 597.5Q551 595 577.0 584.0Q603 573 614.0 547.0Q625 521 627.5 475.0Q630 429 630 355V120H310V100H630V0L160 1Q104 3 73.0 12.5Q42 22 28.5 47.0Q15 72 12.5 119.5Q10 167 10 245ZM310 400V300H330V380Q330 395 327.5 397.5Q325 400 310 400Z"/><path transform="translate(3781,0)" d="M10 600H570V420H196Q196 405 198.0 402.5Q200 400 215 400H570V245Q570 172 567.5 125.5Q565 79 554.0 53.0Q543 27 517.0 16.0Q491 5 445.0 2.5Q399 0 325 0H10V280H365Q380 280 382.0 282.5Q384 285 384 300H10Z"/><path transform="translate(4361,0)" d="M10 600H570V420H196Q196 405 198.0 402.5Q200 400 215 400H570V245Q570 172 567.5 125.5Q565 79 554.0 53.0Q543 27 517.0 16.0Q491 5 445.0 2.5Q399 0 325 0H10V280H365Q380 280 382.0 282.5Q384 285 384 300H10Z"/></g></g></svg></span></div>
+</footer>
+
+<script src="vendor/gsap.min.js"></script>
+<script src="vendor/ScrollTrigger.min.js"></script>
+<script src="vendor/SplitText.min.js"></script>
+<script src="vendor/MorphSVGPlugin.min.js"></script>
+<script src="vendor/DrawSVGPlugin.min.js"></script>
+<script src="vendor/Draggable.min.js"></script>
+<script src="vendor/InertiaPlugin.min.js"></script>
+<script src="vendor/CustomEase.min.js"></script>
+<script src="vendor/lenis.min.js"></script>
+
+<div class="scroll-ribbon" aria-hidden="true"></div>
+<script type="module" src="js/main.js"></script>
+<script type="module" src="js/gl.js"></script>
+<script type="module" src="js/accordion.js"></script>
+</body>
+</html>

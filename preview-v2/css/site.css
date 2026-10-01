@@ -1,0 +1,843 @@
+/* ============================================================
+   1. TOKENS
+   Dos capas de variables:
+   · Las de MARCA (--green, --orangey…) son fijas. Nunca invierten.
+   · Las SEMÁNTICAS (--bg, --ink, --line…) las reescribe el motor de
+     tema en cada frame. Toda la hoja usa estas últimas, así la
+     inversión a crema de Casos y Precios ocurre sin duplicar una
+     sola regla ni pelearse con clases .is-light.
+   ============================================================ */
+:root {
+  /* marca — invariantes */
+  --green: #8B6DE8;
+  --light-green: #3B82F6;
+  --orangey: #F5A623;
+  --pink: #F5487F;
+  --lilac: #A855F7;
+  --blue: #14B8C4;
+  --lipstick: #f100cb;
+  --grad-green: linear-gradient(114.41deg, #511BDB 20.74%, #8B6DE8 65.5%);
+
+  /* semánticas — el motor de tema las sobreescribe */
+  --bg: #0A0A0A;
+  --ink: #EDEAF3;
+  --ink-50: #8B849B;
+  --ink-25: #3A3448;
+  --line: #2A2634;
+  --panel: #111014;
+  --header-bg: rgba(10,10,10, 0.55);
+  --grain-op: 0.038;
+
+  --font: 'Instrument Sans', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-ui: ui-monospace, 'SF Mono', SFMono-Regular, 'Roboto Mono', Menlo, monospace;
+
+  --sp-8: 8px;  --sp-12: 12px; --sp-16: 16px; --sp-20: 20px;
+  --sp-24: 24px; --sp-32: 32px; --sp-48: 48px;
+  --sp-76: 76px; --sp-96: 96px;
+
+  --r-lg: 10px; --r-btn: 100px;
+  --max-w: 1280px;
+  --gutter: clamp(20px, 4vw, 44px);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-io: cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; background: #0A0A0A; }
+
+/* Lenis — hoja oficial. Sin esto el bloqueo de scroll durante el
+   intro no funciona y scroll-behavior pelea con el suavizado. */
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+.lenis.lenis-stopped { overflow: hidden; }
+.lenis.lenis-smooth iframe { pointer-events: none; }
+
+body {
+  font-family: var(--font);
+  font-weight: 400;
+  background-color: var(--bg);
+  color: var(--ink);
+  font-size: 19px;
+  line-height: 1.15;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+/* `overflow-x: hidden` convierte a body en contenedor de scroll y
+   ahí `position: sticky` deja de anclar. `clip` recorta igual pero
+   NO crea contenedor de scroll: el manifiesto y el apilado de
+   productos dependen de sticky, así que esto no es cosmético. */
+@supports (overflow: clip) { body { overflow-x: clip; } }
+body.is-loading { overflow: hidden; height: 100vh; }
+img, svg { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--green); outline-offset: 4px; border-radius: 4px; }
+::selection { background: #511BDB; color: #FFFFFF; }
+
+.wrap { max-width: calc(var(--max-w) + var(--gutter) * 2); margin: 0 auto; padding: 0 var(--gutter); }
+
+/* ============================================================
+   2. TIPOGRAFÍA — escala binaria: display editorial o UI compacta
+   ============================================================ */
+.t-caption { font-size: 14px; line-height: 1.45; }
+.t-body-lg { font-size: clamp(19px, 2vw, 23px); line-height: 1.4; letter-spacing: -0.23px; }
+.t-subhead { font-size: clamp(25px, 3.4vw, 35px); line-height: 1.15; letter-spacing: -0.5px; }
+.t-heading { font-size: clamp(38px, 6.6vw, 68px); line-height: 1.06; letter-spacing: -0.028em; font-weight: 600; }
+.t-heading-lg { font-size: clamp(54px, 10vw, 104px); line-height: 0.98; letter-spacing: -0.04em; font-weight: 600; }
+.t-display { font-size: clamp(60px, 15.2vw, 228px); line-height: 0.86; letter-spacing: -0.045em; font-weight: 600; }
+.muted { color: var(--ink-50); }
+h1, h2, h3, h4 { font-weight: 600; }
+
+/* Etiquetas de categoría: fuera del monoespaciado — el mono queda
+   reservado para DATOS (ejes, horas, cifras), donde se lo gana. Las
+   etiquetas decorativas en mono + MAYÚSCULAS + llaves ya son sello
+   de plantilla de IA, y este sitio no puede parecer eso. */
+.cat {
+  font-family: var(--font); font-size: 13px; font-weight: 600;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  line-height: 1; margin-bottom: var(--sp-16); display: block;
+}
+.cat-voz { color: var(--orangey); }
+.cat-wa { color: var(--light-green); }
+.cat-inmo { color: var(--blue); }
+.cat-video { color: var(--lilac); }
+.cat-web { color: var(--pink); }
+.cat-salud { color: var(--lipstick); }
+
+/* SplitText crea .line/.word/.char. Las máscaras las genera el
+   plugin (mask:"lines"), aquí solo se garantiza que las unidades
+   sean transformables. */
+.word, .char { display: inline-block; will-change: transform; }
+.split-line { display: block; }
+
+/* ============================================================
+   3. ATMÓSFERA — grano. Su opacidad la modula la velocidad de scroll.
+   ============================================================ */
+.grain {
+  position: fixed; inset: -120px; z-index: 9998; pointer-events: none;
+  opacity: var(--grain-op); mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 260px 260px;
+  animation: grainShift 6s steps(6) infinite;
+}
+@keyframes grainShift {
+  0%,100% { transform: translate(0,0); }  16% { transform: translate(-14px,8px); }
+  33% { transform: translate(10px,-12px); } 50% { transform: translate(-8px,-6px); }
+  66% { transform: translate(12px,10px); }  83% { transform: translate(-10px,4px); }
+}
+
+/* ============================================================
+   4. INTRO — 6 columnas que suben en stagger desde la derecha
+   Una cortina sola es un gesto; seis columnas desfasadas leen como
+   un mecanismo abriéndose, que es el registro del sitio.
+   ============================================================ */
+#loader { display: none; }
+html.js #loader { display: block; position: fixed; inset: 0; z-index: 10001; pointer-events: none; background: #0A0A0A; }
+.lo-px { position: absolute; inset: 0; display: grid; }
+.lo-px i { display: block; background: #0A0A0A; will-change: transform, opacity; }
+
+/* ============================================================
+   5. BOTONES — el degradado del hover nace en el cursor
+   ============================================================ */
+.pill {
+  position: relative; z-index: 0; display: inline-flex; align-items: center; gap: 10px;
+  font-size: 17px; font-weight: 500; line-height: 1.05; padding: 15px 26px;
+  border-radius: var(--r-btn); border: 1px solid var(--ink-25);
+  background: transparent; color: var(--ink); cursor: pointer; overflow: hidden;
+  transition: color 0.4s var(--ease-out), border-color 0.4s var(--ease-out);
+  white-space: nowrap;
+}
+/* Radial anclado a --mx/--my: el relleno brota exactamente de donde
+   entró el cursor, no siempre desde abajo. */
+.pill::after {
+  content: ""; position: absolute; inset: 0; z-index: -1; border-radius: inherit;
+  background: radial-gradient(circle at var(--mx, 50%) var(--my, 50%), #D3C8F6 0%, #8B6DE8 60%, #8B6DE8 100%);
+  transform: scale(0); transform-origin: var(--mx, 50%) var(--my, 50%);
+  transition: transform 0.55s var(--ease-out);
+}
+.pill:hover { color: #0A0A0A; border-color: transparent; }
+.pill:hover::after { transform: scale(2.6); }
+.pill-arrow { transition: transform 0.45s var(--ease-out); }
+.pill:hover .pill-arrow { transform: translateX(6px); }
+.pill-grad { border-color: transparent; }
+.pill-grad::before {
+  content: ""; position: absolute; inset: 0; z-index: -2; border-radius: var(--r-btn);
+  padding: 1.5px; background: linear-gradient(114.41deg, #FF6B4A 20%, #FF7F62 70%);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor; mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask-composite: exclude; pointer-events: none;
+}
+.pill-grad::after { background: radial-gradient(circle at var(--mx, 50%) var(--my, 50%), #FF7F62 0%, #FF6B4A 60%, #FF6B4A 100%); }
+.pill-sm { font-size: 15px; padding: 11px 20px; }
+
+/* Roll: cada carácter sube con su propio retraso (P3) */
+.roll { display: inline-grid; overflow: hidden; height: 1.35em; vertical-align: top; }
+.roll > span { grid-area: 1 / 1; line-height: 1.35; white-space: nowrap; }
+.roll .rc { display: inline-block; transition: transform 0.5s var(--ease-out); }
+.roll > span:nth-child(2) .rc { transform: translateY(100%); }
+a:hover .roll > span:nth-child(1) .rc, .pill:hover .roll > span:nth-child(1) .rc,
+button:hover .roll > span:nth-child(1) .rc { transform: translateY(-100%); }
+a:hover .roll > span:nth-child(2) .rc, .pill:hover .roll > span:nth-child(2) .rc,
+button:hover .roll > span:nth-child(2) .rc { transform: translateY(0); }
+
+/* ============================================================
+   6. NAV
+   ============================================================ */
+.banner {
+  text-align: center; padding: 11px var(--gutter); font-family: var(--font-ui);
+  font-size: 11.5px; letter-spacing: 0.09em; text-transform: uppercase;
+  color: #FFFFFF; background: #511BDB; border-bottom: 1px solid var(--line);
+}
+.banner a { color: #FFFFFF; }
+header {
+  position: sticky; top: 0; z-index: 200; background: var(--header-bg);
+  backdrop-filter: blur(20px) saturate(170%); -webkit-backdrop-filter: blur(20px) saturate(170%);
+  border-bottom: 1px solid transparent; transition: border-color 0.4s ease; will-change: transform;
+}
+header.stuck { border-bottom-color: var(--line); }
+nav.wrap { display: flex; align-items: center; justify-content: space-between; height: 72px; gap: var(--sp-16); }
+.wordmark { display: flex; align-items: center; } .wordmark .logo-svg { display: block; width: auto; }
+.nav-links { display: flex; gap: 2px; list-style: none; }
+.nav-links a { position: relative; display: inline-block; padding: 9px 13px; font-size: 15.5px; color: var(--ink-50); transition: color 0.3s ease; }
+.nav-links a::before {
+  content: ""; position: absolute; left: 13px; right: 13px; bottom: 4px; height: 1px;
+  background: currentColor; transform: scaleX(0); transform-origin: right;
+  transition: transform 0.5s var(--ease-out);
+}
+.nav-links a:hover, .nav-links a.active { color: var(--ink); }
+.nav-links a:hover::before, .nav-links a.active::before { transform: scaleX(1); transform-origin: left; }
+.nav-right { display: flex; align-items: center; gap: var(--sp-12); }
+.burger { display: none; background: none; border: none; padding: 9px 7px; cursor: pointer; position: relative; z-index: 320; }
+.burger span { display: block; width: 26px; height: 2px; border-radius: 2px; background: var(--ink); transition: transform 0.45s var(--ease-out), opacity 0.25s ease, background 0.3s ease; }
+.burger span + span { margin-top: 6px; }
+.burger:hover span:nth-child(2) { transform: scaleX(0.7); transform-origin: right; }
+.burger.open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+.burger.open span:nth-child(2) { opacity: 0; transform: scaleX(0.3); }
+.burger.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+.burger.open span { background: #0A0A0A; }
+
+/* M7 — menú escalonado: capas lila y morado barren desde la derecha y aterriza el panel crema */
+.nav-overlay { position: fixed; inset: 0; z-index: 310; visibility: hidden; pointer-events: none; overflow: hidden; }
+.nav-overlay.open { visibility: visible; pointer-events: auto; }
+.ov-hit { position: absolute; inset: 0; background: rgba(10,10,10,0); transition: background 0.45s ease; cursor: pointer; }
+.nav-overlay.open .ov-hit { background: rgba(10,10,10,0.45); }
+.ov-pre, .ov-panel { position: absolute; top: 0; right: 0; bottom: 0; width: clamp(320px, 42vw, 540px); will-change: transform; }
+.ov-pre1 { background: #8B6DE8; }
+.ov-pre2 { background: #511BDB; }
+.ov-panel { background: #F7F0E8; display: flex; flex-direction: column; justify-content: center; padding: 96px clamp(28px, 4.5vw, 64px) 48px; overflow-y: auto; box-shadow: -24px 0 60px rgba(10,10,10,0.35); }
+.ov-panel ul { list-style: none; }
+.ov-panel li { overflow: hidden; }
+.ov-item { display: flex; align-items: baseline; gap: 14px; font-size: clamp(30px, 4.6vw, 52px); font-weight: 600; letter-spacing: -0.03em; padding: 7px 0; color: #0A0A0A; transition: color 0.25s ease; }
+.ov-item:hover { color: #511BDB; }
+.ov-item.ov-cta { color: #FF6B4A; }
+.ov-num { font-family: var(--font-ui); font-size: 11px; letter-spacing: 0.12em; color: #511BDB; }
+.ov-close { position: absolute; top: 56px; right: clamp(28px, 4.5vw, 64px); background: none; border: none; cursor: pointer; font-family: var(--font-ui); font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: #0A0A0A; padding: 8px; }
+.ov-close:hover { color: #511BDB; }
+.ov-mail { display: inline-block; margin-top: 34px; font-size: 14px; color: #6E655C; }
+.ov-mail:hover { color: #511BDB; }
+.nav-links { display: none; }
+.burger { display: block; }
+
+/* ============================================================
+   7. BLOBS — SVG reales que morfean con MorphSVG
+   El halo caro (feDropShadow) va SOLO en los del hero: un filtro
+   SVG se rasteriza de nuevo en cada frame y con seis blobs
+   morfeando tumba el frame rate. Los demás llevan un resplandor
+   estático detrás — se rasteriza una vez y solo se compone.
+   ============================================================ */
+.blob { position: absolute; pointer-events: none; overflow: visible; will-change: transform; }
+.blob path { will-change: d; }
+.glow { position: absolute; border-radius: 50%; filter: blur(46px); opacity: 0.42; pointer-events: none; z-index: -1; }
+.glow-morado { background: radial-gradient(circle, #511BDB, transparent 70%); }
+.glow-lila { background: radial-gradient(circle, #8B6DE8, transparent 70%); }
+#blobDefs { position: absolute; width: 0; height: 0; overflow: hidden; }
+
+/* ============================================================
+   8. HERO
+   ============================================================ */
+.hero { position: relative; padding: clamp(40px, 7vw, 88px) 0 var(--sp-76); }
+/* Aurora: tres nubes de color a la deriva en ciclos de 38–52 s.
+   Blur estático (se rasteriza una vez) + solo transform en el loop. */
+.hero-aurora { position: absolute; inset: -10%; z-index: 0; pointer-events: none; }
+.au { position: absolute; border-radius: 50%; filter: blur(70px); will-change: transform; }
+.au1 { width: min(820px, 70vw); aspect-ratio: 1; left: -8%; top: -22%; background: radial-gradient(circle, rgba(81,27,219,0.16), transparent 62%); }
+.au2 { width: min(640px, 55vw); aspect-ratio: 1; right: -6%; top: 8%; background: radial-gradient(circle, rgba(168,85,247,0.13), transparent 62%); }
+.au3 { width: min(560px, 50vw); aspect-ratio: 1; left: 34%; bottom: -28%; background: radial-gradient(circle, rgba(245,166,35,0.10), transparent 62%); }
+/* "Siempre." con un destello que lo recorre por siempre, letra a letra */
+.grad-shine .char { background-image: linear-gradient(100deg, #8B6DE8 18%, #EDE7FB 50%, #D3C8F6 82%); background-size: 300% 100%; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; animation: punchSheen 5.5s linear infinite; }
+.hero::before {
+  content: ""; position: absolute; z-index: 0; top: -20%; left: 50%; transform: translateX(-50%);
+  width: min(1100px, 130vw); aspect-ratio: 1.6;
+  background: radial-gradient(ellipse at center, rgba(81,27,219,0.14), transparent 62%);
+  pointer-events: none;
+}
+.hero-inner { position: relative; }
+.hero-inner > * { position: relative; z-index: 2; }
+.hero-inner > .hero-blobs { position: absolute; inset: 0; pointer-events: none; }
+.hero-inner > .hero-blobs--back { z-index: 1; }
+.hero-inner > .hero-blobs--front { z-index: 3; }
+.hb-b1 { width: clamp(140px,20vw,290px); aspect-ratio: 1; top: 5%; left: 13%; }
+.hb-b2 { width: clamp(90px,12.5vw,185px); aspect-ratio: 1; top: 0; right: 3%; }
+.hb-f1 { width: clamp(80px,11vw,165px); aspect-ratio: 1; top: 22%; left: 57%; }
+.hb-f2 { width: clamp(52px,6.5vw,96px); aspect-ratio: 1; top: 40%; left: 4%; }
+.hero-sub { max-width: 600px; margin-top: var(--sp-32); color: var(--ink-50); }
+.hero-cta { display: flex; gap: var(--sp-12); flex-wrap: wrap; margin-top: var(--sp-32); }
+.hero-meta { display: flex; flex-wrap: wrap; gap: var(--sp-32) var(--sp-48); margin-top: var(--sp-76); padding-top: var(--sp-24); border-top: 1px solid var(--line); }
+.hero-meta div { min-width: 108px; }
+.hero-meta .n { font-size: clamp(32px,4vw,46px); font-weight: 600; line-height: 1; letter-spacing: -0.03em; font-variant-numeric: tabular-nums; }
+.hero-meta .l { font-family: var(--font-ui); font-size: 11px; letter-spacing: 0.11em; text-transform: uppercase; color: var(--ink-50); margin-top: 9px; }
+.scroll-cue { display: inline-flex; align-items: center; gap: 10px; margin-top: var(--sp-32); font-family: var(--font-ui); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-50); }
+.scroll-cue .rail { display: block; width: 46px; height: 1px; background: var(--ink-25); position: relative; overflow: hidden; }
+.scroll-cue .rail::after { content: ""; position: absolute; inset: 0; background: var(--green); transform: translateX(-100%); animation: railRun 2.2s var(--ease-io) infinite; }
+@keyframes railRun { 0% { transform: translateX(-100%); } 55% { transform: translateX(0); } 100% { transform: translateX(100%); } }
+@media (max-width: 760px) {
+  .hb-f2 { display: none; }
+  .hb-f1 { top: 12%; left: auto; right: -7%; width: 88px; opacity: 0.85; }
+  .hb-b1 { top: 3%; left: 32%; width: 132px; }
+  .hb-b2 { top: 0; right: -9%; width: 112px; }
+}
+
+/* ============================================================
+   9. SECCIONES GENERALES
+   ============================================================ */
+section { padding: clamp(64px, 9vw, 112px) 0; }
+.section-head { max-width: 780px; margin-bottom: var(--sp-76); }
+.hairline-svg { display: block; width: 100%; height: 1px; overflow: visible; }
+.hairline-svg line { stroke: var(--ink-25); stroke-width: 1; }
+
+.marquee-band { padding: var(--sp-32) 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); overflow: hidden; }
+.marquee-track { display: flex; gap: clamp(40px,6vw,76px); width: max-content; will-change: transform; }
+.marquee-track span { font-size: clamp(28px,5vw,62px); font-weight: 600; line-height: 1; letter-spacing: -0.03em; white-space: nowrap; display: flex; align-items: center; gap: clamp(20px,3vw,32px); }
+.marquee-track span::after { content: ""; width: 10px; height: 10px; border-radius: 50%; background: var(--ink-25); flex-shrink: 0; }
+.marquee-track span:nth-child(5n+1)::after { background: #F5A623; }
+.marquee-track span:nth-child(5n+2)::after { background: #3B82F6; }
+.marquee-track span:nth-child(5n+3)::after { background: #14B8C4; }
+.marquee-track span:nth-child(5n+4)::after { background: #F5487F; }
+.marquee-track span:nth-child(5n+5)::after { background: #A855F7; }
+
+/* ============================================================
+   10. MANIFIESTO (G2) — texto que se ilumina ligado al scroll
+   El anclaje es `position: sticky`, no un pin de ScrollTrigger:
+   sticky no genera pin-spacers, no necesita recalcular en resize
+   y convive con Lenis sin tocar nada. El scrub solo maneja color.
+   ============================================================ */
+.manifesto { position: relative; padding: 0; height: 250vh; }  /* 250vh - 100vh del sticky = 150vh de recorrido anclado */
+.manifesto-pin { position: sticky; top: 0; height: 100vh; display: flex; align-items: center; overflow: hidden; }
+.manifesto-text { max-width: 15ch; }
+.manifesto-text .word { color: var(--ink-25); transition: text-shadow 0.3s ease; }
+/* La palabra donde va la "aguja" del scroll resplandece — karaoke */
+.w-live { text-shadow: 0 0 26px rgba(139,109,232,0.85), 0 0 7px rgba(139,109,232,0.5); }
+/* Al completar, la frase final queda brillando en bucle */
+.mf-shine .word { background-image: linear-gradient(100deg, #8B6DE8 15%, #EDE7FB 50%, #D3C8F6 85%); background-size: 260% 100%; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; animation: punchSheen 4s linear infinite; }
+
+/* Ondas de voz viajando en bucle detrás del texto */
+.mf-waves { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
+.mf-wave { position: absolute; left: 0; width: 200%; height: 36%; overflow: visible; }
+.mf-wave.w1 { top: 16%; }
+.mf-wave.w2 { top: 50%; }
+.mf-wave path { fill: none; stroke: var(--green); stroke-width: 1.6; vector-effect: non-scaling-stroke; }
+.mf-wave.w1 { opacity: 0.15; }
+.mf-wave.w2 { opacity: 0.08; }
+
+/* Blob gigante del manifiesto: la única forma grande que NO es un
+   blob de producto. Morfea por 8 estados orgánicos en un ciclo de
+   ~34 s, así que tarda en repetirse más de lo que nadie va a leer. */
+.mf-orb {
+  position: absolute; right: 4%; top: 50%; transform: translateY(-50%);
+  z-index: 1; pointer-events: none;
+  width: min(500px, 40vw); aspect-ratio: 1;
+}
+.orb-svg { width: 100%; height: 100%; overflow: visible; }
+.orb-svg path { will-change: d; }
+
+/* Blobs ambient: cada sección respira con una figura morfeando en
+   su color. Detrás del contenido, delante del fondo. */
+.amb { position: absolute; z-index: 0; pointer-events: none; }
+.amb-datos   { width: min(250px, 20vw); right: -3%; top: 5%;    opacity: 0.13; }
+.amb-casos   { width: min(270px, 21vw); left: -4%;  bottom: 7%; opacity: 0.24; }
+.amb-proceso { width: min(230px, 18vw); right: -3%; top: 10%;   opacity: 0.20; }
+.amb-cierre  { width: min(260px, 20vw); left: -4%;  top: 8%;    opacity: 0.30; }
+#datos, #proceso { position: relative; }
+#datos > .wrap, #proceso > .wrap { position: relative; z-index: 1; }
+
+/* El progreso ahora es un dial discreto, no un numerote */
+.mf-dial { position: absolute; right: var(--gutter); bottom: 9%; z-index: 1; width: 64px; height: 64px; pointer-events: none; }
+.mf-dial svg { transform: rotate(-90deg); overflow: visible; }
+.mf-dial circle { fill: none; stroke-width: 2.5; }
+.d-bg { stroke: var(--ink-25); }
+.d-fg { stroke: url(#gLine); stroke-linecap: round; }
+.mf-dial.done .d-fg { filter: drop-shadow(0 0 7px rgba(81,27,219, 0.7)); }
+.d-pct { position: absolute; inset: 0; display: grid; place-items: center; font-family: var(--font-ui); font-size: 11px; color: var(--ink-50); font-variant-numeric: tabular-nums; }
+.manifesto-pin > .wrap { position: relative; z-index: 2; }
+.manifesto-meter { position: absolute; right: var(--gutter); top: 50%; transform: translateY(-50%); display: flex; align-items: center; gap: var(--sp-16); }
+.manifesto-meter .rail { width: 1px; height: 180px; background: var(--ink-25); position: relative; }
+.manifesto-meter .rail i { position: absolute; inset: 0; background: var(--grad-green); transform: scaleY(0); transform-origin: top; display: block; }
+.manifesto-meter .pct { font-family: var(--font-ui); font-size: 12px; letter-spacing: 0.1em; color: var(--ink-50); font-variant-numeric: tabular-nums; }
+@media (max-width: 900px) {
+  .manifesto { height: auto; }
+  .manifesto-pin { position: static; height: auto; padding: clamp(64px,9vw,112px) 0; }
+  .manifesto-text { max-width: none; }
+  .mf-orb, .mf-dial, .mf-waves { display: none; }
+}
+
+/* ============================================================
+   11. PRODUCTOS APILADOS (G5)
+   Cada tarjeta lleva SU PROPIO fondo del color del producto. Así
+   ocluye a la anterior y "invade" el fondo con un solo dato — sin
+   un segundo sistema escribiendo sobre document.body, que es
+   justo donde nacían las carreras.
+   ============================================================ */
+.stack-slot { position: relative; }
+.stack-item { background-color: var(--tint, #0A0A0A); }
+.tool-block { display: grid; grid-template-columns: 0.85fr 1fr; gap: clamp(28px,5vw,88px); align-items: center; }
+.tool-block.flip .tool-visual { order: 2; }
+.tool-block.flip .tool-content { order: 1; }
+.tool-visual { position: relative; aspect-ratio: 1/0.8; display: flex; align-items: center; justify-content: center; }
+.tool-visual .blob { position: relative; width: min(76%, 340px); aspect-ratio: 1; }
+.tool-content h3 { margin-bottom: var(--sp-16); }
+.tool-content .t-body-lg { color: var(--ink-50); margin-bottom: var(--sp-24); max-width: 46ch; }
+.tool-list { list-style: none; margin-bottom: var(--sp-32); display: flex; flex-direction: column; gap: var(--sp-12); }
+.tool-list li { display: flex; gap: var(--sp-12); font-size: 16.5px; line-height: 1.45; }
+.tool-list li::before { content: ""; width: 6px; height: 6px; border-radius: 2px; margin-top: 9px; flex-shrink: 0; background: var(--dot, var(--green)); transform: rotate(var(--bulletRot, 0deg)); transition: transform 0.6s var(--ease-out); }
+.tool-list li.in::before { --bulletRot: 90deg; }
+/* Estado del producto: un ecualizador diminuto SONANDO en el color
+   del producto. Sin borde, sin pill, sin mayúsculas — el movimiento
+   es la información: producción suena, desarrollo aún no. */
+.tag-status { display: inline-flex; align-items: center; gap: 9px; font-size: 13.5px; font-weight: 500; color: var(--ink-50); margin-bottom: var(--sp-16); }
+.eq { display: inline-flex; align-items: flex-end; gap: 2.5px; height: 13px; }
+.eq i { width: 3px; height: 100%; border-radius: 2px; background: var(--dot, var(--green)); transform: scaleY(0.3); transform-origin: bottom; animation: eqPlay 1.15s ease-in-out infinite; }
+.eq i:nth-child(2) { animation-delay: 0.18s; }
+.eq i:nth-child(3) { animation-delay: 0.36s; }
+.eq i:nth-child(4) { animation-delay: 0.54s; }
+@keyframes eqPlay {
+  0%, 100% { transform: scaleY(0.25); }
+  35%      { transform: scaleY(1); }
+  65%      { transform: scaleY(0.45); }
+}
+.tag-status.soon .eq i { animation: none; transform: scaleY(0.28); background: var(--ink-50); }
+@keyframes ringOut { 0% { transform: scale(0.6); opacity: 0.9; } 100% { transform: scale(3.4); opacity: 0; } }
+
+@media (min-width: 901px) {
+  .stack-slot { height: 128vh; }  /* 5 tarjetas: menos recorrido c/u para no alargar de más */
+  .stack-item { position: sticky; top: 0; min-height: 100vh; display: flex; align-items: center; will-change: transform, clip-path; }
+  .stack-item > .wrap { width: 100%; }
+}
+@media (max-width: 900px) {
+  .stack-slot { height: auto; }
+  .stack-item { padding: clamp(56px,10vw,88px) 0; }
+  .tool-block, .tool-block.flip { grid-template-columns: 1fr; gap: var(--sp-32); }
+  .tool-block.flip .tool-visual, .tool-block.flip .tool-content { order: unset; }
+}
+
+/* ============================================================
+   12. CASOS
+   ============================================================ */
+.spot { position: relative; overflow: hidden; isolation: isolate; }
+.spot::before {
+  content: ""; position: absolute; inset: 0; z-index: 0;
+  background: radial-gradient(340px circle at var(--mx,50%) var(--my,50%), rgba(237,234,243,0.07), transparent 62%);
+  opacity: 0; transition: opacity 0.45s ease; pointer-events: none;
+}
+.spot:hover::before { opacity: 1; }
+.spot > * { position: relative; z-index: 1; }
+.cases-shell { position: relative; }
+.cases-viewport { overflow: hidden; }
+.cases-track { display: flex; gap: var(--sp-20); width: max-content; padding-left: max(var(--gutter), calc((100vw - var(--max-w))/2)); padding-right: var(--gutter); will-change: transform; }
+.case-card { width: clamp(268px,32vw,384px); background: var(--panel); border-radius: var(--r-lg); padding: var(--sp-32); display: flex; flex-direction: column; gap: var(--sp-16); border-top: 3px solid var(--ink-25); transition: background-color 0.45s ease; }
+.case-card:nth-child(5n+1) { border-top-color: #F5A623; }
+.case-card:nth-child(5n+2) { border-top-color: #3B82F6; }
+.case-card:nth-child(5n+3) { border-top-color: #14B8C4; }
+.case-card:nth-child(5n+4) { border-top-color: #511BDB; }
+.case-card:nth-child(5n+5) { border-top-color: #8B6DE8; }
+
+.case-card h3 { font-size: clamp(22px,2.5vw,31px); line-height: 1.08; letter-spacing: -0.028em; }
+.case-card p { font-size: 16.5px; line-height: 1.45; color: var(--ink-50); }
+.cases-progress { margin-top: var(--sp-32); height: 1px; background: var(--line); position: relative; }
+.cases-progress span { position: absolute; inset: 0; background: var(--grad-green); transform: scaleX(0); transform-origin: left; }
+
+/* G6 — panel de preview que persigue al cursor */
+#preview {
+  position: fixed; top: 0; left: 0; z-index: 9990; width: 300px; height: 200px;
+  border-radius: var(--r-lg); pointer-events: none; overflow: hidden;
+  clip-path: inset(50% 0% 50% 0%); opacity: 0; will-change: transform, clip-path;
+}
+#preview .pv-art { position: absolute; inset: 0; background-size: 300% 300%; animation: pvDrift 7s ease-in-out infinite; }
+#preview .pv-label { position: absolute; left: 14px; bottom: 12px; font-family: var(--font-ui); font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: #0A0A0A; background: #F7F0E8; padding: 4px 9px; border-radius: 100px; }
+@keyframes pvDrift { 0%,100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
+@media (hover: none) { #preview { display: none; } }
+
+@media (max-width: 760px) {
+  .cases-viewport { overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+  .cases-viewport::-webkit-scrollbar { display: none; }
+  .case-card { scroll-snap-align: start; width: 78vw; }
+  .cases-progress { display: none; }
+}
+
+/* ============================================================
+   13. CÓMO TRABAJO + FORMULARIO
+   Reemplaza a la tabla de precios: no hay planes, hay proceso.
+   ============================================================ */
+.steps { list-style: none; counter-reset: none; display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--sp-16); }
+.step { border-top: 1px solid var(--ink-25); padding-top: var(--sp-20); display: flex; flex-direction: column; gap: 10px; }
+.st-n { font-family: var(--font-ui); font-size: 11px; letter-spacing: 0.14em; color: #511BDB; }
+.step h3 { font-size: 19px; line-height: 1.2; letter-spacing: -0.01em; }
+.step p { font-size: 15px; line-height: 1.5; color: var(--ink-50); }
+.model { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--sp-16); margin-top: var(--sp-48); }
+.model-col { border: 1px solid var(--ink-25); border-radius: var(--r-lg); padding: var(--sp-24); }
+.model-col h4 { font-size: 17px; margin-bottom: 8px; letter-spacing: -0.01em; }
+.model-col p { font-size: 15px; line-height: 1.5; color: var(--ink-50); }
+
+.cform { max-width: 620px; margin: var(--sp-32) auto 0; text-align: left; display: flex; flex-direction: column; gap: var(--sp-16); }
+.cf-row { display: grid; grid-template-columns: 1fr 1fr; gap: var(--sp-16); }
+.cf-field { display: flex; flex-direction: column; gap: 7px; }
+.cf-field > span { font-family: var(--font-ui); font-size: 10.5px; letter-spacing: 0.13em; text-transform: uppercase; color: var(--ink-50); }
+.cf-field input, .cf-field textarea {
+  font-family: var(--font); font-size: 16px; color: var(--ink);
+  background: transparent; border: none; border-bottom: 1px solid var(--ink-25);
+  padding: 9px 2px; border-radius: 0; resize: vertical;
+  transition: border-color 0.35s var(--ease-out);
+}
+.cf-field input::placeholder, .cf-field textarea::placeholder { color: var(--ink-25); }
+.cf-field input:focus, .cf-field textarea:focus { outline: none; border-bottom-color: var(--green); }
+.cf-field.bad input, .cf-field.bad textarea { border-bottom-color: #FF6B4A; }
+.cf-consent { display: flex; align-items: flex-start; gap: 10px; font-size: 13.5px; line-height: 1.45; color: var(--ink-50); }
+.cf-consent input { margin-top: 3px; accent-color: var(--green); width: 15px; height: 15px; flex-shrink: 0; }
+.cf-consent a { text-decoration: underline; text-underline-offset: 3px; }
+.cf-send { align-self: flex-start; }
+.cf-msg { font-size: 14.5px; line-height: 1.5; min-height: 1.2em; color: var(--green); }
+.cf-msg.bad { color: #FF6B4A; }
+.closing .cf-field input::placeholder, .closing .cf-field textarea::placeholder { color: #BDA8F1; }
+.closing .cf-field > span { color: #BDA8F1; }
+.closing .cf-consent { color: #BDA8F1; }
+.closing .muted { color: #D3C8F6; }
+.closing .cf-msg { color: #BDA8F1; }
+.closing .cf-msg.bad { color: #FF6B4A; }
+@media (max-width: 900px) { .steps, .model, .cf-row { grid-template-columns: 1fr; } }
+
+/* Remate animado al cierre de cada lista de producto */
+.punch {
+  font-size: clamp(19px, 2.1vw, 25px); font-weight: 600; letter-spacing: -0.02em;
+  line-height: 1.2; margin: calc(var(--sp-16) * -1) 0 var(--sp-32);
+}
+.punch .char { background-image: linear-gradient(100deg, var(--pc) 20%, var(--ink) 50%, var(--pc) 80%); background-size: 260% 100%; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; animation: punchSheen 4.5s linear infinite; }
+@keyframes punchSheen { from { background-position: 260% 0; } to { background-position: -260% 0; } }
+
+/* ============================================================
+   14. CIERRE Y FOOTER
+   ============================================================ */
+.closing {
+  text-align: center; position: relative; overflow: hidden;
+  /* El tinte del cierre no pasa por el motor de tema: se resuelve
+     con un degradado que nace del fondo actual. Un sistema menos
+     escribiendo sobre body es una carrera menos. */
+  background: linear-gradient(to bottom, var(--bg) 0%, #2E0B8A 24%, #2E0B8A 100%);
+}
+.closing-cta { display: flex; gap: var(--sp-12); justify-content: center; flex-wrap: wrap; margin-top: var(--sp-32); }
+.cb1 { width: clamp(84px,12vw,180px); aspect-ratio: 1; top: 8%; left: 5%; }
+.cb2 { width: clamp(66px,9.5vw,142px); aspect-ratio: 1; bottom: 9%; right: 7%; }
+footer { background: var(--panel); border-top: 1px solid var(--line); padding: var(--sp-76) 0 0; overflow: hidden; }
+.footer-grid { display: flex; justify-content: space-between; flex-wrap: wrap; gap: var(--sp-32); margin-bottom: var(--sp-76); }
+.footer-cols { display: flex; gap: clamp(32px,6vw,76px); flex-wrap: wrap; }
+.footer-col h4 { font-family: var(--font-ui); font-size: 11px; font-weight: 400; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-50); margin-bottom: var(--sp-16); }
+.footer-col a { display: block; font-size: 16px; margin-bottom: var(--sp-12); width: fit-content; }
+.footer-bottom { display: flex; justify-content: space-between; flex-wrap: wrap; gap: var(--sp-16); padding: var(--sp-24) 0; border-top: 1px solid var(--line); font-family: var(--font-ui); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-50); }
+/* P7 — wordmark gigante recortado por el borde inferior */
+.footer-giant { overflow: hidden; line-height: 0.78; }
+.footer-giant span { display: block; opacity: 0.08; white-space: nowrap; text-align: center; }
+.footer-giant .wm-svg { width: 92%; max-width: 1360px; height: auto; display: inline-block; vertical-align: bottom; }
+
+/* ============================================================
+   15. CURSOR, PROGRESO, ÍNDICE
+   ============================================================ */
+.cursor-dot, .cursor-ring { display: none; }
+body.has-cursor { cursor: none; }
+body.has-cursor a, body.has-cursor button, body.has-cursor input, body.has-cursor textarea { cursor: none; }
+body.has-cursor .cursor-dot, body.has-cursor .cursor-ring { display: flex; position: fixed; top: 0; left: 0; border-radius: 50%; pointer-events: none; z-index: 9999; align-items: center; justify-content: center; }
+/* difference invierte solo cuando el fondo se vuelve crema — sin JS */
+body.has-cursor .cursor-dot { width: 7px; height: 7px; background: #EDEAF3; mix-blend-mode: difference; }
+body.has-cursor .cursor-ring { width: 36px; height: 36px; border: 1px solid #EDEAF3; mix-blend-mode: difference; }
+.cursor-ring .cur-label { font-family: var(--font-ui); font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: #EDEAF3; opacity: 0; white-space: nowrap; }
+.progress { position: fixed; top: 0; left: 0; height: 2px; width: 100%; background: var(--grad-green); z-index: 10000; transform: scaleX(0); transform-origin: left; }
+
+/* P4 — índice de sección fijo */
+.sec-index { position: fixed; left: 18px; top: 50%; transform: translateY(-50%); z-index: 150; display: none; flex-direction: column; gap: 14px; pointer-events: none; }
+@media (min-width: 1180px) { .sec-index { display: flex; } }
+.sec-index i { display: flex; align-items: center; gap: 9px; font-family: var(--font-ui); font-size: 10px; letter-spacing: 0.12em; font-style: normal; color: var(--ink-25); transition: color 0.4s ease; }
+.sec-index i b { display: block; width: 14px; height: 1px; background: currentColor; transform: scaleX(0.5); transform-origin: left; transition: transform 0.5s var(--ease-out); }
+.sec-index i.on { color: var(--ink); }
+.sec-index i.on b { transform: scaleX(2.4); }
+
+html.js .js-fade { opacity: 0; }
+html.js .js-mask .split-line { overflow: hidden; }
+
+
+/* ============================================================
+   17. LISTÓN DE SCROLL — la firma del sitio
+   Un listón de luz con física de resorte corre por la orilla
+   derecha: su cabeza marca tu posición en la página y su cola
+   ondula y late con la velocidad del scroll. Sustituye a la
+   línea de voz en SVG. El módulo WebGL va al final del body.
+   ============================================================ */
+.scroll-ribbon { position: fixed; top: 0; right: 0; width: 150px; height: 100vh; z-index: 120; pointer-events: none; }
+.scroll-ribbon canvas { width: 100%; height: 100%; display: block; }
+.has-vline { position: relative; }
+@media (max-width: 1180px) { .scroll-ribbon { display: none; } }
+
+/* Mini-onda de cada producto: su "huella de voz", en su color */
+.mini-line { width: 220px; height: 44px; overflow: visible; margin-bottom: var(--sp-12); }
+.mini-line path {
+  fill: none; stroke: var(--dot, var(--green)); stroke-width: 2;
+  stroke-linecap: round; vector-effect: non-scaling-stroke; opacity: 0.9;
+}
+
+/* % del manifiesto, ahora pegado a la línea */
+
+
+/* ============================================================
+   18. DEMO DE LLAMADA — Sofía contestando, simulada y dicha
+   Sin JS o con movimiento reducido, el HTML ya trae la llamada
+   terminada (transcripción completa + cita creada): el motor
+   solo la rebobina y la actúa.
+   ============================================================ */
+.call-card {
+  width: 330px; background: rgba(17,16,20,0.92);
+  border: 1px solid var(--ink-25); border-radius: 14px;
+  padding: var(--sp-16); backdrop-filter: blur(8px);
+  display: flex; flex-direction: column; gap: var(--sp-12);
+}
+.hero-inner > .call-card { position: absolute; top: 24%; right: 0; z-index: 4; }
+.cc-top { display: flex; align-items: center; gap: 10px; }
+.cc-ava { position: relative; width: 34px; height: 34px; border-radius: 50%; background: var(--grad-green); flex-shrink: 0; display: grid; place-items: center; font-weight: 600; font-size: 14px; color: #FFFFFF; }
+.cc-ava::after { content: ""; position: absolute; inset: -3px; border-radius: 50%; border: 1px solid var(--green); opacity: 0; }
+.call-card.ringing .cc-ava::after { animation: ringOut 1.6s var(--ease-out) infinite; opacity: 1; }
+.cc-who { min-width: 0; }
+.cc-name { font-size: 15px; font-weight: 600; line-height: 1.2; color: #EDEAF3; }
+.cc-status { font-family: var(--font-ui); font-size: 10.5px; letter-spacing: 0.08em; color: var(--ink-50); }
+.cc-timer { margin-left: auto; font-family: var(--font-ui); font-size: 11px; color: var(--green); font-variant-numeric: tabular-nums; }
+.cc-wave { display: flex; align-items: center; gap: 3px; height: 26px; }
+.cc-wave span { flex: 1; height: 100%; background: var(--green); border-radius: 2px; transform: scaleY(0.14); transform-origin: center; opacity: 0.9; }
+.cc-lines { display: flex; flex-direction: column; gap: 8px; max-height: 148px; overflow: hidden; }
+.cl { font-size: 13.5px; line-height: 1.4; padding: 7px 11px; border-radius: 10px; max-width: 92%; }
+.cl.me { align-self: flex-end; background: #17151C; color: #EDEAF3; border-bottom-right-radius: 3px; }
+.cl.ai { align-self: flex-start; background: #2E0B8A; color: #EDEAF3; border-bottom-left-radius: 3px; }
+.cc-chip { display: inline-flex; align-items: center; gap: 7px; align-self: flex-start; font-family: var(--font-ui); font-size: 10.5px; letter-spacing: 0.06em; color: var(--green); border: 1px solid rgba(139,109,232,0.4); background: rgba(10,10,10,0.5); border-radius: 100px; padding: 5px 11px; }
+.cc-replay { display: none; align-self: center; background: none; border: none; cursor: pointer; font-family: var(--font-ui); font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-50); padding: 4px; }
+.cc-replay:hover { color: #EDEAF3; }
+.cc-sim { position: absolute; top: -9px; right: 14px; font-family: var(--font-ui); font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-50); background: var(--bg); padding: 1px 7px; border: 1px solid var(--ink-25); border-radius: 100px; }
+.call-card { position: relative; }
+@media (max-width: 900px) {
+  .hero-inner > .call-card { position: relative; top: auto; right: auto; width: 100%; max-width: 420px; margin-top: var(--sp-32); }
+}
+
+/* Wordmark con distorsión líquida al hover (solo mientras dura) */
+.liquid-on { filter: url(#liquid); }
+
+
+/* ============================================================
+   19. LA DIFERENCIA, EN DATOS
+   Gráficas como instrumento: retícula fina, línea manual gris
+   punteada, línea de Sofía verde con glow. Todo en variables
+   semánticas para que sobreviva a la inversión a crema.
+   ============================================================ */
+.chart-card {
+  border: 1px solid var(--ink-25); border-radius: var(--r-lg);
+  padding: var(--sp-32); margin-bottom: var(--sp-24);
+  background:
+    linear-gradient(var(--line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 40px 40px;
+  background-position: center;
+}
+.chart-head { display: flex; align-items: baseline; justify-content: space-between; gap: var(--sp-16); flex-wrap: wrap; margin-bottom: var(--sp-24); }
+.chart-legend { display: flex; gap: var(--sp-16); }
+.lg { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-ui); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-50); }
+.lg::before { content: ""; width: 22px; height: 2px; border-radius: 2px; }
+.lg-man::before { background: var(--ink-50); }
+.lg-sof::before { background: var(--grad-green); }
+#chartA { width: 100%; height: auto; overflow: visible; }
+.cA-night { fill: currentColor; color: var(--ink); opacity: 0.045; }
+.cA-grid { stroke: var(--line); stroke-width: 1; }
+.cA-ax, .cA-tag { font-family: var(--font-ui); font-size: 11px; fill: var(--ink-50); letter-spacing: 0.06em; }
+.cA-manual { fill: none; stroke: var(--ink-50); stroke-width: 2; stroke-dasharray: 6 7; stroke-linecap: round; }
+.cA-sofia { fill: none; stroke: url(#gLineH); stroke-width: 2.5; stroke-linecap: round; }
+.cA-glow { stroke-width: 8; opacity: 0.16; }
+.cA-area { fill: #8B6DE8; opacity: 0.07; }
+.cA-dot { fill: var(--green); }
+.cA-lead { stroke: var(--ink-25); stroke-width: 1; }
+.cA-tag { fill: var(--ink); }
+.line-pulse { fill: none; stroke: #EDE7FB; stroke-width: 3; stroke-linecap: round; vector-effect: non-scaling-stroke; opacity: 0; pointer-events: none; }
+.chart-foot { font-family: var(--font-ui); font-size: 11px; letter-spacing: 0.04em; color: var(--ink-50); margin-top: var(--sp-16); line-height: 1.5; }
+
+.data-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--sp-16); }
+.data-card { border: 1px solid var(--ink-25); border-radius: var(--r-lg); padding: var(--sp-24); display: flex; flex-direction: column; gap: var(--sp-16); }
+.dc-label { font-family: var(--font-ui); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-50); }
+.dc-bar { display: grid; grid-template-columns: 58px 1fr 64px; align-items: center; gap: 10px; }
+.dc-name { font-family: var(--font-ui); font-size: 11px; color: var(--ink-50); }
+.bar { display: block; height: 10px; border-radius: 6px; background: var(--line); overflow: hidden; }
+.bar-fill { display: block; height: 100%; border-radius: 6px; transform: scaleX(0); transform-origin: left; }
+.bf-man { background: var(--ink-50); }
+.bf-sof {
+  background: linear-gradient(90deg, #8B6DE8, #D3C8F6, #8B6DE8);
+  background-size: 220% 100%;
+  animation: sheen 3.2s linear infinite;
+}
+@keyframes sheen { from { background-position: 0% 0; } to { background-position: -220% 0; } }
+.dc-val { font-variant-numeric: tabular-nums; font-weight: 600; font-size: 17px; text-align: right; }
+.dc-big { font-size: clamp(30px, 3.2vw, 42px); font-weight: 600; letter-spacing: -0.03em; line-height: 1; display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+.dc-big small { font-size: 0.5em; }
+.dc-old { color: var(--ink-50); text-decoration-color: #FF6B4A; text-decoration-thickness: 3px; }
+.dc-arrow { color: var(--ink-50); font-size: 0.6em; }
+.dc-new { background: linear-gradient(114.41deg, #8B6DE8 15%, #D3C8F6 85%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+.dc-sub { font-size: 15px; line-height: 1.5; color: var(--ink-50); }
+.data-src { margin-top: var(--sp-16); }
+
+.flow-head { margin-top: var(--sp-76); }
+.flow { position: relative; display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--sp-16); padding-top: var(--sp-24); }
+.flow-line { position: absolute; top: 0; left: 0; width: 100%; height: 40px; overflow: visible; }
+.flow-line path { fill: none; stroke: url(#gLineH); stroke-width: 2; stroke-linecap: round; vector-effect: non-scaling-stroke; opacity: 0.6; }
+.flow-step { border: 1px solid var(--ink-25); border-radius: var(--r-lg); padding: var(--sp-20); display: flex; flex-direction: column; gap: 8px; margin-top: var(--sp-24); }
+.fs-time { font-family: var(--font-ui); font-size: 11px; letter-spacing: 0.1em; color: var(--green); }
+.flow-step h4 { font-size: 17.5px; letter-spacing: -0.01em; line-height: 1.2; }
+.flow-step p { font-size: 14.5px; line-height: 1.5; color: var(--ink-50); }
+@media (max-width: 900px) {
+  .data-grid, .flow { grid-template-columns: 1fr; }
+  .flow-line { display: none; }
+  .chart-card { padding: var(--sp-20); background-size: 28px 28px; }
+}
+
+/* ============================================================
+   16. MOVIMIENTO REDUCIDO — apaga todo, deja el sitio legible
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  .grain, .scroll-cue .rail::after, .eq i, .bf-sof, .grad-shine .char, #preview .pv-art { animation: none !important; }
+  .eq i { transform: scaleY(0.4); }
+  .line-pulse { display: none; }
+  html.js .js-fade { opacity: 1 !important; }
+  #loader { display: none !important; }
+  .manifesto-pin, .stack-item { position: static !important; height: auto !important; min-height: 0 !important; }
+  .stack-slot { height: auto !important; }
+  .manifesto-text .word { color: var(--ink) !important; }
+  .mf-orb, .mf-dial, .mf-waves { display: none !important; }
+  .mf-shine .word { animation: none !important; -webkit-text-fill-color: var(--green) !important; }
+  .call-card .cc-wave span { transform: scaleY(0.4); }
+  .bar-fill { transform: scaleX(1) !important; }
+  .punch .char { animation: none !important; -webkit-text-fill-color: var(--pc) !important; }
+  * { transition-duration: 0.01ms !important; }
+}
+
+/* ── Onda de CTA (círculo coral transitorio) ── */
+#waveFx { position: fixed; inset: 0; z-index: 9995; background: #FF6B4A; pointer-events: none; display: none; will-change: clip-path; }
+
+/* ── Gradiente granulado por producto (WebGL); el tinte sólido queda debajo como plan B ── */
+.grainient { position: absolute; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; }
+.grainient canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.grainient::before { content: ""; position: absolute; inset: 0; background: rgba(10,10,10,0.18); }
+.grainient::after { content: ""; position: absolute; inset: 0; }
+.grainient.g-right::after { background: linear-gradient(90deg, rgba(10,10,10,0) 0%, rgba(10,10,10,0.5) 42%, rgba(10,10,10,0.88) 100%); }
+.grainient.g-left::after { background: linear-gradient(270deg, rgba(10,10,10,0) 0%, rgba(10,10,10,0.5) 42%, rgba(10,10,10,0.88) 100%); }
+.stack-item > .wrap { position: relative; z-index: 1; }
+
+/* ── Hero: sin aura ni halo, fondo parejo; el titular carga todo el color ── */
+.hero-aurora, .hero::before { display: none !important; }
+.hero-title { position: relative; isolation: isolate; }
+/* El lienzo va DEBAJO y el titular completo encima con darken: el fondo del titular
+   (#0A0A0A) es más oscuro que el nácar y lo tapa; las letras, más claras, lo dejan pasar.
+   Mezclar el h1 entero —y no el lienzo— evita que las capas compuestas que SplitText
+   crea por letra se queden fuera del backdrop y el titular salga negro. */
+.hero-irid { position: absolute; inset: 2px; z-index: 0; overflow: hidden; pointer-events: none; }
+.hero-irid canvas { width: 100%; height: 100%; display: block; }
+/* padding + margen negativo: la caja de fondo crece hasta cubrir el lienzo sin mover el layout */
+#heroDisplay { position: relative; z-index: 1; padding: 30px 12px; margin: -30px -12px; background: #000; mix-blend-mode: darken; }
+/* ══ Acordeón de productos (AccordionGallery de React Bits, porteado) ══════════
+   Seis paneles en fila; el que está activo crece al 52% y despliega su detalle.
+   En vez de fotografía (el kit no tiene banco propio) cada panel lleva su propio
+   gradiente granulado, que ya existía como fondo de sección.
+   Truco de rendimiento: el gradiente y el cuerpo de texto tienen ANCHO FIJO y el
+   panel los recorta. Así nada se re-maqueta ni se redimensiona en cada hover. */
+.ag-wrap { position: relative; }
+.ag-row {
+  --ag-gap: 10px; --ag-radius: 18px; --ag-media-size: 700px; --ag-body-w: 560px;
+  display: flex; flex-direction: row; gap: var(--ag-gap);
+  width: 100%; height: clamp(520px, 62vh, 600px);
+  perspective: 1600px; perspective-origin: 50% 50%;
+}
+.ag-panel {
+  --ag-dim: 0.5;
+  position: relative; flex: 1 1 0; min-width: 0; overflow: hidden;
+  border-radius: var(--ag-radius); cursor: pointer; display: block;
+  text-decoration: none; outline: none; background: var(--ag-tint, #0A0A0A);
+  transform-style: preserve-3d; transform-origin: center center;
+  will-change: flex-grow, transform; -webkit-tap-highlight-color: transparent;
+}
+.ag-panel:focus-visible { box-shadow: 0 0 0 3px var(--lila); }
+.ag-frame { position: absolute; inset: 0; overflow: hidden; border-radius: inherit; }
+/* el lienzo: ancho fijo, centrado, recortado por el panel */
+.ag-media { position: absolute; top: 50%; left: 50%; width: var(--ag-media-size); height: 100%; will-change: transform; }
+.ag-media canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.ag-media::after {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(10,10,10,0.10) 0%, rgba(10,10,10,0.52) 62%, rgba(10,10,10,0.86) 100%);
+}
+/* la atenuación del panel cerrado: su color se conserva, solo pierde luz */
+.ag-dim { position: absolute; inset: 0; background: #0A0A0A; opacity: var(--ag-dim); pointer-events: none; }
+
+/* nombre vertical del panel cerrado */
+.ag-spine {
+  position: absolute; left: 0; right: 0; bottom: 26px; z-index: 2; pointer-events: none;
+  display: flex; justify-content: center;
+}
+.ag-spine span {
+  writing-mode: vertical-rl; transform: rotate(180deg);
+  font-family: var(--font-ui); font-size: 11.5px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--ag-accent); white-space: nowrap;
+}
+
+/* cuerpo del panel abierto: ancho fijo para que jamás se re-maquete */
+.ag-body {
+  position: absolute; left: 0; top: 0; bottom: 0; z-index: 2;
+  width: var(--ag-body-w); max-width: none;
+  padding: clamp(26px, 3vw, 44px); box-sizing: border-box;
+  display: flex; flex-direction: column; justify-content: center;
+  opacity: 0; pointer-events: none;
+}
+.ag-panel--active .ag-body { pointer-events: auto; }
+.ag-body .tool-content { max-width: none; }
+
+@media (max-width: 900px) {
+  /* en móvil no hay acordeón: lista de tarjetas con su contenido a la vista */
+  .ag-row { display: block; height: auto; perspective: none; }
+  .ag-panel { width: 100%; margin-bottom: var(--ag-gap); transform: none !important; min-height: 0; }
+  .ag-media { width: 100% !important; transform: translate(-50%, -50%) !important; }
+  .ag-dim { opacity: 0.28 !important; }
+  .ag-spine { display: none; }
+  .ag-body { position: relative; width: 100% !important; opacity: 1 !important; pointer-events: auto; transform: none !important; }
+}
+
+/* el gradiente por producto, ya dentro del panel: sin los velos laterales de sección */
+.ag-media .grainient { position: absolute; inset: 0; }
+.ag-media .grainient::before, .ag-media .grainient::after { content: none; }
+
+/* Respaldo sin JavaScript: la página ya marca html.js en el head, así que si el JS
+   no corre el acordeón se degrada a la misma lista vertical que en móvil, con todo
+   el contenido a la vista, en vez de seis tiras de color ilegibles. */
+html:not(.js) .ag-row { display: block; height: auto; perspective: none; }
+html:not(.js) .ag-panel { width: 100%; margin-bottom: var(--ag-gap); transform: none; }
+html:not(.js) .ag-media { width: 100%; transform: translate(-50%, -50%); }
+html:not(.js) .ag-dim { opacity: 0.28; }
+html:not(.js) .ag-spine { display: none; }
+html:not(.js) .ag-body { position: relative; width: 100%; opacity: 1; pointer-events: auto; }
+
+#productos { padding: clamp(84px, 12vh, 150px) 0; }
+.ag-kicker { margin-bottom: var(--sp-24); }
+
+/* ── Seda del hero: telón WebGL a todo el hero, detrás de las letras ──
+   #hero aísla su apilado para que el z:-1 de la seda no caiga detrás del
+   fondo del body y para que el lighten del titular no salga del hero (la
+   zona crema del motor de tema jamás lo alcanza). El titular en lighten:
+   su caja negra desaparece en la seda; las letras del nácar (piso 0.40
+   por canal) siempre superan el tope de la seda (0.369 por canal). */
+#hero { isolation: isolate; }
+.hero-silk { position: absolute; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; }
+.hero-silk canvas { width: 100%; height: 100%; display: block; }
+.hero-title { mix-blend-mode: lighten; }
