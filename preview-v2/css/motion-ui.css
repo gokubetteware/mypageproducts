@@ -95,7 +95,6 @@
    punto y sin mezcla. El puntero NATIVO queda visible en todo, salvo sobre
    .case-card y [data-cursor="drag"], donde el anillo con etiqueta lo sustituye.
    ui.js solo agrega .has-cursor con puntero fino, pantalla ancha y movimiento. */
-.cursor-dot, body.has-cursor .cursor-dot { display: none !important; }
 body.has-cursor { cursor: auto; }
 body.has-cursor a, body.has-cursor button, body.has-cursor .pill, body.has-cursor summary,
 body.has-cursor [role="button"], body.has-cursor input[type="checkbox"], body.has-cursor label { cursor: pointer; }
@@ -146,14 +145,8 @@ body.has-cursor .cursor-ring.is-down { scale: .9; }
 }
 #preview:not(.is-on) .pv-art { animation-play-state: paused; }
 
-/* Elevación por hover (--m-lift): con `translate`, aparte del transform que use quien las anima */
-.case-card {
-  transition: background-color var(--m-dur-base, 180ms) var(--m-ease-state, ease),
-              translate var(--m-dur-base, 180ms) var(--m-ease, cubic-bezier(.2, .7, .2, 1));
-}
-@media (hover: hover) and (pointer: fine) {
-  .case-card:hover { translate: 0 var(--m-lift, -6px); }
-}
+/* La elevación de las tarjetas (activa y hover, --m-lift) es de motion-sections.css: un solo dueño, la propiedad `translate`.
+   Antes estaba declarada aquí y allá; si una usara `transform` se sumarían (−12 px). No agregar `transform` a .case-card. */
 
 
 /* ── 6. MENÚ MÓVIL ───────────────────────────────────────────────────────────
@@ -261,17 +254,15 @@ html.ui-menu-open { overflow: hidden; scrollbar-gutter: stable; }       /* sin L
   transition: transform var(--m-dur-enter, 280ms) var(--m-ease, cubic-bezier(.2, .7, .2, 1));
 }
 .cf-field:focus-within::after { transform: scaleX(1); transform-origin: left; }
-.cf-field.bad::after { background: var(--m-err, #FF6B4A); }
+.cf-field.bad::after { background: var(--m-err); }
 
 /* Foco: sin recuadro con el mouse (la línea basta); anillo doble solo al navegar con teclado (html.ui-kbd, ui.js) */
 .cf-field input:focus, .cf-field textarea:focus { outline: 2px solid transparent; outline-offset: 2px; }
 html.ui-kbd .cf-field input:focus-visible, html.ui-kbd .cf-field textarea:focus-visible { box-shadow: var(--m-focus); }
 
 /* Error de campo: color, línea, mensaje EN LÍNEA bajo el campo y una sola oscilación de ±4 px */
-.cf-field.bad > span, .cf-consent.bad { color: var(--m-err, #FF6B4A); }
-.cf-field.bad input, .cf-field.bad textarea { border-bottom-color: var(--m-err, #FF6B4A); }
-.cf-err { color: var(--m-err, #FF6B4A); }
-.closing .cf-err { color: var(--m-err, #FF6B4A); }
+.cf-field.bad > span, .cf-consent.bad { color: var(--m-err); }
+.cf-field.bad input, .cf-field.bad textarea { border-bottom-color: var(--m-err); }
 .cf-err:not(:empty) { animation: ui-err-in var(--m-dur-enter, 280ms) var(--m-ease, cubic-bezier(.2, .7, .2, 1)) both; }
 @keyframes ui-err-in { from { opacity: 0; transform: translateY(var(--m-dist-1, 12px)); } to { opacity: 1; transform: none; } }
 .nudge { animation: ui-nudge var(--m-dur-base, 180ms) var(--m-ease-state, ease) 1; }
@@ -298,8 +289,8 @@ html.ui-kbd .cf-field input:focus-visible, html.ui-kbd .cf-field textarea:focus-
 .cf-consent input:checked + span::before { background: #BDA8F1; border-color: #BDA8F1; }
 .cf-consent input:checked + span::after { clip-path: inset(0); }
 .cf-consent input:focus-visible { box-shadow: var(--m-focus); }
-.cf-consent.bad { outline: 1px solid var(--m-err, #FF6B4A); outline-offset: 6px; border-radius: 6px; }
-.cf-consent.bad > span::before { border-color: var(--m-err, #FF6B4A); }
+.cf-consent.bad { outline: 1px solid var(--m-err); outline-offset: 6px; border-radius: 6px; }
+.cf-consent.bad > span::before { border-color: var(--m-err); }
 
 /* Mensaje general (#cfMsg): «Enviando…», éxito con palomita dibujada, error de red */
 .cf-msg { display: flex; align-items: center; gap: 10px; }
@@ -319,9 +310,8 @@ html.ui-kbd .cf-field input:focus-visible, html.ui-kbd .cf-field textarea:focus-
 
 
 /* ── 8. LOGOS: sin distorsión líquida al pasar el cursor ─────────────────────
-   Deformar el logo contradice el manual (DS §5). El disparo vive en sections.js (G-23);
-   aquí se anula su efecto. El wordmark gigante del pie conserva su única pasada. */
-.wordmark.liquid-on, .wordmark.liquid-on .logo-svg { filter: none; }
+   Deformar el logo contradice el manual (DS §5). sections.js ya no tiene el manejador de hover (se retiró en la integración,
+   informe 07): el único .liquid-on que queda es el de #footGiant (no es un .wordmark), una sola pasada. Nada que anular. */
 
 
 /* ── 9. OBJETIVOS TÁCTILES (≥44×44) ──────────────────────────────────────── */
@@ -333,6 +323,12 @@ html.ui-kbd .cf-field input:focus-visible, html.ui-kbd .cf-field textarea:focus-
   .cf-consent > span { display: block; }
   .cf-consent input { top: 50%; margin-top: -22px; }
   .cf-consent > span::before, .cf-consent > span::after { top: 50%; margin-top: -12px; }
+
+  /* Pie: enlaces de 18 px (y «Aviso de privacidad» de 13) pasan a 44 px de alto. Solo bajo 901 px o con puntero táctil:
+     en escritorio con mouse el pie mide EXACTAMENTE lo mismo que el original (659.3 px en 1440×900). El margen de 12 px
+     que separaba los enlaces pasa a ser parte de su área táctil. */
+  .footer-col a { padding-block: 13px; margin-bottom: 0; min-width: 44px; }               /* «Voz» y «Web» miden 28 y 35 px de ancho: el área llega a 44 sin mover el texto */
+  .footer-bottom a { display: inline-flex; align-items: center; min-height: 44px; margin-block: -15px; }
 }
 
 
@@ -359,7 +355,6 @@ html.ui-kbd .cf-field input:focus-visible, html.ui-kbd .cf-field textarea:focus-
 
   /* Cursor y vista previa: no existen */
   body.has-cursor .cursor-ring, #preview { display: none; }
-  .case-card:hover { translate: none; }
 
   /* Menú: el panel entra con fundido, sin deslizamiento; los ítems aparecen juntos */
   .nav-overlay {

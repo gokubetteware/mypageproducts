@@ -1161,9 +1161,9 @@ function grainStill(host, cfg) {
   if (agRow && 'MutationObserver' in window) {
     new MutationObserver(() => {
       if (agSeen) return;
-      const p = agRow.querySelector('.ag-panel[aria-current="true"], .ag-panel[aria-expanded="true"], .ag-panel--active');
+      const p = agRow.querySelector('.ag-panel[aria-current="true"], .ag-panel--active');
       if (p) setActive(p.getAttribute('data-p'));
-    }).observe(agRow, { subtree: true, attributes: true, attributeFilter: ['aria-current', 'aria-expanded', 'class'] });
+    }).observe(agRow, { subtree: true, attributes: true, attributeFilter: ['aria-current', 'class'] });
   }
 
   /* Visibilidad: contexto a 600 px; en vista apilada, el ranking por fracción visible */

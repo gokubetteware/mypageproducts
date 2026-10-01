@@ -13,8 +13,9 @@
      · El atenuado (.ag-dim), la etiqueta vertical y la cascada del contenido son
        CSS puro (css/motion-accordion.css): GSAP solo mueve flex-grow, rotateY y
        el parallax del medio.
-     · Estado accesible: aria-current + aria-expanded + inert en el cuerpo de los
-       cerrados (Shift+Tab ya no aterriza en enlaces invisibles).
+     · Estado accesible: aria-current (el panel abierto) + inert en el cuerpo de los
+       cerrados (Shift+Tab ya no aterriza en enlaces invisibles). SIN aria-expanded: los
+       paneles son role="listitem" y ARIA 1.2 no admite ese atributo en ese rol (ver CONTRATO §3.1).
      · Altura de la fila = lo que pida el contenido más alto (el CTA no se recorta
        en 1366×768, 1280×720 ni iPad horizontal).
      · Huella de voz: se dibuja cada vez que abre su panel (solo el activo).
@@ -92,7 +93,6 @@
     var panel = panels[i], cuerpo = cuerpos[i];
     panel.classList.toggle('ag-panel--active', esActivo);
     panel.setAttribute('aria-current', esActivo ? 'true' : 'false');
-    panel.setAttribute('aria-expanded', esActivo ? 'true' : 'false');
     if (cuerpo) {
       if (esActivo) cuerpo.removeAttribute('inert');
       else {
@@ -149,7 +149,6 @@
     panels.forEach(function (panel, i) {
       panel.classList.remove('ag-panel--active');
       panel.removeAttribute('aria-current');
-      panel.setAttribute('aria-expanded', 'true');
       if (cuerpos[i]) cuerpos[i].removeAttribute('inert');
       if (hasGsap) {                                       /* limpia lo que dejó la vista de escritorio (sin tocar --ag-accent / --ag-tint del style) */
         window.gsap.killTweensOf([panel, medios[i], huellas[i]].filter(Boolean));
@@ -388,6 +387,7 @@
   }
 
   /* ── Arranque ─────────────────────────────────────────────────────────────────── */
+  html.classList.remove('m-noag');                          /* si core ya había pasado a lista apilada por esperar de más (plan B), este módulo toma el control */
   root.classList.add('ag-live', 'ag-init');                 /* ag-init: sin transiciones en el primer reparto */
   if (window.ResizeObserver) new ResizeObserver(function () { medir(false); }).observe(root);
   else window.addEventListener('resize', function () { medir(false); });

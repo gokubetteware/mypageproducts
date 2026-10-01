@@ -184,7 +184,8 @@ function travel(y, o) {
   }
   const d = clamp(0.35 + Math.abs(dy) / 3200, M.travel.min, M.travel.max);
   headerApi.hold(ms(d) + 250);                                       /* el header no se esconde durante el viaje */
-  if (lenis) lenis.scrollTo(y, { duration: d, easing: travelEase || undefined, force: true });
+  /* onComplete: la cola de la curva de marca llega después de `d` (más con cuadros lentos); sin esto el header se escondía justo al llegar */
+  if (lenis) lenis.scrollTo(y, { duration: d, easing: travelEase || undefined, force: true, onComplete: () => { headerApi.hold(350); } });
   else window.scrollTo({ top: y, behavior: 'smooth' });
 }
 function focusTarget(el) {
@@ -503,9 +504,8 @@ function initForm() {
    UN solo pointermove (con rAF) para todo. El cursor nativo nunca se oculta salvo
    sobre .case-card y [data-cursor="drag"]; sin punto y sin mix-blend-mode. */
 function initPointer() {
-  const ring = $('cursorRing'), label = $('curLabel'), dot = $('cursorDot'), preview = $('preview');
+  const ring = $('cursorRing'), label = $('curLabel'), preview = $('preview');                  /* sin punto (#cursorDot ya no existe en el marcado): nativo + anillo */
   const pvArt = $('pvArt'), pvLabel = $('pvLabel');
-  if (dot) dot.remove();                                              /* el punto ya no existe: nativo + anillo */
 
   const discs = {};
   if (ring) {

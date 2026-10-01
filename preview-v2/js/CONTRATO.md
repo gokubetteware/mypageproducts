@@ -1,24 +1,30 @@
-# CONTRATO de módulos — preview-v2
+# CONTRATO de módulos — preview-v2 (v2 consolidado en la integración · informe 07)
 
-Fuente de verdad del reparto del JS del preview. El original monolítico es
-`original.html` (copia intacta de `index.html`, 3,641 líneas); **todas las líneas
-de origen de este documento se refieren a él**. Los módulos se generaron cortando
-por rangos de línea (sin re-teclear código) y agregando solo pegamento
-(`import` / `export`, `window.SAPHI`, la guarda `active`). No hay refactor de
-lógica ni renombres.
+Fuente de verdad del reparto del código del preview. **Cada archivo tiene un dueño y un solo sentido de dependencia:** `ui.js` y `sections.js` importan de `core.js`; `core.js` no importa a nadie; `ui.js` y `sections.js` no se importan entre sí; `gl.js` y `accordion.js` no importan nada y hablan con el resto por `window.SAPHI`, por eventos y por atributos del DOM. Eso último es lo que este documento hace explícito (§5).
 
-Regla de oro para no pisarse: **cada archivo tiene un dueño y un solo sentido de
-dependencia**: `ui.js` y `sections.js` importan de `core.js`; `core.js` no importa
-a nadie; `ui.js` y `sections.js` no se importan entre sí; `gl.js` y `accordion.js`
-no importan nada.
+El original monolítico es `original.html` (copia intacta de `index.html`, 3,641 líneas); las **líneas de origen** del apéndice A se refieren a él. Producción (`/index.html`, `ppruts.html`) no se toca.
+
+**Índice**
+
+| § | Qué | 
+|---|---|
+| 0 | Núcleo (`core.js`, `css/motion.css`, `index.html`): reglas comunes, modos, tokens, `ambient`, `arrive`, clases, eventos, marcado, orden de carga y pruebas |
+| 1 | `ui.js` |
+| 2 | `sections.js` |
+| 3 | `accordion.js` |
+| 4 | `gl.js` |
+| 5 | **Dependencias ocultas entre módulos** (clases, eventos, atributos, globales) y la prueba que guarda cada una |
+| 6 | Hojas CSS: dueños, orden y reglas para no pisarse |
+| 7 | Plan B: qué pasa cuando falla cada módulo o cada plugin (medido) |
+| 8 | Decisiones que siguen pendientes de Emmanuel |
+| A | Apéndice: el port original (de dónde viene cada bloque; obsoleto en comportamiento) |
 
 ---
+## 0. Núcleo y reglas comunes (v2)
 
-## 0. v2 · núcleo (VIGENTE: manda sobre §1, §2 y §4 donde se contradigan)
+Lo que sigue lo escribió el dueño de `core.js`, `css/motion.css`, `index.html` y este archivo (ahora consolidado por la integración). Los demás módulos lo leen y solo se salen de él avisándolo en su informe. El apéndice A describe el **port original** (paridad con `original.html`): sirve para saber de dónde viene cada bloque, pero el plan B por `return`, la lista de exports vacíos con `reduce` y el modo de falla de su §4.6 **ya no son así**.
 
-Lo que sigue lo escribió el dueño de `core.js`, `css/motion.css`, `index.html` y este archivo. Los demás módulos lo leen y solo se salen de él avisándolo en su informe. Las secciones 1 a 5 describen el **port original** (paridad con `original.html`); siguen siendo útiles para saber de dónde viene cada bloque, pero el comportamiento de plan B, la lista de exports vacíos con `reduce` y el modo de falla de §4.6 **ya no son así**.
-
-### 0.1 Reglas nuevas para todos
+### 0.1 Reglas para todos
 
 1. **Ya no existe «plan B por `return`».** `core.js` exporta siempre lo mismo, con valores neutros cuando no hay GSAP o hay movimiento reducido. **`ui.js` y `sections.js` NO deben abortar** con `reduce` ni sin GSAP: su parte básica (menú, formulario, anclas, tema, estados) corre siempre; solo el movimiento se condiciona:
 
@@ -38,6 +44,9 @@ Lo que sigue lo escribió el dueño de `core.js`, `css/motion.css`, `index.html`
 4. **Bucles solo por `SAPHI.ambient()`** (GSAP, WAAPI o WebGL) o por `[data-ambient]` (CSS). Nada crea `repeat:-1` ni `requestAnimationFrame` perpetuos por su cuenta.
 5. **Llegadas por `.m-arrive`** (CSS + un IO); ScrollTrigger solo para `scrub` y `pin`.
 6. **Contenido visible por defecto.** Los estados ocultos viven bajo `html.js`; si `core.js` no arranca, el script temprano quita `js` a los 4 s y todo se ve.
+7. **El copy visible no cambia** (ni una palabra) y no se agregan textos visibles; los nombres accesibles nuevos se derivan de textos que ya existían. La suite lo comprueba contra `original.html` (`COPY-*`).
+8. **Cero rebote** (`elastic`, `back`, `bounce`, la curva `gk`) y **cero `mix-blend-mode`** distinto de `normal` en el código nuevo (`T2-*`).
+9. **Un `<script type="module">` por módulo** (0.13): ningún módulo puede suponer que otro llegó, salvo que importe de `core.js`.
 
 ### 0.2 Modos
 
@@ -159,6 +168,10 @@ Condición de marcha: `enabled && visible && !document.hidden && !mode.reduced`.
 | `m-intro` | core | mientras corre el intro (el hero recorta el anillo con `overflow: clip`). Quien dibuja WebGL en el hero puede esperar a que se vaya |
 | `m-hero-in` | core | el titular se libera (antes está en `opacity:0`) |
 | `m-hero-done` | core | el intro terminó o se saltó |
+| `m-noag` | core | `accordion.js` no puso `.ag-live` a los 4.5 s: el acordeón pasa a lista apilada (lo quita `accordion.js` si llega tarde) |
+| `gl-nacre`, `gl-nacre-on` | `gl.js` | titular con el color medio del campo / relleno del DOM transparente porque la capa nacarada pinta las letras (§4.3) |
+| `ui-kbd`, `ui-menu-open` | `ui.js` | modalidad de teclado (anillo doble en campos) / menú abierto (sin scroll de fondo, también sin Lenis) |
+| `body.has-cursor`, `body.is-loading` | `ui.js`, marcado | cursor propio activo (el nativo sigue visible salvo sobre las tarjetas) / carga (ya no bloquea el scroll) |
 | `lenis`, `lenis-smooth`, … | Lenis | igual que antes |
 
 ### 0.9 Eventos
@@ -168,7 +181,7 @@ Condición de marcha: `enabled && visible && !document.hidden && !mode.reduced`.
 | `saphi:section` | core | `{ id }` al cambiar la sección activa |
 | `saphi:intro-done` | core | — al terminar o saltarse el intro; 60 ms después core hace **un** `ScrollTrigger.refresh()` para que lo que cachea geometría en `'refresh'` (peso por letra del titular) la vea con el titular asentado |
 | `saphi:mode` | core | `{ reduced, motion }` cuando cambia la preferencia con la página abierta (core ya destruyó Lenis y saltó el intro; los bucles `ambient()` se pausan solos; volver a movimiento exige recargar) |
-| `ag:active` | **accordion** | core lo **escucha** solo para refrescar `aria-current` del enlace de producto; no lee `detail` (recomendado `{ id, index }`) |
+| `ag:active` | **accordion** (sobre `#agRow`, `bubbles: true`; llega a `document` y a `window`) | `{ index, id, el }`; `index: -1, id: null, el: null` en vista apilada. Lo **escuchan** `core.js` (en `document`: `aria-current` del menú) y `gl.js` (en `window`, captura: qué grainient dibuja). Ver §3.2 |
 
 ### 0.10 Contratos CSS (`css/motion.css` y las cuatro hojas vacías)
 
@@ -176,7 +189,7 @@ Orden de carga en `index.html`: `site.css` → `motion.css` → `motion-ui.css` 
 
 | Contrato | Qué hace |
 |---|---|
-| `--m-*` | tokens (0.4); con `reduce` las distancias valen 0 y las duraciones largas = `--m-dur-base` |
+| `--m-*` | tokens (0.4); con `reduce` las distancias valen 0 y las duraciones largas = `--m-dur-base`. `--m-err` (color de error, D-7: decisión de marca pendiente) es el único color del bloque |
 | `.m-arrive`, `--1`, `--3`, `.m-in`, `--m-i` | 0.6 |
 | `.m-ring` | el anillo de «sonar»: `position:absolute`, `border: 2px var(--m-ring-color, var(--ink))`, `--ring-size` (900 px; 640 en ≤760), `opacity:0; transform:scale(.12)`; **sin `will-change` fijo** (GSAP promueve la capa al animar); `display:none` con `reduce`. Variantes: `.m-ring--mark` (marca de las 23:07, `left:94.25%; top:18.67%` dentro de `#chartPlot`) y `.m-ring--step` (paso del flujo, dentro de cada `.flow-step`, que ya es `position:relative`) |
 | `[data-ambient]` / `.is-live` | las animaciones CSS del nodo, de sus descendientes y de sus pseudoelementos están **pausadas** salvo con `.is-live`; core lo pone cuando el nodo es visible, la pestaña está visible y no hay `reduce` |
@@ -199,29 +212,350 @@ Orden de carga en `index.html`: `site.css` → `motion.css` → `motion-ui.css` 
 | Script temprano | añade `js`; a los 4 s: `if (!html.m-ready) quita js`, y retira el loader si nadie lo hizo |
 | Hojas | las 6 de 0.10 |
 | `#loader` | un `div` sólido vacío, `aria-hidden` (sin `#loPx` ni los 345 `<i>`). `data-done` lo desvanece |
-| Nodos eliminados | `.grain`, `.hero-blobs--back/--front` (vacíos), los 4 filtros `halo*` de `#blobDefs` (nadie los referenciaba). **Se conservan** `.hero-aurora` (display:none) y todo lo que `sections.js` aún toca, hasta que su dueño lo retire |
+| Nodos eliminados | `.grain`, `.hero-blobs--back/--front` (vacíos), los 4 filtros `halo*` de `#blobDefs` (nadie los referenciaba). **Se conservan** `.hero-aurora` (display:none) y todo lo que `sections.js` aún toca, hasta que su dueño lo retire. Integración: también `#cursorDot` |
 | Hero | `<span class="m-ring" id="heroRing" aria-hidden>` dentro de `.hero-inner`; `.hero-sub`, `.hero-cta`, los 4 `.hero-meta > div` y `.scroll-cue` son `.m-arrive.m-arrive--1[data-arrive="manual"]` con `--m-i` 0, 0, 0–3, 4 (ya **no** llevan `js-hero`; `.scroll-cue` lleva `data-ambient`). `#heroDisplay` queda **partido en `.word-mask > .word > .char` desde la evaluación de core** (solo con movimiento) y oculto por CSS hasta `html.m-hero-in`: `ui.js`/`sections.js` pueden buscar `#heroDisplay .char` al evaluarse (el peso por letra funciona), pero su geometría solo es fiable tras `saphi:intro-done` |
 | `data-sec` | `hero`, `.marquee-band` y `#datos` → `top`; `#manifiesto` → `manifiesto`; `#productos` → `voz`; `#casos` → `casos`; `#proceso` → `proceso`; `#contacto` → `contacto` (los ids de `.sec-index i[data-sec]`). El pie no lleva |
-| Acordeón | los hijos de cada `.ag-body .tool-content` **ya no llevan** `js-fade`, `js-mask`, `js-list` ni `js-punch`; cada uno lleva `style="--i:N"` por posición (mini-onda 0, estado 1, categoría 2, título 3, descripción 4, lista 5, remate 6 si existe, enlace 7, o 6 si no hay remate). Los `.tag-status` «En producción» llevan `data-ambient` (las barras `eq` solo corren con el acordeón visible). **Pendiente del dueño del acordeón:** los remates `.punch` ahora son texto plano (no hay `.char` que brillen) en `--ink`; elegir su color en `motion-accordion.css` |
+| Acordeón | los hijos de cada `.ag-body .tool-content` **ya no llevan** `js-fade`, `js-mask`, `js-list` ni `js-punch`; cada uno lleva `style="--i:N"` por posición (mini-onda 0, estado 1, categoría 2, título 3, descripción 4, lista 5, remate 6 si existe, enlace 7, o 6 si no hay remate). Los `.tag-status` «En producción» llevan `data-ambient` (las barras `eq` solo corren con el acordeón visible). **Pendiente del dueño del acordeón:** los remates `.punch` ahora son texto plano (no hay `.char` que brillen) en `--ink`; elegir su color en `motion-accordion.css`. Los paneles son `role="listitem"` **sin** `aria-expanded` (§3.1) |
 | Datos | `.chart-card` envuelve el `svg#chartA` en `<div class="chart-plot" id="chartPlot">` (misma caja) y añade `#markRing` (`.m-ring--mark`); cada `.flow-step` empieza con un `.m-ring--step`; `.bf-sof` lleva `data-ambient` |
 | Casos | `h2#casosTitulo`; `#casesViewport` → `role="region" aria-labelledby="casosTitulo" tabindex="0"` (sections.js: flechas ←/→ y quitar el tab stop si no hay teclado) |
-| Formulario | cada campo obligatorio vive en `<div class="cf-cell">` con su `<p class="cf-err" id="err-nombre|err-whatsapp|err-correo|err-consent" role="alert">` vacío, y el `input` trae `aria-describedby` a ese id. `#cfMsg` (`role="status" aria-live="polite"`) se conserva para «Enviando…», éxito y errores de red. **Falta (ui.js):** poner `aria-invalid` y escribir el texto en `#err-*` |
+| Formulario | `<form id="form" novalidate method="post" action="mailto:sayisless@gmail.com" enctype="text/plain">` (sin JavaScript nunca un GET con los datos en la URL; con JS el `submit` siempre hace `preventDefault()`). Cada campo obligatorio vive en `<div class="cf-cell">` con su `<p class="cf-err" id="err-nombre\|err-whatsapp\|err-correo\|err-consent" role="alert">` vacío y el `input` trae `aria-describedby` a ese id; `ui.js` pone `aria-invalid` y escribe el texto en `#err-*`. `#cfMsg` (`role="status" aria-live="polite"`) queda para «Enviando…», éxito y errores de red |
 | Textos nuevos | ninguno |
 
-### 0.12 Qué le toca a cada dueño (resumen)
+### 0.12 Estado de los avisos entre dueños (cerrados en la integración)
 
-- **`ui.js`**: quitar `if (!active) return;`; menú, formulario y anclas fuera de la guarda (nada de `gsap` en lo básico; con `reduce` se abre con clase y fundido de opacidad); usar `#err-*`; quitar `'gk'` y `'elastic.out'`; anclas con `SAPHI.header.hold(ms)`; el cursor propio se crea solo con `mode.motion`.
-- **`sections.js`**: quitar `if (!active) return;` (envolver solo los bloques con GSAP en `mode.motion`); **borrar los contadores** (los lleva core); `makePulse` ya se gobierna sola (usar `{once:true}` para una pasada); `splitHeading` ya es por línea; quitar `back.out(2)`; los remates ya no se parten; `.js-fade`/`.js-words` se pueden pasar a `.m-arrive` desde JS (`el.classList.add('m-arrive'); SAPHI.arrive(el)`) o pedirle al núcleo que lo haga en el marcado.
-- **`gl.js`**: usar `SAPHI.ambient(host, {start, stop})` en vez de IO propios; no dibujar la iridiscente mientras `html.m-intro`; con `mode.reduced`, un cuadro estático y **cero contextos**.
-- **`accordion.js`**: emitir `ag:active` (en `document`, `detail: { id, index }`); `--i` y `data-ambient` ya están en el marcado; pausar las barras `eq` de los paneles cerrados con CSS.
+Las notas «qué le toca a cada dueño» de la fundación se cumplieron; lo que cruzaba módulos y quedó por resolver se cerró en el informe 07:
 
-### 0.13 Pruebas (en `scratchpad/tools/`)
+| Aviso | Resultado |
+|---|---|
+| `ui.js` sin la guarda `if (!active) return;`, errores en `#err-*`, sin `'gk'` ni `elastic` | hecho (06-ui) |
+| `sections.js` sin guarda, sin contadores, sin `back.out`, `makePulse` con `{once:true}` | hecho (06-secciones) |
+| `gl.js` con `SAPHI.ambient`, cero contextos en reducido, sin esperar al intro | hecho (06-gl) |
+| `accordion.js` emite `ag:active` (ahora en `#agRow` con `bubbles`, `detail: { index, id, el }`) | hecho; ver §3.2 |
+| Elevación de tarjetas de Casos: la misma propiedad (`translate`) declarada en `motion-ui.css` (hover) y en `motion-sections.css` (activa), con dos `transition` distintas; bastaba que alguien usara `transform` en una para que se sumaran (−12 px) | un solo dueño (`motion-sections.css`, solo `translate`, activa y `:hover`); `INT-casos-lift` falla si aparece `transform` o una suma; §5, §6 |
+| Hover líquido del `.wordmark` | el manejador ya no existía en `sections.js` (06-secciones); en la integración se retiró también la regla de `motion-ui.css` que lo anulaba (`.wordmark.liquid-on { filter:none }`, ya sin objeto). `INT-wordmark` falla si un `.wordmark` recibe `liquid-on` |
+| `#cursorDot` ya no hace falta | quitado de `index.html` |
+| Pie bajo 44 px en táctil | CSS táctil en `motion-ui.css` (solo bajo 901 px o puntero táctil: el pie de escritorio mide lo mismo que el original) |
+| `ui.js` leía `var(--m-err, #FF6B4A)` y el token no existía | `--m-err: #FF6B4A` en `motion.css` («D-7: decisión de marca pendiente»); lo usan `motion.css`, `motion-ui.css` y `motion-sections.css` |
+| Sin JavaScript el formulario hacía GET con los datos en la URL | `method="post" enctype="text/plain" action="mailto:…"` (el mismo `FORM_EMAIL`) |
+| `aria-expanded` sobre `role="listitem"` (ARIA 1.2 no lo admite) | retirado; ver §3.1 |
+| `makePulse` dejaba un clon `.line-pulse` por cada vuelta al breakpoint de escritorio | idempotente |
+| `once()` de sections no resolvía lo saltado de golpe | barrido a los 220 ms de quedar quieto el scroll |
+| Un `sections.js` o `ui.js` caído tumbaba también a `core.js` (los tres colgaban de `main.js`) | un `<script type="module">` por módulo; ver 0.13 |
+| `accordion.js` caído dejaba la copia de producto oculta | `html.m-noag` (core, a los 4.5 s) pasa a lista apilada; ver 0.13 |
 
-`found-sync.sh` arma `scratchpad/v2-found/` con los archivos del núcleo y los demás módulos **tal como estaban en el último commit**, para medir sin contaminarse con el trabajo en curso. Luego: `found-load.cjs` (consola, exports, paridad de tokens T-1), `found-hero.cjs` (intro: hitos desde `load`, `html.m-intro` y la navegación; capturas con `--frames`), `found-checks.cjs` (`skip` T-10, `scroll`, `func`, `reduced`, `nogsap`, `mobile`, `nojs`), `found-unit.cjs` (`ambient`, `arrive`, `counters`, `heading`, `failsafe`, `ui-noguard`), `found-fonts.cjs`, `found-layout.cjs` (23 geometrías idénticas al original), `perf.cjs` + `found-perfcmp.py`. Resultados en `reports/06-fundacion.md`.
+### 0.13 Orden de carga y plan B
+
+`index.html` (scripts al final del `<body>`, tras los 9 de `vendor/`):
+
+```html
+<script type="module" src="js/core.js"></script>
+<script type="module" src="js/ui.js"></script>
+<script type="module" src="js/sections.js"></script>
+<script type="module" src="js/gl.js"></script>
+<script type="module" src="js/accordion.js"></script>
+```
+
+* **Un módulo por `<script>` (antes los tres primeros colgaban de `js/main.js`).** Un `import` que falla tumba todo el grafo del script; con `main.js`, que `sections.js` o `ui.js` no bajara también anulaba `core.js` (sin intro, sin tema, sin sección activa) y dejaba el loader tapando 4 s. Ahora cada módulo falla solo. `ui.js` y `sections.js` importan `./core.js` con la **misma URL** que el `<script>` de `core.js`, así que se evalúa una sola vez (prueba `INT-orden-evaluacion` y `INT-orden-descargas`). `js/main.js` se conserva en disco solo porque algunas herramientas lo copian; no se carga.
+* **Orden de ejecución** (módulos diferidos, en orden de documento y antes de `DOMContentLoaded`): `core` (publica `window.SAPHI`, parte el titular, programa el intro) → `ui` → `sections` → `gl` (lee `window.SAPHI` y `window.__saphiLenis`) → `accordion` (despacha el primer `ag:active` cuando `gl.js` ya escucha). Requieren http(s): con `file://` el navegador bloquea los `import`.
+* **Plan B declarativo** (sin que ningún módulo tenga que cooperar): el script temprano quita `html.js` a los 4 s si falta `html.m-ready` (todo visible, loader fuera); `html.js .js-fade:not(.m-arrive)` se muestra a los 4.5 s por una animación de CSS de `motion-sections.css`; `html.m-nogsap` (sin GSAP o sin ScrollTrigger) deja contenido y acordeón en lista; `html.m-noag` (core, a los 4.5 s sin `.ag-live`) hace lo mismo con el acordeón. La matriz medida de qué sigue vivo y qué se ve cuando falla cada módulo o cada plugin está en §7.
+* **Fuentes:** el intro espera a `document.fonts` como máximo hasta 1,200 ms desde el inicio de la navegación; `font-display: swap` se queda (pasar a `optional` es decisión de marca y de autoalojamiento).
+
+### 0.14 Pruebas
+
+`scratchpad/tools/v2-suite.sh` (o `node v2-suite.cjs`) corre contra `preview-v2/` (o `--dir=<otro>`) la suite unificada: tokens T-1/T-2, intro T-10, ScrollTriggers T-9, ambiente T-3, reducido T-4, cursor T-5, formulario T-6, objetivos táctiles T-8, acordeón (`ag-*`), presupuesto de GL, consola y peticiones en escritorio/móvil/reducido/sin GSAP/sin JS, y la integración (módulos bloqueados uno por uno, plugins ausentes, `ag:active`, breakpoints y rotación en vivo, reducido conmutado en vivo, bfcache, hojas de estilo, ARIA, copy). `--quick` omite lo pesado. Salida: tabla PASA/FALLA y `reports/v2-suite-<etiqueta>.{md,json,log}`. `a11y-v2.cjs` es `a11y.cjs` con los falsos negativos de la propia sonda corregidos (cursor sin punto, menú abierto en `rm`, errores en `#err-*`, titular con capa nacarada, gesto de Casos dentro del viewport). Resultados de cada dueño: `reports/06-*.md`; de la integración: `reports/07-integracion.md`.
 
 ---
 
-## 1. Orden de carga (`index.html`)
+## 1. `js/ui.js` — interacción de interfaz (dueño: ui)
+
+**Qué hace.** Roll de texto, menú (burger + overlay), anclas y `#hash`, formulario, onda de CTA, cursor propio, imanes, vista previa de Casos, relleno de botones desde el punto de entrada y modalidad de teclado. Lo visual vive en `css/motion-ui.css`; aquí solo el estado y el foco.
+
+**Dos capas** (regla 0.1): lo **básico corre siempre** (con GSAP, sin GSAP y con «reducir movimiento»): menú, formulario, anclas, `#hash`, foco, roll de texto con puntero fino. El **movimiento** (Lenis en el viaje a un ancla, onda de CTA, cursor, imanes, vista previa) se condiciona a `mode.motion`. Cada bloque va aislado con `safe()`: si uno falla, los demás siguen.
+
+**Importa de `core.js`:** `H, M, mode, lenis` (enlace vivo: `lenis` pasa a `null` si el usuario activa «reducir movimiento»), `safe, headerApi`. No toca secciones.
+
+### 1.1 Bloques
+
+| Bloque | Qué hace | Condición | Salidas visibles para otros |
+|---|---|---|---|
+| `initModality` | marca la modalidad de teclado | siempre | `html.ui-kbd` (Tab o flechas; se quita con `pointerdown`); lo lee `motion-ui.css` para el anillo doble de los campos |
+| `initRoll` | duplica el texto de `[data-roll]` en dos capas de letras `aria-hidden` y deja el texto UNA vez en `.roll-sr` | puntero fino y sin reducido **al cargar** | `.roll`, `.rc`, `.roll-sr` (23 enlaces en escritorio, 0 en táctil) |
+| `initMenu` | overlay de dos capas: foco al primer `.ov-item`, `inert` en `header`, `.banner`, `main`, `footer`, Tab atrapado, Esc, clic en «Cerrar» o en el fondo, foco de vuelta a `#burger` | siempre | `#navOverlay.open`, `#burger.open`, `aria-expanded`, `aria-label` («Abrir menú» ↔ «Cerrar menú»: ambos ya existían), `role="dialog"`, `aria-modal`, `aria-label="menú"` en el overlay (derivado de «Abrir menú»), `aria-controls`, `html.ui-menu-open` (bloquea el scroll también sin Lenis), `--k` en cada `.ov-item` |
+| `initWave` | onda de CTA: círculo que cubre, salto debajo, hueco que descubre. 0.85 s con candado por temporizador | `H.gsap`; solo corre con `mode.motion`, puntero fino y `a.pill-grad` de destino `#…` fuera del menú | nodo `#waveFx` (uno, en `body`), `window.__waveDebug()` |
+| `initAnchors` | un delegado en captura para `a[href^="#"]`: viaje con Lenis (`duración = clamp(0.35 + |Δy|/3200, M.travel.min, M.travel.max)`), salto directo con reducido, `history.pushState`, foco al destino (`tabindex="-1"` si hace falta), `hashchange`, y alineación del `#hash` inicial tras `load` y `saphi:intro-done` | siempre | `SAPHI.header.hold(ms)` durante el viaje; `window.__agAbrir(id)` si el destino es un panel del acordeón |
+| `initForm` | validación en línea (`#err-*` + `aria-invalid` + `aria-describedby`), foco al primer inválido, casilla de 44×44, estado «enviando» (solo con `FORM_ENDPOINT`), éxito con palomita y anillo local, campos inertes 6 s | siempre | `.cf-field.bad`, `.cf-consent.bad`, `.nudge`, `.cform.is-sent`, `#cfMsg.ok/.bad`, `.ui-check`, `.m-ring--btn` (dentro de `.cf-send .pill-arrow`), `.m-ring--send` |
+| `initPointer` | un solo `pointermove` (con rAF) para el anillo, los imanes, la vista previa y el origen del relleno de botones | cursor/imanes: `mode.motion` + puntero fino + ≥901 px (se reevalúa con `saphi:mode` y con cada `matchMedia`) | `body.has-cursor`, `#cursorRing[data-state]` con tres discos `.cur-d`, `#preview.is-on`, `translate` en los 3 CTA `.magnetic.pill-grad`, `--mx/--my` en `.spot` y `.pill` |
+
+### 1.2 Contratos que otros módulos leen
+
+* **`FORM_ENDPOINT` y `FORM_EMAIL`** (constantes al inicio de `ui.js`): ahí se cambia a dónde llega el formulario. El `action` de `<form id="form">` en `index.html` repite el correo (`mailto:…`) para el caso **sin JavaScript** (`method="post" enctype="text/plain"`: nunca un GET con los datos en la URL). Si cambia `FORM_EMAIL`, cambia también el `action`; la prueba `T6-correo` de la suite lo vigila.
+* **El `submit` siempre hace `preventDefault()`**: con JS jamás hay navegación nativa.
+* **Cursor «Arrastra»:** el rótulo es «Arrastra» solo si `H.Draggable`; el arrastre real (`Draggable`) lo crea `sections.js` únicamente con `PIN` (≥901 px + movimiento + `hover:hover` + `pointer:fine`), exactamente las mismas condiciones que `ui.js` usa para encender el cursor. Si se cambian unas, hay que cambiar las otras.
+* **Elevación de las tarjetas de Casos:** NO es de este módulo. `motion-sections.css` es el único dueño de `translate` en `.case-card` (activa y `:hover`); ver §5. La vista previa (`#preview`) sí es de `ui.js`: se ancla a `.case-card:focus-within` y `sections.js` le da foco a la tarjeta activa tras una flecha.
+* **`#cursorDot` ya no existe** en el marcado; `ui.js` no lo busca.
+* **Color de error:** `var(--m-err)` (token de `motion.css`, D-7). `ui.js` no lo lee.
+* **Hover líquido del logo:** retirado. `.wordmark` ya no recibe ningún filtro; el único `.liquid-on` es el de `#footGiant`, una pasada, lo pone `sections.js`.
+* **`window.__waveDebug`** y **`window.__agAbrir`** (de `accordion.js`) son ganchos de prueba / compatibilidad, no interfaz de producto.
+
+### 1.3 Plan B
+
+Sin `ui.js`: el menú no abre (la hamburguesa no hace nada; los enlaces `#…` del hero y del pie saltan con el comportamiento nativo y `scroll-padding-top`), el formulario valida con el `action` mailto del marcado (sin JS: `post` + `text/plain`), no hay cursor propio. Nada queda oculto. Con `ui.js` y `core.js` sin GSAP todo lo básico sigue (prueba `T6-nogsap`). Ver §7.
+
+### 1.4 Decisiones y pendientes de este módulo
+
+* Roll solo con puntero fino y sin reducido (en táctil no existe: ahorra ≈500 nodos). **No se reconstruye si la preferencia cambia en vivo** (reduce → normal): quedan sin roll hasta recargar.
+* Los imanes son 3 (`.magnetic.pill-grad`), con `translate` y transición de CSS (sin `quickTo`: ya no hay aviso «not eligible for reset»).
+* Estado «enviando» solo existe con `FORM_ENDPOINT`; sin endpoint el envío es un `mailto:` (D-5, decisión de Emmanuel).
+* El enlace «Aviso de privacidad» apunta a `aviso-privacidad.html`, que no existe (D-6, decisión de Emmanuel).
+
+---
+
+## 2. `js/sections.js` — secciones y su movimiento (dueño: sections)
+
+**Qué hace.** Llegadas de bloques, «Las 23:07» (gráfica, tachado de «42 h», flujo), marquesina, manifiesto, Casos, «Cómo trabajo», peso por letra del titular, blobs ambientales y el wordmark gigante del pie. Estilos en `css/motion-sections.css`.
+
+**Importa de `core.js`:** `H, M, mode, mm, safe, ambient, arrive, ioReveal, splitHeading, makePulse, setScroll, tokens, lenis`. No importa `ui.js`.
+
+**Reglas que sigue:** nunca aborta con reducido ni sin GSAP (lo básico —llegadas, estado de Casos, teclado, proceso— corre siempre; el movimiento va bajo `mode.motion` y `mm.add`); ScrollTrigger solo para `scrub` y `pin`; todo bucle pasa por `ambient()`; tiempos y distancias salen de `M` / `--m-*`; nada se lee ni se escribe por tick de scroll salvo aritmética sobre geometría ya cacheada.
+
+### 2.1 Bloques (anexo de `06-secciones.md`, vigente)
+
+| Bloque | Qué hace | Contrato |
+|---|---|---|
+| `initArrivals` | marca `.js-fade`, `.js-words`, `.js-draw` y `.bar-fill` y arranca `arrive()` / `ioReveal`; `--m-i` 0,2,4,6 en los pasos; `.m-strike` en la tarjeta de «42 h» | siempre. Clases nuevas: `.m-arrive` (`--1`), `.m-draw`, `.m-bar`, `.m-strike`. Los `.flow-step` llevan `data-arrive="manual"` solo con el flujo coreografiado (`stagedFlow`) |
+| `initHeadings` | `splitHeading` (máscara por línea) en cada `.js-mask` | solo `mode.motion` |
+| `initMarquee` | WAAPI infinita + `ambient()` + lerp de `updatePlaybackRate`; `--mq-half-gap` | pausada fuera de pantalla; reducido: una copia que envuelve (CSS) |
+| `initDatos` | `fixSofiaStroke` (siempre); `chartScrub` y `flowStaged` (≥901 y movimiento); `chartPass` (≤900) | `#gLineChart` (degradado en coordenadas de usuario) para la línea «Con Sofía»; `flowStaged` crea un `.line-pulse` por `makePulse` (idempotente) |
+| `initProceso` | línea `.steps-line` por scrub (≥901) o IO por paso (≤900); `is-on`; `.steps.m-live` | reducido: todo `is-on` |
+| `initManifiesto` | `manifiesto()` con `onSplit` (≥901 con dial; ≤900 sin dial ni pin) + orbe en `ambient()` | `aria:'none'`; clase `.mf-end` en vez de `#mfEnd`; `.w-live`; el dial `.mf-dial.done` |
+| `initCasos` | segmentos `.cs` (5), `.is-active` / `.is-past`, scroll nativo, teclado (← → Inicio Fin), foco rodante; pin con `.is-pinned` y `Draggable` | un solo pin; sin lecturas de rect; el carril es scroll nativo en todos los anchos y solo con `PIN` se ancla |
+| `initProximity` | peso por letra armado al entrar el cursor al hero | `.is-weighing` / `.is-unweighing` en `#heroDisplay`; solo tras `m-hero-done` y con puntero fino |
+| `initAmbient`, `initFooter` | parallax de `translateY`, un morph en `ambient()` (el del cierre), footer con scrub y una pasada líquida | `.liquid-on` solo en `#footGiant` y solo mientras suena |
+
+### 2.2 Contratos que otros módulos leen o dependen de él
+
+* **Peso por letra ↔ titular nacarado (`gl.js`).** `initProximity` pone `is-weighing` (y luego `is-unweighing`) en `#heroDisplay` y escribe `style.width/height/fontWeight` en las `.char`. `gl.js` observa esas clases con un `MutationObserver` para que la máscara del titular siga al DOM. Si se renombran, el titular nacarado deja de seguir el efecto.
+* **`#heroDisplay .char` debe existir al evaluarse el módulo.** Lo parte `core.js` al evaluarse (no al arrancar el intro). Si se cambia, el efecto de peso se instala sin letras y no avisa. La geometría solo es fiable tras `saphi:intro-done`.
+* **Elevación de las tarjetas de Casos:** `motion-sections.css` es el único dueño. Tarjeta activa (`.is-active`) y `:hover` suben `--m-lift` con la propiedad `translate`; nadie más declara `translate` ni `transform` sobre `.case-card`. Con «reducir movimiento» `--m-lift` vale `0px`.
+* **Foco a la tarjeta:** tras una flecha, a los 420 ms el foco pasa a la tarjeta activa (`tabindex="0"` solo mientras la tiene). `ui.js` ancla la vista previa a `.case-card:focus-within` con su propio `focusin`.
+* **`once(el, margen, cb)`** (IO de un disparo): además del IO, al quedar quieto el scroll (220 ms) resuelve lo que ya quedó arriba del viewport sin haber intersectado (salto instantáneo: la onda de CTA, `Fin`, un `#hash` lejano). Sin esto, el flujo de «Las 23:07» quedaba oculto tras un salto largo hasta volver a pasar por él.
+* **Contadores:** NO viven aquí (los lleva `core.js`). Si se reintroduce un tween sobre `[data-count]`, dos animaciones escribirán el mismo `textContent` y el número parpadeará.
+* **Hoja de seguridad:** `html.js .js-fade:not(.m-arrive) { animation: secFailsafe 0s linear 4.5s forwards }`. Si este módulo no llega, los `.js-fade` se muestran a los 4.5 s; en cuanto los marca, el selector deja de aplicar.
+* **Periodos de ambiente** (`AMB` en el JS, `--sec-orb-period` en el CSS) no son tokens de interfaz; viven junto al bucle que gobiernan.
+
+### 2.3 Plan B
+
+Sin `sections.js` (con `core.js` vivo): `.js-fade` se muestran a los 4.5 s, Casos es scroll nativo, no hay peso por letra ni scrubs. Sin GSAP: lo básico corre (`initArrivals`, `initCasos` sin pin, `initProceso` encendido). Con reducido: bloques a la vista desde el primer cuadro, sin transform animado, gráfica y flujo completos. Ver §7.
+
+### 2.4 Decisiones y pendientes
+
+* La línea «Con Sofía» ahora se pinta (en el original nunca se veía: degradado `objectBoundingBox` sobre un trazo horizontal). Para revertir basta quitar `fixSofiaStroke()`.
+* Un solo blob con morph (el del cierre); los otros 5 quedan quietos con parallax vertical.
+* Manifiesto móvil por palabra (no por oraciones). Contador «02 / 05» de Casos: no hecho (D-4, es texto nuevo).
+* WCAG 2.2.2: la marquesina (40 s) y el orbe (31 s) corren >5 s sin control de pausa; un botón de pausa es UI y copy nuevos: decisión de Emmanuel.
+
+---
+
+## 3. `js/accordion.js` — acordeón de productos (dueño: accordion)
+
+**Qué hace.** Reparto de anchos de los 6 paneles (`flex-grow`, `rotateY` de los cerrados y parallax del medio con GSAP), intención de hover, teclado, gesto táctil, huella de voz (DrawSVG), recorrido guiado inicial y estado accesible. Todo lo demás (atenuado, etiqueta vertical, cuerpo, cascada del contenido, velo de lectura) es CSS en `css/motion-accordion.css`. **Sin imports**: lee `window.SAPHI.M` (con los mismos valores de respaldo si no existe) y usa `window.gsap` si está.
+
+### 3.1 Estado y atributos que produce
+
+| Qué | Dónde | Quién lo lee |
+|---|---|---|
+| `aria-current="true"` en el panel abierto (y `"false"` en los cerrados; ausente en lista apilada) | `.ag-panel` | `core.js` (`syncNav`: marca en el menú el producto abierto), `gl.js` (respaldo por `MutationObserver`), pruebas |
+| `.ag-panel--active` | `.ag-panel` | CSS (todo el estado visual), `gl.js` (respaldo) |
+| `inert` en el `.ag-body` de los cerrados (+ `visibility:hidden` por CSS) | `.ag-body` | teclado y lectores: Tab y Shift+Tab no aterrizan en enlaces invisibles |
+| `.ag-live` (y `.ag-init` durante el primer reparto, `.ag-moving` durante el cambio) | `#agRow` | CSS: los estados ocultos solo existen bajo `.ag-live`; `will-change: transform` solo con `.ag-moving` |
+| `--ag-media-size`, `--ag-body-w`, `--ag-need` | `#agRow` | CSS (alto de la fila = el cuerpo más alto de los seis + 24 px arriba y abajo) |
+| `window.__agAbrir(id)` | global | `ui.js` (`#hash` inicial y viajes), pruebas |
+| `sessionStorage['saphi:ag-tour']` | sesión | el recorrido guiado corre una sola vez por sesión |
+
+**ARIA (decisión de la integración).** Los paneles son `role="listitem"` dentro de `role="list"`. ARIA 1.2 no admite `aria-expanded` en `listitem`, así que **se retiró**: el estado lo dan `aria-current` (cuál está abierto), `inert` en los cuerpos cerrados (su contenido no se expone) y el nombre de cada panel. Se eligió esto frente a las alternativas (cambiar a `tablist`/`tab`/`tabpanel`, o agregar un `<button aria-expanded>` por panel) porque conserva el teclado (cada panel es `tabindex="0"`; flechas, Inicio, Fin, Enter y Espacio) y la lectura sin tocar el marcado ni el copy. `a11y.cjs` conserva un aviso P2 (`sem.accordion-pattern`) porque no es el patrón botón + `aria-controls` de la APG.
+
+### 3.2 Evento `ag:active`
+
+`root.dispatchEvent(new CustomEvent('ag:active', { bubbles: true, detail: { index, id, el } }))` sobre `#agRow`; con `bubbles` llega a `document` (lo escucha `core.js`) y a `window` (lo escucha `gl.js` en captura). Se despacha **una vez al iniciar** (panel por defecto), **en cada cambio**, **al volver de la lista apilada** y con `index: -1, id: null, el: null` **al entrar en vista apilada**. Hay que conservar `bubbles: true`.
+
+### 3.3 Intención y accesibilidad
+
+* `pointerenter` (solo mouse o lápiz, solo con `(hover:hover)`) espera `M.intent.delay` (90 ms), o `M.intent.sweep` (140 ms) si el puntero va rápido (> `M.intent.speed`). Foco, flechas, Inicio, Fin, Enter, Espacio, clic y toque abren al instante.
+* Reducido: el foco abre el panel, el reparto de anchos cambia en la misma tarea, sin inclinación ni parallax, con fundido de 180/120 ms.
+* Lista apilada (≤900 px, sin GSAP o sin `html.js`): todo abierto, sin `aria-current`, sin `inert`; las huellas se dibujan una vez al llegar cada tarjeta.
+* Recorrido guiado: constante `RECORRIDO = true` (false lo apaga); `PASO = 0.8` s. No corre con reducido, con `pointermove` previo, en la segunda visita ni con ≤900 px; cualquier interacción lo cancela. La sensación de movimiento no se puede juzgar con capturas: pendiente de revisión en pantalla real.
+* El alto de la fila crece con el contenido; si cambia con la página ya cargada, `ScrollTrigger.refresh()` una vez (220 ms de debounce) porque el pin de Casos queda más abajo.
+
+### 3.4 Velo de lectura (costo visual que se conserva a propósito)
+
+El contraste del texto de producto sobre los shaders era 1.1–2.9:1 (mediana). Se resolvió con un pozo oscuro detrás de estado/categoría (`--ag-pool: .82`), un baño suave arriba (`--ag-wash: .34`), gris más claro para descripción y estado, y el remate aclarado 22 %. **Efecto medido:** la luminancia media del panel abierto baja 66 % (0.0444 → 0.0150). Los dos números están en `css/motion-accordion.css` §4 y se afinan ahí; hay que volver a correr `ag-contrast.cjs` (la suite lo hace) tras cualquier cambio. Es decisión de legibilidad, pero con efecto de marca (D-A de `06-acordeon.md`).
+
+### 3.5 Plan B
+
+Sin `accordion.js`: `site.css` deja el estado original (paneles iguales); `core.js` no marca ningún producto en el menú; `gl.js` dibuja por visibilidad (respaldo del DOM, por defecto `voz`). Ver el resultado medido en §7.
+
+---
+
+## 4. `js/gl.js` — WebGL2 del preview (dueño: gl)
+
+**Qué hace.** Cuatro efectos con **un solo bucle de `requestAnimationFrame`** (`sched`): la seda del hero (`.hero-silk`), el titular nacarado (`.hero-irid`, un lienzo ENCIMA del `<h1>`), un grainient por producto (`.grainient[data-g]`, 6) y el listón de scroll (`.scroll-ribbon`). **Sin imports**: lee `window.SAPHI` (`M`, `ambient`, `mode`) y, si no existe, usa versiones mínimas con las mismas condiciones. Estilos en `css/motion-gl.css`.
+
+### 4.1 Presupuesto (medido con los cinco módulos juntos, `v2-suite.cjs`)
+
+| Escena | Límite | Cómo se cumple |
+|---|---|---|
+| Carga (escritorio, 8 s) | ≤3 contextos | seda, nacarado y listón; los dos últimos nacen tras el intro; los 6 grainient no se crean al cargar |
+| Hero en reposo | ≤3 lienzos dibujando | seda y titular (el listón duerme a los 1.5 s sin scroll) |
+| Acordeón en reposo | 1 | solo el panel activo dibuja; los cerrados conservan su último cuadro |
+| Cambio de panel | ≤2 | el que se cierra (`M.dur.layout` + 60 ms) y el que abre |
+| Vista apilada | ≤2 | manda la visibilidad por fracción visible |
+| Pestaña oculta / reducido | 0 dibujos / 0 contextos | `ambient()`; los cuadros estáticos salen de un puerto 2D de los mismos shaders |
+
+Los campos ambientales van a 30 fps y a UN dibujo pesado por cuadro (se alternan). Los 6 contextos de grainient se piden **uno por tarea** al acercarse a 600 px: en hardware real no cuestan; con WebGL por software (SwiftShader) cada `getContext` espera a un proceso GPU saturado y aparecen tareas largas al llegar al acordeón (documentado, `GL-tareas-largas`; alternativa diferida: contexto compartido).
+
+### 4.2 Contratos que lee de otros módulos (ocultos)
+
+* **`ag:active { index, id, el }`** en `window` (captura). Sin el evento, respalda con un `MutationObserver` sobre `#agRow` (`aria-current` o `.ag-panel--active`); por defecto el panel `voz`.
+* **Titular nacarado:** lee del DOM (1) el `style.color` inline de cada `.char` de «Siempre.» (la rampa, la pone `core.js`; las letras sin color en línea se dibujan en `#fff`), (2) las clases `is-weighing` / `is-unweighing` de `#heroDisplay` (las pone `sections.js`), (3) la posición de cada carácter (un `Range` por carácter). Si cualquiera cambia, la rampa se pintaría blanca o la máscara dejaría de seguir al efecto de peso. La capa espera a `html.m-hero-in` sin `html.m-intro` (o `saphi:intro-done`) y a `document.fonts.ready`.
+* **`window.__saphiLenis`** (de `core.js`): lo lee el listón para seguir la posición.
+* **`saphi:intro-done`, `saphi:mode`, `visibilitychange`** (y `matchMedia` de reducido y de compacto).
+
+### 4.3 Estado que produce
+
+| Qué | Significado | Quién lo lee |
+|---|---|---|
+| `html.gl-nacre` | el titular se ve con el color medio del campo (`--gl-nacre-mean`) hasta que la capa entra | `motion-gl.css` |
+| `html.gl-nacre-on` | el relleno del DOM del `<h1>` pasa a transparente (la capa pinta las letras). Solo la pone `gl.js` y la quita ante **cualquier** fallo (contexto perdido, métricas de fuente distintas, error) | `motion-gl.css`, **sondas de contraste**: deben quitar la capa (`.hero-irid`) para aislar el texto |
+| `canvas.gl-ready` | primer cuadro dibujado (la opacidad del lienzo transiciona a `--m-dur-base`) | `motion-gl.css` |
+| `.gl-still` | cuadro 2D estático (reducido, sin WebGL2, contexto perdido) | `motion-gl.css` |
+| `window.__saphiGL` (`live()`, `contexts()`, `stills()`, `active()`, `sched()`), `__saphiNacre`, `__saphiRibbonTick`, `window.__SAPHI_GL` (opciones de prueba: `fps`, `silk`, `nacre`, `ribbon`…) | ganchos de prueba, **no son interfaz de producto** | la suite |
+
+### 4.4 Plan B y robustez
+
+Con reducido o sin WebGL2: cero contextos y cuadros 2D. Con `webglcontextlost` en cualquiera de los cuatro efectos: el lienzo se oculta, el titular vuelve a su texto del DOM y todo reanuda al restaurarse. Sin GSAP y sin `core.js` el titular nacarado y la seda siguen funcionando (prueba `GL-sin-core`). **`mix-blend-mode`:** ninguno (ni `darken` ni `lighten`); la única composición `darken` es INTERNA del lienzo 2D de la máscara (`min(color de la letra, campo)`), no del DOM.
+
+### 4.5 Pendiente
+
+Contexto compartido de grainient (de 6 contextos a 1) y, con él, precalentarlos sin tareas largas.
+
+---
+
+## 5. Dependencias ocultas entre módulos
+
+Lo que un módulo **produce** y otro **consume** sin que aparezca en un `import`. Si cambias el nombre, el momento o el valor de cualquiera de estos contratos, cambia también a su consumidor; la columna «Lo guarda» es la prueba de la suite (`v2-suite.cjs`, ver §0.14) que se rompe si se rompe.
+
+| Contrato | Lo produce | Lo consume | Qué se rompe si cambia | Lo guarda |
+|---|---|---|---|---|
+| `html.m-ready` | `core.js` al evaluarse | script temprano del `<head>` (si falta a los 4 s, quita `html.js`) | página con estados ocultos para siempre | `INT-orden-sin-core` |
+| `html.js` | script temprano | todo estado oculto de CSS (`html.js .m-arrive`, `.js-fade`, `#loader`, `ag-live`…); `accordion.js` (`apilado()`) | contenido oculto sin JS | `C-nojs-contenido` |
+| `html.m-nogsap`, `html.m-reduced` | `core.js` | `motion*.css`, `accordion.js` (lista apilada), `gl.js` (ribbon) | plan B sin GSAP / reducido | `C-nogsap`, `T4-*`, `GL-reducido` |
+| `html.m-intro` → `m-hero-in` → `m-hero-done`, evento `saphi:intro-done` | `core.js` | `gl.js` (la capa nacarada y el listón esperan), `sections.js` (`initProximity` solo tras `m-hero-done`), `ui.js` (`realign` del `#hash`, imanes), `motion.css` (`#hero` recorta con `overflow: clip` durante el intro) | el efecto de peso no se instala, el titular nacarado entra durante el intro | `GL-intro`, `T10-*`, `INT-nacre-contrato` |
+| `#heroDisplay .word > .char` partidos **al evaluar `core.js`** | `core.js` (`prepareHero`) | `sections.js` (`initProximity`), `gl.js` (máscara del titular) | peso por letra muerto sin avisar | `INT-nacre-contrato`, `GL-peso` |
+| `style.color` inline en las `.char` de «Siempre.» | `core.js` (`finalRamp`, intro) | `gl.js` (`inkOf`) | la rampa se pinta blanca | `INT-nacre-contrato` |
+| `#heroDisplay.is-weighing` / `.is-unweighing`, `style.width/height/fontWeight` en las `.char` | `sections.js` | `gl.js` (`MutationObserver`: la máscara sigue al DOM), `motion-sections.css` (`inline-flex`) | la máscara se desfasa durante el efecto | `GL-peso`, `INT-nacre-contrato` |
+| `html.gl-nacre`, `html.gl-nacre-on` | `gl.js` | `motion-gl.css`; sondas de contraste de `a11y-v2.cjs` | texto del `<h1>` transparente sin capa | `GL-perdido`, `INT-orden-sin-gl` |
+| evento `ag:active { index, id, el }` en `#agRow` con `bubbles` | `accordion.js` | `core.js` (`document`: `aria-current` del menú), `gl.js` (`window`, captura: qué grainient dibuja) | el menú no marca el producto; se dibujan 6 shaders | `INT-agactive-*`, `GL-evento` |
+| `aria-current` / `.ag-panel--active` en `.ag-panel` | `accordion.js` | `core.js` (`syncNav`), `gl.js` (respaldo), CSS | idem | `INT-agactive-core`, `INT-aria-acordeon` |
+| `.ag-live`, `--ag-need` en `#agRow` | `accordion.js` | `motion-accordion.css` (estados ocultos solo bajo `.ag-live`; alto de la fila) | CTA recortado / cuerpo oculto sin script | `AG-ag-fit`, `INT-orden-sin-accordion` |
+| `window.__agAbrir(id)` | `accordion.js` | `ui.js` (`#hash` y viajes a un panel) | el `#hash` de un producto no abre su panel | `UI-anclas` |
+| `SAPHI.header.hold(ms)` | `core.js` | `ui.js` (viaje a un ancla: el header no se esconde) | el header se esconde durante el viaje | `UI-anclas` |
+| `SAPHI.M`, `SAPHI.ambient`, `SAPHI.mode` | `core.js` | `accordion.js` y `gl.js` (sin imports) | tiempos de respaldo / bucles sin gobierno | `T1-*`, `T3-*` |
+| `window.__saphiLenis` | `core.js` | `gl.js` (listón), `ui.js` (onda de CTA) | listón sin seguir el scroll | `GL-liston` |
+| `lenis` (enlace vivo) | `core.js` | `ui.js` (menú: `lenis.stop()`; viaje), `sections.js` (`setScroll`, arrastre de Casos) | scroll bloqueado tras abrir el menú; viaje sin suavizado | `INT-rv-*`, `UI-menu` |
+| `html.ui-kbd`, `html.ui-menu-open`, `body.has-cursor` | `ui.js` | `motion-ui.css` (anillo de campos, bloqueo del scroll, `cursor:none` solo en tarjetas) | cursor nativo oculto en todo | `T5-*` |
+| `.m-arrive` / `.m-in`, `--m-i`, `data-arrive="manual"` | `core.js` (IO), `sections.js` (marca) | `motion.css`, `sections.js` (`flowStaged` revela los `.flow-step` a mano) | bloques ocultos o sin escalón | `T-ST`, `INT-orden-seguridad-fade` |
+| `[data-ambient]` / `.is-live` | `core.js` (`ambient.css`) | `motion.css` (pausa las animaciones CSS fuera de pantalla), `sections.js` (orbe), marcado | bucles CSS corriendo fuera de pantalla | `T3-*` |
+| `.line-pulse` (clon del trazo) | `core.js` (`makePulse`, idempotente) | `sections.js` (`flowStaged`) | un clon más por cada vuelta a escritorio | `INT-bp-clones` |
+| `.case-card` + `translate` (activa y `:hover`) | `motion-sections.css` (único dueño) | `ui.js` (vista previa), usuario | elevación de −12 px si alguien suma `transform` | `INT-casos-lift`, `SEC-casos-elevacion` |
+| `--m-err` | `motion.css` | `motion-ui.css`, `motion-sections.css` | color de error en 4 sitios distintos (D-7) | `T1-err` |
+| `#err-*` + `aria-describedby` en los campos | `index.html` | `ui.js` (escribe el texto, `aria-invalid`) | errores sin anunciar | `T6-vacio` |
+| `FORM_EMAIL` ↔ `action="mailto:…"` del `<form>` | `ui.js` / `index.html` | formulario sin JavaScript | correo distinto con y sin JS | `T6-correo`, `T6-nojs` |
+| `Draggable` solo con `PIN` | `sections.js` | `ui.js` (rótulo «Arrastra») | cursor «Arrastra» sin arrastre | `T5-movil`, `SEC-casos-arrastre` |
+
+---
+
+## 6. Hojas CSS: dueños, orden y guardia contra pisadas
+
+Orden de carga (el que fija `index.html` y vigila `INT-estilos-orden`): `site.css` → `motion.css` → `motion-ui.css` → `motion-sections.css` → `motion-accordion.css` → `motion-gl.css`. Todas ganan a `site.css` por orden (misma especificidad); `site.css` conserva reglas muertas del port (se retiran en G-26, no aquí).
+
+| Hoja | Dueño | Qué es suyo |
+|---|---|---|
+| `motion.css` | núcleo | tokens `--m-*` (incluido `--m-err`, D-7), `.m-arrive`, `.m-ring` (base), `[data-ambient]`, foco global, intro del hero, header, `.cf-err` (base **y color**), bloque de movimiento reducido (sustituye al `* {transition-duration:.01ms}` de `site.css`), plan B `html.m-nogsap` |
+| `motion-ui.css` | ui | botones, roll, cursor, vista previa (`#preview`), menú, formulario (campos, casilla, éxito), objetivos táctiles (incluye los enlaces del pie bajo 901 px) |
+| `motion-sections.css` | sections | llegadas (`.m-draw`, `.m-bar`, hoja de seguridad), marquesina, «Las 23:07», proceso, manifiesto, **Casos (incluida la elevación `translate` de las tarjetas)**, peso por letra, desbordes |
+| `motion-accordion.css` | accordion | cascada del contenido, estados del panel, foco, velo de lectura, alto de la fila, lista apilada |
+| `motion-gl.css` | gl | capas WebGL, titular nacarado, cuadros estáticos |
+
+**Reglas para no pisarse** (las comprueba `INT-estilos-pisadas`, que recorre el CSSOM de las seis hojas en escritorio, móvil y reducido y resuelve la cascada por especificidad y orden):
+
+1. **Un selector con una propiedad, un dueño.** Cero declaraciones duplicadas del mismo selector y propiedad en hojas de dueños distintos. En la integración se retiraron: `.cf-err` / `.closing .cf-err` (color) de `motion-ui.css` (queda en `motion.css`) y `.case-card:hover` / `.case-card { transition }` de `motion-ui.css` (queda en `motion-sections.css`).
+2. **Modificador sobre una base** (`.m-ring--btn`, `.m-ring--mark` sobre `.m-ring`) sí puede vivir en otra hoja: el modificador gana por especificidad, a propósito.
+3. **El bloque de movimiento reducido de `motion.css`** (`*, *::before, *::after { transition-… !important }`) lo vencen por especificidad los bloques reducidos de las otras hojas cuando necesitan otra duración (accordion, ui). Es intencional y está listado en `pisadas.json` como «reducido».
+4. `translate`, `rotate`, `scale` (propiedades individuales) para imanes, presión, elevación, deriva del orbe y vista previa: no pisan al `transform` que anima GSAP. **Nadie debe declarar `transform` sobre `.case-card`.**
+5. `will-change` solo en vuelo (`motion.css` anula los estáticos de `site.css`; `accordion.js` lo pone con `.ag-moving`).
+
+---
+
+## 7. Plan B: qué pasa cuando algo falla (medido con la suite, no supuesto)
+
+Cada fila es una prueba de `v2-suite.cjs`: se bloquea el archivo (o se retrasa) y se recorre toda la página. «Legible» = nada de texto oculto tras recorrerla, el loader no tapa, la página se recorre y 0 errores de consola que no sean la propia petición bloqueada.
+
+### 7.1 Un módulo no baja (`INT-orden-sin-*`)
+
+| Falta | Siguen vivos | Qué ve la persona |
+|---|---|---|
+| `core.js` | `gl`, `accordion` (no importan nada; `ui` y `sections` sí importan `core` y caen con él) | A los 4 s el script temprano quita `html.js` y retira el loader: página estática, todo visible, sin intro, sin tema ni sección activa, sin menú ni validación en línea. Los shaders y el acordeón siguen |
+| `ui.js` | `core`, `sections`, `gl`, `accordion` | Todo menos: menú (la hamburguesa no abre), cursor propio, imanes, roll, onda y formulario con validación en línea; el formulario conserva el `action` mailto |
+| `sections.js` | `core`, `ui`, `gl`, `accordion` | `.js-fade` se muestran a los 4.5 s (`INT-orden-seguridad-fade`); Casos es scroll nativo; sin scrubs, sin peso por letra |
+| `gl.js` | `core`, `ui`, `sections`, `accordion` | Titular en su color de texto (`rgb(237,234,243)`, no nacarado), sin seda ni shaders de panel (queda el tinte `--ag-tint`) |
+| `accordion.js` | `core`, `ui`, `sections`, `gl` | A los 4.5 s `html.m-noag` pasa los productos a lista apilada con todo su contenido (6 títulos visibles). Si el módulo llega después, quita `m-noag` y toma el control |
+
+### 7.2 Un plugin de GSAP no baja (`INT-plugin-sin-*`)
+
+| Falta | Efecto | Resultado medido |
+|---|---|---|
+| `ScrollTrigger` | `mode.gsap = false` → `html.m-nogsap` (plan B completo sin GSAP) | legible; párrafo del manifiesto en `--ink` |
+| `SplitText` | sin titulares por línea, sin manifiesto por palabra, hero con fundido | legible; el párrafo del manifiesto conserva el color de tinta completo |
+| `DrawSVGPlugin`, `MorphSVGPlugin`, `Draggable`, `InertiaPlugin`, `CustomEase`, `Lenis` | solo se apaga su efecto (trazos, orbe, arrastre, inercia, curvas de marca → `power3`, scroll suave → nativo) | legible, 0 errores |
+
+### 7.3 Llegadas tardías (`INT-tardio-*`)
+
+`sections.js` 3 s tarde; `gl.js` 3 s y `accordion.js` 6 s tarde (después de la red de 4.5 s); todos 0.8 s más lentos con la CPU ×4: todos los módulos terminan vivos, nada oculto, el acordeón toma el control (`m-noag` fuera), `gl.js` sigue a `ag:active`. **`core.js` 5 s tarde** (después del script temprano de 4 s) es la excepción asumida: la página ya se rindió a su versión estática (sin `html.js`, acordeón en lista) y así se queda, legible y sin errores.
+
+### 7.4 Otras degradaciones (medidas en sus grupos)
+
+| Condición | Prueba | Resultado |
+|---|---|---|
+| Sin GSAP (`vendor/gsap.min.js` abortado) | `C-nogsap`, `T6-nogsap`, `GL-sin-gsap` | menú, formulario, anclas y titular nacarado funcionan; acordeón y Casos en lista/scroll nativo |
+| Sin JavaScript (CSP `script-src 'none'`) | `C-nojs`, `C-nojs-contenido`, `T6-nojs` | nada oculto, se recorre hasta el pie, el formulario no filtra datos en la URL |
+| Movimiento reducido (al cargar y en vivo) | `T4-*`, `GL-reducido`, `INT-rv-*` | contenido visible, 0 contextos WebGL, sin Lenis ni ScrollTriggers; al volver a «sin preferencia» se reactivan los contextos de `sections`/`ui` pero **no** Lenis ni el intro (el scroll queda nativo hasta recargar) |
+| Sin WebGL2 / contexto perdido | `GL-sin-webgl2`, `GL-perdido` | cuadros 2D estáticos; el titular vuelve a su texto del DOM |
+| Fuentes bloqueadas | `fonts: block` en las pruebas manuales | el intro no espera más de 1.2 s; el titular se reacomoda sin romper líneas al llegar la fuente |
+| Volver con Atrás (bfcache) | `INT-bf-*` | la página restaurada conserva ScrollTriggers, scroll y Lenis, sin contextos perdidos, y los lienzos reanudan |
+
+---
+
+## 8. Decisiones que siguen pendientes de Emmanuel (no resueltas aquí)
+
+| # | Qué | Estado en el código |
+|---|---|---|
+| 1 | **Control de pausa WCAG 2.2.2** para la marquesina (40 s) y el orbe (31 s) | no existe (UI y copy nuevos). `a11y` mantiene `motion.222-no-control` y `motion.5s-cap` en FALLA P1, documentados |
+| 2 | «Siempre.» / «24/7» en el copy | sin cambios |
+| 3 | Correo `sayisless@gmail.com` (posible errata) | sin cambios; es `FORM_EMAIL` y el `action` sin JS |
+| 4 | `aviso-privacidad.html` no existe | el enlace sigue ahí; ya mide 44 px de alto en táctil |
+| 5 | Color coral `#FF6B4A` y color de error (D-7) | un solo token, `--m-err` |
+| 6 | Contador «02 / 05» de Casos (D-4, texto nuevo) | no hecho |
+| 7 | Cuánto color se sacrifica por legibilidad en el acordeón (`--ag-pool` .82, `--ag-wash` .34) | valores medidos, un solo lugar; costo visible documentado (§3.4) |
+| 8 | Recorrido guiado del acordeón (`PASO` 0.8 s, `RECORRIDO`) | activo; no se puede juzgar con capturas |
+| 9 | `font-display: optional` + autoalojar Instrument Sans | no hecho |
+
+---
+
+## A. Apéndice: el port original (obsoleto en comportamiento; vigente como mapa de procedencia)
+
+Las líneas de origen son las de `original.html`. Los puntos 4.5 (listeners al cruzar el breakpoint) y 4.6 (que `core.js` no baje) de abajo **se resolvieron** (0.13 y la prueba `INT-bp-listeners`); el resto describe cómo se cortó el monolito.
+
+## A.1 Orden de carga del port original (`index.html` + `main.js`; el vigente está en 0.13)
 
 | # | Qué | Tipo | Notas |
 |---|-----|------|-------|
@@ -244,7 +578,7 @@ CTA) → `sections.js` (marquesina, escritorio/móvil/reducido, refresh final).
 
 ---
 
-## 2. `core.js` — exports
+## A.2 `core.js` — exports (port)
 
 > **Obsoleto en v2.** Esta sección describe el port original. Los exports y `window.SAPHI` vigentes están en §0.3 y §0.4; ya no hay plan B por `return`.
 
@@ -297,9 +631,9 @@ lo lee el listón y la onda CTA), `window.__waveDebug` (onda CTA),
 
 ---
 
-## 3. Dueño de cada bloque del original
+## A.3 Dueño de cada bloque del original
 
-### `index.html`
+### A.3.1 `index.html`
 | Bloque | Origen |
 |--------|--------|
 | `<head>` (meta, favicons, fuentes) | 1-19 y 20-24 (+ `robots noindex,nofollow` y `canonical`, nuevos) |
@@ -308,7 +642,7 @@ lo lee el listón y la onda CTA), `window.__waveDebug` (onda CTA),
 | Vendor (9 `<script src>`) | 1445-1453 → `vendor/…` |
 | `<div class="scroll-ribbon">` | 3385 |
 
-### `css/site.css`
+### A.3.2 `css/site.css`
 Hoja completa: 37-879, verbatim.
 
 ### `js/core.js` (dueño: core)
@@ -380,7 +714,7 @@ Solo `import './core.js'; import './ui.js'; import './sections.js';`.
 
 ---
 
-## 4. Diferencias conocidas respecto al original (de orden y de entrega; ninguna de lógica)
+## A.4 Diferencias conocidas respecto al original (de orden y de entrega; ninguna de lógica)
 
 1. **Módulos diferidos.** Antes los scripts corrían al leerse al final del body;
    ahora corren al terminar el parseo (antes de `DOMContentLoaded`). Observable:
@@ -418,7 +752,7 @@ Solo `import './core.js'; import './ui.js'; import './sections.js';`.
 
 ---
 
-## 5. Código muerto encontrado (conservado a propósito)
+## A.5 Código muerto encontrado (conservado a propósito)
 
 | Qué | Dónde (orig.) | Por qué está muerto |
 |-----|----------------|---------------------|

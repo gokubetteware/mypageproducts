@@ -296,9 +296,15 @@ document.addEventListener('visibilitychange', () => {
 export function makePulse(sourcePath, dur, opts) {
   if (!sourcePath || !mode.gsap) return null;
   opts = opts || {};
+  /* Idempotente: un contexto de breakpoint (mm.add) vuelve a llamar a makePulse cada vez que se cruza el umbral; sin esto
+     cada vuelta a escritorio dejaba un clon más (.line-pulse 1 → 3 tras 1440→800→1440→800→1440). */
+  Array.prototype.slice.call(sourcePath.parentNode.querySelectorAll('.line-pulse')).forEach((g) => {
+    if (g.__pulseOf === sourcePath) { gsap.killTweensOf(g); g.remove(); }
+  });
   const ghost = sourcePath.cloneNode(false);
   ghost.removeAttribute('id');
   ghost.setAttribute('class', 'line-pulse');
+  ghost.__pulseOf = sourcePath;
   sourcePath.parentNode.appendChild(ghost);
   const L = ghost.getTotalLength();
   gsap.set(ghost, { strokeDasharray: (L * 0.07) + ' ' + L, strokeDashoffset: 0 });
@@ -698,6 +704,11 @@ function initState() {
   initSections();
   arrive();
   ambient.css();
+
+  /* Plan B del acordeón: si accordion.js no llegó a los 4.5 s (red caída, error), los paneles se quedarían en el estado de
+     site.css con el cuerpo oculto (la copia de producto invisible). html.m-noag los pasa a lista apilada; si el módulo llega
+     tarde, quita la clase y toma el control (js/accordion.js). */
+  setTimeout(() => { const r = $('agRow'); if (r && !r.classList.contains('ag-live')) root.classList.add('m-noag'); }, 4500);
   if (mode.motion) counters.watch(); else counters.final(document.querySelector('main'));
 
   /* preferencia de movimiento en vivo: se apaga lo que se mueve; la página sigue funcional */

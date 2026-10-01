@@ -109,7 +109,6 @@
 </svg>
 
 <div class="progress" id="progress" aria-hidden="true"></div>
-<div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
 <div class="cursor-ring" id="cursorRing" aria-hidden="true"><span class="cur-label" id="curLabel"></span></div>
 
 <div id="preview" aria-hidden="true">
@@ -540,7 +539,7 @@
       <p class="t-body-lg muted js-fade" style="max-width:540px;margin:var(--sp-24) auto 0">
         Cuéntame qué proceso te está quitando más tiempo y armamos la automatización que le conviene a tu negocio.
       </p>
-      <form class="cform js-fade" id="form" novalidate>
+      <form class="cform js-fade" id="form" novalidate method="post" action="mailto:sayisless@gmail.com" enctype="text/plain">
         <div class="cf-row">
           <div class="cf-cell"><label class="cf-field"><span>Tu nombre</span><input type="text" name="nombre" required autocomplete="name" placeholder="Cómo te llamas" aria-describedby="err-nombre"></label><p class="cf-err" id="err-nombre" role="alert"></p></div>
           <label class="cf-field"><span>Tu negocio</span><input type="text" name="negocio" autocomplete="organization" placeholder="Nombre o giro"></label>
@@ -602,7 +601,13 @@
 <script src="vendor/lenis.min.js"></script>
 
 <div class="scroll-ribbon" aria-hidden="true"></div>
-<script type="module" src="js/main.js"></script>
+<!-- Un <script type="module"> por módulo (antes, main.js los importaba a todos): si UNO falla al bajar, los demás siguen
+     (con main.js, un sections.js caído tumbaba también a core.js y a ui.js). El orden de ejecución es el del documento:
+     core → ui → sections → gl → accordion; ui.js y sections.js importan './core.js' (misma URL, se evalúa una sola vez).
+     js/main.js ya no se carga. -->
+<script type="module" src="js/core.js"></script>
+<script type="module" src="js/ui.js"></script>
+<script type="module" src="js/sections.js"></script>
 <script type="module" src="js/gl.js"></script>
 <script type="module" src="js/accordion.js"></script>
 </body>

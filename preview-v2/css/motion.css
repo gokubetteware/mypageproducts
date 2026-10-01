@@ -74,6 +74,10 @@
 
   /* El header ya no desenfoca lo de atrás: sin blur, más opaco (G-08). El motor de tema lo reescribe con el mismo alfa. */
   --header-bg: rgba(10, 10, 10, .92);
+
+  /* COLOR DE ERROR — D-7: decisión de marca pendiente. Hoy es el coral de site.css (#FF6B4A); cuando el DS fije el
+     color de error se cambia SOLO aquí (mensajes de campo, casilla, línea de foco, tachado de «42 h»). */
+  --m-err: #FF6B4A;
 }
 
 /* Movimiento reducido INTENCIONAL (D-2): lo espacial vale 0, el estado se conserva */
@@ -213,12 +217,13 @@ header.is-hidden:focus-within { transform: none; }   /* con foco dentro no se es
 
 /* ── 7. FORMULARIO: error en línea por campo ─────────────────────────────── */
 .cf-cell { min-width: 0; }
+/* Único dueño de la base y del color de .cf-err (motion-ui.css ya no lo repite: antes lo pisaba con el mismo selector) */
 .cf-err {
   font-size: 13.5px; line-height: 1.4;
-  color: #FF6B4A;   /* coral actual hasta la decisión D-7 (color de error del DS) */
+  color: var(--m-err);   /* D-7: decisión de marca pendiente (ver el token) */
 }
 .cf-err:not(:empty) { margin-top: 6px; }   /* vacío no ocupa nada: el formulario mide lo mismo que antes */
-.closing .cf-err { color: #FF6B4A; }
+.closing .cf-err { color: var(--m-err); }
 
 
 /* ── 8. MOVIMIENTO REDUCIDO INTENCIONAL (C.15) ───────────────────────────────
@@ -259,10 +264,11 @@ html.m-nogsap .bar-fill { transform: scaleX(1); }
 html.m-nogsap .cases-viewport { overflow-x: auto; scroll-snap-type: x proximity; scrollbar-width: thin; }
 html.m-nogsap .case-card { scroll-snap-align: start; }
 html.m-nogsap .cases-progress { display: none; }
-/* acordeón: misma lista vertical que en móvil, con todo a la vista */
-html.m-nogsap .ag-row { display: block; height: auto; perspective: none; }
-html.m-nogsap .ag-panel { width: 100%; margin-bottom: var(--ag-gap); transform: none; }
-html.m-nogsap .ag-media { width: 100%; transform: translate(-50%, -50%); }
-html.m-nogsap .ag-dim { opacity: .28; }
-html.m-nogsap .ag-spine { display: none; }
-html.m-nogsap .ag-body { position: relative; width: 100%; opacity: 1; pointer-events: auto; }
+/* acordeón: misma lista vertical que en móvil, con todo a la vista. También con html.m-noag (la pone core.js a los 4.5 s si
+   accordion.js no llegó: sin él, los cuerpos de los paneles quedarían ocultos y la copia de producto invisible) */
+html.m-nogsap .ag-row, html.m-noag .ag-row { display: block; height: auto; perspective: none; }
+html.m-nogsap .ag-panel, html.m-noag .ag-panel { width: 100%; margin-bottom: var(--ag-gap); transform: none; }
+html.m-nogsap .ag-media, html.m-noag .ag-media { width: 100%; transform: translate(-50%, -50%); }
+html.m-nogsap .ag-dim, html.m-noag .ag-dim { opacity: .28; }
+html.m-nogsap .ag-spine, html.m-noag .ag-spine { display: none; }
+html.m-nogsap .ag-body, html.m-noag .ag-body { position: relative; width: 100%; opacity: 1; pointer-events: auto; }

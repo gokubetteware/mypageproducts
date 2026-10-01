@@ -27,18 +27,44 @@ const clamp = (v, a, b) => (v < a ? a : v > b ? b : v);
 const mqOK = (q) => window.matchMedia(q).matches;
 
 /* IO de un solo disparo con margen propio. cb(el, pasado): pasado = el nodo ya quedó arriba del viewport
-   (ancla lejana, recarga a media página): quien llama debe dejar el estado final sin actuarlo. */
+   (ancla lejana, recarga a media página, salto instantáneo): quien llama debe dejar el estado final sin actuarlo.
+   Un IO no avisa de lo que se salta de golpe (nunca llegó a intersectar), así que, igual que core con sus llegadas, al
+   quedar quieto el scroll (220 ms) se resuelve lo que ya quedó arriba del viewport: una pasada, no por tick.
+   Devuelve una función que lo cancela (o null si no hay IO): los contextos de breakpoint la llaman al revertirse. */
+const waiting = new Set();
+let waitT = 0;
+function sweepWaiting() {
+  waiting.forEach((w) => { const r = w.el.getBoundingClientRect(); if (r.height && r.bottom <= 0) w.fire(true); });
+}
+function onWaitScroll() { clearTimeout(waitT); waitT = setTimeout(sweepWaiting, 220); }
 function once(el, margin, cb) {
-  if (!el) return;
-  if (!('IntersectionObserver' in window)) { cb(el, false); return; }
-  const io = new IntersectionObserver((es) => {
+  if (!el) return null;
+  if (!('IntersectionObserver' in window)) { cb(el, false); return null; }
+  let done = false, io = null;
+  const fire = (passed) => {
+    if (done) return;
+    done = true; io.disconnect(); waiting.delete(w);
+    if (!waiting.size) window.removeEventListener('scroll', onWaitScroll);
+    cb(el, passed);
+  };
+  const w = { el, fire };
+  io = new IntersectionObserver((es) => {
     es.forEach((en) => {
       const passed = !en.isIntersecting && en.boundingClientRect.bottom <= 0;
       if (!en.isIntersecting && !passed) return;
-      io.disconnect(); cb(en.target, passed);
+      fire(passed);
     });
   }, { rootMargin: margin });
   io.observe(el);
+  if (!waiting.size) window.addEventListener('scroll', onWaitScroll, { passive: true });
+  waiting.add(w);
+  /* cancelar: un contexto de breakpoint (mm.add) que se revierte no debe dejar observadores vivos que disparen más tarde en
+     el otro breakpoint (p. ej. la pasada móvil de la gráfica compitiendo con el scrub de escritorio tras girar la tableta) */
+  return () => {
+    if (done) return;
+    done = true; io.disconnect(); waiting.delete(w);
+    if (!waiting.size) window.removeEventListener('scroll', onWaitScroll);
+  };
 }
 
 /* «Sonar»: un anillo que se abre y se apaga UNA vez (nunca en bucle). Sin movimiento no existe. */
@@ -170,10 +196,10 @@ function chartScrub() {
 /* móvil: sin scrub, una pasada al llegar */
 function chartPass() {
   const c = chartParts();
-  if (!H.DrawSVGPlugin || !$('chartA') || !c.mark) return;
+  if (!H.DrawSVGPlugin || !$('chartA') || !c.mark) return null;
   chartReset(c);
   const T = M.dur.focal * 1.6;
-  once($('chartPlot'), '0px 0px ' + M.io.revealMargin + ' 0px', (el, passed) => {
+  return once($('chartPlot'), '0px 0px ' + M.io.revealMargin + ' 0px', (el, passed) => {
     if (passed) { gsap.set(c.lines, { drawSVG: '100%' }); gsap.set(c.area, { opacity: 0.07 }); gsap.set(c.mark, { opacity: 1, scale: 1 }); return; }
     gsap.timeline()
       .to('#cAManual', { drawSVG: '100%', duration: T, ease: M.ease.cine }, 0)
@@ -185,7 +211,7 @@ function chartPass() {
 /* escritorio: el trazo del flujo recorre los cuatro pasos y cada uno «contesta» cuando el trazo pasa por él */
 function flowStaged() {
   const path = $('flowPath'), flow = $('flowRec');
-  if (!H.DrawSVGPlugin || !path || !flow) return;
+  if (!H.DrawSVGPlugin || !path || !flow) return null;
   const steps = $$('.flow-step', flow);
   const revealAll = () => { steps.forEach((s) => { arrive.reveal(s, 0); }); };
   try {
@@ -200,7 +226,7 @@ function flowStaged() {
       tl.call(() => { arrive.reveal(s, 0); ring(s.querySelector('.m-ring--step'), M.dur.ring * 0.55); }, null, at((i + 0.5) / steps.length));
     });
     if (pulse) tl.call(() => { pulse(); }, null, total);
-    once(flow, '0px 0px -40% 0px', (el, passed) => {
+    return once(flow, '0px 0px -40% 0px', (el, passed) => {
       if (passed) { gsap.set(path, { drawSVG: '100%' }); revealAll(); return; }
       tl.play();
     });
@@ -226,11 +252,16 @@ function initDatos() {
   safe('linea-sofia', fixSofiaStroke);   /* siempre: también con reduce */
   if (!mode.motion) return;
   mm.add(DESK, () => {
+    let cancelFlow = null;
     safe('grafica', chartScrub);
-    safe('flujo', flowStaged);
-    return () => { $$('.flow-step').forEach((s) => { arrive.reveal(s, 0); }); };   /* al cruzar el breakpoint nada queda oculto */
+    safe('flujo', () => { cancelFlow = flowStaged(); });
+    return () => { if (cancelFlow) cancelFlow(); $$('.flow-step').forEach((s) => { arrive.reveal(s, 0); }); };   /* al cruzar el breakpoint nada queda oculto ni pendiente */
   });
-  mm.add(MOB, () => { safe('grafica-movil', chartPass); });
+  mm.add(MOB, () => {
+    let cancelPass = null;
+    safe('grafica-movil', () => { cancelPass = chartPass(); });
+    return () => { if (cancelPass) cancelPass(); };
+  });
 }
 
 /* ═══ CÓMO TRABAJO (G-19) ═══════════════════════════════════════════════════
@@ -262,7 +293,8 @@ function initProceso() {
     return () => { line.remove(); steps.forEach((s) => { s.classList.add('is-on'); }); };
   });
   mm.add(MOB, () => {
-    steps.forEach((s) => { once(s, '0px 0px -35% 0px', () => { s.classList.add('is-on'); }); });
+    const cancels = steps.map((s) => once(s, '0px 0px -35% 0px', () => { s.classList.add('is-on'); }));
+    return () => { cancels.forEach((c) => { if (c) c(); }); };
   });
 }
 

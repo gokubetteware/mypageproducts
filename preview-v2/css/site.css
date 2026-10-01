@@ -770,7 +770,8 @@ html.js .js-mask .split-line { overflow: hidden; }
   transform-style: preserve-3d; transform-origin: center center;
   will-change: flex-grow, transform; -webkit-tap-highlight-color: transparent;
 }
-.ag-panel:focus-visible { box-shadow: 0 0 0 3px var(--lila); }
+/* (integración, informe 07) el foco de los paneles lo declaran motion.css y motion-accordion.css (--m-focus); aquí había un
+   box-shadow con var(--lila), variable que nunca existió (la declaración era inválida y el foco no se veía). */
 .ag-frame { position: absolute; inset: 0; overflow: hidden; border-radius: inherit; }
 /* el lienzo: ancho fijo, centrado, recortado por el panel */
 .ag-media { position: absolute; top: 50%; left: 50%; width: var(--ag-media-size); height: 100%; will-change: transform; }

@@ -69,7 +69,7 @@ html.js .bar-fill.m-bar:not(.m-in) { transform: scaleX(0); }
 html.js .m-strike .dc-old { text-decoration: none; position: relative; display: inline-block; }
 html.js .m-strike .dc-old::after {
   content: ""; position: absolute; left: -0.04em; right: -0.04em; top: 54%; height: 3px;
-  background: #FF6B4A;   /* coral actual: el mismo del tachado de site.css, hasta la decisión D-7 */
+  background: var(--m-err);   /* coral actual (el del tachado de site.css); D-7: decisión de marca pendiente, ver el token en motion.css */
   transform-origin: 0 50%;
   transition: transform var(--m-dur-enter) var(--m-ease);
   transition-delay: calc(min(var(--m-i, 0), 6) * var(--m-stagger-each) + var(--m-dur-enter) * .5);
