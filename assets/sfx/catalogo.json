@@ -1,0 +1,47 @@
+{
+ "whoosh_suave": {
+  "archivo": "assets/sfx/whoosh_suave.wav",
+  "duracion_s": 0.5,
+  "pico_dbfs": -16.0
+ },
+ "tic_suave": {
+  "archivo": "assets/sfx/tic_suave.wav",
+  "duracion_s": 0.09,
+  "pico_dbfs": -16.0
+ },
+ "tick": {
+  "archivo": "assets/sfx/tick.wav",
+  "duracion_s": 0.06,
+  "pico_dbfs": -16.0
+ },
+ "campanita_ascendente": {
+  "archivo": "assets/sfx/campanita_ascendente.wav",
+  "duracion_s": 0.6,
+  "pico_dbfs": -16.0
+ },
+ "tono_descendente": {
+  "archivo": "assets/sfx/tono_descendente.wav",
+  "duracion_s": 0.7,
+  "pico_dbfs": -16.0
+ },
+ "golpe_seco": {
+  "archivo": "assets/sfx/golpe_seco.wav",
+  "duracion_s": 0.18,
+  "pico_dbfs": -16.0
+ },
+ "acorde_suave": {
+  "archivo": "assets/sfx/acorde_suave.wav",
+  "duracion_s": 1.0,
+  "pico_dbfs": -16.0
+ },
+ "pop_suave": {
+  "archivo": "assets/sfx/pop_suave.wav",
+  "duracion_s": 0.12,
+  "pico_dbfs": -16.0
+ },
+ "cierre_suave": {
+  "archivo": "assets/sfx/cierre_suave.wav",
+  "duracion_s": 1.0,
+  "pico_dbfs": -16.0
+ }
+}
