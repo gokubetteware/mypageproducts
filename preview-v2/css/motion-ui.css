@@ -1,0 +1,388 @@
+/* ============================================================================
+   css/motion-ui.css — MOVIMIENTO DE INTERFAZ (propietario: ui)
+   Botones (hover, foco, presión, cargando, éxito), campos y formulario, menú
+   móvil, cursor, vista previa de casos y objetivos táctiles. Se carga después de
+   motion.css: lee solo los tokens --m-* (siempre con valor de respaldo, nada de
+   números sueltos). Ver js/CONTRATO.md, «v2 · núcleo», y js/ui.js.
+
+   Contenido
+     1. Botones (.pill): hover, foco, presión, cargando, éxito, deshabilitado
+     2. Roll de texto (el texto accesible va una sola vez)
+     3. Destinos de ancla y foco
+     4. Cursor propio (sin punto, sin mix-blend-mode)
+     5. Vista previa de casos y elevación de tarjetas
+     6. Menú móvil: dos capas, horizontal, objetivos de 44 px
+     7. Formulario: campos, error en línea, casilla, éxito
+     8. Logos: sin distorsión líquida al pasar el cursor
+     9. Objetivos táctiles
+    10. Movimiento reducido INTENCIONAL (se quita lo espacial, se conserva el estado)
+   ============================================================================ */
+
+
+/* ── 1. BOTONES ──────────────────────────────────────────────────────────────
+   Primera respuesta ≤120 ms (color y borde a --m-dur-fast). El relleno que nace
+   donde entra el cursor es firma y se conserva (--mx/--my los escribe ui.js);
+   desplazamiento e imán usan la propiedad `translate` y la presión `scale`, así
+   no pisan al `transform` de GSAP ni al de otras reglas. */
+.pill {
+  transition: color var(--m-dur-fast, 120ms) var(--m-ease-state, ease),
+              border-color var(--m-dur-fast, 120ms) var(--m-ease-state, ease),
+              translate var(--m-dur-layout, 440ms) var(--m-ease, cubic-bezier(.2, .7, .2, 1)),
+              scale var(--m-dur-fast, 120ms) var(--m-ease, cubic-bezier(.2, .7, .2, 1)),
+              opacity var(--m-dur-base, 180ms) var(--m-ease-state, ease);
+}
+.pill::after { transition: transform var(--m-dur-enter, 280ms) var(--m-ease, cubic-bezier(.2, .7, .2, 1)); }
+.pill-arrow {
+  position: relative;
+  transition: transform var(--m-dur-base, 180ms) var(--m-ease, cubic-bezier(.2, .7, .2, 1));
+}
+
+/* Foco por teclado: anillo doble (motion.css) y relleno desde el CENTRO, igual que el hover */
+.pill:focus-visible { color: #0A0A0A; border-color: transparent; }
+.pill:focus-visible::after { transform: scale(2.6); transition-duration: var(--m-dur-base, 180ms); }
+.pill:focus-visible .pill-arrow { transform: translateX(6px); }
+
+/* Presión */
+.pill:active { scale: var(--m-press, .97); }
+
+/* Cargando: no recibe eventos, el ancho no cambia; el anillo suena dentro del botón */
+.pill[aria-busy="true"] { pointer-events: none; }
+
+/* Deshabilitado */
+.pill:disabled, .pill[aria-disabled="true"] { opacity: .45; pointer-events: none; }
+.pill:disabled::after, .pill[aria-disabled="true"]::after { transform: scale(0); }
+
+/* Táctil: sin relleno de hover (se quedaba «pegado» tras tocar); la presión sí se ve */
+@media (hover: none) {
+  .pill:hover { color: var(--ink); border-color: var(--ink-25); }
+  .pill-grad:hover { border-color: transparent; }
+  .pill:hover::after { transform: scale(0); }
+  .pill:hover .pill-arrow { transform: none; }
+  .pill:active { color: #0A0A0A; border-color: transparent; }
+  .pill:active::after { transform: scale(2.6); transition-duration: var(--m-dur-fast, 120ms); }
+}
+
+/* Imán: ui.js escribe `translate` y el CSS lo suaviza (sin quickTo) */
+.magnetic { translate: 0 0; }
+
+/* Éxito del botón de envío: la palomita se dibuja sobre la flecha */
+.cf-send[data-state="ok"] .pill-arrow { color: transparent; }
+.pill-arrow .ui-check { position: absolute; left: 50%; top: 50%; width: 1.2em; height: 1.2em; margin: -.6em 0 0 -.6em; color: currentColor; }
+.cf-send[data-state="ok"] .pill-arrow .ui-check { color: var(--ink); }
+.cf-send[data-state="ok"]:hover .pill-arrow .ui-check, .cf-send[data-state="ok"]:focus-visible .pill-arrow .ui-check { color: #0A0A0A; }
+
+/* Anillo de «sonar» dentro del botón mientras envía (el .pill recorta con overflow:hidden) */
+.m-ring--btn { --ring-size: 56px; left: 50%; top: 50%; border-width: 1.5px; }
+
+
+/* ── 2. ROLL DE TEXTO ────────────────────────────────────────────────────────
+   Las dos copias visuales van aria-hidden (ui.js); el texto real es .roll-sr. */
+.roll .rc { transition: transform var(--m-dur-enter, 280ms) var(--m-ease, cubic-bezier(.2, .7, .2, 1)); }
+.roll-sr {
+  position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; border: 0;
+  overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap;
+}
+
+
+/* ── 3. DESTINOS DE ANCLA Y FOCO ─────────────────────────────────────────────
+   Una sección o el formulario reciben foco programático al llegar (tabindex=-1):
+   no son controles, así que no llevan anillo; el siguiente Tab sigue desde ahí. */
+[tabindex="-1"]:focus, [tabindex="-1"]:focus-visible { outline: none; box-shadow: none; }
+
+
+/* ── 4. CURSOR PROPIO ────────────────────────────────────────────────────────
+   Un anillo de 1 px en --ink (el motor de tema ya lo interpola noche ↔ crema), sin
+   punto y sin mezcla. El puntero NATIVO queda visible en todo, salvo sobre
+   .case-card y [data-cursor="drag"], donde el anillo con etiqueta lo sustituye.
+   ui.js solo agrega .has-cursor con puntero fino, pantalla ancha y movimiento. */
+.cursor-dot, body.has-cursor .cursor-dot { display: none !important; }
+body.has-cursor { cursor: auto; }
+body.has-cursor a, body.has-cursor button, body.has-cursor .pill, body.has-cursor summary,
+body.has-cursor [role="button"], body.has-cursor input[type="checkbox"], body.has-cursor label { cursor: pointer; }
+body.has-cursor input, body.has-cursor textarea { cursor: text; }
+body.has-cursor input[type="checkbox"] { cursor: pointer; }
+body.has-cursor .case-card, body.has-cursor .case-card *, body.has-cursor [data-cursor="drag"], body.has-cursor [data-cursor="drag"] * { cursor: none; }
+
+body.has-cursor .cursor-ring {
+  display: block; position: fixed; top: 0; left: 0; width: 0; height: 0; border: 0; border-radius: 0;
+  mix-blend-mode: normal; z-index: 9999; pointer-events: none;
+  opacity: 0; scale: 1;
+  transition: opacity var(--m-dur-fast, 120ms) var(--m-ease-state, ease), scale var(--m-dur-fast, 120ms) var(--m-ease, cubic-bezier(.2, .7, .2, 1));
+}
+body.has-cursor .cursor-ring.is-on { opacity: 1; }
+body.has-cursor .cursor-ring.is-down { scale: .9; }
+
+/* Tres discos del mismo trazo de 1 px que se relevan por opacidad y escala: el trazo no engorda y todo es compositor */
+.cur-d {
+  position: absolute; left: 0; top: 0; display: flex; align-items: center; justify-content: center;
+  border: 1px solid var(--ink); border-radius: 50%; color: var(--ink);
+  opacity: 0; transform: translate(-50%, -50%) scale(.64);
+  transition: opacity var(--m-dur-fast, 120ms) var(--m-ease-state, ease), transform var(--m-dur-base, 180ms) var(--m-ease, cubic-bezier(.2, .7, .2, 1));
+}
+.cur-d1 { width: 28px; height: 28px; }
+.cur-d2 { width: 44px; height: 44px; }
+.cur-d3 { width: 84px; height: 84px; }
+.cursor-ring[data-state="base"] .cur-d1,
+.cursor-ring[data-state="link"] .cur-d2,
+.cursor-ring[data-state="drag"] .cur-d3 { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+.cursor-ring[data-state="link"] .cur-d1,
+.cursor-ring[data-state="drag"] .cur-d1,
+.cursor-ring[data-state="drag"] .cur-d2 { transform: translate(-50%, -50%) scale(1.5); }   /* el que se va crece un poco: continuidad con el que entra */
+.cursor-ring .cur-label { color: var(--ink); opacity: 0; transition: opacity var(--m-dur-fast, 120ms) var(--m-ease-state, ease); }
+.cursor-ring[data-state="drag"] .cur-label { opacity: 1; }
+
+
+/* ── 5. VISTA PREVIA DE CASOS Y TARJETAS ─────────────────────────────────────
+   Opacidad + escala .96 → 1 (sin recorte), 280 ms; sale a .6 ×. Su degradado solo
+   se mueve mientras se ve (antes corría siempre, oculto). */
+#preview {
+  clip-path: none; opacity: 0; scale: .96;
+  transition: opacity calc(var(--m-dur-enter, 280ms) * var(--m-exit, .6)) var(--m-ease-exit, cubic-bezier(.4, 0, 1, 1)),
+              scale calc(var(--m-dur-enter, 280ms) * var(--m-exit, .6)) var(--m-ease-exit, cubic-bezier(.4, 0, 1, 1));
+}
+#preview.is-on {
+  opacity: 1; scale: 1;
+  transition: opacity var(--m-dur-enter, 280ms) var(--m-ease-state, ease), scale var(--m-dur-enter, 280ms) var(--m-ease, cubic-bezier(.2, .7, .2, 1));
+}
+#preview:not(.is-on) .pv-art { animation-play-state: paused; }
+
+/* Elevación por hover (--m-lift): con `translate`, aparte del transform que use quien las anima */
+.case-card {
+  transition: background-color var(--m-dur-base, 180ms) var(--m-ease-state, ease),
+              translate var(--m-dur-base, 180ms) var(--m-ease, cubic-bezier(.2, .7, .2, 1));
+}
+@media (hover: hover) and (pointer: fine) {
+  .case-card:hover { translate: 0 var(--m-lift, -6px); }
+}
+
+
+/* ── 6. MENÚ MÓVIL ───────────────────────────────────────────────────────────
+   Dos capas (cortina lila + panel crema): entra en --m-dur-layout con --m-ease; sale
+   en × --m-exit con --m-ease-exit. Los ítems entran en máscara (la li recorta) con
+   escalón de --m-stagger-each (tope por --k ≤ 6). Todo transiciones de CSS: se
+   interrumpen solas. ui.js solo pone .open, el foco y el inert del fondo. */
+.nav-overlay {
+  /* el panel es crema siempre: el anillo de foco no sigue al tema (que puede ser noche) */
+  --m-focus: 0 0 0 2px #F7F0E8, 0 0 0 4px #0A0A0A;
+  transition: visibility 0s linear calc(var(--m-dur-layout, 440ms) * var(--m-exit, .6));
+}
+.nav-overlay.open { transition-delay: 0s; }
+html.ui-menu-open { overflow: hidden; scrollbar-gutter: stable; }       /* sin Lenis (reducido, sin GSAP) el fondo tampoco se desplaza */
+
+.ov-pre2 { display: none; }                                              /* de tres capas a dos */
+.ov-hit { transition: background var(--m-dur-layout, 440ms) var(--m-ease-state, ease); }
+.ov-pre1, .ov-panel {
+  /* el 96 px extra saca la sombra del panel del borde mientras está cerrado */
+  transform: translateX(calc(100% + 96px));
+  transition: transform calc(var(--m-dur-layout, 440ms) * var(--m-exit, .6)) var(--m-ease-exit, cubic-bezier(.4, 0, 1, 1));
+}
+.ov-pre1 { transition-delay: var(--m-stagger-each, 40ms); }              /* al cerrar, el panel se va primero */
+.nav-overlay.open .ov-pre1 {
+  transform: none; transition: transform var(--m-dur-layout, 440ms) var(--m-ease, cubic-bezier(.2, .7, .2, 1)) 0s;
+}
+.nav-overlay.open .ov-panel {
+  transform: none; transition: transform var(--m-dur-layout, 440ms) var(--m-ease, cubic-bezier(.2, .7, .2, 1)) calc(var(--m-stagger-each, 40ms) * 2);
+}
+
+/* Panel: centrado cuando cabe y desde arriba cuando no (P1-12: en horizontal el primer ítem quedaba fuera de pantalla) */
+.ov-panel { justify-content: flex-start; }
+.ov-panel > ul { margin-top: auto; }
+.ov-panel > .ov-mail { margin-bottom: auto; }
+.ov-panel li { overflow: hidden; padding: 4px; margin: -4px; }           /* sitio para el anillo de foco dentro del recorte */
+
+.ov-item {
+  min-height: 44px;
+  transform: translateY(110%);
+  transition: transform calc(var(--m-dur-enter, 280ms) * var(--m-exit, .6)) var(--m-ease-exit, cubic-bezier(.4, 0, 1, 1)),
+              color var(--m-dur-fast, 120ms) var(--m-ease-state, ease);
+}
+.nav-overlay.open .ov-item {
+  transform: none;
+  transition: transform var(--m-dur-enter, 280ms) var(--m-ease, cubic-bezier(.2, .7, .2, 1))
+                calc(var(--m-dur-layout, 440ms) * .4 + min(var(--k, 0), 6) * var(--m-stagger-each, 40ms)),
+              color var(--m-dur-fast, 120ms) var(--m-ease-state, ease) 0s;
+}
+.ov-mail {
+  display: inline-flex; align-items: center; min-height: 44px;
+  opacity: 0; translate: 0 var(--m-dist-1, 12px);
+  transition: opacity calc(var(--m-dur-enter, 280ms) * var(--m-exit, .6)) var(--m-ease-exit, cubic-bezier(.4, 0, 1, 1)),
+              translate calc(var(--m-dur-enter, 280ms) * var(--m-exit, .6)) var(--m-ease-exit, cubic-bezier(.4, 0, 1, 1)),
+              color var(--m-dur-fast, 120ms) var(--m-ease-state, ease);
+}
+.nav-overlay.open .ov-mail {
+  opacity: 1; translate: 0 0;
+  transition: opacity var(--m-dur-enter, 280ms) var(--m-ease-state, ease) calc(var(--m-dur-layout, 440ms) * .4 + min(var(--k, 0), 6) * var(--m-stagger-each, 40ms)),
+              translate var(--m-dur-enter, 280ms) var(--m-ease, cubic-bezier(.2, .7, .2, 1)) calc(var(--m-dur-layout, 440ms) * .4 + min(var(--k, 0), 6) * var(--m-stagger-each, 40ms)),
+              color var(--m-dur-fast, 120ms) var(--m-ease-state, ease) 0s;
+}
+
+/* «Cerrar»: 44×44 como mínimo, siempre a la vista aunque el panel se desplace en horizontal */
+.ov-close {
+  position: fixed; min-width: 44px; min-height: 44px; padding: 12px 10px; border-radius: 8px;
+  display: inline-flex; align-items: center; justify-content: center;
+  transition: color var(--m-dur-fast, 120ms) var(--m-ease-state, ease);
+}
+
+/* Hamburguesa: 44×44 (hoy 40×36); las tres líneas siguen siendo de 26 × 2 px */
+.burger {
+  display: inline-flex; flex-direction: column; align-items: center; justify-content: center;
+  min-width: 44px; min-height: 44px; padding: 0 9px; border-radius: 8px;
+}
+.burger span {
+  transition: transform var(--m-dur-layout, 440ms) var(--m-ease, cubic-bezier(.2, .7, .2, 1)),
+              opacity var(--m-dur-base, 180ms) var(--m-ease-state, ease),
+              background-color var(--m-dur-base, 180ms) var(--m-ease-state, ease);
+}
+
+/* Móvil horizontal (844×390): panel más ancho y lista en dos columnas, así las 7 opciones y «Correo»
+   caben sin desplazarse y cada una conserva su alto de 44 px */
+@media (max-height: 520px) {
+  .ov-pre1, .ov-panel { width: min(88vw, 640px); }
+  .ov-panel { padding-top: 52px; padding-bottom: 16px; }          /* deja libre la fila de «Cerrar» */
+  .ov-panel > ul { display: grid; grid-template-columns: 1fr 1fr; column-gap: 16px; }
+  .ov-close { top: 8px; }
+  .ov-item { font-size: clamp(22px, 5.4vh, 30px); }
+  .ov-mail { margin-top: 6px; }
+}
+
+
+/* ── 7. FORMULARIO ───────────────────────────────────────────────────────── */
+.cform { position: relative; }
+
+/* Campo: línea de acento que se DIBUJA de izquierda a derecha al enfocar y se retira hacia la derecha al salir */
+.cf-field { position: relative; }
+.cf-field > span { transition: color var(--m-dur-fast, 120ms) var(--m-ease-state, ease); }
+.cf-field:focus-within > span { color: var(--ink); }
+.cf-field input, .cf-field textarea { transition: border-color var(--m-dur-base, 180ms) var(--m-ease-state, ease); }
+.cf-field::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 2px; pointer-events: none;
+  background: var(--green, #8B6DE8);
+  transform: scaleX(0); transform-origin: right;
+  transition: transform var(--m-dur-enter, 280ms) var(--m-ease, cubic-bezier(.2, .7, .2, 1));
+}
+.cf-field:focus-within::after { transform: scaleX(1); transform-origin: left; }
+.cf-field.bad::after { background: var(--m-err, #FF6B4A); }
+
+/* Foco: sin recuadro con el mouse (la línea basta); anillo doble solo al navegar con teclado (html.ui-kbd, ui.js) */
+.cf-field input:focus, .cf-field textarea:focus { outline: 2px solid transparent; outline-offset: 2px; }
+html.ui-kbd .cf-field input:focus-visible, html.ui-kbd .cf-field textarea:focus-visible { box-shadow: var(--m-focus); }
+
+/* Error de campo: color, línea, mensaje EN LÍNEA bajo el campo y una sola oscilación de ±4 px */
+.cf-field.bad > span, .cf-consent.bad { color: var(--m-err, #FF6B4A); }
+.cf-field.bad input, .cf-field.bad textarea { border-bottom-color: var(--m-err, #FF6B4A); }
+.cf-err { color: var(--m-err, #FF6B4A); }
+.closing .cf-err { color: var(--m-err, #FF6B4A); }
+.cf-err:not(:empty) { animation: ui-err-in var(--m-dur-enter, 280ms) var(--m-ease, cubic-bezier(.2, .7, .2, 1)) both; }
+@keyframes ui-err-in { from { opacity: 0; transform: translateY(var(--m-dist-1, 12px)); } to { opacity: 1; transform: none; } }
+.nudge { animation: ui-nudge var(--m-dur-base, 180ms) var(--m-ease-state, ease) 1; }
+@keyframes ui-nudge { 0% { translate: 0; } 30% { translate: -4px; } 70% { translate: 4px; } 100% { translate: 0; } }
+
+/* Casilla de consentimiento: el input real (44×44, sin fondo) recibe clic y foco; la caja y la marca las dibuja el span */
+.cf-consent { position: relative; display: block; padding-left: 34px; cursor: pointer; }
+.cf-consent input {
+  position: absolute; z-index: 1; left: -11px; top: -12px; width: 44px; height: 44px; margin: 0;
+  border: 0; border-radius: 12px; background: transparent; cursor: pointer;      /* visible (no opacity:0): el foco y el área de toque son del propio input */
+  -webkit-appearance: none; appearance: none;
+}
+.cf-consent > span::before {
+  content: ""; position: absolute; left: 0; top: -1px; width: 22px; height: 22px; box-sizing: border-box; pointer-events: none;
+  border: 1.5px solid currentColor; border-radius: 6px; background: transparent;
+  transition: background-color var(--m-dur-fast, 120ms) var(--m-ease-state, ease), border-color var(--m-dur-fast, 120ms) var(--m-ease-state, ease), box-shadow var(--m-dur-fast, 120ms) var(--m-ease-state, ease);
+}
+.cf-consent > span::after {
+  content: ""; position: absolute; left: 0; top: -1px; width: 22px; height: 22px; pointer-events: none;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M5.5 12.5l4 4L18.5 7.5' fill='none' stroke='%232E0B8A' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 18px no-repeat;
+  clip-path: inset(0 100% 0 0);
+  transition: clip-path var(--m-dur-fast, 120ms) var(--m-ease, cubic-bezier(.2, .7, .2, 1));
+}
+.cf-consent input:checked + span::before { background: #BDA8F1; border-color: #BDA8F1; }
+.cf-consent input:checked + span::after { clip-path: inset(0); }
+.cf-consent input:focus-visible { box-shadow: var(--m-focus); }
+.cf-consent.bad { outline: 1px solid var(--m-err, #FF6B4A); outline-offset: 6px; border-radius: 6px; }
+.cf-consent.bad > span::before { border-color: var(--m-err, #FF6B4A); }
+
+/* Mensaje general (#cfMsg): «Enviando…», éxito con palomita dibujada, error de red */
+.cf-msg { display: flex; align-items: center; gap: 10px; }
+.cf-msg:empty { display: block; }
+.cf-msg .ui-check { flex: none; width: 24px; height: 24px; }
+.ui-check { opacity: 0; transition: opacity var(--m-dur-base, 180ms) var(--m-ease-state, ease); }
+.ui-check path { stroke: currentColor; stroke-width: 2.4; fill: none; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 1; stroke-dashoffset: 1; }
+.ui-check.on { opacity: 1; }
+.ui-check.on path { animation: ui-draw var(--m-dur-enter, 280ms) var(--m-ease, cubic-bezier(.2, .7, .2, 1)) both; }
+@keyframes ui-draw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+
+/* Anillo local del éxito: sale del botón y se apaga (200 px, nunca más de 220) */
+.m-ring--send { --ring-size: 200px; --m-ring-color: #BDA8F1; }
+
+/* Tras el éxito los campos quedan atenuados e inertes unos segundos; sin transición, para que ningún bloque grande se anime */
+.cform.is-sent > :not(.cf-send):not(.cf-msg):not(.m-ring) { opacity: .5; }
+
+
+/* ── 8. LOGOS: sin distorsión líquida al pasar el cursor ─────────────────────
+   Deformar el logo contradice el manual (DS §5). El disparo vive en sections.js (G-23);
+   aquí se anula su efecto. El wordmark gigante del pie conserva su única pasada. */
+.wordmark.liquid-on, .wordmark.liquid-on .logo-svg { filter: none; }
+
+
+/* ── 9. OBJETIVOS TÁCTILES (≥44×44) ──────────────────────────────────────── */
+.wordmark { padding-block: 12px; margin-block: -12px; }                 /* área de toque sin mover el diseño */
+@media (max-width: 900px), (pointer: coarse) {
+  .pill { min-height: 44px; }
+  .cf-field input { min-height: 48px; }
+  .cf-consent { min-height: 44px; display: flex; align-items: center; }
+  .cf-consent > span { display: block; }
+  .cf-consent input { top: 50%; margin-top: -22px; }
+  .cf-consent > span::before, .cf-consent > span::after { top: 50%; margin-top: -12px; }
+}
+
+
+/* ── 10. MOVIMIENTO REDUCIDO INTENCIONAL ─────────────────────────────────────
+   Se quita lo espacial (desplazar, escalar, deslizar, oscilar, dibujar); se conserva el
+   estado (color, borde, opacidad, relleno) a 120/180 ms. motion.css ya limita las
+   transiciones a esas propiedades con !important; aquí solo lo que es de interfaz. */
+@media (prefers-reduced-motion: reduce) {
+  /* Botones: el relleno es un cambio de color a --m-dur-fast; la presión, opacidad */
+  .pill::after, .pill:hover::after, .pill:focus-visible::after { transform: none; }
+  .pill::after { opacity: 0; }
+  .pill:hover::after, .pill:focus-visible::after { opacity: 1; }
+  .pill, .pill::after { transition-duration: var(--m-dur-fast, 120ms) !important; }
+  .pill:hover .pill-arrow, .pill:focus-visible .pill-arrow { transform: none; }
+  .pill:active { opacity: .85; scale: 1; }
+  .pill[aria-busy="true"] { opacity: .7; }
+  .cf-send .m-ring--btn { display: block; opacity: .7; transform: none; }   /* el estado de carga se ve con un trazo estático */
+  .cf-send:not([aria-busy="true"]) .m-ring--btn { display: none; }
+  .magnetic { translate: none !important; }
+
+  /* Roll: solo color */
+  .roll > span:nth-child(1) .rc { transform: none !important; }
+  .roll > span:nth-child(2) { display: none; }
+
+  /* Cursor y vista previa: no existen */
+  body.has-cursor .cursor-ring, #preview { display: none; }
+  .case-card:hover { translate: none; }
+
+  /* Menú: el panel entra con fundido, sin deslizamiento; los ítems aparecen juntos */
+  .nav-overlay {
+    opacity: 0;
+    transition: opacity var(--m-dur-base, 180ms) var(--m-ease-state, ease) 0s,
+                visibility 0s linear var(--m-dur-base, 180ms) !important;   /* se oculta al terminar el fundido */
+  }
+  .nav-overlay.open {
+    opacity: 1;
+    transition: opacity var(--m-dur-base, 180ms) var(--m-ease-state, ease) 0s,
+                visibility 0s linear 0s !important;                         /* visible al instante: el foco entra al primer enlace */
+  }
+  .ov-pre1 { display: none; }
+  .ov-panel, .ov-item { transform: none !important; }
+  .ov-mail { translate: none !important; opacity: 1; }
+  .ov-hit { transition-duration: var(--m-dur-base, 180ms) !important; }
+
+  /* Formulario: línea de foco con fundido, sin oscilación, palomita sin dibujarse */
+  .cf-field::after { transform: none; opacity: 0; }
+  .cf-field:focus-within::after { opacity: 1; }
+  .nudge { animation: none; }
+  .cf-err:not(:empty) { animation-duration: var(--m-dur-base, 180ms); }
+  .ui-check.on path { animation: none; stroke-dashoffset: 0; }
+  .cf-consent > span::after { clip-path: none; opacity: 0; transition: opacity var(--m-dur-fast, 120ms) var(--m-ease-state, ease) !important; transition-property: opacity !important; }
+  .cf-consent input:checked + span::after { opacity: 1; }
+}

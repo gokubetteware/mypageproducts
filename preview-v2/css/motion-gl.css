@@ -1,0 +1,7 @@
+/* ============================================================================
+   css/motion-gl.css — CAPAS WEBGL (propietario: gl)
+   Seda y iridiscente del hero, grainient de producto, listón de scroll:
+   respaldos CSS, cuadro estático en movimiento reducido, anulaciones de
+   mezcla. Se carga al final: lee solo los tokens --m-* (nada de números
+   sueltos). Ver js/CONTRATO.md, «v2 · núcleo».
+   ============================================================================ */

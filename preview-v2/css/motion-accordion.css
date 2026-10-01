@@ -1,0 +1,6 @@
+/* ============================================================================
+   css/motion-accordion.css — ACORDEÓN DE PRODUCTOS (propietario: accordion)
+   Cascada de contenido (.ag-body .tool-content > * con --i), estados del
+   panel, foco, atenuado. Se carga después de motion-sections.css: lee solo los
+   tokens --m-* (nada de números sueltos). Ver js/CONTRATO.md, «v2 · núcleo».
+   ============================================================================ */

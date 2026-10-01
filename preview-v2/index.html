@@ -22,27 +22,36 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+<!-- La hoja de fuentes ya no bloquea el render (H11): preload + onload, con respaldo en <noscript>.
+     font-display:swap viene en la URL; core.js espera a las fuentes un máximo de 1,200 ms antes del intro. -->
+<link rel="preload" as="style" data-fonts href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap" onload="this.onload=null;this.rel='stylesheet'" onerror="this.setAttribute('data-err','1')">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap"></noscript>
 
 <script>
-  /* Marca JS activo (habilita el intro) y red de seguridad: si algún
-     plugin del CDN no baja, el loader se quita solo a los 4s y la
-     página queda legible aunque no anime nada. */
+  /* Marca JS activo (habilita los estados ocultos de las llegadas) y red de
+     seguridad: si js/core.js no baja o falla, core no llega a poner html.m-ready;
+     a los 4 s se quita la clase js (todo vuelve a estar visible) y se retira el
+     loader. Debe correr antes del primer pintado, por eso va inline. */
   document.documentElement.classList.add('js');
   setTimeout(function () {
+    var d = document.documentElement;
+    if (!d.classList.contains('m-ready')) d.classList.remove('js');
     var l = document.getElementById('loader');
     if (l && !l.dataset.done) { l.style.display = 'none'; document.body.classList.remove('is-loading'); }
   }, 4000);
 </script>
 
 <link rel="stylesheet" href="css/site.css">
+<link rel="stylesheet" href="css/motion.css">
+<link rel="stylesheet" href="css/motion-ui.css">
+<link rel="stylesheet" href="css/motion-sections.css">
+<link rel="stylesheet" href="css/motion-accordion.css">
+<link rel="stylesheet" href="css/motion-gl.css">
 </head>
 <body class="is-loading">
 
-<!-- ══════════ INTRO: 6 columnas ══════════ -->
-<div id="loader">
-  <div class="lo-px" id="loPx" aria-hidden="true"></div>
-</div>
+<!-- ══════════ LOADER: capa sólida que se desvanece al arrancar el intro «Primer timbre» ══════════ -->
+<div id="loader" aria-hidden="true"></div>
 
 <!-- ══════════ DEFS: gradientes, halos y las 4 formas del morph ══════════ -->
 <svg id="blobDefs" aria-hidden="true" focusable="false">
@@ -75,21 +84,6 @@
       <stop offset="0%" stop-color="#F5487F"/><stop offset="45%" stop-color="#A855F7"/><stop offset="100%" stop-color="#14B8C4"/>
     </radialGradient>
 
-    <!-- Halos: SOLO para los blobs del hero. flood-opacity la modula
-         la velocidad de scroll (P5). -->
-    <filter id="haloMix" x="-70%" y="-70%" width="240%" height="240%">
-      <feDropShadow dx="0" dy="0" stdDeviation="16" flood-color="#A855F7" flood-opacity="0.5"/>
-    </filter>
-    <filter id="haloOrange" x="-70%" y="-70%" width="240%" height="240%">
-      <feDropShadow dx="0" dy="0" stdDeviation="16" flood-color="#F5A623" flood-opacity="0.5"/>
-    </filter>
-    <filter id="haloLilac" x="-70%" y="-70%" width="240%" height="240%">
-      <feDropShadow dx="0" dy="0" stdDeviation="16" flood-color="#A855F7" flood-opacity="0.5"/>
-    </filter>
-    <filter id="haloGreen" x="-70%" y="-70%" width="240%" height="240%">
-      <feDropShadow dx="0" dy="0" stdDeviation="16" flood-color="#511BDB" flood-opacity="0.5"/>
-    </filter>
-
     <!-- Las 4 formas destino. Mismo número de segmentos para que el
          morph sea limpio; MorphSVG igual resuelve si difieren. -->
     <linearGradient id="gLine" x1="0" y1="0" x2="0" y2="1">
@@ -114,7 +108,6 @@
   </defs>
 </svg>
 
-<div class="grain" aria-hidden="true"></div>
 <div class="progress" id="progress" aria-hidden="true"></div>
 <div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
 <div class="cursor-ring" id="cursorRing" aria-hidden="true"><span class="cur-label" id="curLabel"></span></div>
@@ -179,47 +172,42 @@
 <main id="top">
 
   <!-- ══════════ HERO ══════════ -->
-  <section class="hero has-vline" id="hero">
+  <section class="hero has-vline" id="hero" data-sec="top">
     <div class="hero-silk" aria-hidden="true"></div>
     <div class="hero-aurora" aria-hidden="true">
       <span class="au au1"></span><span class="au au2"></span><span class="au au3"></span>
     </div>
     <div class="wrap hero-inner">
-
-      <div class="hero-blobs hero-blobs--back" aria-hidden="true">
-      </div>
+      <span class="m-ring" id="heroRing" aria-hidden="true"></span>
 
       <div class="hero-title">
         <h1 class="t-display" id="heroDisplay">Atiende a todos. <span class="grad-chars">Siempre.</span></h1>
         <span class="hero-irid" aria-hidden="true"></span>
       </div>
 
-      <div class="hero-blobs hero-blobs--front" aria-hidden="true">
-      </div>
-
-      <p class="t-body-lg hero-sub js-hero">
+      <p class="t-body-lg hero-sub m-arrive m-arrive--1" data-arrive="manual" style="--m-i:0">
         Asistentes de voz y WhatsApp, páginas web, video y más — todo a la medida de tu negocio.
         Tus clientes reciben respuesta en segundos, a cualquier hora, sin que nadie conteste.
       </p>
 
-      <div class="hero-cta js-hero">
+      <div class="hero-cta m-arrive m-arrive--1" data-arrive="manual" style="--m-i:0">
         <a href="#voz" class="pill magnetic" data-roll="Ver productos">Ver productos <span class="pill-arrow">&rarr;</span></a>
         <a href="#contacto" class="pill pill-grad magnetic" data-roll="Agendar demo">Agendar demo</a>
       </div>
 
       <div class="hero-meta">
-        <div class="js-hero"><div class="n" data-count="24">0</div><div class="l">Horas al día activo</div></div>
-        <div class="js-hero"><div class="n" data-count="3">0</div><div class="l">Canales conectados</div></div>
-        <div class="js-hero"><div class="n" data-count="100" data-suffix="%">0</div><div class="l">En automático</div></div>
-        <div class="js-hero"><div class="n">0</div><div class="l">Llamadas perdidas</div></div>
+        <div class="m-arrive m-arrive--1" data-arrive="manual" style="--m-i:0"><div class="n" data-count="24">0</div><div class="l">Horas al día activo</div></div>
+        <div class="m-arrive m-arrive--1" data-arrive="manual" style="--m-i:1"><div class="n" data-count="3">0</div><div class="l">Canales conectados</div></div>
+        <div class="m-arrive m-arrive--1" data-arrive="manual" style="--m-i:2"><div class="n" data-count="100" data-suffix="%">0</div><div class="l">En automático</div></div>
+        <div class="m-arrive m-arrive--1" data-arrive="manual" style="--m-i:3"><div class="n">0</div><div class="l">Llamadas perdidas</div></div>
       </div>
 
-      <span class="scroll-cue js-hero"><span class="rail"></span> Scroll</span>
+      <span class="scroll-cue m-arrive m-arrive--1" data-arrive="manual" data-ambient style="--m-i:4"><span class="rail"></span> Scroll</span>
     </div>
   </section>
 
   <!-- ══════════ MARQUEE ══════════ -->
-  <div class="marquee-band">
+  <div class="marquee-band" data-sec="top">
     <div class="marquee-track" id="marquee" aria-hidden="true">
       <span>Consultorios</span><span>Restaurantes</span><span>Inmobiliarias</span><span>Salones</span><span>Talleres</span><span>Despachos</span><span>Gimnasios</span><span>Veterinarias</span><span>Dentistas</span><span>Agencias</span>
       <span>Consultorios</span><span>Restaurantes</span><span>Inmobiliarias</span><span>Salones</span><span>Talleres</span><span>Despachos</span><span>Gimnasios</span><span>Veterinarias</span><span>Dentistas</span><span>Agencias</span>
@@ -227,7 +215,7 @@
   </div>
 
   <!-- ══════════ LA DIFERENCIA, EN DATOS ══════════ -->
-  <section class="has-vline" id="datos">
+  <section class="has-vline" id="datos" data-sec="top">
     <svg class="blob amb amb-datos js-parallax" viewBox="0 0 200 200" aria-hidden="true" data-morph><path d="M187.9,100.0 C190.4,106.9 191.9,115.2 190.9,122.4 C189.8,129.6 186.4,137.3 181.8,143.0 C177.3,148.6 170.2,153.2 163.6,156.4 C157.1,159.5 149.3,160.7 142.7,161.8 C136.0,162.9 129.8,162.6 124.0,163.2 C118.2,163.9 113.4,164.5 108.0,165.9 C102.6,167.3 97.5,169.7 91.3,171.5 C85.2,173.2 78.2,175.8 71.1,176.3 C63.9,176.8 55.5,176.8 48.6,174.4 C41.7,172.1 34.4,167.7 29.6,162.3 C24.8,156.9 21.4,149.2 19.9,142.1 C18.3,134.9 19.3,126.6 20.6,119.6 C22.0,112.6 25.4,105.9 27.9,100.0 C30.4,94.1 33.5,89.3 35.5,84.1 C37.6,78.9 38.8,74.2 40.2,68.6 C41.6,63.0 41.9,56.7 43.9,50.3 C45.8,43.9 47.9,36.2 51.8,30.1 C55.7,24.0 61.1,17.5 67.2,13.6 C73.4,9.8 81.5,7.2 88.7,7.1 C95.9,6.9 104.1,9.4 110.6,12.6 C117.1,15.9 123.0,21.7 127.8,26.7 C132.6,31.7 135.9,37.8 139.5,42.8 C143.1,47.7 145.7,52.1 149.4,56.2 C153.1,60.4 157.1,63.5 161.5,67.7 C166.0,71.9 171.6,75.9 176.0,81.3 C180.4,86.7 185.4,93.1 187.9,100.0 Z" fill="url(#gGreen)"/></svg>
     <div class="wrap">
       <div class="section-head">
@@ -245,6 +233,7 @@
             <h3 class="t-subhead">Un día de llamadas</h3>
             <div class="chart-legend"><span class="lg lg-man">Manual</span><span class="lg lg-sof">Con Sofía</span></div>
           </div>
+          <div class="chart-plot" id="chartPlot">
           <svg id="chartA" viewBox="0 0 800 300" aria-label="Capacidad de respuesta a lo largo del día: manual contra automatizada">
             <rect class="cA-night" x="60" y="40" width="240" height="220"/>
             <rect class="cA-night" x="660" y="40" width="120" height="220"/>
@@ -269,6 +258,8 @@
               <text class="cA-tag" x="736" y="96" text-anchor="end">23:07 · cita agendada</text>
             </g>
           </svg>
+          <span class="m-ring m-ring--mark" id="markRing" aria-hidden="true"></span>
+          </div>
           <p class="chart-foot">Capacidad de respuesta a lo largo del día. Cobertura horaria: escenario ilustrativo (L–V, 9–18 con comida) frente a 24/7.</p>
         </div>
 
@@ -277,7 +268,7 @@
           <div class="data-card js-fade">
             <div class="dc-label">Horas por semana con alguien que contesta</div>
             <div class="dc-bar"><span class="dc-name">Manual</span><span class="bar"><i class="bar-fill bf-man" style="width:27%"></i></span><span class="dc-val"><span data-count="45" data-suffix=" h">0</span></span></div>
-            <div class="dc-bar"><span class="dc-name">Sofía</span><span class="bar"><i class="bar-fill bf-sof" style="width:100%"></i></span><span class="dc-val"><span data-count="168" data-suffix=" h">0</span></span></div>
+            <div class="dc-bar"><span class="dc-name">Sofía</span><span class="bar"><i class="bar-fill bf-sof" data-ambient style="width:100%"></i></span><span class="dc-val"><span data-count="168" data-suffix=" h">0</span></span></div>
           </div>
           <div class="data-card js-fade">
             <div class="dc-label">Primera respuesta al cliente</div>
@@ -296,16 +287,16 @@
         <h3 class="t-subhead flow-head js-mask" data-split="chars">Cómo se recupera un cliente</h3>
         <div class="flow" id="flowRec">
           <svg class="flow-line" viewBox="0 0 1000 40" preserveAspectRatio="none" aria-hidden="true"><path id="flowPath" d="M0.0,20.0 L6.2,21.9 L12.5,23.0 L18.8,22.6 L25.0,20.9 L31.2,18.9 L37.5,17.3 L43.8,17.1 L50.0,18.2 L56.2,20.2 L62.5,22.1 L68.8,23.0 L75.0,22.4 L81.2,20.7 L87.5,18.6 L93.8,17.2 L100.0,17.1 L106.2,18.4 L112.5,20.5 L118.8,22.3 L125.0,23.0 L131.2,22.3 L137.5,20.5 L143.8,18.4 L150.0,17.1 L156.2,17.1 L162.5,18.5 L168.8,20.8 L175.0,22.7 L181.2,23.5 L187.5,22.6 L193.8,20.3 L200.0,17.5 L206.2,15.6 L212.5,15.6 L218.8,17.9 L225.0,21.8 L231.2,25.5 L237.5,27.0 L243.8,25.1 L250.0,20.0 L256.2,14.1 L262.5,10.3 L268.8,11.1 L275.0,16.6 L281.2,24.4 L287.5,30.4 L293.8,31.6 L300.0,27.1 L306.2,19.1 L312.5,11.7 L318.8,8.6 L325.0,11.1 L331.2,17.6 L337.5,24.4 L343.8,28.4 L350.0,28.0 L356.2,24.1 L362.5,18.9 L368.8,15.1 L375.0,14.1 L381.2,15.9 L387.5,19.2 L393.8,22.4 L400.0,24.0 L406.2,23.6 L412.5,21.7 L418.8,19.2 L425.0,17.2 L431.2,16.7 L437.5,17.7 L443.8,19.8 L450.0,21.8 L456.2,23.0 L462.5,22.8 L468.8,21.2 L475.0,19.0 L481.2,17.3 L487.5,16.8 L493.8,17.8 L500.0,20.0 L506.2,22.4 L512.5,23.8 L518.8,23.5 L525.0,21.4 L531.2,18.1 L537.5,15.3 L543.8,14.3 L550.0,16.3 L556.2,20.5 L562.5,25.4 L568.8,28.3 L575.0,27.3 L581.2,22.3 L587.5,15.3 L593.8,10.0 L600.0,9.2 L606.2,13.9 L612.5,21.9 L618.8,29.1 L625.0,32.0 L631.2,29.0 L637.5,21.8 L643.8,14.2 L650.0,10.0 L656.2,10.8 L662.5,15.8 L668.8,22.0 L675.0,26.4 L681.2,27.2 L687.5,24.7 L693.8,20.5 L700.0,16.8 L706.2,15.1 L712.5,15.9 L718.8,18.4 L725.0,21.2 L731.2,23.2 L737.5,23.5 L743.8,22.2 L750.0,20.0 L756.2,17.9 L762.5,16.9 L768.8,17.4 L775.0,19.1 L781.2,21.2 L787.5,22.7 L793.8,22.9 L800.0,21.8 L806.2,19.8 L812.5,17.9 L818.8,17.0 L825.0,17.6 L831.2,19.3 L837.5,21.4 L843.8,22.8 L850.0,22.9 L856.2,21.6 L862.5,19.5 L868.8,17.7 L875.0,17.0 L881.2,17.7 L887.5,19.5 L893.8,21.6 L900.0,22.9 L906.2,22.8 L912.5,21.4 L918.8,19.3 L925.0,17.6 L931.2,17.0 L937.5,17.9 L943.8,19.8 L950.0,21.8 L956.2,22.9 L962.5,22.7 L968.8,21.1 L975.0,19.1 L981.2,17.4 L987.5,17.0 L993.8,18.1 L1000.0,20.0"/></svg>
-          <div class="flow-step js-fade"><span class="fs-time">23:07</span><h4>Un cliente llama</h4><p>Fuera de horario. Antes, esta llamada se iba al buzón.</p></div>
-          <div class="flow-step js-fade"><span class="fs-time">23:07</span><h4>Sofía contesta al primer timbre</h4><p>Escucha, resuelve la duda y propone horarios reales.</p></div>
-          <div class="flow-step js-fade"><span class="fs-time">23:09</span><h4>Cita agendada y confirmada</h4><p>Directo a tu Google Calendar, con confirmación por WhatsApp.</p></div>
-          <div class="flow-step js-fade"><span class="fs-time">8:00 am</span><h4>Cliente recuperado</h4><p>Tú llegas y el día ya trae una cita más.</p></div>
+          <div class="flow-step js-fade"><span class="m-ring m-ring--step" aria-hidden="true"></span><span class="fs-time">23:07</span><h4>Un cliente llama</h4><p>Fuera de horario. Antes, esta llamada se iba al buzón.</p></div>
+          <div class="flow-step js-fade"><span class="m-ring m-ring--step" aria-hidden="true"></span><span class="fs-time">23:07</span><h4>Sofía contesta al primer timbre</h4><p>Escucha, resuelve la duda y propone horarios reales.</p></div>
+          <div class="flow-step js-fade"><span class="m-ring m-ring--step" aria-hidden="true"></span><span class="fs-time">23:09</span><h4>Cita agendada y confirmada</h4><p>Directo a tu Google Calendar, con confirmación por WhatsApp.</p></div>
+          <div class="flow-step js-fade"><span class="m-ring m-ring--step" aria-hidden="true"></span><span class="fs-time">8:00 am</span><h4>Cliente recuperado</h4><p>Tú llegas y el día ya trae una cita más.</p></div>
         </div>
     </div>
   </section>
 
   <!-- ══════════ MANIFIESTO (G2) ══════════ -->
-  <section class="manifesto has-vline" id="manifiesto">
+  <section class="manifesto has-vline" id="manifiesto" data-sec="manifiesto">
     <div class="manifesto-pin">
       <div class="mf-waves" aria-hidden="true">
         <svg class="mf-wave w1" viewBox="0 0 2400 300" preserveAspectRatio="none"><path d="M0.0,150.0 L4.6,161.3 L9.2,173.5 L13.8,185.9 L18.5,197.8 L23.1,208.3 L27.7,216.7 L32.3,222.2 L36.9,224.3 L41.5,222.6 L46.2,216.8 L50.8,207.1 L55.4,193.7 L60.0,177.3 L64.6,158.7 L69.2,138.9 L73.8,119.0 L78.5,100.1 L83.1,83.4 L87.7,69.9 L92.3,60.2 L96.9,55.1 L101.5,54.8 L106.2,59.3 L110.8,68.2 L115.4,80.9 L120.0,96.7 L124.6,114.6 L129.2,133.4 L133.8,152.0 L138.5,169.5 L143.1,185.0 L147.7,197.6 L152.3,206.8 L156.9,212.5 L161.5,214.5 L166.2,213.1 L170.8,208.6 L175.4,201.7 L180.0,192.9 L184.6,182.9 L189.2,172.5 L193.8,162.3 L198.5,152.9 L203.1,144.6 L207.7,137.9 L212.3,132.8 L216.9,129.3 L221.5,127.6 L226.2,127.2 L230.8,128.2 L235.4,130.1 L240.0,132.7 L244.6,135.7 L249.2,138.9 L253.8,142.2 L258.5,145.3 L263.1,148.1 L267.7,150.5 L272.3,152.6 L276.9,154.2 L281.5,155.5 L286.2,156.3 L290.8,156.9 L295.4,157.0 L300.0,156.9 L304.6,156.5 L309.2,155.9 L313.8,155.1 L318.5,154.0 L323.1,152.9 L327.7,151.6 L332.3,150.3 L336.9,149.0 L341.5,147.7 L346.2,146.6 L350.8,145.6 L355.4,144.8 L360.0,144.3 L364.6,144.0 L369.2,144.0 L373.8,144.3 L378.5,144.9 L383.1,145.7 L387.7,146.7 L392.3,147.9 L396.9,149.1 L401.5,150.4 L406.2,151.7 L410.8,152.9 L415.4,154.0 L420.0,154.9 L424.6,155.5 L429.2,155.9 L433.8,156.0 L438.5,155.8 L443.1,155.4 L447.7,154.7 L452.3,153.8 L456.9,152.7 L461.5,151.5 L466.2,150.2 L470.8,148.8 L475.4,147.4 L480.0,146.1 L484.6,144.8 L489.2,143.7 L493.8,142.8 L498.5,142.1 L503.1,141.7 L507.7,141.6 L512.3,141.9 L516.9,142.7 L521.5,144.0 L526.2,145.9 L530.8,148.4 L535.4,151.4 L540.0,155.0 L544.6,159.1 L549.2,163.4 L553.8,167.8 L558.5,172.0 L563.1,175.6 L567.7,178.4 L572.3,179.9 L576.9,179.9 L581.5,178.0 L586.2,174.0 L590.8,168.0 L595.4,159.9 L600.0,150.0 L604.6,138.7 L609.2,126.5 L613.8,114.1 L618.5,102.2 L623.1,91.7 L627.7,83.3 L632.3,77.8 L636.9,75.7 L641.5,77.4 L646.2,83.2 L650.8,92.9 L655.4,106.3 L660.0,122.7 L664.6,141.3 L669.2,161.1 L673.8,181.0 L678.5,199.9 L683.1,216.6 L687.7,230.1 L692.3,239.8 L696.9,244.9 L701.5,245.2 L706.2,240.7 L710.8,231.8 L715.4,219.1 L720.0,203.3 L724.6,185.4 L729.2,166.6 L733.8,148.0 L738.5,130.5 L743.1,115.0 L747.7,102.4 L752.3,93.2 L756.9,87.5 L761.5,85.5 L766.2,86.9 L770.8,91.4 L775.4,98.3 L780.0,107.1 L784.6,117.1 L789.2,127.5 L793.8,137.7 L798.5,147.1 L803.1,155.4 L807.7,162.1 L812.3,167.2 L816.9,170.7 L821.5,172.4 L826.2,172.8 L830.8,171.8 L835.4,169.9 L840.0,167.3 L844.6,164.3 L849.2,161.1 L853.8,157.8 L858.5,154.7 L863.1,151.9 L867.7,149.5 L872.3,147.4 L876.9,145.8 L881.5,144.5 L886.2,143.7 L890.8,143.1 L895.4,143.0 L900.0,143.1 L904.6,143.5 L909.2,144.1 L913.8,144.9 L918.5,146.0 L923.1,147.1 L927.7,148.4 L932.3,149.7 L936.9,151.0 L941.5,152.3 L946.2,153.4 L950.8,154.4 L955.4,155.2 L960.0,155.7 L964.6,156.0 L969.2,156.0 L973.8,155.7 L978.5,155.1 L983.1,154.3 L987.7,153.3 L992.3,152.1 L996.9,150.9 L1001.5,149.6 L1006.2,148.3 L1010.8,147.1 L1015.4,146.0 L1020.0,145.1 L1024.6,144.5 L1029.2,144.1 L1033.8,144.0 L1038.5,144.2 L1043.1,144.6 L1047.7,145.3 L1052.3,146.2 L1056.9,147.3 L1061.5,148.5 L1066.2,149.8 L1070.8,151.2 L1075.4,152.6 L1080.0,153.9 L1084.6,155.2 L1089.2,156.3 L1093.8,157.2 L1098.5,157.9 L1103.1,158.3 L1107.7,158.4 L1112.3,158.1 L1116.9,157.3 L1121.5,156.0 L1126.2,154.1 L1130.8,151.6 L1135.4,148.6 L1140.0,145.0 L1144.6,140.9 L1149.2,136.6 L1153.8,132.2 L1158.5,128.0 L1163.1,124.4 L1167.7,121.6 L1172.3,120.1 L1176.9,120.1 L1181.5,122.0 L1186.2,126.0 L1190.8,132.0 L1195.4,140.1 L1200.0,150.0 L1204.6,161.3 L1209.2,173.5 L1213.8,185.9 L1218.5,197.8 L1223.1,208.3 L1227.7,216.7 L1232.3,222.2 L1236.9,224.3 L1241.5,222.6 L1246.2,216.8 L1250.8,207.1 L1255.4,193.7 L1260.0,177.3 L1264.6,158.7 L1269.2,138.9 L1273.8,119.0 L1278.5,100.1 L1283.1,83.4 L1287.7,69.9 L1292.3,60.2 L1296.9,55.1 L1301.5,54.8 L1306.2,59.3 L1310.8,68.2 L1315.4,80.9 L1320.0,96.7 L1324.6,114.6 L1329.2,133.4 L1333.8,152.0 L1338.5,169.5 L1343.1,185.0 L1347.7,197.6 L1352.3,206.8 L1356.9,212.5 L1361.5,214.5 L1366.2,213.1 L1370.8,208.6 L1375.4,201.7 L1380.0,192.9 L1384.6,182.9 L1389.2,172.5 L1393.8,162.3 L1398.5,152.9 L1403.1,144.6 L1407.7,137.9 L1412.3,132.8 L1416.9,129.3 L1421.5,127.6 L1426.2,127.2 L1430.8,128.2 L1435.4,130.1 L1440.0,132.7 L1444.6,135.7 L1449.2,138.9 L1453.8,142.2 L1458.5,145.3 L1463.1,148.1 L1467.7,150.5 L1472.3,152.6 L1476.9,154.2 L1481.5,155.5 L1486.2,156.3 L1490.8,156.9 L1495.4,157.0 L1500.0,156.9 L1504.6,156.5 L1509.2,155.9 L1513.8,155.1 L1518.5,154.0 L1523.1,152.9 L1527.7,151.6 L1532.3,150.3 L1536.9,149.0 L1541.5,147.7 L1546.2,146.6 L1550.8,145.6 L1555.4,144.8 L1560.0,144.3 L1564.6,144.0 L1569.2,144.0 L1573.8,144.3 L1578.5,144.9 L1583.1,145.7 L1587.7,146.7 L1592.3,147.9 L1596.9,149.1 L1601.5,150.4 L1606.2,151.7 L1610.8,152.9 L1615.4,154.0 L1620.0,154.9 L1624.6,155.5 L1629.2,155.9 L1633.8,156.0 L1638.5,155.8 L1643.1,155.4 L1647.7,154.7 L1652.3,153.8 L1656.9,152.7 L1661.5,151.5 L1666.2,150.2 L1670.8,148.8 L1675.4,147.4 L1680.0,146.1 L1684.6,144.8 L1689.2,143.7 L1693.8,142.8 L1698.5,142.1 L1703.1,141.7 L1707.7,141.6 L1712.3,141.9 L1716.9,142.7 L1721.5,144.0 L1726.2,145.9 L1730.8,148.4 L1735.4,151.4 L1740.0,155.0 L1744.6,159.1 L1749.2,163.4 L1753.8,167.8 L1758.5,172.0 L1763.1,175.6 L1767.7,178.4 L1772.3,179.9 L1776.9,179.9 L1781.5,178.0 L1786.2,174.0 L1790.8,168.0 L1795.4,159.9 L1800.0,150.0 L1804.6,138.7 L1809.2,126.5 L1813.8,114.1 L1818.5,102.2 L1823.1,91.7 L1827.7,83.3 L1832.3,77.8 L1836.9,75.7 L1841.5,77.4 L1846.2,83.2 L1850.8,92.9 L1855.4,106.3 L1860.0,122.7 L1864.6,141.3 L1869.2,161.1 L1873.8,181.0 L1878.5,199.9 L1883.1,216.6 L1887.7,230.1 L1892.3,239.8 L1896.9,244.9 L1901.5,245.2 L1906.2,240.7 L1910.8,231.8 L1915.4,219.1 L1920.0,203.3 L1924.6,185.4 L1929.2,166.6 L1933.8,148.0 L1938.5,130.5 L1943.1,115.0 L1947.7,102.4 L1952.3,93.2 L1956.9,87.5 L1961.5,85.5 L1966.2,86.9 L1970.8,91.4 L1975.4,98.3 L1980.0,107.1 L1984.6,117.1 L1989.2,127.5 L1993.8,137.7 L1998.5,147.1 L2003.1,155.4 L2007.7,162.1 L2012.3,167.2 L2016.9,170.7 L2021.5,172.4 L2026.2,172.8 L2030.8,171.8 L2035.4,169.9 L2040.0,167.3 L2044.6,164.3 L2049.2,161.1 L2053.8,157.8 L2058.5,154.7 L2063.1,151.9 L2067.7,149.5 L2072.3,147.4 L2076.9,145.8 L2081.5,144.5 L2086.2,143.7 L2090.8,143.1 L2095.4,143.0 L2100.0,143.1 L2104.6,143.5 L2109.2,144.1 L2113.8,144.9 L2118.5,146.0 L2123.1,147.1 L2127.7,148.4 L2132.3,149.7 L2136.9,151.0 L2141.5,152.3 L2146.2,153.4 L2150.8,154.4 L2155.4,155.2 L2160.0,155.7 L2164.6,156.0 L2169.2,156.0 L2173.8,155.7 L2178.5,155.1 L2183.1,154.3 L2187.7,153.3 L2192.3,152.1 L2196.9,150.9 L2201.5,149.6 L2206.2,148.3 L2210.8,147.1 L2215.4,146.0 L2220.0,145.1 L2224.6,144.5 L2229.2,144.1 L2233.8,144.0 L2238.5,144.2 L2243.1,144.6 L2247.7,145.3 L2252.3,146.2 L2256.9,147.3 L2261.5,148.5 L2266.2,149.8 L2270.8,151.2 L2275.4,152.6 L2280.0,153.9 L2284.6,155.2 L2289.2,156.3 L2293.8,157.2 L2298.5,157.9 L2303.1,158.3 L2307.7,158.4 L2312.3,158.1 L2316.9,157.3 L2321.5,156.0 L2326.2,154.1 L2330.8,151.6 L2335.4,148.6 L2340.0,145.0 L2344.6,140.9 L2349.2,136.6 L2353.8,132.2 L2358.5,128.0 L2363.1,124.4 L2367.7,121.6 L2372.3,120.1 L2376.9,120.1 L2381.5,122.0 L2386.2,126.0 L2390.8,132.0 L2395.4,140.1 L2400.0,150.0"/></svg>
@@ -332,7 +323,7 @@
   </section>
 
   <!-- ══════════ PRODUCTOS EN ACORDEÓN (G5) ══════════ -->
-  <section id="productos">
+  <section id="productos" data-sec="voz">
     <div class="wrap">
       <div class="kicker ag-kicker">Productos</div>
       <div class="ag-wrap">
@@ -341,111 +332,111 @@
           <span class="ag-frame" aria-hidden="true"><span class="ag-media"><div class="grainient" data-g="voz" aria-hidden="true"></div></span><span class="ag-dim"></span></span>
           <span class="ag-spine" aria-hidden="true"><span>VOZ</span></span>
           <div class="ag-body"><div class="tool-content" style="--dot:var(--orangey)">
-              <svg class="mini-line" viewBox="0 0 220 44" aria-hidden="true"><path d="M0.0,22.0 L1.6,29.0 L3.1,33.1 L4.7,31.9 L6.3,25.3 L7.9,16.3 L9.4,9.5 L11.0,8.6 L12.6,14.5 L14.1,24.7 L15.7,34.1 L17.3,37.8 L18.9,33.7 L20.4,23.5 L22.0,12.2 L23.6,5.6 L25.1,7.1 L26.7,16.0 L28.3,28.0 L29.9,36.9 L31.4,38.4 L33.0,31.8 L34.6,20.5 L36.1,10.3 L37.7,6.2 L39.3,9.9 L40.9,19.3 L42.4,29.5 L44.0,35.4 L45.6,34.5 L47.1,27.7 L48.7,18.7 L50.3,12.1 L51.9,10.8 L53.4,15.0 L55.0,22.0 L56.6,28.2 L58.1,30.7 L59.7,28.8 L61.3,24.0 L62.9,19.0 L64.4,16.1 L66.0,16.4 L67.6,19.2 L69.1,22.9 L70.7,25.5 L72.3,26.2 L73.9,24.8 L75.4,22.3 L77.0,20.0 L78.6,18.9 L80.1,19.3 L81.7,20.9 L83.3,23.1 L84.9,24.7 L86.4,25.1 L88.0,24.0 L89.6,21.7 L91.1,19.2 L92.7,17.9 L94.3,18.5 L95.9,21.1 L97.4,24.8 L99.0,27.6 L100.6,27.9 L102.1,25.0 L103.7,20.0 L105.3,15.2 L106.9,13.4 L108.4,15.8 L110.0,22.0 L111.6,29.0 L113.1,33.1 L114.7,31.9 L116.3,25.3 L117.9,16.4 L119.4,9.5 L121.0,8.6 L122.6,14.5 L124.1,24.7 L125.7,34.1 L127.3,37.8 L128.9,33.7 L130.4,23.5 L132.0,12.2 L133.6,5.6 L135.1,7.1 L136.7,16.0 L138.3,28.0 L139.9,36.9 L141.4,38.4 L143.0,31.8 L144.6,20.5 L146.1,10.3 L147.7,6.2 L149.3,9.9 L150.9,19.3 L152.4,29.5 L154.0,35.4 L155.6,34.5 L157.1,27.7 L158.7,18.7 L160.3,12.1 L161.9,10.8 L163.4,15.0 L165.0,22.0 L166.6,28.2 L168.1,30.7 L169.7,28.8 L171.3,24.0 L172.9,19.0 L174.4,16.1 L176.0,16.4 L177.6,19.2 L179.1,22.9 L180.7,25.6 L182.3,26.2 L183.9,24.8 L185.4,22.3 L187.0,20.0 L188.6,18.9 L190.1,19.3 L191.7,20.9 L193.3,23.1 L194.9,24.7 L196.4,25.1 L198.0,24.0 L199.6,21.7 L201.1,19.2 L202.7,17.9 L204.3,18.5 L205.9,21.1 L207.4,24.8 L209.0,27.6 L210.6,27.9 L212.1,25.0 L213.7,20.0 L215.3,15.2 L216.9,13.4 L218.4,15.9 L220.0,22.0"/></svg>
-              <span class="tag-status js-fade" style="--dot:var(--orangey)"><span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span>En producción</span>
-              <span class="cat cat-voz js-fade">Voz</span>
-              <h3 class="t-subhead js-mask" data-split="chars">Sofía contesta por ti</h3>
-              <p class="t-body-lg js-fade">Atiende cada llamada, agenda citas directo en tu calendario y resuelve dudas — como si fuera parte de tu equipo.</p>
-              <ul class="tool-list js-list" style="--dot:var(--orangey)">
+              <svg class="mini-line" viewBox="0 0 220 44" aria-hidden="true" style="--i:0"><path d="M0.0,22.0 L1.6,29.0 L3.1,33.1 L4.7,31.9 L6.3,25.3 L7.9,16.3 L9.4,9.5 L11.0,8.6 L12.6,14.5 L14.1,24.7 L15.7,34.1 L17.3,37.8 L18.9,33.7 L20.4,23.5 L22.0,12.2 L23.6,5.6 L25.1,7.1 L26.7,16.0 L28.3,28.0 L29.9,36.9 L31.4,38.4 L33.0,31.8 L34.6,20.5 L36.1,10.3 L37.7,6.2 L39.3,9.9 L40.9,19.3 L42.4,29.5 L44.0,35.4 L45.6,34.5 L47.1,27.7 L48.7,18.7 L50.3,12.1 L51.9,10.8 L53.4,15.0 L55.0,22.0 L56.6,28.2 L58.1,30.7 L59.7,28.8 L61.3,24.0 L62.9,19.0 L64.4,16.1 L66.0,16.4 L67.6,19.2 L69.1,22.9 L70.7,25.5 L72.3,26.2 L73.9,24.8 L75.4,22.3 L77.0,20.0 L78.6,18.9 L80.1,19.3 L81.7,20.9 L83.3,23.1 L84.9,24.7 L86.4,25.1 L88.0,24.0 L89.6,21.7 L91.1,19.2 L92.7,17.9 L94.3,18.5 L95.9,21.1 L97.4,24.8 L99.0,27.6 L100.6,27.9 L102.1,25.0 L103.7,20.0 L105.3,15.2 L106.9,13.4 L108.4,15.8 L110.0,22.0 L111.6,29.0 L113.1,33.1 L114.7,31.9 L116.3,25.3 L117.9,16.4 L119.4,9.5 L121.0,8.6 L122.6,14.5 L124.1,24.7 L125.7,34.1 L127.3,37.8 L128.9,33.7 L130.4,23.5 L132.0,12.2 L133.6,5.6 L135.1,7.1 L136.7,16.0 L138.3,28.0 L139.9,36.9 L141.4,38.4 L143.0,31.8 L144.6,20.5 L146.1,10.3 L147.7,6.2 L149.3,9.9 L150.9,19.3 L152.4,29.5 L154.0,35.4 L155.6,34.5 L157.1,27.7 L158.7,18.7 L160.3,12.1 L161.9,10.8 L163.4,15.0 L165.0,22.0 L166.6,28.2 L168.1,30.7 L169.7,28.8 L171.3,24.0 L172.9,19.0 L174.4,16.1 L176.0,16.4 L177.6,19.2 L179.1,22.9 L180.7,25.6 L182.3,26.2 L183.9,24.8 L185.4,22.3 L187.0,20.0 L188.6,18.9 L190.1,19.3 L191.7,20.9 L193.3,23.1 L194.9,24.7 L196.4,25.1 L198.0,24.0 L199.6,21.7 L201.1,19.2 L202.7,17.9 L204.3,18.5 L205.9,21.1 L207.4,24.8 L209.0,27.6 L210.6,27.9 L212.1,25.0 L213.7,20.0 L215.3,15.2 L216.9,13.4 L218.4,15.9 L220.0,22.0"/></svg>
+              <span class="tag-status" data-ambient style="--i:1;--dot:var(--orangey)"><span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span>En producción</span>
+              <span class="cat cat-voz" style="--i:2">Voz</span>
+              <h3 class="t-subhead" style="--i:3">Sofía contesta por ti</h3>
+              <p class="t-body-lg" style="--i:4">Atiende cada llamada, agenda citas directo en tu calendario y resuelve dudas — como si fuera parte de tu equipo.</p>
+              <ul class="tool-list" style="--i:5;--dot:var(--orangey)">
                 <li>Agenda, cancela y reprograma citas automáticamente</li>
                 <li>Conectada a Google Calendar en tiempo real</li>
                 <li>Panel con historial de llamadas y transcripciones</li>
               </ul>
-              <p class="punch js-punch" style="--pc:var(--orangey)">Disponible 24/7, incluso fuera de horario.</p>
-              <a href="#contacto" class="pill magnetic js-fade" data-roll="Ver demo de voz">Ver demo de voz <span class="pill-arrow">&rarr;</span></a>
+              <p class="punch" style="--i:6;--pc:var(--orangey)">Disponible 24/7, incluso fuera de horario.</p>
+              <a href="#contacto" class="pill magnetic" data-roll="Ver demo de voz" style="--i:7">Ver demo de voz <span class="pill-arrow">&rarr;</span></a>
             </div></div>
         </div>
         <div class="ag-panel" id="whatsapp" data-p="whatsapp" role="listitem" tabindex="0" aria-label="WHATSAPP" style="--ag-accent:#3B82F6;--ag-tint:#101826">
           <span class="ag-frame" aria-hidden="true"><span class="ag-media"><div class="grainient" data-g="whatsapp" aria-hidden="true"></div></span><span class="ag-dim"></span></span>
           <span class="ag-spine" aria-hidden="true"><span>WHATSAPP</span></span>
           <div class="ag-body"><div class="tool-content" style="--dot:var(--light-green)">
-              <svg class="mini-line" viewBox="0 0 220 44" aria-hidden="true"><path d="M0.0,22.0 L1.6,35.4 L3.1,36.7 L4.7,24.9 L6.3,10.4 L7.9,6.4 L9.4,21.1 L11.0,23.5 L12.6,24.5 L14.1,23.3 L15.7,20.9 L17.3,19.5 L18.9,20.4 L20.4,22.7 L22.0,24.4 L23.6,24.0 L25.1,21.8 L26.7,19.8 L28.3,7.9 L29.9,20.6 L31.4,34.5 L33.0,37.2 L34.6,26.3 L36.1,11.5 L37.7,19.5 L39.3,20.9 L40.9,23.3 L42.4,24.5 L44.0,23.5 L45.6,21.1 L47.1,19.6 L48.7,20.2 L50.3,22.4 L51.9,24.3 L53.4,24.1 L55.0,22.0 L56.6,8.6 L58.1,7.3 L59.7,19.1 L61.3,33.6 L62.9,37.6 L64.4,22.9 L66.0,20.5 L67.6,19.5 L69.1,20.7 L70.7,23.1 L72.3,24.5 L73.9,23.6 L75.4,21.3 L77.0,19.6 L78.6,20.0 L80.1,22.2 L81.7,24.2 L83.3,36.1 L84.9,23.4 L86.4,9.5 L88.0,6.8 L89.6,17.7 L91.1,32.5 L92.7,24.5 L94.3,23.1 L95.9,20.7 L97.4,19.5 L99.0,20.5 L100.6,22.9 L102.1,24.4 L103.7,23.8 L105.3,21.6 L106.9,19.7 L108.4,19.9 L110.0,22.0 L111.6,35.4 L113.1,36.7 L114.7,24.9 L116.3,10.4 L117.9,6.4 L119.4,21.1 L121.0,23.5 L122.6,24.5 L124.1,23.3 L125.7,20.9 L127.3,19.5 L128.9,20.4 L130.4,22.7 L132.0,24.4 L133.6,24.0 L135.1,21.8 L136.7,19.8 L138.3,7.9 L139.9,20.6 L141.4,34.5 L143.0,37.2 L144.6,26.3 L146.1,11.5 L147.7,19.5 L149.3,20.9 L150.9,23.3 L152.4,24.5 L154.0,23.5 L155.6,21.1 L157.1,19.6 L158.7,20.2 L160.3,22.4 L161.9,24.3 L163.4,24.1 L165.0,22.0 L166.6,8.6 L168.1,7.3 L169.7,19.1 L171.3,33.6 L172.9,37.6 L174.4,22.9 L176.0,20.5 L177.6,19.5 L179.1,20.7 L180.7,23.1 L182.3,24.5 L183.9,23.6 L185.4,21.3 L187.0,19.6 L188.6,20.0 L190.1,22.2 L191.7,24.2 L193.3,36.1 L194.9,23.4 L196.4,9.5 L198.0,6.8 L199.6,17.7 L201.1,32.5 L202.7,24.5 L204.3,23.1 L205.9,20.7 L207.4,19.5 L209.0,20.5 L210.6,22.9 L212.1,24.4 L213.7,23.8 L215.3,21.6 L216.9,19.7 L218.4,19.9 L220.0,22.0"/></svg>
-              <span class="tag-status js-fade" style="--dot:var(--light-green)"><span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span>En producción</span>
-              <span class="cat cat-wa js-fade">WhatsApp</span>
-              <h3 class="t-subhead js-mask" data-split="chars">Tu WhatsApp, trabajando solo</h3>
-              <p class="t-body-lg js-fade">Agenda citas, contesta preguntas frecuentes y toma pedidos — todo dentro de WhatsApp, sin que tu cliente descargue nada.</p>
-              <ul class="tool-list js-list" style="--dot:var(--light-green)">
+              <svg class="mini-line" viewBox="0 0 220 44" aria-hidden="true" style="--i:0"><path d="M0.0,22.0 L1.6,35.4 L3.1,36.7 L4.7,24.9 L6.3,10.4 L7.9,6.4 L9.4,21.1 L11.0,23.5 L12.6,24.5 L14.1,23.3 L15.7,20.9 L17.3,19.5 L18.9,20.4 L20.4,22.7 L22.0,24.4 L23.6,24.0 L25.1,21.8 L26.7,19.8 L28.3,7.9 L29.9,20.6 L31.4,34.5 L33.0,37.2 L34.6,26.3 L36.1,11.5 L37.7,19.5 L39.3,20.9 L40.9,23.3 L42.4,24.5 L44.0,23.5 L45.6,21.1 L47.1,19.6 L48.7,20.2 L50.3,22.4 L51.9,24.3 L53.4,24.1 L55.0,22.0 L56.6,8.6 L58.1,7.3 L59.7,19.1 L61.3,33.6 L62.9,37.6 L64.4,22.9 L66.0,20.5 L67.6,19.5 L69.1,20.7 L70.7,23.1 L72.3,24.5 L73.9,23.6 L75.4,21.3 L77.0,19.6 L78.6,20.0 L80.1,22.2 L81.7,24.2 L83.3,36.1 L84.9,23.4 L86.4,9.5 L88.0,6.8 L89.6,17.7 L91.1,32.5 L92.7,24.5 L94.3,23.1 L95.9,20.7 L97.4,19.5 L99.0,20.5 L100.6,22.9 L102.1,24.4 L103.7,23.8 L105.3,21.6 L106.9,19.7 L108.4,19.9 L110.0,22.0 L111.6,35.4 L113.1,36.7 L114.7,24.9 L116.3,10.4 L117.9,6.4 L119.4,21.1 L121.0,23.5 L122.6,24.5 L124.1,23.3 L125.7,20.9 L127.3,19.5 L128.9,20.4 L130.4,22.7 L132.0,24.4 L133.6,24.0 L135.1,21.8 L136.7,19.8 L138.3,7.9 L139.9,20.6 L141.4,34.5 L143.0,37.2 L144.6,26.3 L146.1,11.5 L147.7,19.5 L149.3,20.9 L150.9,23.3 L152.4,24.5 L154.0,23.5 L155.6,21.1 L157.1,19.6 L158.7,20.2 L160.3,22.4 L161.9,24.3 L163.4,24.1 L165.0,22.0 L166.6,8.6 L168.1,7.3 L169.7,19.1 L171.3,33.6 L172.9,37.6 L174.4,22.9 L176.0,20.5 L177.6,19.5 L179.1,20.7 L180.7,23.1 L182.3,24.5 L183.9,23.6 L185.4,21.3 L187.0,19.6 L188.6,20.0 L190.1,22.2 L191.7,24.2 L193.3,36.1 L194.9,23.4 L196.4,9.5 L198.0,6.8 L199.6,17.7 L201.1,32.5 L202.7,24.5 L204.3,23.1 L205.9,20.7 L207.4,19.5 L209.0,20.5 L210.6,22.9 L212.1,24.4 L213.7,23.8 L215.3,21.6 L216.9,19.7 L218.4,19.9 L220.0,22.0"/></svg>
+              <span class="tag-status" data-ambient style="--i:1;--dot:var(--light-green)"><span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span>En producción</span>
+              <span class="cat cat-wa" style="--i:2">WhatsApp</span>
+              <h3 class="t-subhead" style="--i:3">Tu WhatsApp, trabajando solo</h3>
+              <p class="t-body-lg" style="--i:4">Agenda citas, contesta preguntas frecuentes y toma pedidos — todo dentro de WhatsApp, sin que tu cliente descargue nada.</p>
+              <ul class="tool-list" style="--i:5;--dot:var(--light-green)">
                 <li>Agenda y cancela citas automáticamente por chat</li>
                 <li>Módulo comida corrida: pedidos diarios por WhatsApp</li>
                 <li>Panel de administración con historial por negocio</li>
                 <li>Integración con Google Calendar</li>
               </ul>
-              <p class="punch js-punch" style="--pc:var(--light-green)">Las posibilidades son infinitas.</p>
-              <a href="#contacto" class="pill magnetic js-fade" data-roll="Ver demo de WhatsApp">Ver demo de WhatsApp <span class="pill-arrow">&rarr;</span></a>
+              <p class="punch" style="--i:6;--pc:var(--light-green)">Las posibilidades son infinitas.</p>
+              <a href="#contacto" class="pill magnetic" data-roll="Ver demo de WhatsApp" style="--i:7">Ver demo de WhatsApp <span class="pill-arrow">&rarr;</span></a>
             </div></div>
         </div>
         <div class="ag-panel" id="inmobiliaria" data-p="inmobiliaria" role="listitem" tabindex="0" aria-label="INMOBILIARIA" style="--ag-accent:#14B8C4;--ag-tint:#0B1F20">
           <span class="ag-frame" aria-hidden="true"><span class="ag-media"><div class="grainient" data-g="inmobiliaria" aria-hidden="true"></div></span><span class="ag-dim"></span></span>
           <span class="ag-spine" aria-hidden="true"><span>INMOBILIARIA</span></span>
           <div class="ag-body"><div class="tool-content" style="--dot:var(--blue)">
-              <svg class="mini-line" viewBox="0 0 220 44" aria-hidden="true"><path d="M0.0,22.0 L1.6,23.5 L3.1,24.4 L4.7,24.4 L6.3,23.5 L7.9,22.0 L9.4,20.5 L11.0,19.6 L12.6,19.6 L14.1,20.5 L15.7,22.0 L17.3,23.5 L18.9,24.4 L20.4,24.4 L22.0,23.5 L23.6,22.0 L25.1,20.5 L26.7,19.6 L28.3,19.6 L29.9,20.5 L31.4,22.0 L33.0,23.5 L34.6,24.4 L36.1,24.4 L37.7,23.5 L39.3,22.0 L40.9,20.5 L42.4,19.6 L44.0,19.6 L45.6,20.5 L47.1,22.0 L48.7,23.6 L50.3,24.5 L51.9,24.6 L53.4,23.6 L55.0,22.0 L56.6,20.3 L58.1,19.1 L59.7,19.0 L61.3,20.0 L62.9,22.0 L64.4,24.2 L66.0,25.7 L67.6,26.0 L69.1,24.7 L70.7,22.0 L72.3,18.9 L73.9,16.6 L75.4,16.1 L77.0,18.0 L78.6,22.0 L80.1,26.7 L81.7,30.2 L83.3,30.9 L84.9,27.9 L86.4,22.0 L88.0,15.1 L89.6,10.1 L91.1,9.3 L92.7,13.7 L94.3,22.0 L95.9,31.2 L97.4,37.6 L99.0,38.2 L100.6,32.4 L102.1,22.0 L103.7,11.0 L105.3,3.9 L106.9,3.7 L108.4,10.6 L110.0,22.0 L111.6,33.4 L113.1,40.3 L114.7,40.1 L116.3,33.0 L117.9,22.0 L119.4,11.6 L121.0,5.8 L122.6,6.4 L124.1,12.8 L125.7,22.0 L127.3,30.3 L128.9,34.7 L130.4,33.9 L132.0,28.9 L133.6,22.0 L135.1,16.1 L136.7,13.1 L138.3,13.8 L139.9,17.3 L141.4,22.0 L143.0,26.0 L144.6,27.9 L146.1,27.4 L147.7,25.1 L149.3,22.0 L150.9,19.3 L152.4,18.0 L154.0,18.3 L155.6,19.8 L157.1,22.0 L158.7,24.0 L160.3,25.0 L161.9,24.9 L163.4,23.7 L165.0,22.0 L166.6,20.4 L168.1,19.4 L169.7,19.5 L171.3,20.4 L172.9,22.0 L174.4,23.5 L176.0,24.4 L177.6,24.4 L179.1,23.5 L180.7,22.0 L182.3,20.5 L183.9,19.6 L185.4,19.6 L187.0,20.5 L188.6,22.0 L190.1,23.5 L191.7,24.4 L193.3,24.4 L194.9,23.5 L196.4,22.0 L198.0,20.5 L199.6,19.6 L201.1,19.6 L202.7,20.5 L204.3,22.0 L205.9,23.5 L207.4,24.4 L209.0,24.4 L210.6,23.5 L212.1,22.0 L213.7,20.5 L215.3,19.6 L216.9,19.6 L218.4,20.5 L220.0,22.0"/></svg>
-              <span class="tag-status js-fade" style="--dot:var(--blue)"><span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span>En producción</span>
-              <span class="cat cat-inmo js-fade">Inmobiliaria</span>
-              <h3 class="t-subhead js-mask" data-split="chars">Leads calificados, en automático</h3>
-              <p class="t-body-lg js-fade">Alejandro contesta la llamada, platica con el prospecto, agenda la visita y te notifica al instante con el score del lead.</p>
-              <ul class="tool-list js-list" style="--dot:var(--blue)">
+              <svg class="mini-line" viewBox="0 0 220 44" aria-hidden="true" style="--i:0"><path d="M0.0,22.0 L1.6,23.5 L3.1,24.4 L4.7,24.4 L6.3,23.5 L7.9,22.0 L9.4,20.5 L11.0,19.6 L12.6,19.6 L14.1,20.5 L15.7,22.0 L17.3,23.5 L18.9,24.4 L20.4,24.4 L22.0,23.5 L23.6,22.0 L25.1,20.5 L26.7,19.6 L28.3,19.6 L29.9,20.5 L31.4,22.0 L33.0,23.5 L34.6,24.4 L36.1,24.4 L37.7,23.5 L39.3,22.0 L40.9,20.5 L42.4,19.6 L44.0,19.6 L45.6,20.5 L47.1,22.0 L48.7,23.6 L50.3,24.5 L51.9,24.6 L53.4,23.6 L55.0,22.0 L56.6,20.3 L58.1,19.1 L59.7,19.0 L61.3,20.0 L62.9,22.0 L64.4,24.2 L66.0,25.7 L67.6,26.0 L69.1,24.7 L70.7,22.0 L72.3,18.9 L73.9,16.6 L75.4,16.1 L77.0,18.0 L78.6,22.0 L80.1,26.7 L81.7,30.2 L83.3,30.9 L84.9,27.9 L86.4,22.0 L88.0,15.1 L89.6,10.1 L91.1,9.3 L92.7,13.7 L94.3,22.0 L95.9,31.2 L97.4,37.6 L99.0,38.2 L100.6,32.4 L102.1,22.0 L103.7,11.0 L105.3,3.9 L106.9,3.7 L108.4,10.6 L110.0,22.0 L111.6,33.4 L113.1,40.3 L114.7,40.1 L116.3,33.0 L117.9,22.0 L119.4,11.6 L121.0,5.8 L122.6,6.4 L124.1,12.8 L125.7,22.0 L127.3,30.3 L128.9,34.7 L130.4,33.9 L132.0,28.9 L133.6,22.0 L135.1,16.1 L136.7,13.1 L138.3,13.8 L139.9,17.3 L141.4,22.0 L143.0,26.0 L144.6,27.9 L146.1,27.4 L147.7,25.1 L149.3,22.0 L150.9,19.3 L152.4,18.0 L154.0,18.3 L155.6,19.8 L157.1,22.0 L158.7,24.0 L160.3,25.0 L161.9,24.9 L163.4,23.7 L165.0,22.0 L166.6,20.4 L168.1,19.4 L169.7,19.5 L171.3,20.4 L172.9,22.0 L174.4,23.5 L176.0,24.4 L177.6,24.4 L179.1,23.5 L180.7,22.0 L182.3,20.5 L183.9,19.6 L185.4,19.6 L187.0,20.5 L188.6,22.0 L190.1,23.5 L191.7,24.4 L193.3,24.4 L194.9,23.5 L196.4,22.0 L198.0,20.5 L199.6,19.6 L201.1,19.6 L202.7,20.5 L204.3,22.0 L205.9,23.5 L207.4,24.4 L209.0,24.4 L210.6,23.5 L212.1,22.0 L213.7,20.5 L215.3,19.6 L216.9,19.6 L218.4,20.5 L220.0,22.0"/></svg>
+              <span class="tag-status" data-ambient style="--i:1;--dot:var(--blue)"><span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span>En producción</span>
+              <span class="cat cat-inmo" style="--i:2">Inmobiliaria</span>
+              <h3 class="t-subhead" style="--i:3">Leads calificados, en automático</h3>
+              <p class="t-body-lg" style="--i:4">Alejandro contesta la llamada, platica con el prospecto, agenda la visita y te notifica al instante con el score del lead.</p>
+              <ul class="tool-list" style="--i:5;--dot:var(--blue)">
                 <li>Extrae y califica el lead de cada llamada</li>
                 <li>Notifica por llamada, SMS o email según la urgencia</li>
                 <li>Agenda visitas en tu calendario de disponibilidad</li>
                 <li>Resumen diario de actividad</li>
               </ul>
-              <p class="punch js-punch" style="--pc:var(--blue)">Personalizada a ti, para ti.</p>
-              <a href="#contacto" class="pill magnetic js-fade" data-roll="Ver cómo funciona">Ver cómo funciona <span class="pill-arrow">&rarr;</span></a>
+              <p class="punch" style="--i:6;--pc:var(--blue)">Personalizada a ti, para ti.</p>
+              <a href="#contacto" class="pill magnetic" data-roll="Ver cómo funciona" style="--i:7">Ver cómo funciona <span class="pill-arrow">&rarr;</span></a>
             </div></div>
         </div>
         <div class="ag-panel" id="web" data-p="web" role="listitem" tabindex="0" aria-label="WEB" style="--ag-accent:#F5487F;--ag-tint:#261118">
           <span class="ag-frame" aria-hidden="true"><span class="ag-media"><div class="grainient" data-g="web" aria-hidden="true"></div></span><span class="ag-dim"></span></span>
           <span class="ag-spine" aria-hidden="true"><span>WEB</span></span>
           <div class="ag-body"><div class="tool-content" style="--dot:var(--pink)">
-              <svg class="mini-line" viewBox="0 0 220 44" aria-hidden="true"><path d="M0.0,22.0 L1.6,23.4 L3.1,24.5 L4.7,24.8 L6.3,24.1 L7.9,22.7 L9.4,20.9 L11.0,19.4 L12.6,18.6 L14.1,19.0 L15.7,20.5 L17.3,22.5 L18.9,24.5 L20.4,25.8 L22.0,25.8 L23.6,24.6 L25.1,22.4 L26.7,20.0 L28.3,18.1 L29.9,17.5 L31.4,18.4 L33.0,20.5 L34.6,23.3 L36.1,25.7 L37.7,27.0 L39.3,26.7 L40.9,24.7 L42.4,21.8 L44.0,18.8 L45.6,16.8 L47.1,16.4 L48.7,18.0 L50.3,20.9 L51.9,24.4 L53.4,27.1 L55.0,28.2 L56.6,27.3 L58.1,24.5 L59.7,20.8 L61.3,17.4 L62.9,15.4 L64.4,15.5 L66.0,17.9 L67.6,21.7 L69.1,25.7 L70.7,28.6 L72.3,29.4 L73.9,27.7 L75.4,24.0 L77.0,19.6 L78.6,15.9 L80.1,14.1 L81.7,14.9 L83.3,18.1 L84.9,22.7 L86.4,27.2 L88.0,30.1 L89.6,30.3 L91.1,27.7 L92.7,23.2 L94.3,18.1 L95.9,14.2 L97.4,12.9 L99.0,14.5 L100.6,18.7 L102.1,24.1 L103.7,28.9 L105.3,31.5 L106.9,31.0 L108.4,27.4 L110.0,22.0 L111.6,16.4 L113.1,12.6 L114.7,11.8 L116.3,14.5 L117.9,19.7 L119.4,25.7 L121.0,30.7 L122.6,32.8 L124.1,31.4 L125.7,26.8 L127.3,20.5 L128.9,14.6 L130.4,11.0 L132.0,11.1 L133.6,14.8 L135.1,20.9 L136.7,27.6 L138.3,32.5 L139.9,34.0 L141.4,31.5 L143.0,25.8 L144.6,18.7 L146.1,12.6 L147.7,9.5 L149.3,10.6 L150.9,15.4 L152.4,22.6 L154.0,29.6 L155.6,34.3 L157.1,34.9 L158.7,31.2 L160.3,24.4 L161.9,16.7 L163.4,10.6 L165.0,8.2 L166.6,10.4 L168.1,16.5 L169.7,24.5 L171.3,31.8 L172.9,35.9 L174.4,35.5 L176.0,30.5 L177.6,22.7 L179.1,14.5 L180.7,8.6 L182.3,7.2 L183.9,10.7 L185.4,18.0 L187.0,26.7 L188.6,34.0 L190.1,37.4 L191.7,35.7 L193.3,29.4 L194.9,20.6 L196.4,12.1 L198.0,6.8 L199.6,6.5 L201.1,11.3 L202.7,19.8 L204.3,29.1 L205.9,36.2 L207.4,38.6 L209.0,35.6 L210.6,27.9 L212.1,18.2 L213.7,9.7 L215.3,5.1 L216.9,6.1 L218.4,12.4 L220.0,22.0"/></svg>
-              <span class="tag-status js-fade" style="--dot:var(--pink)"><span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span>En producción</span>
-              <span class="cat cat-web js-fade">Web</span>
-              <h3 class="t-subhead js-mask" data-split="chars">Una página que sí vende</h3>
-              <p class="t-body-lg js-fade">Sitios a la medida con el mismo nivel de animación y detalle que estás viendo aquí. Esta página es la muestra.</p>
-              <ul class="tool-list js-list" style="--dot:var(--pink)">
+              <svg class="mini-line" viewBox="0 0 220 44" aria-hidden="true" style="--i:0"><path d="M0.0,22.0 L1.6,23.4 L3.1,24.5 L4.7,24.8 L6.3,24.1 L7.9,22.7 L9.4,20.9 L11.0,19.4 L12.6,18.6 L14.1,19.0 L15.7,20.5 L17.3,22.5 L18.9,24.5 L20.4,25.8 L22.0,25.8 L23.6,24.6 L25.1,22.4 L26.7,20.0 L28.3,18.1 L29.9,17.5 L31.4,18.4 L33.0,20.5 L34.6,23.3 L36.1,25.7 L37.7,27.0 L39.3,26.7 L40.9,24.7 L42.4,21.8 L44.0,18.8 L45.6,16.8 L47.1,16.4 L48.7,18.0 L50.3,20.9 L51.9,24.4 L53.4,27.1 L55.0,28.2 L56.6,27.3 L58.1,24.5 L59.7,20.8 L61.3,17.4 L62.9,15.4 L64.4,15.5 L66.0,17.9 L67.6,21.7 L69.1,25.7 L70.7,28.6 L72.3,29.4 L73.9,27.7 L75.4,24.0 L77.0,19.6 L78.6,15.9 L80.1,14.1 L81.7,14.9 L83.3,18.1 L84.9,22.7 L86.4,27.2 L88.0,30.1 L89.6,30.3 L91.1,27.7 L92.7,23.2 L94.3,18.1 L95.9,14.2 L97.4,12.9 L99.0,14.5 L100.6,18.7 L102.1,24.1 L103.7,28.9 L105.3,31.5 L106.9,31.0 L108.4,27.4 L110.0,22.0 L111.6,16.4 L113.1,12.6 L114.7,11.8 L116.3,14.5 L117.9,19.7 L119.4,25.7 L121.0,30.7 L122.6,32.8 L124.1,31.4 L125.7,26.8 L127.3,20.5 L128.9,14.6 L130.4,11.0 L132.0,11.1 L133.6,14.8 L135.1,20.9 L136.7,27.6 L138.3,32.5 L139.9,34.0 L141.4,31.5 L143.0,25.8 L144.6,18.7 L146.1,12.6 L147.7,9.5 L149.3,10.6 L150.9,15.4 L152.4,22.6 L154.0,29.6 L155.6,34.3 L157.1,34.9 L158.7,31.2 L160.3,24.4 L161.9,16.7 L163.4,10.6 L165.0,8.2 L166.6,10.4 L168.1,16.5 L169.7,24.5 L171.3,31.8 L172.9,35.9 L174.4,35.5 L176.0,30.5 L177.6,22.7 L179.1,14.5 L180.7,8.6 L182.3,7.2 L183.9,10.7 L185.4,18.0 L187.0,26.7 L188.6,34.0 L190.1,37.4 L191.7,35.7 L193.3,29.4 L194.9,20.6 L196.4,12.1 L198.0,6.8 L199.6,6.5 L201.1,11.3 L202.7,19.8 L204.3,29.1 L205.9,36.2 L207.4,38.6 L209.0,35.6 L210.6,27.9 L212.1,18.2 L213.7,9.7 L215.3,5.1 L216.9,6.1 L218.4,12.4 L220.0,22.0"/></svg>
+              <span class="tag-status" data-ambient style="--i:1;--dot:var(--pink)"><span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span>En producción</span>
+              <span class="cat cat-web" style="--i:2">Web</span>
+              <h3 class="t-subhead" style="--i:3">Una página que sí vende</h3>
+              <p class="t-body-lg" style="--i:4">Sitios a la medida con el mismo nivel de animación y detalle que estás viendo aquí. Esta página es la muestra.</p>
+              <ul class="tool-list" style="--i:5;--dot:var(--pink)">
                 <li>Diseño y desarrollo a la medida, sin plantillas</li>
                 <li>Animaciones y scroll de nivel profesional</li>
                 <li>Rápida en celular y lista para buscadores</li>
                 <li>Se conecta con tu WhatsApp y tu asistente de voz (no incluidos)</li>
               </ul>
-              <a href="#contacto" class="pill magnetic js-fade" data-roll="Pedir cotización">Pedir cotización <span class="pill-arrow">&rarr;</span></a>
+              <a href="#contacto" class="pill magnetic" data-roll="Pedir cotización" style="--i:6">Pedir cotización <span class="pill-arrow">&rarr;</span></a>
             </div></div>
         </div>
         <div class="ag-panel" id="salud" data-p="salud" role="listitem" tabindex="0" aria-label="SALUD" style="--ag-accent:#F100CB;--ag-tint:#260921">
           <span class="ag-frame" aria-hidden="true"><span class="ag-media"><div class="grainient" data-g="salud" aria-hidden="true"></div></span><span class="ag-dim"></span></span>
           <span class="ag-spine" aria-hidden="true"><span>SALUD</span></span>
           <div class="ag-body"><div class="tool-content" style="--dot:var(--lipstick)">
-              <svg class="mini-line" viewBox="0 0 220 44" aria-hidden="true"><path d="M8.0,27.0 L17.0,27.0 L20.0,23.5 L23.0,27.0 L29.0,27.0 L31.0,29.5 L33.0,10.0 L36.0,40.0 L38.0,27.0 L46.0,27.0 L51.0,22.5 L56.0,27.0 L68.0,27.0 L76.0,27.0 L85.0,27.0 L88.0,23.5 L91.0,27.0 L97.0,27.0 L99.0,29.5 L101.0,10.0 L104.0,40.0 L106.0,27.0 L114.0,27.0 L119.0,22.5 L124.0,27.0 L136.0,27.0 L144.0,27.0 L153.0,27.0 L156.0,23.5 L159.0,27.0 L165.0,27.0 L167.0,29.5 L169.0,10.0 L172.0,40.0 L174.0,27.0 L182.0,27.0 L187.0,22.5 L192.0,27.0 L204.0,27.0 L220.0,27.0"/></svg>
-              <span class="tag-status soon js-fade"><span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span>En desarrollo</span>
-              <span class="cat cat-salud js-fade">Salud</span>
-              <h3 class="t-subhead js-mask" data-split="chars">El expediente, en tu bolsillo</h3>
-              <p class="t-body-lg js-fade">Un sistema para que lleves el historial clínico de tus pacientes contigo: escribes su nombre y aparece todo — consultas, notas y tratamientos.</p>
-              <ul class="tool-list js-list" style="--dot:var(--lipstick)">
+              <svg class="mini-line" viewBox="0 0 220 44" aria-hidden="true" style="--i:0"><path d="M8.0,27.0 L17.0,27.0 L20.0,23.5 L23.0,27.0 L29.0,27.0 L31.0,29.5 L33.0,10.0 L36.0,40.0 L38.0,27.0 L46.0,27.0 L51.0,22.5 L56.0,27.0 L68.0,27.0 L76.0,27.0 L85.0,27.0 L88.0,23.5 L91.0,27.0 L97.0,27.0 L99.0,29.5 L101.0,10.0 L104.0,40.0 L106.0,27.0 L114.0,27.0 L119.0,22.5 L124.0,27.0 L136.0,27.0 L144.0,27.0 L153.0,27.0 L156.0,23.5 L159.0,27.0 L165.0,27.0 L167.0,29.5 L169.0,10.0 L172.0,40.0 L174.0,27.0 L182.0,27.0 L187.0,22.5 L192.0,27.0 L204.0,27.0 L220.0,27.0"/></svg>
+              <span class="tag-status soon" style="--i:1"><span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span>En desarrollo</span>
+              <span class="cat cat-salud" style="--i:2">Salud</span>
+              <h3 class="t-subhead" style="--i:3">El expediente, en tu bolsillo</h3>
+              <p class="t-body-lg" style="--i:4">Un sistema para que lleves el historial clínico de tus pacientes contigo: escribes su nombre y aparece todo — consultas, notas y tratamientos.</p>
+              <ul class="tool-list" style="--i:5;--dot:var(--lipstick)">
                 <li>Buscas el nombre y el expediente abre en segundos</li>
                 <li>Consultas, diagnósticos y tratamientos en un solo lugar</li>
                 <li>Desde el celular en consulta o la laptop en el consultorio</li>
                 <li>Cada doctor ve únicamente a sus pacientes</li>
               </ul>
-              <p class="punch js-punch" style="--pc:var(--lipstick)">Cada paciente, a un nombre de distancia.</p>
-              <a href="#contacto" class="pill magnetic js-fade" data-roll="Quiero ser de los primeros">Quiero ser de los primeros <span class="pill-arrow">&rarr;</span></a>
+              <p class="punch" style="--i:6;--pc:var(--lipstick)">Cada paciente, a un nombre de distancia.</p>
+              <a href="#contacto" class="pill magnetic" data-roll="Quiero ser de los primeros" style="--i:7">Quiero ser de los primeros <span class="pill-arrow">&rarr;</span></a>
             </div></div>
         </div>
         <div class="ag-panel" id="videos" data-p="videos" role="listitem" tabindex="0" aria-label="VIDEO" style="--ag-accent:#A855F7;--ag-tint:#1D1326">
           <span class="ag-frame" aria-hidden="true"><span class="ag-media"><div class="grainient" data-g="videos" aria-hidden="true"></div></span><span class="ag-dim"></span></span>
           <span class="ag-spine" aria-hidden="true"><span>VIDEO</span></span>
           <div class="ag-body"><div class="tool-content" style="--dot:var(--lilac)">
-              <svg class="mini-line" viewBox="0 0 220 44" aria-hidden="true"><path d="M0.0,22.0 L1.6,22.1 L3.1,22.2 L4.7,22.5 L6.3,22.8 L7.9,23.2 L9.4,23.6 L11.0,23.9 L12.6,24.1 L14.1,24.2 L15.7,24.1 L17.3,23.8 L18.9,23.4 L20.4,22.8 L22.0,22.0 L23.6,21.1 L25.1,20.2 L26.7,19.2 L28.3,18.3 L29.9,17.5 L31.4,16.9 L33.0,16.6 L34.6,16.5 L36.1,16.7 L37.7,17.2 L39.3,18.0 L40.9,19.1 L42.4,20.5 L44.0,22.0 L45.6,23.6 L47.1,25.2 L48.7,26.8 L50.3,28.2 L51.9,29.3 L53.4,30.1 L55.0,30.5 L56.6,30.5 L58.1,30.0 L59.7,29.1 L61.3,27.7 L62.9,26.1 L64.4,24.1 L66.0,22.0 L67.6,19.8 L69.1,17.7 L70.7,15.7 L72.3,13.9 L73.9,12.6 L75.4,11.7 L77.0,11.3 L78.6,11.5 L80.1,12.2 L81.7,13.4 L83.3,15.1 L84.9,17.1 L86.4,19.5 L88.0,22.0 L89.6,24.6 L91.1,27.0 L92.7,29.3 L94.3,31.1 L95.9,32.6 L97.4,33.5 L99.0,33.9 L100.6,33.6 L102.1,32.7 L103.7,31.3 L105.3,29.5 L106.9,27.2 L108.4,24.7 L110.0,22.0 L111.6,19.3 L113.1,16.8 L114.7,14.5 L116.3,12.7 L117.9,11.3 L119.4,10.4 L121.0,10.1 L122.6,10.5 L124.1,11.4 L125.7,12.9 L127.3,14.7 L128.9,17.0 L130.4,19.4 L132.0,22.0 L133.6,24.5 L135.1,26.9 L136.7,28.9 L138.3,30.6 L139.9,31.8 L141.4,32.5 L143.0,32.7 L144.6,32.3 L146.1,31.4 L147.7,30.1 L149.3,28.3 L150.9,26.3 L152.4,24.2 L154.0,22.0 L155.6,19.9 L157.1,17.9 L158.7,16.3 L160.3,14.9 L161.9,14.0 L163.4,13.5 L165.0,13.5 L166.6,13.9 L168.1,14.7 L169.7,15.8 L171.3,17.2 L172.9,18.8 L174.4,20.4 L176.0,22.0 L177.6,23.5 L179.1,24.9 L180.7,26.0 L182.3,26.8 L183.9,27.3 L185.4,27.5 L187.0,27.4 L188.6,27.1 L190.1,26.5 L191.7,25.7 L193.3,24.8 L194.9,23.8 L196.4,22.9 L198.0,22.0 L199.6,21.2 L201.1,20.6 L202.7,20.2 L204.3,19.9 L205.9,19.8 L207.4,19.9 L209.0,20.1 L210.6,20.4 L212.1,20.8 L213.7,21.2 L215.3,21.5 L216.9,21.8 L218.4,21.9 L220.0,22.0"/></svg>
-              <span class="tag-status soon js-fade"><span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span>En desarrollo</span>
-              <span class="cat cat-video js-fade">Video</span>
-              <h3 class="t-subhead js-mask" data-split="chars">Recorridos que venden la casa</h3>
-              <p class="t-body-lg js-fade">Producimos el video de tu propiedad listo para publicar — sin día de grabación, sin equipo entrando a la casa, sin esperar semanas.</p>
-              <ul class="tool-list js-list" style="--dot:var(--lilac)">
+              <svg class="mini-line" viewBox="0 0 220 44" aria-hidden="true" style="--i:0"><path d="M0.0,22.0 L1.6,22.1 L3.1,22.2 L4.7,22.5 L6.3,22.8 L7.9,23.2 L9.4,23.6 L11.0,23.9 L12.6,24.1 L14.1,24.2 L15.7,24.1 L17.3,23.8 L18.9,23.4 L20.4,22.8 L22.0,22.0 L23.6,21.1 L25.1,20.2 L26.7,19.2 L28.3,18.3 L29.9,17.5 L31.4,16.9 L33.0,16.6 L34.6,16.5 L36.1,16.7 L37.7,17.2 L39.3,18.0 L40.9,19.1 L42.4,20.5 L44.0,22.0 L45.6,23.6 L47.1,25.2 L48.7,26.8 L50.3,28.2 L51.9,29.3 L53.4,30.1 L55.0,30.5 L56.6,30.5 L58.1,30.0 L59.7,29.1 L61.3,27.7 L62.9,26.1 L64.4,24.1 L66.0,22.0 L67.6,19.8 L69.1,17.7 L70.7,15.7 L72.3,13.9 L73.9,12.6 L75.4,11.7 L77.0,11.3 L78.6,11.5 L80.1,12.2 L81.7,13.4 L83.3,15.1 L84.9,17.1 L86.4,19.5 L88.0,22.0 L89.6,24.6 L91.1,27.0 L92.7,29.3 L94.3,31.1 L95.9,32.6 L97.4,33.5 L99.0,33.9 L100.6,33.6 L102.1,32.7 L103.7,31.3 L105.3,29.5 L106.9,27.2 L108.4,24.7 L110.0,22.0 L111.6,19.3 L113.1,16.8 L114.7,14.5 L116.3,12.7 L117.9,11.3 L119.4,10.4 L121.0,10.1 L122.6,10.5 L124.1,11.4 L125.7,12.9 L127.3,14.7 L128.9,17.0 L130.4,19.4 L132.0,22.0 L133.6,24.5 L135.1,26.9 L136.7,28.9 L138.3,30.6 L139.9,31.8 L141.4,32.5 L143.0,32.7 L144.6,32.3 L146.1,31.4 L147.7,30.1 L149.3,28.3 L150.9,26.3 L152.4,24.2 L154.0,22.0 L155.6,19.9 L157.1,17.9 L158.7,16.3 L160.3,14.9 L161.9,14.0 L163.4,13.5 L165.0,13.5 L166.6,13.9 L168.1,14.7 L169.7,15.8 L171.3,17.2 L172.9,18.8 L174.4,20.4 L176.0,22.0 L177.6,23.5 L179.1,24.9 L180.7,26.0 L182.3,26.8 L183.9,27.3 L185.4,27.5 L187.0,27.4 L188.6,27.1 L190.1,26.5 L191.7,25.7 L193.3,24.8 L194.9,23.8 L196.4,22.9 L198.0,22.0 L199.6,21.2 L201.1,20.6 L202.7,20.2 L204.3,19.9 L205.9,19.8 L207.4,19.9 L209.0,20.1 L210.6,20.4 L212.1,20.8 L213.7,21.2 L215.3,21.5 L216.9,21.8 L218.4,21.9 L220.0,22.0"/></svg>
+              <span class="tag-status soon" style="--i:1"><span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span>En desarrollo</span>
+              <span class="cat cat-video" style="--i:2">Video</span>
+              <h3 class="t-subhead" style="--i:3">Recorridos que venden la casa</h3>
+              <p class="t-body-lg" style="--i:4">Producimos el video de tu propiedad listo para publicar — sin día de grabación, sin equipo entrando a la casa, sin esperar semanas.</p>
+              <ul class="tool-list" style="--i:5;--dot:var(--lilac)">
                 <li>Listo para portales inmobiliarios y redes sociales</li>
                 <li>Sin agendar visita ni preparar la propiedad</li>
                 <li>Cada recorrido dirigido y revisado a mano</li>
                 <li>Entrega en días, no en semanas</li>
               </ul>
-              <a href="#contacto" class="pill magnetic js-fade" data-roll="Preguntar por disponibilidad">Preguntar por disponibilidad <span class="pill-arrow">&rarr;</span></a>
+              <a href="#contacto" class="pill magnetic" data-roll="Preguntar por disponibilidad" style="--i:6">Preguntar por disponibilidad <span class="pill-arrow">&rarr;</span></a>
             </div></div>
         </div>
         </div>
@@ -456,15 +447,15 @@
   <!-- ══════════ ZONA CLARA: Casos + Precios (G3) ══════════ -->
   <div id="lightZone">
 
-    <section id="casos" class="has-vline">
+    <section id="casos" class="has-vline" data-sec="casos">
     <svg class="blob amb amb-casos js-parallax" viewBox="0 0 200 200" aria-hidden="true" data-morph><path d="M195.4,100.0 C196.1,107.5 195.1,115.7 192.9,122.9 C190.6,130.0 186.4,137.2 181.7,142.9 C177.0,148.6 170.6,153.5 164.5,157.1 C158.3,160.7 151.1,163.0 144.6,164.6 C138.1,166.2 131.4,166.5 125.3,166.7 C119.2,166.8 113.5,166.1 108.0,165.6 C102.5,165.1 97.5,164.2 92.3,163.5 C87.1,162.8 82.1,162.3 76.7,161.4 C71.3,160.4 65.7,159.7 59.9,158.0 C54.1,156.4 47.8,154.5 41.9,151.5 C36.0,148.4 29.7,144.5 24.5,139.6 C19.4,134.7 14.3,128.5 11.0,121.9 C7.7,115.3 5.2,107.5 4.6,100.0 C3.9,92.5 4.9,84.3 7.1,77.1 C9.4,70.0 13.6,62.8 18.3,57.1 C23.0,51.4 29.4,46.5 35.5,42.9 C41.7,39.3 48.9,37.0 55.4,35.4 C61.9,33.8 68.6,33.5 74.7,33.3 C80.8,33.2 86.5,33.9 92.0,34.4 C97.5,34.9 102.5,35.8 107.7,36.5 C112.9,37.2 117.9,37.7 123.3,38.6 C128.7,39.6 134.3,40.3 140.1,42.0 C145.9,43.6 152.2,45.5 158.1,48.5 C164.0,51.6 170.3,55.5 175.5,60.4 C180.6,65.3 185.7,71.5 189.0,78.1 C192.3,84.7 194.8,92.5 195.4,100.0 Z" fill="url(#gPink)"/></svg>
       <div class="wrap">
         <div class="section-head">
-            <h2 class="t-heading js-mask" data-split="chars">Lo que resuelve cada automatización.</h2>
+            <h2 class="t-heading js-mask" data-split="chars" id="casosTitulo">Lo que resuelve cada automatización.</h2>
         </div>
       </div>
       <div class="cases-shell" id="casesShell">
-        <div class="cases-viewport" id="casesViewport" data-lenis-prevent>
+        <div class="cases-viewport" id="casesViewport" data-lenis-prevent role="region" aria-labelledby="casosTitulo" tabindex="0">
           <div class="cases-track" id="casesTrack">
             <article class="case-card spot" data-pv="#F5A623,#FBDDAB" data-pvlabel="Consultorio">
               <h3>Consultorio sin recepcionista</h3>
@@ -492,7 +483,7 @@
       </div>
     </section>
 
-    <section id="proceso" class="has-vline">
+    <section id="proceso" class="has-vline" data-sec="proceso">
     <svg class="blob amb amb-proceso js-parallax" viewBox="0 0 200 200" aria-hidden="true" data-morph><path d="M182.2,100.0 C185.4,106.4 189.3,115.1 188.2,121.7 C187.1,128.4 181.3,135.3 175.7,139.7 C170.1,144.2 160.7,145.5 154.7,148.4 C148.6,151.4 143.9,152.9 139.5,157.2 C135.1,161.6 133.0,169.0 128.2,174.4 C123.4,179.7 117.3,187.4 110.9,189.5 C104.4,191.6 95.7,190.2 89.4,187.0 C83.2,183.8 78.1,175.4 73.3,170.4 C68.5,165.4 65.9,160.0 60.8,156.8 C55.6,153.6 49.0,153.6 42.4,151.0 C35.9,148.4 26.2,146.2 21.4,141.3 C16.5,136.3 13.2,128.2 13.3,121.4 C13.4,114.5 18.9,106.3 22.2,100.0 C25.4,93.7 30.9,89.2 32.9,83.5 C34.8,77.7 33.7,72.2 34.0,65.4 C34.4,58.5 32.5,49.0 34.9,42.3 C37.4,35.7 42.5,28.5 48.6,25.6 C54.7,22.6 64.3,23.9 71.5,24.8 C78.6,25.6 85.4,30.1 91.6,30.6 C97.8,31.2 102.3,29.8 108.7,28.2 C115.1,26.5 122.9,21.3 130.0,20.8 C137.2,20.3 146.3,21.1 151.7,25.1 C157.0,29.2 160.3,37.9 162.2,44.9 C164.1,51.9 162.0,60.5 163.1,66.9 C164.1,73.3 165.5,77.6 168.6,83.1 C171.8,88.6 178.9,93.6 182.2,100.0 Z" fill="url(#gGreen)"/></svg>
       <div class="wrap">
         <div class="section-head">
@@ -538,7 +529,7 @@
   </div>
 
   <!-- ══════════ CIERRE ══════════ -->
-  <section class="closing has-vline" id="contacto">
+  <section class="closing has-vline" id="contacto" data-sec="contacto">
     <svg class="blob amb amb-cierre js-parallax" viewBox="0 0 200 200" aria-hidden="true" data-morph><path d="M192.3,100.0 C191.2,106.9 185.9,114.4 181.1,120.0 C176.3,125.5 168.6,129.2 163.5,133.3 C158.3,137.4 153.8,139.9 150.2,144.5 C146.6,149.0 145.1,154.6 141.8,160.6 C138.5,166.5 135.5,174.8 130.4,180.1 C125.3,185.4 118.0,190.8 111.2,192.2 C104.3,193.5 95.7,191.6 89.3,188.3 C82.8,185.0 77.2,177.7 72.6,172.3 C67.9,166.9 65.4,160.4 61.4,156.0 C57.3,151.6 53.6,149.0 48.3,145.8 C43.0,142.6 35.6,141.0 29.5,137.0 C23.5,133.0 15.8,127.8 12.2,121.6 C8.5,115.5 6.6,106.9 7.7,100.0 C8.8,93.1 14.1,85.6 18.9,80.0 C23.7,74.5 31.4,70.8 36.5,66.7 C41.7,62.6 46.2,60.1 49.8,55.5 C53.4,51.0 54.9,45.4 58.2,39.4 C61.5,33.5 64.5,25.2 69.6,19.9 C74.7,14.6 82.0,9.2 88.8,7.8 C95.7,6.5 104.3,8.4 110.7,11.7 C117.2,15.0 122.8,22.3 127.4,27.7 C132.1,33.1 134.6,39.6 138.6,44.0 C142.7,48.4 146.4,51.0 151.7,54.2 C157.0,57.4 164.4,59.0 170.5,63.0 C176.5,67.0 184.2,72.2 187.8,78.4 C191.5,84.5 193.4,93.1 192.3,100.0 Z" fill="url(#gLila)"/></svg>
     <span class="glow glow-morado" style="width:clamp(84px,12vw,180px);aspect-ratio:1;top:8%;left:5%"></span>
     <svg class="blob cb1 js-parallax" viewBox="0 0 200 200" aria-hidden="true" data-morph><path d="M100,8 C143,8 180,34 192,74 C204,114 188,157 154,180 C120,203 74,199 45,176 C16,153 4,112 14,73 C24,34 57,8 100,8 Z" fill="url(#gGreen)"/></svg>
@@ -551,15 +542,15 @@
       </p>
       <form class="cform js-fade" id="form" novalidate>
         <div class="cf-row">
-          <label class="cf-field"><span>Tu nombre</span><input type="text" name="nombre" required autocomplete="name" placeholder="Cómo te llamas"></label>
+          <div class="cf-cell"><label class="cf-field"><span>Tu nombre</span><input type="text" name="nombre" required autocomplete="name" placeholder="Cómo te llamas" aria-describedby="err-nombre"></label><p class="cf-err" id="err-nombre" role="alert"></p></div>
           <label class="cf-field"><span>Tu negocio</span><input type="text" name="negocio" autocomplete="organization" placeholder="Nombre o giro"></label>
         </div>
         <div class="cf-row">
-          <label class="cf-field"><span>WhatsApp</span><input type="tel" name="whatsapp" required autocomplete="tel" placeholder="10 dígitos"></label>
-          <label class="cf-field"><span>Correo</span><input type="email" name="correo" required autocomplete="email" placeholder="tucorreo@ejemplo.com"></label>
+          <div class="cf-cell"><label class="cf-field"><span>WhatsApp</span><input type="tel" name="whatsapp" required autocomplete="tel" placeholder="10 dígitos" aria-describedby="err-whatsapp"></label><p class="cf-err" id="err-whatsapp" role="alert"></p></div>
+          <div class="cf-cell"><label class="cf-field"><span>Correo</span><input type="email" name="correo" required autocomplete="email" placeholder="tucorreo@ejemplo.com" aria-describedby="err-correo"></label><p class="cf-err" id="err-correo" role="alert"></p></div>
         </div>
         <label class="cf-field"><span>¿Qué se te está cayendo?</span><textarea name="mensaje" rows="3" placeholder="Llamadas sin contestar, mensajes sin responder, citas perdidas…"></textarea></label>
-        <label class="cf-consent"><input type="checkbox" name="consent" required><span>Acepto que me contacten y he leído el <a href="aviso-privacidad.html">aviso de privacidad</a>.</span></label>
+        <div class="cf-cell"><label class="cf-consent"><input type="checkbox" name="consent" required aria-describedby="err-consent"><span>Acepto que me contacten y he leído el <a href="aviso-privacidad.html">aviso de privacidad</a>.</span></label><p class="cf-err" id="err-consent" role="alert"></p></div>
         <button type="submit" class="pill pill-grad magnetic cf-send">Enviar <span class="pill-arrow">&rarr;</span></button>
         <p class="cf-msg" id="cfMsg" role="status" aria-live="polite"></p>
       </form>

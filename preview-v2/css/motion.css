@@ -1,0 +1,268 @@
+/* ============================================================================
+   css/motion.css — TOKENS Y BASE DE MOVIMIENTO (propietario: núcleo)
+
+   Se carga DESPUÉS de site.css (misma especificidad, gana el orden) y ANTES de
+   motion-ui / motion-sections / motion-accordion / motion-gl. Es el ÚNICO lugar
+   donde se editan los valores de movimiento: el JS (objeto M de core.js) los
+   lee de aquí en el arranque. Ninguna regla ni función usa un número suelto.
+
+   Contenido
+     1. Tokens --m-*  (+ política de movimiento reducido en los tokens)
+     2. Primitivos: .m-arrive / .m-in, .m-ring, [data-ambient] / .is-live
+     3. Estado base: foco, contadores, desplazamiento de anclas
+     4. Carga e intro del hero ("Primer timbre")
+     5. Header (intención de scroll, sin desenfoque), logo legible sobre crema
+     6. Efectos que compiten (G-08): will-change estático, grano, aurora
+     7. Formulario: contenedores de error en línea
+     8. Movimiento reducido INTENCIONAL (sustituye al kill global de site.css)
+     9. Sin GSAP (html.m-nogsap): el contenido queda visible
+   ============================================================================ */
+
+
+/* ── 1. TOKENS ───────────────────────────────────────────────────────────
+   fast/base = DS v0.6 (si el DS define --t-rapido/--t-base, mandan ellos).
+   Todo lo marcado «EXTENSIÓN WEB» (D-3) todavía no está en el DS. */
+:root {
+  /* TIEMPO */
+  --m-dur-fast:   var(--t-rapido, 120ms);   /* hover de color, presión, foco */
+  --m-dur-base:   var(--t-base, 180ms);     /* estado: campo, toggle, activo */
+  --m-dur-enter:  280ms;                    /* llegada de un elemento (EXTENSIÓN WEB) */
+  --m-dur-layout: 440ms;                    /* panel, overlay, header, relleno de botón (EXTENSIÓN WEB) */
+  --m-dur-reveal: 640ms;                    /* titular o bloque en máscara (EXTENSIÓN WEB) */
+  --m-dur-focal:  800ms;                    /* aterrizaje de un momento focal (EXTENSIÓN WEB) */
+  --m-dur-ring:   1100ms;                   /* viaje del timbre; no bloquea nada (EXTENSIÓN WEB) */
+  --m-dur-count:  900ms;                    /* contadores numéricos (EXTENSIÓN WEB) */
+  --m-exit: .6;                             /* salida = .6 × entrada */
+
+  /* DISTANCIA — DS: 12 / 16. --m-dist-3 es EXTENSIÓN WEB */
+  --m-dist-1: var(--desplazamiento, 12px);
+  --m-dist-2: var(--desplazamiento-max, 16px);
+  --m-dist-3: 24px;
+  --m-lift:  -6px;                          /* tarjeta enfocada o con hover */
+  --m-press: .97;                           /* DS: press scale(.97) */
+  --m-focus: 0 0 0 2px var(--bg), 0 0 0 4px var(--ink);  /* anillo de doble capa, independiente del fondo */
+
+  /* CURVAS — ninguna rebota */
+  --m-ease:       var(--logo-curva, cubic-bezier(.2, .7, .2, 1));  /* interfaz y llegadas (curva de marca del DS) */
+  --m-ease-exit:  cubic-bezier(.4, 0, 1, 1);                       /* salidas */
+  --m-ease-cine:  cubic-bezier(.7, 0, .15, 1);                     /* SOLO momentos focales y el anillo */
+  --m-ease-state: var(--ease, ease);                               /* color y opacidad */
+
+  /* STAGGER — topes */
+  --m-stagger-each:  40ms;   /* lista que aparece como lista */
+  --m-stagger-words: 60ms;   /* palabras de un titular */
+  --m-stagger-lines: 80ms;   /* líneas de un titular */
+  --m-stagger-max:  240ms;   /* tope TOTAL de cualquier grupo */
+  --m-beat:         280ms;   /* pausa entre "timbre" y "respuesta" */
+
+  /* UMBRALES */
+  --m-reveal-margin: -12%;   /* rootMargin del IO de revelado */
+  --m-intent: 90ms;          /* retraso de intención de hover (acordeón) */
+  --m-intent-sweep: 140ms;   /* idem si el cursor va rápido */
+  --m-intent-speed: .6;      /* px/ms: sobre esto se considera barrido */
+  --m-hide-after: 320;       /* px de scroll antes de poder esconder el header */
+  --m-hide-delta: 24;        /* px acumulados hacia abajo para esconderlo */
+  --m-show-delta: 8;         /* px hacia arriba para mostrarlo */
+  --m-magnet-r: 120;         /* px de radio del imán */
+  --m-magnet-k: .3;          /* intensidad (antes .42) */
+  --m-scrub: .4;             /* suavizado de scrub (antes 1; Lenis ya suaviza) */
+  --m-ambient-margin: 120px; /* rootMargin para arrancar bucles ambientales */
+  --m-ambient-idle: 1500ms;  /* quietud tras la que el listón se detiene */
+  --m-marquee: 40s;          /* vuelta completa de la marquesina (antes 26 s) */
+  --m-travel-min: 700ms;     /* duración mínima de viaje a un ancla */
+  --m-travel-max: 1600ms;    /* máxima */
+
+  /* El header ya no desenfoca lo de atrás: sin blur, más opaco (G-08). El motor de tema lo reescribe con el mismo alfa. */
+  --header-bg: rgba(10, 10, 10, .92);
+}
+
+/* Movimiento reducido INTENCIONAL (D-2): lo espacial vale 0, el estado se conserva */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --m-dist-1: 0px; --m-dist-2: 0px; --m-dist-3: 0px; --m-lift: 0px; --m-press: 1;
+    --m-dur-enter:  var(--m-dur-base);
+    --m-dur-layout: var(--m-dur-base);
+    --m-dur-reveal: var(--m-dur-base);
+    --m-dur-focal:  240ms;
+    --m-dur-ring:   0ms;
+    --m-stagger-each: 0ms; --m-stagger-words: 0ms; --m-stagger-lines: 0ms; --m-beat: 0ms;
+  }
+}
+
+
+/* ── 2. PRIMITIVOS ───────────────────────────────────────────────────────── */
+
+/* Llegada estándar: UN IntersectionObserver (SAPHI.arrive) pone .m-in. Con JS
+   caído el script temprano quita html.js y todo queda visible. */
+html.js .m-arrive {
+  opacity: 0; transform: translateY(var(--m-dist-2));
+  transition: opacity var(--m-dur-enter) var(--m-ease-state),
+              transform var(--m-dur-enter) var(--m-ease);
+  transition-delay: calc(min(var(--m-i, 0), 6) * var(--m-stagger-each));   /* ≤240 ms en total */
+}
+html.js .m-arrive--1 { transform: translateY(var(--m-dist-1)); }            /* variante de 12 px */
+html.js .m-arrive--3 { transform: translateY(var(--m-dist-3)); }            /* tarjetas grandes */
+html.js .m-arrive.m-in { opacity: 1; transform: none; }
+
+/* Anillo: el único glifo de «sonar». Sin will-change fijo: GSAP promueve la
+   capa mientras anima y la suelta al terminar. Posición: la fija el contexto
+   (--ring-size, left/top). */
+.m-ring {
+  --ring-size: 900px;
+  position: absolute; left: 0; top: 0; pointer-events: none; z-index: 2;
+  border: 2px solid var(--m-ring-color, var(--ink)); border-radius: 50%;
+  width: var(--ring-size); height: var(--ring-size);
+  margin: calc(var(--ring-size) / -2) 0 0 calc(var(--ring-size) / -2);
+  opacity: 0; transform: scale(.12);
+}
+@media (max-width: 760px) { .m-ring { --ring-size: 640px; } }
+.m-ring--mark { --ring-size: 140px; left: 94.25%; top: 18.67%; }   /* marca de las 23:07: (754,56) en un viewBox 800×300 */
+.m-ring--step { --ring-size: 72px;  left: 50%;    top: -24px; }    /* paso del flujo: el trazo pasa justo encima de la tarjeta */
+@media (max-width: 760px) { .m-ring--mark { --ring-size: 88px; } .m-ring--step { --ring-size: 56px; } }
+.chart-plot, .flow-step { position: relative; }
+
+/* Ambiente: pausado por defecto; SAPHI.ambient (o su IO compartido) pone .is-live.
+   Cubre al propio nodo, a sus descendientes y a los pseudoelementos. */
+[data-ambient]:not(.is-live),
+[data-ambient]:not(.is-live) *,
+[data-ambient]:not(.is-live)::before,
+[data-ambient]:not(.is-live)::after,
+[data-ambient]:not(.is-live) *::before,
+[data-ambient]:not(.is-live) *::after { animation-play-state: paused; }
+[data-ambient].is-live { animation-play-state: running; }
+
+
+/* ── 3. ESTADO BASE ──────────────────────────────────────────────────────── */
+
+/* Foco: doble anillo que no depende del fondo (--ink ya se interpola noche ↔ crema).
+   El outline transparente sigue visible en modo de alto contraste. Los campos
+   del formulario tienen su propio estado (motion-ui.css). */
+:where(a, button, [tabindex]):focus-visible { outline: 2px solid transparent; outline-offset: 2px; box-shadow: var(--m-focus); }
+.ag-panel:focus-visible { box-shadow: var(--m-focus); }   /* en site.css apunta a --lila, que no existe: el foco no se veía */
+
+/* Cifras que cuentan: los dígitos no cambian de ancho mientras corren */
+[data-count] { font-variant-numeric: tabular-nums; }
+
+/* El header fijo ya no tapa al elemento enfocado ni al destino de un ancla */
+html { scroll-padding-top: 88px; }
+
+
+/* ── 4. CARGA E INTRO DEL HERO — «Primer timbre» ─────────────────────────── */
+
+/* El loader es una capa sólida (sin mosaico). site.css ya lo pinta fijo y opaco. */
+.lo-px { display: none; }
+html.js #loader { transition: opacity var(--m-dur-base) var(--m-ease-state); }
+html.js #loader[data-done] { opacity: 0; }
+
+/* body.is-loading ya NO bloquea el scroll: sin JavaScript la página se recorre
+   (P1-14) y el intro se salta con cualquier gesto, así que nada espera a `load`. */
+body.is-loading { overflow: visible; height: auto; }
+
+/* El titular nace oculto y se libera en el mismo tick en que SplitText lo parte
+   (core.js pone html.m-hero-in). Si el JS cae, el script temprano quita html.js. */
+html.js:not(.m-hero-in) #heroDisplay { opacity: 0; }
+html.m-nogsap #heroDisplay { transition: opacity var(--m-dur-enter) var(--m-ease-state); }
+
+/* El anillo nace en el arranque del titular y puede salirse del hero: se recorta durante el intro */
+html.m-intro #hero { overflow: clip; }
+
+/* Máscara por palabra: SplitText mask:'words' envuelve cada palabra en un
+   .word-mask con overflow:clip. Con line-height .86 el recorte cortaría la cola
+   de la «p» y los ascendentes; el relleno agranda la ventana sin mover el layout. */
+#heroDisplay .word-mask { padding-block: .2em; margin-block: -.2em; }
+
+/* El brillo infinito de «Siempre.» desaparece: una sola pasada de color en el intro
+   y se queda (D.1 #11). Si un script antiguo aún pone .grad-shine, no anima. */
+.grad-shine .char { animation: none; }
+
+
+/* ── 5. HEADER Y LOGO ────────────────────────────────────────────────────── */
+
+/* Sin backdrop-filter (desenfocaba un hero con WebGL en movimiento) ni will-change fijo.
+   Se esconde por intención de scroll (clase .is-hidden, la pone core.js). */
+header {
+  -webkit-backdrop-filter: none; backdrop-filter: none; will-change: auto;
+  transition: transform var(--m-dur-layout) var(--m-ease), border-color var(--m-dur-base) var(--m-ease-state);
+}
+header.is-hidden {
+  transform: translateY(-100%);
+  transition-duration: calc(var(--m-dur-layout) * var(--m-exit)), var(--m-dur-base);
+  transition-timing-function: var(--m-ease-exit), var(--m-ease-state);
+}
+header.is-hidden:focus-within { transform: none; }   /* con foco dentro no se esconde (WCAG 2.4.11) */
+
+/* Las letras «saphi» llevan relleno blanco fijo: sobre el header crema medían 1.13:1.
+   Pasan a --ink, que el motor de tema interpola; la forma del logo no cambia. */
+#siteHeader .logo-svg g[fill="#FFFFFF"] { fill: var(--ink); }
+
+
+/* ── 6. EFECTOS QUE COMPITEN (G-08) ──────────────────────────────────────── */
+
+/* will-change solo en vuelo: GSAP promueve la capa mientras anima (force3D auto)
+   y las reglas estáticas costaban ≈550 capas de composición [informe 01, H14]. */
+.word, .char, .blob, .blob path, .au, .marquee-track, .orb-svg path, .cases-track,
+.ov-pre, .ov-panel, #preview, #waveFx, .ag-panel, .ag-media, .stack-item { will-change: auto; }
+
+/* Grano fijo (overlay + 6 pasos): apagado costaba −20 % fps en el hero y −36 % en scroll
+   [01, H6]. El elemento ya no está en el marcado; esto cubre cualquier copia antigua. */
+.grain { display: none; animation: none; }
+
+/* Aurora: oculta desde antes (display:none !important) pero con 4 tweens infinitos encima */
+.hero-aurora, .hero-aurora .au { display: none; animation: none; }
+
+
+/* ── 7. FORMULARIO: error en línea por campo ─────────────────────────────── */
+.cf-cell { min-width: 0; }
+.cf-err {
+  font-size: 13.5px; line-height: 1.4;
+  color: #FF6B4A;   /* coral actual hasta la decisión D-7 (color de error del DS) */
+}
+.cf-err:not(:empty) { margin-top: 6px; }   /* vacío no ocupa nada: el formulario mide lo mismo que antes */
+.closing .cf-err { color: #FF6B4A; }
+
+
+/* ── 8. MOVIMIENTO REDUCIDO INTENCIONAL (C.15) ───────────────────────────────
+   Se quita lo espacial (desplazamiento, escala, rotación, parallax, scrub de
+   transform); el estado (color, opacidad, borde, subrayado, relleno) se
+   conserva a --m-dur-base. Sustituye al `* { transition-duration: .01ms !important }`
+   de site.css, que apagaba también el estado: este bloque lo vence por orden
+   (mismo (0) de especificidad y también !important, pero va después). */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    transition-property: color, background-color, border-color, outline-color, text-decoration-color,
+                         opacity, box-shadow, fill, stroke, -webkit-text-fill-color !important;
+    transition-duration: var(--m-dur-base) !important;
+    transition-timing-function: var(--m-ease-state) !important;
+    transition-delay: 0s !important;
+  }
+  [data-ambient], [data-ambient] *, [data-ambient]::before, [data-ambient]::after { animation: none !important; }
+  .m-ring { display: none; }
+
+  /* El manifiesto conserva height:250vh aunque ya no hay sticky: 1,673 px de pantalla vacía [a11y P2-11] */
+  .manifesto { height: auto !important; }
+
+  /* Casos sin pin ni arrastre: el carril es scroll horizontal nativo (los 5 casos alcanzables) */
+  .cases-viewport { overflow-x: auto; scroll-snap-type: x proximity; scrollbar-width: thin; }
+  .case-card { scroll-snap-align: start; }
+  .cases-progress { display: none; }
+}
+
+
+/* ── 9. SIN GSAP (html.m-nogsap, lo pone core.js) ────────────────────────────
+   Plan B declarativo: el contenido queda visible y legible con CSS puro. */
+html.m-nogsap .js-fade, html.m-nogsap .js-words { opacity: 1; }
+html.m-nogsap .manifesto { height: auto; }
+html.m-nogsap .manifesto-pin { position: static; height: auto; padding: clamp(64px, 9vw, 112px) 0; }
+html.m-nogsap .manifesto-text .word { color: var(--ink); }
+html.m-nogsap .mf-orb, html.m-nogsap .mf-dial, html.m-nogsap .mf-waves { display: none; }
+html.m-nogsap .bar-fill { transform: scaleX(1); }
+html.m-nogsap .cases-viewport { overflow-x: auto; scroll-snap-type: x proximity; scrollbar-width: thin; }
+html.m-nogsap .case-card { scroll-snap-align: start; }
+html.m-nogsap .cases-progress { display: none; }
+/* acordeón: misma lista vertical que en móvil, con todo a la vista */
+html.m-nogsap .ag-row { display: block; height: auto; perspective: none; }
+html.m-nogsap .ag-panel { width: 100%; margin-bottom: var(--ag-gap); transform: none; }
+html.m-nogsap .ag-media { width: 100%; transform: translate(-50%, -50%); }
+html.m-nogsap .ag-dim { opacity: .28; }
+html.m-nogsap .ag-spine { display: none; }
+html.m-nogsap .ag-body { position: relative; width: 100%; opacity: 1; pointer-events: auto; }

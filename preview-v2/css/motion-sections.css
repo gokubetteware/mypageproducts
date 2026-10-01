@@ -1,0 +1,192 @@
+/* ============================================================================
+   css/motion-sections.css — MOVIMIENTO POR SECCIÓN (propietario: sections)
+   Llegadas (.m-arrive), datos / «Las 23:07», manifiesto, Casos, proceso,
+   marquesina, cierre, footer. Se carga después de motion-ui.css: lee solo los
+   tokens --m-* (nada de números sueltos). Ver js/CONTRATO.md, «v2 · núcleo».
+
+   Contenido
+     1. Llegadas: hairline, barras, reduce
+     2. Marquesina
+     3. «Las 23:07»: «42 h» tachado → «1er timbre», marca, anillo estático con reduce
+     4. Cómo trabajo: línea que se enciende
+     5. Manifiesto: palabras, ondas fuera, deriva del orbe
+     6. Casos: scroll nativo como base, anclado con JS, segmentos, tarjeta activa
+     7. Peso por letra del titular
+     8. Desbordes (P1-13)
+
+   Los periodos de ambiente (--sec-*) no son tokens de interfaz: viven aquí, junto al
+   bucle que gobiernan, y todo bucle va pausado salvo con .is-live (ambient()).
+   ============================================================================ */
+
+
+/* ── 1. LLEGADAS ─────────────────────────────────────────────────────────── */
+
+/* Red de seguridad: si sections.js no llega (red caída, error) los .js-fade no se marcan y site.css los dejaría
+   en opacity:0 para siempre. Un temporizador de CSS (no un bucle) los muestra a los 4.5 s; en cuanto el módulo
+   los marca con .m-arrive, el selector deja de aplicar y mandan las llegadas. */
+@keyframes secFailsafe { to { opacity: 1; } }
+html.js .js-fade:not(.m-arrive) { animation: secFailsafe 0s linear 4.5s forwards; }
+
+/* Hairline: se corta de izquierda a derecha al llegar (el gesto de la línea del logo del DS) */
+html.js .m-draw { transform: scaleX(0); transform-origin: 0 50%; transition: transform var(--m-dur-layout) var(--m-ease); }
+html.js .m-draw.m-in { transform: none; }
+
+/* Barras de horas: crecen desde el origen izquierdo con la curva de marca (no inOut).
+   site.css las partía en scaleX(0): sin JS quedaban vacías; ahora son visibles por defecto
+   y solo se ocultan cuando este módulo las marcó (.m-bar). */
+.bar-fill { transform: scaleX(1); }
+html.js .bar-fill.m-bar { transition: transform var(--m-dur-count) var(--m-ease); }
+html.js .bar-fill.m-bar:not(.m-in) { transform: scaleX(0); }
+
+/* Movimiento reducido: el bloque llega con un fundido de --m-dur-base (las distancias ya valen 0).
+   site.css lo dejaba siempre visible (opacity:1 !important): este selector, más específico, lo
+   oculta hasta que el IO pone .m-in y deja el fundido a motion.css. */
+@media (prefers-reduced-motion: reduce) {
+  html.js .js-fade.m-arrive:not(.m-in) { opacity: 0 !important; }
+  html.js .m-draw { transform: none; opacity: 0; }
+  html.js .m-draw.m-in { opacity: 1; }
+}
+
+
+/* ── 2. MARQUESINA ───────────────────────────────────────────────────────── */
+
+/* Mitad de la separación entre palabras (= clamp(40px,6vw,76px) / 2): el desplazamiento de WAAPI
+   es copia + una separación, un periodo exacto (con -50% pelado había un salto de media separación) */
+.marquee-track { --mq-half-gap: clamp(20px, 3vw, 38px); }
+
+/* Con reduce no hay animación: una sola copia que envuelve, las palabras siguen a la vista */
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track { width: auto; flex-wrap: wrap; row-gap: var(--sp-24); padding: 0 max(var(--gutter), calc((100vw - var(--max-w)) / 2)); }
+  .marquee-track span:nth-child(n+11) { display: none; }
+}
+
+
+/* ── 3. «LAS 23:07» ──────────────────────────────────────────────────────── */
+
+/* El anillo de la marca se abre dentro de la tarjeta: se recorta ahí (en móvil se salía del viewport) */
+.chart-card { overflow: clip; }
+
+/* «42 h» tachado → «1er timbre». La tachadura es una línea que se dibuja (scaleX, origen izquierdo) y
+   «1er timbre» llega 120 ms (--m-dur-fast) después. Sin JS (o con html.js caído) queda el tachado nativo. */
+html.js .m-strike .dc-old { text-decoration: none; position: relative; display: inline-block; }
+html.js .m-strike .dc-old::after {
+  content: ""; position: absolute; left: -0.04em; right: -0.04em; top: 54%; height: 3px;
+  background: #FF6B4A;   /* coral actual: el mismo del tachado de site.css, hasta la decisión D-7 */
+  transform-origin: 0 50%;
+  transition: transform var(--m-dur-enter) var(--m-ease);
+  transition-delay: calc(min(var(--m-i, 0), 6) * var(--m-stagger-each) + var(--m-dur-enter) * .5);
+}
+html.js .m-strike:not(.m-in) .dc-old::after { transform: scaleX(0); }
+html.js .m-strike .dc-new {
+  transition: opacity var(--m-dur-enter) var(--m-ease-state), transform var(--m-dur-enter) var(--m-ease);
+  transition-delay: calc(min(var(--m-i, 0), 6) * var(--m-stagger-each) + var(--m-dur-enter) * .5 + var(--m-dur-fast));
+}
+html.js .m-strike:not(.m-in) .dc-new { opacity: 0; transform: translateY(var(--m-dist-1)); }
+
+@media (prefers-reduced-motion: reduce) {
+  /* ya tachado desde el primer cuadro; el estado lo dice el texto */
+  html.js .m-strike:not(.m-in) .dc-old::after { transform: scaleX(1); }
+  /* la marca queda con dos círculos concéntricos estáticos (el punto y un halo), sin sonar */
+  .m-ring--mark { display: block; opacity: .55; transform: scale(.26); }
+}
+
+
+/* ── 4. CÓMO TRABAJO: la línea que se enciende ───────────────────────────── */
+.steps { position: relative; }
+.steps-line {
+  position: absolute; left: 0; right: 0; top: 0; height: 1px; pointer-events: none;
+  background: var(--ink); transform-origin: 0 50%; transform: scaleX(0);
+}
+/* El paso encendido toma el acento; el apagado, --ink-50 (5.1:1 sobre crema). Solo cuando JS lo gobierna. */
+.steps.m-live .step .st-n { transition: color var(--m-dur-base) var(--m-ease-state); }
+.steps.m-live .step:not(.is-on) .st-n { color: var(--ink-50); }
+
+
+/* ── 5. MANIFIESTO ───────────────────────────────────────────────────────── */
+.manifesto-text .word { transition: text-shadow var(--m-dur-enter) var(--m-ease-state); }
+
+/* Las ondas de voz salen: eran 4 tweens infinitos casi invisibles y duplicaban al orbe (D.1 #7) */
+.mf-waves { display: none; }
+
+/* El «60 %» del dial quedaba en dos renglones (número arriba, % abajo): grid con dos hijos */
+.mf-dial .d-pct { display: flex; align-items: center; justify-content: center; }
+
+/* La frase final ya no brilla en bucle: una pasada finita la lleva el JS (color por palabra) */
+.mf-shine .word { animation: none; }
+
+/* Deriva del orbe: UNA animación de translate + rotate + scale (31 s) en lugar de 4 tweens; pausada
+   salvo con .is-live (ambient()). Propiedades individuales: no pisan el transform: translateY(-50%) de site.css */
+.mf-orb { --sec-orb-period: 31s; animation: secOrbDrift var(--sec-orb-period) ease-in-out infinite; animation-play-state: paused; }
+.mf-orb.is-live { animation-play-state: running; }
+@keyframes secOrbDrift {
+  0%, 100% { translate: 0 0; rotate: 0deg; scale: 1; }
+  50% { translate: 36px -28px; rotate: 14deg; scale: 1.08; }
+}
+
+
+/* ── 6. CASOS ────────────────────────────────────────────────────────────── */
+
+/* Base accesible (P1-1): el carril es scroll horizontal nativo en TODOS los anchos y con reduce.
+   Solo con movimiento y ≥901 px el JS lo ancla (.is-pinned) y arrastra el scroll de la página. */
+.cases-shell { --cases-pad: max(var(--gutter), calc((100vw - var(--max-w)) / 2)); }
+.cases-viewport {
+  overflow-x: auto; overflow-y: hidden; overscroll-behavior-x: contain;
+  scroll-padding-left: var(--cases-pad);
+  scrollbar-width: thin; scrollbar-color: var(--ink-25) transparent;
+}
+.case-card { scroll-snap-align: start; }
+@media (min-width: 761px) { .cases-viewport { scroll-snap-type: x proximity; } }   /* ≤760: mandatory, de site.css */
+@media (max-width: 760px) { .cases-viewport { scrollbar-width: none; } }
+/* en escritorio con movimiento el carril se ancla: sin barra mientras el JS no llega (no hay destello) */
+@media (min-width: 901px) and (prefers-reduced-motion: no-preference) { html:not(.m-nogsap) .cases-viewport { scrollbar-width: none; } }
+.cases-viewport.is-pinned { overflow: hidden; scroll-snap-type: none; }
+
+/* Segmentos de avance, sin texto: el activo se alarga (scaleX, origen izquierdo). Visibles también en móvil. */
+html .cases-shell .cases-progress { display: flex; align-items: center; gap: 28px; height: auto; background: none; margin-top: var(--sp-32); }
+.cases-progress #casesBar { display: none; }   /* la barra continua la sustituyen los segmentos */
+.cases-progress .cs {
+  position: relative; inset: auto; display: block; flex: none; width: 22px; height: 3px; border-radius: 2px;   /* site.css pinta todo `.cases-progress span` absoluto y en scaleX(0) */
+  background: var(--ink-25); transform: none; transform-origin: 0 50%;
+  transition: transform var(--m-dur-enter) var(--m-ease);
+}
+.cases-progress .cs::after {
+  content: ""; position: absolute; inset: 0; border-radius: inherit; background: var(--ink); opacity: 0;
+  transition: opacity var(--m-dur-base) var(--m-ease-state);
+}
+.cases-progress .cs.is-past::after { opacity: .45; }
+.cases-progress .cs.is-active::after { opacity: 1; }
+.cases-progress .cs.is-active { transform: scaleX(2); }
+@media (prefers-reduced-motion: reduce) { .cases-progress .cs.is-active { transform: none; } }   /* se lee por color, sin alargarse */
+
+/* Tarjeta activa o con hover: sube --m-lift (propiedad `translate`, que no pisa el transform de otros
+   scripts; el hover también lo declara motion-ui.css) y su barra superior pasa de 45 % a 100 %. Las demás no se atenúan: el texto conserva su contraste. */
+.case-card:nth-child(5n+1) { --cc: #F5A623; }
+.case-card:nth-child(5n+2) { --cc: #3B82F6; }
+.case-card:nth-child(5n+3) { --cc: #14B8C4; }
+.case-card:nth-child(5n+4) { --cc: #511BDB; }
+.case-card:nth-child(5n+5) { --cc: #8B6DE8; }
+.case-card {
+  transition: background-color var(--m-dur-base) var(--m-ease-state), border-top-color var(--m-dur-base) var(--m-ease-state), translate var(--m-dur-base) var(--m-ease);
+}
+@supports (color: color-mix(in srgb, red 50%, blue)) {
+  .case-card:nth-child(n) { border-top-color: color-mix(in srgb, var(--cc) 45%, transparent); }
+  .case-card.is-active:nth-child(n) { border-top-color: var(--cc); }
+}
+.case-card.is-active { translate: 0 var(--m-lift); }
+@media (hover: hover) and (pointer: fine) {
+  .case-card:hover { translate: 0 var(--m-lift); }
+  .case-card:hover:nth-child(n) { border-top-color: var(--cc); }
+}
+
+/* ── 7. PESO POR LETRA DEL TITULAR ───────────────────────────────────────── */
+/* Mientras el efecto está armado cada letra tiene ancho y alto fijos (los pone el JS) y centra su
+   glifo: al engordar crece hacia los dos lados y el reflujo no se propaga a la línea. */
+#heroDisplay.is-weighing .char { display: inline-flex; justify-content: center; }
+#heroDisplay.is-unweighing .char { transition: font-weight var(--m-dur-base) var(--m-ease-state); }
+
+
+/* ── 8. DESBORDES (P1-13) ────────────────────────────────────────────────── */
+/* Los blobs ambientales (.amb-* con right:-3 % / left:-4 %) ensanchaban el documento 3 %
+   en móvil y tableta. overflow-x:clip recorta sin crear contenedor de scroll (el pin y
+   el parallax vertical no se enteran). */
+#datos, #casos, #proceso { overflow-x: clip; }

@@ -1,14 +1,16 @@
 /* ============================================================================
-   js/ui.js — INTERACCION DE INTERFAZ (propietario: ui)
-   Botones roll, anclas con latigazo (P8), menu movil, formulario, cursor /
-   imanes / spotlight / preview de casos y onda de CTA. Ver js/CONTRATO.md.
-   Importa de core; no toca secciones. Con plan B (sin GSAP o movimiento
-   reducido) el bloque principal no corre, igual que el `return` del original.
-   ============================================================================ */
-import { H, active, lenis, mm, safe } from './core.js';
+   js/ui.js — INTERACCIÓN DE INTERFAZ (propietario: ui)
+   Roll de texto, anclas, menú, formulario, onda de CTA, cursor, imanes y vista
+   previa de casos. Lo visual vive en css/motion-ui.css; aquí solo el estado.
 
-(function () {
-if (!active) return;   /* GLUE: el original hacia `return` en el plan B */
+   Dos capas (CONTRATO, «v2 · núcleo»):
+     · BÁSICO, siempre (con GSAP, sin GSAP y con «reducir movimiento»): menú,
+       formulario, anclas, #hash, foco y roll. No usa GSAP para nada esencial.
+     · MOVIMIENTO, solo con mode.motion: viaje suave con Lenis, onda de CTA,
+       cursor propio, imanes y vista previa.
+   Importa de core; no toca secciones.
+   ============================================================================ */
+import { H, M, mode, lenis, safe, headerApi } from './core.js';
 
 /* ═══════════════════════════════════════════════════════════
    EDITA AQUÍ — a dónde llegan los mensajes del formulario
@@ -20,388 +22,649 @@ if (!active) return;   /* GLUE: el original hacia `return` en el plan B */
 var FORM_ENDPOINT = '';                       // ej: 'https://formspree.io/f/xxxxxxx'
 var FORM_EMAIL    = 'sayisless@gmail.com';    // respaldo mientras no haya endpoint
 
-/* ── P8: latigazo al usar un ancla ───────────────────────── */
-var whipEl = document.getElementById('top');
-document.querySelectorAll('a[href^="#"]').forEach(function (a) {
-  a.addEventListener('click', function (e) {
-    var hash = a.getAttribute('href');
-    if (hash.length < 2) return;
-    var el = document.querySelector(hash);
-    if (!el) return;
-    e.preventDefault();
-    closeMenu();
-    gsap.timeline()
-      .to(whipEl, { skewY: 2.2, duration: 0.22, ease: 'power2.out' })
-      .to(whipEl, { skewY: 0, duration: 1.1, ease: 'gk' }, 0.3);
-    if (lenis) lenis.scrollTo(el, { offset: -72, duration: 1.4 });
-    else window.scrollTo({ top: el.getBoundingClientRect().top + window.pageYOffset - 72, behavior: 'smooth' });
-  });
-});
+const root = document.documentElement;
+const $ = (id) => document.getElementById(id);
+const ms = (s) => Math.round(s * 1000);
+const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
+const cubic = (b) => 'cubic-bezier(' + b + ')';
+const SVG_NS = 'http://www.w3.org/2000/svg';
 
-/* ═══ P3: roll carácter por carácter ══════════════════════
-   El texto queda en el HTML; esto solo lo duplica y le pone un
-   retraso escalonado a cada letra. Si el JS muere, el enlace
-   sigue leyéndose igual. */
+const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)');
+const wideScreen = window.matchMedia('(min-width: 901px)');
+const onChange = (mq, fn) => { if (mq.addEventListener) mq.addEventListener('change', fn); else if (mq.addListener) mq.addListener(fn); };
+
+/* Modalidad de entrada: el anillo doble de los campos solo aparece al navegar con teclado
+   (en un campo de texto :focus-visible también cuenta al hacer clic). */
+function initModality() {
+  window.addEventListener('keydown', (e) => { if (e.key === 'Tab' || (e.key && e.key.indexOf('Arrow') === 0)) root.classList.add('ui-kbd'); }, true);
+  window.addEventListener('pointerdown', () => { root.classList.remove('ui-kbd'); }, true);
+}
+
+/* ═══ Anillo de «sonar» (WAAPI): se abre y se apaga, una sola vez ═════════════ */
+function sonar(ring, iterations) {
+  if (!ring || !ring.animate || mode.reduced) return null;
+  return ring.animate([
+    { opacity: 0, transform: 'scale(.12)' },
+    { opacity: 0.85, offset: 0.12 },
+    { opacity: 0.85, offset: 0.4 },
+    { opacity: 0, transform: 'scale(1)' }
+  ], { duration: ms(M.dur.ring), easing: cubic(M.ease.bezier.cine), iterations: iterations || 1 });
+}
+
+/* Palomita dibujada: el trazo se normaliza con pathLength (CSS anima stroke-dashoffset) */
+function makeCheck() {
+  const s = document.createElementNS(SVG_NS, 'svg');
+  s.setAttribute('viewBox', '0 0 24 24'); s.setAttribute('class', 'ui-check');
+  s.setAttribute('aria-hidden', 'true'); s.setAttribute('focusable', 'false');
+  const p = document.createElementNS(SVG_NS, 'path');
+  p.setAttribute('d', 'M5 12.5l4.5 4.5L19 7.5'); p.setAttribute('pathLength', '1');
+  s.appendChild(p);
+  return s;
+}
+function showCheck(svg) {
+  svg.classList.remove('on');
+  requestAnimationFrame(() => { requestAnimationFrame(() => { svg.classList.add('on'); }); });   /* un cuadro después de insertarla, para que el trazo arranque */
+}
+
+/* ═══ ROLL — el texto queda UNA vez para lectores; las copias visuales van aria-hidden ═══
+   Solo con puntero fino y sin «reducir movimiento»: en táctil el roll no existe. */
 function buildRoll(el) {
-  var txt = el.getAttribute('data-roll');
-  if (!txt) return;
-  Array.prototype.slice.call(el.childNodes).forEach(function (n) { if (n.nodeType === 3) el.removeChild(n); });
-  var wrap = document.createElement('span');
-  wrap.className = 'roll';
-  [0, 1].forEach(function (i) {
-    var s = document.createElement('span');
-    if (i === 1) s.setAttribute('aria-hidden', 'true');
-    txt.split('').forEach(function (ch, j) {
-      var c = document.createElement('span');
+  const txt = el.getAttribute('data-roll');
+  if (!txt || el.querySelector('.roll')) return;
+  Array.prototype.slice.call(el.childNodes).forEach((n) => { if (n.nodeType === 3) el.removeChild(n); });
+  const sr = document.createElement('span');
+  sr.className = 'roll-sr'; sr.textContent = txt;
+  const wrap = document.createElement('span');
+  wrap.className = 'roll'; wrap.setAttribute('aria-hidden', 'true');
+  const step = M.stagger.each / 4, cap = M.stagger.max / 2;       /* 10 ms por letra, tope 120 ms */
+  [0, 1].forEach(() => {
+    const s = document.createElement('span');
+    txt.split('').forEach((ch, j) => {
+      const c = document.createElement('span');
       c.className = 'rc';
-      c.textContent = ch === ' ' ? '\u00a0' : ch;
-      c.style.transitionDelay = (j * 0.016) + 's';
+      c.textContent = ch === ' ' ? ' ' : ch;
+      c.style.transitionDelay = Math.min(j * step, cap).toFixed(3) + 's';
       s.appendChild(c);
     });
     wrap.appendChild(s);
   });
   el.insertBefore(wrap, el.firstChild);
+  el.insertBefore(sr, el.firstChild);
 }
-document.querySelectorAll('[data-roll]').forEach(buildRoll);
+function initRoll() {
+  if (mode.reduced || !finePointer.matches) return;
+  document.querySelectorAll('[data-roll]').forEach(buildRoll);
+}
 
-/* ═══ FORMULARIO DE CONTACTO ══════════════════════════════
-   Sin backend. Con FORM_ENDPOINT configurado envía por fetch; sin
-   él, arma un mailto con todo prellenado — así el formulario sirve
-   desde el primer día en Vercel y mejora cuando pegues la URL. */
-(function () {
-  var form = document.getElementById('form');
-  if (!form) return;
-  var msg = document.getElementById('cfMsg');
+/* ═══ MENÚ (burger + overlay) ═════════════════════════════════════════════════
+   Visual 100 % CSS (clase .open); el estado y el foco se resuelven aquí. */
+const menu = { isOpen: false, open() {}, close() {} };
+function initMenu() {
+  const burger = $('burger'), overlay = $('navOverlay'), ovClose = $('ovClose'), ovHit = $('ovHit');
+  if (!burger || !overlay) return;
+  const labelOpen = burger.getAttribute('aria-label') || '';
+  const labelClose = (ovClose && ovClose.getAttribute('aria-label')) || labelOpen;
+  const backdrop = Array.prototype.slice.call(document.querySelectorAll('body > header, body > .banner, body > main, body > footer'));
 
-  function fail(el, text) {
-    el.closest('.cf-field').classList.add('bad');
-    msg.textContent = text; msg.classList.add('bad');
-    el.focus();
-    gsap.fromTo(form, { x: -7 }, { x: 0, duration: 0.5, ease: 'elastic.out(1,0.35)' });
+  /* Diálogo modal con nombre sacado del texto que ya existe («Abrir menú» → «menú») */
+  overlay.setAttribute('role', 'dialog');
+  overlay.setAttribute('aria-modal', 'true');
+  const name = labelOpen.replace(/^\S+\s+/, '');
+  if (name) overlay.setAttribute('aria-label', name);
+  burger.setAttribute('aria-controls', 'navOverlay');
+
+  const focusables = () => Array.prototype.slice.call(overlay.querySelectorAll('a[href], button:not([disabled])'));
+  const setInert = (on) => { backdrop.forEach((n) => { n.inert = on; }); };
+
+  menu.open = function () {
+    if (menu.isOpen) return;
+    menu.isOpen = true;
+    overlay.classList.add('open'); burger.classList.add('open');
+    burger.setAttribute('aria-expanded', 'true');
+    if (labelClose) burger.setAttribute('aria-label', labelClose);
+    root.classList.add('ui-menu-open');
+    if (lenis) lenis.stop();
+    headerApi.show();
+    const first = overlay.querySelector('.ov-item');
+    if (first) first.focus({ preventScroll: true });                /* sin scroll: li recorta y un foco ahí lo desplazaría */
+    setInert(true);                                                  /* después de mover el foco, para no perderlo */
+  };
+  menu.close = function (opts) {
+    if (!menu.isOpen) return;
+    menu.isOpen = false;
+    setInert(false);
+    overlay.classList.remove('open'); burger.classList.remove('open');
+    burger.setAttribute('aria-expanded', 'false');
+    if (labelOpen) burger.setAttribute('aria-label', labelOpen);
+    root.classList.remove('ui-menu-open');
+    if (lenis) lenis.start();
+    if (!opts || opts.restoreFocus !== false) burger.focus({ preventScroll: true });
+  };
+
+  burger.addEventListener('click', () => { if (menu.isOpen) menu.close(); else menu.open(); });
+  if (ovClose) ovClose.addEventListener('click', () => { menu.close(); });
+  if (ovHit) ovHit.addEventListener('click', () => { menu.close(); });
+  document.addEventListener('keydown', (e) => {
+    if (!menu.isOpen) return;
+    if (e.key === 'Escape') { e.preventDefault(); menu.close(); return; }
+    if (e.key !== 'Tab') return;
+    const list = focusables();                                       /* el foco no sale del menú (el fondo ya es inert; esto cubre el borde del documento) */
+    if (!list.length) return;
+    const a = document.activeElement, i = list.indexOf(a);
+    if (e.shiftKey && (i <= 0)) { e.preventDefault(); list[list.length - 1].focus(); }
+    else if (!e.shiftKey && (i === list.length - 1 || i < 0)) { e.preventDefault(); list[0].focus(); }
+  });
+
+  /* Escalón de entrada de los ítems (CSS usa --k × --m-stagger-each, con tope) */
+  overlay.querySelectorAll('.ov-item').forEach((n, k) => { n.style.setProperty('--k', k); });
+  const mail = overlay.querySelector('.ov-mail');
+  if (mail) mail.style.setProperty('--k', overlay.querySelectorAll('.ov-item').length);
+}
+
+/* ═══ ANCLAS: viaje con duración por distancia, #hash, foco y teclado ═════════ */
+const ANCHOR_OFFSET = 72;                                            /* alto del header: el destino queda justo debajo */
+function anchorTarget(hash) {
+  if (!hash || hash.length < 2) return null;
+  let id; try { id = decodeURIComponent(hash.slice(1)); } catch (e) { id = hash.slice(1); }
+  return document.getElementById(id);
+}
+function targetY(el, hash) {
+  if (hash === '#top') return 0;
+  return Math.max(0, Math.round(el.getBoundingClientRect().top + window.pageYOffset - ANCHOR_OFFSET));
+}
+const travelEase = H.gsap ? gsap.parseEase(M.ease.brand) : null;
+function travel(y, o) {
+  o = o || {};
+  const dy = y - window.pageYOffset;
+  if (o.instant || mode.reduced || Math.abs(dy) < 2) {               /* con reducido el salto es directo */
+    if (lenis) lenis.scrollTo(y, { immediate: true, force: true });
+    else window.scrollTo(0, y);
+    if (H.ScrollTrigger) ScrollTrigger.update();
+    return;
   }
+  const d = clamp(0.35 + Math.abs(dy) / 3200, M.travel.min, M.travel.max);
+  headerApi.hold(ms(d) + 250);                                       /* el header no se esconde durante el viaje */
+  if (lenis) lenis.scrollTo(y, { duration: d, easing: travelEase || undefined, force: true });
+  else window.scrollTo({ top: y, behavior: 'smooth' });
+}
+function focusTarget(el) {
+  const tag = el.tagName;
+  if (!el.hasAttribute('tabindex') && !/^(A|BUTTON|INPUT|SELECT|TEXTAREA)$/.test(tag)) el.setAttribute('tabindex', '-1');
+  try { el.focus({ preventScroll: true }); } catch (e) { /* sin foco programático */ }
+}
+function pushHash(hash) {
+  if (window.location.hash === hash) return;
+  try { history.pushState(null, '', hash); } catch (e) { /* sandbox sin historial */ }
+}
+function go(el, hash, o) {
+  o = o || {};
+  travel(targetY(el, hash), o);
+  if (o.focus !== false) focusTarget(el);
+  if (o.push !== false) pushHash(hash);
+}
 
-  form.addEventListener('submit', function (e) {
+let wave = null;
+function initAnchors() {
+  /* Un solo delegado en captura: menú, enlaces y CTA pasan por aquí */
+  document.addEventListener('click', (e) => {
+    if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    const a = e.target && e.target.closest ? e.target.closest('a[href^="#"]') : null;
+    if (!a) return;
+    const hash = a.getAttribute('href');
+    const el = anchorTarget(hash);
+    if (!el) return;
     e.preventDefault();
-    form.querySelectorAll('.cf-field').forEach(function (f) { f.classList.remove('bad'); });
-    msg.classList.remove('bad'); msg.textContent = '';
-
-    var d = {};
-    ['nombre', 'negocio', 'whatsapp', 'correo', 'mensaje'].forEach(function (k) {
-      d[k] = (form.elements[k].value || '').trim();
-    });
-    if (!d.nombre) { fail(form.elements.nombre, 'Me falta tu nombre.'); return; }
-    /* 10 dígitos ignorando espacios y guiones: así no se rechaza a
-       quien escribe 782 123 4567 */
-    if (d.whatsapp.replace(/[^0-9]/g, '').length < 10) { fail(form.elements.whatsapp, 'El WhatsApp necesita 10 dígitos.'); return; }
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(d.correo)) { fail(form.elements.correo, 'Revisa el correo, algo no cuadra.'); return; }
-    if (!form.elements.consent.checked) {
-      msg.textContent = 'Necesito tu visto bueno para poder contactarte.';
-      msg.classList.add('bad');
+    const fromMenu = menu.isOpen;
+    menu.close({ restoreFocus: false });                             /* el menú se cierra antes de viajar */
+    /* La onda es solo de «Agendar demo» (los pill-grad de destino #…), con mouse; «Ver productos» y el táctil viajan normal */
+    if (wave && !fromMenu && a.matches('a.pill-grad') && mode.motion && finePointer.matches) {
+      if (wave.busy) return;
+      wave.run(a, () => { go(el, hash, { instant: true }); });
       return;
     }
+    go(el, hash);
+  }, true);
 
-    var btn = form.querySelector('.cf-send');
-    var cuerpo = 'Nombre: ' + d.nombre + '\nNegocio: ' + (d.negocio || '-') +
-                 '\nWhatsApp: ' + d.whatsapp + '\nCorreo: ' + d.correo +
-                 '\n\n' + (d.mensaje || '(sin mensaje)');
-
-    function listo() {
-      msg.textContent = 'Listo, ' + d.nombre.split(' ')[0] + '. Te contesto en menos de 24 horas.';
-      gsap.fromTo(msg, { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.5 });
-      form.reset();
-    }
-
-    if (FORM_ENDPOINT) {
-      btn.disabled = true; msg.textContent = 'Enviando...';
-      fetch(FORM_ENDPOINT, {
-        method: 'POST',
-        headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
-        body: JSON.stringify(d)
-      }).then(function (r) {
-        btn.disabled = false;
-        if (r.ok) listo();
-        else { msg.textContent = 'No salio. Escribeme a ' + FORM_EMAIL; msg.classList.add('bad'); }
-      }).catch(function () {
-        btn.disabled = false;
-        msg.textContent = 'No salio. Escribeme a ' + FORM_EMAIL; msg.classList.add('bad');
-      });
-    } else {
-      window.location.href = 'mailto:' + FORM_EMAIL +
-        '?subject=' + encodeURIComponent('Demo para ' + (d.negocio || d.nombre)) +
-        '&body=' + encodeURIComponent(cuerpo);
-      listo();
-    }
-  });
-})();
-
-/* ═══ MENÚ MÓVIL (M7) ═════════════════════════════════════ */
-var burger = document.getElementById('burger');
-var overlay = document.getElementById('navOverlay');
-var menuOpen = false;
-function openMenu() {
-  menuOpen = true;
-  overlay.classList.add('open');
-  burger.classList.add('open');
-  burger.setAttribute('aria-expanded', 'true');
-  if (lenis) lenis.stop();
-  gsap.timeline()
-    .fromTo('.ov-pre1', { x: 0, xPercent: 102 }, { x: 0, xPercent: 0, duration: 0.5, ease: 'expo.inOut' }, 0)
-    .fromTo('.ov-pre2', { x: 0, xPercent: 102 }, { x: 0, xPercent: 0, duration: 0.5, ease: 'expo.inOut' }, 0.08)
-    .fromTo('.ov-panel', { x: 0, xPercent: 102 }, { x: 0, xPercent: 0, duration: 0.55, ease: 'expo.inOut' }, 0.16)
-    .fromTo(overlay.querySelectorAll('.ov-item'),
-      { yPercent: 120, opacity: 0 },
-      { yPercent: 0, opacity: 1, duration: 0.55, ease: 'power3.out', stagger: 0.055 }, 0.42)
-    .fromTo('.ov-mail', { opacity: 0 }, { opacity: 1, duration: 0.4 }, 0.75);
-}
-function closeMenu() {
-  if (!menuOpen) return;
-  menuOpen = false;
-  burger.classList.remove('open');
-  burger.setAttribute('aria-expanded', 'false');
-  if (lenis) lenis.start();
-  gsap.to(['.ov-panel', '.ov-pre2', '.ov-pre1'], {
-    x: 0, xPercent: 102, duration: 0.45, ease: 'expo.in', stagger: 0.06,
-    onComplete: function () { overlay.classList.remove('open'); }
-  });
-}
-document.getElementById('ovHit').addEventListener('click', closeMenu);
-document.getElementById('ovClose').addEventListener('click', closeMenu);
-document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeMenu(); });
-if (burger) burger.addEventListener('click', function () { menuOpen ? closeMenu() : openMenu(); });
-
-/* ── Escritorio: partes de UI que viven en matchMedia y no dependen de secciones ──
-   (en el original eran tres bloques safe() dentro del mm.add de escritorio; aqui
-   tienen su propio contexto con la MISMA consulta) */
-mm.add('(min-width: 901px) and (prefers-reduced-motion: no-preference)', function () {
-
-  safe('preview', function () {
-  /* ═══ G6 — PREVIEW que persigue al cursor ═══ */
-  var preview = document.getElementById('preview');
-  var pvArt = document.getElementById('pvArt');
-  var pvLabel = document.getElementById('pvLabel');
-  if (preview) {
-    var px = gsap.quickTo(preview, 'x', { duration: 0.6, ease: 'power3' });
-    var py = gsap.quickTo(preview, 'y', { duration: 0.6, ease: 'power3' });
-    window.addEventListener('mousemove', function (e) { px(e.clientX + 26); py(e.clientY - 100); }, { passive: true });
-
-    document.querySelectorAll('.case-card').forEach(function (card) {
-      card.addEventListener('mouseenter', function () {
-        var cols = (card.getAttribute('data-pv') || '#511BDB,#BDA8F1').split(',');
-        /* Sin assets: un degradado animado con la paleta del caso.
-           Se prefirió CSS sobre canvas para no meter un segundo rAF
-           compitiendo con el ticker de GSAP. */
-        pvArt.style.background = 'linear-gradient(120deg,' + cols[0] + ',' + cols[1] + ',' + cols[0] + ')';
-        pvArt.style.backgroundSize = '300% 300%';
-        pvLabel.textContent = card.getAttribute('data-pvlabel') || '';
-        gsap.fromTo(preview,
-          { clipPath: 'inset(50% 0% 50% 0%)', scale: 0.8, opacity: 0 },
-          { clipPath: 'inset(0% 0% 0% 0%)', scale: 1, opacity: 1, duration: 0.6, ease: 'gk', overwrite: 'auto' });
-      });
-      card.addEventListener('mouseleave', function () {
-        gsap.to(preview, { clipPath: 'inset(50% 0% 50% 0%)', scale: 0.8, opacity: 0, duration: 0.4, overwrite: 'auto' });
-      });
-    });
-  }
-
-
+  /* Atrás / adelante entre anclas y hash escrito a mano */
+  window.addEventListener('hashchange', () => {
+    const el = anchorTarget(window.location.hash);
+    if (el) go(el, window.location.hash, { push: false });
   });
 
-  safe('spot', function () {
-  /* ═══ P1 + spotlight + elevación de tarjetas ═══ */
-  document.querySelectorAll('.spot, .pill').forEach(function (el) {
-    el.addEventListener('pointermove', function (e) {
-      var r = el.getBoundingClientRect();
-      el.style.setProperty('--mx', (e.clientX - r.left) + 'px');
-      el.style.setProperty('--my', (e.clientY - r.top) + 'px');
-    });
-  });
-  document.querySelectorAll('.case-card').forEach(function (card) {
-    card.addEventListener('mouseenter', function () { gsap.to(card, { y: -8, duration: 0.5, overwrite: 'auto' }); });
-    card.addEventListener('mouseleave', function () { gsap.to(card, { y: 0, duration: 0.5, overwrite: 'auto' }); });
-  });
-
-
-  });
-
-  safe('cursor', function () {
-  /* ═══ P2 — CURSOR QUE MORFEA ═══ */
-  if (window.matchMedia('(pointer: fine)').matches) {
-    document.body.classList.add('has-cursor');
-    var dot = document.getElementById('cursorDot');
-    var ring = document.getElementById('cursorRing');
-    var label = document.getElementById('curLabel');
-    gsap.set([dot, ring], { xPercent: -50, yPercent: -50 });
-
-    var dx = gsap.quickTo(dot, 'x', { duration: 0.05, ease: 'none' });
-    var dy = gsap.quickTo(dot, 'y', { duration: 0.05, ease: 'none' });
-    var rx = gsap.quickTo(ring, 'x', { duration: 0.42, ease: 'power3' });
-    var ry = gsap.quickTo(ring, 'y', { duration: 0.42, ease: 'power3' });
-
-    var magnets = [];
-    function buildMagnets() {
-      magnets = [];
-      document.querySelectorAll('.magnetic').forEach(function (el) {
-        magnets.push({ el: el, rect: el.getBoundingClientRect(),
-          x: gsap.quickTo(el, 'x', { duration: 0.45, ease: 'power3' }),
-          y: gsap.quickTo(el, 'y', { duration: 0.45, ease: 'power3' }) });
-      });
-    }
-    buildMagnets();
-    window.addEventListener('resize', buildMagnets);
-    window.addEventListener('scroll', function () {
-      magnets.forEach(function (m) { m.rect = m.el.getBoundingClientRect(); });
-    }, { passive: true });
-
-    window.addEventListener('mousemove', function (e) {
-      dx(e.clientX); dy(e.clientY); rx(e.clientX); ry(e.clientY);
-      for (var i = 0; i < magnets.length; i++) {
-        var m = magnets[i], r = m.rect;
-        var ddx = e.clientX - (r.left + r.width / 2), ddy = e.clientY - (r.top + r.height / 2);
-        var d = Math.sqrt(ddx * ddx + ddy * ddy);
-        if (d < 120) { var p = (1 - d / 120) * 0.42; m.x(ddx * p); m.y(ddy * p); }
-        else { m.x(0); m.y(0); }
-      }
-    }, { passive: true });
-
-    var STATES = {
-      card: { width: 84, height: 84, borderRadius: '50%', text: H.Draggable ? 'Arrastra' : 'Ver' },
-      pill: { width: 46, height: 46, borderRadius: '50%', text: '→' },
-      base: { width: 36, height: 36, borderRadius: '50%', text: '' }
+  /* #hash al cargar: el pin de Casos y las fuentes mueven el documento, así que se alinea de nuevo
+     (una sola vez, y solo si la persona todavía no se movió por su cuenta) */
+  if (anchorTarget(window.location.hash)) {
+    let moved = false;
+    ['wheel', 'touchstart', 'keydown', 'pointerdown'].forEach((ev) => { window.addEventListener(ev, () => { moved = true; }, { passive: true, once: true }); });
+    const realign = () => {
+      const hash = window.location.hash, el = anchorTarget(hash);
+      if (moved || !el) return;
+      travel(targetY(el, hash), { instant: true });
+      if (el.classList.contains('ag-panel') && window.__agAbrir) window.__agAbrir(el.id);
     };
-    var curState = 'base';
-    function setCursor(name) {
-      if (name === curState) return;
-      curState = name;
-      var s = STATES[name];
-      label.textContent = s.text;
-      gsap.to(ring, { width: s.width, height: s.height, borderRadius: s.borderRadius, duration: 0.4, overwrite: 'auto' });
-      gsap.to(label, { opacity: s.text ? 1 : 0, duration: 0.3, overwrite: 'auto' });
-    }
-    document.addEventListener('mouseover', function (e) {
-      var t = e.target;
-      if (t.closest('.case-card')) setCursor('card');
-      else if (t.closest('.pill, a, button')) setCursor('pill');
-      else setCursor('base');
-    });
+    const later = () => setTimeout(realign, 450);
+    if (document.readyState === 'complete') later(); else window.addEventListener('load', later, { once: true });
+    document.addEventListener('saphi:intro-done', () => { setTimeout(realign, 200); }, { once: true });
   }
+}
 
-
-  });
-
-  return function () { /* GSAP revierte lo de este contexto solo */ };
-});
-
-})();
-
-/* ══ Onda de CTA ═══════════════════════════════════════════════
-   Clic en un CTA: un círculo coral se expande desde el botón, cubre
-   la pantalla, el salto a la sección ocurre debajo, y el círculo se
-   disuelve dejando los tonos normales. En "Enviar" la onda regresa
-   al propio botón al confirmarse el envío. Si no hay GSAP o el
-   usuario pide menos movimiento, los botones se comportan como hoy. */
-(function () {
-  if (!window.gsap) return;
-  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-  var fx = document.createElement('div');
+/* ═══ ONDA DE CTA (solo «Agendar demo») ═══════════════════════════════════════
+   Un círculo coral cubre la pantalla desde el botón, el salto ocurre debajo y un
+   hueco lo descubre. 0.85 s en total; el candado nunca pasa de 0.9 s. */
+function initWave() {
+  if (!H.gsap) return null;
+  const TOTAL = 0.85, GAP = 0.06;
+  const REVEAL = M.dur.layout, COVER = TOTAL - REVEAL - GAP;         /* 0.35 s cubre · 0.06 s pausa · 0.44 s descubre */
+  const fx = document.createElement('div');
   fx.id = 'waveFx'; fx.setAttribute('aria-hidden', 'true');
   document.body.appendChild(fx);
-  var busy = false;
+  let busy = false, failSafe = 0, pending = null, reveal = null;
 
-  function circle(x, y, r) { return 'circle(' + r.toFixed(1) + 'px at ' + x.toFixed(1) + 'px ' + y.toFixed(1) + 'px)'; }
-  function maxR(x, y) { return Math.hypot(Math.max(x, window.innerWidth - x), Math.max(y, window.innerHeight - y)); }
-
-  /* Dos tweens encadenados (sin timeline): imposible dejar el candado puesto.
-     El failsafe de 3s desbloquea aunque un tween muera por causas externas. */
-  var failSafe = null, pendingBetween = null;
-  function flushBetween() {
-    if (!pendingBetween) return;
-    var fn = pendingBetween; pendingBetween = null;
-    try { fn(); } catch (err) {}
-  }
-  var revealTween = null;
-  function clearMask() {
-    fx.style.webkitMaskImage = ''; fx.style.maskImage = '';
-  }
+  const circle = (x, y, r) => 'circle(' + r.toFixed(1) + 'px at ' + x.toFixed(1) + 'px ' + y.toFixed(1) + 'px)';
+  const maxR = (x, y) => Math.hypot(Math.max(x, window.innerWidth - x), Math.max(y, window.innerHeight - y));
+  const clearMask = () => { fx.style.webkitMaskImage = ''; fx.style.maskImage = ''; };
+  function flush() { if (!pending) return; const fn = pending; pending = null; try { fn(); } catch (err) { /* el salto es lo importante */ } }
   function finish() {
-    if (failSafe) { clearTimeout(failSafe); failSafe = null; }
-    flushBetween(); /* el salto ocurre aunque el navegador haya congelado la animación */
-    if (revealTween) { revealTween.kill(); revealTween = null; }
+    if (failSafe) { clearTimeout(failSafe); failSafe = 0; }
+    flush();                                                          /* el salto ocurre aunque el navegador congele la animación */
+    if (reveal) { reveal.kill(); reveal = null; }
     gsap.killTweensOf(fx);
     clearMask();
     fx.style.display = 'none';
     busy = false;
   }
-  function runWave(fromEl, between, revealFrom) {
-    if (busy) return; busy = true;
-    if (revealTween) { revealTween.kill(); revealTween = null; }
-    gsap.killTweensOf(fx);
-    clearMask();
-    pendingBetween = between || null;
-    var b = fromEl.getBoundingClientRect();
-    var x = b.left + b.width / 2, y = b.top + b.height / 2;
+  function run(fromEl, between) {
+    if (busy) return;
+    busy = true;
+    gsap.killTweensOf(fx); clearMask();
+    pending = between || null;
+    const b = fromEl.getBoundingClientRect();
+    const x = b.left + b.width / 2, y = b.top + b.height / 2;
     fx.style.display = 'block';
-    failSafe = setTimeout(finish, 3000);
+    failSafe = setTimeout(finish, ms(TOTAL));                        /* candado duro: 0.85 s con cualquier tasa de cuadros */
     gsap.fromTo(fx, { clipPath: circle(x, y, 0) }, {
-      clipPath: circle(x, y, maxR(x, y) * 1.02),
-      duration: 0.5, ease: 'power3.in', overwrite: 'auto',
-      onComplete: function () {
-        flushBetween();
-        /* pequeña pausa para que el salto pinte; setTimeout sigue corriendo aunque la pestaña pierda foco */
-        setTimeout(function () {
-          var p;
-          if (revealFrom === 'button') {
-            var r2 = fromEl.getBoundingClientRect();
-            p = { x: r2.left + r2.width / 2, y: r2.top + r2.height / 2 };
-          } else {
-            p = { x: window.innerWidth / 2, y: window.innerHeight * 0.42 };
-          }
-          /* Regreso en espejo: la pantalla nueva aparece desde el medio —
-             un hueco crece en el coral (máscara radial) hasta que se va. */
+      clipPath: circle(x, y, maxR(x, y) * 1.02), duration: COVER, ease: M.ease.cine, overwrite: 'auto',
+      onComplete() {
+        flush();
+        setTimeout(() => {
+          if (!busy) return;
+          const p = { x: window.innerWidth / 2, y: window.innerHeight * 0.42 };
           gsap.set(fx, { clipPath: 'none' });
-          var hole = { r: 1 }, HR = maxR(p.x, p.y) * 1.04;
-          function paintHole() {
-            var m = 'radial-gradient(circle at ' + p.x.toFixed(1) + 'px ' + p.y.toFixed(1) + 'px, rgba(0,0,0,0) ' + Math.max(0, hole.r - 1).toFixed(1) + 'px, #000 ' + hole.r.toFixed(1) + 'px)';
+          const hole = { r: 1 }, HR = maxR(p.x, p.y) * 1.04;
+          const paint = () => {
+            const m = 'radial-gradient(circle at ' + p.x.toFixed(1) + 'px ' + p.y.toFixed(1) + 'px, rgba(0,0,0,0) ' + Math.max(0, hole.r - 1).toFixed(1) + 'px, #000 ' + hole.r.toFixed(1) + 'px)';
             fx.style.webkitMaskImage = m; fx.style.maskImage = m;
-          }
-          paintHole();
-          revealTween = gsap.to(hole, {
-            r: HR, duration: 0.65, ease: 'power3.inOut',
-            onUpdate: paintHole, onComplete: finish
-          });
-        }, 60);
+          };
+          paint();
+          reveal = gsap.to(hole, { r: HR, duration: REVEAL, ease: M.ease.brand, onUpdate: paint, onComplete: finish });
+        }, ms(GAP));
       }
     });
   }
-  window.__waveDebug = function () { return { busy: busy, display: fx.style.display }; };
+  window.__waveDebug = () => ({ busy, display: fx.style.display });
+  return { run, get busy() { return busy; } };
+}
 
-  /* CTAs de viaje: Agendar demo (header y hero) y Ver productos (hero) */
-  var navTargets = [];
-  document.querySelectorAll('a.pill-grad[href^="#"], .hero a.pill[href^="#"]').forEach(function (a) {
-    if (navTargets.indexOf(a) < 0) navTargets.push(a);
-  });
-  document.addEventListener('click', function (e) {
-    var a = e.target && e.target.closest ? e.target.closest('a') : null;
-    if (!a || navTargets.indexOf(a) < 0) return;
-    var el = document.querySelector(a.getAttribute('href'));
-    if (!el) return;
-    e.preventDefault(); e.stopPropagation();
-    if (busy) return;
-    runWave(a, function () {
-      var ln = window.__saphiLenis;
-      if (ln) ln.scrollTo(el, { offset: -72, immediate: true, force: true });
-      else window.scrollTo(0, el.getBoundingClientRect().top + window.pageYOffset - 72);
-      if (window.ScrollTrigger) ScrollTrigger.update();
-    }, 'center');
-  }, true);
+/* ═══ FORMULARIO ══════════════════════════════════════════════════════════════
+   Sin backend. Con FORM_ENDPOINT envía por fetch; sin él, arma un mailto con
+   todo prellenado. La validación y los estados no usan GSAP. */
+const RULES = {
+  nombre:   { text: 'Me falta tu nombre.',                           ok: (v) => !!v },
+  /* 10 dígitos ignorando espacios y guiones: así no se rechaza a quien escribe 782 123 4567 */
+  whatsapp: { text: 'El WhatsApp necesita 10 dígitos.',               ok: (v) => v.replace(/[^0-9]/g, '').length >= 10 },
+  correo:   { text: 'Revisa el correo, algo no cuadra.',              ok: (v) => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v) },
+  consent:  { text: 'Necesito tu visto bueno para poder contactarte.', ok: (v, el) => el.checked }
+};
+const REQUIRED = ['nombre', 'whatsapp', 'correo', 'consent'];
+const SEND_TIMEOUT = 8000;                                           /* ms: pasado este tiempo, error */
+const SENT_LOCK = 6000;                                              /* ms que el formulario queda inerte tras el éxito */
+const OK_HOLD = 2400;                                                /* ms que el botón muestra la palomita */
 
-  /* Enviar: la onda sale y regresa al botón cuando el envío se confirma */
-  var msgEl = document.getElementById('cfMsg');
-  var sendBtn = document.querySelector('.cf-send');
-  if (msgEl && sendBtn && window.MutationObserver) {
-    new MutationObserver(function () {
-      if (msgEl.classList.contains('bad')) return;
-      if ((msgEl.textContent || '').indexOf('Listo,') === 0) runWave(sendBtn, null, 'button');
-    }).observe(msgEl, { childList: true, characterData: true, subtree: true });
+function initForm() {
+  const form = $('form');
+  if (!form) return;
+  const msg = $('cfMsg'), btn = form.querySelector('.cf-send');
+  let sending = false, locked = false, submitted = false;
+  const dirty = {};
+
+  /* Marcado esperado (index.html): un <p.cf-err#err-*> por campo obligatorio. Si falta, se crea. */
+  function errEl(name) {
+    let err = $('err-' + name);
+    const input = form.elements[name];
+    if (!err && input) {
+      err = document.createElement('p');
+      err.className = 'cf-err'; err.id = 'err-' + name; err.setAttribute('role', 'alert');
+      const host = input.closest('.cf-cell') || input.closest('.cf-field, .cf-consent');
+      host.appendChild(err);
+    }
+    if (err && input) {
+      const ids = (input.getAttribute('aria-describedby') || '').split(/\s+/).filter(Boolean);
+      if (ids.indexOf(err.id) < 0) { ids.push(err.id); input.setAttribute('aria-describedby', ids.join(' ')); }
+    }
+    return err;
   }
-})();
+  const cellOf = (input) => input.closest('.cf-field, .cf-consent');
+
+  function nudge(cell) {
+    if (mode.reduced) return;                                         /* sin movimiento: el estado lo dan el color y el mensaje */
+    cell.classList.remove('nudge');
+    void cell.offsetWidth;                                            /* reinicia la animación si ya estaba puesta */
+    cell.classList.add('nudge');
+  }
+  function setInvalid(name) {
+    const input = form.elements[name], err = errEl(name), cell = cellOf(input);
+    if (err) err.textContent = RULES[name].text;
+    input.setAttribute('aria-invalid', 'true');
+    cell.classList.add('bad');
+  }
+  function clearInvalid(name) {
+    const input = form.elements[name], err = errEl(name), cell = cellOf(input);
+    if (err) err.textContent = '';
+    input.removeAttribute('aria-invalid');
+    cell.classList.remove('bad', 'nudge');
+  }
+  const valueOf = (name) => (name === 'consent' ? '' : (form.elements[name].value || '').trim());
+  function validate(name) {
+    const input = form.elements[name];
+    if (RULES[name].ok(valueOf(name), input)) { clearInvalid(name); return true; }
+    setInvalid(name);
+    return false;
+  }
+
+  /* Estado del mensaje general (#cfMsg: «Enviando…», éxito y errores de red) */
+  function setMsg(text, kind) {
+    msg.textContent = text || '';
+    msg.classList.remove('bad', 'ok');
+    if (kind) msg.classList.add(kind);
+  }
+
+  /* Botón: cargando (anillo dentro), éxito (palomita sobre la flecha) */
+  const arrow = btn && btn.querySelector('.pill-arrow');
+  let ringBtn = null, checkBtn = null, ringAnim = null, okTimer = 0;
+  if (arrow) {
+    ringBtn = document.createElement('span');
+    ringBtn.className = 'm-ring m-ring--btn'; ringBtn.setAttribute('aria-hidden', 'true');
+    checkBtn = makeCheck();
+    arrow.appendChild(ringBtn); arrow.appendChild(checkBtn);
+  }
+  function setBusy(on) {
+    sending = on;
+    if (on) { form.setAttribute('aria-busy', 'true'); if (btn) btn.setAttribute('aria-busy', 'true'); }
+    else { form.removeAttribute('aria-busy'); if (btn) btn.removeAttribute('aria-busy'); }
+    Array.prototype.forEach.call(form.querySelectorAll('input:not([type=checkbox]), textarea'), (f) => { f.readOnly = on; });
+    if (ringAnim) { ringAnim.cancel(); ringAnim = null; }
+    if (on) ringAnim = sonar(ringBtn, 3);                             /* un timbre cada 1,100 ms, máximo tres */
+  }
+  function buttonOk() {
+    if (!btn) return;
+    clearTimeout(okTimer);
+    btn.setAttribute('data-state', 'ok');
+    if (checkBtn) showCheck(checkBtn);
+    okTimer = setTimeout(() => { btn.removeAttribute('data-state'); if (checkBtn) checkBtn.classList.remove('on'); }, OK_HOLD);
+  }
+
+  /* Anillo local: sale del botón y se apaga (nunca mayor de 220 px) */
+  function ringFromButton() {
+    if (!btn || mode.reduced) return;
+    const ring = document.createElement('span');
+    ring.className = 'm-ring m-ring--send'; ring.setAttribute('aria-hidden', 'true');
+    ring.style.left = (btn.offsetLeft + btn.offsetWidth / 2) + 'px';
+    ring.style.top = (btn.offsetTop + btn.offsetHeight / 2) + 'px';
+    form.appendChild(ring);
+    const a = sonar(ring, 1);
+    if (a) a.onfinish = () => { ring.remove(); }; else ring.remove();
+  }
+
+  function lockFields() {
+    locked = true;
+    form.classList.add('is-sent');
+    Array.prototype.forEach.call(form.children, (c) => { if (c !== btn && c !== msg && !c.classList.contains('m-ring')) c.inert = true; });
+    if (btn && form.contains(document.activeElement) && document.activeElement !== btn) btn.focus({ preventScroll: true });   /* el foco no se pierde al volverse inerte su campo */
+    setTimeout(() => {
+      Array.prototype.forEach.call(form.children, (c) => { c.inert = false; });
+      form.reset(); submitted = false;
+      Object.keys(dirty).forEach((k) => { delete dirty[k]; });
+      form.classList.remove('is-sent');
+      locked = false;
+    }, SENT_LOCK);
+  }
+
+  function done(d) {
+    setMsg('Listo, ' + d.nombre.split(' ')[0] + '. Te contesto en menos de 24 horas.', 'ok');
+    const check = makeCheck();
+    msg.insertBefore(check, msg.firstChild);                          /* el texto accesible sigue siendo solo el mensaje */
+    showCheck(check);
+    ringFromButton();
+    buttonOk();
+    lockFields();
+  }
+  function netFail() { setMsg('No salio. Escribeme a ' + FORM_EMAIL, 'bad'); }
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();                                               /* jamás un GET nativo con los datos en la URL */
+    if (sending || locked) return;
+    submitted = true;
+    setMsg('');
+    let first = null;
+    REQUIRED.forEach((k) => { if (!validate(k) && !first) first = form.elements[k]; });
+    if (first) {
+      first.focus();
+      nudge(cellOf(first));
+      return;
+    }
+
+    const d = {};
+    ['nombre', 'negocio', 'whatsapp', 'correo', 'mensaje'].forEach((k) => { d[k] = (form.elements[k].value || '').trim(); });
+    const cuerpo = 'Nombre: ' + d.nombre + '\nNegocio: ' + (d.negocio || '-') +
+                   '\nWhatsApp: ' + d.whatsapp + '\nCorreo: ' + d.correo +
+                   '\n\n' + (d.mensaje || '(sin mensaje)');
+
+    if (FORM_ENDPOINT) {
+      setBusy(true); setMsg('Enviando...');
+      const ctl = window.AbortController ? new AbortController() : null;
+      const to = setTimeout(() => { if (ctl) ctl.abort(); }, SEND_TIMEOUT);
+      fetch(FORM_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+        body: JSON.stringify(d),
+        signal: ctl ? ctl.signal : undefined
+      }).then((r) => {
+        clearTimeout(to); setBusy(false);
+        if (r.ok) done(d); else netFail();
+      }).catch(() => { clearTimeout(to); setBusy(false); netFail(); });
+    } else {
+      window.location.href = 'mailto:' + FORM_EMAIL +
+        '?subject=' + encodeURIComponent('Demo para ' + (d.negocio || d.nombre)) +
+        '&body=' + encodeURIComponent(cuerpo);
+      done(d);
+    }
+  });
+
+  /* Validación al salir del campo (si ya escribió algo o ya intentó enviar) y corrección en vivo */
+  form.addEventListener('input', (e) => {
+    const n = e.target && e.target.name;
+    if (!n) return;
+    dirty[n] = true;
+    if (RULES[n] && e.target.getAttribute('aria-invalid') === 'true') validate(n);
+  });
+  form.addEventListener('change', (e) => {
+    const n = e.target && e.target.name;
+    if (n === 'consent' && e.target.getAttribute('aria-invalid') === 'true') validate('consent');
+  });
+  form.addEventListener('focusout', (e) => {
+    const n = e.target && e.target.name;
+    if (!n || !RULES[n] || n === 'consent' || locked || sending) return;
+    if (dirty[n] || submitted) validate(n);
+  });
+  REQUIRED.forEach((k) => { if (form.elements[k]) errEl(k); });       /* asegura contenedor y aria-describedby desde el inicio */
+}
+
+/* ═══ PUNTERO: cursor propio, imanes, vista previa de casos y origen del relleno ═══
+   UN solo pointermove (con rAF) para todo. El cursor nativo nunca se oculta salvo
+   sobre .case-card y [data-cursor="drag"]; sin punto y sin mix-blend-mode. */
+function initPointer() {
+  const ring = $('cursorRing'), label = $('curLabel'), dot = $('cursorDot'), preview = $('preview');
+  const pvArt = $('pvArt'), pvLabel = $('pvLabel');
+  if (dot) dot.remove();                                              /* el punto ya no existe: nativo + anillo */
+
+  const discs = {};
+  if (ring) {
+    ['base', 'link', 'drag'].forEach((k, i) => {
+      const d = document.createElement('i');
+      d.className = 'cur-d cur-d' + (i + 1);
+      discs[k] = d; ring.appendChild(d);
+    });
+    discs.link.innerHTML = '<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+    if (label) { label.textContent = H.Draggable ? 'Arrastra' : 'Ver'; discs.drag.appendChild(label); }
+    ring.setAttribute('data-state', 'hidden');
+  }
+
+  const magnets = Array.prototype.slice.call(document.querySelectorAll('.magnetic.pill-grad'))   /* los tres CTA principales */
+    .map((el) => ({ el, cx: 0, cy: 0, ox: 0, oy: 0 }));
+  let magDirty = true;
+
+  let on = false, seen = false, raf = 0, px = 0, py = 0, tgt = null, lastTgt = null, state = 'hidden', curCard = null;
+  let rx = null, ry = null, vx = null, vy = null, pvW = 300, pvH = 200;
+
+  function setState(s) {
+    if (!ring || s === state) return;
+    state = s;
+    ring.setAttribute('data-state', s);
+  }
+  function resolve(t) {
+    if (!t || !t.closest) return 'base';
+    if (t.closest('.case-card, [data-cursor="drag"]')) return 'drag';
+    if (t.closest('input, textarea, select, [contenteditable="true"], label')) return 'text';
+    if (t.closest('a, button, .pill, [role="button"], summary')) return 'link';
+    return 'base';
+  }
+
+  /* Vista previa de casos */
+  function showPreview(card) {
+    if (!preview || !card) return;
+    const cols = (card.getAttribute('data-pv') || '#511BDB,#BDA8F1').split(',');
+    pvArt.style.background = 'linear-gradient(120deg,' + cols[0] + ',' + cols[1] + ',' + cols[0] + ')';
+    pvArt.style.backgroundSize = '300% 300%';
+    pvLabel.textContent = card.getAttribute('data-pvlabel') || '';
+    preview.classList.add('is-on');
+  }
+  function hidePreview() { if (preview) preview.classList.remove('is-on'); }
+  const pvPos = (x, y) => ({
+    x: (x + 26 + pvW > window.innerWidth) ? x - 26 - pvW : x + 26,   /* junto al borde derecho se voltea */
+    y: clamp(y - 100, 8, window.innerHeight - pvH - 8)
+  });
+
+  function measureMagnets() {
+    magnets.forEach((m) => {
+      const r = m.el.getBoundingClientRect();
+      m.cx = r.left + r.width / 2 - m.ox; m.cy = r.top + r.height / 2 - m.oy;   /* centro sin el desplazamiento actual */
+    });
+    magDirty = false;
+  }
+  function pullMagnets(x, y) {
+    if (magDirty) measureMagnets();
+    for (let i = 0; i < magnets.length; i++) {
+      const m = magnets[i], dx = x - m.cx, dy = y - m.cy, d = Math.hypot(dx, dy);
+      let ox = 0, oy = 0;
+      if (d < M.magnet.r) { const p = (1 - d / M.magnet.r) * M.magnet.k; ox = dx * p; oy = dy * p; }
+      if (Math.abs(ox - m.ox) < 0.05 && Math.abs(oy - m.oy) < 0.05) continue;   /* sin escrituras de más */
+      m.ox = ox; m.oy = oy;
+      m.el.style.translate = (ox || oy) ? ox.toFixed(1) + 'px ' + oy.toFixed(1) + 'px' : '';   /* CSS suaviza; no hay quickTo que se desincronice */
+    }
+  }
+  function releaseMagnets() { magnets.forEach((m) => { m.ox = 0; m.oy = 0; m.el.style.translate = ''; }); }
+
+  function tick() {
+    raf = 0;
+    const t = tgt && tgt.nodeType === 1 ? tgt : null;
+    /* lecturas primero */
+    let spot = null, sr = null;
+    if (!mode.reduced && t) {
+      spot = t.closest('.spot, .pill');
+      if (spot) sr = spot.getBoundingClientRect();
+    }
+    if (on && magnets.length && magDirty) measureMagnets();
+    /* escrituras */
+    if (spot && sr) { spot.style.setProperty('--mx', (px - sr.left) + 'px'); spot.style.setProperty('--my', (py - sr.top) + 'px'); }
+    if (!on) return;
+    if (ring && rx) {
+      if (!seen) { gsap.set(ring, { x: px, y: py }); seen = true; ring.classList.add('is-on'); }
+      else { rx(px); ry(py); }
+    }
+    pullMagnets(px, py);
+    if (t !== lastTgt) {
+      lastTgt = t;
+      setState(resolve(t));
+      const card = t && t.closest ? t.closest('.case-card') : null;
+      if (card !== curCard) { curCard = card; if (card) showPreview(card); else hidePreview(); }
+    }
+    if (curCard && vx) { const q = pvPos(px, py); vx(q.x); vy(q.y); }
+  }
+  window.addEventListener('pointermove', (e) => {
+    if (e.pointerType === 'touch') return;
+    px = e.clientX; py = e.clientY; tgt = e.target;
+    if (!raf) raf = requestAnimationFrame(tick);
+  }, { passive: true });
+
+  /* Presión y salida de la ventana */
+  window.addEventListener('pointerdown', () => { if (on && ring) ring.classList.add('is-down'); }, { passive: true });
+  ['pointerup', 'pointercancel', 'dragend'].forEach((ev) => { window.addEventListener(ev, () => { if (ring) ring.classList.remove('is-down'); }, { passive: true }); });
+  root.addEventListener('mouseleave', () => { setState('hidden'); lastTgt = null; releaseMagnets(); hidePreview(); curCard = null; });
+  window.addEventListener('scroll', () => { magDirty = true; }, { passive: true });   /* solo marca: se vuelve a medir con el siguiente movimiento */
+  window.addEventListener('resize', () => { magDirty = true; });
+  document.addEventListener('saphi:intro-done', () => { magDirty = true; });
+
+  /* Foco de teclado en un caso: la vista previa se ancla a la tarjeta */
+  document.addEventListener('focusin', (e) => {
+    const t = e.target;
+    if (on && t && t.closest) {
+      const card = t.closest('.case-card');
+      if (card && preview && vx) {
+        const r = card.getBoundingClientRect();
+        gsap.set(preview, { x: clamp(r.left + 24, 8, window.innerWidth - pvW - 8), y: clamp(r.top - pvH - 8, 8, window.innerHeight - pvH - 8) });
+        curCard = card; showPreview(card);
+      }
+    }
+    /* el relleno nace del centro cuando el foco llega por teclado (paridad con el hover) */
+    if (t && t.matches && t.matches('.pill') && t.matches(':focus-visible')) { t.style.setProperty('--mx', '50%'); t.style.setProperty('--my', '50%'); }
+  });
+  document.addEventListener('focusout', (e) => {
+    if (curCard && e.target && e.target.closest && e.target.closest('.case-card') === curCard && !e.relatedTarget) { curCard = null; hidePreview(); }
+  });
+
+  function enable() {
+    if (on) return;
+    on = true; seen = false; lastTgt = null;
+    document.body.classList.add('has-cursor');
+    if (ring && !rx) {
+      rx = gsap.quickTo(ring, 'x', { duration: M.dur.layout, ease: M.ease.brand });
+      ry = gsap.quickTo(ring, 'y', { duration: M.dur.layout, ease: M.ease.brand });
+    }
+    if (preview && !vx) {
+      vx = gsap.quickTo(preview, 'x', { duration: M.dur.reveal, ease: M.ease.brand });
+      vy = gsap.quickTo(preview, 'y', { duration: M.dur.reveal, ease: M.ease.brand });
+    }
+    if (preview) { pvW = preview.offsetWidth || pvW; pvH = preview.offsetHeight || pvH; }
+  }
+  function disable() {
+    if (!on) return;
+    on = false;
+    document.body.classList.remove('has-cursor');                     /* cursor nativo de vuelta (P1-11) */
+    if (ring) { ring.classList.remove('is-on', 'is-down'); setState('hidden'); }
+    releaseMagnets(); hidePreview(); curCard = null;
+  }
+  /* Existe solo con puntero fino, pantalla ancha y movimiento permitido; se reevalúa al cambiar cualquiera */
+  function sync() { if (mode.motion && finePointer.matches && wideScreen.matches) enable(); else disable(); }
+  onChange(finePointer, sync); onChange(wideScreen, sync);
+  document.addEventListener('saphi:mode', sync);
+  sync();
+}
+
+/* ═══ Arranque: lo básico siempre; el movimiento, cada uno aislado con safe() ═══ */
+initModality();
+safe('roll', initRoll);
+safe('menu', initMenu);
+safe('onda', () => { wave = initWave(); });
+safe('anclas', initAnchors);
+safe('formulario', initForm);
+safe('puntero', initPointer);
