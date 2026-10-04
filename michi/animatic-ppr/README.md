@@ -6,12 +6,14 @@ Animatic silencioso del short de 45 s de Cuentas Claras con MICHI. **Los tiempos
 |---|---|
 | `animatic-ppr.html` | El animatic. No depende de nada externo (tipografías, rig de MICHI y Canela van dentro). Se abre en el navegador: espacio = reproducir o pausar; ← → = un cuadro; Shift + ← → = 1 s; botón «Zona segura» = guía de 250 px. |
 | `animatic-ppr.mp4` | Lo mismo grabado: 1080 × 1920, 30 fps, 45 s, sin audio. |
-| `montaje-ppr.html` · `montaje-ppr.mp4` | Ejemplo con montaje: el mismo guion y los mismos tiempos, pero cambiando de escena cada 1.5–3 s (unos 22 cambios) con primeros planos de MICHI, del frasco y el cuaderno de la cuenta a pantalla completa. Lista `INS` = insertos (inicio, fin y escena). |
-| `render.mjs` | Vuelve a grabar el MP4 desde el HTML (`node render.mjs`, necesita Playwright y ffmpeg). Para el montaje: `F=montaje-ppr.html OUT=montaje-ppr.mp4 node render.mjs`. Se detiene si una tipografía no carga. |
+| `montaje-ppr.html` · `montaje-ppr.mp4` | **Versión vigente.** Short de 45 s con montaje: gancho con la pregunta «¿Aportas 10 mil y te devuelven 10 mil?», ejemplo con monedas y etiquetas (aportación, base, reducción del impuesto), respuesta y cierre con «¿Qué condiciones debes revisar antes de aportar?». La narración para ElevenLabs va en el comentario al inicio del HTML. MP4 nativo en 2160 × 3840, 30 fps, sin audio. |
+| `render.mjs` | Graba el MP4 desde el HTML (necesita Playwright y ffmpeg). Vigente en 4K: `F=montaje-ppr.html OUT=montaje-ppr.mp4 SCALE=2 WORKERS=4 node render.mjs` (`SCALE=1` = 1080 × 1920). Se detiene si una tipografía no carga. |
 
 ## Cómo reajustar con el audio real
 
-Todos los tiempos están en las listas del bloque «Pistas de la línea de tiempo» dentro de `animatic-ppr.html`, en segundos:
+En `montaje-ppr.html` todos los tiempos están en el bloque «Línea de tiempo», en segundos: `HEADS` (pregunta del gancho y del cierre), `FRASES` (texto de voz; `WORD` = segundos por palabra de la voz, `REVEAL` = qué tan antes aparecen las palabras), `INS` (insertos: detalles y primeros planos), `MICHI`, `CANELA`, `PANEL`, `BG`, `CHIP` («Ejemplo hipotético»), `PIE` e `IMPACTO`.
+
+En `animatic-ppr.html` (versión anterior) las listas del bloque «Pistas de la línea de tiempo» son:
 
 - `FRASES`: texto de voz. Cada frase tiene `segs` (segundo en que empieza y sus palabras) y `end` (cuándo se desenfoca y sale). Las palabras entran una a una cada `WORD` segundos (0.48 s = 125 ppm). En el texto: `/` = salto de línea, `~palabra` = remate en Instrument Serif itálica, `*palabra` = marcador ámbar.
 - `PANEL`: cuándo entra cada panel de cifra (`PANELS` tiene su contenido y sus animaciones de entrada).
