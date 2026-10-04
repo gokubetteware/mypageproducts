@@ -6,7 +6,8 @@ Animatic silencioso del short de 45 s de Cuentas Claras con MICHI. **Los tiempos
 |---|---|
 | `animatic-ppr.html` | El animatic. No depende de nada externo (tipografías, rig de MICHI y Canela van dentro). Se abre en el navegador: espacio = reproducir o pausar; ← → = un cuadro; Shift + ← → = 1 s; botón «Zona segura» = guía de 250 px. |
 | `animatic-ppr.mp4` | Lo mismo grabado: 1080 × 1920, 30 fps, 45 s, sin audio. |
-| `render.mjs` | Vuelve a grabar el MP4 desde el HTML (`node render.mjs`, necesita Playwright y ffmpeg). Se detiene si una tipografía no carga. |
+| `montaje-ppr.html` · `montaje-ppr.mp4` | Ejemplo con montaje: el mismo guion y los mismos tiempos, pero cambiando de escena cada 1.5–3 s (unos 22 cambios) con primeros planos de MICHI, del frasco y el cuaderno de la cuenta a pantalla completa. Lista `INS` = insertos (inicio, fin y escena). |
+| `render.mjs` | Vuelve a grabar el MP4 desde el HTML (`node render.mjs`, necesita Playwright y ffmpeg). Para el montaje: `F=montaje-ppr.html OUT=montaje-ppr.mp4 node render.mjs`. Se detiene si una tipografía no carga. |
 
 ## Cómo reajustar con el audio real
 
