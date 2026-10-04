@@ -12,9 +12,12 @@ Animatic silencioso del short de 45 s de Cuentas Claras con MICHI. **Los tiempos
 
 Todos los tiempos están en las listas del bloque «Pistas de la línea de tiempo» dentro de `animatic-ppr.html`, en segundos:
 
-- `VOZ`: grupos de texto de voz (1 a 3 palabras). `null` = sin grupo (la cifra la muestra el panel, o es pausa).
-- `PANEL`: cuándo entra cada panel de cifra (`PANELS` tiene su contenido).
-- `MICHI`: expresión de MICHI en cada momento.
-- `BG`, `PIE`, `IMPACTO`, `CANDADO`: fondo, pie, pantalla de impacto y candado.
+- `FRASES`: texto de voz. Cada frase tiene `segs` (segundo en que empieza y sus palabras) y `end` (cuándo se desenfoca y sale). Las palabras entran una a una cada `WORD` segundos (0.48 s = 125 ppm). En el texto: `/` = salto de línea, `~palabra` = remate en Instrument Serif itálica, `*palabra` = marcador ámbar.
+- `PANEL`: cuándo entra cada panel de cifra (`PANELS` tiene su contenido y sus animaciones de entrada).
+- `MICHI`: expresión de MICHI (estado del rig, nivel y si mira a la izquierda). `MICHI_HOPS`: saltos.
+- `CANELA`, `CANELA_HOPS`: expresión y saltos de Canela. `COIN`: el CATPESO que mete al frasco. `JAR_WOBBLE`, `CANDADO_T`: frasco y candado.
+- `BG`, `PIE`, `IMPACTO`: fondo (se abre en círculo desde el personaje), pie y pantalla de impacto.
+
+Todo se calcula a partir del segundo, así que el MP4 sale igual a lo que se ve en el navegador.
 
 Cambia los números, guarda y vuelve a correr `node render.mjs`.
