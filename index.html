@@ -303,7 +303,7 @@ nav.wrap { display: flex; align-items: center; justify-content: space-between; h
    productos de la página; al ser atendidos se vuelven lila.
    ============================================================ */
 #hero.hp { position: relative; padding: 0; margin-top: calc(var(--hdr-h) * -1); font-family: 'Plus Jakarta Sans', var(--font);
-  --c1: #14B8C4; --c2: #F5487F; --c3: #3B82F6; --c4: #F100CB; --hp-ease: cubic-bezier(.16, 1, .3, 1); }
+  --hp-ease: cubic-bezier(.16, 1, .3, 1); }
 .hp-pin { position: relative; height: 100vh; height: 100svh; min-height: 640px; overflow: hidden; isolation: isolate; display: flex; align-items: center;
   background: radial-gradient(90% 90% at 68% 52%, #140A33 0%, #0A0A0A 78%); }
 .hp-glow { position: absolute; inset: 0; z-index: 0; pointer-events: none; opacity: .32; background: radial-gradient(60% 62% at 68% 55%, rgba(81,27,219,.5), transparent 70%); }
@@ -382,24 +382,12 @@ html:not(.js) .hp-plane { background-image: linear-gradient(rgba(207,192,246,.13
 .hp-chap em { font-style: normal; color: #CFC0F6; }
 .hp-chap::before { content: ""; position: absolute; z-index: -1; inset: -60px -12%; background: radial-gradient(50% 50% at 50% 50%, rgba(10,10,10,.82), rgba(10,10,10,0) 100%); pointer-events: none; }
 .hp-chap .hp-w { opacity: .14; }
-.hp-foot { position: absolute; z-index: 6; left: 0; right: 0; bottom: 0; display: flex; align-items: center; justify-content: space-between; gap: 16px; max-width: calc(var(--max-w) + var(--gutter) * 2); margin: 0 auto; padding: 0 var(--gutter) 28px; font-size: 11.5px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: rgba(247,240,232,.55); pointer-events: none; }
-.hp-bar { display: flex; align-items: center; gap: 12px; }
-.hp-bar > span { position: relative; width: 120px; height: 1px; background: rgba(247,240,232,.18); overflow: hidden; }
-.hp-bar > span i { position: absolute; inset: 0; background: #CFC0F6; transform-origin: 0 50%; transform: scaleX(0); }
-.hp-legend { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; text-transform: none; letter-spacing: 0; font-size: 12.5px; font-weight: 500; color: rgba(247,240,232,.62); }
-.hp-legend i { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 6px; vertical-align: 1px; }
-.hp-dots i { margin-right: 3px; }
-.hp-dots i:last-child { margin-right: 6px; }
-.hp-sim { color: rgba(207,192,246,.8); }
-/* quieto (sin anclaje) la barra morada sigue arriba: el pie con «Simulación» debe caber en la primera pantalla */
-@media (min-width: 901px) and (prefers-reduced-motion: reduce) { .hp-pin { height: calc(100svh - 45px); } }
 @media (max-width: 900px) {
   .hp-pin { height: auto; min-height: 0; flex-direction: column; align-items: stretch; }
   .hp-wrap { order: 1; padding: calc(var(--hdr-h) + 80px) var(--gutter) 24px; }   /* +36 px: el aire que dejaba la etiqueta que se quitó */
   .hp-m3d { position: relative; inset: auto; height: 440px; order: 2; perspective-origin: 50% 40%; }
   .hp-plane { left: 50%; top: 50%; transform: rotate(-12deg) rotateX(58deg) scale(.46); }
-  .hp-scrim, .hp-chap, .hp-bar, .hp-legend { display: none; }
-  .hp-foot { position: relative; order: 3; padding-top: 6px; }
+  .hp-scrim, .hp-chap { display: none; }
 }
 
 /* ============================================================
@@ -1287,7 +1275,6 @@ html:not(.js) #productos .px-item{visibility:visible;opacity:1;margin-bottom:12p
         <p class="hp-note"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Te escribo por WhatsApp el mismo día hábil.</p>
       </div></div>
       <p class="hp-chap" aria-hidden="true">Del mapa a tu agenda, <em>sin que tú contestes.</em></p>
-      <div class="hp-foot" aria-hidden="true"><span class="hp-bar">Desliza <span><i></i></span></span><span class="hp-legend"><span><span class="hp-dots"><i style="background:var(--c1)"></i><i style="background:var(--c2)"></i><i style="background:var(--c3)"></i><i style="background:var(--c4)"></i></span>Cada cliente llega distinto</span><span><i style="background:#CFC0F6"></i>Atendido por Sofía</span></span><span class="hp-sim">Simulación</span></div>
     </div>
   </section>
 
@@ -2723,7 +2710,7 @@ if (document.fonts && document.fonts.ready) document.fonts.ready.then(function (
   var gS = svg.querySelector('.hp-g-st'), gB = svg.querySelector('.hp-g-blk'), gA = svg.querySelector('.hp-g-arc'), gH = svg.querySelector('.hp-g-hit');
   var rings = svg.querySelectorAll('.hp-ring'), aura = svg.querySelector('.hp-aura'), glow = root.querySelector('.hp-glow');
   var pillar = root.querySelector('.hp-pillar'), top = pillar.querySelector('b'), lab = root.querySelector('.hp-lab');
-  var t1 = root.querySelector('.hp-t1'), t2 = root.querySelector('.hp-t2'), bar = root.querySelector('.hp-bar i');
+  var t1 = root.querySelector('.hp-t1'), t2 = root.querySelector('.hp-t2');
   var copy = root.querySelector('.hp-copy'), chap = root.querySelector('.hp-chap');
   var CX = 600, CY = 600, rnd = seeded(5), COLS = ['#14B8C4', '#F5487F', '#3B82F6', '#F100CB'];
   function el(n, a) { var e = document.createElementNS(NS, n); for (var k in a) e.setAttribute(k, a[k]); return e; }
@@ -2950,7 +2937,7 @@ if (document.fonts && document.fonts.ready) document.fonts.ready.then(function (
     if (c.conditions.dk) {
       /* refreshPriority: se mide antes que los triggers de abajo, que dependen del espacio que agrega el anclaje */
       ScrollTrigger.create({ trigger: root, start: 'top top', end: '+=120%', pin: pin, scrub: true, anticipatePin: 1, refreshPriority: 1,
-        onUpdate: function (st) { gsap.to(o, { p: st.progress, duration: .8, ease: 'power3.out', overwrite: true }); bar.style.transform = 'scaleX(' + st.progress.toFixed(3) + ')'; } });
+        onUpdate: function (st) { gsap.to(o, { p: st.progress, duration: .8, ease: 'power3.out', overwrite: true }); } });
       return function () { o.p = 0; copy.style.opacity = copy.style.transform = chap.style.opacity = chap.style.transform = ''; };
     }
     o.p = 0;
