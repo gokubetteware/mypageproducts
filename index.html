@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Saphiless — Automatización con IA para tu negocio</title>
 <!-- index-glass: versión con vidrio y grainient, generada desde index.backup-ds-1.html -->
-<meta name="description" content="Sofía, una recepcionista con inteligencia artificial, contesta las llamadas de tu negocio, resuelve dudas y agenda citas. También páginas web e imágenes publicitarias para negocios en México.">
-<meta name="theme-color" content="#0A0A0A">
+<meta name="description" content="Tu asistente, una recepcionista con inteligencia artificial, contesta las llamadas de tu negocio, resuelve dudas y agenda citas. También páginas web e imágenes publicitarias para negocios en México.">
+<meta name="theme-color" content="#F7F0E8">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Saphiless — Te encuentran. Te eligen. Regresan.">
 <meta property="og:description" content="Más gente te ve, más gente agenda, más gente vuelve.">
@@ -22,7 +22,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Plus+Jakarta+Sans:wght@500..800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@500..800&display=swap" rel="stylesheet">
 
 <script>
   /* Marca JS activo (habilita el intro) y red de seguridad: si algún
@@ -57,13 +57,13 @@
   --grad-green: linear-gradient(114.41deg, #511BDB 20.74%, #8B6DE8 65.5%);
 
   /* semánticas — el motor de tema las sobreescribe */
-  --bg: #0A0A0A;
-  --ink: #EDEAF3;
-  --ink-50: #8B849B;
-  --ink-25: #3A3448;
-  --line: #2A2634;
-  --panel: #111014;
-  --header-bg: rgba(10,10,10, 0.55);
+  --bg: #F7F0E8;
+  --ink: #0A0A0A;
+  --ink-50: #6E655C;
+  --ink-25: #CFC2B1;
+  --line: #E3D8CA;
+  --panel: #FFFFFF;
+  --header-bg: rgba(247,240,232, 0.55);
   --grain-op: 0.038;
 
   --font: 'Instrument Sans', ui-sans-serif, system-ui, -apple-system, sans-serif;
@@ -81,7 +81,7 @@
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
-html { -webkit-text-size-adjust: 100%; background: #0A0A0A; }
+html { -webkit-text-size-adjust: 100%; background: #F7F0E8; }
 
 /* Lenis — hoja oficial. Sin esto el bloqueo de scroll durante el
    intro no funciona y scroll-behavior pelea con el suavizado. */
@@ -171,9 +171,9 @@ h1, h2, h3, h4 { font-weight: 600; }
    un mecanismo abriéndose, que es el registro del sitio.
    ============================================================ */
 #loader { display: none; }
-html.js #loader { display: block; position: fixed; inset: 0; z-index: 10001; pointer-events: none; background: #0A0A0A; }
+html.js #loader { display: block; position: fixed; inset: 0; z-index: 10001; pointer-events: none; background: #F7F0E8; }
 .lo-px { position: absolute; inset: 0; display: grid; }
-.lo-px i { display: block; background: #0A0A0A; will-change: transform, opacity; }
+.lo-px i { display: block; background: #F7F0E8; will-change: transform, opacity; }
 
 /* ============================================================
    5. BOTONES — el degradado del hover nace en el cursor
@@ -223,11 +223,15 @@ button:hover .roll > span:nth-child(2) .rc { transform: translateY(0); }
    6. NAV
    ============================================================ */
 .banner {
-  text-align: center; padding: 0 var(--gutter); font-family: var(--font-ui);
-  font-size: 11.5px; letter-spacing: 0.09em; text-transform: uppercase;
-  color: #FFFFFF; background: #511BDB; border-bottom: 1px solid var(--line);
+  text-align: center; padding: 0 var(--gutter); font-family: var(--font);
+  font-size: 13.5px; letter-spacing: -0.005em;
+  color: rgba(247,240,232,0.62); background: #0B0A0F; border-bottom: 1px solid rgba(247,240,232,0.08);
 }
-.banner a { color: #FFFFFF; display: inline-flex; align-items: center; min-height: 44px; padding: 4px 0; }
+.banner a { color: inherit; display: inline-flex; align-items: center; gap: 10px; min-height: 40px; padding: 4px 0; }
+.banner .bn-l { color: #F7F0E8; font-weight: 500; text-decoration: underline; text-decoration-color: rgba(247,240,232,0.35); text-underline-offset: 4px; transition: text-decoration-color 0.3s ease; }
+.banner a:hover .bn-l { text-decoration-color: #F7F0E8; }
+.banner .bn-m { display: none; }
+@media (max-width: 600px) { .banner { font-size: 12.5px; } .banner .bn-t { display: none; } .banner .bn-m { display: inline; } }
 .banner a:focus-visible { outline: 2px solid #F7F0E8; outline-offset: -4px; border-radius: 6px; }
 header {
   position: sticky; top: 0; z-index: 200; background: var(--header-bg);
@@ -254,7 +258,7 @@ nav.wrap { display: flex; align-items: center; justify-content: space-between; h
 .burger.open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
 .burger.open span:nth-child(2) { opacity: 0; transform: scaleX(0.3); }
 .burger.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
-.burger.open span { background: #0A0A0A; }
+.burger.open span { background: #F7F0E8; }
 
 /* M7 — menú escalonado: capas lila y morado barren desde la derecha y aterriza el panel crema */
 .nav-overlay { position: fixed; inset: 0; z-index: 310; visibility: hidden; pointer-events: none; overflow: hidden; }
@@ -264,16 +268,16 @@ nav.wrap { display: flex; align-items: center; justify-content: space-between; h
 .ov-pre, .ov-panel { position: absolute; top: 0; right: 0; bottom: 0; width: clamp(320px, 42vw, 540px); will-change: transform; }
 .ov-pre1 { background: #8B6DE8; }
 .ov-pre2 { background: #511BDB; }
-.ov-panel { background: #F7F0E8; display: flex; flex-direction: column; justify-content: center; padding: 96px clamp(28px, 4.5vw, 64px) 48px; overflow-y: auto; box-shadow: -24px 0 60px rgba(10,10,10,0.35); }
+.ov-panel { background: #0A0A0A; display: flex; flex-direction: column; justify-content: center; padding: 96px clamp(28px, 4.5vw, 64px) 48px; overflow-y: auto; box-shadow: -24px 0 60px rgba(10,10,10,0.35); }
 .ov-panel ul { list-style: none; }
 .ov-panel li { overflow: hidden; }
-.ov-item { display: flex; align-items: baseline; gap: 14px; font-size: clamp(30px, 4.6vw, 52px); font-weight: 600; letter-spacing: -0.03em; padding: 7px 0; color: #0A0A0A; transition: color 0.25s ease; }
+.ov-item { display: flex; align-items: baseline; gap: 14px; font-size: clamp(30px, 4.6vw, 52px); font-weight: 600; letter-spacing: -0.03em; padding: 7px 0; color: #F7F0E8; transition: color 0.25s ease; }
 .ov-item:hover { color: #511BDB; }
 .ov-item.ov-cta { color: #FF6B4A; }
 .ov-num { font-family: var(--font-ui); font-size: 11px; letter-spacing: 0.12em; color: #511BDB; }
-.ov-close { position: absolute; top: 56px; right: clamp(28px, 4.5vw, 64px); background: none; border: none; cursor: pointer; font-family: var(--font-ui); font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: #0A0A0A; padding: 8px; }
+.ov-close { position: absolute; top: 56px; right: clamp(28px, 4.5vw, 64px); background: none; border: none; cursor: pointer; font-family: var(--font-ui); font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: #F7F0E8; padding: 8px; }
 .ov-close:hover { color: #511BDB; }
-.ov-mail { display: inline-block; margin-top: 34px; font-size: 14px; color: #6E655C; }
+.ov-mail { display: inline-block; margin-top: 34px; font-size: 14px; color: #8B849B; }
 .ov-mail:hover { color: #511BDB; }
 .nav-links { display: none; }
 .burger { display: block; }
@@ -293,102 +297,44 @@ nav.wrap { display: flex; align-items: center; justify-content: space-between; h
 #blobDefs { position: absolute; width: 0; height: 0; overflow: hidden; }
 
 /* ============================================================
-   8. HERO · EL MAPA
-   El plano de la colonia en CSS 3D + SVG. Titular, texto y botones
-   son HTML y pintan primero (LCP); el mapa lo dibuja JS después.
-   Sin JS o con movimiento reducido queda el estado final, quieto.
-   Se anima solo transform y opacity; la única excepción es el trazo
-   de los 7 cometas (stroke-dashoffset), que es el dibujo en sí.
-   Colores de cliente (cian, rosa, azul, magenta): los mismos de los
-   productos de la página; al ser atendidos se vuelven lila.
+   8. HERO · CAPÍTULOS
+   El hero se ancla y el scroll lo recorre en horizontal: cuatro
+   capítulos, cada uno con un titular y una frase. El que se va se
+   apaga, el que llega sube; una línea fina marca el avance.
    ============================================================ */
-#hero.hp { position: relative; padding: 0; margin-top: calc(var(--hdr-h) * -1); font-family: 'Plus Jakarta Sans', var(--font);
-  --hp-ease: cubic-bezier(.16, 1, .3, 1); }
-.hp-pin { position: relative; height: 100vh; height: 100svh; min-height: 640px; overflow: hidden; isolation: isolate; display: flex; align-items: center;
-  background: radial-gradient(90% 90% at 68% 52%, #140A33 0%, #0A0A0A 78%); }
-.hp-glow { position: absolute; inset: 0; z-index: 0; pointer-events: none; opacity: .32; background: radial-gradient(60% 62% at 68% 55%, rgba(81,27,219,.5), transparent 70%); }
-.hp-pin::before { /* viñeta */ content: ""; position: absolute; inset: 0; z-index: 6; pointer-events: none; background: radial-gradient(120% 95% at 50% 45%, transparent 58%, rgba(3,2,8,.5) 100%); }
-.hp-m3d { position: absolute; inset: 0; z-index: 1; perspective: 1500px; perspective-origin: 62% 40%; overflow: hidden; }
-.hp-plane { position: absolute; left: 66%; top: 52%; width: 1200px; height: 1200px; margin: -600px 0 0 -600px; transform-style: preserve-3d; will-change: transform;
-  transform: rotate(-12deg) rotateX(60deg) scale(1.2); }
-html:not(.js) .hp-plane { background-image: linear-gradient(rgba(207,192,246,.13) 1px, transparent 1px), linear-gradient(90deg, rgba(207,192,246,.13) 1px, transparent 1px); background-size: 60px 60px; }
-.hp-plane svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
-.hp-st { fill: none; stroke: rgba(207,192,246,.13); stroke-width: 1; }
-.hp-st.hp-av { stroke: rgba(207,192,246,.26); stroke-width: 2.2; }
-.hp-blk { fill: rgba(139,109,232,.05); }
-.hp-park { fill: rgba(139,109,232,.12); }
-.hp-river { fill: none; stroke: rgba(81,27,219,.38); stroke-width: 46; stroke-linecap: round; }
-.hp-arc { fill: none; stroke: url(#hpArcG); stroke-width: 2.2; stroke-linecap: round; }
-.hp-comet { fill: none; stroke: #F7F0E8; stroke-width: 3.4; stroke-linecap: round; }
-.hp-ring, .hp-hit { fill: none; vector-effect: non-scaling-stroke; }
-.hp-ring { stroke: rgba(207,192,246,.7); stroke-width: 2; }
-.hp-aura { pointer-events: none; }
-.hp-beacon { position: absolute; left: 600px; top: 600px; width: 0; height: 0; transform-style: preserve-3d; }
-.hp-pillar { position: absolute; left: -3px; bottom: 0; width: 6px; height: 280px; transform-origin: 50% 100%; transform: rotateX(-90deg) scaleY(var(--h, .6)); border-radius: 6px;
-  background: linear-gradient(0deg, rgba(247,240,232,.95), rgba(207,192,246,.5) 40%, rgba(139,109,232,0)); box-shadow: 0 0 30px 6px rgba(207,192,246,.45); }
-.hp-pillar b { position: absolute; left: 50%; top: 0; width: 1px; height: 1px; }
-.hp-scrim { position: absolute; inset: 0; z-index: 2; pointer-events: none; background: linear-gradient(90deg, rgba(10,10,10,.86) 0%, rgba(10,10,10,.45) 38%, rgba(10,10,10,0) 60%); }
-.hp-lab { position: absolute; z-index: 5; left: 0; top: 0; opacity: 0; pointer-events: none; }
-.hp-tag { display: inline-flex; align-items: center; gap: 8px; transform: translate(-50%, -130%); padding: 10px 16px; border-radius: 999px; background: #F7F0E8; color: #140A33; font-weight: 700; letter-spacing: -.01em; font-size: 14.5px; white-space: nowrap; box-shadow: 0 16px 40px -14px rgba(207,192,246,.9); }
-.hp-tag svg { width: 16px; height: 16px; fill: none; stroke: #511BDB; stroke-width: 2.2; }
-/* avisos de vidrio: canto con luz arriba a la izquierda y sombra teñida de noche; el vidrio líquido (refracción) lo pone el script */
-.hp-toast { position: absolute; z-index: 5; left: 0; top: 0; display: flex; align-items: center; gap: 12px; padding: 12px 18px 12px 12px; border-radius: 20px; font-size: 13px; line-height: 1.35; white-space: nowrap; opacity: 0; pointer-events: none; color: #F7F0E8;
-  background: linear-gradient(150deg, rgba(255,255,255,.14), rgba(255,255,255,.02) 55%), rgba(20,10,51,.32);
-  box-shadow: inset 0 0 0 1px rgba(255,255,255,.1), inset 1.5px 1.5px 0 -.5px rgba(255,255,255,.45), inset -1px -1px 0 rgba(255,255,255,.1), 0 30px 60px -30px rgba(20,10,51,1); }
-.hp-toast.hp-lq { background: linear-gradient(150deg, rgba(255,255,255,.12), rgba(255,255,255,0) 50%), rgba(20,10,51,.12); }
-.hp-toast b { display: block; font-weight: 700; font-size: 14px; letter-spacing: -.01em; }
-.hp-toast span { color: rgba(247,240,232,.72); font-weight: 500; }
-.hp-toast em { display: grid; place-items: center; width: 34px; height: 34px; border-radius: 11px; background: #511BDB; }
-.hp-toast svg { width: 17px; height: 17px; fill: none; stroke: #F7F0E8; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-.hp-wrap { position: relative; z-index: 4; width: 100%; max-width: calc(var(--max-w) + var(--gutter) * 2); margin: 0 auto; padding: 96px var(--gutter) 110px; }
-.hp-copy { max-width: 620px; will-change: transform; }
-/* titular: un renglón por verbo, recto y con peso; «Te encuentran.» cabe en el ancho disponible a cualquier tamaño */
-.hp-h1 { font-size: min(clamp(40px, 6vw, 92px), calc((100vw - var(--gutter) * 2) / 6.9)); font-weight: 800; line-height: 1; letter-spacing: -.045em; color: #F7F0E8; }
-.hp-l { display: block; overflow: clip; padding: 0 .04em .1em 0; margin-bottom: -.1em; white-space: nowrap; }
-.hp-l > span { display: inline-block; }
-.hp-acc { color: #6A3BF0; transition: color .6s ease; }
-.hp-h1 { position: relative; }
-.hp-h1.is-shaded .hp-acc > span { color: transparent; }
-/* «hp-tfx» y no «hp-fx»: ese nombre ya es la capa de luz del mapa */
-.hp-tfx { position: absolute; left: 0; top: 0; pointer-events: none; opacity: 0; transition: opacity .7s ease; filter: drop-shadow(0 0 .35em rgba(81,27,219,.55)); }
-.hp-h1.is-shaded .hp-tfx { opacity: 1; }
-.hp-lead { margin-top: 30px; max-width: 34ch; font-size: clamp(16.5px, 1.3vw, 19px); font-weight: 500; line-height: 1.55; letter-spacing: -.005em; color: rgba(247,240,232,.68); text-wrap: pretty; }
-.hp-lead b { color: #F7F0E8; font-weight: 700; }
-.hp-cta { display: flex; align-items: center; flex-wrap: wrap; gap: 14px 30px; margin-top: 38px; }
-.hp-btn { position: relative; display: inline-flex; align-items: center; justify-content: center; gap: 14px; min-height: 56px; padding: 0 8px 0 26px; border-radius: 999px; font-size: 16px; font-weight: 700; letter-spacing: -.01em; background: #F7F0E8; color: #140A33; overflow: hidden; isolation: isolate;
-  box-shadow: inset 0 1px 0 rgba(255,255,255,.8), inset 0 -1px 0 rgba(20,10,51,.12), 0 18px 40px -18px rgba(207,192,246,.7); transition: background-color .25s ease; }
-.hp-btn:hover { background-color: #CFC0F6; }
-.hp-btn::before { content: ""; position: absolute; inset: 0; z-index: -1; background: radial-gradient(120px circle at var(--bx, 50%) var(--by, 50%), #fff, transparent 70%); opacity: 0; transition: opacity .3s; }
-.hp-btn:hover::before { opacity: 1; }
-.hp-btn:active { scale: .97; }
-.hp-btn i { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; background: #140A33; color: #F7F0E8; overflow: hidden; }
-.hp-btn i svg { transition: transform .5s var(--hp-ease); }
-.hp-btn:hover i svg { transform: translateX(3px); }
-.hp-btn svg { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
-/* secundario: enlace de texto, no otro botón; el subrayado se recorre al pasar */
-.hp-link { position: relative; display: inline-flex; align-items: center; gap: 10px; min-height: 44px; font-size: 16px; font-weight: 700; letter-spacing: -.01em; color: #F7F0E8; }
-.hp-link::after { content: ""; position: absolute; left: 0; right: 0; bottom: 8px; height: 1px; background: rgba(247,240,232,.35); transform-origin: 100% 50%; transition: transform .5s var(--hp-ease), background-color .3s; }
-.hp-link:hover::after { background-color: #CFC0F6; animation: hpLine .7s var(--hp-ease); }
-@keyframes hpLine { 0% { transform: scaleX(1); transform-origin: 100% 50%; } 45% { transform: scaleX(0); transform-origin: 100% 50%; } 46% { transform-origin: 0 50%; } 100% { transform: scaleX(1); transform-origin: 0 50%; } }
-.hp-link svg { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; transition: transform .5s var(--hp-ease); }
-.hp-link:hover svg { transform: translate(2px, 2px); }
-/* esmerilado para todos; donde se puede, el script lo cambia por vidrio que refracta */
-@media (hover: hover) and (min-width: 901px) { .hp-toast { -webkit-backdrop-filter: blur(16px) saturate(170%); backdrop-filter: blur(16px) saturate(170%); } }
-.hp-fx { position: absolute; inset: 0; z-index: 1; width: 100%; height: 100%; display: block; pointer-events: none; opacity: 0; mix-blend-mode: screen; }
+#hero.s3 { position: relative; height: 100vh; height: 100svh; margin-top: calc(var(--hdr-h) * -1); overflow: hidden; background: #0B0A0F; }
+/* fondo: montaje de destellos en bucle, quieto mientras los capítulos se deslizan encima */
+.s3-vid { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; pointer-events: none; }
+/* velo: oscurece y da grano para que la tipografía mande sobre la imagen */
+.s3-veil { position: absolute; inset: 0; pointer-events: none; background:
+  radial-gradient(120% 90% at 30% 50%, rgba(11,10,15,.55) 0%, rgba(11,10,15,.78) 70%),
+  linear-gradient(180deg, rgba(11,10,15,.35) 0%, rgba(11,10,15,0) 30%, rgba(11,10,15,0) 70%, rgba(11,10,15,.6) 100%); }
+.s3-bg { position: absolute; inset: 0; background: radial-gradient(70% 60% at 80% 60%, rgba(81,27,219,.35), transparent 70%); opacity: 0; pointer-events: none; mix-blend-mode: screen; }
+.s3-track { position: absolute; top: 0; left: 0; height: 100%; display: flex; will-change: transform; }
+.s3-ch { flex: 0 0 100vw; height: 100%; display: flex; flex-direction: column; justify-content: center; padding: calc(var(--hdr-h) + 40px) var(--gutter) 110px calc(var(--gutter) + 8vw); }
+.s3-ch h1, .s3-ch h2 { max-width: 11em; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: clamp(42px, 6.6vw, 108px); line-height: .98; letter-spacing: -.025em; color: #F7F0E8; text-shadow: 0 2px 30px rgba(0,0,0,.35); }
+.s3-ch em { color: #CFC0F6; }
+.s3-ch p { margin-top: 26px; max-width: 28em; font-size: clamp(15.5px, 1.2vw, 18px); line-height: 1.55; color: rgba(247,240,232,.78); }
+.s3-ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+.s3-btn { display: inline-flex; align-items: center; gap: 10px; min-height: 50px; padding: 0 24px; border-radius: 999px; background: #F7F0E8; color: #141317; font-weight: 500; font-size: 15px; white-space: nowrap; transition: background-color .3s; }
+.s3-btn:hover { background: #CFC0F6; }
+.s3-btn.ghost { background: transparent; color: #F7F0E8; box-shadow: inset 0 0 0 1px rgba(247,240,232,.35); }
+.s3-btn.ghost:hover { background: rgba(247,240,232,.1); }
+.s3-btn svg { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.s3-prog { position: absolute; left: var(--gutter); right: var(--gutter); bottom: 34px; height: 1px; background: rgba(247,240,232,.2); }
+.s3-prog b { position: absolute; inset: 0; background: #F7F0E8; transform: scaleX(0); transform-origin: left; }
 #hero a:focus-visible { outline: 2px solid #CFC0F6; outline-offset: 4px; }
-.hp-note { margin-top: 22px; display: flex; align-items: center; gap: 10px; font-size: 13.5px; font-weight: 500; color: rgba(247,240,232,.58); }
-.hp-note svg { width: 16px; height: 16px; flex: none; fill: none; stroke: #CFC0F6; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-.hp-chap { position: absolute; z-index: 5; left: 50%; bottom: 16%; transform: translateX(-50%); width: min(90%, 900px); text-align: center; font-size: clamp(26px, 3.2vw, 46px); font-weight: 800; letter-spacing: -.04em; line-height: 1.08; color: #F7F0E8; opacity: 0; pointer-events: none; text-wrap: balance; text-shadow: 0 2px 24px rgba(10,10,10,.9); }
-.hp-chap em { font-style: normal; color: #CFC0F6; }
-.hp-chap::before { content: ""; position: absolute; z-index: -1; inset: -60px -12%; background: radial-gradient(50% 50% at 50% 50%, rgba(10,10,10,.82), rgba(10,10,10,0) 100%); pointer-events: none; }
-.hp-chap .hp-w { opacity: .14; }
 @media (max-width: 900px) {
-  .hp-pin { height: auto; min-height: 0; flex-direction: column; align-items: stretch; }
-  .hp-wrap { order: 1; padding: calc(var(--hdr-h) + 80px) var(--gutter) 24px; }   /* +36 px: el aire que dejaba la etiqueta que se quitó */
-  .hp-m3d { position: relative; inset: auto; height: 440px; order: 2; perspective-origin: 50% 40%; }
-  .hp-plane { left: 50%; top: 50%; transform: rotate(-12deg) rotateX(58deg) scale(.46); }
-  .hp-scrim, .hp-chap { display: none; }
+  .s3-ch { padding-left: var(--gutter); }
+  .s3-ch h1, .s3-ch h2 { font-size: clamp(30px, 8.4vw, 44px); }
+  .s3-ch h1 { font-size: clamp(40px, 12vw, 56px); }
 }
+/* sin animación (o sin JS): los capítulos uno debajo de otro */
+@media (prefers-reduced-motion: reduce) {
+  .s3-vid { position: fixed; }
+  #hero.s3 { height: auto; } .s3-track { position: static; flex-direction: column; } .s3-ch { flex-basis: auto; min-height: 80vh; } .s3-prog { display: none; }
+}
+html:not(.js) #hero.s3 { height: auto; } html:not(.js) .s3-track { position: static; flex-direction: column; } html:not(.js) .s3-ch { flex-basis: auto; min-height: 80vh; }
 
 /* ============================================================
    9. SECCIONES GENERALES
@@ -576,7 +522,7 @@ html.js .js-mask .split-line { overflow: hidden; }
 
 
 /* ============================================================
-   18. DEMO DE LLAMADA — Sofía contestando, simulada y dicha
+   18. DEMO DE LLAMADA — Tu asistente contestando, simulada y dicha
    Sin JS o con movimiento reducido, el HTML ya trae la llamada
    terminada (transcripción completa + cita creada): el motor
    solo la rebobina y la actúa.
@@ -753,7 +699,8 @@ html.js .js-mask .split-line { overflow: hidden; }
 #waveFx { background: #511BDB; }
 
 /* en zona crema la pastilla secundaria necesita un poco de cuerpo */
-#lightZone .pill:not(.pill-grad) { border-color: rgba(20,10,51,0.14); background-color: rgba(255,255,255,0.35); }
+.pill:not(.pill-grad) { border-color: rgba(20,10,51,0.14); background-color: rgba(255,255,255,0.35); }
+#lightZone .pill:not(.pill-grad) { border-color: rgba(255,255,255,0.16); background-color: transparent; }
 
 /* ── NAV: cápsula de vidrio flotante ── */
 header {
@@ -782,6 +729,18 @@ header.stuck nav.wrap { box-shadow: inset 0 1px 0 rgba(255,255,255,0.3), 0 1px 2
 /* el mapa del hero sube por detrás de la cápsula: así el vidrio tiene algo que refractar (la regla vive en «8. HERO») */
 :root { --hdr-h: 74px; }
 @media (max-width: 760px) { :root { --hdr-h: 68px; } }
+/* sobre el hero oscuro (html.hdr-dark) el menú va sin cápsula y en crema; en las secciones claras vuelve el vidrio */
+header nav.wrap { transition: background-color .45s ease, border-color .45s ease, box-shadow .45s ease; }
+header .logo-svg g { transition: fill .4s ease; }
+html.hdr-dark header nav.wrap { background: transparent; border-color: transparent; box-shadow: none; -webkit-backdrop-filter: none; backdrop-filter: none; }
+html.hdr-dark header .logo-svg g[fill="#0A0A0A"] { fill: #F7F0E8; }
+html.hdr-dark header .logo-svg g[fill="#511BDB"] { fill: #B9A6F2; }
+html.hdr-dark header .nav-links a { color: rgba(247,240,232,.7); }
+html.hdr-dark header .nav-links a:hover, html.hdr-dark header .nav-links a.active { color: #F7F0E8; }
+html.hdr-dark header .burger span { background: #F7F0E8; }
+html.hdr-dark header .pill-grad { color: #141317; background: #F7F0E8; box-shadow: none; border-color: transparent; }
+html.hdr-dark header .pill-grad::before { display: none; }
+@media (min-width: 1100px) { .nav-links { display: flex; } .burger { display: none; } }
 
 /* ── ESCENARIOS con grainient: el vidrio necesita color detrás ── */
 .g-stage { position: relative; isolation: isolate; border-radius: 28px; overflow: hidden; padding: clamp(12px, 1.8vw, 22px); }
@@ -805,6 +764,9 @@ header.stuck nav.wrap { box-shadow: inset 0 1px 0 rgba(255,255,255,0.3), 0 1px 2
 
 /* casos: tarjetas de vidrio lechoso */
 .case-card.glass { --glass-r: 18px; border-top: 1px solid var(--glass-rim-soft) !important; }
+/* Casos ahora va en la zona oscura: sus tarjetas usan el vidrio oscuro, no el lechoso */
+.case-card.glass-light { --glass-tint: color-mix(in srgb, var(--panel) 38%, transparent); --glass-rim: rgba(255,255,255,0.30); --glass-rim-soft: rgba(255,255,255,0.08); --glass-shade: 0 1px 2px rgba(0,0,0,0.22), 0 18px 40px -18px rgba(0,0,0,0.55); }
+.case-card.glass-light::after { background: linear-gradient(150deg, rgba(255,255,255,0.55) 0%, rgba(255,255,255,0.08) 28%, rgba(255,255,255,0) 55%, rgba(207,192,246,0.35) 100%); }
 .case-card.glass::before { z-index: 0; }
 .case-card.glass h3 { position: relative; }
 .case-card.glass .cc-dot { position: absolute; top: 18px; right: 18px; width: 9px; height: 9px; border-radius: 50%; background: var(--cc, #8B6DE8); box-shadow: 0 0 0 4px color-mix(in srgb, var(--cc, #8B6DE8) 22%, transparent); }
@@ -829,7 +791,7 @@ header.stuck nav.wrap { box-shadow: inset 0 1px 0 rgba(255,255,255,0.3), 0 1px 2
 @supports not ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
   .glass { --glass-tint: rgba(20,16,32,0.9); }
   .glass-light { --glass-tint: rgba(255,255,255,0.92); }
-  header nav.wrap { background: linear-gradient(var(--header-bg), var(--header-bg)), #0A0A0A; }
+  header nav.wrap { background: linear-gradient(var(--header-bg), var(--header-bg)), #F7F0E8; }
 }
 @media (prefers-reduced-transparency: reduce) {
   .glass, .pill, header nav.wrap { -webkit-backdrop-filter: none !important; backdrop-filter: none !important; }
@@ -865,7 +827,7 @@ header.stuck nav.wrap { box-shadow: inset 0 1px 0 rgba(255,255,255,0.3), 0 1px 2
 .rs-tag-b { right: 16px; color: #0A0A0A; background: #F2EFEA; }
 .rs-crop {
   position: absolute; z-index: 4; width: clamp(124px, 12.5vw, 176px); aspect-ratio: 1; border-radius: 20px; overflow: hidden;
-  border: 6px solid #0A0A0A; background: #0A0A0A; box-shadow: 0 26px 50px -22px rgba(0,0,0,0.9); will-change: transform;
+  border: 6px solid #F7F0E8; background: #F7F0E8; box-shadow: 0 26px 50px -22px rgba(0,0,0,0.9); will-change: transform;
 }
 .rs-crop picture { position: absolute; inset: 0; }
 /* el recorte: la foto a 2.56× el ancho de la ficha, corrida hasta el detalle */
@@ -877,8 +839,8 @@ header.stuck nav.wrap { box-shadow: inset 0 1px 0 rgba(255,255,255,0.3), 0 1px 2
 .rs-lines { margin: 0; font-size: clamp(30px, 4.6vw, 60px); line-height: 1.02; letter-spacing: -0.032em; }
 .rs-l { display: block; overflow: hidden; padding-bottom: 0.07em; }
 .rs-l > span { display: block; }
-.rs-l1, .rs-l2 { font-weight: 500; color: #8B849B; }
-.rs-l3 { font-weight: 800; color: #F2EFEA; margin-top: 0.14em; text-wrap: balance; }
+.rs-l1, .rs-l2 { font-weight: 500; color: #6E655C; }
+.rs-l3 { font-weight: 800; color: #0A0A0A; margin-top: 0.14em; text-wrap: balance; }
 @media (max-width: 820px) {
   .rs-grid { grid-template-columns: 1fr; gap: 36px; }
   .rs-media { width: 100%; max-width: 460px; margin: 0 auto; }
@@ -951,12 +913,12 @@ html:not(.js) .pf-dup, html:not(.js) .pf-toggle { display: none; }
 @media (hover: none) { #lens { display: none; } }
 
 /* ══ LAS PERSONAS (#datos) ═══════ estilos tal cual de seccion-personas.html ══ */
-#datos.ps{--ps-crema:#F2EFEA;--ps-suave:#B7B1C0;--ps-lila:#8B6DE8;--ps-tenue:rgba(242,239,234,.14);
+#datos.ps{--ps-crema:#0A0A0A;--ps-suave:#6E655C;--ps-lila:#8B6DE8;--ps-tenue:rgba(10,10,10,.14);
   position:relative;padding-block:clamp(90px,14vh,160px);color:var(--ps-crema)}
 #datos.ps .ps-wrap{width:min(100% - 2*clamp(16px,5vw,72px),1200px);margin-inline:auto}
 #datos.ps .ps-stage{position:relative;min-height:clamp(160px,22vw,230px);display:flex;align-items:flex-end}
 #datos.ps .ps-arr{display:grid;grid-template-columns:repeat(auto-fill,minmax(28px,1fr));gap:10px 8px;width:100%;max-width:820px}
-#datos.ps .ps-fila{position:relative;width:100%;height:clamp(130px,18vw,200px);border-bottom:2px solid rgba(242,239,234,.18);overflow:hidden;display:flex;align-items:flex-end;gap:clamp(4px,1vw,12px);padding-inline:4px}
+#datos.ps .ps-fila{position:relative;width:100%;height:clamp(130px,18vw,200px);border-bottom:2px solid rgba(10,10,10,.18);overflow:hidden;display:flex;align-items:flex-end;gap:clamp(4px,1vw,12px);padding-inline:4px}
 #datos.ps .ps-per{flex:0 0 auto;width:clamp(26px,3.6vw,46px);color:var(--ps-crema);transform-origin:50% 100%}
 #datos.ps .ps-arr .ps-per{width:100%}
 #datos.ps .ps-per svg{display:block;width:100%;height:auto;overflow:visible}
@@ -966,7 +928,7 @@ html:not(.js) .pf-dup, html:not(.js) .pf-toggle { display: none; }
 #datos.ps .ps-arr .ps-per.gone .c{fill:none;stroke:var(--ps-lila);stroke-width:1.6;stroke-dasharray:3 3}
 #datos.ps .ps-ghost{position:absolute;bottom:0;width:clamp(26px,3.6vw,46px)}
 #datos.ps .ps-ghost svg{display:block;width:100%;height:auto}
-#datos.ps .ps-ghost .c{fill:none;stroke:rgba(242,239,234,.25);stroke-width:1.5;stroke-dasharray:3 3}
+#datos.ps .ps-ghost .c{fill:none;stroke:rgba(10,10,10,.25);stroke-width:1.5;stroke-dasharray:3 3}
 #datos.ps .ps-copy{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:20px 48px;margin-top:36px}
 #datos.ps .ps-h{margin:0;font-size:clamp(30px,4.4vw,58px);font-weight:700;letter-spacing:-.03em;line-height:1.02;max-width:14em;text-wrap:balance}
 #datos.ps .ps-ctl{margin:0;color:var(--ps-suave);font-size:17px;line-height:2.1;max-width:34ch}
@@ -1035,7 +997,7 @@ html:not(.js) .pf-dup, html:not(.js) .pf-toggle { display: none; }
 #productos .px-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:18px}
 #productos .px-title{margin:0;font-size:clamp(38px,4.6vw,66px);line-height:1;letter-spacing:-.035em;font-weight:600}
 #productos .px-count{margin:0 0 6px;display:flex;align-items:baseline;gap:8px;font-family:var(--font-ui);font-size:12px;letter-spacing:.14em;color:var(--ink-50);font-variant-numeric:tabular-nums}
-#productos .px-now{font-weight:400;font-size:13px;color:#F2EFEA;transition:color .6s}
+#productos .px-now{font-weight:400;font-size:13px;color:#0A0A0A;transition:color .6s}
 
 #productos .px-stage{position:relative;flex:1;min-height:0;border-radius:32px;overflow:hidden;isolation:isolate;background:#0d0b10;
   box-shadow:0 2px 6px rgba(0,0,0,.45),0 70px 120px -70px color-mix(in srgb,var(--acc) 60%,transparent),inset 0 0 0 1px rgba(255,255,255,.08)}
@@ -1201,12 +1163,12 @@ html:not(.js) #productos .px-item{visibility:visible;opacity:1;margin-bottom:12p
 </div>
 
 <div class="banner">
-  <a href="#contacto">Pide tu demo: la ves funcionando con tu negocio &rarr;</a>
+  <a href="#contacto"><span class="bn-t">Antes de decidir, lo ves funcionando con tu negocio.</span><span class="bn-m">Lo ves funcionando con tu negocio.</span> <span class="bn-l">Pide tu demo</span></a>
 </div>
 
 <header id="siteHeader">
   <nav class="wrap">
-    <a href="#top" class="wordmark"><svg class="logo-svg" height="21" role="img" aria-label="Saphiless" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000.0 161.9"><g transform="translate(0,141.67) scale(0.202388,-0.202388)"><g fill="#FFFFFF"><path transform="translate(0,0)" d="M10 600H570V420H196Q196 405 198.0 402.5Q200 400 215 400H570V245Q570 172 567.5 125.5Q565 79 554.0 53.0Q543 27 517.0 16.0Q491 5 445.0 2.5Q399 0 325 0H10V280H365Q380 280 382.0 282.5Q384 285 384 300H10Z"/><path transform="translate(580,0)" d="M630 600V0H330V43H310V0H255Q182 0 135.5 2.5Q89 5 63.0 16.0Q37 27 26.0 53.0Q15 79 12.5 125.5Q10 172 10 245V355Q10 428 12.5 474.5Q15 521 26.0 547.0Q37 573 63.0 584.0Q89 595 135.5 597.5Q182 600 255 600ZM310 300H330V400Q315 400 312.5 397.5Q310 395 310 380Z"/><path transform="translate(1220,0)" d="M310 -100H10V600H385Q458 600 504.5 597.5Q551 595 577.0 584.0Q603 573 614.0 547.0Q625 521 627.5 475.0Q630 429 630 355V245Q630 172 627.5 125.5Q625 79 614.0 53.0Q603 27 577.0 16.0Q551 5 505.0 2.5Q459 0 385 0H310ZM310 300H330V380Q330 395 327.5 397.5Q325 400 310 400Z"/><path transform="translate(1860,0)" d="M10 700H310V600H385Q458 600 504.5 597.5Q551 595 577.0 584.0Q603 573 614.0 547.0Q625 521 627.5 475.0Q630 429 630 355V0H330V380Q330 392 329.0 396.0Q328 400 320 400H310V0H10Z"/><path transform="translate(2500,0)" d="M10 700H310V620H10ZM311 0H256Q182 0 135.5 2.5Q89 5 63.5 16.0Q38 27 26.5 53.0Q15 79 13.0 125.5Q11 172 11 245V600H311Z"/></g><g fill="#511BDB"><path transform="translate(2821,0)" d="M310 0H255Q182 0 135.5 2.5Q89 5 63.0 16.0Q37 27 26.0 53.0Q15 79 12.5 125.5Q10 172 10 245V700H310Z"/><path transform="translate(3141,0)" d="M10 355Q10 428 12.5 474.5Q15 521 26.0 547.0Q37 573 63.0 584.0Q89 595 135.5 597.5Q182 600 255 600H385Q458 600 504.5 597.5Q551 595 577.0 584.0Q603 573 614.0 547.0Q625 521 627.5 475.0Q630 429 630 355V120H310V100H630V0L160 1Q104 3 73.0 12.5Q42 22 28.5 47.0Q15 72 12.5 119.5Q10 167 10 245ZM310 400V300H330V380Q330 395 327.5 397.5Q325 400 310 400Z"/><path transform="translate(3781,0)" d="M10 600H570V420H196Q196 405 198.0 402.5Q200 400 215 400H570V245Q570 172 567.5 125.5Q565 79 554.0 53.0Q543 27 517.0 16.0Q491 5 445.0 2.5Q399 0 325 0H10V280H365Q380 280 382.0 282.5Q384 285 384 300H10Z"/><path transform="translate(4361,0)" d="M10 600H570V420H196Q196 405 198.0 402.5Q200 400 215 400H570V245Q570 172 567.5 125.5Q565 79 554.0 53.0Q543 27 517.0 16.0Q491 5 445.0 2.5Q399 0 325 0H10V280H365Q380 280 382.0 282.5Q384 285 384 300H10Z"/></g></g></svg></a>
+    <a href="#top" class="wordmark"><svg class="logo-svg" height="21" role="img" aria-label="Saphiless" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000.0 161.9"><g transform="translate(0,141.67) scale(0.202388,-0.202388)"><g fill="#0A0A0A"><path transform="translate(0,0)" d="M10 600H570V420H196Q196 405 198.0 402.5Q200 400 215 400H570V245Q570 172 567.5 125.5Q565 79 554.0 53.0Q543 27 517.0 16.0Q491 5 445.0 2.5Q399 0 325 0H10V280H365Q380 280 382.0 282.5Q384 285 384 300H10Z"/><path transform="translate(580,0)" d="M630 600V0H330V43H310V0H255Q182 0 135.5 2.5Q89 5 63.0 16.0Q37 27 26.0 53.0Q15 79 12.5 125.5Q10 172 10 245V355Q10 428 12.5 474.5Q15 521 26.0 547.0Q37 573 63.0 584.0Q89 595 135.5 597.5Q182 600 255 600ZM310 300H330V400Q315 400 312.5 397.5Q310 395 310 380Z"/><path transform="translate(1220,0)" d="M310 -100H10V600H385Q458 600 504.5 597.5Q551 595 577.0 584.0Q603 573 614.0 547.0Q625 521 627.5 475.0Q630 429 630 355V245Q630 172 627.5 125.5Q625 79 614.0 53.0Q603 27 577.0 16.0Q551 5 505.0 2.5Q459 0 385 0H310ZM310 300H330V380Q330 395 327.5 397.5Q325 400 310 400Z"/><path transform="translate(1860,0)" d="M10 700H310V600H385Q458 600 504.5 597.5Q551 595 577.0 584.0Q603 573 614.0 547.0Q625 521 627.5 475.0Q630 429 630 355V0H330V380Q330 392 329.0 396.0Q328 400 320 400H310V0H10Z"/><path transform="translate(2500,0)" d="M10 700H310V620H10ZM311 0H256Q182 0 135.5 2.5Q89 5 63.5 16.0Q38 27 26.5 53.0Q15 79 13.0 125.5Q11 172 11 245V600H311Z"/></g><g fill="#511BDB"><path transform="translate(2821,0)" d="M310 0H255Q182 0 135.5 2.5Q89 5 63.0 16.0Q37 27 26.0 53.0Q15 79 12.5 125.5Q10 172 10 245V700H310Z"/><path transform="translate(3141,0)" d="M10 355Q10 428 12.5 474.5Q15 521 26.0 547.0Q37 573 63.0 584.0Q89 595 135.5 597.5Q182 600 255 600H385Q458 600 504.5 597.5Q551 595 577.0 584.0Q603 573 614.0 547.0Q625 521 627.5 475.0Q630 429 630 355V120H310V100H630V0L160 1Q104 3 73.0 12.5Q42 22 28.5 47.0Q15 72 12.5 119.5Q10 167 10 245ZM310 400V300H330V380Q330 395 327.5 397.5Q325 400 310 400Z"/><path transform="translate(3781,0)" d="M10 600H570V420H196Q196 405 198.0 402.5Q200 400 215 400H570V245Q570 172 567.5 125.5Q565 79 554.0 53.0Q543 27 517.0 16.0Q491 5 445.0 2.5Q399 0 325 0H10V280H365Q380 280 382.0 282.5Q384 285 384 300H10Z"/><path transform="translate(4361,0)" d="M10 600H570V420H196Q196 405 198.0 402.5Q200 400 215 400H570V245Q570 172 567.5 125.5Q565 79 554.0 53.0Q543 27 517.0 16.0Q491 5 445.0 2.5Q399 0 325 0H10V280H365Q380 280 382.0 282.5Q384 285 384 300H10Z"/></g></g></svg></a>
     <ul class="nav-links" id="navLinks">
       <li><a href="#productos" data-producto="voz" data-roll="Voz">Voz</a></li>
       <li><a href="#productos" data-producto="inmobiliaria" data-roll="Inmobiliaria">Inmobiliaria</a></li>
@@ -1246,36 +1208,22 @@ html:not(.js) #productos .px-item{visibility:visible;opacity:1;margin-bottom:12p
 
 <main id="top">
 
-  <!-- ══════════ HERO · EL MAPA ══════════
-     Titular y botones en HTML (pintan primero). El plano 3D, las calles
-     y los cometas los dibuja el script «HERO · EL MAPA» al final. -->
-  <section class="hp" id="hero" aria-labelledby="hpTitle">
-    <div class="hp-pin">
-      <span class="hp-glow" aria-hidden="true"></span>
-      <div class="hp-m3d" aria-hidden="true">
-        <div class="hp-plane"><svg viewBox="0 0 1200 1200" focusable="false"><defs><linearGradient id="hpArcG" x1="0" x2="1"><stop offset="0" stop-color="#8B6DE8" stop-opacity="0"/><stop offset="1" stop-color="#CFC0F6"/></linearGradient>
-          <radialGradient id="hpAuraG"><stop offset="0" stop-color="#8B6DE8" stop-opacity=".55"/><stop offset=".55" stop-color="#511BDB" stop-opacity=".18"/><stop offset="1" stop-color="#511BDB" stop-opacity="0"/></radialGradient></defs>
-          <circle class="hp-aura" cx="600" cy="600" r="80" fill="url(#hpAuraG)" transform="matrix(2.5 0 0 2.5 -900 -900)"/><g class="hp-g-blk"></g><path class="hp-river" d="M-80 820 C 220 720, 360 980, 620 860 S 1020 620, 1300 700"/><g class="hp-g-st"></g><g class="hp-g-arc"></g>
-          <circle class="hp-ring" cx="600" cy="600" r="20"/><circle class="hp-ring" cx="600" cy="600" r="20"/><circle class="hp-ring" cx="600" cy="600" r="20"/>
-          <circle cx="600" cy="600" r="7" fill="#F7F0E8"/><g class="hp-g-hit"></g></svg>
-          <div class="hp-beacon"><span class="hp-pillar"><b></b></span></div>
-        </div>
-      </div>
-      <span class="hp-scrim" aria-hidden="true"></span>
-      <span class="hp-lab" aria-hidden="true"><span class="hp-tag"><svg viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>Tu negocio</span></span>
-      <div class="hp-toast hp-t1" aria-hidden="true"><em><svg viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg></em><div><b>Te encontró en Google Maps</b><span>A 900 m de tu negocio</span></div></div>
-      <div class="hp-toast hp-t2" aria-hidden="true"><em><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></em><div><b>Sofía lo atendió</b><span>Cita el jueves, 5:30 p. m.</span></div></div>
-      <div class="hp-wrap"><div class="hp-copy">
-        <h1 class="hp-h1" id="hpTitle"><span class="hp-l"><span>Te encuentran.</span></span> <span class="hp-l hp-acc"><span>Te eligen.</span></span> <span class="hp-l hp-acc"><span>Regresan.</span></span></h1>
-        <p class="hp-lead">Más gente te ve, más gente agenda, más gente vuelve. <b>Tú sigues haciendo lo tuyo.</b></p>
-        <div class="hp-cta">
-          <a class="hp-btn magnetic" href="#contacto">Quiero ver cómo funciona <i aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></i></a>
-          <a class="hp-link" href="#productos">Ver productos <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7l10 10M17 8v9H8"/></svg></a>
-        </div>
-        <p class="hp-note"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Te escribo por WhatsApp el mismo día hábil.</p>
-      </div></div>
-      <p class="hp-chap" aria-hidden="true">Del mapa a tu agenda, <em>sin que tú contestes.</em></p>
+  <!-- ══════════ HERO · CAPÍTULOS ══════════
+     Los cuatro capítulos están en el HTML (sin JS se leen uno debajo
+     del otro); el recorrido horizontal lo arma el script «HERO · CAPÍTULOS». -->
+  <section class="s3" id="hero" aria-labelledby="s3Title">
+    <video class="s3-vid" autoplay muted loop playsinline preload="auto" poster="assets/hero/destellos.jpg" aria-hidden="true">
+      <source src="assets/hero/destellos.mp4" type="video/mp4">
+    </video>
+    <span class="s3-veil" aria-hidden="true"></span>
+    <span class="s3-bg" aria-hidden="true"></span>
+    <div class="s3-track">
+      <article class="s3-ch"><h1 id="s3Title">Somos <em>Saphiless.</em></h1><p>Ayudamos a negocios locales a atender mejor, verse mejor y hacer que sus clientes regresen.</p></article>
+      <article class="s3-ch"><h2>Automatizamos lo que <em>te quita el día.</em></h2><p>Llamadas, mensajes, citas y recordatorios, sin que tú tengas que contestar.</p></article>
+      <article class="s3-ch"><h2>Diseñamos lo que <em>hace que te elijan.</em></h2><p>Páginas, imágenes y redes con un plan detrás.</p></article>
+      <article class="s3-ch"><h2>Para que tu negocio crezca <em>sin que tú corras.</em></h2><div class="s3-ctas"><a class="s3-btn magnetic" href="#contacto">Agendar demo <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="s3-btn ghost" href="#productos">Ver productos</a></div></article>
     </div>
+    <span class="s3-prog" aria-hidden="true"><b></b></span>
   </section>
 
   <!-- ══════════ DE LA VISTA NACE EL AMOR (reemplaza la franja de giros) ══════════ -->
@@ -1341,20 +1289,20 @@ html:not(.js) #productos .px-item{visibility:visible;opacity:1;margin-bottom:12p
       <div class="px-w">
         <div class="px-head">
           <h2 class="px-title js-mask" id="pxTitle" data-split="chars">Productos</h2>
-          <p class="px-count" aria-hidden="true"><b class="px-now">01</b><span>/ 06</span></p>
+          <p class="px-count" aria-hidden="true"><b class="px-now">01</b><span>/ 07</span></p>
         </div>
         <div class="px-stage pd-card">
           <canvas class="px-gl" aria-hidden="true"></canvas>
           <span class="px-veil" aria-hidden="true"></span>
           <div class="px-tabs" role="tablist" aria-label="Productos de Saphiless">
             <span class="px-ind" aria-hidden="true"></span>
-            <button class="px-tab" type="button" role="tab" id="pxTab-voz" aria-controls="pxItem-voz" aria-selected="true" tabindex="0">Voz</button><button class="px-tab" type="button" role="tab" id="pxTab-inmobiliaria" aria-controls="pxItem-inmobiliaria" aria-selected="false" tabindex="-1">Inmobiliaria</button><button class="px-tab" type="button" role="tab" id="pxTab-web" aria-controls="pxItem-web" aria-selected="false" tabindex="-1">Web</button><button class="px-tab" type="button" role="tab" id="pxTab-expediente" aria-controls="pxItem-expediente" aria-selected="false" tabindex="-1">Expediente</button><button class="px-tab" type="button" role="tab" id="pxTab-imagenes" aria-controls="pxItem-imagenes" aria-selected="false" tabindex="-1">Imágenes</button><button class="px-tab" type="button" role="tab" id="pxTab-lealtad" aria-controls="pxItem-lealtad" aria-selected="false" tabindex="-1">Lealtad</button>
+            <button class="px-tab" type="button" role="tab" id="pxTab-voz" aria-controls="pxItem-voz" aria-selected="true" tabindex="0">Voz</button><button class="px-tab" type="button" role="tab" id="pxTab-inmobiliaria" aria-controls="pxItem-inmobiliaria" aria-selected="false" tabindex="-1">Inmobiliaria</button><button class="px-tab" type="button" role="tab" id="pxTab-web" aria-controls="pxItem-web" aria-selected="false" tabindex="-1">Web</button><button class="px-tab" type="button" role="tab" id="pxTab-expediente" aria-controls="pxItem-expediente" aria-selected="false" tabindex="-1">Expediente</button><button class="px-tab" type="button" role="tab" id="pxTab-imagenes" aria-controls="pxItem-imagenes" aria-selected="false" tabindex="-1">Imágenes</button><button class="px-tab" type="button" role="tab" id="pxTab-lealtad" aria-controls="pxItem-lealtad" aria-selected="false" tabindex="-1">Lealtad</button><button class="px-tab" type="button" role="tab" id="pxTab-redes" aria-controls="pxItem-redes" aria-selected="false" tabindex="-1">Redes</button>
           </div>
-          <div class="px-names" aria-hidden="true"><span class="px-name is-on">Citas</span><span class="px-name">Visitas</span><span class="px-name">Ventas</span><span class="px-name">Orden</span><span class="px-name">Antojo</span><span class="px-name">Regresan</span></div>
+          <div class="px-names" aria-hidden="true"><span class="px-name is-on">Citas</span><span class="px-name">Visitas</span><span class="px-name">Ventas</span><span class="px-name">Orden</span><span class="px-name">Antojo</span><span class="px-name">Regresan</span><span class="px-name">Presencia</span></div>
           <div class="px-items">
           <article class="px-item glass is-on" id="pxItem-voz" role="tabpanel" aria-labelledby="pxTab-voz" data-producto="voz" data-acc="#F5A623" data-c1="#F5A623" data-c2="#6E4B10" data-c3="#1A1206" style="--c:#F5A623;--dot:#F5A623">
             <p class="px-full">Voz</p>
-            <h3>Sofía contesta por ti</h3>
+            <h3>Tu asistente contesta por ti</h3>
             <p class="px-body">Atiende cada llamada, agenda citas directo en tu calendario y resuelve dudas, como si fuera parte de tu equipo.</p>
             <p class="px-punch">Disponible 24/7, incluso fuera de horario.</p>
             <ul class="tool-list"><li>Agenda, cancela y reprograma citas automáticamente</li><li>Conectada a Google Calendar en tiempo real</li><li>Panel con historial de llamadas y transcripciones</li></ul>
@@ -1363,7 +1311,7 @@ html:not(.js) #productos .px-item{visibility:visible;opacity:1;margin-bottom:12p
           <article class="px-item glass" id="pxItem-inmobiliaria" role="tabpanel" aria-labelledby="pxTab-inmobiliaria" data-producto="inmobiliaria" data-acc="#14B8C4" data-c1="#14B8C4" data-c2="#095358" data-c3="#07181A" style="--c:#14B8C4;--dot:#14B8C4">
             <p class="px-full">Inmobiliaria</p>
             <h3>Leads calificados, en automático</h3>
-            <p class="px-body">Alejandro contesta la llamada, platica con el prospecto, agenda la visita y te notifica al instante con el score del lead.</p>
+            <p class="px-body">Tu asesor de confianza contesta la llamada, platica con el prospecto, agenda la visita y te notifica al instante con el score del lead.</p>
             <p class="px-punch">Solo te llega quien sí quiere comprar.</p>
             <ul class="tool-list"><li>Extrae y califica el lead de cada llamada</li><li>Notifica por llamada, SMS o email según la urgencia</li><li>Agenda visitas en tu calendario de disponibilidad</li><li>Resumen diario de actividad</li></ul>
             <a href="#contacto" class="pill pill-grad magnetic px-cta" data-roll="Ver cómo funciona">Ver cómo funciona <span class="pill-arrow">&rarr;</span></a>
@@ -1399,6 +1347,14 @@ html:not(.js) #productos .px-item{visibility:visible;opacity:1;margin-bottom:12p
             <p class="px-punch">La lealtad no tiene precio.</p>
             <ul class="tool-list"><li>Sin tarjetas de papel que se pierden</li><li>Premios y promociones que tú decides</li><li>Ves quién regresa y cada cuánto</li><li>Mensajes para invitar a volver a quien no ha venido</li></ul>
             <a href="#contacto" class="pill pill-grad magnetic px-cta" data-roll="Quiero ver mi demo">Quiero ver mi demo <span class="pill-arrow">&rarr;</span></a>
+          </article>
+          <article class="px-item glass" id="pxItem-redes" role="tabpanel" aria-labelledby="pxTab-redes" data-producto="redes" data-acc="#FF6B4A" data-c1="#FF6B4A" data-c2="#6E2A1C" data-c3="#1E0D08" style="--c:#FF6B4A;--dot:#FF6B4A">
+            <p class="px-full">Redes sociales</p>
+            <h3>Manejo de redes sociales</h3>
+            <p class="px-body">Publicamos por ti en tus redes con un plan hecho para lo que tu negocio necesita: más citas, más reservas o más llamadas.</p>
+            <p class="px-punch">No vendemos publicaciones sueltas: partimos de lo que quieres lograr.</p>
+            <ul class="tool-list"><li>Creamos el contenido</li><li>Armamos el calendario</li><li>Lo publicamos en tus cuentas</li></ul>
+            <a href="#contacto" class="pill pill-grad magnetic px-cta" data-roll="Ver cómo funciona">Ver cómo funciona <span class="pill-arrow">&rarr;</span></a>
           </article>
           </div>
           <span class="px-prog" aria-hidden="true"><i></i></span>
@@ -1480,7 +1436,7 @@ html:not(.js) #productos .px-item{visibility:visible;opacity:1;margin-bottom:12p
             <article class="case-card spot glass glass-light" style="--cc:#8B6DE8" data-pv="#F5A623,#FBDDAB" data-pvlabel="Consultorio">
               <span class="cc-dot" aria-hidden="true"></span>
               <h3>Consultorio sin recepcionista</h3>
-              <p>Sofía agenda, confirma y recuerda citas sin que nadie conteste el teléfono.</p>
+              <p>Tu asistente agenda, confirma y recuerda citas sin que nadie conteste el teléfono.</p>
             </article>
             <article class="case-card spot glass glass-light" style="--cc:#511BDB" data-pv="#3B82F6,#B5D0FC" data-pvlabel="Restaurante">
               <span class="cc-dot" aria-hidden="true"></span>
@@ -1539,7 +1495,7 @@ html:not(.js) #productos .px-item{visibility:visible;opacity:1;margin-bottom:12p
         <div class="model">
           <div class="model-col glass glass-light">
             <h4>Asistentes</h4>
-            <p>Sofía y Alejandro: una instalación y una mensualidad que cubre hosting y soporte.</p>
+            <p>Tu asistente y tu asesor de confianza: una instalación y una mensualidad que cubre hosting y soporte.</p>
           </div>
           <div class="model-col glass glass-light">
             <h4>Proyectos</h4>
@@ -1612,7 +1568,7 @@ html:not(.js) #productos .px-item{visibility:visible;opacity:1;margin-bottom:12p
   <div class="wrap">
     <div class="footer-grid">
       <div>
-        <a href="#top" class="wordmark"><svg class="logo-svg" height="22" role="img" aria-label="Saphiless" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000.0 161.9"><g transform="translate(0,141.67) scale(0.202388,-0.202388)"><g fill="#FFFFFF"><path transform="translate(0,0)" d="M10 600H570V420H196Q196 405 198.0 402.5Q200 400 215 400H570V245Q570 172 567.5 125.5Q565 79 554.0 53.0Q543 27 517.0 16.0Q491 5 445.0 2.5Q399 0 325 0H10V280H365Q380 280 382.0 282.5Q384 285 384 300H10Z"/><path transform="translate(580,0)" d="M630 600V0H330V43H310V0H255Q182 0 135.5 2.5Q89 5 63.0 16.0Q37 27 26.0 53.0Q15 79 12.5 125.5Q10 172 10 245V355Q10 428 12.5 474.5Q15 521 26.0 547.0Q37 573 63.0 584.0Q89 595 135.5 597.5Q182 600 255 600ZM310 300H330V400Q315 400 312.5 397.5Q310 395 310 380Z"/><path transform="translate(1220,0)" d="M310 -100H10V600H385Q458 600 504.5 597.5Q551 595 577.0 584.0Q603 573 614.0 547.0Q625 521 627.5 475.0Q630 429 630 355V245Q630 172 627.5 125.5Q625 79 614.0 53.0Q603 27 577.0 16.0Q551 5 505.0 2.5Q459 0 385 0H310ZM310 300H330V380Q330 395 327.5 397.5Q325 400 310 400Z"/><path transform="translate(1860,0)" d="M10 700H310V600H385Q458 600 504.5 597.5Q551 595 577.0 584.0Q603 573 614.0 547.0Q625 521 627.5 475.0Q630 429 630 355V0H330V380Q330 392 329.0 396.0Q328 400 320 400H310V0H10Z"/><path transform="translate(2500,0)" d="M10 700H310V620H10ZM311 0H256Q182 0 135.5 2.5Q89 5 63.5 16.0Q38 27 26.5 53.0Q15 79 13.0 125.5Q11 172 11 245V600H311Z"/></g><g fill="#511BDB"><path transform="translate(2821,0)" d="M310 0H255Q182 0 135.5 2.5Q89 5 63.0 16.0Q37 27 26.0 53.0Q15 79 12.5 125.5Q10 172 10 245V700H310Z"/><path transform="translate(3141,0)" d="M10 355Q10 428 12.5 474.5Q15 521 26.0 547.0Q37 573 63.0 584.0Q89 595 135.5 597.5Q182 600 255 600H385Q458 600 504.5 597.5Q551 595 577.0 584.0Q603 573 614.0 547.0Q625 521 627.5 475.0Q630 429 630 355V120H310V100H630V0L160 1Q104 3 73.0 12.5Q42 22 28.5 47.0Q15 72 12.5 119.5Q10 167 10 245ZM310 400V300H330V380Q330 395 327.5 397.5Q325 400 310 400Z"/><path transform="translate(3781,0)" d="M10 600H570V420H196Q196 405 198.0 402.5Q200 400 215 400H570V245Q570 172 567.5 125.5Q565 79 554.0 53.0Q543 27 517.0 16.0Q491 5 445.0 2.5Q399 0 325 0H10V280H365Q380 280 382.0 282.5Q384 285 384 300H10Z"/><path transform="translate(4361,0)" d="M10 600H570V420H196Q196 405 198.0 402.5Q200 400 215 400H570V245Q570 172 567.5 125.5Q565 79 554.0 53.0Q543 27 517.0 16.0Q491 5 445.0 2.5Q399 0 325 0H10V280H365Q380 280 382.0 282.5Q384 285 384 300H10Z"/></g></g></svg></a>
+        <a href="#top" class="wordmark"><svg class="logo-svg" height="22" role="img" aria-label="Saphiless" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000.0 161.9"><g transform="translate(0,141.67) scale(0.202388,-0.202388)"><g fill="#0A0A0A"><path transform="translate(0,0)" d="M10 600H570V420H196Q196 405 198.0 402.5Q200 400 215 400H570V245Q570 172 567.5 125.5Q565 79 554.0 53.0Q543 27 517.0 16.0Q491 5 445.0 2.5Q399 0 325 0H10V280H365Q380 280 382.0 282.5Q384 285 384 300H10Z"/><path transform="translate(580,0)" d="M630 600V0H330V43H310V0H255Q182 0 135.5 2.5Q89 5 63.0 16.0Q37 27 26.0 53.0Q15 79 12.5 125.5Q10 172 10 245V355Q10 428 12.5 474.5Q15 521 26.0 547.0Q37 573 63.0 584.0Q89 595 135.5 597.5Q182 600 255 600ZM310 300H330V400Q315 400 312.5 397.5Q310 395 310 380Z"/><path transform="translate(1220,0)" d="M310 -100H10V600H385Q458 600 504.5 597.5Q551 595 577.0 584.0Q603 573 614.0 547.0Q625 521 627.5 475.0Q630 429 630 355V245Q630 172 627.5 125.5Q625 79 614.0 53.0Q603 27 577.0 16.0Q551 5 505.0 2.5Q459 0 385 0H310ZM310 300H330V380Q330 395 327.5 397.5Q325 400 310 400Z"/><path transform="translate(1860,0)" d="M10 700H310V600H385Q458 600 504.5 597.5Q551 595 577.0 584.0Q603 573 614.0 547.0Q625 521 627.5 475.0Q630 429 630 355V0H330V380Q330 392 329.0 396.0Q328 400 320 400H310V0H10Z"/><path transform="translate(2500,0)" d="M10 700H310V620H10ZM311 0H256Q182 0 135.5 2.5Q89 5 63.5 16.0Q38 27 26.5 53.0Q15 79 13.0 125.5Q11 172 11 245V600H311Z"/></g><g fill="#511BDB"><path transform="translate(2821,0)" d="M310 0H255Q182 0 135.5 2.5Q89 5 63.0 16.0Q37 27 26.0 53.0Q15 79 12.5 125.5Q10 172 10 245V700H310Z"/><path transform="translate(3141,0)" d="M10 355Q10 428 12.5 474.5Q15 521 26.0 547.0Q37 573 63.0 584.0Q89 595 135.5 597.5Q182 600 255 600H385Q458 600 504.5 597.5Q551 595 577.0 584.0Q603 573 614.0 547.0Q625 521 627.5 475.0Q630 429 630 355V120H310V100H630V0L160 1Q104 3 73.0 12.5Q42 22 28.5 47.0Q15 72 12.5 119.5Q10 167 10 245ZM310 400V300H330V380Q330 395 327.5 397.5Q325 400 310 400Z"/><path transform="translate(3781,0)" d="M10 600H570V420H196Q196 405 198.0 402.5Q200 400 215 400H570V245Q570 172 567.5 125.5Q565 79 554.0 53.0Q543 27 517.0 16.0Q491 5 445.0 2.5Q399 0 325 0H10V280H365Q380 280 382.0 282.5Q384 285 384 300H10Z"/><path transform="translate(4361,0)" d="M10 600H570V420H196Q196 405 198.0 402.5Q200 400 215 400H570V245Q570 172 567.5 125.5Q565 79 554.0 53.0Q543 27 517.0 16.0Q491 5 445.0 2.5Q399 0 325 0H10V280H365Q380 280 382.0 282.5Q384 285 384 300H10Z"/></g></g></svg></a>
         <p class="t-caption muted" style="max-width:280px;margin-top:var(--sp-16)">Automatización con IA para negocios en México.</p>
       </div>
       <div class="footer-cols">
@@ -1624,6 +1580,7 @@ html:not(.js) #productos .px-item{visibility:visible;opacity:1;margin-bottom:12p
           <a href="#productos" data-producto="expediente" data-roll="Expediente clínico">Expediente clínico</a>
           <a href="#productos" data-producto="imagenes" data-roll="Imágenes publicitarias">Imágenes publicitarias</a>
           <a href="#productos" data-producto="lealtad" data-roll="Lealtad">Lealtad</a>
+          <a href="#productos" data-producto="redes" data-roll="Redes sociales">Redes sociales</a>
         </div>
         <div class="footer-col">
           <h4>Contacto</h4>
@@ -1637,7 +1594,7 @@ html:not(.js) #productos .px-item{visibility:visible;opacity:1;margin-bottom:12p
       <span class="footer-legal"><a href="aviso-privacidad.html">Aviso de privacidad</a><a href="prueba.html">Prueba de 3 semanas</a></span>
     </div>
   </div>
-  <div class="footer-giant" aria-hidden="true"><span id="footGiant"><svg class="wm-svg" role="img" aria-label="Saphiless" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000.0 161.9"><g transform="translate(0,141.67) scale(0.202388,-0.202388)"><g fill="#FFFFFF"><path transform="translate(0,0)" d="M10 600H570V420H196Q196 405 198.0 402.5Q200 400 215 400H570V245Q570 172 567.5 125.5Q565 79 554.0 53.0Q543 27 517.0 16.0Q491 5 445.0 2.5Q399 0 325 0H10V280H365Q380 280 382.0 282.5Q384 285 384 300H10Z"/><path transform="translate(580,0)" d="M630 600V0H330V43H310V0H255Q182 0 135.5 2.5Q89 5 63.0 16.0Q37 27 26.0 53.0Q15 79 12.5 125.5Q10 172 10 245V355Q10 428 12.5 474.5Q15 521 26.0 547.0Q37 573 63.0 584.0Q89 595 135.5 597.5Q182 600 255 600ZM310 300H330V400Q315 400 312.5 397.5Q310 395 310 380Z"/><path transform="translate(1220,0)" d="M310 -100H10V600H385Q458 600 504.5 597.5Q551 595 577.0 584.0Q603 573 614.0 547.0Q625 521 627.5 475.0Q630 429 630 355V245Q630 172 627.5 125.5Q625 79 614.0 53.0Q603 27 577.0 16.0Q551 5 505.0 2.5Q459 0 385 0H310ZM310 300H330V380Q330 395 327.5 397.5Q325 400 310 400Z"/><path transform="translate(1860,0)" d="M10 700H310V600H385Q458 600 504.5 597.5Q551 595 577.0 584.0Q603 573 614.0 547.0Q625 521 627.5 475.0Q630 429 630 355V0H330V380Q330 392 329.0 396.0Q328 400 320 400H310V0H10Z"/><path transform="translate(2500,0)" d="M10 700H310V620H10ZM311 0H256Q182 0 135.5 2.5Q89 5 63.5 16.0Q38 27 26.5 53.0Q15 79 13.0 125.5Q11 172 11 245V600H311Z"/></g><g fill="#FFFFFF"><path transform="translate(2821,0)" d="M310 0H255Q182 0 135.5 2.5Q89 5 63.0 16.0Q37 27 26.0 53.0Q15 79 12.5 125.5Q10 172 10 245V700H310Z"/><path transform="translate(3141,0)" d="M10 355Q10 428 12.5 474.5Q15 521 26.0 547.0Q37 573 63.0 584.0Q89 595 135.5 597.5Q182 600 255 600H385Q458 600 504.5 597.5Q551 595 577.0 584.0Q603 573 614.0 547.0Q625 521 627.5 475.0Q630 429 630 355V120H310V100H630V0L160 1Q104 3 73.0 12.5Q42 22 28.5 47.0Q15 72 12.5 119.5Q10 167 10 245ZM310 400V300H330V380Q330 395 327.5 397.5Q325 400 310 400Z"/><path transform="translate(3781,0)" d="M10 600H570V420H196Q196 405 198.0 402.5Q200 400 215 400H570V245Q570 172 567.5 125.5Q565 79 554.0 53.0Q543 27 517.0 16.0Q491 5 445.0 2.5Q399 0 325 0H10V280H365Q380 280 382.0 282.5Q384 285 384 300H10Z"/><path transform="translate(4361,0)" d="M10 600H570V420H196Q196 405 198.0 402.5Q200 400 215 400H570V245Q570 172 567.5 125.5Q565 79 554.0 53.0Q543 27 517.0 16.0Q491 5 445.0 2.5Q399 0 325 0H10V280H365Q380 280 382.0 282.5Q384 285 384 300H10Z"/></g></g></svg></span></div>
+  <div class="footer-giant" aria-hidden="true"><span id="footGiant"><svg class="wm-svg" role="img" aria-label="Saphiless" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000.0 161.9"><g transform="translate(0,141.67) scale(0.202388,-0.202388)"><g fill="#0A0A0A"><path transform="translate(0,0)" d="M10 600H570V420H196Q196 405 198.0 402.5Q200 400 215 400H570V245Q570 172 567.5 125.5Q565 79 554.0 53.0Q543 27 517.0 16.0Q491 5 445.0 2.5Q399 0 325 0H10V280H365Q380 280 382.0 282.5Q384 285 384 300H10Z"/><path transform="translate(580,0)" d="M630 600V0H330V43H310V0H255Q182 0 135.5 2.5Q89 5 63.0 16.0Q37 27 26.0 53.0Q15 79 12.5 125.5Q10 172 10 245V355Q10 428 12.5 474.5Q15 521 26.0 547.0Q37 573 63.0 584.0Q89 595 135.5 597.5Q182 600 255 600ZM310 300H330V400Q315 400 312.5 397.5Q310 395 310 380Z"/><path transform="translate(1220,0)" d="M310 -100H10V600H385Q458 600 504.5 597.5Q551 595 577.0 584.0Q603 573 614.0 547.0Q625 521 627.5 475.0Q630 429 630 355V245Q630 172 627.5 125.5Q625 79 614.0 53.0Q603 27 577.0 16.0Q551 5 505.0 2.5Q459 0 385 0H310ZM310 300H330V380Q330 395 327.5 397.5Q325 400 310 400Z"/><path transform="translate(1860,0)" d="M10 700H310V600H385Q458 600 504.5 597.5Q551 595 577.0 584.0Q603 573 614.0 547.0Q625 521 627.5 475.0Q630 429 630 355V0H330V380Q330 392 329.0 396.0Q328 400 320 400H310V0H10Z"/><path transform="translate(2500,0)" d="M10 700H310V620H10ZM311 0H256Q182 0 135.5 2.5Q89 5 63.5 16.0Q38 27 26.5 53.0Q15 79 13.0 125.5Q11 172 11 245V600H311Z"/></g><g fill="#0A0A0A"><path transform="translate(2821,0)" d="M310 0H255Q182 0 135.5 2.5Q89 5 63.0 16.0Q37 27 26.0 53.0Q15 79 12.5 125.5Q10 172 10 245V700H310Z"/><path transform="translate(3141,0)" d="M10 355Q10 428 12.5 474.5Q15 521 26.0 547.0Q37 573 63.0 584.0Q89 595 135.5 597.5Q182 600 255 600H385Q458 600 504.5 597.5Q551 595 577.0 584.0Q603 573 614.0 547.0Q625 521 627.5 475.0Q630 429 630 355V120H310V100H630V0L160 1Q104 3 73.0 12.5Q42 22 28.5 47.0Q15 72 12.5 119.5Q10 167 10 245ZM310 400V300H330V380Q330 395 327.5 397.5Q325 400 310 400Z"/><path transform="translate(3781,0)" d="M10 600H570V420H196Q196 405 198.0 402.5Q200 400 215 400H570V245Q570 172 567.5 125.5Q565 79 554.0 53.0Q543 27 517.0 16.0Q491 5 445.0 2.5Q399 0 325 0H10V280H365Q380 280 382.0 282.5Q384 285 384 300H10Z"/><path transform="translate(4361,0)" d="M10 600H570V420H196Q196 405 198.0 402.5Q200 400 215 400H570V245Q570 172 567.5 125.5Q565 79 554.0 53.0Q543 27 517.0 16.0Q491 5 445.0 2.5Q399 0 325 0H10V280H365Q380 280 382.0 282.5Q384 285 384 300H10Z"/></g></g></svg></span></div>
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/gsap.min.js"></script>
@@ -1782,8 +1739,8 @@ document.querySelectorAll('[data-roll]').forEach(buildRoll);
    Los tintes de producto y del cierre NO pasan por aquí — cada
    bloque lleva su propio background-color, que además es lo que
    lo hace ocluir a la tarjeta anterior en el apilado. */
-var DARK  = { bg:'#0A0A0A', ink:'#EDEAF3', ink50:'#8B849B', ink25:'#3A3448', line:'#2A2634', panel:'#111014', header:'rgba(10,10,10,0.82)' };
-var LIGHT = { bg:'#F7F0E8', ink:'#0A0A0A', ink50:'#6E655C', ink25:'#CFC2B1', line:'#E3D8CA', panel:'#FFFFFF', header:'rgba(247,240,232,0.85)' };
+var LIGHT = { bg:'#0A0A0A', ink:'#EDEAF3', ink50:'#8B849B', ink25:'#3A3448', line:'#2A2634', panel:'#111014', header:'rgba(10,10,10,0.82)' };
+var DARK  = { bg:'#F7F0E8', ink:'#0A0A0A', ink50:'#6E655C', ink25:'#CFC2B1', line:'#E3D8CA', panel:'#FFFFFF', header:'rgba(247,240,232,0.85)' };
 var VAR = { bg:'--bg', ink:'--ink', ink50:'--ink-50', ink25:'--ink-25', line:'--line', panel:'--panel', header:'--header-bg' };
 var mixers = {};
 Object.keys(VAR).forEach(function (k) { mixers[k] = gsap.utils.interpolate(DARK[k], LIGHT[k]); });
@@ -1850,6 +1807,13 @@ ScrollTrigger.create({
 
 /* ── Header: borde al despegar + se esconde al bajar ─────── */
 var header = document.getElementById('siteHeader');
+/* claro u oscuro según lo que tenga debajo: el hero es oscuro */
+(function () {
+  var hero = document.getElementById('hero'), root = document.documentElement;
+  if (!hero) return;
+  function tone() { root.classList.toggle('hdr-dark', hero.getBoundingClientRect().bottom > 90); }
+  tone(); window.addEventListener('scroll', tone, { passive: true }); window.addEventListener('resize', tone);
+})();
 var navHidden = false;
 ScrollTrigger.create({
   start: 0, end: 'max',
@@ -2008,7 +1972,7 @@ function makePulse(sourcePath, dur) {
   };
 }
 
-/* ═══ DEMO DE LLAMADA — Sofía contestando ═══════════════════
+/* ═══ DEMO DE LLAMADA — Tu asistente contestando ═══════════════════
    El HTML trae la llamada TERMINADA (transcripción completa y
    cita creada): sin JS o con movimiento reducido eso es lo que
    se ve. El motor solo rebobina y la actúa: timbra, contesta,
@@ -2073,11 +2037,11 @@ function playCall() {
     .to(t, { s: 18, duration: 9.5, ease: 'none',
       onUpdate: function () { timerEl.textContent = '00:' + String(Math.round(t.s)).padStart(2, '0'); } }, 1.4)
     .add(typeLine(0), 1.7)
-    .call(function () { speak(true); status.textContent = 'Sofía está hablando…'; }, null, '>0.15')
+    .call(function () { speak(true); status.textContent = 'Tu asistente está hablando…'; }, null, '>0.15')
     .add(typeLine(1), '<')
     .call(function () { speak(false); status.textContent = 'En llamada'; }, null, '>0.1')
     .add(typeLine(2), '>0.3')
-    .call(function () { speak(true); status.textContent = 'Sofía está hablando…'; }, null, '>0.15')
+    .call(function () { speak(true); status.textContent = 'Tu asistente está hablando…'; }, null, '>0.15')
     .add(typeLine(3), '<')
     .call(function () { speak(false); status.textContent = 'Cita agendada'; }, null, '>0.2')
     .to(chip, { autoAlpha: 1, y: 0, duration: 0.5 }, '>0.1')
@@ -2541,94 +2505,6 @@ if (document.fonts && document.fonts.ready) document.fonts.ready.then(function (
 </script>
 
 <script>
-/* ═══ HERO · SHADER «SEDA» EN «Te eligen. / Regresan.» ═══
-   Un canvas WebGL encima del h1. Las letras se dibujan como máscara
-   (textura) y el shader pinta morado en movimiento solo dentro de ellas.
-   El texto real sigue en el HTML (lector de pantalla y SEO intactos). */
-(function () {
-  var h1 = document.getElementById('hpTitle'), hero = document.getElementById('hero');
-  if (!h1 || !hero) return;
-  var mq = window.matchMedia, n = navigator, c = n.connection || {};
-  var reduce = mq && mq('(prefers-reduced-motion: reduce)').matches;
-  var lowend = (n.hardwareConcurrency || 8) <= 2 || (n.deviceMemory && n.deviceMemory <= 2) || c.saveData;
-  if (reduce || lowend) return;                       // se queda el morado liso #6A3BF0
-
-  var cv = document.createElement('canvas');
-  cv.className = 'hp-tfx'; cv.setAttribute('aria-hidden', 'true');
-  var gl = cv.getContext('webgl', { premultipliedAlpha: false, alpha: true, antialias: false });
-  if (!gl) return;
-
-  var VS = 'attribute vec2 P;varying vec2 uv;void main(){uv=P*.5+.5;gl_Position=vec4(P,0.,1.);}';
-  var FS = 'precision highp float;uniform vec2 R;uniform float T;uniform vec2 M;uniform sampler2D TX;varying vec2 uv;' +
-    'float h(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}' +
-    'float n(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);return mix(mix(h(i),h(i+vec2(1,0)),f.x),mix(h(i+vec2(0,1)),h(i+vec2(1,1)),f.x),f.y);}' +
-    'float fb(vec2 p){float v=0.,a=.5;for(int i=0;i<5;i++){v+=a*n(p);p*=2.03;a*=.5;}return v;}' +
-    'vec3 pal(float t){vec3 a=vec3(.318,.106,.859),b=vec3(.545,.427,.910),c=vec3(.812,.753,.965),d=vec3(.95,.93,1.);' +
-    't=clamp(t,0.,1.);return t<.45?mix(a,b,t/.45):t<.85?mix(b,c,(t-.45)/.4):mix(c,d,(t-.85)/.15);}' +
-    'void main(){vec2 p=gl_FragCoord.xy/R.y;' +
-    'float w=sin((p.x*2.2+p.y*3.)+T*.35+sin(p.x*3.1-T*.25)*1.2+fb(p*2.+T*.05)*1.6);' +
-    'float v=pow(.5+.5*w,1.4);float m=1.-smoothstep(0.,.5,distance(gl_FragCoord.xy/R,M));' +
-    'vec3 col=pal(.02+v*.72+m*.18);float a=texture2D(TX,uv).a;gl_FragColor=vec4(col*a,a);}';
-
-  function sh(t, s) { var o = gl.createShader(t); gl.shaderSource(o, s); gl.compileShader(o); if (!gl.getShaderParameter(o, gl.COMPILE_STATUS)) { console.warn(gl.getShaderInfoLog(o)); return null; } return o; }
-  var v = sh(gl.VERTEX_SHADER, VS), f = sh(gl.FRAGMENT_SHADER, FS); if (!v || !f) return;
-  var pr = gl.createProgram(); gl.attachShader(pr, v); gl.attachShader(pr, f); gl.linkProgram(pr); gl.useProgram(pr);
-  var b = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER, b);
-  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1,1,-1,-1,1,-1,1,1,-1,1,1]), gl.STATIC_DRAW);
-  var loc = gl.getAttribLocation(pr, 'P'); gl.enableVertexAttribArray(loc); gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
-  var uR = gl.getUniformLocation(pr, 'R'), uT = gl.getUniformLocation(pr, 'T'), uM = gl.getUniformLocation(pr, 'M');
-  var tex = gl.createTexture(); gl.bindTexture(gl.TEXTURE_2D, tex);
-  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR); gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
-  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE); gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
-  gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, true);
-  gl.enable(gl.BLEND); gl.blendFunc(gl.ONE, gl.ONE_MINUS_SRC_ALPHA);
-  h1.appendChild(cv);
-
-  var mouse = [.5, .5], tgt = [.5, .5], visible = true, ready = false, t0 = performance.now();
-
-  /* dibuja «Te eligen.» y «Regresan.» como máscara, en la misma posición que el texto real */
-  function build() {
-    var dpr = Math.min(window.devicePixelRatio || 1, 2), hr = h1.getBoundingClientRect();
-    var W = Math.ceil(hr.width), H = Math.ceil(hr.height);
-    cv.style.width = W + 'px'; cv.style.height = H + 'px';
-    cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr);
-    gl.viewport(0, 0, cv.width, cv.height);
-    var tc = document.createElement('canvas'); tc.width = cv.width; tc.height = cv.height;
-    var x = tc.getContext('2d'); x.scale(dpr, dpr); x.fillStyle = '#fff'; x.textBaseline = 'alphabetic';
-    h1.querySelectorAll('.hp-acc > span').forEach(function (s) {
-      var cs = getComputedStyle(s), r = s.getBoundingClientRect(), fz = parseFloat(cs.fontSize);
-      x.font = cs.fontWeight + ' ' + fz + 'px ' + cs.fontFamily;
-      try { x.letterSpacing = cs.letterSpacing; } catch (e) {}
-      var m = x.measureText(s.textContent), asc = m.fontBoundingBoxAscent || fz * .95, desc = m.fontBoundingBoxDescent || fz * .25;
-      x.fillText(s.textContent, r.left - hr.left, r.top - hr.top + (r.height - (asc + desc)) / 2 + asc);
-    });
-    gl.bindTexture(gl.TEXTURE_2D, tex);
-    gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, tc);
-    gl.uniform2f(uR, cv.width, cv.height);
-  }
-  function draw(now) {
-    mouse[0] += (tgt[0] - mouse[0]) * .06; mouse[1] += (tgt[1] - mouse[1]) * .06;
-    gl.uniform1f(uT, (now - t0) / 1000); gl.uniform2f(uM, mouse[0], mouse[1]);
-    gl.clearColor(0, 0, 0, 0); gl.clear(gl.COLOR_BUFFER_BIT); gl.drawArrays(gl.TRIANGLES, 0, 6);
-  }
-  function loop(now) { if (ready && visible && !document.hidden) draw(now); requestAnimationFrame(loop); }
-
-  /* enciende el shader cuando terminó la entrada del título (heroTl) y cargó la letra */
-  function entryDone() { var t = window.heroTl; return !t || t.progress() >= 1; }
-  (document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve()).then(function wait() {
-    if (!entryDone()) { setTimeout(wait, 120); return; }
-    build(); ready = true; draw(performance.now()); h1.classList.add('is-shaded');
-  });
-
-  hero.addEventListener('pointermove', function (e) { var r = cv.getBoundingClientRect(); tgt = [(e.clientX - r.left) / r.width, 1 - (e.clientY - r.top) / r.height]; });
-  hero.addEventListener('pointerleave', function () { tgt = [.5, .5]; });
-  if ('ResizeObserver' in window) new ResizeObserver(function () { if (ready) { build(); draw(performance.now()); } }).observe(h1);
-  if ('IntersectionObserver' in window) new IntersectionObserver(function (es) { visible = es[0].isIntersecting; }).observe(hero);
-  requestAnimationFrame(loop);
-})();
-</script>
-
-<script>
 /* ══ «De la vista nace el amor»: la luz pasa ═════════════════
    Parte la frase en letras (el lector de pantalla lee la frase completa
    por aria-label). Cada letra toma un cuadro con comida del collage p12.
@@ -2677,292 +2553,38 @@ if (document.fonts && document.fonts.ready) document.fonts.ready.then(function (
 </script>
 
 <script>
-/* ══ HERO · EL MAPA ═══════════════════════════════════════════
-   El plano de la colonia en CSS 3D: con el scroll (escritorio) la
-   sección se ancla y la cámara se inclina, gira y se acerca a tu
-   negocio, del que sale un pilar de luz. Los clientes llegan como
-   cometas de colores por las calles y, al llegar, se vuelven lila.
-   En celular no hay anclaje: la historia corre sola al verse.
-   Sin GSAP o con movimiento reducido: un solo cuadro final, quieto.
-   Encima del mapa: una capa de luz en WebGL (niebla de distancia,
-   haz del pilar y rayos que salen de tu negocio) y vidrio líquido
-   real en los avisos (el fondo vivo se refracta en su borde).
-   El reloj solo corre mientras el hero está en pantalla. La intro
-   (titular) la dispara heroTl en el script principal vía
-   window.__heroMap.start(). */
+/* ══ HERO · CAPÍTULOS ══════════════════════════════════════════
+   La entrada del primer capítulo se cuelga de heroTl (la dispara la
+   cortina de píxeles). El scroll vertical mueve los capítulos en
+   horizontal con la sección anclada; cada capítulo que llega sube y
+   el que se va se apaga. Con movimiento reducido: todo quieto, en columna. */
 (function () {
   'use strict';
   var root = document.getElementById('hero');
-  if (!root || !root.classList.contains('hp')) return;
-  var G = typeof window.gsap !== 'undefined', ST = G && typeof window.ScrollTrigger !== 'undefined';
-  var REDUCE = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var MOTION = ST && !REDUCE;
-  var nv = navigator, cn = nv.connection || {};
-  /* equipo modesto: sin resplandor en los cometas (el filtro se repinta en cada cuadro) */
-  var LOW = (nv.hardwareConcurrency || 8) <= 4 || (nv.deviceMemory && nv.deviceMemory <= 4) || !!cn.saveData;
-  var mqDesk = window.matchMedia('(min-width: 901px)');
-  function desk() { return mqDesk.matches; }
-  function clamp(v, a, b) { return v < a ? a : v > b ? b : v; }
-  function seeded(n) { return function () { n = (n * 9301 + 49297) % 233280; return n / 233280; }; }
-
-  var pin = root.querySelector('.hp-pin'), m3d = root.querySelector('.hp-m3d'), plane = root.querySelector('.hp-plane');
-  var svg = plane.querySelector('svg'), NS = 'http://www.w3.org/2000/svg';
-  var gS = svg.querySelector('.hp-g-st'), gB = svg.querySelector('.hp-g-blk'), gA = svg.querySelector('.hp-g-arc'), gH = svg.querySelector('.hp-g-hit');
-  var rings = svg.querySelectorAll('.hp-ring'), aura = svg.querySelector('.hp-aura'), glow = root.querySelector('.hp-glow');
-  var pillar = root.querySelector('.hp-pillar'), top = pillar.querySelector('b'), lab = root.querySelector('.hp-lab');
-  var t1 = root.querySelector('.hp-t1'), t2 = root.querySelector('.hp-t2');
-  var copy = root.querySelector('.hp-copy'), chap = root.querySelector('.hp-chap');
-  var CX = 600, CY = 600, rnd = seeded(5), COLS = ['#14B8C4', '#F5487F', '#3B82F6', '#F100CB'];
-  function el(n, a) { var e = document.createElementNS(NS, n); for (var k in a) e.setAttribute(k, a[k]); return e; }
-
-  /* manzanas, parques, calles y avenidas */
-  var x, y;
-  for (x = 0; x < 1200; x += 60) for (y = 0; y < 1200; y += 60) { var r = rnd(); if (r < .55) gB.appendChild(el('rect', { x: x + 6, y: y + 6, width: 48, height: 48, rx: 4, 'class': r < .06 ? 'hp-park' : 'hp-blk' })); }
-  for (x = 0; x <= 1200; x += 60) gS.appendChild(el('path', { d: 'M' + x + ' -40 L' + x + ' 1240', 'class': 'hp-st' + (x % 300 === 0 ? ' hp-av' : '') }));
-  for (y = 0; y <= 1200; y += 60) gS.appendChild(el('path', { d: 'M-40 ' + y + ' L1240 ' + y, 'class': 'hp-st' + (y % 360 === 0 ? ' hp-av' : '') }));
-  gS.appendChild(el('path', { d: 'M-40 1100 L1240 140', 'class': 'hp-st hp-av' }));
-
-  /* rutas de clientes: arco tenue + cometa que viaja */
-  var FROM = [[-40, 180], [-40, 760], [260, 1240], [1240, 120], [1240, 860], [820, -40], [380, -40]], comets = [];
-  FROM.forEach(function (f, i) {
-    var mx = (f[0] + CX) / 2 + (i % 2 ? 120 : -120), my = (f[1] + CY) / 2 - 80, d = 'M' + f[0] + ' ' + f[1] + ' Q' + mx + ' ' + my + ' ' + CX + ' ' + CY;
-    gA.appendChild(el('path', { d: d, 'class': 'hp-arc', opacity: .55 }));
-    var col = COLS[i % COLS.length], c = el('path', { d: d, 'class': 'hp-comet' });
-    c.style.stroke = col;
-    if (!LOW) c.style.filter = 'drop-shadow(0 0 7px ' + col + ')';
-    gA.appendChild(c);
-    var L = c.getTotalLength(); c.style.strokeDasharray = '70 ' + (L + 80); c.style.strokeDashoffset = 70;
-    comets.push({ c: c, L: L, ph: i / FROM.length, col: col, last: 0 });
-  });
-
-  var o = { p: 0, k: 0, vis: true, started: false };
-  var beacon = root.querySelector('.hp-beacon'), fxB = [0, 0], fxT = [0, 0];   /* base y punta del pilar, en px de la capa de luz */
-
-  function arrive(col) {   /* llegó: destello de su color que se abre y se apaga */
-    var c = el('circle', { cx: CX, cy: CY, r: 10, 'class': 'hp-hit', 'stroke-width': 3 });
-    c.style.stroke = col; gH.appendChild(c);
-    gsap.fromTo(c, { scale: 1, opacity: 1, svgOrigin: CX + ' ' + CY }, { scale: 7, opacity: 0, duration: 1.1, ease: 'power2.out', onComplete: function () { c.remove(); } });
-  }
-
-  function apply(t) {
-    var p = o.p, k = o.k, dk = desk(), base = Math.min(pin.clientWidth / (dk ? 1300 : 1100), pin.clientHeight / 900);
-    /* la cámara se inclina y orbita alrededor del negocio (mismo orden que usa GSAP) */
-    var rx = 14 + 44 * k + 10 * p, rz = -8 - 16 * k + 38 * p, sc = base * (.9 + .25 * k + .85 * p);
-    plane.style.transform = 'translate3d(0,' + (-p * 60).toFixed(1) + 'px,0) rotate(' + rz.toFixed(2) + 'deg) rotateX(' + rx.toFixed(2) + 'deg) scale(' + sc.toFixed(4) + ')';
-    pillar.style.setProperty('--h', clamp(k * .6 + p * .6, 0, 1).toFixed(3));
-    glow.style.opacity = (.32 + .6 * p).toFixed(3);
-    for (var i = 0; i < comets.length; i++) {
-      var cm = comets[i], u = ((t * (.22 + .25 * p) + cm.ph) % 1);
-      cm.c.style.strokeDashoffset = (70 - u * (cm.L + 70)).toFixed(1);
-      if (MOTION && cm.last < .97 && u >= .97) arrive(cm.col);
-      cm.last = u;
-    }
-    var s = (90 + 520 * p + 40 * k) / 80;
-    aura.setAttribute('transform', 'matrix(' + s.toFixed(3) + ' 0 0 ' + s.toFixed(3) + ' ' + (CX - CX * s).toFixed(1) + ' ' + (CY - CY * s).toFixed(1) + ')');
-    var rt = top.getBoundingClientRect(), pr = pin.getBoundingClientRect(), px = rt.left - pr.left, py = rt.top - pr.top;
-    if (fx.on) { var mr = m3d.getBoundingClientRect(), bb = beacon.getBoundingClientRect(); fxB[0] = bb.left - mr.left; fxB[1] = mr.bottom - bb.top; fxT[0] = rt.left - mr.left; fxT[1] = mr.bottom - rt.top; }
-    if (!dk) {   /* celular: los avisos dentro de la zona del mapa, lejos de los botones; el pilar basta como señal */
-      var mt = m3d.offsetTop, mh = m3d.offsetHeight, pw = pin.clientWidth;
-      lab.style.opacity = 0;
-      t1.style.transform = 'translate(16px,' + (mt + 14) + 'px)';
-      t2.style.transform = 'translate(' + Math.max(16, pw - t2.offsetWidth - 16) + 'px,' + (mt + mh - 84) + 'px)';
-      if (MOTION) { t1.style.opacity = clamp((k - .5) * 3, 0, 1); t2.style.opacity = clamp((k - .85) * 6, 0, 1); }
-      return;
-    }
-    lab.style.opacity = 1; lab.style.transform = 'translate(' + px.toFixed(1) + 'px,' + py.toFixed(1) + 'px)';
-    t1.style.transform = 'translate(' + (px + 70).toFixed(1) + 'px,' + (py - 150).toFixed(1) + 'px)';
-    /* el segundo aviso va bajo el pilar, del lado del mapa: así nunca cruza el titular mientras se retira */
-    t2.style.transform = 'translate(' + (px + 90).toFixed(1) + 'px,' + Math.min(py + 200, pin.clientHeight - 210).toFixed(1) + 'px)';
-    if (MOTION) { t1.style.opacity = clamp((p - .15) * 4, 0, 1); t2.style.opacity = clamp((p - .5) * 4, 0, 1); }
-  }
-
-  /* capítulo 2 (escritorio): el texto se retira y la frase central se enciende palabra por palabra */
-  var words = [];
-  (function () {
-    var segs = chap.innerHTML.replace(/(<em>|<\/em>)/g, '|$1|').split('|'), out = '';
-    segs.forEach(function (sg) { out += (sg === '<em>' || sg === '</em>') ? sg : sg.replace(/(\S+)/g, '<span class="hp-w">$1</span>'); });
-    chap.innerHTML = out; words = [].slice.call(chap.querySelectorAll('.hp-w'));
-  })();
-  function chapter() {
-    if (!desk()) return;
-    var p = o.p, n = words.length;
-    copy.style.opacity = clamp(1 - (p - .38) * 3.2, 0, 1).toFixed(3);
-    copy.style.transform = 'translate3d(0,' + (-p * 70).toFixed(1) + 'px,0)';
-    chap.style.opacity = clamp((p - .5) * 5, 0, 1).toFixed(3);
-    chap.style.transform = 'translate(-50%,' + (24 - clamp((p - .5) * 3, 0, 1) * 24).toFixed(1) + 'px)';
-    for (var i = 0; i < n; i++) words[i].style.opacity = (.14 + .86 * clamp((p - .58 - i * (.3 / n)) / .08, 0, 1)).toFixed(3);
-  }
-
-  /* ── VIDRIO LÍQUIDO en los avisos ──────────────────────────────
-     El mapa se mueve detrás, así que no sirve una foto fija de la
-     página (html2canvas): el vidrio usa backdrop-filter con un filtro
-     SVG de desplazamiento. Un mapa de lente por aviso (borde de
-     rectángulo redondeado, perfil convexo) desvía lo que hay detrás
-     hacia adentro, como el canto de un vidrio grueso. Solo Chromium
-     acepta url() en backdrop-filter: los demás se quedan con el
-     esmerilado de la CSS. */
-  var CHROMIUM = !!(nv.userAgentData && nv.userAgentData.brands && nv.userAgentData.brands.some(function (b) { return /Chromium/.test(b.brand); }));
-  var lensSvg = null;
-  function lensMap(w, h, r, bez) {
-    var cv = document.createElement('canvas'); cv.width = w; cv.height = h;
-    var cx = cv.getContext('2d'), im = cx.createImageData(w, h), D = im.data;
-    function sdf(x, y) {   /* distancia al borde del rectángulo redondeado (negativa adentro) */
-      var qx = Math.abs(x - w / 2) - (w / 2 - r), qy = Math.abs(y - h / 2) - (h / 2 - r);
-      return Math.hypot(Math.max(qx, 0), Math.max(qy, 0)) + Math.min(Math.max(qx, qy), 0) - r;
-    }
-    for (var y = 0; y < h; y++) for (var x = 0; x < w; x++) {
-      var d = -sdf(x + .5, y + .5), i = (y * w + x) * 4, dx = 0, dy = 0;
-      if (d > 0 && d < bez) {
-        var gx = sdf(x + 1.5, y + .5) - sdf(x - .5, y + .5), gy = sdf(x + .5, y + 1.5) - sdf(x + .5, y - .5), gl = Math.hypot(gx, gy) || 1;
-        var t = 1 - d / bez, m = t * t * (3 - 2 * t);
-        dx = -gx / gl * m; dy = -gy / gl * m;   /* hacia adentro: el canto toma lo que está más al centro */
-      }
-      D[i] = 128 + dx * 127; D[i + 1] = 128 + dy * 127; D[i + 2] = 128; D[i + 3] = 255;
-    }
-    cx.putImageData(im, 0, 0);
-    return cv.toDataURL();
-  }
-  function buildGlass() {
-    if (!CHROMIUM || LOW || !window.CSS || !CSS.supports('backdrop-filter', 'url(#a)')) return;
-    if (!lensSvg) {
-      lensSvg = document.createElementNS(NS, 'svg');
-      lensSvg.setAttribute('aria-hidden', 'true'); lensSvg.setAttribute('width', '0'); lensSvg.setAttribute('height', '0');
-      lensSvg.style.cssText = 'position:absolute;width:0;height:0;overflow:hidden';
-      root.appendChild(lensSvg);
-    }
-    lensSvg.innerHTML = '';
-    [t1, t2].forEach(function (tt, n) {
-      var w = tt.offsetWidth, h = tt.offsetHeight; if (!w || !h) return;
-      var id = 'hpLens' + n, f = el('filter', { id: id, x: 0, y: 0, width: w, height: h, filterUnits: 'userSpaceOnUse', primitiveUnits: 'userSpaceOnUse', 'color-interpolation-filters': 'sRGB' });
-      var fi = el('feImage', { x: 0, y: 0, width: w, height: h, preserveAspectRatio: 'none', result: 'lens' });
-      fi.setAttribute('href', lensMap(w, h, 20, 18));
-      f.appendChild(fi);
-      f.appendChild(el('feDisplacementMap', { 'in': 'SourceGraphic', in2: 'lens', scale: 46, xChannelSelector: 'R', yChannelSelector: 'G' }));
-      lensSvg.appendChild(f);
-      tt.style.setProperty('-webkit-backdrop-filter', 'url(#' + id + ') blur(1.5px) saturate(1.8) brightness(1.08)');
-      tt.style.setProperty('backdrop-filter', 'url(#' + id + ') blur(1.5px) saturate(1.8) brightness(1.08)');
-      tt.classList.add('hp-lq');
-    });
-  }
-
-  /* ── CAPA DE LUZ (WebGL, GLSL propio) ──────────────────────────
-     Una sola pasada a media resolución, en modo «screen» sobre el
-     mapa: lo negro no cambia nada y lo claro suma luz. Niebla de
-     distancia (más densa hacia el fondo del plano), el haz del pilar
-     con su brillo, rayos lentos que salen del negocio y un brillo
-     que sigue al cursor. Arranca con la intro, se apaga si el equipo
-     no sostiene ~30 cuadros por segundo y no existe con movimiento
-     reducido ni en equipos modestos: queda el degradado CSS. */
-  var fx = { on: false, draw: function () {} };
-  function buildFx() {
-    if (LOW) return;
-    var cv = document.createElement('canvas');
-    cv.className = 'hp-fx'; cv.setAttribute('aria-hidden', 'true');
-    var gl = cv.getContext('webgl', { alpha: false, antialias: false, depth: false, stencil: false, powerPreference: 'low-power' });
-    if (!gl) return;
-    var VS = 'attribute vec2 p;void main(){gl_Position=vec4(p,0.,1.);}';
-    var FS = 'precision mediump float;uniform vec2 R,B,Tp,M;uniform float T,P,K,A;' +
-      'float h(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}' +
-      'float n(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);return mix(mix(h(i),h(i+vec2(1,0)),f.x),mix(h(i+vec2(0,1)),h(i+vec2(1,1)),f.x),f.y);}' +
-      'float fb(vec2 p){float v=0.,a=.5;for(int i=0;i<4;i++){v+=a*n(p);p=p*2.03+vec2(1.7,9.2);a*=.5;}return v;}' +
-      'float sg(vec2 p,vec2 a,vec2 b){vec2 pa=p-a,ba=b-a;float t=clamp(dot(pa,ba)/max(dot(ba,ba),1.),0.,1.);return length(pa-ba*t);}' +
-      'void main(){vec2 f=gl_FragCoord.xy;float s=min(R.x,R.y);float y=f.y/R.y;' +
-      'vec3 lila=vec3(.545,.427,.91),mor=vec3(.318,.106,.859),cre=vec3(.969,.941,.91);' +
-      /* niebla de distancia: más arriba = más lejos en el plano inclinado */
-      'float fog=fb(vec2(f.x/s*1.8+T*.03,f.y/s*3.2-T*.015));float far=smoothstep(.3,1.05,y);' +
-      'vec3 c=mix(mor,lila,fog)*fog*far*(.34+.16*P);' +
-      /* luz del negocio: halo, rayos lentos y el haz del pilar */
-      'vec2 q=f-B;float d=length(q)/s;float ang=atan(q.y,q.x);' +
-      'float halo=exp(-d*7.)*(.28+.22*K);' +
-      'float ray=pow(n(vec2(ang*6.,T*.12)),4.)*exp(-d*3.2)*(.35+.25*P);' +
-      'float sh=sg(f,B,Tp)/s;float beam=(exp(-sh*120.)*.55+exp(-sh*26.)*.14)*smoothstep(.0,.03,length(Tp-B)/s);' +
-      'c+=lila*(halo+ray)+cre*beam*(.9+.1*sin(T*2.1));' +
-      /* el cursor deja una luz tenue */
-      'c+=lila*exp(-length(f-M)/s*4.5)*.09*A;' +
-      'gl_FragColor=vec4(c,1.);}';
-    function sh(t, src) { var x = gl.createShader(t); gl.shaderSource(x, src); gl.compileShader(x); return gl.getShaderParameter(x, gl.COMPILE_STATUS) ? x : null; }
-    var v = sh(gl.VERTEX_SHADER, VS), f = sh(gl.FRAGMENT_SHADER, FS); if (!v || !f) return;
-    var pr = gl.createProgram(); gl.attachShader(pr, v); gl.attachShader(pr, f); gl.linkProgram(pr);
-    if (!gl.getProgramParameter(pr, gl.LINK_STATUS)) return;
-    gl.useProgram(pr);
-    gl.bindBuffer(gl.ARRAY_BUFFER, gl.createBuffer());
-    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 3, -1, -1, 3]), gl.STATIC_DRAW);
-    var lp = gl.getAttribLocation(pr, 'p'); gl.enableVertexAttribArray(lp); gl.vertexAttribPointer(lp, 2, gl.FLOAT, false, 0, 0);
-    var U = {}; ['R', 'B', 'Tp', 'M', 'T', 'P', 'K', 'A'].forEach(function (k) { U[k] = gl.getUniformLocation(pr, k); });
-    m3d.appendChild(cv);
-    var q = 1, mouse = { x: -9999, y: -9999, a: 0, ta: 0 }, slow = 0, last = 0;
-    function fit() {
-      q = Math.min(window.devicePixelRatio || 1, 1.5) * .5;
-      var w = Math.max(1, Math.round(cv.clientWidth * q)), hh = Math.max(1, Math.round(cv.clientHeight * q));
-      if (cv.width !== w || cv.height !== hh) { cv.width = w; cv.height = hh; gl.viewport(0, 0, w, hh); }
-    }
-    if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
-      pin.addEventListener('pointermove', function (e) { var r = cv.getBoundingClientRect(); mouse.x = e.clientX - r.left; mouse.y = r.bottom - e.clientY; mouse.ta = 1; });
-      pin.addEventListener('pointerleave', function () { mouse.ta = 0; });
-    }
-    cv.addEventListener('webglcontextlost', function (e) { e.preventDefault(); fx.on = false; cv.remove(); });
-    fx.cv = cv;
-    fx.draw = function (t) {
-      var now = performance.now();
-      if (last) { var dt = now - last; slow = dt > 40 ? slow + 1 : Math.max(0, slow - 2); }   /* vigilante: si no da el ancho, se retira */
-      last = now;
-      if (slow > 90 && !window.__hpFxForce) { fx.on = false; gsap.to(cv, { opacity: 0, duration: .8, onComplete: function () { cv.remove(); } }); return; }
-      fit();
-      mouse.a += (mouse.ta - mouse.a) * .06;
-      gl.uniform2f(U.R, cv.width, cv.height);
-      gl.uniform2f(U.B, fxB[0] * q, fxB[1] * q); gl.uniform2f(U.Tp, fxT[0] * q, fxT[1] * q); gl.uniform2f(U.M, mouse.x * q, mouse.y * q);
-      gl.uniform1f(U.T, t); gl.uniform1f(U.P, o.p); gl.uniform1f(U.K, o.k); gl.uniform1f(U.A, mouse.a);
-      gl.drawArrays(gl.TRIANGLES, 0, 3);
-    };
-    fx.on = true;
-    gsap.to(cv, { opacity: 1, duration: 1.8, ease: 'power2.out', delay: .4 });
-  }
-
-  /* ── sin movimiento: el cuadro final, quieto ── */
-  if (!MOTION) {
-    var still = function () { o.k = 1; o.p = desk() ? .12 : .3; apply(3); t1.style.opacity = t2.style.opacity = 1; };
-    still();
-    if (document.fonts && document.fonts.ready) document.fonts.ready.then(buildGlass);
-    window.addEventListener('load', still);
-    window.addEventListener('resize', still);
-    return;
-  }
-
-  apply(0);
-  new IntersectionObserver(function (es) { o.vis = es[0].isIntersecting; }).observe(pin);
-  gsap.ticker.add(function (time) { if (o.vis) { apply(time); chapter(); if (fx.on) fx.draw(time); } });
-
+  if (!root || !root.classList.contains('s3') || typeof window.gsap === 'undefined' || typeof window.ScrollTrigger === 'undefined') return;
+  var vid = root.querySelector('.s3-vid');
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { if (vid) { vid.removeAttribute('autoplay'); vid.pause(); } return; }
+  /* el video solo corre mientras el hero está a la vista */
+  if (vid && 'IntersectionObserver' in window) new IntersectionObserver(function (e) { if (e[0].isIntersecting) { var p = vid.play(); if (p && p.catch) p.catch(function () {}); } else vid.pause(); }).observe(root);
   gsap.registerPlugin(ScrollTrigger);
-  gsap.matchMedia().add({ dk: '(min-width: 901px)', mb: '(max-width: 900px)' }, function (c) {
-    if (c.conditions.dk) {
-      /* refreshPriority: se mide antes que los triggers de abajo, que dependen del espacio que agrega el anclaje */
-      ScrollTrigger.create({ trigger: root, start: 'top top', end: '+=120%', pin: pin, scrub: true, anticipatePin: 1, refreshPriority: 1,
-        onUpdate: function (st) { gsap.to(o, { p: st.progress, duration: .8, ease: 'power3.out', overwrite: true }); } });
-      return function () { o.p = 0; copy.style.opacity = copy.style.transform = chap.style.opacity = chap.style.transform = ''; };
-    }
-    o.p = 0;
-    var io = new IntersectionObserver(function (es, ob) { if (es[0].isIntersecting) { ob.disconnect(); gsap.to(o, { p: .3, duration: 5, ease: 'power2.inOut', delay: 1 }); } }, { threshold: .3 });
-    io.observe(pin);
-    return function () { io.disconnect(); };
+  var track = root.querySelector('.s3-track'), chs = gsap.utils.toArray(root.querySelectorAll('.s3-ch'));
+  var bar = root.querySelector('.s3-prog b'), bg = root.querySelector('.s3-bg');
+
+  var intro = window.heroTl || gsap.timeline();
+  intro.from(chs[0].children, { y: 30, opacity: 0, duration: 1.3, ease: 'expo.out', stagger: .12 }, .05);
+
+  var move = gsap.to(track, { x: function () { return -(track.scrollWidth - window.innerWidth); }, ease: 'none',
+    scrollTrigger: { trigger: root, start: 'top top', end: function () { return '+=' + (track.scrollWidth - window.innerWidth) * 1.1; },
+      pin: true, scrub: .7, invalidateOnRefresh: true,
+      onUpdate: function (st) { gsap.set(bar, { scaleX: st.progress }); gsap.set(bg, { opacity: st.progress }); } } });
+
+  chs.forEach(function (ch, i) {
+    if (i > 0) gsap.from(ch.querySelectorAll('h2, p, .s3-ctas'), { y: 40, opacity: 0, stagger: .08, ease: 'power2.out',
+      scrollTrigger: { trigger: ch, containerAnimation: move, start: 'left 75%', end: 'left 25%', scrub: true } });
+    /* parte siempre de visible: la entrada del primer capítulo lo deja en 0 mientras espera la cortina */
+    if (i < chs.length - 1) gsap.fromTo(ch.children, { opacity: 1 }, { opacity: .15, ease: 'none', immediateRender: false,
+      scrollTrigger: { trigger: ch, containerAnimation: move, start: 'right 70%', end: 'right 20%', scrub: true } });
   });
-
-  /* luz que sigue al cursor dentro del botón (la atracción la pone .magnetic) */
-  if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
-    var btn = root.querySelector('.hp-btn');
-    btn.addEventListener('pointermove', function (e) { var b = btn.getBoundingClientRect(); btn.style.setProperty('--bx', (e.clientX - b.left) + 'px'); btn.style.setProperty('--by', (e.clientY - b.top) + 'px'); });
-  }
-
-  window.__heroMap = {
-    start: function () {
-      if (o.started) return; o.started = true;
-      gsap.fromTo(rings, { scale: 1, opacity: 1, svgOrigin: CX + ' ' + CY }, { scale: 6, opacity: 0, duration: 2.8, ease: 'power2.out', repeat: -1, stagger: .93 });
-      gsap.to(o, { k: 1, duration: 2.2, ease: 'expo.out' });
-      buildFx();
-    }
-  };
-  /* el vidrio se mide con la fuente final y se rehace si cambia el tamaño */
-  if (document.fonts && document.fonts.ready) document.fonts.ready.then(buildGlass); else buildGlass();
-  var rz = 0; window.addEventListener('resize', function () { clearTimeout(rz); rz = setTimeout(buildGlass, 200); });
 })();
 </script>
 
@@ -3052,7 +2674,7 @@ if (document.fonts && document.fonts.ready) document.fonts.ready.then(function (
 
   /* CTAs de viaje: Agendar demo (header) y los dos botones del hero */
   var navTargets = [];
-  document.querySelectorAll('a.pill-grad[href^="#"], #hero a.hp-btn[href^="#"], #hero a.hp-link[href^="#"]').forEach(function (a) {
+  document.querySelectorAll('a.pill-grad[href^="#"], #hero a.s3-btn[href^="#"]').forEach(function (a) {
     if (navTargets.indexOf(a) < 0) navTargets.push(a);
   });
   document.addEventListener('click', function (e) {
@@ -3475,6 +3097,11 @@ if (document.fonts && document.fonts.ready) document.fonts.ready.then(function (
   function resort() { if (!ST) return; ScrollTrigger.sort(); ScrollTrigger.refresh(); }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', resort); else requestAnimationFrame(resort);
   window.addEventListener('load', resort);
+  /* al cruzar el corte de 900 px (ventana que se agranda, tablet que gira), gsap.matchMedia
+     vuelve a crear este anclado al final de la lista y Casos quedaba anclado encima de
+     Productos: al terminar de cambiar el tamaño se reordena otra vez */
+  var rzT = 0;
+  window.addEventListener('resize', function () { clearTimeout(rzT); rzT = setTimeout(resort, 300); });
   var ro = window.ResizeObserver ? new ResizeObserver(function () { sizeGL(); fitNames(); moveInd(false); if (!raf) draw(drawn ? (performance.now() - t0) / 1000 : 6); }) : null;
   if (ro) ro.observe(stage);
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { splitTitles(); fitNames(); moveInd(false); });
