@@ -22,7 +22,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@500..800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Plus+Jakarta+Sans:wght@500..800&display=swap" rel="stylesheet">
 
 <script>
   /* Marca JS activo (habilita el intro) y red de seguridad: si algún
@@ -81,7 +81,7 @@
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
-html { -webkit-text-size-adjust: 100%; background: #F7F0E8; }
+html { -webkit-text-size-adjust: 100%; background: #F7F0E8; overflow-x: clip; }
 
 /* Lenis — hoja oficial. Sin esto el bloqueo de scroll durante el
    intro no funciona y scroll-behavior pelea con el suavizado. */
@@ -297,44 +297,46 @@ nav.wrap { display: flex; align-items: center; justify-content: space-between; h
 #blobDefs { position: absolute; width: 0; height: 0; overflow: hidden; }
 
 /* ============================================================
-   8. HERO · CAPÍTULOS
-   El hero se ancla y el scroll lo recorre en horizontal: cuatro
-   capítulos, cada uno con un titular y una frase. El que se va se
-   apaga, el que llega sube; una línea fina marca el avance.
+   8. HERO · HORIZONTE
+   Un solo plano: video a pantalla completa (espacio → mar → campo →
+   atardecer, en bucle sin corte) y el mensaje anclado abajo sobre
+   una línea fina. Al bajar, la imagen se hunde despacio y el texto
+   se va antes que ella.
    ============================================================ */
-#hero.s3 { position: relative; height: 100vh; height: 100svh; margin-top: calc(var(--hdr-h) * -1); overflow: hidden; background: #0B0A0F; }
-/* fondo: montaje de destellos en bucle, quieto mientras los capítulos se deslizan encima */
-.s3-vid { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; pointer-events: none; }
-/* velo: oscurece y da grano para que la tipografía mande sobre la imagen */
-.s3-veil { position: absolute; inset: 0; pointer-events: none; background:
-  radial-gradient(120% 90% at 30% 50%, rgba(11,10,15,.55) 0%, rgba(11,10,15,.78) 70%),
-  linear-gradient(180deg, rgba(11,10,15,.35) 0%, rgba(11,10,15,0) 30%, rgba(11,10,15,0) 70%, rgba(11,10,15,.6) 100%); }
-.s3-bg { position: absolute; inset: 0; background: radial-gradient(70% 60% at 80% 60%, rgba(81,27,219,.35), transparent 70%); opacity: 0; pointer-events: none; mix-blend-mode: screen; }
-.s3-track { position: absolute; top: 0; left: 0; height: 100%; display: flex; will-change: transform; }
-.s3-ch { flex: 0 0 100vw; height: 100%; display: flex; flex-direction: column; justify-content: center; padding: calc(var(--hdr-h) + 40px) var(--gutter) 110px calc(var(--gutter) + 8vw); }
-.s3-ch h1, .s3-ch h2 { max-width: 11em; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: clamp(42px, 6.6vw, 108px); line-height: .98; letter-spacing: -.025em; color: #F7F0E8; text-shadow: 0 2px 30px rgba(0,0,0,.35); }
-.s3-ch em { color: #CFC0F6; }
-.s3-ch p { margin-top: 26px; max-width: 28em; font-size: clamp(15.5px, 1.2vw, 18px); line-height: 1.55; color: rgba(247,240,232,.78); }
-.s3-ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
-.s3-btn { display: inline-flex; align-items: center; gap: 10px; min-height: 50px; padding: 0 24px; border-radius: 999px; background: #F7F0E8; color: #141317; font-weight: 500; font-size: 15px; white-space: nowrap; transition: background-color .3s; }
-.s3-btn:hover { background: #CFC0F6; }
-.s3-btn.ghost { background: transparent; color: #F7F0E8; box-shadow: inset 0 0 0 1px rgba(247,240,232,.35); }
-.s3-btn.ghost:hover { background: rgba(247,240,232,.1); }
-.s3-btn svg { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-.s3-prog { position: absolute; left: var(--gutter); right: var(--gutter); bottom: 34px; height: 1px; background: rgba(247,240,232,.2); }
-.s3-prog b { position: absolute; inset: 0; background: #F7F0E8; transform: scaleX(0); transform-origin: left; }
+#hero.hx { position: relative; height: calc(100vh - 41px); height: calc(100svh - 41px); min-height: 600px; margin-top: calc(var(--hdr-h) * -1); padding: 0; overflow: hidden; background: #08070C; color: #F7F0E8; isolation: isolate; }
+.hx-media { position: absolute; inset: -6% 0; z-index: 0; will-change: transform; }
+.hx-vid { width: 100%; height: 100%; object-fit: cover; pointer-events: none; display: block; }
+/* velo: arriba para el menú, abajo para el texto; el centro queda limpio */
+.hx-veil { position: absolute; inset: 0; z-index: 1; pointer-events: none; background:
+  linear-gradient(180deg, rgba(8,7,12,.62) 0%, rgba(8,7,12,.12) 24%, rgba(8,7,12,0) 42%, rgba(8,7,12,.5) 72%, rgba(8,7,12,.86) 100%),
+  radial-gradient(90% 70% at 0% 100%, rgba(8,7,12,.5) 0%, rgba(8,7,12,0) 70%); }
+.hx-in { position: absolute; z-index: 2; left: 0; right: 0; bottom: 0; max-width: calc(var(--max-w) + var(--gutter) * 2); margin: 0 auto; padding: 0 var(--gutter) clamp(26px, 3.4vw, 44px); }
+.hx-kicker { display: flex; align-items: center; gap: 12px; margin-bottom: clamp(18px, 2vw, 28px); font-family: var(--font-ui); font-size: 11px; line-height: 1; letter-spacing: .16em; text-transform: uppercase; color: rgba(247,240,232,.72); }
+.hx-kicker::before { content: ""; width: 28px; height: 1px; background: currentColor; opacity: .7; }
+.hx-title { max-width: 11.5em; font-family: var(--font); font-weight: 600; font-size: clamp(46px, 7.7vw, 128px); line-height: .94; letter-spacing: -.048em; color: #F7F0E8; text-wrap: balance; }
+.hx-title .hx-soft { color: #CFC0F6; }
+.hx-foot { display: grid; grid-template-columns: minmax(0, 1fr) auto auto; align-items: center; gap: 20px clamp(24px, 4vw, 64px); margin-top: clamp(26px, 3.2vw, 46px); padding-top: clamp(18px, 1.8vw, 24px); border-top: 1px solid rgba(247,240,232,.2); }
+.hx-lead { max-width: 37ch; font-size: clamp(15.5px, 1.25vw, 18px); line-height: 1.5; letter-spacing: -.005em; color: rgba(247,240,232,.8); }
+.hx-ctas { display: flex; flex-wrap: wrap; gap: 10px; }
+.hx-btn { display: inline-flex; align-items: center; gap: 10px; min-height: 50px; padding: 0 24px; border-radius: 999px; background: #F7F0E8; color: #141317; font-weight: 500; font-size: 15px; letter-spacing: -.005em; white-space: nowrap; transition: background-color .3s ease, color .3s ease; }
+.hx-btn:hover { background: #CFC0F6; }
+.hx-btn svg { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; transition: transform .35s var(--ease-out); }
+.hx-btn:hover svg { transform: translateX(3px); }
+.hx-btn.ghost { background: rgba(247,240,232,.06); color: #F7F0E8; box-shadow: inset 0 0 0 1px rgba(247,240,232,.34); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }
+.hx-btn.ghost:hover { background: rgba(247,240,232,.16); }
+.hx-scroll { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; font-family: var(--font-ui); font-size: 11px; line-height: 1; letter-spacing: .16em; text-transform: uppercase; color: rgba(247,240,232,.72); transition: color .3s ease; }
+.hx-scroll:hover { color: #F7F0E8; }
+.hx-scroll i { position: relative; width: 1px; height: 34px; background: rgba(247,240,232,.25); overflow: hidden; }
+.hx-scroll i::after { content: ""; position: absolute; left: 0; top: 0; width: 100%; height: 50%; background: #F7F0E8; animation: hxDrop 2.2s cubic-bezier(.65,0,.35,1) infinite; }
+@keyframes hxDrop { 0% { transform: translateY(-100%); } 60%, 100% { transform: translateY(200%); } }
 #hero a:focus-visible { outline: 2px solid #CFC0F6; outline-offset: 4px; }
 @media (max-width: 900px) {
-  .s3-ch { padding-left: var(--gutter); }
-  .s3-ch h1, .s3-ch h2 { font-size: clamp(30px, 8.4vw, 44px); }
-  .s3-ch h1 { font-size: clamp(40px, 12vw, 56px); }
+  .hx-foot { grid-template-columns: 1fr; align-items: start; gap: 18px; }
+  .hx-scroll { display: none; }
+  .hx-title { font-size: clamp(42px, 11.6vw, 76px); }
 }
-/* sin animación (o sin JS): los capítulos uno debajo de otro */
-@media (prefers-reduced-motion: reduce) {
-  .s3-vid { position: fixed; }
-  #hero.s3 { height: auto; } .s3-track { position: static; flex-direction: column; } .s3-ch { flex-basis: auto; min-height: 80vh; } .s3-prog { display: none; }
-}
-html:not(.js) #hero.s3 { height: auto; } html:not(.js) .s3-track { position: static; flex-direction: column; } html:not(.js) .s3-ch { flex-basis: auto; min-height: 80vh; }
+@media (max-width: 480px) { .hx-btn { min-height: 48px; padding: 0 20px; } .hx-ctas { gap: 8px; } }
+@media (prefers-reduced-motion: reduce) { .hx-scroll i::after { animation: none; } }
 
 /* ============================================================
    9. SECCIONES GENERALES
@@ -499,6 +501,22 @@ footer { background: var(--panel); border-top: 1px solid var(--line); padding: v
 .footer-giant { overflow: hidden; line-height: 0.78; }
 .footer-giant span { display: block; opacity: 0.08; white-space: nowrap; text-align: center; }
 .footer-giant .wm-svg { width: 92%; max-width: 1360px; height: auto; display: inline-block; vertical-align: bottom; }
+/* footer oscuro: continúa la noche del cierre; logo gigante sólido en crema y lila */
+footer { background: #0A0A0A; color: #F7F0E8; border-top: 0; }
+footer .muted, footer .t-caption { color: rgba(247,240,232,.6); }
+footer .logo-svg g[fill="#0A0A0A"] { fill: #F7F0E8; }
+footer .logo-svg g[fill="#511BDB"] { fill: #8B6DE8; }
+footer .footer-col h4 { color: #8B6DE8; }
+footer .footer-col a { color: rgba(247,240,232,.86); transition: color .3s; }
+footer .footer-col a:hover { color: #F7F0E8; }
+footer .footer-bottom { border-top-color: rgba(247,240,232,.12); color: rgba(247,240,232,.5); }
+footer .footer-bottom a { color: rgba(247,240,232,.7); }
+footer .footer-bottom a:hover { color: #F7F0E8; }
+footer .footer-giant { line-height: .8; padding-top: clamp(10px, 2vw, 28px); }
+footer .footer-giant span { opacity: 1; }
+footer .footer-giant .wm-svg { width: calc(100% - var(--gutter) * 2); max-width: none; }
+footer .footer-giant g g:first-child { fill: #F7F0E8; }
+footer .footer-giant g g:last-child { fill: #8B6DE8; }
 
 /* ============================================================
    15. PROGRESO, ÍNDICE
@@ -858,45 +876,193 @@ html:not(.js) .rs-photo { --sweep: 100%; }
   .rs-l > span, .rs-crop { transform: none !important; }
 }
 
-/* ══ PORTAFOLIO · dos filas que corren solas ══════════════════════════════════ */
-#portafolio { padding: clamp(84px, 12vh, 150px) 0; overflow-x: clip; }
-#portafolio .section-head { margin-bottom: var(--sp-48); }
-.pf-intro { margin-top: var(--sp-20); max-width: 52ch; color: var(--ink-50); }
-.pf-rows { --pf-h: clamp(180px, 24vw, 280px); display: flex; flex-direction: column; gap: 14px; }
-.pf-row { overflow: hidden; }
-.pf-track { display: flex; gap: 14px; width: max-content; will-change: transform; }
-.pf-item {
-  position: relative; flex: none; height: var(--pf-h); padding: 0; border: 0; border-radius: 16px; overflow: hidden;
-  background: #151318; cursor: zoom-in; -webkit-tap-highlight-color: transparent;
-  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.06);
+/* ══ PORTAFOLIO · cuadrícula editorial ════════════════════════════════════════
+   Todas las piezas al mismo formato (4:5), nombre y giro debajo, filtro por
+   giro arriba. Se muestran dos filas; el botón abre el resto. */
+#portafolio { padding: clamp(84px, 12vh, 150px) 0; }
+#portafolio .section-head { max-width: none; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 44ch); align-items: end; gap: 20px clamp(32px, 6vw, 96px); margin-bottom: clamp(36px, 4.5vw, 64px); }
+.pf-intro { margin: 0; padding-bottom: .5em; font-size: clamp(16px, 1.3vw, 18.5px); line-height: 1.5; letter-spacing: -.005em; color: var(--ink-50); }
+.pf-bar { display: flex; align-items: center; justify-content: space-between; gap: 14px 24px; flex-wrap: wrap; padding: 14px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.pf-filters { display: flex; flex-wrap: wrap; gap: 4px clamp(14px, 2vw, 30px); }
+.pf-f { position: relative; display: inline-flex; align-items: flex-start; gap: 5px; min-height: 40px; padding: 10px 0; background: none; border: 0; cursor: pointer; font-family: var(--font); font-size: 15.5px; font-weight: 500; letter-spacing: -.01em; line-height: 1.25; color: var(--ink-50); transition: color .25s ease; -webkit-tap-highlight-color: transparent; }
+.pf-f sup { font-family: var(--font-ui); font-size: 9.5px; font-weight: 400; letter-spacing: .06em; line-height: 1; margin-top: 1px; opacity: .75; font-variant-numeric: tabular-nums; }
+.pf-f::after { content: ""; position: absolute; left: 0; right: 0; bottom: 6px; height: 1px; background: currentColor; transform: scaleX(0); transform-origin: left; transition: transform .45s var(--ease-out); }
+.pf-f:hover, .pf-f.is-on { color: var(--ink); }
+.pf-f.is-on::after { transform: scaleX(1); }
+.pf-f:focus-visible { outline: 2px solid #8B6DE8; outline-offset: 4px; border-radius: 4px; }
+.pf-count { margin: 0; font-family: var(--font-ui); font-size: 11px; line-height: 1; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-50); font-variant-numeric: tabular-nums; }
+.pf-grid { list-style: none; margin: clamp(22px, 2.6vw, 36px) 0 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(26px, 3vw, 44px) clamp(14px, 1.6vw, 24px); }
+.pf-cell { min-width: 0; }
+.pf-cell[hidden] { display: none; }
+.pf-grid:not(.is-all) .pf-cell:nth-child(n+9) { display: none; }
+.pf-item { display: block; width: 100%; padding: 0; border: 0; background: none; text-align: left; color: inherit; font: inherit; cursor: zoom-in; -webkit-tap-highlight-color: transparent; }
+.pf-shot { position: relative; display: block; aspect-ratio: 4 / 5; border-radius: 14px; overflow: hidden; background: #151318; box-shadow: 0 1px 0 rgba(10,10,10,.04), 0 18px 40px -28px rgba(20,10,51,.45); }
+.pf-shot::after { content: ""; position: absolute; inset: 0; border-radius: inherit; box-shadow: inset 0 0 0 1px rgba(10,10,10,.08); pointer-events: none; }
+.pf-shot img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .9s var(--ease-out); -webkit-user-drag: none; user-select: none; }
+.pf-open { position: absolute; top: 12px; right: 12px; width: 38px; height: 38px; display: grid; place-items: center; border-radius: 50%; background: #F7F0E8; color: #0A0A0A; opacity: 0; transform: scale(.7); transition: opacity .3s ease, transform .45s var(--ease-out); }
+.pf-open svg { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.pf-meta { display: flex; flex-direction: column; gap: 5px; padding: 14px 2px 0; }
+.pf-name { font-size: 15.5px; font-weight: 500; line-height: 1.3; letter-spacing: -.012em; color: var(--ink); text-wrap: balance; }
+.pf-kind { font-family: var(--font-ui); font-size: 10.5px; line-height: 1.3; letter-spacing: .13em; text-transform: uppercase; color: var(--ink-50); }
+.pf-kind.is-s { color: #511BDB; }
+@media (hover: hover) {
+  .pf-item:hover .pf-shot img { transform: scale(1.045); }
+  .pf-item:hover .pf-open { opacity: 1; transform: none; }
 }
-.pf-item img { display: block; height: 100%; width: auto; transition: transform 0.7s var(--ease-out); -webkit-user-drag: none; user-select: none; }
-.pf-item:hover img { transform: scale(1.025); }
-.pf-item:focus-visible { outline: 2px solid #CFC0F6; outline-offset: 3px; }
-.pf-tag {
-  position: absolute; left: 10px; bottom: 10px; padding: 6px 10px 5px; border-radius: 999px; pointer-events: auto;
-  font-family: var(--font-ui); font-size: 10.5px; line-height: 1; letter-spacing: 0.14em; text-transform: uppercase;
+.pf-item:focus-visible { outline: none; }
+.pf-item:focus-visible .pf-shot { outline: 2px solid #8B6DE8; outline-offset: 4px; }
+.pf-item:focus-visible .pf-open { opacity: 1; transform: none; }
+.pf-foot { display: flex; justify-content: center; margin-top: clamp(34px, 4vw, 56px); }
+.pf-foot[hidden] { display: none; }
+.pf-more { display: inline-flex; align-items: center; gap: 12px; min-height: 52px; padding: 0 26px; border-radius: 999px; border: 1px solid var(--ink); background: transparent; color: var(--ink); cursor: pointer; font-family: var(--font); font-size: 15px; font-weight: 500; letter-spacing: -.005em; transition: background-color .3s ease, color .3s ease; }
+.pf-more:hover { background: var(--ink); color: var(--bg); }
+.pf-more svg { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; transition: transform .45s var(--ease-out); }
+.pf-more[aria-expanded="true"] svg { transform: rotate(180deg); }
+.pf-more:focus-visible { outline: 2px solid #8B6DE8; outline-offset: 4px; }
+@media (max-width: 1100px) {
+  .pf-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .pf-grid:not(.is-all) .pf-cell:nth-child(n+9) { display: block; }
+  .pf-grid:not(.is-all) .pf-cell:nth-child(n+10) { display: none; }
 }
-.pf-tag.is-c { color: #F2EFEA; background: rgba(10,10,10,0.68); border: 1px solid rgba(242,239,234,0.14); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
-.pf-tag.is-s { color: #0A0A0A; background: #8B6DE8; }
-.pf-foot { display: flex; align-items: center; flex-wrap: wrap; gap: 14px 20px; margin-top: var(--sp-32); }
-.pf-hint { font-size: 14px; line-height: 1.4; color: var(--ink-50); }
-/* movimiento reducido: filas quietas, se deslizan a mano */
-.pf-static .pf-row { overflow-x: auto; scroll-snap-type: x proximity; overscroll-behavior-x: contain; padding-bottom: 6px; }
-.pf-static .pf-track { padding: 0 var(--gutter); transform: none !important; }
-.pf-static .pf-item { scroll-snap-align: start; }
-.pf-static .pf-dup, .pf-static .pf-toggle { display: none; }
-html:not(.js) .pf-row { overflow-x: auto; }
-html:not(.js) .pf-dup, html:not(.js) .pf-toggle { display: none; }
+@media (max-width: 820px) { #portafolio .section-head { grid-template-columns: 1fr; } .pf-intro { padding-bottom: 0; max-width: 44ch; } }
+@media (max-width: 700px) {
+  .pf-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 12px; }
+  .pf-grid:not(.is-all) .pf-cell:nth-child(n+7) { display: none; }
+  .pf-bar { border-bottom: 0; padding-bottom: 0; }
+  .pf-filters { flex-wrap: nowrap; overflow-x: auto; margin: 0 calc(var(--gutter) * -1); padding: 0 var(--gutter); gap: 0 22px; scrollbar-width: none; flex: 1 1 100%; }
+  .pf-filters::-webkit-scrollbar { display: none; }
+  .pf-f { flex: none; }
+  .pf-count { display: none; }
+  .pf-name { font-size: 14.5px; }
+  .pf-shot { border-radius: 12px; }
+}
+/* muro del portafolio (escritorio): la sección queda fija y las columnas corren
+   en sentidos opuestos; en móvil y con movimiento reducido se usa la cuadrícula. */
+.pf-bar { position: relative; }
+.pf-prog { position: absolute; left: 0; right: 0; bottom: -1px; height: 2px; overflow: hidden; pointer-events: none; }
+.pf-prog i { display: block; height: 100%; background: #511BDB; transform: scaleX(0); transform-origin: left center; }
+.pf-wall { display: none; }
+.pf-stage.is-wall { display: flex; flex-direction: column; height: calc(100vh - var(--pf-top, 74px)); height: calc(100svh - var(--pf-top, 74px)); min-height: 520px; }
+.pf-stage.is-wall .pf-bar { flex: none; background: var(--bg); z-index: 2; }
+.pf-stage.is-wall .pf-grid { display: none; }
+.pf-stage.is-wall .pf-wall { --pf-gap: clamp(20px, 2.4vw, 36px); display: flex; align-items: flex-start; justify-content: center; gap: var(--pf-gap); flex: 1 1 auto; min-height: 0; overflow: hidden;
+  -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 56px, #000 calc(100% - 72px), transparent 100%); mask-image: linear-gradient(180deg, transparent 0, #000 56px, #000 calc(100% - 72px), transparent 100%); }
+.pf-col { list-style: none; margin: 0; padding: 56px 0 72px; flex: 0 0 calc((100% - (var(--pf-n, 4) - 1) * var(--pf-gap)) / var(--pf-n, 4)); min-width: 0; display: flex; flex-direction: column; gap: clamp(26px, 3vw, 44px); will-change: transform; }
+.pf-stage.is-wall.is-short { height: auto; min-height: 0; }
+.pf-stage.is-wall.is-short .pf-wall { flex: none; overflow: visible; -webkit-mask-image: none; mask-image: none; }
+.pf-stage.is-wall.is-short .pf-col { padding: clamp(22px, 2.6vw, 36px) 0 0; }
+.pf-stage.is-wall .pf-prog { bottom: -1px; }
+.pf-stage:not(.is-wall) .pf-prog { display: none; }
+/* vistas del portafolio en escritorio: carrusel, pila y cinta (el muro va arriba) */
+.pf-modes { flex: none; display: flex; flex-wrap: wrap; align-items: center; gap: 6px; padding: 0 0 12px; font-family: var(--font-ui); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-50); }
+.pf-modes span { margin-right: 10px; color: #511BDB; }
+.pf-modes i { width: 1px; height: 18px; margin: 0 8px; background: var(--line); }
+.pf-modes button { min-height: 34px; padding: 0 14px; border: 1px solid var(--line); border-radius: 999px; background: none; font: inherit; letter-spacing: inherit; text-transform: inherit; color: var(--ink); cursor: pointer; transition: color .25s, border-color .25s, background-color .25s; }
+.pf-modes button:hover { border-color: #511BDB; color: #511BDB; }
+.pf-modes button.is-on { color: #F7F0E8; background: #511BDB; border-color: #511BDB; }
+.pf-modes button:focus-visible { outline: 2px solid #8B6DE8; outline-offset: 3px; }
+.pf-stage:not(.is-wall) .pf-modes { display: none; }
+.pf-stage.is-wall .pf-count { min-width: 9ch; text-align: right; }
+/* barra de filtros: bloque oscuro pegado al muro */
+#portafolio .pf-bar { position: relative; z-index: 3; display: flex; align-items: center; gap: 14px clamp(18px, 3vw, 44px); margin-inline: calc(50% - 50vw); padding: clamp(16px, 2vw, 24px) max(var(--gutter), calc((100vw - var(--max-w)) / 2 + var(--gutter))); border: 0; background: #0A0A0A; color: #F7F0E8; }
+#portafolio .pf-lab { flex: none; font-family: var(--font-ui); font-size: 10px; line-height: 1.5; letter-spacing: .16em; text-transform: uppercase; color: #8B6DE8; }
+#portafolio .pf-filters { position: relative; flex: 1 1 auto; display: flex; flex-wrap: nowrap; gap: 2px; padding: 4px; border-radius: 999px; background: rgba(247,240,232,.06); box-shadow: inset 0 0 0 1px rgba(247,240,232,.08); overflow-x: auto; scrollbar-width: none; }
+#portafolio .pf-filters::-webkit-scrollbar { display: none; }
+#portafolio .pf-pill { position: absolute; z-index: 0; left: 0; top: 4px; height: calc(100% - 8px); width: 80px; border-radius: 999px; background: #511BDB; box-shadow: 0 8px 24px -10px rgba(81,27,219,.9); pointer-events: none; }
+#portafolio .pf-f { position: relative; z-index: 1; flex: none; display: inline-flex; align-items: flex-start; gap: 5px; min-height: 0; padding: 11px clamp(14px, 1.4vw, 22px); border-radius: 999px; font-size: clamp(15px, 1.25vw, 19px); font-weight: 700; letter-spacing: -.02em; color: rgba(247,240,232,.55); transition: color .35s; }
+#portafolio .pf-f::after { display: none; }
+#portafolio .pf-f:hover { color: #F7F0E8; }
+#portafolio .pf-f.is-on { color: #F7F0E8; }
+#portafolio .pf-f sup { font-size: 9.5px; color: #CFC0F6; opacity: .9; margin-top: 2px; }
+#portafolio .pf-f:focus-visible { outline: 2px solid #CFC0F6; outline-offset: 2px; }
+#portafolio .pf-count { flex: none; display: flex !important; align-items: baseline; gap: 8px; min-width: 0; margin: 0; color: #F7F0E8; }
+#portafolio .pf-count b { font-family: var(--font); font-size: clamp(34px, 3.6vw, 56px); font-weight: 800; letter-spacing: -.06em; line-height: .8; font-variant-numeric: tabular-nums; }
+#portafolio .pf-count span { font-family: var(--font-ui); font-size: 10px; letter-spacing: .16em; text-transform: uppercase; color: #8B6DE8; }
+#portafolio .pf-prog { left: 0; right: 0; bottom: 0; height: 2px; background: rgba(247,240,232,.08); }
+#portafolio .pf-prog i { background: #8B6DE8; }
+#portafolio .pf-stage.is-wall .pf-wall { padding-top: 0; }
+.pf-peek { position: absolute; z-index: 5; left: 0; top: calc(100% + 10px); width: 1px; height: 1px; pointer-events: none; }
+.pf-peek img { position: absolute; left: -48px; top: 0; width: 96px; max-width: none; height: 120px; object-fit: cover; border-radius: 6px; box-shadow: 0 22px 36px -14px rgba(0,0,0,.75), 0 0 0 3px #F7F0E8; transform-origin: 50% 0; opacity: 0; }
+@media (max-width: 760px) {
+  #portafolio .pf-bar { flex-wrap: wrap; padding-top: 14px; padding-bottom: 12px; }
+  #portafolio .pf-lab { display: none; }
+  #portafolio .pf-filters { order: 2; flex-basis: 100%; }
+  #portafolio .pf-f { padding: 9px 14px; font-size: 14.5px; }
+  #portafolio .pf-count { order: 1; }
+  #portafolio .pf-count b { font-size: 30px; }
+  .pf-peek { display: none; }
+}
+/* muro de cine: banda oscura de borde a borde con tres filas pegadas */
+.pf-stage.is-wall.pf-m-cine .pf-wall { --pf-gap: 6px; display: flex; flex-direction: column; justify-content: center; gap: var(--pf-gap); margin-inline: calc(50% - 50vw); padding: var(--pf-gap) 0; background: #0A0A0A; -webkit-mask-image: none; mask-image: none; }
+.pf-cine-row { list-style: none; margin: 0; padding: 0; display: flex; gap: var(--pf-gap); width: max-content; will-change: transform; }
+.pf-cine-row .pf-cell { flex: none; height: var(--rh, 240px); width: calc(var(--rh, 240px) * .8); }
+.pf-cine-row .pf-item { position: relative; display: block; width: 100%; height: 100%; }
+.pf-cine-row .pf-shot { height: 100%; aspect-ratio: auto; border-radius: 3px; box-shadow: none; background: #1a1a1a; }
+.pf-cine-row .pf-shot::after { display: none; }
+.pf-cine-row .pf-shot img { transition: transform .9s var(--ease-out), opacity .5s; }
+.pf-cine-row .pf-open { display: none; }
+.pf-cine-row .pf-meta { position: absolute; left: 0; right: 0; bottom: 0; padding: 30px 10px 9px; border-radius: 0 0 3px 3px; background: linear-gradient(180deg, transparent, rgba(0,0,0,.72)); opacity: 0; transform: translateY(6px); transition: opacity .4s, transform .5s var(--ease-out); pointer-events: none; }
+.pf-cine-row .pf-name { font-size: 13px; color: #fff; }
+.pf-cine-row .pf-kind, .pf-cine-row .pf-kind.is-s { font-size: 9px; color: #CFC0F6; }
+@media (hover: hover) {
+  .pf-stage.pf-m-cine .pf-wall:hover .pf-shot img { opacity: .5; }
+  .pf-stage.pf-m-cine .pf-wall .pf-item:hover .pf-shot img { opacity: 1; transform: scale(1.06); }
+  .pf-cine-row .pf-item:hover .pf-meta { opacity: 1; transform: none; }
+}
+.pf-cine-row .pf-item:focus-visible .pf-meta { opacity: 1; transform: none; }
+/* carrusel */
+.pf-stage.is-wall.pf-m-carrusel .pf-wall { display: block; margin-inline: calc(50% - 50vw); -webkit-mask-image: none; mask-image: none; }
+.pf-track { list-style: none; margin: 0; padding: 0 calc(50vw - var(--cw, 360px) / 2); display: flex; align-items: center; gap: clamp(22px, 2.6vw, 44px); width: max-content; height: 100%; will-change: transform; }
+.pf-track .pf-cell { flex: 0 0 auto; width: var(--cw, 360px); }
+.pf-track .pf-item { transform-origin: 50% 46%; will-change: transform, opacity; }
+.pf-stage.is-wall.pf-m-carrusel.is-short .pf-wall { margin-inline: 0; }
+.pf-stage.is-wall.pf-m-carrusel.is-short .pf-track { width: auto; height: auto; padding: clamp(22px, 2.6vw, 36px) 0 0; justify-content: center; }
+/* pila */
+.pf-stage.is-wall.pf-m-pila .pf-wall { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); align-items: center; gap: clamp(24px, 5vw, 80px); -webkit-mask-image: none; mask-image: none; }
+.pf-deck-info { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; }
+.pf-deck-n { font-family: var(--font-ui); font-size: 12px; letter-spacing: .14em; color: #511BDB; font-variant-numeric: tabular-nums; }
+.pf-deck-name { font-size: clamp(34px, 4.2vw, 68px); font-weight: 600; line-height: .98; letter-spacing: -.04em; color: var(--ink); text-wrap: balance; max-width: 11em; }
+.pf-deck-kind { font-family: var(--font-ui); font-size: 11px; letter-spacing: .13em; text-transform: uppercase; color: var(--ink-50); }
+.pf-deck-hint { margin-top: clamp(18px, 3vh, 40px); padding-top: 14px; border-top: 1px solid var(--line); font-size: 14px; color: var(--ink-50); }
+.pf-deck { position: relative; height: 100%; list-style: none; margin: 0; padding: 0; }
+.pf-deck .pf-cell { position: absolute; inset: 0; margin: auto; width: var(--cw, 360px); height: calc(var(--cw, 360px) * 1.25); }
+.pf-deck .pf-meta { display: none; }
+.pf-deck .pf-cell { pointer-events: none; }
+.pf-deck .pf-item { will-change: transform; pointer-events: auto; }
+.pf-deck .pf-shot { box-shadow: 0 18px 50px -22px rgba(20,10,51,.45), 0 2px 6px rgba(10,10,10,.08); }
+.pf-stage.is-wall.pf-m-pila.is-short .pf-deck { height: calc(var(--cw, 360px) * 1.25 + 40px); }
+/* cinta */
+.pf-stage.is-wall.pf-m-cinta { height: auto; min-height: 0; }
+.pf-stage.is-wall.pf-m-cinta .pf-wall { display: block; flex: none; margin-inline: calc(50% - 50vw); padding-top: clamp(26px, 3vw, 44px); -webkit-mask-image: none; mask-image: none; }
+.pf-row { list-style: none; margin: 0 0 clamp(22px, 2.4vw, 34px); padding: 0; display: flex; gap: clamp(20px, 2.2vw, 34px); width: max-content; will-change: transform; }
+.pf-row .pf-cell { flex: 0 0 auto; width: clamp(230px, 21vw, 320px); }
+html:not(.js) .pf-grid .pf-cell { display: block !important; }
+html:not(.js) .pf-foot, html:not(.js) .pf-bar { display: none; }
 
 /* vista grande */
 .pf-view { position: fixed; inset: 0; z-index: 400; display: grid; place-items: center; padding: clamp(16px, 4vw, 56px); }
 .pf-view[hidden] { display: none; }
-.pf-view-bg { position: absolute; inset: 0; background: rgba(6,5,10,0.88); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); }
-.pf-view-fig { position: relative; z-index: 1; margin: 0; display: flex; flex-direction: column; align-items: center; gap: 14px; max-width: min(94vw, 1180px); }
-.pf-view-fig img { display: block; width: auto; height: auto; max-width: 100%; max-height: calc(100vh - 150px); max-height: calc(100svh - 150px); border-radius: 16px; box-shadow: 0 40px 90px -40px rgba(0,0,0,0.95); }
-.pf-view-cap { font-size: 14px; line-height: 1.4; color: rgba(242,239,234,0.78); text-align: center; }
-.pf-view-close { position: absolute; z-index: 2; top: clamp(14px, 3vw, 28px); right: clamp(14px, 3vw, 28px); }
+.pf-view-bg { position: absolute; inset: 0; background: rgba(6,5,10,0.92); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }
+.pf-view-fig { position: relative; z-index: 1; margin: 0; display: flex; flex-direction: column; align-items: center; gap: 16px; max-width: min(88vw, 1180px); }
+.pf-view-fig img { display: block; width: auto; height: auto; max-width: 100%; max-height: calc(100vh - 170px); max-height: calc(100svh - 170px); border-radius: 14px; box-shadow: 0 40px 90px -40px rgba(0,0,0,0.95); }
+.pf-view-cap { display: flex; flex-wrap: wrap; justify-content: center; align-items: baseline; gap: 4px 14px; font-size: 15px; line-height: 1.4; color: #F2EFEA; text-align: center; }
+.pf-view-cap small { font-family: var(--font-ui); font-size: 10.5px; letter-spacing: .13em; text-transform: uppercase; color: rgba(242,239,234,.6); }
+.pf-view-top { position: absolute; z-index: 2; top: clamp(14px, 3vw, 28px); left: clamp(16px, 3vw, 32px); right: clamp(16px, 3vw, 32px); display: flex; align-items: center; justify-content: space-between; pointer-events: none; }
+.pf-view-top > * { pointer-events: auto; }
+.pf-view-n { font-family: var(--font-ui); font-size: 11px; letter-spacing: .14em; color: rgba(242,239,234,.7); font-variant-numeric: tabular-nums; }
+.pf-vbtn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-width: 46px; height: 46px; padding: 0 16px; border-radius: 999px; border: 1px solid rgba(242,239,234,.28); background: rgba(242,239,234,.06); color: #F2EFEA; cursor: pointer; font-family: var(--font); font-size: 14px; font-weight: 500; transition: background-color .25s ease, border-color .25s ease; }
+.pf-vbtn:hover { background: rgba(242,239,234,.16); border-color: rgba(242,239,234,.5); }
+.pf-vbtn:focus-visible { outline: 2px solid #CFC0F6; outline-offset: 3px; }
+.pf-vbtn svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.pf-vnav { position: absolute; z-index: 2; top: 50%; width: 46px; padding: 0; transform: translateY(-50%); }
+.pf-vprev { left: clamp(12px, 3vw, 32px); } .pf-vnext { right: clamp(12px, 3vw, 32px); }
+@media (max-width: 700px) {
+  .pf-vnav { top: auto; bottom: 16px; transform: none; }
+  .pf-vprev { left: calc(50% - 54px); } .pf-vnext { right: calc(50% - 54px); }
+  .pf-view { padding-bottom: 78px; }
+  .pf-view-fig { max-width: 100%; }
+  .pf-view-fig img { max-height: calc(100svh - 230px); }
+}
 
 /* ══ LENTE MORADO · solo sobre imágenes ═══════════════════════════════════════
    Filtra lo que tiene debajo (backdrop-filter): sin mezcla ni inversión. El JS
@@ -915,7 +1081,7 @@ html:not(.js) .pf-dup, html:not(.js) .pf-toggle { display: none; }
 /* ══ LAS PERSONAS (#datos) ═══════ estilos tal cual de seccion-personas.html ══ */
 #datos.ps{--ps-crema:#0A0A0A;--ps-suave:#6E655C;--ps-lila:#8B6DE8;--ps-tenue:rgba(10,10,10,.14);
   position:relative;padding-block:clamp(90px,14vh,160px);color:var(--ps-crema)}
-#datos.ps .ps-wrap{width:min(100% - 2*clamp(16px,5vw,72px),1200px);margin-inline:auto}
+#datos.ps .ps-wrap{max-width:calc(var(--max-w) + var(--gutter) * 2);margin-inline:auto;padding-inline:var(--gutter)}
 #datos.ps .ps-stage{position:relative;min-height:clamp(160px,22vw,230px);display:flex;align-items:flex-end}
 #datos.ps .ps-arr{display:grid;grid-template-columns:repeat(auto-fill,minmax(28px,1fr));gap:10px 8px;width:100%;max-width:820px}
 #datos.ps .ps-fila{position:relative;width:100%;height:clamp(130px,18vw,200px);border-bottom:2px solid rgba(10,10,10,.18);overflow:hidden;display:flex;align-items:flex-end;gap:clamp(4px,1vw,12px);padding-inline:4px}
@@ -982,6 +1148,39 @@ html:not(.js) .pf-dup, html:not(.js) .pf-toggle { display: none; }
 #contacto .dz-aviso a{color:#F2EFEA}
 #contacto .dz-done{margin:0;font-size:clamp(26px,3.4vw,36px);font-weight:700;letter-spacing:-.03em;line-height:1.05}
 #contacto .dz-small{margin:0;color:rgba(242,239,234,.74);font-size:15px}
+/* cierre premium: noche con resplandor violeta, pozo de obsidiana y moneda dorada */
+#contacto.closing { background: radial-gradient(ellipse 85% 48% at 50% 78%, rgba(118,58,255,.55) 0%, rgba(81,27,219,.22) 45%, transparent 75%), linear-gradient(180deg, #0B0716 0%, #120A2B 58%, #0A0614 100%); border-radius: 28px 28px 0 0; overflow: hidden; }
+#contacto > .blob, #contacto > .glow { display: none; }
+#contacto > .grainient::after { background: radial-gradient(ellipse 70% 42% at 50% 80%, rgba(10,6,20,.55) 0%, transparent 70%), linear-gradient(180deg, rgba(10,6,20,0) 0%, rgba(10,6,20,0) 55%, rgba(10,6,20,.45) 100%); }
+#contacto > .grainient::before { background: rgba(10,6,20,.12); }
+#contacto::after { content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none; opacity: .14; mix-blend-mode: overlay; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+#contacto .dz h2 { color: #F7F0E8; }
+#contacto .dz-lead { color: #CFC0F6; }
+#contacto .dz-fuente { max-width: 1000px; margin: clamp(10px, 2vw, 24px) auto 0; padding-bottom: 0; aspect-ratio: 1124 / 372; }
+#contacto .dz-fuente svg { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 3; }
+#contacto .dz-pozo-wrap { position: absolute; left: 0; right: 0; top: 45.7%; height: 54.3%; z-index: 2;
+  -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 16%, #000 68%, transparent 100%); mask-image: linear-gradient(180deg, transparent 0%, #000 16%, #000 68%, transparent 100%); }
+#contacto .dz-pozo { display: block; width: 100%; height: 100%; object-fit: cover;
+  -webkit-mask-image: radial-gradient(ellipse 50% 120% at 50% 45%, #000 70%, transparent 100%); mask-image: radial-gradient(ellipse 50% 120% at 50% 45%, #000 70%, transparent 100%); }
+#contacto .dz-beam { position: absolute; z-index: 1; left: 50%; top: -48%; width: 42%; height: 120%; transform: translateX(-50%); pointer-events: none;
+  background: conic-gradient(from 180deg at 50% 0%, transparent 160deg, rgba(255,230,180,.16) 172deg, rgba(255,244,220,.32) 180deg, rgba(255,230,180,.16) 188deg, transparent 200deg);
+  filter: blur(14px); opacity: .9; animation: dzBeam 6s ease-in-out infinite; }
+@keyframes dzBeam { 0%, 100% { opacity: .75; } 50% { opacity: 1; } }
+#contacto .dz-coin-float { position: absolute; z-index: 4; left: 49.55%; top: 27%; width: clamp(64px, 9vw, 108px); aspect-ratio: 1; transform: translate(-50%, -50%); animation: dzFloat 4.2s ease-in-out infinite; }
+#contacto .dz-coin-float::before { content: ""; position: absolute; left: 50%; top: 120%; width: 70%; height: 14%; transform: translateX(-50%); border-radius: 50%; background: radial-gradient(closest-side, rgba(255,214,140,.55), transparent); filter: blur(4px); animation: dzShadow 4.2s ease-in-out infinite; }
+@keyframes dzFloat { 0%, 100% { transform: translate(-50%, -50%) rotate(-6deg); } 50% { transform: translate(-50%, calc(-50% - 10px)) rotate(4deg); } }
+@keyframes dzShadow { 0%, 100% { opacity: .9; transform: translateX(-50%) scale(1); } 50% { opacity: .55; transform: translateX(-50%) scale(.82); } }
+#contacto .dz-coin { position: relative; left: auto; bottom: auto; width: 100%; height: 100%; border-radius: 50%; color: #6B430E; font-family: Georgia, 'Times New Roman', serif; font-weight: 700; font-size: clamp(32px, 4.6vw, 56px);
+  background: radial-gradient(circle at 32% 28%, #FFF3D1 0%, #F2C76A 24%, #C9932F 58%, #7A5418 100%);
+  box-shadow: inset 0 0 0 clamp(4px, .55vw, 7px) rgba(122,84,24,.55), inset 0 0 0 clamp(7px, .9vw, 11px) rgba(255,232,176,.38), inset -6px -8px 16px rgba(80,50,10,.45), 0 18px 40px rgba(0,0,0,.55), 0 0 70px rgba(255,196,107,.35); }
+#contacto .dz-coin span { display: block; line-height: 1; transform: translateY(-2%); text-shadow: 0 1px 0 rgba(255,240,205,.75), 0 -1px 0 rgba(90,55,10,.55); }
+#contacto .dz-coin::before { content: ""; position: absolute; inset: 0; border-radius: 50%; background: linear-gradient(115deg, transparent 38%, rgba(255,255,255,.55) 48%, transparent 58%); background-size: 260% 100%; animation: dzShine 3.6s ease-in-out infinite; mix-blend-mode: soft-light; }
+@keyframes dzShine { 0%, 55% { background-position: 120% 0; } 100% { background-position: -40% 0; } }
+#contacto .dz-coin::after { inset: -10px; border: 1.5px solid rgba(255,214,140,.55); }
+#contacto .dz-hint { display: inline-flex; align-items: center; gap: 10px; margin: clamp(4px, 1vw, 12px) 0 0; font-family: var(--font-ui); font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: rgba(247,240,232,.72); }
+#contacto .dz-hint-i { width: 18px; height: 18px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #FFF3D1, #C9932F 70%); box-shadow: 0 0 0 4px rgba(255,214,140,.15); }
+@media (max-width: 600px) { #contacto.closing { border-radius: 20px 20px 0 0; } #contacto .dz-fuente { margin-top: 18px; } #contacto .dz-hint { font-size: 10px; letter-spacing: .12em; } }
+@media (prefers-reduced-motion: reduce) { #contacto .dz-coin-float, #contacto .dz-coin-float::before, #contacto .dz-coin::before, #contacto .dz-beam { animation: none; } }
 #contacto [hidden]{display:none!important}
 @media (max-width:600px){#contacto .dz-soft{background:rgba(20,10,51,.35)}#contacto .cb2{right:-40px!important;bottom:2%!important}}
 @media (prefers-reduced-motion:reduce){#contacto .dz-coin::after{animation:none}}
@@ -1208,22 +1407,25 @@ html:not(.js) #productos .px-item{visibility:visible;opacity:1;margin-bottom:12p
 
 <main id="top">
 
-  <!-- ══════════ HERO · CAPÍTULOS ══════════
-     Los cuatro capítulos están en el HTML (sin JS se leen uno debajo
-     del otro); el recorrido horizontal lo arma el script «HERO · CAPÍTULOS». -->
-  <section class="s3" id="hero" aria-labelledby="s3Title">
-    <video class="s3-vid" autoplay muted loop playsinline preload="auto" poster="assets/hero/destellos.jpg" aria-hidden="true">
-      <source src="assets/hero/destellos.mp4" type="video/mp4">
-    </video>
-    <span class="s3-veil" aria-hidden="true"></span>
-    <span class="s3-bg" aria-hidden="true"></span>
-    <div class="s3-track">
-      <article class="s3-ch"><h1 id="s3Title">Somos <em>Saphiless.</em></h1><p>Ayudamos a negocios a atender mejor, verse mejor y hacer que sus clientes regresen.</p></article>
-      <article class="s3-ch"><h2>Automatizamos lo que <em>te quita el día.</em></h2><p>Llamadas, mensajes, citas y recordatorios, sin que tú tengas que contestar.</p></article>
-      <article class="s3-ch"><h2>Diseñamos lo que <em>hace que te elijan.</em></h2><p>Páginas, imágenes y redes con un plan detrás.</p></article>
-      <article class="s3-ch"><h2>Para que tu negocio crezca <em>sin que tú corras.</em></h2><div class="s3-ctas"><a class="s3-btn magnetic" href="#contacto">Agendar demo <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="s3-btn ghost" href="#productos">Ver productos</a></div></article>
+  <!-- ══════════ HERO · HORIZONTE ══════════
+     Video a pantalla completa en bucle y el mensaje anclado abajo.
+     La entrada y el parallax los arma el script «HERO · HORIZONTE». -->
+  <section class="hx" id="hero" aria-labelledby="hxTitle">
+    <div class="hx-media" aria-hidden="true">
+      <video class="hx-vid" autoplay muted loop playsinline preload="metadata" poster="assets/hero/horizonte.jpg">
+        <source src="assets/hero/horizonte.mp4" type="video/mp4">
+      </video>
     </div>
-    <span class="s3-prog" aria-hidden="true"><b></b></span>
+    <span class="hx-veil" aria-hidden="true"></span>
+    <div class="hx-in">
+      <p class="hx-kicker">Automatización, diseño y redes para negocios</p>
+      <h1 class="hx-title" id="hxTitle">Para que tu negocio crezca <span class="hx-soft">sin que tú corras.</span></h1>
+      <div class="hx-foot">
+        <p class="hx-lead">Ayudamos a negocios a atender mejor, verse mejor y hacer que sus clientes regresen.</p>
+        <div class="hx-ctas"><a class="hx-btn magnetic" href="#contacto">Agendar demo <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="hx-btn ghost" href="#productos">Ver productos</a></div>
+        <a class="hx-scroll" href="#ojos" aria-label="Bajar a la siguiente sección">Desliza <i aria-hidden="true"></i></a>
+      </div>
+    </div>
   </section>
 
   <!-- ══════════ DE LA VISTA NACE EL AMOR (reemplaza la franja de giros) ══════════ -->
@@ -1366,56 +1568,41 @@ html:not(.js) #productos .px-item{visibility:visible;opacity:1;margin-bottom:12p
   <!-- ══════════ PORTAFOLIO · dos filas que corren solas ══════════ -->
   <section id="portafolio" class="has-vline">
     <div class="wrap">
-      <div class="section-head">
+      <div class="section-head pf-head">
         <h2 class="t-heading js-mask" data-split="chars">Portafolio</h2>
-        <p class="t-body-lg pf-intro">Lo que hago para negocios como el tuyo. Las piezas con la etiqueta «Concepto» son para marcas de muestra.</p>
+        <p class="pf-intro">Lo que hago para negocios como el tuyo. Las piezas con la etiqueta «Concepto» son para marcas de muestra.</p>
       </div>
-    </div>
-    <div class="pf-rows" id="pfRows">
-      <div class="pf-row" data-dir="-1" role="group" aria-label="Piezas, fila 1">
-        <div class="pf-track">
-          <button type="button" class="pf-item" data-full="assets/portafolio/web/p01-1440.webp" data-fw="1440" data-fh="1800" data-alt="Así se ve cuando está bien hecho" data-tag="Concepto" aria-label="Ver grande: Así se ve cuando está bien hecho (Concepto)"><img src="assets/portafolio/web/p01-720.webp" width="720" height="900" alt="Así se ve cuando está bien hecho" loading="lazy" decoding="async" draggable="false"><span class="pf-tag is-c">Concepto</span></button>
-          <button type="button" class="pf-item" data-full="assets/portafolio/web/p03-1440.webp" data-fw="1440" data-fh="1800" data-alt="La llamada que no contestaste" data-tag="Saphiless" aria-label="Ver grande: La llamada que no contestaste (Saphiless)"><img src="assets/portafolio/web/p03-720.webp" width="720" height="900" alt="La llamada que no contestaste" loading="lazy" decoding="async" draggable="false"><span class="pf-tag is-s">Saphiless</span></button>
-          <button type="button" class="pf-item" data-full="assets/portafolio/web/p05-1440.webp" data-fw="1440" data-fh="1800" data-alt="Te los quitas. Comes. Te los pones." data-tag="Concepto" aria-label="Ver grande: Te los quitas. Comes. Te los pones. (Concepto)"><img src="assets/portafolio/web/p05-720.webp" width="720" height="900" alt="Te los quitas. Comes. Te los pones." loading="lazy" decoding="async" draggable="false"><span class="pf-tag is-c">Concepto</span></button>
-          <button type="button" class="pf-item" data-full="assets/portafolio/web/p07-1440.webp" data-fw="1440" data-fh="1800" data-alt="Lo que a simple vista no se ve" data-tag="Concepto" aria-label="Ver grande: Lo que a simple vista no se ve (Concepto)"><img src="assets/portafolio/web/p07-720.webp" width="720" height="900" alt="Lo que a simple vista no se ve" loading="lazy" decoding="async" draggable="false"><span class="pf-tag is-c">Concepto</span></button>
-          <button type="button" class="pf-item" data-full="assets/portafolio/web/p09-1440.webp" data-fw="1440" data-fh="1800" data-alt="16 tonos" data-tag="Concepto" aria-label="Ver grande: 16 tonos (Concepto)"><img src="assets/portafolio/web/p09-720.webp" width="720" height="900" alt="16 tonos" loading="lazy" decoding="async" draggable="false"><span class="pf-tag is-c">Concepto</span></button>
-          <button type="button" class="pf-item" data-full="assets/portafolio/web/p11-1440.webp" data-fw="1440" data-fh="1800" data-alt="Una decisión lo cambia todo" data-tag="Concepto" aria-label="Ver grande: Una decisión lo cambia todo (Concepto)"><img src="assets/portafolio/web/p11-720.webp" width="720" height="900" alt="Una decisión lo cambia todo" loading="lazy" decoding="async" draggable="false"><span class="pf-tag is-c">Concepto</span></button>
-          <button type="button" class="pf-item" data-full="assets/portafolio/web/p13-1440.webp" data-fw="1440" data-fh="1800" data-alt="Ortodoncia invisible" data-tag="Concepto" aria-label="Ver grande: Ortodoncia invisible (Concepto)"><img src="assets/portafolio/web/p13-720.webp" width="720" height="900" alt="Ortodoncia invisible" loading="lazy" decoding="async" draggable="false"><span class="pf-tag is-c">Concepto</span></button>
-          <button type="button" class="pf-item" data-full="assets/portafolio/web/p15-1440.webp" data-fw="1440" data-fh="1788" data-alt="Postres" data-tag="Concepto" aria-label="Ver grande: Postres (Concepto)"><img src="assets/portafolio/web/p15-720.webp" width="720" height="894" alt="Postres" loading="lazy" decoding="async" draggable="false"><span class="pf-tag is-c">Concepto</span></button>
-          <button type="button" class="pf-item pf-dup" aria-hidden="true" tabindex="-1" data-full="assets/portafolio/web/p01-1440.webp" data-fw="1440" data-fh="1800" data-alt="Así se ve cuando está bien hecho" data-tag="Concepto" aria-label="Ver grande: Así se ve cuando está bien hecho (Concepto)"><img src="assets/portafolio/web/p01-720.webp" width="720" height="900" alt="" loading="lazy" decoding="async" draggable="false"><span class="pf-tag is-c">Concepto</span></button>
-          <button type="button" class="pf-item pf-dup" aria-hidden="true" tabindex="-1" data-full="assets/portafolio/web/p03-1440.webp" data-fw="1440" data-fh="1800" data-alt="La llamada que no contestaste" data-tag="Saphiless" aria-label="Ver grande: La llamada que no contestaste (Saphiless)"><img src="assets/portafolio/web/p03-720.webp" width="720" height="900" alt="" loading="lazy" decoding="async" draggable="false"><span class="pf-tag is-s">Saphiless</span></button>
-          <button type="button" class="pf-item pf-dup" aria-hidden="true" tabindex="-1" data-full="assets/portafolio/web/p05-1440.webp" data-fw="1440" data-fh="1800" data-alt="Te los quitas. Comes. Te los pones." data-tag="Concepto" aria-label="Ver grande: Te los quitas. Comes. Te los pones. (Concepto)"><img src="assets/portafolio/web/p05-720.webp" width="720" height="900" alt="" loading="lazy" decoding="async" draggable="false"><span class="pf-tag is-c">Concepto</span></button>
-          <button type="button" class="pf-item pf-dup" aria-hidden="true" tabindex="-1" data-full="assets/portafolio/web/p07-1440.webp" data-fw="1440" data-fh="1800" data-alt="Lo que a simple vista no se ve" data-tag="Concepto" aria-label="Ver grande: Lo que a simple vista no se ve (Concepto)"><img src="assets/portafolio/web/p07-720.webp" width="720" height="900" alt="" loading="lazy" decoding="async" draggable="false"><span class="pf-tag is-c">Concepto</span></button>
-          <button type="button" class="pf-item pf-dup" aria-hidden="true" tabindex="-1" data-full="assets/portafolio/web/p09-1440.webp" data-fw="1440" data-fh="1800" data-alt="16 tonos" data-tag="Concepto" aria-label="Ver grande: 16 tonos (Concepto)"><img src="assets/portafolio/web/p09-720.webp" width="720" height="900" alt="" loading="lazy" decoding="async" draggable="false"><span class="pf-tag is-c">Concepto</span></button>
-          <button type="button" class="pf-item pf-dup" aria-hidden="true" tabindex="-1" data-full="assets/portafolio/web/p11-1440.webp" data-fw="1440" data-fh="1800" data-alt="Una decisión lo cambia todo" data-tag="Concepto" aria-label="Ver grande: Una decisión lo cambia todo (Concepto)"><img src="assets/portafolio/web/p11-720.webp" width="720" height="900" alt="" loading="lazy" decoding="async" draggable="false"><span class="pf-tag is-c">Concepto</span></button>
-          <button type="button" class="pf-item pf-dup" aria-hidden="true" tabindex="-1" data-full="assets/portafolio/web/p13-1440.webp" data-fw="1440" data-fh="1800" data-alt="Ortodoncia invisible" data-tag="Concepto" aria-label="Ver grande: Ortodoncia invisible (Concepto)"><img src="assets/portafolio/web/p13-720.webp" width="720" height="900" alt="" loading="lazy" decoding="async" draggable="false"><span class="pf-tag is-c">Concepto</span></button>
-          <button type="button" class="pf-item pf-dup" aria-hidden="true" tabindex="-1" data-full="assets/portafolio/web/p15-1440.webp" data-fw="1440" data-fh="1788" data-alt="Postres" data-tag="Concepto" aria-label="Ver grande: Postres (Concepto)"><img src="assets/portafolio/web/p15-720.webp" width="720" height="894" alt="" loading="lazy" decoding="async" draggable="false"><span class="pf-tag is-c">Concepto</span></button>
-        </div>
+      <div class="pf-stage" id="pfStage">
+      <div class="pf-wall" id="pfWall"></div>
+      <ul class="pf-grid" id="pfGrid">
+        <li class="pf-cell" data-s="dental"><button type="button" class="pf-item" data-full="assets/portafolio/web/p01-1440.webp" data-fw="1440" data-fh="1800" data-alt="Así se ve cuando está bien hecho" data-kind="Clínica dental · Concepto" aria-label="Ver grande: Así se ve cuando está bien hecho (Clínica dental · Concepto)"><span class="pf-shot"><img src="assets/portafolio/web/p01-720.webp" width="720" height="900" alt="Así se ve cuando está bien hecho" loading="lazy" decoding="async" draggable="false"><span class="pf-open" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></svg></span></span><span class="pf-meta"><span class="pf-name">Así se ve cuando está bien hecho</span><span class="pf-kind">Clínica dental · Concepto</span></span></button></li>
+        <li class="pf-cell" data-s="saph"><button type="button" class="pf-item" data-full="assets/portafolio/web/p03-1440.webp" data-fw="1440" data-fh="1800" data-alt="La llamada que no contestaste" data-kind="Saphiless" aria-label="Ver grande: La llamada que no contestaste (Saphiless)"><span class="pf-shot"><img src="assets/portafolio/web/p03-720.webp" width="720" height="900" alt="La llamada que no contestaste" loading="lazy" decoding="async" draggable="false"><span class="pf-open" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></svg></span></span><span class="pf-meta"><span class="pf-name">La llamada que no contestaste</span><span class="pf-kind is-s">Saphiless</span></span></button></li>
+        <li class="pf-cell" data-s="resto"><button type="button" class="pf-item" data-full="assets/portafolio/web/p18-1440.webp" data-fw="896" data-fh="1120" data-alt="El café de las 4" data-kind="Cafetería · Concepto" aria-label="Ver grande: El café de las 4 (Cafetería · Concepto)"><span class="pf-shot"><img src="assets/portafolio/web/p18-720.webp" width="720" height="900" alt="El café de las 4" loading="lazy" decoding="async" draggable="false"><span class="pf-open" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></svg></span></span><span class="pf-meta"><span class="pf-name">El café de las 4</span><span class="pf-kind">Cafetería · Concepto</span></span></button></li>
+        <li class="pf-cell" data-s="optica"><button type="button" class="pf-item" data-full="assets/portafolio/web/p04-1440.webp" data-fw="1440" data-fh="1800" data-alt="Una decisión lo cambia todo" data-kind="Óptica · Concepto" aria-label="Ver grande: Una decisión lo cambia todo (Óptica · Concepto)"><span class="pf-shot"><img src="assets/portafolio/web/p04-720.webp" width="720" height="900" alt="Una decisión lo cambia todo" loading="lazy" decoding="async" draggable="false"><span class="pf-open" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></svg></span></span><span class="pf-meta"><span class="pf-name">Una decisión lo cambia todo</span><span class="pf-kind">Óptica · Concepto</span></span></button></li>
+        <li class="pf-cell" data-s="resto"><button type="button" class="pf-item" data-full="assets/portafolio/web/p02-1440.webp" data-fw="1440" data-fh="1800" data-alt="Desayunar no es opcional" data-kind="Restaurante · Concepto" aria-label="Ver grande: Desayunar no es opcional (Restaurante · Concepto)"><span class="pf-shot"><img src="assets/portafolio/web/p02-720.webp" width="720" height="900" alt="Desayunar no es opcional" loading="lazy" decoding="async" draggable="false"><span class="pf-open" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></svg></span></span><span class="pf-meta"><span class="pf-name">Desayunar no es opcional</span><span class="pf-kind">Restaurante · Concepto</span></span></button></li>
+        <li class="pf-cell" data-s="bella"><button type="button" class="pf-item" data-full="assets/portafolio/web/p17-1440.webp" data-fw="896" data-fh="1120" data-alt="Piel que descansa" data-kind="Skincare · Concepto" aria-label="Ver grande: Piel que descansa (Skincare · Concepto)"><span class="pf-shot"><img src="assets/portafolio/web/p17-720.webp" width="720" height="900" alt="Piel que descansa" loading="lazy" decoding="async" draggable="false"><span class="pf-open" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></svg></span></span><span class="pf-meta"><span class="pf-name">Piel que descansa</span><span class="pf-kind">Skincare · Concepto</span></span></button></li>
+        <li class="pf-cell" data-s="dental"><button type="button" class="pf-item" data-full="assets/portafolio/web/p09-1440.webp" data-fw="1440" data-fh="1800" data-alt="16 tonos" data-kind="Clínica dental · Concepto" aria-label="Ver grande: 16 tonos (Clínica dental · Concepto)"><span class="pf-shot"><img src="assets/portafolio/web/p09-720.webp" width="720" height="900" alt="16 tonos" loading="lazy" decoding="async" draggable="false"><span class="pf-open" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></svg></span></span><span class="pf-meta"><span class="pf-name">16 tonos</span><span class="pf-kind">Clínica dental · Concepto</span></span></button></li>
+        <li class="pf-cell" data-s="resto"><button type="button" class="pf-item" data-full="assets/portafolio/web/p06-1440.webp" data-fw="1440" data-fh="1929" data-alt="Hamburguesa" data-kind="Restaurante · Concepto" aria-label="Ver grande: Hamburguesa (Restaurante · Concepto)"><span class="pf-shot"><img src="assets/portafolio/web/p06-720.webp" width="720" height="964" alt="Hamburguesa" loading="lazy" decoding="async" draggable="false"><span class="pf-open" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></svg></span></span><span class="pf-meta"><span class="pf-name">Hamburguesa</span><span class="pf-kind">Restaurante · Concepto</span></span></button></li>
+        <li class="pf-cell" data-s="resto"><button type="button" class="pf-item" data-full="assets/portafolio/web/p25-1440.webp" data-fw="1440" data-fh="1787" data-alt="Hoy toca mariscos" data-kind="Mariscos · Concepto" aria-label="Ver grande: Hoy toca mariscos (Mariscos · Concepto)"><span class="pf-shot"><img src="assets/portafolio/web/p25-720.webp" width="720" height="900" alt="Hoy toca mariscos" loading="lazy" decoding="async" draggable="false"><span class="pf-open" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></svg></span></span><span class="pf-meta"><span class="pf-name">Hoy toca mariscos</span><span class="pf-kind">Mariscos · Concepto</span></span></button></li>
+        <li class="pf-cell" data-s="optica"><button type="button" class="pf-item" data-full="assets/portafolio/web/p07-1440.webp" data-fw="1440" data-fh="1800" data-alt="Lo que a simple vista no se ve" data-kind="Óptica · Concepto" aria-label="Ver grande: Lo que a simple vista no se ve (Óptica · Concepto)"><span class="pf-shot"><img src="assets/portafolio/web/p07-720.webp" width="720" height="900" alt="Lo que a simple vista no se ve" loading="lazy" decoding="async" draggable="false"><span class="pf-open" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></svg></span></span><span class="pf-meta"><span class="pf-name">Lo que a simple vista no se ve</span><span class="pf-kind">Óptica · Concepto</span></span></button></li>
+        <li class="pf-cell" data-s="saph"><button type="button" class="pf-item" data-full="assets/portafolio/web/p08-1440.webp" data-fw="1440" data-fh="1800" data-alt="Busco 5 negocios en Veracruz" data-kind="Saphiless" aria-label="Ver grande: Busco 5 negocios en Veracruz (Saphiless)"><span class="pf-shot"><img src="assets/portafolio/web/p08-720.webp" width="720" height="900" alt="Busco 5 negocios en Veracruz" loading="lazy" decoding="async" draggable="false"><span class="pf-open" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></svg></span></span><span class="pf-meta"><span class="pf-name">Busco 5 negocios en Veracruz</span><span class="pf-kind is-s">Saphiless</span></span></button></li>
+        <li class="pf-cell" data-s="optica"><button type="button" class="pf-item" data-full="assets/portafolio/web/p19-1440.webp" data-fw="896" data-fh="1120" data-alt="Míralo distinto" data-kind="Óptica · Concepto" aria-label="Ver grande: Míralo distinto (Óptica · Concepto)"><span class="pf-shot"><img src="assets/portafolio/web/p19-720.webp" width="720" height="900" alt="Míralo distinto" loading="lazy" decoding="async" draggable="false"><span class="pf-open" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></svg></span></span><span class="pf-meta"><span class="pf-name">Míralo distinto</span><span class="pf-kind">Óptica · Concepto</span></span></button></li>
+        <li class="pf-cell" data-s="dental"><button type="button" class="pf-item" data-full="assets/portafolio/web/p05-1440.webp" data-fw="1440" data-fh="1800" data-alt="Te los quitas. Comes. Te los pones." data-kind="Clínica dental · Concepto" aria-label="Ver grande: Te los quitas. Comes. Te los pones. (Clínica dental · Concepto)"><span class="pf-shot"><img src="assets/portafolio/web/p05-720.webp" width="720" height="900" alt="Te los quitas. Comes. Te los pones." loading="lazy" decoding="async" draggable="false"><span class="pf-open" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></svg></span></span><span class="pf-meta"><span class="pf-name">Te los quitas. Comes. Te los pones.</span><span class="pf-kind">Clínica dental · Concepto</span></span></button></li>
+        <li class="pf-cell" data-s="resto"><button type="button" class="pf-item" data-full="assets/portafolio/web/p15-1440.webp" data-fw="1440" data-fh="1788" data-alt="Postres" data-kind="Restaurante · Concepto" aria-label="Ver grande: Postres (Restaurante · Concepto)"><span class="pf-shot"><img src="assets/portafolio/web/p15-720.webp" width="720" height="894" alt="Postres" loading="lazy" decoding="async" draggable="false"><span class="pf-open" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></svg></span></span><span class="pf-meta"><span class="pf-name">Postres</span><span class="pf-kind">Restaurante · Concepto</span></span></button></li>
+        <li class="pf-cell" data-s="resto"><button type="button" class="pf-item" data-full="assets/portafolio/web/p22-1440.webp" data-fw="896" data-fh="1120" data-alt="Recién salido" data-kind="Panadería · Concepto" aria-label="Ver grande: Recién salido (Panadería · Concepto)"><span class="pf-shot"><img src="assets/portafolio/web/p22-720.webp" width="720" height="900" alt="Recién salido" loading="lazy" decoding="async" draggable="false"><span class="pf-open" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></svg></span></span><span class="pf-meta"><span class="pf-name">Recién salido</span><span class="pf-kind">Panadería · Concepto</span></span></button></li>
+        <li class="pf-cell" data-s="dental"><button type="button" class="pf-item" data-full="assets/portafolio/web/p10-1440.webp" data-fw="1440" data-fh="1800" data-alt="Nadie en la junta va a notarlo" data-kind="Clínica dental · Concepto" aria-label="Ver grande: Nadie en la junta va a notarlo (Clínica dental · Concepto)"><span class="pf-shot"><img src="assets/portafolio/web/p10-720.webp" width="720" height="900" alt="Nadie en la junta va a notarlo" loading="lazy" decoding="async" draggable="false"><span class="pf-open" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></svg></span></span><span class="pf-meta"><span class="pf-name">Nadie en la junta va a notarlo</span><span class="pf-kind">Clínica dental · Concepto</span></span></button></li>
+        <li class="pf-cell" data-s="resto"><button type="button" class="pf-item" data-full="assets/portafolio/web/p12-1440.webp" data-fw="1440" data-fh="1788" data-alt="Collage de hamburguesas" data-kind="Restaurante · Concepto" aria-label="Ver grande: Collage de hamburguesas (Restaurante · Concepto)"><span class="pf-shot"><img src="assets/portafolio/web/p12-720.webp" width="720" height="894" alt="Collage de hamburguesas" loading="lazy" decoding="async" draggable="false"><span class="pf-open" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></svg></span></span><span class="pf-meta"><span class="pf-name">Collage de hamburguesas</span><span class="pf-kind">Restaurante · Concepto</span></span></button></li>
+        <li class="pf-cell" data-s="optica"><button type="button" class="pf-item" data-full="assets/portafolio/web/p11-1440.webp" data-fw="1440" data-fh="1800" data-alt="Una decisión lo cambia todo" data-kind="Óptica · Concepto" aria-label="Ver grande: Una decisión lo cambia todo (Óptica · Concepto)"><span class="pf-shot"><img src="assets/portafolio/web/p11-720.webp" width="720" height="900" alt="Una decisión lo cambia todo" loading="lazy" decoding="async" draggable="false"><span class="pf-open" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></svg></span></span><span class="pf-meta"><span class="pf-name">Una decisión lo cambia todo</span><span class="pf-kind">Óptica · Concepto</span></span></button></li>
+        <li class="pf-cell" data-s="resto"><button type="button" class="pf-item" data-full="assets/portafolio/web/p14-1440.webp" data-fw="1440" data-fh="1929" data-alt="Hamburguesa mordida" data-kind="Restaurante · Concepto" aria-label="Ver grande: Hamburguesa mordida (Restaurante · Concepto)"><span class="pf-shot"><img src="assets/portafolio/web/p14-720.webp" width="720" height="964" alt="Hamburguesa mordida" loading="lazy" decoding="async" draggable="false"><span class="pf-open" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></svg></span></span><span class="pf-meta"><span class="pf-name">Hamburguesa mordida</span><span class="pf-kind">Restaurante · Concepto</span></span></button></li>
+        <li class="pf-cell" data-s="bella"><button type="button" class="pf-item" data-full="assets/portafolio/web/p23-1440.webp" data-fw="896" data-fh="1120" data-alt="Tu color de la semana" data-kind="Salón de uñas · Concepto" aria-label="Ver grande: Tu color de la semana (Salón de uñas · Concepto)"><span class="pf-shot"><img src="assets/portafolio/web/p23-720.webp" width="720" height="900" alt="Tu color de la semana" loading="lazy" decoding="async" draggable="false"><span class="pf-open" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></svg></span></span><span class="pf-meta"><span class="pf-name">Tu color de la semana</span><span class="pf-kind">Salón de uñas · Concepto</span></span></button></li>
+        <li class="pf-cell" data-s="dental"><button type="button" class="pf-item" data-full="assets/portafolio/web/p13-1440.webp" data-fw="1440" data-fh="1800" data-alt="Ortodoncia invisible" data-kind="Clínica dental · Concepto" aria-label="Ver grande: Ortodoncia invisible (Clínica dental · Concepto)"><span class="pf-shot"><img src="assets/portafolio/web/p13-720.webp" width="720" height="900" alt="Ortodoncia invisible" loading="lazy" decoding="async" draggable="false"><span class="pf-open" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></svg></span></span><span class="pf-meta"><span class="pf-name">Ortodoncia invisible</span><span class="pf-kind">Clínica dental · Concepto</span></span></button></li>
+        <li class="pf-cell" data-s="dental"><button type="button" class="pf-item" data-full="assets/portafolio/web/p27-1440.webp" data-fw="896" data-fh="1120" data-alt="Tu revisión de cada seis meses" data-kind="Clínica dental · Concepto" aria-label="Ver grande: Tu revisión de cada seis meses (Clínica dental · Concepto)"><span class="pf-shot"><img src="assets/portafolio/web/p27-720.webp" width="720" height="900" alt="Tu revisión de cada seis meses" loading="lazy" decoding="async" draggable="false"><span class="pf-open" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></svg></span></span><span class="pf-meta"><span class="pf-name">Tu revisión de cada seis meses</span><span class="pf-kind">Clínica dental · Concepto</span></span></button></li>
+        <li class="pf-cell" data-s="dental"><button type="button" class="pf-item" data-full="assets/portafolio/web/p16-1440.webp" data-fw="1440" data-fh="810" data-alt="El resultado se ve antes de empezar" data-kind="Clínica dental · Concepto" aria-label="Ver grande: El resultado se ve antes de empezar (Clínica dental · Concepto)"><span class="pf-shot"><img src="assets/portafolio/web/p16-720.webp" width="720" height="405" alt="El resultado se ve antes de empezar" loading="lazy" decoding="async" draggable="false"><span class="pf-open" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></svg></span></span><span class="pf-meta"><span class="pf-name">El resultado se ve antes de empezar</span><span class="pf-kind">Clínica dental · Concepto</span></span></button></li>
+      </ul>
       </div>
-      <div class="pf-row" data-dir="1" role="group" aria-label="Piezas, fila 2">
-        <div class="pf-track">
-          <button type="button" class="pf-item" data-full="assets/portafolio/web/p02-1440.webp" data-fw="1440" data-fh="1800" data-alt="Desayunar no es opcional" data-tag="Concepto" aria-label="Ver grande: Desayunar no es opcional (Concepto)"><img src="assets/portafolio/web/p02-720.webp" width="720" height="900" alt="Desayunar no es opcional" loading="lazy" decoding="async" draggable="false"><span class="pf-tag is-c">Concepto</span></button>
-          <button type="button" class="pf-item" data-full="assets/portafolio/web/p04-1440.webp" data-fw="1440" data-fh="1800" data-alt="Una decisión lo cambia todo" data-tag="Concepto" aria-label="Ver grande: Una decisión lo cambia todo (Concepto)"><img src="assets/portafolio/web/p04-720.webp" width="720" height="900" alt="Una decisión lo cambia todo" loading="lazy" decoding="async" draggable="false"><span class="pf-tag is-c">Concepto</span></button>
-          <button type="button" class="pf-item" data-full="assets/portafolio/web/p06-1440.webp" data-fw="1440" data-fh="1929" data-alt="Hamburguesa" data-tag="Concepto" aria-label="Ver grande: Hamburguesa (Concepto)"><img src="assets/portafolio/web/p06-720.webp" width="720" height="964" alt="Hamburguesa" loading="lazy" decoding="async" draggable="false"><span class="pf-tag is-c">Concepto</span></button>
-          <button type="button" class="pf-item" data-full="assets/portafolio/web/p08-1440.webp" data-fw="1440" data-fh="1800" data-alt="Busco 5 negocios en Veracruz" data-tag="Saphiless" aria-label="Ver grande: Busco 5 negocios en Veracruz (Saphiless)"><img src="assets/portafolio/web/p08-720.webp" width="720" height="900" alt="Busco 5 negocios en Veracruz" loading="lazy" decoding="async" draggable="false"><span class="pf-tag is-s">Saphiless</span></button>
-          <button type="button" class="pf-item" data-full="assets/portafolio/web/p10-1440.webp" data-fw="1440" data-fh="1800" data-alt="Nadie en la junta va a notarlo" data-tag="Concepto" aria-label="Ver grande: Nadie en la junta va a notarlo (Concepto)"><img src="assets/portafolio/web/p10-720.webp" width="720" height="900" alt="Nadie en la junta va a notarlo" loading="lazy" decoding="async" draggable="false"><span class="pf-tag is-c">Concepto</span></button>
-          <button type="button" class="pf-item" data-full="assets/portafolio/web/p12-1440.webp" data-fw="1440" data-fh="1788" data-alt="Collage de hamburguesas" data-tag="Concepto" aria-label="Ver grande: Collage de hamburguesas (Concepto)"><img src="assets/portafolio/web/p12-720.webp" width="720" height="894" alt="Collage de hamburguesas" loading="lazy" decoding="async" draggable="false"><span class="pf-tag is-c">Concepto</span></button>
-          <button type="button" class="pf-item" data-full="assets/portafolio/web/p14-1440.webp" data-fw="1440" data-fh="1929" data-alt="Hamburguesa mordida" data-tag="Concepto" aria-label="Ver grande: Hamburguesa mordida (Concepto)"><img src="assets/portafolio/web/p14-720.webp" width="720" height="964" alt="Hamburguesa mordida" loading="lazy" decoding="async" draggable="false"><span class="pf-tag is-c">Concepto</span></button>
-          <button type="button" class="pf-item" data-full="assets/portafolio/web/p16-1440.webp" data-fw="1440" data-fh="810" data-alt="El resultado se ve antes de empezar" data-tag="Concepto" aria-label="Ver grande: El resultado se ve antes de empezar (Concepto)"><img src="assets/portafolio/web/p16-720.webp" width="720" height="405" alt="El resultado se ve antes de empezar" loading="lazy" decoding="async" draggable="false"><span class="pf-tag is-c">Concepto</span></button>
-          <button type="button" class="pf-item pf-dup" aria-hidden="true" tabindex="-1" data-full="assets/portafolio/web/p02-1440.webp" data-fw="1440" data-fh="1800" data-alt="Desayunar no es opcional" data-tag="Concepto" aria-label="Ver grande: Desayunar no es opcional (Concepto)"><img src="assets/portafolio/web/p02-720.webp" width="720" height="900" alt="" loading="lazy" decoding="async" draggable="false"><span class="pf-tag is-c">Concepto</span></button>
-          <button type="button" class="pf-item pf-dup" aria-hidden="true" tabindex="-1" data-full="assets/portafolio/web/p04-1440.webp" data-fw="1440" data-fh="1800" data-alt="Una decisión lo cambia todo" data-tag="Concepto" aria-label="Ver grande: Una decisión lo cambia todo (Concepto)"><img src="assets/portafolio/web/p04-720.webp" width="720" height="900" alt="" loading="lazy" decoding="async" draggable="false"><span class="pf-tag is-c">Concepto</span></button>
-          <button type="button" class="pf-item pf-dup" aria-hidden="true" tabindex="-1" data-full="assets/portafolio/web/p06-1440.webp" data-fw="1440" data-fh="1929" data-alt="Hamburguesa" data-tag="Concepto" aria-label="Ver grande: Hamburguesa (Concepto)"><img src="assets/portafolio/web/p06-720.webp" width="720" height="964" alt="" loading="lazy" decoding="async" draggable="false"><span class="pf-tag is-c">Concepto</span></button>
-          <button type="button" class="pf-item pf-dup" aria-hidden="true" tabindex="-1" data-full="assets/portafolio/web/p08-1440.webp" data-fw="1440" data-fh="1800" data-alt="Busco 5 negocios en Veracruz" data-tag="Saphiless" aria-label="Ver grande: Busco 5 negocios en Veracruz (Saphiless)"><img src="assets/portafolio/web/p08-720.webp" width="720" height="900" alt="" loading="lazy" decoding="async" draggable="false"><span class="pf-tag is-s">Saphiless</span></button>
-          <button type="button" class="pf-item pf-dup" aria-hidden="true" tabindex="-1" data-full="assets/portafolio/web/p10-1440.webp" data-fw="1440" data-fh="1800" data-alt="Nadie en la junta va a notarlo" data-tag="Concepto" aria-label="Ver grande: Nadie en la junta va a notarlo (Concepto)"><img src="assets/portafolio/web/p10-720.webp" width="720" height="900" alt="" loading="lazy" decoding="async" draggable="false"><span class="pf-tag is-c">Concepto</span></button>
-          <button type="button" class="pf-item pf-dup" aria-hidden="true" tabindex="-1" data-full="assets/portafolio/web/p12-1440.webp" data-fw="1440" data-fh="1788" data-alt="Collage de hamburguesas" data-tag="Concepto" aria-label="Ver grande: Collage de hamburguesas (Concepto)"><img src="assets/portafolio/web/p12-720.webp" width="720" height="894" alt="" loading="lazy" decoding="async" draggable="false"><span class="pf-tag is-c">Concepto</span></button>
-          <button type="button" class="pf-item pf-dup" aria-hidden="true" tabindex="-1" data-full="assets/portafolio/web/p14-1440.webp" data-fw="1440" data-fh="1929" data-alt="Hamburguesa mordida" data-tag="Concepto" aria-label="Ver grande: Hamburguesa mordida (Concepto)"><img src="assets/portafolio/web/p14-720.webp" width="720" height="964" alt="" loading="lazy" decoding="async" draggable="false"><span class="pf-tag is-c">Concepto</span></button>
-          <button type="button" class="pf-item pf-dup" aria-hidden="true" tabindex="-1" data-full="assets/portafolio/web/p16-1440.webp" data-fw="1440" data-fh="810" data-alt="El resultado se ve antes de empezar" data-tag="Concepto" aria-label="Ver grande: El resultado se ve antes de empezar (Concepto)"><img src="assets/portafolio/web/p16-720.webp" width="720" height="405" alt="" loading="lazy" decoding="async" draggable="false"><span class="pf-tag is-c">Concepto</span></button>
-        </div>
+      <div class="pf-foot">
+        <button type="button" class="pf-more" id="pfMore" aria-expanded="false"><span>Ver las 23 piezas</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg></button>
       </div>
-    </div>
-    <div class="wrap pf-foot">
-      <button type="button" class="pill pill-sm pf-toggle" id="pfToggle" aria-pressed="false">Pausar</button>
-      <p class="pf-hint" id="pfHint">Se frena al pasar el mouse. Clic en una pieza para verla grande.</p>
     </div>
   </section>
 
@@ -1524,26 +1711,19 @@ html:not(.js) #productos .px-item{visibility:visible;opacity:1;margin-bottom:12p
   <p class="t-body-lg muted dz-lead">Lanza la moneda. Del resto me encargo yo.</p>
 
   <div class="dz-fuente" id="dzFuente">
-    <svg id="dzSvg" viewBox="0 0 600 330" aria-hidden="true">
+    <span class="dz-beam" aria-hidden="true"></span>
+    <div class="dz-pozo-wrap" aria-hidden="true"><img class="dz-pozo" src="assets/pozo.webp" srcset="assets/pozo.webp 1124w, assets/pozo@2x.webp 2248w" sizes="(max-width: 1000px) 100vw, 1000px" width="1124" height="202" alt="" loading="lazy" decoding="async"></div>
+    <svg id="dzSvg" viewBox="0 -170 1124 372" aria-hidden="true">
       <defs>
-        <radialGradient id="dzAgua" cx="50%" cy="40%" r="70%"><stop offset="0" stop-color="#8B6DE8"/><stop offset=".55" stop-color="#3a1aa6"/><stop offset="1" stop-color="#170b45"/></radialGradient>
-        <clipPath id="dzAguaC"><ellipse cx="300" cy="160" rx="240" ry="92"/></clipPath>
+        <radialGradient id="dzOro" cx="35%" cy="30%" r="75%"><stop offset="0" stop-color="#FFF3D1"/><stop offset=".3" stop-color="#F2C76A"/><stop offset=".7" stop-color="#C9932F"/><stop offset="1" stop-color="#7A5418"/></radialGradient>
+        <clipPath id="dzAguaC"><ellipse cx="557" cy="81" rx="420" ry="66"/></clipPath>
       </defs>
-      <ellipse cx="300" cy="182" rx="272" ry="112" fill="#120835"/>
-      <ellipse cx="300" cy="164" rx="272" ry="110" fill="#26135f" stroke="rgba(242,239,234,.35)" stroke-width="2"/>
-      <ellipse cx="300" cy="160" rx="240" ry="92" fill="url(#dzAgua)"/>
-      <g clip-path="url(#dzAguaC)" opacity=".55">
-        <ellipse cx="210" cy="185" rx="9" ry="4" fill="#FFC46B"/><ellipse cx="380" cy="200" rx="9" ry="4" fill="#FFC46B"/><ellipse cx="330" cy="130" rx="8" ry="3.5" fill="#FFC46B"/><ellipse cx="250" cy="140" rx="7" ry="3" fill="#FFC46B"/>
-        <path class="dz-br" d="M150 150 q20 -6 40 0" stroke="rgba(242,239,234,.4)" stroke-width="2" fill="none"/>
-        <path class="dz-br" d="M390 170 q24 -7 48 0" stroke="rgba(242,239,234,.35)" stroke-width="2" fill="none"/>
-        <path class="dz-br" d="M280 205 q18 -5 36 0" stroke="rgba(242,239,234,.3)" stroke-width="2" fill="none"/>
-      </g>
       <g id="dzRip" clip-path="url(#dzAguaC)"></g>
       <g id="dzFly"></g>
     </svg>
-    <button class="dz-coin" id="dzCoin" type="button" aria-label="Lanzar la moneda a la fuente">S</button>
+    <div class="dz-coin-float"><button class="dz-coin" id="dzCoin" type="button" aria-label="Lanzar la moneda a la fuente"><span>S</span></button></div>
   </div>
-  <p class="muted dz-hint" id="dzHint">Arrástrala hacia arriba y suelta, o solo tócala.</p>
+  <p class="muted dz-hint" id="dzHint"><span class="dz-hint-i" aria-hidden="true"></span>Arrastra la moneda hacia el agua, o solo tócala</p>
 
   <ul class="dz-wishes" id="dzWishes" hidden aria-live="polite">
     <li>Más clientes recurrentes.</li>
@@ -2553,38 +2733,36 @@ if (document.fonts && document.fonts.ready) document.fonts.ready.then(function (
 </script>
 
 <script>
-/* ══ HERO · CAPÍTULOS ══════════════════════════════════════════
-   La entrada del primer capítulo se cuelga de heroTl (la dispara la
-   cortina de píxeles). El scroll vertical mueve los capítulos en
-   horizontal con la sección anclada; cada capítulo que llega sube y
-   el que se va se apaga. Con movimiento reducido: todo quieto, en columna. */
+/* ══ HERO · HORIZONTE ══════════════════════════════════════════
+   La entrada se cuelga de heroTl (la dispara la cortina de píxeles):
+   el titular sube palabra por palabra, luego la línea y lo de abajo.
+   Al bajar, el video se hunde despacio y el texto se va primero.
+   El video solo corre mientras el hero está a la vista.
+   Con movimiento reducido: imagen fija, todo quieto. */
 (function () {
   'use strict';
   var root = document.getElementById('hero');
-  if (!root || !root.classList.contains('s3') || typeof window.gsap === 'undefined' || typeof window.ScrollTrigger === 'undefined') return;
-  var vid = root.querySelector('.s3-vid');
+  if (!root || !root.classList.contains('hx') || typeof window.gsap === 'undefined' || typeof window.ScrollTrigger === 'undefined') return;
+  var vid = root.querySelector('.hx-vid');
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { if (vid) { vid.removeAttribute('autoplay'); vid.pause(); } return; }
-  /* el video solo corre mientras el hero está a la vista */
   if (vid && 'IntersectionObserver' in window) new IntersectionObserver(function (e) { if (e[0].isIntersecting) { var p = vid.play(); if (p && p.catch) p.catch(function () {}); } else vid.pause(); }).observe(root);
   gsap.registerPlugin(ScrollTrigger);
-  var track = root.querySelector('.s3-track'), chs = gsap.utils.toArray(root.querySelectorAll('.s3-ch'));
-  var bar = root.querySelector('.s3-prog b'), bg = root.querySelector('.s3-bg');
+  var title = root.querySelector('.hx-title'), foot = root.querySelector('.hx-foot');
+  var media = root.querySelector('.hx-media'), inner = root.querySelector('.hx-in');
 
+  var words = [title];
+  if (window.SplitText) { try { words = new SplitText(title, { type: 'words' }).words; } catch (err) { words = [title]; } }
   var intro = window.heroTl || gsap.timeline();
-  intro.from(chs[0].children, { y: 30, opacity: 0, duration: 1.3, ease: 'expo.out', stagger: .12 }, .05);
+  intro
+    .from(media, { scale: 1.12, duration: 2.6, ease: 'expo.out' }, 0)
+    .from(root.querySelector('.hx-kicker'), { y: 14, opacity: 0, duration: 1, ease: 'expo.out' }, .1)
+    .from(words, { yPercent: 55, opacity: 0, duration: 1.25, ease: 'expo.out', stagger: .055 }, .15)
+    .fromTo(foot, { '--hxl': 0 }, { '--hxl': 1, duration: 1.2, ease: 'expo.out' }, .55)
+    .from(foot.children, { y: 18, opacity: 0, duration: 1.1, ease: 'expo.out', stagger: .08 }, .6);
 
-  var move = gsap.to(track, { x: function () { return -(track.scrollWidth - window.innerWidth); }, ease: 'none',
-    scrollTrigger: { trigger: root, start: 'top top', end: function () { return '+=' + (track.scrollWidth - window.innerWidth) * 1.1; },
-      pin: true, scrub: .7, invalidateOnRefresh: true,
-      onUpdate: function (st) { gsap.set(bar, { scaleX: st.progress }); gsap.set(bg, { opacity: st.progress }); } } });
-
-  chs.forEach(function (ch, i) {
-    if (i > 0) gsap.from(ch.querySelectorAll('h2, p, .s3-ctas'), { y: 40, opacity: 0, stagger: .08, ease: 'power2.out',
-      scrollTrigger: { trigger: ch, containerAnimation: move, start: 'left 75%', end: 'left 25%', scrub: true } });
-    /* parte siempre de visible: la entrada del primer capítulo lo deja en 0 mientras espera la cortina */
-    if (i < chs.length - 1) gsap.fromTo(ch.children, { opacity: 1 }, { opacity: .15, ease: 'none', immediateRender: false,
-      scrollTrigger: { trigger: ch, containerAnimation: move, start: 'right 70%', end: 'right 20%', scrub: true } });
-  });
+  gsap.to(media, { yPercent: 9, ease: 'none', scrollTrigger: { trigger: root, start: 'top top', end: 'bottom top', scrub: true } });
+  gsap.fromTo(inner, { opacity: 1, y: 0 }, { opacity: 0, y: -50, ease: 'none', immediateRender: false,
+    scrollTrigger: { trigger: root, start: 'top top', end: '55% top', scrub: true } });
 })();
 </script>
 
@@ -2674,7 +2852,7 @@ if (document.fonts && document.fonts.ready) document.fonts.ready.then(function (
 
   /* CTAs de viaje: Agendar demo (header) y los dos botones del hero */
   var navTargets = [];
-  document.querySelectorAll('a.pill-grad[href^="#"], #hero a.s3-btn[href^="#"]').forEach(function (a) {
+  document.querySelectorAll('a.pill-grad[href^="#"], #hero a.hx-btn[href^="#"]').forEach(function (a) {
     if (navTargets.indexOf(a) < 0) navTargets.push(a);
   });
   document.addEventListener('click', function (e) {
@@ -3259,80 +3437,373 @@ if (document.fonts && document.fonts.ready) document.fonts.ready.then(function (
   requestAnimationFrame(function () { ScrollTrigger.refresh(); });
 })();
 
-/* ══ Portafolio · dos filas, vista grande ═══════════════════════════════════════
-   Cada fila lleva sus piezas dos veces; x avanza con el ticker y se envuelve
-   en media pista, así el loop no salta. ~40 s por media pista. Con el mouse
-   (o el foco) encima, esa fila frena suave hasta 0; el botón Pausar detiene
-   las dos. Fuera de pantalla no se calcula nada. Movimiento reducido: filas
-   quietas con scroll manual. */
+/* ══ Portafolio · cuadrícula, filtro y vista grande ═════════════════════════════
+   Dos filas a la vista; «Ver las 16 piezas» abre el resto. El filtro por giro
+   muestra todas las de ese giro. La vista grande recorre las piezas visibles
+   con flechas (botones o teclado). Cada cambio de alto refresca ScrollTrigger
+   para que los anclajes de abajo (Casos) no se muevan de lugar. */
 (function () {
   'use strict';
   var sec = document.getElementById('portafolio');
   if (!sec) return;
-  var toggle = document.getElementById('pfToggle');
-  var hint = document.getElementById('pfHint');
+  var grid = document.getElementById('pfGrid');
+  var more = document.getElementById('pfMore'), foot = more ? more.parentNode : null;
+  var countEl = document.getElementById('pfCount');
+  var cells = Array.prototype.slice.call(grid.querySelectorAll('.pf-cell'));
+  var filters = Array.prototype.slice.call(sec.querySelectorAll('.pf-f'));
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var hasGsap = typeof window.gsap !== 'undefined';
-  var SECONDS = 40;
+  var current = 'all', expanded = false;
 
-  var rows = Array.prototype.slice.call(sec.querySelectorAll('.pf-row')).map(function (row) {
-    return { row: row, track: row.querySelector('.pf-track'), dir: +row.getAttribute('data-dir') || -1, x: 0, half: 0, f: 1 };
-  });
+  var stage = document.getElementById('pfStage'), wall = document.getElementById('pfWall'), prog = document.getElementById('pfProg');
+  var mqWall = { matches: true };
+  var canWall = !!(stage && wall && hasGsap && window.ScrollTrigger && !reduce);
+  var wallOn = false, cols = [], wallTl = null, entered = false, lastN = 0;
 
-  /* en pantallas táctiles no hay mouse que frene la fila */
-  if (hint && window.matchMedia && window.matchMedia('(hover: none)').matches) hint.textContent = 'Toca una pieza para verla grande.';
-  if (reduce || !hasGsap) {
-    sec.classList.add('pf-static');
-    if (hint) hint.textContent = 'Desliza cada fila para ver más. ' + (window.matchMedia('(hover: none)').matches ? 'Toca' : 'Clic en') + ' una pieza para verla grande.';
-  } else {
-    var g = { v: 1 }, paused = false, visible = false;
-    function measure() {
-      rows.forEach(function (r) {
-        var kids = r.track.children, n = kids.length / 2;
-        if (!n) return;
-        var half = kids[n].offsetLeft - kids[0].offsetLeft;
-        if (half > 0) {
-          if (r.half) r.x = r.x / r.half * half;           /* conserva el punto del loop */
-          else r.x = r.dir > 0 ? -half : 0;
-          r.half = half;
-        }
+  function shown() { return cells.filter(function (c) { return c.offsetParent !== null; }); }
+  function match(c) { return current === 'all' || c.getAttribute('data-s') === current; }
+  function relayout() {
+    if (window.ScrollTrigger) { ScrollTrigger.sort(); ScrollTrigger.refresh(); }
+    if (window.lenis && window.lenis.resize) window.lenis.resize();
+  }
+  function reveal(list, wide) {
+    if (!hasGsap || reduce || !list.length) return;
+    gsap.fromTo(list, { opacity: 0, y: wide ? 34 : 22 }, { opacity: 1, y: 0, duration: wide ? .85 : .7, ease: 'power3.out', stagger: wide ? { each: .03, from: 'random' } : .045, overwrite: true, clearProps: 'opacity,transform' });
+  }
+  var countB = countEl ? countEl.querySelector('b') : null, countS = countEl ? countEl.querySelector('span') : null, countV = { n: cells.length };
+  function setCount(n) {
+    if (!countEl) return;
+    if (!countB) { countEl.textContent = n + (n === 1 ? ' pieza' : ' piezas'); return; }
+    countS.textContent = n === 1 ? 'pieza' : 'piezas';
+    if (!hasGsap || reduce) { countB.textContent = pad(n); return; }
+    gsap.to(countV, { n: n, duration: .7, ease: 'power3.out', overwrite: true, onUpdate: function () { countB.textContent = pad(Math.round(countV.n)); } });
+  }
+  function hdrH() { var v = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--hdr-h')); return isFinite(v) ? v : 74; }
+  function colCount() { return window.innerWidth >= 1180 ? 4 : 3; }
+  function travel(col) { return Math.max(0, col.offsetHeight - wall.clientHeight); }
+  function maxTravel() { return cols.length ? Math.max.apply(null, cols.map(travel)) : 0; }
+
+  /* ── vistas de escritorio: carrusel, pila, cinta y muro ── */
+  var MODES = ['cine'];
+  var modeBtns = Array.prototype.slice.call(sec.querySelectorAll('.pf-modes button'));
+  var mode = (function () {
+    var m = /[?&]pf=([a-z]+)/.exec(location.search), v = m && m[1];
+    try { v = v || localStorage.getItem('pfVista'); } catch (e) {}
+    return 'cine';
+  })();
+  var extras = [];
+  function el(tag, cls) { var e = document.createElement(tag); e.className = cls; return e; }
+  function pad(n) { return (n < 10 ? '0' : '') + n; }
+  function btnOf(c) { return c.querySelector('.pf-item'); }
+  function pinned(endFn, scrub) {
+    return gsap.timeline({ defaults: { ease: 'none' }, scrollTrigger: {
+      trigger: stage, start: function () { return 'top ' + hdrH() + 'px'; }, end: endFn,
+      pin: true, scrub: scrub, anticipatePin: 1, invalidateOnRefresh: true } });
+  }
+  function killWall() {
+    if (wallTl) { if (wallTl.scrollTrigger) wallTl.scrollTrigger.kill(true); wallTl.kill(); wallTl = null; }
+    extras.forEach(function (f) { f(); }); extras = [];
+    cells.forEach(function (c) { grid.appendChild(c); c.style.zIndex = ''; });
+    gsap.set(cells.map(btnOf), { clearProps: 'all' });
+    wall.textContent = ''; cols = [];
+    Array.prototype.slice.call(sec.querySelectorAll('.pf-clone')).forEach(function (c) { c.remove(); });
+    MODES.forEach(function (m) { stage.classList.remove('pf-m-' + m); });
+    stage.classList.remove('is-short');
+    if (prog) gsap.set(prog, { scaleX: 0 });
+  }
+  var BUILD = {};
+
+  /* muro: columnas que corren en sentidos opuestos */
+  BUILD.muro = function (list) {
+    var n = colCount(), all = [], i;
+    wall.style.setProperty('--pf-n', n);
+    for (i = 0; i < n; i++) all.push(el('ul', 'pf-col'));
+    list.forEach(function (c, k) { all[k % n].appendChild(c); });
+    cols = all.filter(function (u) { return u.children.length; });
+    cols.forEach(function (u) { wall.appendChild(u); });
+    if (maxTravel() < 40) { stage.classList.add('is-short'); return; }
+    wallTl = pinned(function () { return '+=' + Math.max(1, maxTravel()); }, true);
+    cols.forEach(function (col, k) {
+      var down = k % 2 === 1;
+      wallTl.fromTo(col, { y: function () { return down ? -travel(col) : 0; } }, { y: function () { return down ? 0 : -travel(col); } }, 0);
+    });
+    if (prog) wallTl.fromTo(prog, { scaleX: 0 }, { scaleX: 1 }, 0);
+  };
+
+  /* carrusel: fila horizontal con la pieza del centro en foco */
+  BUILD.carrusel = function (list) {
+    var track = el('ul', 'pf-track'), items = list.map(btnOf);
+    wall.appendChild(track);
+    list.forEach(function (c) { track.appendChild(c); });
+    function size() { wall.style.setProperty('--cw', Math.round(Math.min(470, Math.max(220, (wall.clientHeight - 130) * .8))) + 'px'); }
+    function dist() { return Math.max(0, track.offsetWidth - wall.clientWidth); }
+    function focus() {
+      var mid = window.innerWidth / 2, best = 0, bd = 1e9;
+      list.forEach(function (c, i) {
+        var r = c.getBoundingClientRect(), d = Math.abs(r.left + r.width / 2 - mid), t = Math.min(1, d / (window.innerWidth * .6));
+        gsap.set(items[i], { scale: 1 - t * .17, opacity: 1 - t * .45 });
+        if (d < bd) { bd = d; best = i; }
+      });
+      if (countEl) countEl.textContent = pad(best + 1) + ' / ' + pad(list.length);
+    }
+    size();
+    if (list.length < 2 || dist() < 40) { stage.classList.add('is-short'); return; }
+    wallTl = pinned(function () { size(); return '+=' + Math.max(1, Math.round(dist() * .42)); }, .5);
+    wallTl.fromTo(track, { x: 0 }, { x: function () { return -dist(); } }, 0);
+    if (prog) wallTl.fromTo(prog, { scaleX: 0 }, { scaleX: 1 }, 0);
+    wallTl.eventCallback('onUpdate', focus);
+    focus();
+  };
+
+  /* pila: una pieza grande a la vez; las demás suben y se apilan */
+  BUILD.pila = function (list) {
+    var info = el('div', 'pf-deck-info'), deck = el('ul', 'pf-deck'), items = list.map(btnOf), n = list.length, cur = -1;
+    var nEl = el('span', 'pf-deck-n'), name = el('span', 'pf-deck-name'), kind = el('span', 'pf-deck-kind'), hint = el('span', 'pf-deck-hint');
+    hint.textContent = 'Desliza para pasar las piezas. Un clic la abre en grande.';
+    info.appendChild(nEl); info.appendChild(name); info.appendChild(kind); info.appendChild(hint);
+    wall.appendChild(info); wall.appendChild(deck);
+    list.forEach(function (c, i) { deck.appendChild(c); c.style.zIndex = i + 1; });
+    function size() { wall.style.setProperty('--cw', Math.round(Math.min(460, Math.max(220, (wall.clientHeight - 70) * .8))) + 'px'); }
+    function rot(i) { return ((i * 37) % 9) - 4; }
+    function setInfo(i) {
+      if (i === cur || !items[i]) return;
+      cur = i;
+      nEl.textContent = pad(i + 1) + ' / ' + pad(n);
+      name.textContent = items[i].getAttribute('data-alt');
+      kind.textContent = items[i].getAttribute('data-kind');
+      if (countEl) countEl.textContent = pad(i + 1) + ' / ' + pad(n);
+      gsap.fromTo([name, kind], { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: .4, ease: 'power3.out', stagger: .05, overwrite: true });
+    }
+    size(); setInfo(0);
+    gsap.set(items[0], { rotation: rot(0) });
+    if (n < 2) { stage.classList.add('is-short'); return; }
+    wallTl = pinned(function () { size(); return '+=' + (n - 1) * 170; }, .5);
+    items.forEach(function (it, i) {
+      if (!i) return;
+      wallTl.fromTo(it, { yPercent: 135, rotation: rot(i) + 12 }, { yPercent: 0, rotation: rot(i), duration: 1, ease: 'power2.out' }, i - 1);
+      wallTl.to(items[i - 1], { scale: .93, duration: 1 }, i - 1);
+    });
+    if (prog) wallTl.fromTo(prog, { scaleX: 0 }, { scaleX: 1, duration: n - 1 }, 0);
+    wallTl.eventCallback('onUpdate', function () { setInfo(Math.round(wallTl.progress() * (n - 1))); });
+  };
+
+  /* cinta: dos filas sin fin en sentidos opuestos; el scroll las acelera */
+  BUILD.cinta = function (list) {
+    var half = Math.ceil(list.length / 2), groups = list.length > 3 ? [list.slice(0, half), list.slice(half)] : [list];
+    var boost = 0, hover = 1, hoverT = 1;
+    var rows = groups.map(function (g, r) {
+      var ul = el('ul', 'pf-row'); wall.appendChild(ul);
+      g.forEach(function (c) { ul.appendChild(c); });
+      var gap = parseFloat(getComputedStyle(ul).columnGap) || 24, unit = ul.offsetWidth + gap;
+      var reps = Math.max(2, Math.ceil((window.innerWidth + unit) / unit)), k;
+      for (k = 1; k < reps; k++) g.forEach(function (c) {
+        var cl = c.cloneNode(true), b = cl.querySelector('.pf-item');
+        cl.classList.add('pf-clone'); cl.setAttribute('aria-hidden', 'true'); cl.setAttribute('data-i', cells.indexOf(c));
+        cl.removeAttribute('style'); b.removeAttribute('style'); b.tabIndex = -1;
+        ul.appendChild(cl);
+      });
+      return { unit: unit, x: r % 2 ? -unit : 0, dir: r % 2 ? 1 : -1, set: gsap.quickSetter(ul, 'x', 'px') };
+    });
+    rows.forEach(function (o) { o.set(o.x); });
+    var watch = ScrollTrigger.create({ trigger: stage, start: 'top bottom', end: 'bottom top',
+      onUpdate: function (self) { boost = gsap.utils.clamp(0, 900, Math.abs(self.getVelocity()) * .22); } });
+    function tick(time, dt) {
+      if (!watch.isActive) return;
+      hover += (hoverT - hover) * .08; boost *= .93;
+      rows.forEach(function (o) {
+        o.x += o.dir * (42 + boost) * hover * Math.min(dt, 60) / 1000;
+        if (o.x <= -o.unit) o.x += o.unit; else if (o.x > 0) o.x -= o.unit;
+        o.set(o.x);
       });
     }
-    function tick(dt) {
-      if (!visible) return;
-      for (var i = 0; i < rows.length; i++) {
-        var r = rows[i];
-        if (!r.half) continue;
-        r.x += r.dir * (r.half / SECONDS) * r.f * g.v * dt;
-        if (r.x <= -r.half) r.x += r.half;
-        else if (r.x > 0) r.x -= r.half;
-        r.track.style.transform = 'translate3d(' + r.x.toFixed(2) + 'px,0,0)';
-      }
+    function over() { hoverT = .12; } function out() { hoverT = 1; }
+    function cloneClick(e) {
+      var cl = e.target.closest('.pf-clone'); if (!cl) return;
+      e.stopPropagation(); e.preventDefault();
+      var orig = cells[+cl.getAttribute('data-i')];
+      if (orig && window.__pfView) window.__pfView.open(btnOf(orig));
     }
-    gsap.ticker.add(function (t, deltaMs) { tick(Math.min(deltaMs || 16.7, 100) / 1000); });
-
-    rows.forEach(function (r) {
-      function slow() { gsap.to(r, { f: 0, duration: 0.9, ease: 'power2.out', overwrite: true }); }
-      function go() { gsap.to(r, { f: 1, duration: 0.9, ease: 'power2.in', overwrite: true }); }
-      r.row.addEventListener('mouseenter', slow);
-      r.row.addEventListener('mouseleave', function () { if (!r.row.contains(document.activeElement)) go(); });
-      r.row.addEventListener('focusin', slow);
-      r.row.addEventListener('focusout', function () { setTimeout(function () { if (!r.row.contains(document.activeElement) && !r.row.matches(':hover')) go(); }, 0); });
+    gsap.ticker.add(tick);
+    wall.addEventListener('mouseenter', over); wall.addEventListener('mouseleave', out); wall.addEventListener('click', cloneClick, true);
+    extras.push(function () {
+      gsap.ticker.remove(tick); watch.kill();
+      wall.removeEventListener('mouseenter', over); wall.removeEventListener('mouseleave', out); wall.removeEventListener('click', cloneClick, true);
     });
+  };
 
-    toggle.addEventListener('click', function () {
-      paused = !paused;
-      toggle.textContent = paused ? 'Reanudar' : 'Pausar';
-      toggle.setAttribute('aria-pressed', paused ? 'true' : 'false');
-      gsap.to(g, { v: paused ? 0 : 1, duration: 0.5, ease: 'power2.out', overwrite: true });
+  /* muro de cine: tres filas pegadas que corren en sentidos opuestos mientras bajas.
+     Cada fila se repite con copias para cubrir el ancho; un clic en una copia abre la original. */
+  BUILD.cine = function (list) {
+    var nRows = list.length >= 9 ? 3 : list.length >= 4 ? 2 : 1, gap = 6, rows = [], i;
+    function rowH() { return Math.max(110, Math.floor((wall.clientHeight - gap * (nRows + 1)) / nRows)); }
+    wall.style.setProperty('--rh', rowH() + 'px');
+    for (i = 0; i < nRows; i++) rows.push(el('ul', 'pf-cine-row'));
+    list.forEach(function (c, k) { rows[k % nRows].appendChild(c); });
+    rows.forEach(function (ul) { wall.appendChild(ul); });
+    var minW = function () { return window.innerWidth * 1.9; };
+    rows.forEach(function (ul) {
+      var orig = Array.prototype.slice.call(ul.children), guard = 0;
+      while (ul.scrollWidth < minW() && guard++ < 8) orig.forEach(function (c) {
+        var cl = c.cloneNode(true), b = cl.querySelector('.pf-item');
+        cl.classList.add('pf-clone'); cl.setAttribute('aria-hidden', 'true'); cl.setAttribute('data-i', cells.indexOf(c)); cl.hidden = false;
+        b.tabIndex = -1; b.removeAttribute('style');
+        ul.appendChild(cl);
+      });
     });
+    function cloneClick(e) {
+      var cl = e.target.closest('.pf-clone'); if (!cl) return;
+      e.stopPropagation(); e.preventDefault();
+      var orig = cells[+cl.getAttribute('data-i')];
+      if (orig && window.__pfView) window.__pfView.open(btnOf(orig));
+    }
+    wall.addEventListener('click', cloneClick, true);
+    extras.push(function () { wall.removeEventListener('click', cloneClick, true); wall.style.removeProperty('--rh'); });
+    function dist(ul) { return Math.max(0, ul.scrollWidth - window.innerWidth); }
+    var travelPx = function () { return Math.round(Math.min(window.innerHeight * 1.7, Math.max.apply(null, rows.map(dist)))); };
+    wallTl = pinned(function () { wall.style.setProperty('--rh', rowH() + 'px'); return '+=' + Math.max(1, travelPx()); }, .7);
+    rows.forEach(function (ul, k) {
+      var d = function () { return Math.min(dist(ul), travelPx() * 1.15); };
+      if (k % 2) wallTl.fromTo(ul, { x: function () { return -d(); } }, { x: 0 }, 0);
+      else wallTl.fromTo(ul, { x: 0 }, { x: function () { return -d(); } }, 0);
+    });
+    if (prog) wallTl.fromTo(prog, { scaleX: 0 }, { scaleX: 1 }, 0);
+  };
 
-    if ('IntersectionObserver' in window) new IntersectionObserver(function (es) { visible = es[0].isIntersecting; }, { rootMargin: '60px' }).observe(sec);
-    else visible = true;
-    measure();
-    if (window.ResizeObserver) new ResizeObserver(measure).observe(rows[0].track);
-    window.addEventListener('load', measure);
-    window.__portafolio = { rows: rows, state: function () { return { paused: paused, g: g.v, visible: visible, rows: rows.map(function (r) { return { x: +r.x.toFixed(1), half: r.half, f: +r.f.toFixed(2), dir: r.dir }; }) }; } };
+  function buildWall() {
+    killWall();
+    var list = cells.filter(match);
+    cells.forEach(function (c) { c.hidden = list.indexOf(c) < 0; });
+    lastN = colCount();
+    stage.classList.add('is-wall', 'pf-m-' + mode);
+    stage.style.setProperty('--pf-top', hdrH() + 'px');
+    if (foot) foot.hidden = true;
+    setCount(list.length);
+    modeBtns.forEach(function (b) { var on = b.getAttribute('data-m') === mode; b.classList.toggle('is-on', on); b.setAttribute('aria-pressed', on ? 'true' : 'false'); });
+    BUILD[mode](list);
+  }
+  function rebuild() {
+    buildWall(); relayout();
+    var y = wallTl && wallTl.scrollTrigger ? wallTl.scrollTrigger.start : stage.getBoundingClientRect().top + window.pageYOffset - hdrH();
+    if (window.pageYOffset > y) { if (window.lenis && window.lenis.scrollTo) window.lenis.scrollTo(y, { immediate: true }); else window.scrollTo(0, y); }
+    reveal(shown(), true);
+  }
+  function filterWall() {
+    gsap.to(shown(), { opacity: 0, y: -14, duration: .22, ease: 'power2.in', stagger: .006, overwrite: true, onComplete: function () {
+      gsap.set(cells, { clearProps: 'opacity,transform' });
+      rebuild();
+    } });
+  }
+  modeBtns.forEach(function (b) {
+    b.addEventListener('click', function () {
+      var m = b.getAttribute('data-m');
+      if (m === mode || !wallOn) return;
+      mode = m;
+      try { localStorage.setItem('pfVista', m); } catch (e) {}
+      gsap.set(cells, { clearProps: 'opacity,transform' });
+      rebuild();
+    });
+  });
+
+  /* ── cuadrícula (móvil y movimiento reducido) ── */
+  function apply(animateAll) {
+    var before = shown();
+    cells.forEach(function (c) { c.hidden = !match(c); });
+    grid.classList.toggle('is-all', expanded || current !== 'all');
+    var total = cells.filter(function (c) { return !c.hidden; }).length;
+    if (foot) foot.hidden = current !== 'all';
+    if (more) {
+      more.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+      more.querySelector('span').textContent = expanded ? 'Ver menos' : 'Ver las ' + cells.length + ' piezas';
+    }
+    setCount(total);
+    var now = shown();
+    reveal(animateAll ? now : now.filter(function (c) { return before.indexOf(c) < 0; }));
+    relayout();
+  }
+  function setMode(first) {
+    var want = canWall && mqWall.matches;
+    if (want) {
+      wallOn = true; buildWall();
+      if (!first) { relayout(); reveal(shown(), true); }
+    } else {
+      if (wallOn) { killWall(); stage.classList.remove('is-wall', 'is-short'); wallOn = false; gsap.set(cells, { clearProps: 'opacity,transform' }); }
+      if (!first) apply(false);
+    }
+  }
+  /* píldora morada que se desliza al giro activo */
+  var pill = sec.querySelector('.pf-pill'), fbox = sec.querySelector('.pf-filters');
+  function movePill(instant) {
+    var on = filters.filter(function (b) { return b.classList.contains('is-on'); })[0];
+    if (!pill || !on) return;
+    var v = { x: on.offsetLeft, width: on.offsetWidth };
+    if (instant || !hasGsap || reduce) gsap.set(pill, v); else gsap.to(pill, Object.assign({ duration: .55, ease: 'expo.out', overwrite: true }, v));
+    if (fbox && fbox.scrollWidth > fbox.clientWidth) {
+      var target = on.offsetLeft - (fbox.clientWidth - on.offsetWidth) / 2;
+      if (fbox.scrollTo) fbox.scrollTo({ left: target, behavior: instant ? 'auto' : 'smooth' });
+    }
+  }
+  if (hasGsap) { movePill(true); if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { movePill(true); }); window.addEventListener('resize', function () { movePill(true); }); }
+
+  /* al pasar el mouse por un giro, tres miniaturas en abanico */
+  var peek = document.getElementById('pfPeek'), hoverOk = window.matchMedia && window.matchMedia('(hover: hover)').matches;
+  if (peek && hasGsap && hoverOk && !reduce) {
+    var peekFor = null;
+    filters.forEach(function (b) {
+      b.addEventListener('mouseenter', function () {
+        var f = b.getAttribute('data-f');
+        var pics = cells.filter(function (c) { return f === 'all' || c.getAttribute('data-s') === f; }).slice(0, 3)
+          .map(function (c) { return c.querySelector('.pf-shot img').getAttribute('src'); });
+        var bar = b.closest('.pf-bar'), br = bar.getBoundingClientRect(), r = b.getBoundingClientRect();
+        gsap.set(peek, { x: r.left - br.left + r.width / 2 });
+        if (peekFor !== f) {
+          peek.textContent = '';
+          pics.forEach(function (src) { var im = document.createElement('img'); im.src = src; im.alt = ''; peek.appendChild(im); });
+          peekFor = f;
+        }
+        var ims = Array.prototype.slice.call(peek.children), mid = (ims.length - 1) / 2;
+        gsap.fromTo(ims, { opacity: 0, y: -22, rotation: 0, x: 0, scale: .7 },
+          { opacity: 1, y: 0, scale: 1, rotation: function (i) { return (mid - i) * 9; }, x: function (i) { return (i - mid) * 40; }, duration: .5, ease: 'back.out(1.6)', stagger: .04, overwrite: true });
+      });
+      b.addEventListener('mouseleave', function () {
+        gsap.to(peek.children, { opacity: 0, y: -12, scale: .8, duration: .25, ease: 'power2.in', overwrite: true });
+      });
+    });
+  }
+
+  filters.forEach(function (b) {
+    b.addEventListener('click', function () {
+      if (b.getAttribute('data-f') === current) return;
+      current = b.getAttribute('data-f');
+      filters.forEach(function (o) { var on = o === b; o.classList.toggle('is-on', on); o.setAttribute('aria-pressed', on ? 'true' : 'false'); });
+      movePill(false);
+      if (wallOn) filterWall(); else apply(true);
+    });
+  });
+  if (more) more.addEventListener('click', function () {
+    expanded = !expanded;
+    apply(false);
+    if (!expanded) {
+      var y = sec.getBoundingClientRect().top + window.pageYOffset - 90;
+      if (window.lenis && window.lenis.scrollTo) window.lenis.scrollTo(y, { duration: .9 }); else window.scrollTo(0, y);
+    }
+  });
+
+  setMode(true);
+  if (mqWall.addEventListener) mqWall.addEventListener('change', function () { setMode(false); });
+  var rsT = 0, lastW = window.innerWidth;
+  window.addEventListener('resize', function () {
+    clearTimeout(rsT);
+    rsT = setTimeout(function () { if (wallOn && (mode !== 'muro' ? window.innerWidth !== lastW : (colCount() !== lastN || stage.classList.contains('is-short') !== (maxTravel() < 40)))) setMode(false); lastW = window.innerWidth; }, 220);
+  });
+  window.addEventListener('load', function () { if (wallOn) relayout(); });
+
+  /* entrada al llegar con el scroll */
+  if (hasGsap && !reduce && window.ScrollTrigger) {
+    gsap.set(cells, { opacity: 0, y: wallOn ? 34 : 26 });
+    ScrollTrigger.create({ trigger: stage || grid, start: 'top 86%', once: true, onEnter: function () {
+      entered = true;
+      gsap.to(cells, { opacity: 1, y: 0, duration: .9, ease: 'power3.out', stagger: wallOn ? { each: .03, from: 'random' } : .06, clearProps: 'opacity,transform' });
+    } });
   }
 
   /* ── vista grande: #pfView vive al final del body, después de este script ── */
@@ -3343,24 +3814,43 @@ if (document.fonts && document.fonts.ready) document.fonts.ready.then(function (
   var vFig = view.querySelector('.pf-view-fig');
   var vImg = document.getElementById('pfViewImg');
   var vCap = document.getElementById('pfViewCap');
+  var vN = document.getElementById('pfViewN');
   var vClose = document.getElementById('pfViewClose');
+  var vPrev = document.getElementById('pfViewPrev'), vNext = document.getElementById('pfViewNext');
   var lens = document.getElementById('lens');
-  var lastFocus = null, isOpen = false;
+  var lastFocus = null, isOpen = false, list = [], idx = 0;
+  function pad(n) { return (n < 10 ? '0' : '') + n; }
 
-  function open(btn) {
-    lastFocus = btn.getAttribute('aria-hidden') === 'true' ? null : btn;
-    var alt = btn.getAttribute('data-alt') || '', tag = btn.getAttribute('data-tag') || '';
+  function show(btn, dir) {
+    var alt = btn.getAttribute('data-alt') || '', kind = btn.getAttribute('data-kind') || '';
     vImg.src = btn.getAttribute('data-full');
     vImg.width = +btn.getAttribute('data-fw'); vImg.height = +btn.getAttribute('data-fh');
     vImg.alt = alt;
-    vCap.textContent = alt + (tag ? ' · ' + tag : '');
+    vCap.textContent = alt;
+    if (kind) { var sm = document.createElement('small'); sm.textContent = kind; vCap.appendChild(sm); }
+    vN.textContent = pad(idx + 1) + ' / ' + pad(list.length);
+    var many = list.length > 1;
+    vPrev.hidden = vNext.hidden = !many;
+    if (dir && hasGsap && !reduce) gsap.fromTo(vFig, { x: 26 * dir, opacity: 0 }, { x: 0, opacity: 1, duration: .4, ease: 'power3.out', overwrite: true, clearProps: 'opacity,transform' });
+  }
+  function open(btn) {
+    lastFocus = btn;
+    list = shown().map(function (c) { return c.querySelector('.pf-item'); });
+    idx = Math.max(0, list.indexOf(btn));
     view.hidden = false; isOpen = true;
+    show(btn, 0);
     if (lens) view.appendChild(lens);                  /* el lente también trabaja sobre la vista grande */
     if (hasGsap && !reduce) {
       gsap.fromTo(vBg, { opacity: 0 }, { opacity: 1, duration: 0.35, ease: 'power2.out', overwrite: true });
-      gsap.fromTo(vFig, { scale: 0.92, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.35, ease: 'power3.out', overwrite: true, clearProps: 'opacity' });
+      gsap.fromTo(vFig, { scale: 0.94, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.4, ease: 'power3.out', overwrite: true, clearProps: 'opacity,transform' });
     }
     vClose.focus({ preventScroll: true });
+  }
+  function step(d) {
+    if (!isOpen || list.length < 2) return;
+    idx = (idx + d + list.length) % list.length;
+    lastFocus = list[idx];
+    show(list[idx], d);
   }
   function close() {
     if (!isOpen) return;
@@ -3372,7 +3862,7 @@ if (document.fonts && document.fonts.ready) document.fonts.ready.then(function (
     }
     if (hasGsap && !reduce) {
       gsap.to(vBg, { opacity: 0, duration: 0.2, overwrite: true });
-      gsap.to(vFig, { opacity: 0, scale: 0.96, duration: 0.2, overwrite: true, onComplete: done });
+      gsap.to(vFig, { opacity: 0, scale: 0.97, duration: 0.2, overwrite: true, onComplete: done });
     } else done();
   }
   sec.addEventListener('click', function (e) {
@@ -3380,15 +3870,28 @@ if (document.fonts && document.fonts.ready) document.fonts.ready.then(function (
     if (btn) open(btn);
   });
   vClose.addEventListener('click', close);
-  view.addEventListener('click', function (e) { if (e.target !== vImg && !vClose.contains(e.target)) close(); });
+  vPrev.addEventListener('click', function () { step(-1); });
+  vNext.addEventListener('click', function () { step(1); });
+  view.addEventListener('click', function (e) { if (e.target !== vImg && !e.target.closest('button')) close(); });
   document.addEventListener('keydown', function (e) {
     if (!isOpen) return;
     if (e.key === 'Escape') { e.preventDefault(); close(); }
-    else if (e.key === 'Tab') { e.preventDefault(); vClose.focus(); }   /* el foco no sale de la vista */
+    else if (e.key === 'ArrowRight') { e.preventDefault(); step(1); }
+    else if (e.key === 'ArrowLeft') { e.preventDefault(); step(-1); }
+    else if (e.key === 'Tab') {                          /* el foco no sale de la vista */
+      e.preventDefault();
+      var f = [vClose, vPrev, vNext].filter(function (b) { return !b.hidden; });
+      var i = f.indexOf(document.activeElement);
+      f[(i + (e.shiftKey ? -1 : 1) + f.length) % f.length].focus();
+    }
   });
+  /* deslizar con el dedo cambia de pieza */
+  var tx = null;
+  view.addEventListener('touchstart', function (e) { tx = e.touches[0].clientX; }, { passive: true });
+  view.addEventListener('touchend', function (e) { if (tx === null) return; var dx = e.changedTouches[0].clientX - tx; tx = null; if (Math.abs(dx) > 48) step(dx < 0 ? 1 : -1); });
   /* el fondo no se mueve mientras está abierta (Lenis ignora data-lenis-prevent) */
   ['wheel', 'touchmove'].forEach(function (t) { view.addEventListener(t, function (e) { e.preventDefault(); }, { passive: false }); });
-  window.__pfView = { open: open, close: close, isOpen: function () { return isOpen; } };
+  window.__pfView = { open: open, close: close, step: step, isOpen: function () { return isOpen; } };
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initView); else initView();
 })();
@@ -3407,8 +3910,8 @@ if (document.fonts && document.fonts.ready) document.fonts.ready.then(function (
   if (typeof window.gsap === 'undefined' || !window.matchMedia || !window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
     lens.style.display = 'none'; return;
   }
-  var SEL = '#resultado .rs-photo, #resultado .rs-crop, .pf-item img, #pfViewImg, .pd-card';
-  var SKIP = '.rs-tag, .pf-tag, .pf-view-close, #productos .px-item, #productos .px-tabs';
+  var SEL = '#resultado .rs-photo, #resultado .rs-crop, .pf-shot img, #pfViewImg, .pd-card';
+  var SKIP = '.rs-tag, .pf-open, .pf-vbtn, #productos .px-item, #productos .px-tabs';
   var R = 60;
   var qx = gsap.quickTo(lens, 'x', { duration: 0.35, ease: 'power3.out' });
   var qy = gsap.quickTo(lens, 'y', { duration: 0.35, ease: 'power3.out' });
@@ -3472,9 +3975,10 @@ if (document.fonts && document.fonts.ready) document.fonts.ready.then(function (
 <div class="pf-view" id="pfView" role="dialog" aria-modal="true" aria-label="Pieza del portafolio" hidden data-lenis-prevent>
   <div class="pf-view-bg"></div>
   <figure class="pf-view-fig"><img id="pfViewImg" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="" width="1440" height="1800"><figcaption class="pf-view-cap" id="pfViewCap"></figcaption></figure>
-  <button type="button" class="pill pill-sm pf-view-close" id="pfViewClose">Cerrar</button>
+  <div class="pf-view-top"><span class="pf-view-n" id="pfViewN" aria-live="polite"></span><button type="button" class="pf-vbtn pf-view-close" id="pfViewClose">Cerrar <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
+  <button type="button" class="pf-vbtn pf-vnav pf-vprev" id="pfViewPrev" aria-label="Pieza anterior"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></button>
+  <button type="button" class="pf-vbtn pf-vnav pf-vnext" id="pfViewNext" aria-label="Pieza siguiente"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
 </div>
-<div id="lens" aria-hidden="true"></div>
 <script>
 (function(){
   /* ── EDITA AQUÍ ──────────────────────────────────────────
@@ -3495,7 +3999,6 @@ if (document.fonts && document.fonts.ready) document.fonts.ready.then(function (
   function clean(v){ v = v.replace(/\D/g, ''); if (v.length > 10 && v.indexOf('521') === 0) v = v.slice(3); else if (v.length > 10 && v.indexOf('52') === 0) v = v.slice(2); return v; }
 
   /* brillos del agua */
-  if (A) fu.querySelectorAll('.dz-br').forEach(function(p, i){ gsap.to(p, { x: i % 2 ? -14 : 14, duration: 3 + i, yoyo: true, repeat: -1, ease: 'sine.inOut' }); });
 
   /* arrastrar la moneda: hacia arriba y soltar = lanzar; tocar = lanzar al centro */
   var st = null, moved = false;
@@ -3510,19 +4013,20 @@ if (document.fonts && document.fonts.ready) document.fonts.ready.then(function (
   function toss(dx){
     thrown = true; hint.hidden = true;
     var r = coin.getBoundingClientRect(), s = sp(r.left + r.width / 2, r.top + r.height / 2);
-    var tx = 300 + Math.max(-150, Math.min(150, dx * 1.1)), ty = 150 + Math.random() * 30;
-    coin.hidden = true; if (G) gsap.set(coin, { x: 0, y: 0 });
-    var c = mk('ellipse', { cx: s.x, cy: s.y, rx: 24, ry: 24, fill: '#FFC46B', stroke: '#C98A2A', 'stroke-width': 3 }); fly.appendChild(c);
+    var sc = 1124 / Math.max(1, svg.getBoundingClientRect().width), R0 = r.width / 2 * sc;
+    var tx = 557 + Math.max(-260, Math.min(260, dx * 1.6 * sc)), ty = 70 + Math.random() * 26;
+    coin.parentNode.hidden = true; if (G) gsap.set(coin, { x: 0, y: 0 });
+    var c = mk('ellipse', { cx: s.x, cy: s.y, rx: R0, ry: R0, fill: 'url(#dzOro)', stroke: '#8a5c1c', 'stroke-width': 3 }); fly.appendChild(c);
 
     function after(){
-      c.setAttribute('cx', tx); c.setAttribute('cy', ty + 6); c.setAttribute('rx', 9); c.setAttribute('ry', 4); c.setAttribute('opacity', .8); c.setAttribute('stroke-width', 0);
+      c.setAttribute('cx', tx); c.setAttribute('cy', ty + 6); c.setAttribute('rx', 14); c.setAttribute('ry', 4); c.setAttribute('opacity', .75); c.setAttribute('stroke-width', 0);
       wishes.hidden = false; fu.classList.add('ok');
       if (!A){ off.hidden = false; if (window.ScrollTrigger) ScrollTrigger.refresh(); return; }
-      for (var i = 0; i < 4; i++){ var e = mk('ellipse', { cx: tx, cy: ty, rx: 4, ry: 1.5, fill: 'none', stroke: '#F2EFEA', 'stroke-width': 2.2 }); rip.appendChild(e);
-        gsap.to(e, { attr: { rx: 210, ry: 78 }, opacity: 0, duration: 2.4, delay: i * .32, ease: 'power2.out' }); }
+      for (var i = 0; i < 4; i++){ var e = mk('ellipse', { cx: tx, cy: ty, rx: 6, ry: 1.2, fill: 'none', stroke: '#F2EFEA', 'stroke-width': 2.4 }); rip.appendChild(e);
+        gsap.to(e, { attr: { rx: 380, ry: 60 }, opacity: 0, duration: 2.6, delay: i * .32, ease: 'power2.out' }); }
       for (var j = 0; j < 7; j++){ var d = mk('circle', { cx: tx, cy: ty, r: 3, fill: '#F2EFEA' }); fly.appendChild(d);
         var ang = -Math.PI * (.15 + .7 * j / 6);
-        gsap.to(d, { attr: { cx: tx + Math.cos(ang) * 40, cy: ty + Math.sin(ang) * 46 }, duration: .35, ease: 'power2.out' });
+        gsap.to(d, { attr: { cx: tx + Math.cos(ang) * 60, cy: ty + Math.sin(ang) * 70 }, duration: .35, ease: 'power2.out' });
         gsap.to(d, { attr: { cy: ty + 4 }, opacity: 0, duration: .4, delay: .35, ease: 'power2.in' }); }
       gsap.fromTo(wishes.children, { opacity: 0, y: 24, filter: 'blur(6px)' }, { opacity: 1, y: 0, filter: 'blur(0px)', duration: .9, ease: 'expo.out', stagger: .45, delay: .5 });
       gsap.delayedCall(2.4, function(){ off.hidden = false; enter(off); if (window.ScrollTrigger) ScrollTrigger.refresh(); });
@@ -3530,8 +4034,8 @@ if (document.fonts && document.fonts.ready) document.fonts.ready.then(function (
     if (!A) return after();
     var o = { t: 0 };
     gsap.to(o, { t: 1, duration: 1, ease: 'none', onUpdate: function(){ var t = o.t, k = 1 - .62 * t;
-      c.setAttribute('cx', s.x + (tx - s.x) * t); c.setAttribute('cy', s.y + (ty - s.y) * t - 190 * 4 * t * (1 - t));
-      c.setAttribute('rx', 24 * k); c.setAttribute('ry', 24 * k * Math.max(.12, Math.abs(Math.cos(t * Math.PI * 5)))); }, onComplete: after });
+      c.setAttribute('cx', s.x + (tx - s.x) * t); c.setAttribute('cy', s.y + (ty - s.y) * t - 150 * 4 * t * (1 - t));
+      c.setAttribute('rx', R0 * k); c.setAttribute('ry', R0 * k * Math.max(.12, Math.abs(Math.cos(t * Math.PI * 5)))); }, onComplete: after });
   }
 
   /* oferta → un solo campo de WhatsApp */
