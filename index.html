@@ -4044,6 +4044,7 @@ if (document.fonts && document.fonts.ready) document.fonts.ready.then(function (
     var foto = b.dataset.dz === 'foto';
     end.innerHTML = '<form class="dz-card" novalidate><p class="dz-q">' + (foto ? '¿A qué WhatsApp te pido la foto de tu producto?' : '¿A qué WhatsApp te mando tu demo?') + '</p>'
       + '<label class="dz-lbl" for="dzTel">Tu WhatsApp</label><div class="dz-field"><span>+52</span><input id="dzTel" type="tel" inputmode="tel" autocomplete="tel-national" placeholder="229 123 4567"></div>'
+      + '<input class="dz-hp" name="_gotcha" type="text" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">'
       + '<p class="dz-err" role="alert"></p><button class="dz-big" type="submit">' + (foto ? 'Quiero mi foto de muestra' : 'Quiero mi demo') + '</button>'
       + '<p class="dz-aviso">Emmanuel Vidal Zuviri, bajo la marca Saphiless, usará tu número de WhatsApp para ' + (foto ? 'hacer tu foto de muestra' : 'agendar tu demo') + ' y, si no te opones, para enviarte novedades de Saphiless. Puedes negarte escribiendo BAJA o a contacto@saphiless.com. <a href="aviso-privacidad.html">Aviso de privacidad</a>.</p></form>';
     var f = end.querySelector('form'), inp = f.querySelector('input'), err = f.querySelector('.dz-err'), btn = f.querySelector('button');
@@ -4054,6 +4055,8 @@ if (document.fonts && document.fonts.ready) document.fonts.ready.then(function (
       if (v.length !== 10){ err.textContent = 'Escribe tus 10 dígitos, por ejemplo 229 123 4567.'; inp.focus(); return; }
       function listo(){ end.innerHTML = '<div class="dz-card"><p class="dz-done">' + (foto ? 'Listo, te escribo para tu foto.' : 'Listo, te escribo para tu demo.') + '</p><p class="dz-small">' + (foto ? 'Te escribo por WhatsApp en menos de 24 horas. Ten a la mano una foto de tu producto.' : 'Te escribo por WhatsApp en menos de 24 horas. Guárdame como Saphiless.') + '</p></div>'; enter(end.firstChild); }
       var texto = 'Hola Saphiless, ' + (foto ? 'quiero mi foto de muestra.' : 'quiero ver mi demo.') + ' Mi WhatsApp: ' + v;
+      var hp = f.querySelector('.dz-hp');
+      if (hp && hp.value) { listo(); return; }
       if (DZ_ENDPOINT){
         btn.disabled = true; err.textContent = 'Enviando…';
         fetch(DZ_ENDPOINT, { method: 'POST', headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },

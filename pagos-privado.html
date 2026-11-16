@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Cobros · Saphiless</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root { --crema:#F7F0E8; --lila:#CFC0F6; --morado:#511BDB; --noche:#140A33; --negro:#0A0A0A; }
+  * { box-sizing: border-box; }
+  body { margin: 0; min-height: 100vh; display: grid; place-items: center; padding: 24px 16px; background: var(--noche); color: var(--crema); font-family: 'Instrument Sans', system-ui, sans-serif; }
+  main { width: 100%; max-width: 460px; }
+  .logo { height: 36px; display: block; margin-bottom: 28px; }
+  h1 { margin: 0 0 6px; font-size: 28px; letter-spacing: -.03em; }
+  p.s { margin: 0 0 24px; color: var(--lila); font-size: 15px; }
+  .card { background: var(--crema); color: var(--negro); border-radius: 28px; padding: 28px; }
+  label { display: block; margin: 0 0 6px; font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: #3b2a78; }
+  input { width: 100%; margin: 0 0 18px; padding: 14px 16px; border: 2px solid transparent; border-radius: 14px; background: #fff; font: inherit; font-size: 17px; color: var(--negro); }
+  input:focus { outline: none; border-color: var(--morado); }
+  .row { display: grid; grid-template-columns: 1fr 96px 84px; gap: 12px; }
+  select { width: 100%; margin: 0 0 18px; padding: 14px 10px; border: 2px solid transparent; border-radius: 14px; background: #fff; font: inherit; font-size: 17px; color: var(--negro); }
+  select:focus { outline: none; border-color: var(--morado); }
+  button { width: 100%; padding: 16px 20px; border: 0; border-radius: 999px; background: var(--morado); color: var(--crema); font: inherit; font-size: 17px; font-weight: 700; cursor: pointer; transition: background .15s, transform .15s; }
+  button:hover { background: var(--negro); }
+  button:active { transform: scale(.97); }
+  button:disabled { opacity: .55; cursor: wait; }
+  button.sec { margin-top: 10px; background: transparent; color: var(--morado); box-shadow: inset 0 0 0 2px var(--morado); }
+  button.sec:hover { background: var(--lila); }
+  .err { min-height: 20px; margin: 12px 2px 0; color: #9b1c1c; font-size: 14px; }
+  .out { display: none; margin-top: 22px; padding-top: 22px; border-top: 2px dashed var(--lila); }
+  .out.on { display: block; }
+  .link { width: 100%; margin: 0 0 12px; padding: 12px 14px; border-radius: 12px; background: #fff; font-size: 13px; word-break: break-all; user-select: all; }
+  .nota { margin: 12px 2px 0; font-size: 13px; color: #55496f; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Generar cobro</h1>
+  <p class="s">Crea un enlace de pago con tarjeta y mándalo a tu cliente.</p>
+  <form class="card" id="f" novalidate autocomplete="off">
+    <img class="logo" src="assets/logo-saphiless.svg" alt="Saphiless">
+    <label for="tk">Tu clave</label>
+    <input id="tk" type="password" autocomplete="off" required>
+    <label for="co">Concepto</label>
+    <input id="co" type="text" maxlength="120" placeholder="Anticipo página web" required>
+    <div class="row">
+      <div><label for="mo">Monto</label><input id="mo" type="number" inputmode="decimal" min="10" step="0.01" placeholder="50" required></div>
+      <div><label for="mn">Moneda</label><select id="mn"><option value="usd">USD</option><option value="mxn">MXN</option></select></div>
+      <div><label for="ho">Vence (h)</label><input id="ho" type="number" inputmode="numeric" min="1" max="24" value="24"></div>
+    </div>
+    <label for="em">Correo del cliente (opcional)</label>
+    <input id="em" type="email" autocomplete="off" placeholder="cliente@correo.com">
+    <button id="go" type="submit">Generar enlace</button>
+    <p class="err" id="er" role="alert"></p>
+    <div class="out" id="out">
+      <div class="link" id="lk"></div>
+      <button type="button" id="cp">Copiar enlace</button>
+      <button type="button" class="sec" id="wa">Copiar mensaje para WhatsApp</button>
+      <p class="nota" id="nt"></p>
+    </div>
+  </form>
+</main>
+<script>
+(function () {
+  var $ = function (i) { return document.getElementById(i); }, last = null;
+  try { $('tk').value = sessionStorage.getItem('sp_tk') || ''; } catch (e) {}
+  function money(n, c) { return '$' + Number(n).toLocaleString('es-MX', { minimumFractionDigits: 2 }) + ' ' + c; }
+  $('f').addEventListener('submit', function (ev) {
+    ev.preventDefault();
+    var er = $('er'), go = $('go'); er.textContent = ''; $('out').classList.remove('on');
+    var body = { concepto: $('co').value, monto: $('mo').value, moneda: $('mn').value, correo: $('em').value, horas: $('ho').value };
+    go.disabled = true; go.textContent = 'Generando…';
+    fetch('/api/crear-pago', { method: 'POST', headers: { 'Content-Type': 'application/json', 'x-admin-token': $('tk').value }, body: JSON.stringify(body) })
+      .then(function (r) { return r.json().then(function (d) { return { ok: r.ok, d: d }; }); })
+      .then(function (x) {
+        if (!x.ok) throw new Error(x.d.error || 'No salió.');
+        try { sessionStorage.setItem('sp_tk', $('tk').value); } catch (e) {}
+        last = { url: x.d.url, concepto: $('co').value.trim(), monto: $('mo').value, moneda: $('mn').value.toUpperCase() };
+        $('lk').textContent = x.d.url;
+        $('nt').textContent = 'Vence ' + new Date(x.d.expira * 1000).toLocaleString('es-MX', { dateStyle: 'medium', timeStyle: 'short' }) + '. Un enlace, un pago.';
+        $('out').classList.add('on');
+      })
+      .catch(function (e) { er.textContent = e.message; })
+      .then(function () { go.disabled = false; go.textContent = 'Generar enlace'; });
+  });
+  function copy(t, b, ok) { (navigator.clipboard ? navigator.clipboard.writeText(t) : Promise.reject()).then(function () { var o = b.textContent; b.textContent = ok; setTimeout(function () { b.textContent = o; }, 1600); }).catch(function () { $('er').textContent = 'Copia el enlace a mano.'; }); }
+  $('cp').addEventListener('click', function () { if (last) copy(last.url, $('cp'), 'Copiado'); });
+  $('wa').addEventListener('click', function () { if (last) copy('Hola, este es tu enlace de pago con tarjeta por ' + money(last.monto, last.moneda) + ' (' + last.concepto + '):\n' + last.url, $('wa'), 'Copiado'); });
+})();
+</script>
+</body>
+</html>
