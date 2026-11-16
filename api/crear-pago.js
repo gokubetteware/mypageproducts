@@ -46,7 +46,6 @@ module.exports = async function handler(req, res) {
 
   const p = new URLSearchParams();
   p.set('mode', 'payment');
-  p.set('payment_method_types[0]', 'card');
   p.set('line_items[0][quantity]', '1');
   p.set('line_items[0][price_data][currency]', moneda);
   p.set('line_items[0][price_data][unit_amount]', String(monto));
