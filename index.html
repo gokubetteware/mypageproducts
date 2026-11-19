@@ -354,8 +354,8 @@ section { padding: clamp(64px, 9vw, 112px) 0; }
 .amb-casos   { width: min(270px, 21vw); left: -4%;  bottom: 7%; opacity: 0.24; }
 .amb-proceso { width: min(230px, 18vw); right: -3%; top: 10%;   opacity: 0.20; }
 .amb-cierre  { width: min(260px, 20vw); left: -4%;  top: 8%;    opacity: 0.30; }
-#datos, #proceso { position: relative; }
-#datos > .wrap, #proceso > .wrap { position: relative; z-index: 1; }
+#datos, #precios { position: relative; }
+#datos > .wrap, #precios > .wrap { position: relative; z-index: 1; }
 
 
 /* ============================================================
@@ -1002,6 +1002,15 @@ html:not(.js) .rs-photo { --sweep: 100%; }
 .calc-go-btn:hover { background: #CFC0F6; }
 .calc-go-btn:active { transform: scale(.97); }
 .calc-go-btn:focus-visible { outline: 2px solid #CFC0F6; outline-offset: 3px; }
+/* precios */
+.pr-l { list-style: none; margin: 18px 0 0; padding: 0; display: grid; gap: 10px; }
+.pr-l li { position: relative; padding-left: 22px; font-size: 15px; line-height: 1.4; color: #3D3550; }
+.pr-l li::before { content: ""; position: absolute; left: 0; top: 7px; width: 8px; height: 8px; border-radius: 2px; background: #511BDB; }
+.model-col .pr-p { margin: 26px 0 14px; font-family: var(--font-ui); font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: #511BDB; }
+.pr-btn { display: inline-block; padding: 15px 26px; border-radius: 999px; background: #511BDB; color: #F7F0E8; font-weight: 700; font-size: 16px; text-decoration: none; transition: background .2s, transform .15s; }
+.pr-btn:hover { background: #0A0A0A; }
+.pr-btn:active { transform: scale(.97); }
+.pr-btn:focus-visible { outline: 2px solid #140A33; outline-offset: 3px; }
 /* muro de cine: banda oscura de borde a borde con tres filas pegadas */
 .pf-stage.is-wall.pf-m-cine .pf-wall { --pf-gap: 6px; display: flex; flex-direction: column; justify-content: center; gap: var(--pf-gap); margin-inline: calc(50% - 50vw); padding: var(--pf-gap) 0; background: #0A0A0A; -webkit-mask-image: none; mask-image: none; }
 .pf-cine-row { list-style: none; margin: 0; padding: 0; display: flex; gap: var(--pf-gap); width: max-content; will-change: transform; }
@@ -1371,10 +1380,6 @@ html:not(.js) #productos .px-item{visibility:visible;opacity:1;margin-bottom:12p
   <span class="pv-label" id="pvLabel">Caso</span>
 </div>
 
-<div class="banner">
-  <a href="#contacto"><span class="bn-t">Antes de decidir, lo ves funcionando con tu negocio.</span><span class="bn-m">Lo ves funcionando con tu negocio.</span> <span class="bn-l">Pide tu demo</span></a>
-</div>
-
 <header id="siteHeader">
   <nav class="wrap">
     <a href="#top" class="wordmark"><svg class="logo-svg" height="21" role="img" aria-label="Saphiless" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000.0 161.9"><g transform="translate(0,141.67) scale(0.202388,-0.202388)"><g fill="#0A0A0A"><path transform="translate(0,0)" d="M10 600H570V420H196Q196 405 198.0 402.5Q200 400 215 400H570V245Q570 172 567.5 125.5Q565 79 554.0 53.0Q543 27 517.0 16.0Q491 5 445.0 2.5Q399 0 325 0H10V280H365Q380 280 382.0 282.5Q384 285 384 300H10Z"/><path transform="translate(580,0)" d="M630 600V0H330V43H310V0H255Q182 0 135.5 2.5Q89 5 63.0 16.0Q37 27 26.0 53.0Q15 79 12.5 125.5Q10 172 10 245V355Q10 428 12.5 474.5Q15 521 26.0 547.0Q37 573 63.0 584.0Q89 595 135.5 597.5Q182 600 255 600ZM310 300H330V400Q315 400 312.5 397.5Q310 395 310 380Z"/><path transform="translate(1220,0)" d="M310 -100H10V600H385Q458 600 504.5 597.5Q551 595 577.0 584.0Q603 573 614.0 547.0Q625 521 627.5 475.0Q630 429 630 355V245Q630 172 627.5 125.5Q625 79 614.0 53.0Q603 27 577.0 16.0Q551 5 505.0 2.5Q459 0 385 0H310ZM310 300H330V380Q330 395 327.5 397.5Q325 400 310 400Z"/><path transform="translate(1860,0)" d="M10 700H310V600H385Q458 600 504.5 597.5Q551 595 577.0 584.0Q603 573 614.0 547.0Q625 521 627.5 475.0Q630 429 630 355V0H330V380Q330 392 329.0 396.0Q328 400 320 400H310V0H10Z"/><path transform="translate(2500,0)" d="M10 700H310V620H10ZM311 0H256Q182 0 135.5 2.5Q89 5 63.5 16.0Q38 27 26.5 53.0Q15 79 13.0 125.5Q11 172 11 245V600H311Z"/></g><g fill="#511BDB"><path transform="translate(2821,0)" d="M310 0H255Q182 0 135.5 2.5Q89 5 63.0 16.0Q37 27 26.0 53.0Q15 79 12.5 125.5Q10 172 10 245V700H310Z"/><path transform="translate(3141,0)" d="M10 355Q10 428 12.5 474.5Q15 521 26.0 547.0Q37 573 63.0 584.0Q89 595 135.5 597.5Q182 600 255 600H385Q458 600 504.5 597.5Q551 595 577.0 584.0Q603 573 614.0 547.0Q625 521 627.5 475.0Q630 429 630 355V120H310V100H630V0L160 1Q104 3 73.0 12.5Q42 22 28.5 47.0Q15 72 12.5 119.5Q10 167 10 245ZM310 400V300H330V380Q330 395 327.5 397.5Q325 400 310 400Z"/><path transform="translate(3781,0)" d="M10 600H570V420H196Q196 405 198.0 402.5Q200 400 215 400H570V245Q570 172 567.5 125.5Q565 79 554.0 53.0Q543 27 517.0 16.0Q491 5 445.0 2.5Q399 0 325 0H10V280H365Q380 280 382.0 282.5Q384 285 384 300H10Z"/><path transform="translate(4361,0)" d="M10 600H570V420H196Q196 405 198.0 402.5Q200 400 215 400H570V245Q570 172 567.5 125.5Q565 79 554.0 53.0Q543 27 517.0 16.0Q491 5 445.0 2.5Q399 0 325 0H10V280H365Q380 280 382.0 282.5Q384 285 384 300H10Z"/></g></g></svg></a>
@@ -1385,7 +1390,7 @@ html:not(.js) #productos .px-item{visibility:visible;opacity:1;margin-bottom:12p
       <li><a href="#productos" data-producto="lealtad" data-roll="Lealtad">Lealtad</a></li>
       <li><a href="#portafolio" data-roll="Portafolio">Portafolio</a></li>
       <li><a href="#casos" data-roll="Casos">Casos</a></li>
-      <li><a href="#proceso" data-roll="Cómo trabajo">Cómo trabajo</a></li>
+      <li><a href="#precios" data-roll="Precios">Precios</a></li>
 <li><a href="https://app.saphiless.com/calculadora" data-roll="Calculadora">Calculadora</a></li>
     </ul>
     <div class="nav-right">
@@ -1409,7 +1414,7 @@ html:not(.js) #productos .px-item{visibility:visible;opacity:1;margin-bottom:12p
       <li><a class="ov-item" href="#productos" data-producto="lealtad"><span class="ov-num">04</span>Lealtad</a></li>
       <li><a class="ov-item" href="#portafolio"><span class="ov-num">05</span>Portafolio</a></li>
       <li><a class="ov-item" href="#casos"><span class="ov-num">06</span>Casos</a></li>
-      <li><a class="ov-item" href="#proceso"><span class="ov-num">07</span>Cómo trabajo</a></li>
+      <li><a class="ov-item" href="#precios"><span class="ov-num">07</span>Precios</a></li>
       <li><a class="ov-item" href="https://app.saphiless.com/calculadora"><span class="ov-num">08</span>Calculadora</a></li>
 <li><a class="ov-item ov-cta" href="#contacto"><span class="ov-num">09</span>Agendar demo</a></li>
     </ul>
@@ -1564,8 +1569,8 @@ La calculadora vive en app.saphiless.com; aquí solo se invita a usarla. -->
             <h3>Tu producto, con foto de revista</h3>
             <p class="px-body">Convierto la foto de tu producto en una imagen publicitaria profesional, lista para tus redes, tu menú o tus anuncios.</p>
             <p class="px-punch">Que se te antoje desde la pantalla.</p>
-            <ul class="tool-list"><li>Luz, fondo y acabado de estudio para tu producto</li><li>Formatos listos para Instagram, Facebook y WhatsApp</li><li>Imágenes para promociones, menús y anuncios</li><li>Tu primera foto de muestra, sin costo (una por negocio)</li></ul>
-            <a href="#contacto" class="pill pill-grad magnetic px-cta" data-roll="Quiero mi foto de muestra">Quiero mi foto de muestra <span class="pill-arrow">&rarr;</span></a>
+            <ul class="tool-list"><li>Luz, fondo y acabado de estudio para tu producto</li><li>Formatos listos para Instagram, Facebook y WhatsApp</li><li>Imágenes para promociones, menús y anuncios</li></ul>
+            <a href="#contacto" class="pill pill-grad magnetic px-cta" data-roll="Agendar demo">Agendar demo <span class="pill-arrow">&rarr;</span></a>
           </article>
           <article class="px-item glass" id="pxItem-lealtad" role="tabpanel" aria-labelledby="pxTab-lealtad" data-producto="lealtad" data-acc="#A855F7" data-c1="#A855F7" data-c2="#4B266F" data-c3="#150E20" style="--c:#A855F7;--dot:#A855F7">
             <p class="px-full">Sistema de lealtad</p>
@@ -1573,7 +1578,7 @@ La calculadora vive en app.saphiless.com; aquí solo se invita a usarla. -->
             <p class="px-body">Una tarjeta de puntos digital en el celular de tus clientes: juntan visitas, ganan premios y regresan contigo.</p>
             <p class="px-punch">La lealtad no tiene precio.</p>
             <ul class="tool-list"><li>Sin tarjetas de papel que se pierden</li><li>Premios y promociones que tú decides</li><li>Ves quién regresa y cada cuánto</li><li>Mensajes para invitar a volver a quien no ha venido</li></ul>
-            <a href="#contacto" class="pill pill-grad magnetic px-cta" data-roll="Quiero ver mi demo">Quiero ver mi demo <span class="pill-arrow">&rarr;</span></a>
+            <a href="#contacto" class="pill pill-grad magnetic px-cta" data-roll="Agendar demo">Agendar demo <span class="pill-arrow">&rarr;</span></a>
           </article>
           <article class="px-item glass" id="pxItem-redes" role="tabpanel" aria-labelledby="pxTab-redes" data-producto="redes" data-acc="#FF6B4A" data-c1="#FF6B4A" data-c2="#6E2A1C" data-c3="#1E0D08" style="--c:#FF6B4A;--dot:#FF6B4A">
             <p class="px-full">Redes sociales</p>
@@ -1676,50 +1681,39 @@ La calculadora vive en app.saphiless.com; aquí solo se invita a usarla. -->
       </div>
     </section>
 
-    <section id="proceso" class="has-vline">
-    <svg class="blob amb amb-proceso js-parallax" viewBox="0 0 200 200" aria-hidden="true" data-morph><path d="M182.2,100.0 C185.4,106.4 189.3,115.1 188.2,121.7 C187.1,128.4 181.3,135.3 175.7,139.7 C170.1,144.2 160.7,145.5 154.7,148.4 C148.6,151.4 143.9,152.9 139.5,157.2 C135.1,161.6 133.0,169.0 128.2,174.4 C123.4,179.7 117.3,187.4 110.9,189.5 C104.4,191.6 95.7,190.2 89.4,187.0 C83.2,183.8 78.1,175.4 73.3,170.4 C68.5,165.4 65.9,160.0 60.8,156.8 C55.6,153.6 49.0,153.6 42.4,151.0 C35.9,148.4 26.2,146.2 21.4,141.3 C16.5,136.3 13.2,128.2 13.3,121.4 C13.4,114.5 18.9,106.3 22.2,100.0 C25.4,93.7 30.9,89.2 32.9,83.5 C34.8,77.7 33.7,72.2 34.0,65.4 C34.4,58.5 32.5,49.0 34.9,42.3 C37.4,35.7 42.5,28.5 48.6,25.6 C54.7,22.6 64.3,23.9 71.5,24.8 C78.6,25.6 85.4,30.1 91.6,30.6 C97.8,31.2 102.3,29.8 108.7,28.2 C115.1,26.5 122.9,21.3 130.0,20.8 C137.2,20.3 146.3,21.1 151.7,25.1 C157.0,29.2 160.3,37.9 162.2,44.9 C164.1,51.9 162.0,60.5 163.1,66.9 C164.1,73.3 165.5,77.6 168.6,83.1 C171.8,88.6 178.9,93.6 182.2,100.0 Z" fill="url(#gGreen)"/></svg>
-      <div class="wrap">
-        <div class="section-head">
-          <h2 class="t-heading js-mask" data-split="chars">Primero lo ves funcionando. Luego decides.</h2>
-        </div>
-        <p class="t-body-lg js-words" style="max-width:52ch;margin-bottom:var(--sp-48)">
-          No te pido que me creas. Armo una demo con tu negocio, la pruebas tú y, si te
-          sirve, hablamos de precio.
-        </p>
-
-        <ol class="steps">
-          <li class="step js-fade"><span class="st-n">01</span>
-            <h3>Me cuentas</h3>
-            <p>Una llamada de 20 minutos sobre tu negocio y tus clientes.</p></li>
-          <li class="step js-fade"><span class="st-n">02</span>
-            <h3>Lo pruebas</h3>
-            <p>Tu demo, con tu nombre, tus horarios y tus precios.</p></li>
-          <li class="step js-fade"><span class="st-n">03</span>
-            <h3>¿Te convenció?</h3>
-            <p>Si sí, te cotizo. Si no, no pasa nada.</p></li>
-          <li class="step js-fade"><span class="st-n">04</span>
-            <h3>Lo dejo trabajando</h3>
-            <p>Instalación, capacitación y seguimiento. No desaparezco.</p></li>
-        </ol>
-
-        <div class="g-stage g-light-stage js-fade">
-          <div class="grainient g-clean" data-g="proceso" aria-hidden="true"></div>
-        <div class="model">
-          <div class="model-col glass glass-light">
-            <h4>Asistentes</h4>
-            <p>Tu asistente y tu asesor de confianza: una instalación y una mensualidad que cubre hosting y soporte.</p>
-          </div>
-          <div class="model-col glass glass-light">
-            <h4>Proyectos</h4>
-            <p>Página web e imágenes publicitarias: un solo precio cerrado, según lo que necesites.</p>
-          </div>
-        </div>
-        </div>
-        <p class="t-caption muted js-fade" style="margin-top:var(--sp-24)">
-          El primer paso no cuesta nada. Pide tu demo aquí abajo.
-        </p>
-      </div>
-    </section>
+    <section id="precios" class="has-vline" aria-labelledby="prH">
+<svg class="blob amb amb-proceso js-parallax" viewBox="0 0 200 200" aria-hidden="true" data-morph><path d="M182.2,100.0 C185.4,106.4 189.3,115.1 188.2,121.7 C187.1,128.4 181.3,135.3 175.7,139.7 C170.1,144.2 160.7,145.5 154.7,148.4 C148.6,151.4 143.9,152.9 139.5,157.2 C135.1,161.6 133.0,169.0 128.2,174.4 C123.4,179.7 117.3,187.4 110.9,189.5 C104.4,191.6 95.7,190.2 89.4,187.0 C83.2,183.8 78.1,175.4 73.3,170.4 C68.5,165.4 65.9,160.0 60.8,156.8 C55.6,153.6 49.0,153.6 42.4,151.0 C35.9,148.4 26.2,146.2 21.4,141.3 C16.5,136.3 13.2,128.2 13.3,121.4 C13.4,114.5 18.9,106.3 22.2,100.0 C25.4,93.7 30.9,89.2 32.9,83.5 C34.8,77.7 33.7,72.2 34.0,65.4 C34.4,58.5 32.5,49.0 34.9,42.3 C37.4,35.7 42.5,28.5 48.6,25.6 C54.7,22.6 64.3,23.9 71.5,24.8 C78.6,25.6 85.4,30.1 91.6,30.6 C97.8,31.2 102.3,29.8 108.7,28.2 C115.1,26.5 122.9,21.3 130.0,20.8 C137.2,20.3 146.3,21.1 151.7,25.1 C157.0,29.2 160.3,37.9 162.2,44.9 C164.1,51.9 162.0,60.5 163.1,66.9 C164.1,73.3 165.5,77.6 168.6,83.1 C171.8,88.6 178.9,93.6 182.2,100.0 Z" fill="url(#gGreen)"/></svg>
+<div class="wrap">
+<div class="section-head">
+<h2 class="t-heading js-mask" data-split="chars" id="prH">Precios.</h2>
+</div>
+<p class="t-body-lg js-words" style="max-width:52ch;margin-bottom:var(--sp-48)">
+Cada negocio necesita algo distinto, así que cotizo según lo que necesitas. Ventas soy yo.
+</p>
+<div class="g-stage g-light-stage js-fade">
+<div class="grainient g-clean" data-g="proceso" aria-hidden="true"></div>
+<div class="model">
+<div class="model-col glass glass-light">
+<h4>Asistentes</h4>
+<p>Tu asistente y tu asesor de confianza.</p>
+<ul class="pr-l"><li>Instalación</li><li>Mensualidad que cubre hosting y soporte</li><li>Capacitación y seguimiento</li></ul>
+<p class="pr-p">Cotización a tu medida</p>
+<a class="pr-btn" href="#contacto">Contactar a ventas</a>
+</div>
+<div class="model-col glass glass-light">
+<h4>Proyectos</h4>
+<p>Página web e imágenes publicitarias.</p>
+<ul class="pr-l"><li>Un solo precio cerrado</li><li>Sitios a la medida, con animación y detalle</li><li>Imágenes listas para Instagram, Facebook y WhatsApp</li></ul>
+<p class="pr-p">Cotización a tu medida</p>
+<a class="pr-btn" href="#contacto">Contactar a ventas</a>
+</div>
+</div>
+</div>
+<p class="t-caption muted js-fade" style="margin-top:var(--sp-24)">
+¿No sabes cuál te conviene? Escríbeme y lo vemos.
+</p>
+</div>
+</section>
 
   </div>
 
@@ -1759,9 +1753,8 @@ La calculadora vive en app.saphiless.com; aquí solo se invita a usarla. -->
   <div id="dzOff" hidden>
     <p class="dz-claim">Los deseos se cumplen trabajando. Esa parte me toca a mí.</p>
     <div class="dz-offers">
-      <button class="dz-big" type="button" data-dz="demo">Quiero ver mi demo</button>
-      <button class="dz-soft" type="button" data-dz="foto">Quiero mi foto de muestra</button>
-    </div>
+      <button class="dz-big" type="button" data-dz="demo">Agendar demo</button>
+          </div>
   </div>
   <div class="dz-end" id="dzEnd"></div>
 </div>
@@ -1796,7 +1789,7 @@ La calculadora vive en app.saphiless.com; aquí solo se invita a usarla. -->
     </div>
     <div class="footer-bottom">
       <span>© 2026 Saphiless</span>
-      <span class="footer-legal"><a href="aviso-privacidad.html">Aviso de privacidad</a><a href="prueba.html">Prueba de 3 semanas</a></span>
+      <span class="footer-legal"><a href="aviso-privacidad.html">Aviso de privacidad</a></span>
     </div>
   </div>
   <div class="footer-giant" aria-hidden="true"><span id="footGiant"><svg class="wm-svg" role="img" aria-label="Saphiless" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000.0 161.9"><g transform="translate(0,141.67) scale(0.202388,-0.202388)"><g fill="#0A0A0A"><path transform="translate(0,0)" d="M10 600H570V420H196Q196 405 198.0 402.5Q200 400 215 400H570V245Q570 172 567.5 125.5Q565 79 554.0 53.0Q543 27 517.0 16.0Q491 5 445.0 2.5Q399 0 325 0H10V280H365Q380 280 382.0 282.5Q384 285 384 300H10Z"/><path transform="translate(580,0)" d="M630 600V0H330V43H310V0H255Q182 0 135.5 2.5Q89 5 63.0 16.0Q37 27 26.0 53.0Q15 79 12.5 125.5Q10 172 10 245V355Q10 428 12.5 474.5Q15 521 26.0 547.0Q37 573 63.0 584.0Q89 595 135.5 597.5Q182 600 255 600ZM310 300H330V400Q315 400 312.5 397.5Q310 395 310 380Z"/><path transform="translate(1220,0)" d="M310 -100H10V600H385Q458 600 504.5 597.5Q551 595 577.0 584.0Q603 573 614.0 547.0Q625 521 627.5 475.0Q630 429 630 355V245Q630 172 627.5 125.5Q625 79 614.0 53.0Q603 27 577.0 16.0Q551 5 505.0 2.5Q459 0 385 0H310ZM310 300H330V380Q330 395 327.5 397.5Q325 400 310 400Z"/><path transform="translate(1860,0)" d="M10 700H310V600H385Q458 600 504.5 597.5Q551 595 577.0 584.0Q603 573 614.0 547.0Q625 521 627.5 475.0Q630 429 630 355V0H330V380Q330 392 329.0 396.0Q328 400 320 400H310V0H10Z"/><path transform="translate(2500,0)" d="M10 700H310V620H10ZM311 0H256Q182 0 135.5 2.5Q89 5 63.5 16.0Q38 27 26.5 53.0Q15 79 13.0 125.5Q11 172 11 245V600H311Z"/></g><g fill="#0A0A0A"><path transform="translate(2821,0)" d="M310 0H255Q182 0 135.5 2.5Q89 5 63.0 16.0Q37 27 26.0 53.0Q15 79 12.5 125.5Q10 172 10 245V700H310Z"/><path transform="translate(3141,0)" d="M10 355Q10 428 12.5 474.5Q15 521 26.0 547.0Q37 573 63.0 584.0Q89 595 135.5 597.5Q182 600 255 600H385Q458 600 504.5 597.5Q551 595 577.0 584.0Q603 573 614.0 547.0Q625 521 627.5 475.0Q630 429 630 355V120H310V100H630V0L160 1Q104 3 73.0 12.5Q42 22 28.5 47.0Q15 72 12.5 119.5Q10 167 10 245ZM310 400V300H330V380Q330 395 327.5 397.5Q325 400 310 400Z"/><path transform="translate(3781,0)" d="M10 600H570V420H196Q196 405 198.0 402.5Q200 400 215 400H570V245Q570 172 567.5 125.5Q565 79 554.0 53.0Q543 27 517.0 16.0Q491 5 445.0 2.5Q399 0 325 0H10V280H365Q380 280 382.0 282.5Q384 285 384 300H10Z"/><path transform="translate(4361,0)" d="M10 600H570V420H196Q196 405 198.0 402.5Q200 400 215 400H570V245Q570 172 567.5 125.5Q565 79 554.0 53.0Q543 27 517.0 16.0Q491 5 445.0 2.5Q399 0 325 0H10V280H365Q380 280 382.0 282.5Q384 285 384 300H10Z"/></g></g></svg></span></div>
@@ -1979,7 +1972,7 @@ function lightProgress() {
    halos. En móvil esto es prácticamente el único trigger que
    existe — así se cumple el tope de ~10 sin renunciar a nada. */
 var progressEl = document.getElementById('progress');
-var secIds = ['productos', 'portafolio', 'casos', 'proceso'];   /* las secciones con link en el menú, en orden de página */
+var secIds = ['productos', 'portafolio', 'casos', 'precios'];   /* las secciones con link en el menú, en orden de página */
 var navAnchors = Array.prototype.slice.call(document.querySelectorAll('.nav-links a'));
 var velo = { v: 0 };
 var haloNodes = Array.prototype.slice.call(document.querySelectorAll('#blobDefs feDropShadow'));
@@ -4067,7 +4060,7 @@ if (document.fonts && document.fonts.ready) document.fonts.ready.then(function (
   off.addEventListener('click', function(e){
     var b = e.target.closest('[data-dz]'); if (!b) return;
     var foto = b.dataset.dz === 'foto';
-    end.innerHTML = '<form class="dz-card" novalidate><p class="dz-q">' + (foto ? '¿A qué WhatsApp te pido la foto de tu producto?' : '¿A qué WhatsApp te mando tu demo?') + '</p>'
+    end.innerHTML = '<form class="dz-card" novalidate><p class="dz-q">' + (foto ? '¿A qué WhatsApp te pido la foto de tu producto?' : '¿A qué WhatsApp te escribo para agendar tu llamada?') + '</p>'
       + '<label class="dz-lbl" for="dzTel">Tu WhatsApp</label><div class="dz-field"><span>+52</span><input id="dzTel" type="tel" inputmode="tel" autocomplete="tel-national" placeholder="229 123 4567"></div>'
       + '<input class="dz-hp" name="_gotcha" type="text" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">'
       + '<p class="dz-err" role="alert"></p><button class="dz-big" type="submit">' + (foto ? 'Quiero mi foto de muestra' : 'Quiero mi demo') + '</button>'
@@ -4078,7 +4071,7 @@ if (document.fonts && document.fonts.ready) document.fonts.ready.then(function (
     f.addEventListener('submit', function(ev){
       ev.preventDefault(); var v = clean(inp.value);
       if (v.length !== 10){ err.textContent = 'Escribe tus 10 dígitos, por ejemplo 229 123 4567.'; inp.focus(); return; }
-      function listo(){ end.innerHTML = '<div class="dz-card"><p class="dz-done">' + (foto ? 'Listo, te escribo para tu foto.' : 'Listo, te escribo para tu demo.') + '</p><p class="dz-small">' + (foto ? 'Te escribo por WhatsApp en menos de 24 horas. Ten a la mano una foto de tu producto.' : 'Te escribo por WhatsApp en menos de 24 horas. Guárdame como Saphiless.') + '</p></div>'; enter(end.firstChild); }
+      function listo(){ end.innerHTML = '<div class="dz-card"><p class="dz-done">' + (foto ? 'Listo, te escribo para tu foto.' : 'Listo, te escribo para agendar tu llamada.') + '</p><p class="dz-small">' + (foto ? 'Te escribo por WhatsApp en menos de 24 horas. Ten a la mano una foto de tu producto.' : 'Te escribo por WhatsApp en menos de 24 horas. Guárdame como Saphiless.') + '</p></div>'; enter(end.firstChild); }
       var texto = 'Hola Saphiless, ' + (foto ? 'quiero mi foto de muestra.' : 'quiero ver mi demo.') + ' Mi WhatsApp: ' + v;
       var hp = f.querySelector('.dz-hp');
       if (hp && hp.value) { listo(); return; }
